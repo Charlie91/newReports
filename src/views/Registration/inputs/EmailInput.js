@@ -37,7 +37,7 @@ class EmailInput extends Component {
         }
         else if(this.state.isNotAvailable){
             return(
-                <div className="hintMessage alert alert-danger">E-mail {this.state.value} занят</div>
+                <div className="hintMessage alert alert-danger">E-mail {this.state.isNotAvailable} занят</div>
             )
         }
     }
@@ -55,7 +55,9 @@ class EmailInput extends Component {
         ajaxRequest(url,options)
             .then(data => {
                 if(data.present)
-                    this.setState({isNotAvailable:true})
+                    this.setState({isNotAvailable:this.state.value})
+                else
+                    this.setState({isNotAvailable:false})
             })
             .catch(error => console.log(error));
     }

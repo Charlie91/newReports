@@ -29,7 +29,7 @@ class LoginInput extends Component {
         }
     }
 
-    showError(){            //функция рендера сообщения об ошибке
+    showError(){    //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
                 <div className="hintMessage alert alert-danger">Логин должен быть не менее 6 символов,состоять только из латинских символов и цифр</div>
@@ -37,7 +37,7 @@ class LoginInput extends Component {
         }
         else if(this.state.isNotAvailable){
             return(
-                <div className="hintMessage alert alert-danger">Логин {this.state.value} занят</div>
+                <div className="hintMessage alert alert-danger">Логин {this.state.isNotAvailable} занят</div>
             )
         }
     }
@@ -55,7 +55,9 @@ class LoginInput extends Component {
         ajaxRequest(url,options)
             .then(data => {
                 if(data.present)
-                    this.setState({isNotAvailable:true})
+                    this.setState({isNotAvailable:this.state.value})
+                else
+                    this.setState({isNotAvailable:false})
             })
             .catch(error => console.log(error));
     }
