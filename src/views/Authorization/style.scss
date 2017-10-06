@@ -1,0 +1,19 @@
+
+
+.label-enter {
+  opacity: 0.01;
+}
+
+.label-enter.label-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.label-leave {
+  opacity: 1;
+}
+
+.label-leave.label-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

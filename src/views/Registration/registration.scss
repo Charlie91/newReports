@@ -1,0 +1,23 @@
+$body:black;
+
+
+
+.registration-form{
+  width:40%;
+  margin: auto;
+  input[type="password"]:first-child{
+    margin-bottom:10px;
+  }
+  label {
+    width: 80%;
+  }
+  a.registr-link {
+    color: #fff;
+    font-weight: bold;
+    font-size: 110%;
+  }
+
+}
+.auth-window{
+
+}

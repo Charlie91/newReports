@@ -1,0 +1,295 @@
+
+@font-face {
+    font-family: ProximaNova; /* Имя шрифта */
+    src: url('./fonts/Proxima_Nova/regular.ttf'); /* Путь к файлу со шрифтом */
+}
+@font-face {
+    font-family: ProximaNova; /* Имя шрифта */
+    src: url('./fonts/Proxima_Nova/Proxima-Nova-Semibold.ttf'); /* Путь к файлу со шрифтом */
+    font-weight:500
+}
+@font-face {
+    font-family: ProximaNova; /* Имя шрифта */
+    src: url('./fonts/Proxima_Nova/Proxima-Nova-Light.ttf'); /* Путь к файлу со шрифтом */
+    font-weight:200
+}
+body{
+   font-family: ProximaNova, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!important;
+    font-weight:200!important
+}
+.tree_select{
+    font-family: ProximaNova,sans-serif;
+    color: #354052;
+}
+
+.node {
+    color:#354052;
+    font-family: ProximaNova,sans-serif;
+    list-style: none;
+    white-space: nowrap;
+    padding: 4px;
+}
+
+.searchModeOn li.node {
+    padding-left: 0 !important;
+}
+
+.searchModeOn .toggle {
+    display: none;
+}
+
+.toggle {
+    white-space: pre;
+    margin-right: 4px;
+    color: #d49c9c;
+}
+
+.toggle:after {
+    content: " ";
+}
+
+.toggle.collapsed:after {
+    cursor: pointer;
+    content: "+";
+}
+
+.toggle.expanded:after {
+    cursor: pointer;
+    content: "-";
+}
+
+.node.leaf.collapsed {
+    display: none;
+}
+
+.checkbox-item {
+    vertical-align: middle;
+    margin: 0 4px 0 0;
+}
+
+.tag {
+    background-color: #ffffff;
+    border: solid 1px #8ed6fa;
+    padding: 2px 0 2px 5px;
+    color: #354052;
+    display: inline-block;
+    font-size: 110%;
+}
+
+.tag-remove {
+    color: #354052;
+    font-size: 100%;
+    line-height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.node > label {
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.tag-list {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.tag-item {
+    display: inline-block;
+    margin: 4px;
+}
+
+.tag-item:last-child {
+    margin-right: 4px;
+    padding: 1px 7px;
+    color: #20a8d8;
+    border: 1px solid transparent;
+    background-color: transparent;
+    background-image: none;
+    border-color: #20a8d8;
+    text-align: center;
+    cursor:pointer;
+    transition: all 0.1s ease-in;
+}
+.tag-item:last-child input {
+    width: 130px;
+    background: transparent;
+    color: #20a8d8;
+    cursor:pointer
+}
+.tag-item:last-child input::placeholder{
+    color:#20a8d8;
+}
+.tag-item:last-child:hover {
+    background-color: #20a8d8;
+    border-color: #20a8d8;
+}
+.tag-item:last-child:hover::after{
+    color:#fff
+}
+.tag-item:last-child:hover input::placeholder{
+    color: #fff;
+}
+/* component styles */
+.hide {
+    display: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    border-top: rgba(0, 0, 0, 0.05) 1px solid;
+    background: #ffffff;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown--active .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    padding: 10px;
+    overflow: auto;
+}
+
+.dropdown-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-trigger {
+    border-radius: 1px;
+    padding: 4px;
+    line-height: 20px;
+    display: inline-block;
+    max-height: 200px;
+    overflow: auto;
+}
+
+/*.dropdown-trigger > span:after {
+  content: '\25BC';
+  cursor: pointer;
+  margin: 0 0 0 -10px;
+}
+
+.dropdown--active .dropdown-trigger > span:after {
+  content: '\25B2';
+}*/
+
+.dropdown-trigger input {
+    border: none;
+    outline: none;
+    padding-right: 12px;
+}
+
+a.dropdown__trigger, .dropdown__content.dropdown-content{
+    width:auto;
+    max-height: 400px;
+}
+ul.tag-list {
+    width: 100%;
+    display: inline-block;
+}
+li.node{
+    padding:0
+}
+.node > label {
+    width: 100%;
+    margin-bottom: 0;
+    /*padding: 5px;*/
+}
+li.node input.checkbox-item{
+    display: none
+}
+input.checkbox-item + span {
+    /*width: 100%;*/
+    display: inline-block;
+    height: 100%;
+}
+span.node-label {
+    padding: 3px 10px;
+}
+.checkedField span.node-label{
+    background-image: linear-gradient(to bottom, rgba(142, 214, 250, 0.15), rgba(142, 214, 250, 0.2));
+}
+li.node.tree {
+    font-weight: 500;
+    margin-top: 5px;
+}
+li.node.leaf {
+    font-weight: 300;
+}
+li.node:hover {
+    background: #ececec;
+
+}
+.tag-item:last-child::after{
+    content: '\25BC';
+    cursor: pointer;
+    color: #20a8d8;
+    font-size:10px;
+    margin-left: -18px;
+}
+.dropdown--active .tag-item:last-child::after {
+    content: '\25B2';
+}
+.tree_select{
+    margin-left: 10px;
+    text-align: left;
+}
+@media screen and (max-width:1070px){
+    .tag-item:not(:last-child){
+        display: none
+    }
+    li.node:hover {
+        background: none;
+    }
+    .tag-item:last-child{
+        /*margin-left:-44px*/
+    }
+    .tree_select{
+        margin-left:0;
+    }
+    .dropup, .dropdown {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width:700px){
+    .tag-item:last-child {
+        margin-left: 0;
+    }
+    .dropdown__content.dropdown-content {
+        right: 0%;
+    }
+
+}
+
+.dropdown__content.dropdown-content {
+    width: 300px;
+    right: 0;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+li.node.leaf.clear-all, li.node.leaf.select-all {
+    width: 50%;
+    color: #6aa9c8;
+    display: inline-block;
+    text-align: right;
+    font-size: 95%;
+}
+li.node.leaf.clear-all span, li.node.leaf.select-all span {
+    text-decoration: underline;
+}
+li.node.leaf.select-all.checkedField span, li.node.leaf.clear-all.checkedField span {
+    background: none;
+}
+
+/*  ☰*/
+/*# sourceMappingURL=styles.css.map*/
