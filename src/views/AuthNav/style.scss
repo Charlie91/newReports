@@ -39,6 +39,7 @@
     font-weight:400;
     width:70%;
     position:relative;
+    margin-bottom: 35px;
   }
   form {
     text-align: center;
@@ -50,11 +51,15 @@
     width: 100%;
     display: block;
     margin: auto;
-    margin-bottom: 32px;
-    font-size: 140%;
+    margin-bottom: 5px;
+    font-size: 110%;
     &:focus {
       background: transparent;
     }
+  }
+  .hintMessage{
+    width:70%;
+    margin:auto;
   }
 }
 
@@ -71,11 +76,20 @@
   }
 }
 
+@media screen and (max-width:1400px){
+  .auth-window {
+    width: 60%!important;
+  }
+}
+
 @media screen and (max-width:991px){
   .auth-window {
     width: 60%!important;
     label{
       width:100%
+    }
+    .hintMessage{
+      width:100%;
     }
   }
   .auth-nav {
@@ -83,6 +97,7 @@
       font-size: 1.6vw;
     }
   }
+
 
 }
 
@@ -99,5 +114,15 @@
       font-size: 1.5em;
     }
   }
-
 }
+@media screen and (max-width:400px){
+  .empty-tmpl-app .container-fluid{
+    padding:0
+  };
+  .auth-nav {
+    margin-bottom: 60px;
+    font-size: 90%;
+    padding: 10px;
+  }
+}
+

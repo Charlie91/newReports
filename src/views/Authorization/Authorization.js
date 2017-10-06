@@ -194,7 +194,6 @@ export default class Authorization extends Component {
                         </div>
                         <button
                             type="submit"
-                            disabled={!(this.state.login && this.state.password)}
                             className="btn auth-btn"
                             onClick={this.logIn.bind(this)}
                         >

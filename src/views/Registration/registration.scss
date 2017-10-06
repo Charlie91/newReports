@@ -11,13 +11,40 @@ $body:black;
   label {
     width: 80%;
   }
+  .hintMessage {
+    color: #336573;
+  }
+  .errorMessage {
+    color: #fd0101;
+  }
+  .errorMessage, .hintMessage {
+    position: absolute;
+    width: 100%;
+    line-height: 1;
+  }
+  input.form-control.hasErrors {
+    border-bottom: solid 1px rgb(230, 5, 5);
+  }
   a.registr-link {
     color: #fff;
     font-weight: bold;
     font-size: 110%;
   }
+  @media screen and (min-width:1200px){
+    .password-inputs input.form-control {
+      width: 45%;
+      display: inline-block;
+      padding: 10px;
+      &:first-of-type{
+        margin-right: 10%;
+      }
+      &:last-of-type[placeholder] {
+        font-size: 110%;
+        padding-bottom: 11px;
+      }
+    }
+  }
 
 }
-.auth-window{
 
-}
+

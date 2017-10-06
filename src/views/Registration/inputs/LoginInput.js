@@ -22,9 +22,9 @@ class LoginInput extends Component {
     }
 
     showHint(){  //функция рендера сообщения подсказки
-        if(this.state.focus){
+        if(this.state.focus && !(this.state.isValid === false) && !this.state.isNotAvailable){
             return(
-                <div className="hintMessage alert alert-info">a-z0-9 не более 16 символов</div>
+                <div className="hintMessage">a-z0-9 не более 16 символов</div>
             )
         }
     }
@@ -32,12 +32,12 @@ class LoginInput extends Component {
     showError(){    //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="hintMessage alert alert-danger">Логин должен быть не менее 6 символов,состоять только из латинских символов и цифр</div>
+                <div className="errorMessage">Логин должен быть не менее 6 символов, не начинаться с цифры, состоять только из латинских символов и цифр;</div>
             )
         }
         else if(this.state.isNotAvailable){
             return(
-                <div className="hintMessage alert alert-danger">Логин {this.state.isNotAvailable} занят</div>
+                <div className="errorMessage">Логин {this.state.isNotAvailable} занят</div>
             )
         }
     }
@@ -90,7 +90,7 @@ class LoginInput extends Component {
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
-                           className="form-control"
+                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Логин"
                     />

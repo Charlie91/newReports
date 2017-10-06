@@ -19,21 +19,21 @@ class PasswordInput extends Component {
     }
 
     showMessage(){
-        if(this.state.focus){
+        if(this.state.focus && !(this.state.isValid === false)&& !(this.state.isConfirm === false) ){
             return(
-                <div className="hintMessage alert alert-info">a-z0-9 не более 16 символов</div>
+                <div className="hintMessage">a-z0-9 не более 16 символов</div>
             )
         }
     }
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="hintMessage alert alert-danger">Пароль должен быть не менее 6 символов,состоять только из латинских символов, кириллицы и цифр</div>
+                <div className="errorMessage">Пароль должен быть не менее 6 символов,состоять только из латинских символов, кириллицы и цифр</div>
             )
         }
         if(this.state.isConfirm === false){
             return(
-                <div className="hintMessage alert alert-danger">Пароли не совпадают</div>
+                <div className="errorMessage">Пароли не совпадают</div>
             )
         }
     }
@@ -41,7 +41,7 @@ class PasswordInput extends Component {
     validateField(e){//функция-валидация
         let value = e.target.value;
         this.hideHint(); //прячем окно с подсказкой
-        let regExp = new RegExp('^[a-zA-Z0-9-_\.]{1,20}$');
+        let regExp = new RegExp('^[a-zA-Z0-9-_\.]{6,20}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('password',false);
@@ -79,21 +79,22 @@ class PasswordInput extends Component {
 
     render() {
         return (
-            <div className="form-group">
+            <div className="form-group password-inputs">
                 <label>
                     {animateDynamicLabel(this.state.password, 'Пароль')}
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setPassword.bind(this)}
-                           className="form-control" type="password"
-                           placeholder="Введите пароль"
+                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                           type="password"
+                           placeholder="Пароль"
                     />
                     <input
                         onBlur={this.confirmationPasswords.bind(this)}
                         onChange={this.setConfirmPassword.bind(this)}
-                        className="form-control"
+                        className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
                         type="password"
-                        placeholder="Подтвердите пароль"
+                        placeholder="Подтверждение пароля"
                     />
                     {this.showMessage()}
                     {this.showError()}

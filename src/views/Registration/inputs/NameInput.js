@@ -20,9 +20,9 @@ class NameInput extends Component {
     }
 
     showHint(){  //функция рендера сообщения подсказки
-        if(this.state.focus){
+        if(this.state.focus && !(this.state.isValid === false)){
             return(
-                <div className="hintMessage alert alert-info">a-z0-9 не более 16 символов</div>
+                <div className="hintMessage">a-z0-9 не более 16 символов</div>
             )
         }
     }
@@ -30,7 +30,7 @@ class NameInput extends Component {
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="hintMessage alert alert-danger">Имя может быть не менее 2 символов,состоять только из латинских символов или кириллицы</div>
+                <div className="errorMessage">Имя может быть не менее 2 символов,состоять только из латинских символов или кириллицы</div>
             )
         }
     }
@@ -66,7 +66,8 @@ class NameInput extends Component {
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
-                           className="form-control" type="text"
+                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                           type="text"
                            placeholder="Ваше Имя"
                     />
                     {this.showHint()}

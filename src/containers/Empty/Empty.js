@@ -13,7 +13,7 @@ class Empty extends Component {
     render() {
         return (
             <div className="app auth-layer">
-                <div className="app-body">
+                <div className="empty-tmpl-app">
                     <main className="main">
                         <Container fluid>
                             <Switch>
