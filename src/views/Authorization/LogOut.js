@@ -37,7 +37,7 @@ export default class LogOut extends Authorization {
         return (
             <div>
                 { (this.state.isLoggedIn === false) ? <Redirect to="/authorization"/> : ''}
-                <button className="btn btn-outline-secondary" onClick={this.logOff.bind(this)}>Выйти</button>
+                <button className="btn btn-link" onClick={this.logOff.bind(this)}><i className="fa fa-user-times fa-lg mt-1"></i></button>
             </div>
         )
     }

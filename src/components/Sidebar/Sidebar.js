@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Badge, Nav, NavItem} from 'reactstrap';
 import classNames from 'classnames';
-import nav from './_nav'
+import nav from './_nav';
+import LogOut from './../../views/Authorization/LogOut';
 import {
     NavbarToggler,
     NavbarBrand,
@@ -112,11 +113,9 @@ class Sidebar extends Component {
                             <i className="icon-settings"></i>
                         </button>
                         <button type="button" className="btn btn-link">
-                            <i className="icon-speech"></i>
-                        </button>
-                        <button type="button" className="btn btn-link">
                             <i className="icon-user"></i>
                         </button>
+                        <LogOut/>
                     </div>
                 </div>
                 <nav className="sidebar-nav">

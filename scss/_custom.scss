@@ -132,6 +132,8 @@ $sidebar-header-height: 200px;
 .navbar.app-header button.d-lg-none.navbar-toggler {
   text-align: left;
   width: 0;
+  left: 0;
+  position: absolute;
   display: inline;
 }
 

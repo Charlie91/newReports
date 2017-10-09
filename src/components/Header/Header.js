@@ -70,12 +70,9 @@ class Header extends Component {
 
         return (
             <header className="app-header navbar">
-                <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
                 <Col>
+                    <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
                     <TreeSelectComp/>
-                </Col>
-                <Col>
-                    <LogOut/>
                 </Col>
             </header>
         )

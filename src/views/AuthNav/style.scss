@@ -95,6 +95,12 @@
   .auth-nav {
     a {
       font-size: 1.6vw;
+      &:active{
+        box-shadow: 0 2px 2px #b9b9b9;
+        background: #d8dedc;
+        padding: 1px;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
     }
   }
 

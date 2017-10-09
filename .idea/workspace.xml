@@ -2,60 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69d4d65a-3624-47a3-943e-e14365ba1713" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/150ceeb4fced252a05b6.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/26ee3973663a448a6087.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/4ab7def93187c969521f.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/571912db20b0259fb3aa.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/91f309017b5cd65b6e0d.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/95d310b95c598a2a2f68.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/index.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.bundle.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.fonts.css" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.fonts.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.html" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.styles.css" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/public/index.html" afterPath="$PROJECT_DIR$/../adminka/React_Starter/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/scss/_custom.scss" afterPath="$PROJECT_DIR$/../adminka/React_Starter/scss/_custom.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/scss/readme.md" afterPath="$PROJECT_DIR$/../adminka/React_Starter/scss/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/components/Sidebar/Sidebar.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/components/Sidebar/Sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/components/Sidebar/_nav.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/components/Sidebar/_nav.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/containers/Empty/package.json" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/containers/Empty/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/containers/Full/Full.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/containers/Full/Full.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/index.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/routes.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Authorization/Authorization.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Authorization/Authorization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Authorization/style.scss" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Authorization/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Dashboard/Dashboard.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Dashboard/Dashboard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Loading/Loading.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/views/Loading/Loading.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/LoadFile/App.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/LoadFile/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/LoadFile/readme.md" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/LoadFile/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/API_CONFIG.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/API_CONFIG.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/App.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/ModalWindow.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/ModalWindow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Navbar.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Table.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Table.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/readme.md" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/scss/App.scss" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/scss/App.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/TableData/App.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/TableData/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/TableData/Table.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/TableData/Table.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.1dccfaa30da44039612f.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.fa8addde69d5f4c43532.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.fab83e643349d71e77bb.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1dccfaa30da44039612f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e6b91ccc1771e3a46ac8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fa8addde69d5f4c43532.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fab83e643349d71e77bb.hot-update.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../adminka/React_Starter/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.bundle.js" afterPath="$PROJECT_DIR$/build/index.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.fonts.css" afterPath="$PROJECT_DIR$/build/index.fonts.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.html" afterPath="$PROJECT_DIR$/build/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.styles.css" afterPath="$PROJECT_DIR$/build/index.styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/_custom.scss" afterPath="$PROJECT_DIR$/scss/_custom.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Header/Header.js" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TreeSelect/style.css" afterPath="$PROJECT_DIR$/src/components/TreeSelect/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Empty/Empty.js" afterPath="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/api_paths.js" afterPath="$PROJECT_DIR$/src/utils/api_paths.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" afterPath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/AuthNav/style.scss" afterPath="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" afterPath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/registration.scss" afterPath="$PROJECT_DIR$/src/views/Registration/registration.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Authorization/LogOut.js" afterPath="$PROJECT_DIR$/src/views/Authorization/LogOut.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,12 +33,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EmailInput.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js">
+      <file leaf-file-name="Sidebar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="1440">
+              <caret line="96" column="19" lean-forward="false" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,28 +48,18 @@
       <file leaf-file-name="api_paths.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utils/api_paths.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="2" />
+            <state relative-caret-position="225">
+              <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginInput.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js">
+      <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="24" column="92" lean-forward="true" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="92" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NameInput.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+            <state relative-caret-position="1095">
+              <caret line="73" column="115" lean-forward="false" selection-start-line="73" selection-start-column="115" selection-end-line="73" selection-end-column="115" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -110,40 +68,42 @@
         </entry>
       </file>
       <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
+        <entry file="file://$PROJECT_DIR$/scss/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+            <state relative-caret-position="1125">
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="82" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Authorization/style.scss">
+      <file leaf-file-name="_custom.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="2010">
+              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="135" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Authorization.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Authorization/Authorization.js">
+      <file leaf-file-name="TreeSelect.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TreeSelect/TreeSelect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="156" column="21" lean-forward="true" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="465">
+              <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registration.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Registration/registration.scss">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TreeSelect/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="4185">
+              <caret line="279" column="18" lean-forward="false" selection-start-line="279" selection-start-column="18" selection-end-line="279" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -160,11 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>md=</find>
-      <find>o</find>
-      <find>m</find>
-      <find>ml</find>
-      <find>ml-</find>
       <find>ml-a</find>
       <find>ml-au</find>
       <find>ml-aut</find>
@@ -190,6 +145,11 @@
       <find>me</find>
       <find>method</find>
       <find>method:</find>
+      <find>btn</find>
+      <find>li.node.leaf.clear-all, li.node.leaf.select-all</find>
+      <find>max-height: 400px;</find>
+      <find>250</find>
+      <find>300px</find>
     </findStrings>
     <replaceStrings>
       <replace>label</replace>
@@ -213,8 +173,6 @@
         <option value="$PROJECT_DIR$/public/fonts.css" />
         <option value="$PROJECT_DIR$/public/css/fonts.css" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/src/components/TreeSelect/style.css" />
-        <option value="$PROJECT_DIR$/scss/_custom.scss" />
         <option value="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/ModalWindow.js" />
         <option value="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/App.js" />
         <option value="$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/API_CONFIG.js" />
@@ -225,13 +183,10 @@
         <option value="$PROJECT_DIR$/src/views/Authorization/style.scss" />
         <option value="$PROJECT_DIR$/src/containers/Empty/style.scss" />
         <option value="$PROJECT_DIR$/scss/style.scss" />
-        <option value="$PROJECT_DIR$/src/components/Header/Header.js" />
-        <option value="$PROJECT_DIR$/src/views/Authorization/LogOut.js" />
         <option value="$PROJECT_DIR$/src/containers/Full/Full.js" />
         <option value="$PROJECT_DIR$/src/utils/utils.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/Registration.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
         <option value="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" />
         <option value="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
@@ -242,8 +197,15 @@
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" />
-        <option value="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
         <option value="$PROJECT_DIR$/src/views/Registration/registration.scss" />
+        <option value="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
+        <option value="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
+        <option value="$PROJECT_DIR$/src/views/Authorization/LogOut.js" />
+        <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" />
+        <option value="$PROJECT_DIR$/src/components/Header/Header.js" />
+        <option value="$PROJECT_DIR$/src/components/TreeSelect/style.scss" />
+        <option value="$PROJECT_DIR$/scss/_custom.scss" />
+        <option value="$PROJECT_DIR$/src/components/TreeSelect/style.css" />
         <option value="$PROJECT_DIR$/src/utils/api_paths.js" />
       </list>
     </option>
@@ -324,98 +286,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Registration" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Registration" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="inputs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Authorization" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maket" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AuthNav" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -435,10 +305,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maket" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maket" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scss" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -559,12 +443,14 @@
       <workItem from="1507029511400" duration="10342000" />
       <workItem from="1507100183774" duration="16050000" />
       <workItem from="1507186563283" duration="18096000" />
-      <workItem from="1507273221991" duration="8429000" />
+      <workItem from="1507273221991" duration="8525000" />
+      <workItem from="1507533707066" duration="4867000" />
+      <workItem from="1507553840903" duration="5000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70021000" />
+    <option name="totallyTimeSpent" value="74989000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -574,13 +460,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -597,29 +483,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/views/navbar/NavMessage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/index.fonts.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,41 +569,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scss/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="82" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TreeSelect/TreeSelect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="77" column="29" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -770,16 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Authorization/LogOut.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -798,7 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,7 +673,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -852,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,15 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Empty/Empty.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,9 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,7 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="32" column="44" lean-forward="false" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
           <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,33 +732,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="32" column="44" lean-forward="false" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/Empty/Empty.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="92" lean-forward="true" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="92" />
-          <folding />
+        <state relative-caret-position="330">
+          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
+          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="24" column="92" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="100" column="18" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -952,23 +774,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Authorization/Authorization.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="156" column="21" lean-forward="true" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="15">
+          <caret line="156" column="21" lean-forward="false" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -976,14 +788,74 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Authorization/LogOut.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="96" column="19" lean-forward="false" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="115" lean-forward="false" selection-start-line="73" selection-start-column="115" selection-end-line="73" selection-end-column="115" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="82" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TreeSelect/TreeSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2010">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="135" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TreeSelect/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4185">
+          <caret line="279" column="18" lean-forward="false" selection-start-line="279" selection-start-column="18" selection-end-line="279" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/api_paths.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="2" />
+        <state relative-caret-position="225">
+          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
           <folding />
         </state>
       </provider>

@@ -13847,6 +13847,8 @@ select {
 .navbar.app-header button.d-lg-none.navbar-toggler {
   text-align: left;
   width: 0;
+  left: 0;
+  position: absolute;
   display: inline; }
 
 .sidebar-mobile-show .app-header.navbar {
@@ -13996,7 +13998,12 @@ select {
     .auth-window .hintMessage {
       width: 100%; }
   .auth-nav a {
-    font-size: 1.6vw; } }
+    font-size: 1.6vw; }
+    .auth-nav a:active {
+      box-shadow: 0 2px 2px #b9b9b9;
+      background: #d8dedc;
+      padding: 1px;
+      -webkit-tap-highlight-color: transparent; } }
 
 @media screen and (max-width: 767px) {
   .auth-window {

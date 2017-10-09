@@ -8,6 +8,7 @@ import './style.scss';
 class Empty extends Component {
     componentDidMount(){
         document.body.classList.remove('sidebar-fixed'); //убираем класс с body чтобы выровнять контентный блок
+        document.addEventListener("touchstart", function(){}, true);    //обработчик корректного отображения ontap подсветок на моб-х устройствах
     }
 
     render() {
