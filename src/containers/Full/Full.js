@@ -9,17 +9,19 @@ import Footer from '../../components/Footer/';
 import Dashboard from '../../views/Dashboard/';
 import {ajaxRequest} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
+import Conception from './../../views/Conception/Conception';
 
 class Full extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            isLoggedIn : null
+            isLoggedIn : null,
+            availableCities:[]
         }
     }
 
-    mobileSidebarToggle(e) {
+    mobileSidebarToggle(e){
         e.preventDefault();
         document.body.classList.remove('sidebar-mobile-show');
     }
@@ -40,6 +42,10 @@ class Full extends Component {
             .catch(error => console.log(error));
     }
 
+    upState(name,value){
+        this.setState({[name]:value})//обновляем стейт данными из дочерних компонентов
+    }
+
     componentDidMount(){
         this.checkEitherLoggedInOrNot()
     }
@@ -47,13 +53,21 @@ class Full extends Component {
     render() {
         return (
             <div className="app">
-                <Header isLogged={this.state.isLoggedIn}/>
+                <Header
+                    isLogged={this.state.isLoggedIn}
+                    availableCities={this.state.availableCities}
+                    upState={this.upState.bind(this)}
+                />
                 <div className="app-body">
                     <Sidebar {...this.props}/>
                     <main className="main" onClick={this.mobileSidebarToggle}>
                         <Container fluid>
                             <Switch>
-                                <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                                <Route path="/dashboard" name="Dashboard" render={(props) =>
+                                    <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>}
+                                />
+                                <Route exact path="/conceptions/:id"  name="Conception" render={(props) => <Conception wtf={"wtf"} {...props} />}/>
+                                <Route path="/conceptions/:id/:child"  name="Conception" component={Conception}/>
                                 <Redirect from="/" to="/dashboard"/>
                             </Switch>
                         </Container>

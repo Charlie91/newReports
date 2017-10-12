@@ -17,5 +17,9 @@
 export const API = {
     main:'https://repo.re-ports.ru/app_test/',
     auth:'https://repo.re-ports.ru/app_test/Auth',
-    register:'https://repo.re-ports.ru/app_test/Register'
+    register:'https://repo.re-ports.ru/app_test/Register',
+    nav:'https://repo.re-ports.ru/app_test/Conceptions',
+    cities:'https://repo.re-ports.ru/app_test/Cities?conceptId=',
+    objects: 'https://repo.re-ports.ru/app_test/Objects',
+    objectsData:'https://repo.re-ports.ru/app_test/ObjectCache'
 };

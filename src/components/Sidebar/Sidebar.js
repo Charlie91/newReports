@@ -4,12 +4,29 @@ import {Badge, Nav, NavItem} from 'reactstrap';
 import classNames from 'classnames';
 import nav from './_nav';
 import LogOut from './../../views/Authorization/LogOut';
+import {API} from './../../utils/api_paths';
+import {ajaxRequest} from './../../utils/utils';
 import {
     NavbarToggler,
     NavbarBrand,
 } from 'reactstrap';
 
 class Sidebar extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            conceptions : [
+                {
+                    name: 'Главная',
+                    url: '/dashboard',
+                    icon: 'icon-home',
+                    badge: {
+                        variant: 'info'
+                    }
+                }
+            ]
+        }
+    }
 
     handleClick(e) {
         e.preventDefault();
@@ -19,7 +36,6 @@ class Sidebar extends Component {
     activeRoute(routeName, props) {
         // return this.props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
         return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
-
     }
 
     sidebarMinimize(e) {
@@ -37,9 +53,36 @@ class Sidebar extends Component {
     //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
     // }
 
+    receiveConceptionLists(){   //получаем список концепций для заполнения меню
+        let options = {
+            method:'GET',
+            credentials:'include',
+            mode: 'cors'
+        }
+        ajaxRequest(API.nav,options)
+            .then( data => {
+                let arr = this.state.conceptions;
+                if(Array.isArray(data)){
+                    data.forEach( item => {
+                        item.url = '/conceptions/' + item.id;
+                        if(item.children){
+                            item.children.forEach( child => {
+                                child.url = item.url + '/' + child.id;
+                            })
+                        }
+                        arr.push(item)
+                    });
+                    this.setState({conceptions:arr})
+                }
+            })
+            .catch( error => console.log(error))
+    }
+
+    componentDidMount(){
+        this.receiveConceptionLists();
+    }
 
     render() {
-
         const props = this.props;
         const activeRoute = this.activeRoute;
         const handleClick = this.handleClick;
@@ -99,6 +142,7 @@ class Sidebar extends Component {
             return items.map( (item, index) => navLink(item, index) );
         };
 
+
         // sidebar-nav root
         return (
             <div className="sidebar">
@@ -120,7 +164,7 @@ class Sidebar extends Component {
                 </div>
                 <nav className="sidebar-nav">
                     <Nav>
-                        {navList(nav.items)}
+                        { (this.state.conceptions.length ) ? navList(this.state.conceptions) : '' }
                     </Nav>
                 </nav>
             </div>

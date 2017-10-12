@@ -23,6 +23,7 @@ ReactDOM.render((
         <Switch>
             <Route path="/registration" name="registr" component={Empty}/>
             <Route path="/authorization" name="registr" component={Empty}/>
+            <Route path="/conceptions" name="registr" component={Full}/>
             <Route path="/" name="Home" component={Full}/>
         </Switch>
     </HashRouter>

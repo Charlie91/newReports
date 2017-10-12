@@ -60,6 +60,10 @@ class Header extends Component {
         document.body.classList.toggle('aside-menu-hidden');
     }
 
+    sendDataUpward(name,value){
+        this.props.upState(name,value)
+    }
+
 
     logChange(val) {
         console.log("Selected: " + val);
@@ -67,12 +71,14 @@ class Header extends Component {
     }
 
     render() {
-
         return (
             <header className="app-header navbar">
                 <Col>
                     <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
-                    <TreeSelectComp/>
+                    <TreeSelectComp
+                        upState={this.sendDataUpward.bind(this)}
+                        availableCities={this.props.availableCities}
+                    />
                 </Col>
             </header>
         )
