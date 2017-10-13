@@ -54,6 +54,7 @@ class Dashboard extends Component {
         if (this.state.cities.length) {
             let cities = this.state.cities;
             if(!this.state.objects.length) {
+                let arr = [];
                 cities.forEach(item => {
                     ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
                         .then(data => {
@@ -64,14 +65,13 @@ class Dashboard extends Component {
                                         this.setState({objects:arr})
                                     })
                                     .catch(error => console.log(error))
-                            })
-                            let arr = this.state.objects;
+                            });
+                            //let arr = this.state.objects;
                             data.forEach(item => arr.push(item));
                         })
                         .catch(error => console.log(error))
                 })
             }
-
         }
     }
 
@@ -101,7 +101,8 @@ class Dashboard extends Component {
     }
 
     componentWillReceiveProps(nextprops){
-        if(nextprops.cities.length) {
+        if(nextprops.cities.length) { // if(nextprops.cities.length && !this.state.cities) {  - костыль
+            console.log(1);
             this.setState({cities: nextprops.cities}, () => this.getObjects());
         }
     }

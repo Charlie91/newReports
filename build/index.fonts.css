@@ -9537,7 +9537,7 @@ body{
 }
 
 a.dropdown__trigger, .dropdown__content.dropdown-content{
-    width:auto;
+    width:85%;
     max-height: 300px;
 }
 ul.root{
@@ -9634,7 +9634,7 @@ li.node:hover {
 
 .dropdown__content.dropdown-content {
     width: 300px;
-    right: 0;
+    left: 0;
 }
 .dropdown {
     position: relative;

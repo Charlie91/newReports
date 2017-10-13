@@ -9,7 +9,11 @@
 // export const API = {
 //     main:'https://repo.re-ports.ru/app/',
 //     auth:'https://repo.re-ports.ru/app/Auth',
-//     register:'https://repo.re-ports.ru/app/Register'
+//     register:'https://repo.re-ports.ru/app/Register',
+//     nav:'https://repo.re-ports.ru/app/Conceptions',
+//     cities:'https://repo.re-ports.ru/app/Cities?conceptId=',
+//     objects: 'https://repo.re-ports.ru/app/Objects',
+//     objectsData:'https://repo.re-ports.ru/app/ObjectCache'
 // };
 
 

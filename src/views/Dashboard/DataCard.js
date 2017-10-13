@@ -17,7 +17,7 @@ import {
                  <Row>
                      <Col md="6">
                          <h5>{props.obj.obj_name}</h5>
-                         <p className="contacts">{props.obj.adress}</p>
+                         <p className="contacts">{props.obj.address}</p>
                      </Col>
                      <Col md="6">
                          <img className="title-image" src="img/TradeCenters/rio_leninskiy.png"/>
