@@ -61,13 +61,12 @@ class Dashboard extends Component {
                                 ajaxRequest(API.objectsData + '?objId=' + object.id, options)
                                     .then( payData => {
                                         object.data = payData;
+                                        this.setState({objects:arr})
                                     })
                                     .catch(error => console.log(error))
                             })
-                            console.log(data);
                             let arr = this.state.objects;
                             data.forEach(item => arr.push(item));
-                            this.setState({objects:arr})
                         })
                         .catch(error => console.log(error))
                 })
@@ -76,22 +75,7 @@ class Dashboard extends Component {
         }
     }
 
-    getObjectsData(objects){
-        let options = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        };
-        if(objects.length){
-            objects.forEach((object,i) => {
-                ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-                    .then( data => {
-                        console.log(i,data);
-                    })
-                    .catch( err => console.log(err))
-            })
-        }
-    }
+
 
     renderObjects(){
         if(this.state.objects.length){

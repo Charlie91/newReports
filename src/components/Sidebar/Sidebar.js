@@ -65,6 +65,7 @@ class Sidebar extends Component {
                 if(Array.isArray(data)){
                     data.forEach( item => {
                         item.url = '/conceptions/' + item.id;
+                        item.icon = 'icon-chart';
                         if(item.children){
                             item.children.forEach( child => {
                                 child.url = item.url + '/' + child.id;

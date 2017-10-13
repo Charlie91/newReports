@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {formatNumericValue} from './../../utils/utils';
 import {
     Row,
     Col,
@@ -29,17 +30,17 @@ import {
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">Сегодня</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? props.obj.data.day[0].v : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day[0].v) : '' }</strong>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">Сентябрь</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? props.obj.data.month[0].v : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.month[0].v) : '' }</strong>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">2017</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? props.obj.data.year[0].v : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.year[0].v) : '' }</strong>
                      </Col>
                  </Row>
              </CardBody>
