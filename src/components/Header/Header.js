@@ -1,32 +1,10 @@
 import React, { Component } from 'react';
-import Select from 'react-select-plus';
 import 'react-select-plus/dist/react-select-plus.css';
 import TreeSelectComp from './../TreeSelect/TreeSelect.js';
-import LogOut from './../../views/Authorization/LogOut';
 
 import {
     Col,
-    Row,
-    FormGroup,
-    Badge,
-    Dropdown,
-    DropdownMenu,
-    DropdownItem,
-    Nav,
-    NavItem,
-    NavLink,
     NavbarToggler,
-    NavbarBrand,
-    DropdownToggle,
-    Button,
-    ButtonDropdown,
-    Form,
-    FormText,
-    Label,
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    InputGroupButton
 } from 'reactstrap';
 
 
@@ -60,14 +38,8 @@ class Header extends Component {
         document.body.classList.toggle('aside-menu-hidden');
     }
 
-    sendDataUpward(name,value){
+    sendDataUpward(name,value){ //отправка данных из дочернего компонента в родительский
         this.props.upState(name,value)
-    }
-
-
-    logChange(val) {
-        console.log("Selected: " + val);
-        this.setState({inputValue:val})
     }
 
     render() {

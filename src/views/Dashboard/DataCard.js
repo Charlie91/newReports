@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {formatNumericValue} from './../../utils/utils';
 import {
     Row,

@@ -1,43 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import DropdownTreeSelect from 'react-dropdown-tree-select';
 import './style.css';
 
-const tree = [
-    {
-        "label":'Выбрать все',
-        "value":'select-all',
-        className:'select-all'
-    },
-    {
-        "label":'Очистить все',
-        "value":'clear-all',
-        className:'clear-all'
-    },
-    {
-        "label": "Москва",
-        "value": "Москва",
-        checked:true
-    },{
-        "label": "Московская обл.",
-        "value": "Московская обл.",
-        expanded:true,
-        "children": [
-            {
-                "label": "Балашиха",
-                "value": "Балашиха",
-                checked:true,
-            },
-            {
-                "label": "Видное",
-                "value": "Видное",
-            },
-            {
-                "label": "Долгопрудный",
-                "value": "Долгопрудный",
-            }
-        ]
-    }]
 
 function setClasses(){
     let checkboxes = document.getElementsByClassName('checkbox-item');
@@ -106,13 +70,7 @@ export default class TreeSelect extends Component{
         input.disabled = true;
     }
 
-    addDataToSelect(nextprops){
-        // let newArr = nextprops.availableCities.map( item => {
-        //     let newItem = {};
-        //     newItem.value = newItem.label = item.city_name;
-        //     if(item.checked)newItem.checked = item.checked;
-        //     return newItem
-        // });
+    addDataToSelect(nextprops){ //как данные приходят в props - устанавливаем их в state
         this.setState({availableCities:nextprops.availableCities});
         setTimeout(setClasses,10);
     }

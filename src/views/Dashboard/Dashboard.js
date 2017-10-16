@@ -38,13 +38,12 @@ class Dashboard extends Component {
                     delete item.priority;
                     return item
                 });
-                this.props.upState('availableCities',formattedData)
+                this.props.upState('availableCities',formattedData) //передаем данные в родительский компонент
             })
             .catch( error => console.log(error))
     }
 
-    getObjects() {
-        //https://repo.re-ports.ru/app_test/Objects?conceptId=-1&cityId=-2
+    getObjects() {  //получаем список объектов из списка городов
         let options = {
             method: 'GET',
             credentials: 'include',
@@ -66,7 +65,6 @@ class Dashboard extends Component {
                                     })
                                     .catch(error => console.log(error))
                             });
-                            //let arr = this.state.objects;
                             data.forEach(item => arr.push(item));
                         })
                         .catch(error => console.log(error))
@@ -77,7 +75,7 @@ class Dashboard extends Component {
 
 
 
-    renderObjects(){
+    renderObjects(){    // рендер карточек объектов
         if(this.state.objects.length){
             let objectsForRender = this.state.objects.filter( object => {
                 let cityId = object.city_id;
@@ -97,13 +95,12 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
-        this.getAvailableCities();
+        this.getAvailableCities(); //получение списка городов
     }
 
     componentWillReceiveProps(nextprops){
-        if(nextprops.cities.length) { // if(nextprops.cities.length && !this.state.cities) {  - костыль
-            console.log(1);
-            this.setState({cities: nextprops.cities}, () => this.getObjects());
+        if(nextprops.cities.length) {
+            this.setState({cities: nextprops.cities}, () => this.getObjects()); // записываем города в стейт и после получаем список объектов
         }
     }
 
