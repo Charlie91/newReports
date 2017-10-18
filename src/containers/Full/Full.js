@@ -65,15 +65,23 @@ class Full extends Component {
                                 <Route path="/dashboard" name="Dashboard" render={(props) =>
                                     <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>}
                                 />
-                                <Route exact path="/conceptions/:id"  name="Conception" render={(props) => <Conception wtf={"wtf"} {...props} />}/>
-                                <Route path="/conceptions/:id/:child"  name="Conception" component={Conception}/>
+                                <Route exact path="/conceptions/:id"  name="Conception"
+                                       render={(props) =>
+                                           <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
+                                       }
+                                />
+                                <Route exact path="/conceptions/:id/:child"  name="Conception"
+                                       render={(props) =>
+                                           <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
+                                       }
+                                />
                                 <Redirect from="/" to="/dashboard"/>
                             </Switch>
                         </Container>
                     </main>
-                    <Aside />
+                    <Aside/>
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         );
     }

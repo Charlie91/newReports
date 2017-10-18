@@ -1,0 +1,28 @@
+
+.conceptions-table{
+
+  background:#fff;
+  thead th{
+    border-bottom:none
+  }
+  tr:first-child td{
+    border-top:none;
+  }
+
+  .average_column{
+    background:#fbf8f3
+  }
+  .holidays_column{
+    background:#f7fcf3
+  }
+
+
+}
+
+@media screen and (max-width:501px){
+  .conceptions-table {
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}

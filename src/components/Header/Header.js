@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'react-select-plus/dist/react-select-plus.css';
 import TreeSelectComp from './../TreeSelect/TreeSelect.js';
 
 import {

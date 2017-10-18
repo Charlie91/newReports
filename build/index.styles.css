@@ -13748,6 +13748,9 @@ select {
               margin: -2px 0px 0px 5px;
               color: #d1d4d7; }
 
+body.sidebar-mobile-show {
+  overflow: hidden; }
+
 .navbar .sidebar-minimizer {
   min-width: 50px; }
 
@@ -14021,6 +14024,16 @@ select {
     margin-bottom: 60px;
     font-size: 90%;
     padding: 10px; } }
+.conceptions-table {
+  background: #fff; }
+  .conceptions-table thead th {
+    border-bottom: none; }
+  .conceptions-table tr:first-child td {
+    border-top: none; }
+  .conceptions-table .average_column {
+    background: #fbf8f3; }
+  .conceptions-table .holidays_column {
+    background: #f7fcf3; }
 .registration-form {
   width: 40%;
   margin: auto; }

@@ -9,7 +9,7 @@ export function checkEitherLoggedInOrNot(){ //проверка залогине�
     return ajaxRequest(API.auth,options)
 }
 
-export function ajaxRequest(url,options){                   //функция-шаблон для ajax-запросов
+export function ajaxRequest(url,options){   //функция-шаблон для ajax-запросов
     return  fetch(url, options)
         .then(function (response) {
             if (!response.ok) {
@@ -19,6 +19,10 @@ export function ajaxRequest(url,options){                   //функция-ш�
             }
             return response.json();
         })
+}
+
+export function mobileSidebarHidden() { //скрываем моб-е меню если открыто после перехода по ссылке из меню
+    document.body.classList.remove('sidebar-mobile-show');
 }
 
 export function formatNumericValue(number){

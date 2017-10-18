@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import 'react-select/dist/react-select.css';
 import './style.css';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest} from './../../utils/utils';
+import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import DataCard from './DataCard';
 
 import {
@@ -15,7 +14,6 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dropdownOpen: false,
             objects:[]
         };
     }
@@ -95,8 +93,10 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
+        mobileSidebarHidden();
         this.getAvailableCities(); //получение списка городов
     }
+
 
     componentWillReceiveProps(nextprops){
         if(nextprops.cities.length) {

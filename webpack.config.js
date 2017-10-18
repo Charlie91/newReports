@@ -93,6 +93,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
         new webpack.NamedModulesPlugin(),
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(false)
+        }),
         extractCSS,
         extractSCSS,
         new HtmlWebpackPlugin(
@@ -107,5 +110,4 @@ module.exports = {
             {copyUnmodified: false}
         )
     ]
-}
-;
+};

@@ -1,4 +1,10 @@
 // Here you can add other styles
+body{
+  &.sidebar-mobile-show{
+    overflow: hidden;
+  }
+}
+
 .navbar {
   .sidebar-minimizer {
     min-width: 50px;
