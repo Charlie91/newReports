@@ -113,7 +113,7 @@ class Sidebar extends Component {
             const classes = classNames( "nav-link", item.class);
             return (
                 <NavItem key={key}>
-                    <NavLink to={item.url} className={ classes } activeClassName="active">
+                    <NavLink to={item.url} name={item.name} className={ classes } activeClassName="active">
                         <i className={item.icon}></i>{item.name}{badge(item.badge)}
                     </NavLink>
                 </NavItem>
@@ -128,7 +128,8 @@ class Sidebar extends Component {
                     <ul className="nav-dropdown-items">
                         {navList(item.children)}
                     </ul>
-                </li>)
+                </li>
+            )
         };
 
         // nav link
@@ -137,6 +138,7 @@ class Sidebar extends Component {
                 item.divider ? divider(item, idx) :
                     item.children ? navDropdown(item, idx)
                         : navItem(item, idx) ;
+
 
         // nav list
         const navList = (items) => {

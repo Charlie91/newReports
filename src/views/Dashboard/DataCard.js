@@ -9,8 +9,18 @@ import {
 } from "reactstrap";
 
 
- const DataCard = (props) => (
+ function toCountLastYear(obj){ // подсчет данных за последний год
+     let days = obj.data.day,
+         months = obj.data.month;
+     let currentMonth = days.reduce((sum, current) => sum + current.v, 0);
+     let currentYear = months.reduce((sum, current) => {
+         if(current.y !== 2017)return sum + 0;
+         else return sum + current.v
+     }, currentMonth);
+   return formatNumericValue(currentYear)
+ }
 
+ const DataCard = (props) => (
      <Col style={{ marginBottom: '20px'}} xs="12" sm="6" md="6" lg="6" xl="4">
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
@@ -30,7 +40,7 @@ import {
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">Сегодня</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day[0].v) : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day[0].v) : '-' }</strong>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">Сентябрь</small>
@@ -40,7 +50,7 @@ import {
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">2017</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.year[0].v) : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? toCountLastYear(props.obj) : '' }</strong>
                      </Col>
                  </Row>
              </CardBody>

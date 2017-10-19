@@ -21,6 +21,23 @@ export function ajaxRequest(url,options){   //функция-шаблон для
         })
 }
 
+export function getCoords(elem) {                         //кроссбраузерная функция получения координат DOM-элемента
+    let box = elem.getBoundingClientRect(),
+        body = document.body,
+        docEl = document.documentElement,
+        scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop,
+        scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft,
+        clientTop = docEl.clientTop || body.clientTop || 0,
+        clientLeft = docEl.clientLeft || body.clientLeft || 0,
+        top = box.top + scrollTop - clientTop,
+        left = box.left + scrollLeft - clientLeft;
+
+    return {
+        top: top,
+        left: left
+    };
+}
+
 export function mobileSidebarHidden() { //скрываем моб-е меню если открыто после перехода по ссылке из меню
     document.body.classList.remove('sidebar-mobile-show');
 }

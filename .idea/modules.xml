@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../1/.idea/1.iml" filepath="$PROJECT_DIR$/../1/.idea/1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adminka/React_Starter/.idea/React_Starter.iml" filepath="$PROJECT_DIR$/../adminka/React_Starter/.idea/React_Starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/maket.iml" filepath="$PROJECT_DIR$/.idea/maket.iml" />
     </modules>
   </component>

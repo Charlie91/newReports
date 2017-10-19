@@ -15,27 +15,15 @@ class Conception extends Component {
         };
     }
 
-    toCalculateAverageValue(additionalData,timeLine){   //подсчет среднего по дням значения(за последний месяц)
-        let arr = additionalData[timeLine];
-        let sum = 0;
-        arr.forEach( (item,i) => {
-            if(i === 0 )return;
-            //if(item.y && item.y !== 2017) return;
-            sum += item.v ;
-        });
-        return formatNumericValue(Math.round(sum/(arr.length-1)));
-    }
-
-
     formatObjectToShowInTable(object,additionalData){   //форматирование полученных данных для показа их в таблице
         let days = additionalData.day,
             months = additionalData.month,
             years = additionalData.year;
 
         object.data = additionalData;
-        object.todayResults = formatNumericValue(additionalData.day[0].v);
-        object.averageOfDays = this.toCalculateAverageValue(additionalData,'day');
-        object.averageOfMonths = this.toCalculateAverageValue(additionalData,'month');
+        object.todayResults = (additionalData.day[0].v) ? formatNumericValue(additionalData.day[0].v) : '-';
+        object.averageOfDays = formatNumericValue(Math.round(additionalData.day_avg));
+        object.averageOfMonths = formatNumericValue(Math.round(additionalData.month_avg));
 
         object.currentMonth = days.reduce((sum, current) => sum + current.v, 0);
 
@@ -140,7 +128,10 @@ class Conception extends Component {
     componentDidMount(){
         mobileSidebarHidden();
         this.getAvailableCities();
+        console.log(this.props);
     }
+
+
 
     renderObjects(){    // рендер карточек объектов
         if(this.state.objects.length){

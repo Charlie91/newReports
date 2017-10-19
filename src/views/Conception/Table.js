@@ -1,5 +1,6 @@
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import React, { Component } from 'react';
+import {getCoords} from './../../utils/utils';
 import './react-bootstrap-table.css';
 import './style.scss';
 
@@ -55,8 +56,6 @@ function fillYears(){
 
 
 
-
-
 class Table extends Component {
     constructor(props) {
         super(props);
@@ -65,6 +64,21 @@ class Table extends Component {
     componentWillMount(){
         let [dates,months,years] = [ fillDates(),fillMonths(), fillYears() ];
         this.setState({dates:dates,months:months,years:years});
+    }
+
+    componentDidMount(){
+        let th = document.getElementsByClassName('table-header-wrapper')[0],
+            tbody = document.getElementsByClassName('react-bs-container-body')[0];
+        window.onscroll = function(e){                    // определяем по событию положение скролла на странице и делаем шапку fixed
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if(scrollTop > getCoords(tbody).top){
+                th.classList.add('navbar-fixed-top','container-fluid');
+            }
+            else{
+                th.classList.remove('navbar-fixed-top','container-fluid');
+                tbody.style.cssText = 'top:0px;position:static';
+            }
+        }
     }
 
 
