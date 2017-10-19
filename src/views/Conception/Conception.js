@@ -37,7 +37,7 @@ class Conception extends Component {
 
         days.forEach( (item,i) => {                         //выводим данные по дням наверх и пригодными для вывода таблицей
             if(!i)return;
-           object['day' + (days.length - i)] = formatNumericValue(item.v);
+            object['day' + (days.length - i)] = formatNumericValue(item.v);
         });
 
         months.forEach( (item,i) => {
@@ -61,23 +61,23 @@ class Conception extends Component {
         let conceptID = this.props.match.params.child || this.props.match.params.id;
         if (this.state.cities.length) {
             let cities = this.state.cities;
-                let arr = [];
-                cities.forEach(item => {
-                    ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
-                        .then(data => {
-                            data.forEach(object => {
-                                ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-                                    .then( payData => {
-                                        //object.data = payData;
-                                        object = this.formatObjectToShowInTable(object,payData);
-                                        this.setState({objects:arr})
-                                    })
-                                    .catch(error => console.log(error))
-                            });
-                            data.forEach(item => arr.push(item));
-                        })
-                        .catch(error => console.log(error))
-                })
+            let arr = [];
+            cities.forEach(item => {
+                ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
+                    .then(data => {
+                        data.forEach(object => {
+                            ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                                .then( payData => {
+                                    //object.data = payData;
+                                    object = this.formatObjectToShowInTable(object,payData);
+                                    this.setState({objects:arr})
+                                })
+                                .catch(error => console.log(error))
+                        });
+                        data.forEach(item => arr.push(item));
+                    })
+                    .catch(error => console.log(error))
+            })
         }
     }
 
@@ -128,9 +128,7 @@ class Conception extends Component {
     componentDidMount(){
         mobileSidebarHidden();
         this.getAvailableCities();
-        console.log(this.props);
     }
-
 
 
     renderObjects(){    // рендер карточек объектов

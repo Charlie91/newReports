@@ -14,18 +14,6 @@ import {
 class Sidebar extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            conceptions : [
-                {
-                    name: 'Главная',
-                    url: '/dashboard',
-                    icon: 'icon-home',
-                    badge: {
-                        variant: 'info'
-                    }
-                }
-            ]
-        }
     }
 
     handleClick(e) {
@@ -52,36 +40,6 @@ class Sidebar extends Component {
     // secondLevelActive(routeName) {
     //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
     // }
-
-    receiveConceptionLists(){   //получаем список концепций для заполнения меню
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        }
-        ajaxRequest(API.nav,options)
-            .then( data => {
-                let arr = this.state.conceptions;
-                if(Array.isArray(data)){
-                    data.forEach( item => {
-                        item.url = '/conceptions/' + item.id;
-                        item.icon = 'icon-chart';
-                        if(item.children){
-                            item.children.forEach( child => {
-                                child.url = item.url + '/' + child.id;
-                            })
-                        }
-                        arr.push(item)
-                    });
-                    this.setState({conceptions:arr})
-                }
-            })
-            .catch( error => console.log(error))
-    }
-
-    componentDidMount(){
-        this.receiveConceptionLists();
-    }
 
     render() {
         const props = this.props;
@@ -167,7 +125,7 @@ class Sidebar extends Component {
                 </div>
                 <nav className="sidebar-nav">
                     <Nav>
-                        { (this.state.conceptions.length ) ? navList(this.state.conceptions) : '' }
+                        { (this.props.conceptions.length ) ? navList(this.props.conceptions) : '' }
                     </Nav>
                 </nav>
             </div>

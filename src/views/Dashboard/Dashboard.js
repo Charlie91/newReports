@@ -106,7 +106,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="animated fadeIn">
+            <div style={{marginTop:'15px'}} className="animated fadeIn">
                 {this.renderObjects()}
             </div>
         )

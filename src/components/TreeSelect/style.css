@@ -241,7 +241,7 @@ li.node:hover {
     content: '\25B2';
 }
 .tree_select{
-    margin-left: 10px;
+    margin-left: 8px;
     text-align: left;
 }
 @media screen and (max-width:1070px){

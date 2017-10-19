@@ -86,7 +86,6 @@ export default class TreeSelect extends Component{
     render(){
         return (
             <div className="tree_select">
-                <h5 style={{    marginLeft: '9px'}}>Трафик торговых центров</h5>
                 <DropdownTreeSelect
                     placeholderText="Выбрать город"
                     data={this.state.availableCities}

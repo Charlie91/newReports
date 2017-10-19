@@ -8,6 +8,8 @@ import {
     CardBody
 } from "reactstrap";
 
+const date = new Date();
+const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
  function toCountLastYear(obj){ // подсчет данных за последний год
      let days = obj.data.day,
@@ -18,6 +20,10 @@ import {
          else return sum + current.v
      }, currentMonth);
    return formatNumericValue(currentYear)
+ }
+
+ function decorator(val){
+     return (val === 0) ? '-' : val  //если значение 0 - меняем на "-"
  }
 
  const DataCard = (props) => (
@@ -40,12 +46,12 @@ import {
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">Сегодня</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day[0].v) : '-' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? decorator(formatNumericValue(props.obj.data.day[0].v)) : '-' }</strong>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
-                         <small className="text-muted">Сентябрь</small>
+                         <small className="text-muted">{months[date.getMonth()]}</small>
                          <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.month[0].v) : '' }</strong>
+                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day.reduce((sum, current) => sum + current.v, 0)) : '' }</strong>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <small className="text-muted">2017</small>

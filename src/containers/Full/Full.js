@@ -16,7 +16,18 @@ class Full extends Component {
         super(props);
         this.state = {
             isLoggedIn : null,
-            availableCities:[]
+            availableCities:[],
+            conceptions : [
+                {
+                    name: 'Главная',
+                    full_name:'ТРЦ Трафик',
+                    url: '/dashboard',
+                    icon: 'icon-home',
+                    badge: {
+                        variant: 'info'
+                    }
+                }
+            ]
         }
     }
 
@@ -41,12 +52,39 @@ class Full extends Component {
             .catch(error => console.log(error));
     }
 
+    receiveConceptionLists(){   //получаем список концепций для заполнения меню
+        let options = {
+            method:'GET',
+            credentials:'include',
+            mode: 'cors'
+        }
+        ajaxRequest(API.nav,options)
+            .then( data => {
+                let arr = this.state.conceptions;
+                if(Array.isArray(data)){
+                    data.forEach( item => {
+                        item.url = '/conceptions/' + item.id;
+                        item.icon = 'icon-chart';
+                        if(item.children){
+                            item.children.forEach( child => {
+                                child.url = item.url + '/' + child.id;
+                            })
+                        }
+                        arr.push(item)
+                    });
+                    this.setState({conceptions:arr})
+                }
+            })
+            .catch( error => console.log(error))
+    }
+
     upState(name,value){
         this.setState({[name]:value})//обновляем стейт данными из дочерних компонентов
     }
 
     componentDidMount(){
-        this.checkEitherLoggedInOrNot()
+        this.checkEitherLoggedInOrNot();
+        this.receiveConceptionLists();
     }
 
     render() {
@@ -55,10 +93,11 @@ class Full extends Component {
                 <Header
                     isLogged={this.state.isLoggedIn}
                     availableCities={this.state.availableCities}
+                    conceptions={this.state.conceptions}
                     upState={this.upState.bind(this)}
                 />
                 <div className="app-body">
-                    <Sidebar {...this.props}/>
+                    <Sidebar conceptions={this.state.conceptions} {...this.props}/>
                     <main className="main" onClick={this.mobileSidebarToggle}>
                         <Container fluid>
                             <Switch>
