@@ -77,6 +77,12 @@ $sidebar-header-height: 200px;
   }
 }
 
+@include media-breakpoint-up(md) {
+  .page-title{
+    text-align:left!important;
+  }
+}
+
 @include media-breakpoint-up(sm) {
   .sidebar-compact {
     .sidebar {
@@ -94,7 +100,18 @@ $sidebar-header-height: 200px;
       }
     }
   }
+  .page-title{
+    text-align:center;
+  }
 }
+
+@include media-breakpoint-up(xs) {
+  .page-title{
+    text-align:center;
+  }
+}
+
+
 
 .sidebar .navbar-brand{
   display: inline-block;
@@ -156,3 +173,4 @@ $sidebar-header-height: 200px;
 .dropdown-trigger{
   min-width: 300px;
 }
+

@@ -66,26 +66,53 @@ class Table extends Component {
         this.setState({dates:dates,months:months,years:years});
     }
 
-    componentDidMount(){
-        let th = document.getElementsByClassName('table-header-wrapper')[0],
-            tbody = document.getElementsByClassName('react-bs-container-body')[0];
-        window.onscroll = function(e){                    // определяем по событию положение скролла на странице и делаем шапку fixed
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if(scrollTop > getCoords(tbody).top){
-                th.classList.add('navbar-fixed-top','container-fluid');
-            }
-            else{
-                th.classList.remove('navbar-fixed-top','container-fluid');
-                tbody.style.cssText = 'top:0px;position:static';
-            }
+    fixingFirstColumn(e){//фиксируем первую колонку
+        let tbody = document.getElementsByClassName('react-bs-container-body')[0],
+            cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type');
+
+        if(tbody.scrollLeft > 0)
+            cells.forEach( cell => cell.classList.add('fixed-td') );
+        else
+            cells.forEach( cell => cell.classList.remove('fixed-td') )
+    }
+
+    fixingTableHeader(){// определяем по событию положение скролла на странице и делаем шапку fixed
+        let table = document.getElementsByClassName('conceptions-table')[0],
+            th = document.getElementsByClassName('table-header-wrapper')[0],
+            tbody = document.getElementsByClassName('react-bs-container-body')[0],
+            headerHeight = document.getElementsByClassName('app-header')[0].offsetHeight,//
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let thHeight = th.offsetHeight,
+            parentWidth = th.parentElement.offsetWidth;
+        if((scrollTop + headerHeight) > (getCoords(tbody).top - thHeight) &&
+            (scrollTop + headerHeight) < (getCoords(tbody).top + tbody.offsetHeight - thHeight) ){      //if((scrollTop + headerHeight) > getCoords(tbody).top){
+            table.classList.add('scrolled');
+            th.classList.add('fixed-header');
+            th.style.cssText = 'top:'+ headerHeight + 'px';
+            th.style.width = parentWidth + 'px'; //фикс для правильного положения заголовка таблицы
+            tbody.style.cssText = 'position:static;margin-top:'+ (thHeight - 5) + 'px';
+        }
+        else{
+            table.classList.remove('scrolled');
+            th.classList.remove('fixed-header');
+            tbody.style.cssText = 'top:0px;position:static';
         }
     }
 
+    componentDidMount(){
+        let tbody = document.getElementsByClassName('react-bs-container-body')[0];
+        window.onscroll = (e) =>  this.fixingTableHeader();
+        tbody.onscroll = (e) => this.fixingFirstColumn(e)
+    }
+
+    componentDidUpdate(){
+        this.fixingFirstColumn()    //при обновлении компонента проверять положение скролла и в зависимости фиксировать результат
+    }
 
     render() {
         return (
             <div>
-                <BootstrapTable className="Table conceptions-table" bordered={ false } data={ this.props.data }>
+                <BootstrapTable hover className="Table conceptions-table" bordered={ false } data={ this.props.data }>
 
                     <TableHeaderColumn
                         width={'150'}

@@ -2,7 +2,7 @@
 export let API = {};
 if(PRODUCTION){
      API = {
-        main:'https://repo.re-ports.ru/app/',
+        main:'https://repo.re-ports.ru/app/UserData',
         auth:'https://repo.re-ports.ru/app/Auth',
         register:'https://repo.re-ports.ru/app/Register',
         nav:'https://repo.re-ports.ru/app/Conceptions',
@@ -13,7 +13,7 @@ if(PRODUCTION){
 }
 else {
      API = {
-        main: 'https://repo.re-ports.ru/app_test/',
+        main: 'https://repo.re-ports.ru/app_test/UserData',
         auth: 'https://repo.re-ports.ru/app_test/Auth',
         register: 'https://repo.re-ports.ru/app_test/Register',
         nav: 'https://repo.re-ports.ru/app_test/Conceptions',

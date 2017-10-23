@@ -68,7 +68,7 @@ class Header extends Component {
             <header className="app-header navbar">
                 <Col>
                     <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
-                    <h5 style={{ textAlign:'left',paddingLeft: '15px'}}>{this.state.title}</h5>
+                    <h5 className="page-title" style={{ paddingLeft: '15px'}}>{this.state.title}</h5>
                     <TreeSelectComp
                         upState={this.sendDataUpward.bind(this)}
                         availableCities={this.props.availableCities}

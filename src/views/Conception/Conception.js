@@ -52,34 +52,80 @@ class Conception extends Component {
         return object;
     }
 
-    getObjects() {  //получаем список объектов из списка городов
-        let options = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        };
-        let conceptID = this.props.match.params.child || this.props.match.params.id;
-        if (this.state.cities.length) {
-            let cities = this.state.cities;
-            let arr = [];
-            cities.forEach(item => {
-                ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
-                    .then(data => {
-                        data.forEach(object => {
-                            ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-                                .then( payData => {
-                                    //object.data = payData;
-                                    object = this.formatObjectToShowInTable(object,payData);
-                                    this.setState({objects:arr})
-                                })
-                                .catch(error => console.log(error))
-                        });
-                        data.forEach(item => arr.push(item));
-                    })
-                    .catch(error => console.log(error))
-            })
-        }
+    // getObjects() {  //получаем список объектов из списка городов
+    //     let options = {
+    //         method: 'GET',
+    //         credentials: 'include',
+    //         mode: 'cors'
+    //     };
+    //     let conceptID = this.props.match.params.child || this.props.match.params.id;
+    //     if (this.state.cities.length) {
+    //         let cities = this.state.cities;
+    //         let arr = [];
+    //         cities.forEach(item => {
+    //             ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
+    //                 .then(data => {
+    //                     data.forEach(object => {
+    //                         ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+    //                             .then( payData => {
+    //                                 //object.data = payData;
+    //                                 object = this.formatObjectToShowInTable(object,payData);
+    //                                 this.setState({objects:arr})
+    //                             })
+    //                             .catch(error => console.log(error))
+    //                     });
+    //                     data.forEach(item => arr.push(item));
+    //                 })
+    //                 .catch(error => console.log(error))
+    //         })
+    //     }
+    // }
+
+    getObjects() {  //получаем список объектов из списка городов   Promise.all версия v2
+            let options = {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors'
+            };
+            let conceptID = this.props.match.params.child || this.props.match.params.id;
+            if (this.state.cities.length) {
+                let cities = this.state.cities;
+                // let arr = [];
+                let objects = Promise.all(cities.map(item => {
+                    return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
+                        .then(data => data)
+                        .catch(err => console.log(err))
+                }));
+               objects = objects.then(data => {
+                    let arr = [];
+                    data.forEach(item => {
+                        if (Array.isArray(item)) {
+                            item.forEach(child => {
+                                arr.push(child)
+                            })
+                        }
+                        else arr.push(item);
+                    });
+                    return arr;
+                });
+                objects.then(arr => {
+                   let newData = Promise.all(arr.map(object => {
+                        return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                            .then(data => {
+                                object = this.formatObjectToShowInTable(object, data);
+                                return object
+                            })
+                            .catch(err => console.log(err))
+                    }));
+                   newData.then(data => {
+                       this.setState({objects:data})
+                   })
+
+                })
+            }
     }
+
+
 
     getAvailableCities(){    //получаем города в которых доступны объекты
         let id = this.props.match.params.child || this.props.match.params.id;
@@ -146,14 +192,7 @@ class Conception extends Component {
     }
 
     render(){
-        if(this.props.match.params.child)
             return (
-                <div>
-                    {this.renderObjects()}
-                </div>
-            )
-        else
-            return(
                 <div>
                     {this.renderObjects()}
                 </div>
