@@ -1,5 +1,6 @@
 import React from 'react';
 import {formatNumericValue} from './../../utils/utils';
+import {Link} from 'react-router-dom';
 import {
     Row,
     Col,
@@ -32,7 +33,11 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>
                      <Col md="6">
-                         <h5>{props.obj.obj_name}</h5>
+                         <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
+                               className="link-to-object"
+                         >
+                             <h5>{props.obj.obj_name}</h5>
+                         </Link>
                          <p className="contacts">{props.obj.address}</p>
                      </Col>
                      <Col md="6">

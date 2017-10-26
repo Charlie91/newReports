@@ -9,14 +9,15 @@ import Dashboard from '../../views/Dashboard/';
 import {ajaxRequest} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import Conception from './../../views/Conception/Conception';
+import ObjectPage from './../../views/ObjectPage/ObjectPage';
 
 class Full extends Component {
-
     constructor(props){
         super(props);
         this.state = {
             isLoggedIn : null,
             availableCities:[],
+            title:'',
             conceptions : [
                 {
                     name: 'Главная',
@@ -72,11 +73,14 @@ class Full extends Component {
                         }
                         arr.push(item)
                     });
-                    this.setState({conceptions:arr})
+                    this.setState({conceptions:arr},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
+                                                                                                    // находимся ли мы на одной из его ссылок и устанавливаем заголовок
                 }
             })
             .catch( error => console.log(error))
     }
+
+
 
     upState(name,value){
         this.setState({[name]:value})//обновляем стейт данными из дочерних компонентов
@@ -85,6 +89,29 @@ class Full extends Component {
     componentDidMount(){
         this.checkEitherLoggedInOrNot();
         this.receiveConceptionLists();
+        console.log('mount');
+    }
+
+    setTitle(arr){  //установка заголовка страницы
+        let url = window.location.href;
+        let idPosition = url.lastIndexOf('#');
+        let conceptionURL = url.slice(idPosition+1);
+        arr.forEach( item => {
+            if(item.url === conceptionURL)this.setState({title:item.full_name}); //если адрес текущей ссылки в браузере совпадает с любой ссылкой из концепций -
+            else{                                                               // устанавливаем концепцию как заголовок
+                if(item.children){
+                    item.children.forEach( child => {
+                        if(child.url === conceptionURL)this.setState({title:child.full_name})//если нет совпадений смотрим в дочерних концепциях
+                    })
+                }
+            }
+        })
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.state.conceptions){
+            this.setTitle(this.state.conceptions)
+        }
     }
 
     render() {
@@ -94,6 +121,7 @@ class Full extends Component {
                     isLogged={this.state.isLoggedIn}
                     availableCities={this.state.availableCities}
                     conceptions={this.state.conceptions}
+                    title={this.state.title}
                     upState={this.upState.bind(this)}
                 />
                 <div className="app-body">
@@ -114,6 +142,10 @@ class Full extends Component {
                                            <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
                                        }
                                 />
+                                <Route path="/concept:concept/city:city/object:id" name="object"
+                                       render={(props) =>
+                                           <ObjectPage upState={this.upState.bind(this)} {...props} />
+                                       }/>
                                 <Redirect from="/" to="/dashboard"/>
                             </Switch>
                         </Container>

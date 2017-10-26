@@ -52,34 +52,6 @@ class Conception extends Component {
         return object;
     }
 
-    // getObjects() {  //получаем список объектов из списка городов
-    //     let options = {
-    //         method: 'GET',
-    //         credentials: 'include',
-    //         mode: 'cors'
-    //     };
-    //     let conceptID = this.props.match.params.child || this.props.match.params.id;
-    //     if (this.state.cities.length) {
-    //         let cities = this.state.cities;
-    //         let arr = [];
-    //         cities.forEach(item => {
-    //             ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
-    //                 .then(data => {
-    //                     data.forEach(object => {
-    //                         ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-    //                             .then( payData => {
-    //                                 //object.data = payData;
-    //                                 object = this.formatObjectToShowInTable(object,payData);
-    //                                 this.setState({objects:arr})
-    //                             })
-    //                             .catch(error => console.log(error))
-    //                     });
-    //                     data.forEach(item => arr.push(item));
-    //                 })
-    //                 .catch(error => console.log(error))
-    //         })
-    //     }
-    // }
 
     getObjects() {  //получаем список объектов из списка городов   Promise.all версия v2
             let options = {

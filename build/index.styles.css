@@ -13874,6 +13874,9 @@ body.sidebar-mobile-show {
 .dropdown-trigger {
   min-width: 300px; }
 
+.link-to-object {
+  color: #151b1e; }
+
 .cityLink {
   margin-right: 15px; }
 

@@ -1,6 +1,7 @@
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import React, { Component } from 'react';
 import {getCoords} from './../../utils/utils';
+import {Link} from 'react-router-dom';
 import './react-bootstrap-table.css';
 import './style.scss';
 
@@ -8,13 +9,11 @@ import './style.scss';
 
 function getWeekDay(date) {
     let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
-
     return days[date.getDay()];
 }
 
 function getDateAgo(date, days) {
     let dateCopy = new Date(date);
-
     dateCopy.setDate(date.getDate() - days);
     return dateCopy;
 }
@@ -33,7 +32,7 @@ function fillDates(){ //создание массива с предыдущим�
     return dates;
 }
 
-function fillMonths(){
+function fillMonths(){//создание наименований месяцев
     const thisYearMonths = [];
     let today = new Date();
     let currentMonth = today.getMonth();
@@ -44,7 +43,7 @@ function fillMonths(){
     return thisYearMonths.reverse()
 }
 
-function fillYears(){
+function fillYears(){//заполняем года
     const years = [];
     let today = new Date();
     let currentYear = today.getFullYear();
@@ -99,11 +98,27 @@ class Table extends Component {
         }
     }
 
+    objectFormatter(cell, row){ //функция форматирования первой колонки в таблице
+        return (
+            <Link
+                to={{ pathname: `/concept${row.conception}/city${row.city_id}/object${row.id}`, params:{obj:row} }}
+                className="link-to-object"
+            >
+                {cell}
+            </Link>
+        )
+    }
+
     componentDidMount(){
         let tbody = document.getElementsByClassName('react-bs-container-body')[0];
         window.onscroll = (e) =>  this.fixingTableHeader();
         tbody.onscroll = (e) => this.fixingFirstColumn(e)
     }
+
+    componentWillUnmount(){
+        window.onscroll = (e) =>  function(){};//удаление обработчика события скролла
+    }
+
 
     componentDidUpdate(){
         this.fixingFirstColumn()    //при обновлении компонента проверять положение скролла и в зависимости фиксировать результат
@@ -118,6 +133,7 @@ class Table extends Component {
                         width={'150'}
                         dataField='obj_name'
                         tdStyle={ { fontWeight:'600' } }
+                        dataFormat={ this.objectFormatter.bind(this) }
                         isKey>
                     </TableHeaderColumn>
 

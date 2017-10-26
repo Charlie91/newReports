@@ -22,8 +22,10 @@ ReactDOM.render((
     <HashRouter history={history}>
         <Switch>
             <Route path="/registration" name="registr" component={Empty}/>
-            <Route path="/authorization" name="registr" component={Empty}/>
-            <Route path="/conceptions" name="registr" component={Full}/>
+            <Route path="/authorization" name="authoriz" component={Empty}/>
+            <Route path="/conceptions" name="concept" component={Full}/>
+            <Route path="/object" name="object" component={Full}/>
+            <Route path="/city" name="object" component={Full}/>
             <Route path="/" name="Home" component={Full}/>
         </Switch>
     </HashRouter>

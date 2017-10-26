@@ -107,8 +107,8 @@ class Sidebar extends Component {
         // sidebar-nav root
         return (
             <div className="sidebar">
-                <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
-                <NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}>&#9776;</NavbarToggler>
+                <NavbarToggler style={{fontSize: '2em'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
+                <NavbarToggler style={{fontSize: '2em'}} className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}>&#9776;</NavbarToggler>
                 <div className="sidebar-header">
                     <img src={'img/avatars/1.gif'} className="img-avatar" alt="Avatar"/>
                     <div><strong>Master Yoda</strong></div>
