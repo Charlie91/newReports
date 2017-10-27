@@ -17,7 +17,7 @@ class Table2 extends Component {
     render(){
         return(
             <div style={{overflow:'scroll'}}>
-                <Table responsive bordered striped>
+                <Table className="object-table" responsive bordered striped>
                     <thead>
                     <tr>
                         {this.props.data.map((item,i) =>
@@ -28,7 +28,7 @@ class Table2 extends Component {
                     <tbody>
                     <tr>
                         {this.props.data.map((item,i) =>
-                            <th key={i}>{item.VALUE}</th>
+                            <td key={i}>{item.VALUE}</td>
                         )}
                     </tr>
                     </tbody>

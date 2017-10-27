@@ -5,6 +5,12 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import Table from './Table.js';
+import './style.scss';
+import {
+    Row,
+    Col
+} from "reactstrap";
+
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -20,10 +26,10 @@ export default class ObjectPage extends Component {
 
     getNewObjectsData(){       // получение новых данных об объекте, если они не были переданы через props
         let options = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        },
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors'
+            },
             params = this.props.match.params;
         let [concept,city,id] = [params.concept,params.city,params.id];
         let url = API.objects + '?conceptId=' + concept + '&cityId=' + city;
@@ -31,7 +37,10 @@ export default class ObjectPage extends Component {
             .then(data => {
                 data.forEach( object => {
                     if(+id === object.id){
-                        this.setState({object:object}, () => this.props.upState('title',this.state.object.obj_name))
+                        this.setState({object:object}, () => {
+                            this.props.upState('title',this.state.object.obj_name);
+                            this.props.upState('address',this.state.object.address);
+                        })
                     }
                 })
             })
@@ -42,10 +51,10 @@ export default class ObjectPage extends Component {
     getFloors(){    //получение срезов данных об объекте
         let id = this.state.object.id;
         let options = {
-                method: 'GET',
-                credentials: 'include',
-                mode: 'cors'
-            };
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        };
         let url = API.floors + id;
         ajaxRequest(url, options)
             .then(data => {
@@ -81,7 +90,8 @@ export default class ObjectPage extends Component {
     fillInitialObjectData(obj){ //записываем данные с пропсов и парсим с сервера срезы
         this.setState({object:obj},() => {
             this.getFloors();
-            this.props.upState('title',this.state.object.obj_name)
+            this.props.upState('title',this.state.object.obj_name);
+            this.props.upState('address',this.state.object.address);
         });
     }
 
@@ -90,41 +100,51 @@ export default class ObjectPage extends Component {
     }
 
     changeTimeSegment(e){
-        this.setState({timeSegment:e.target.innerHTML},() => this.getFloorsData())
+        this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
     }
 
     renderFloorObjectsButtons(){//функция рендера срезов
         if(!this.state.floors)return null;
         return(
-            <div className="btn-group" role="group">
-                {this.state.floors.map((item,i) =>
-                    <button type="button"
-                            key={i}
-                            data-id={i}
-                            className={'btn btn-secondary ' + ((this.state.floorIndex === i) ? 'active' : '')}
-                            onClick={this.changeFloor.bind(this)}
-                    >
-                        {item.name}
-                    </button>
-                 )}
-            </div>
+            <Col md="3">
+                <div className="btn-group" role="group">
+                    {this.state.floors.map((item,i) =>
+                        <button type="button"
+                                key={i}
+                                data-id={i}
+                                className={'btn btn-secondary ' + ((this.state.floorIndex === i) ? 'active' : '')}
+                                onClick={this.changeFloor.bind(this)}
+                        >
+                            {item.name}
+                        </button>
+                    )}
+                </div>
+            </Col>
         )
     }
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
-        let arr = ['Y','M','D','H'];
+        let arr = [
+            {val:'Y',text:'По годам'},
+            {val:'M',text:'По месяцам'},
+            {val:'D',text:'По дням'},
+            {val:'H',text:'По часам'}
+        ];
         return (
-            <div className="btn-group" role="group">
-                {arr.map( (item,i) =>
-                    <button type="button"
-                            key={i}
-                            className={'btn btn-secondary ' + ((this.state.timeSegment === item) ? 'active' : '')}
-                            onClick={this.changeTimeSegment.bind(this)}
-                    >
-                        {item}
-                    </button>
-                )}
-            </div>
+            <Col md="4">
+                <div className="btn-group" role="group">
+                    {arr.map( (item,i) =>
+                        <button type="button"
+                                key={i}
+                                data-val={item.val}
+                                className={'btn btn-secondary ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
+                                onClick={this.changeTimeSegment.bind(this)}
+                        >
+                            {item.text}
+                        </button>
+                    )}
+                </div>
+            </Col>
         )
     }
 
@@ -155,9 +175,7 @@ export default class ObjectPage extends Component {
 
     render(){
         return (
-            <div>
-                <h4>{this.state.object.obj_name}</h4>
-                <p>{this.state.object.address}</p>
+            <div style={{width:'75%',margin:'auto'}}>
                 <DatePicker
                     selected={this.state.startDate}
                     selectsStart
@@ -173,8 +191,11 @@ export default class ObjectPage extends Component {
                     endDate={this.state.endDate}
                     onChange={this.handleChangeEnd.bind(this)}
                 />
-                {this.renderFloorObjectsButtons()}
-                {this.renderSegmentationButtons()}
+                <Row>
+                    {this.renderFloorObjectsButtons()}
+                    <Col md="5"></Col>
+                    {this.renderSegmentationButtons()}
+                </Row>
                 {this.renderTable()}
 
             </div>

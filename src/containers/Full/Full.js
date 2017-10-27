@@ -122,7 +122,9 @@ class Full extends Component {
                     availableCities={this.state.availableCities}
                     conceptions={this.state.conceptions}
                     title={this.state.title}
+                    address={this.state.address}
                     upState={this.upState.bind(this)}
+                    {...this.props}
                 />
                 <div className="app-body">
                     <Sidebar conceptions={this.state.conceptions} {...this.props}/>

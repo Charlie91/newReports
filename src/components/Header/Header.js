@@ -69,10 +69,15 @@ class Header extends Component {
                 <Col>
                     <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
                     <h5 className="page-title" style={{ paddingLeft: '15px'}}>{this.props.title}</h5>
-                    <TreeSelectComp
+                    {(~this.props.location.pathname.indexOf('object')) ?
+                        <p className="address">{this.props.address}</p>
+                            :
+                    < TreeSelectComp
                         upState={this.sendDataUpward.bind(this)}
                         availableCities={this.props.availableCities}
-                    />
+                        />
+                    }
+
                 </Col>
             </header>
         )
