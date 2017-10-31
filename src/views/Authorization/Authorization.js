@@ -4,6 +4,7 @@ import AuthNav from './../AuthNav/AuthNav';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
+import {ajaxRequest} from './../../utils/utils';
 
 
 export function showDynamicLabel(nameProperty,text){    //динамический показ лейбла у форм
@@ -55,25 +56,13 @@ export default class Authorization extends Component {
         }
     }
 
-    ajaxRequest(url,options){                   //функция-шаблон для ajax-запросов
-        return  fetch(url, options)
-            .then(function (response) {
-                if (!response.ok) {
-                    return Promise.reject(new Error(
-                        'Response failed: ' + response.status + ' (' + response.statusText + ')'
-                    ));
-                }
-                return response.json();
-            })
-    }
-
     getUserData(){  // парсинг данных пользователя после авторизации
         let options = {
             method:'GET',
             credentials:'include',
             mode: 'cors'
         };
-        this.ajaxRequest(API.main,options)
+        ajaxRequest(API.main,options)
             .then(data => {
                 this.setState({
                     userName:data.login
@@ -89,16 +78,14 @@ export default class Authorization extends Component {
             credentials:'include',
             mode: 'cors'
         };
-        this.ajaxRequest(API.auth ,options)
+        ajaxRequest(API.auth ,options)
             .then(data => {
                 if(data.authorized === true){
                     this.setState({isLoggedIn:true});
                     this.getUserData();
                 }
-
-                else{
+                else
                     this.setState({isLoggedIn:false,password:''});
-                }
             })
             .catch(error => console.log(error));
     }
@@ -106,7 +93,7 @@ export default class Authorization extends Component {
 
     logIn(e) {      // запрос на вход\авторизацию пользователя
         e.preventDefault();
-        if (this.validation()) {
+        if (!this.validation())return;
             let obj = {
                 pwd: this.state.password,
                 login: this.state.login
@@ -121,7 +108,6 @@ export default class Authorization extends Component {
                 mode: 'cors'
             };
             this.sendDataForLogInAndOut(options);
-        }
     }
 
     logOff(e){  // запрос на выход пользователя\логаут
@@ -135,16 +121,15 @@ export default class Authorization extends Component {
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута
-        this.ajaxRequest(API.auth,options)
+        ajaxRequest(API.auth,options)
             .then(data => {
                 if(data.error) {
                     if (data.error.message === 'Неверный логин или пароль') {
                         this.setState({loginIsIncorrect: true})
                     }
                 }
-                else{
+                else
                     this.setState({loginIsIncorrect: false,connectionIsFailed:false});
-                }
                 this.checkEitherLoggedInOrNot()
             })
             .catch(error => this.setState({connectionIsFailed:true}));
@@ -155,11 +140,11 @@ export default class Authorization extends Component {
         if(this.state.hasErrors)
             return(
                 <div className="hintMessage alert alert-danger">Введите логин и пароль</div>
-            )
+            );
         if(this.state.loginIsIncorrect)
             return(
                 <div className="hintMessage alert alert-danger">Авторизационные данные неверны</div>
-            )
+            );
         if(this.state.connectionIsFailed)
             return(
                 <div className="hintMessage alert alert-danger">Соединение потеряно. Что-то пошло не так. Обратитесь в тех.поддержку или попробуйте еще раз</div>

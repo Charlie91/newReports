@@ -39,7 +39,7 @@ class Registration extends Component {
     finalValidation(e){
         e.preventDefault();
 
-        for( let key in this.state){        //если поле не изменялось пользователем - переводим его в false
+        for( let key in this.state){        //если поле не изменялось пользователем - переводим его в false(невалидным)
             if(this.state[key] === null) {
                 this.setState({[key]:false})
             }
@@ -65,7 +65,6 @@ class Registration extends Component {
         }
 
         delete obj.passwordsAreConfirm; //готовим объект к отправке и удаляем ненужное св-во
-
         this.registrationProcess(obj)
     }
 
@@ -121,14 +120,14 @@ class Registration extends Component {
         if(this.state.isLoggedIn)
             return (
                 <Redirect to="/dashboard"/>
-            )
+            );
         else if(this.state.registrationIsSuccess)
             return (
                 <div className="registration-form auth-window animated fadeIn">
                         <AuthNav/>
                      {this.showSuccessMessage()}
                 </div>
-            )
+            );
         else
             return (
                 <div className="registration-form auth-window animated fadeIn">

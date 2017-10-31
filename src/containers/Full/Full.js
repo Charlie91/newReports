@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import {Container} from 'reactstrap';
 import Header from '../../components/Header/';
@@ -129,12 +129,8 @@ class Full extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState){
-        console.log(prevProps,prevState)
-    }
 
     render() {
-        console.log('render');
         return (
             <div className="app">
                 <Header

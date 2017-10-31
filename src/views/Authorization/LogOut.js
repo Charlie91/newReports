@@ -24,9 +24,7 @@ export default class LogOut extends Authorization { // Внимание! Это�
     }
 
     componentWillReceiveProps(nextProps){
-            //if(nextProps.isLoggedIn === false){
                 this.setState({isLoggedIn:nextProps.isLoggedIn})
-            //}
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута

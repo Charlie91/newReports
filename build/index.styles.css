@@ -13882,6 +13882,9 @@ body.sidebar-mobile-show {
   text-align: left;
   padding-left: 15px; }
 
+main.main {
+  position: relative; }
+
 .cityLink {
   margin-right: 15px; }
 
@@ -14043,6 +14046,28 @@ body.sidebar-mobile-show {
     margin-bottom: 60px;
     font-size: 90%;
     padding: 10px; } }
+.loading_process {
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.47);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0; }
+
+.load_title {
+  top: 70%;
+  position: absolute;
+  color: #FFF;
+  display: block;
+  width: 100%;
+  text-align: center; }
+
+.load_image {
+  left: 50%;
+  top: 50%;
+  margin-left: -22px;
+  position: absolute; }
 .conceptions-table {
   background: #fff; }
   .conceptions-table td, .conceptions-table th {

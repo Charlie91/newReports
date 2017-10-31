@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {Container} from 'reactstrap';
 import Registration from '../../views/Registration/Registration.js';
 import Authorization from '../../views/Authorization/Authorization.js';

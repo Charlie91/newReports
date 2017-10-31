@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import Table from './Table.js';
 import {formatNumericValue} from './../../utils/utils';
+import Loading from './../Loading/Loading';
 
 
 
@@ -54,47 +55,46 @@ class Conception extends Component {
 
 
     getObjects() {  //получаем список объектов из списка городов   Promise.all версия v2
-            let options = {
-                method: 'GET',
-                credentials: 'include',
-                mode: 'cors'
-            };
-            let conceptID = this.props.match.params.child || this.props.match.params.id;
-            if (this.state.cities.length) {
-                let cities = this.state.cities;
-                // let arr = [];
-                let objects = Promise.all(cities.map(item => {
-                    return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
-                        .then(data => data)
-                        .catch(err => console.log(err))
-                }));
-               objects = objects.then(data => {
-                    let arr = [];
-                    data.forEach(item => {
-                        if (Array.isArray(item)) {
-                            item.forEach(child => {
-                                arr.push(child)
-                            })
-                        }
-                        else arr.push(item);
-                    });
-                    return arr;
-                });
-                objects.then(arr => {
-                   let newData = Promise.all(arr.map(object => {
-                        return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-                            .then(data => {
-                                object = this.formatObjectToShowInTable(object, data);
-                                return object
-                            })
-                            .catch(err => console.log(err))
-                    }));
-                   newData.then(data => {
-                       this.setState({objects:data})
-                   })
+        let options = {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        };
+        let conceptID = this.props.match.params.child || this.props.match.params.id;
+        if (!this.state.cities.length)return;
+        let cities = this.state.cities;
+        // let arr = [];
+        let objects = Promise.all(cities.map(item => {
+            return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
+                .then(data => data)
+                .catch(err => console.log(err))
+        }));
+        objects = objects.then(data => {
+            let arr = [];
+            data.forEach(item => {
+                if (Array.isArray(item)) {
+                    item.forEach(child => {
+                        arr.push(child)
+                    })
+                }
+                else arr.push(item);
+            });
+            return arr;
+        });
+        objects.then(arr => {
+            let newData = Promise.all(arr.map(object => {
+                return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                    .then(data => {
+                        object = this.formatObjectToShowInTable(object, data);
+                        return object
+                    })
+                    .catch(err => console.log(err))
+            }));
+            newData.then(data => {
+                this.setState({objects:data})
+            })
 
-                })
-            }
+        })
     }
 
 
@@ -161,6 +161,9 @@ class Conception extends Component {
                 <Table data={objectsForRender}/>
             )
         }
+        else return(
+            <Loading/>
+        )
     }
 
     render(){
