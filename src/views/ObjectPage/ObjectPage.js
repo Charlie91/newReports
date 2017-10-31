@@ -106,7 +106,8 @@ export default class ObjectPage extends Component {
     renderFloorObjectsButtons(){//функция рендера срезов
         if(!this.state.floors)return null;
         return(
-            <Col md="3">
+            <div style={{marginTop:'20px'}}>
+                <h5>Срезы</h5>
                 <div className="btn-group" role="group">
                     {this.state.floors.map((item,i) =>
                         <button type="button"
@@ -119,7 +120,7 @@ export default class ObjectPage extends Component {
                         </button>
                     )}
                 </div>
-            </Col>
+            </div>
         )
     }
 
@@ -131,7 +132,8 @@ export default class ObjectPage extends Component {
             {val:'H',text:'По часам'}
         ];
         return (
-            <Col md="4">
+            <div style={{marginTop:'20px'}}>
+                <h5>Группировка</h5>
                 <div className="btn-group" role="group">
                     {arr.map( (item,i) =>
                         <button type="button"
@@ -144,7 +146,7 @@ export default class ObjectPage extends Component {
                         </button>
                     )}
                 </div>
-            </Col>
+            </div>
         )
     }
 
@@ -175,27 +177,32 @@ export default class ObjectPage extends Component {
 
     render(){
         return (
-            <div style={{width:'75%',margin:'auto'}}>
-                <DatePicker
-                    selected={this.state.startDate}
-                    selectsStart
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeStart.bind(this)}
-                />
-
-                <DatePicker
-                    selected={this.state.endDate}
-                    selectsEnd
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeEnd.bind(this)}
-                />
-                <Row>
-                    {this.renderFloorObjectsButtons()}
-                    <Col md="5"></Col>
-                    {this.renderSegmentationButtons()}
-                </Row>
+            <div className="object_cont">
+                <div>
+                    <h5>Укажите период:</h5>
+                    <div style={{display:'inline-block'}}>
+                        <DatePicker
+                            className="datepicker"
+                            selected={this.state.startDate}
+                            selectsStart
+                            startDate={this.state.startDate}
+                            endDate={this.state.endDate}
+                            onChange={this.handleChangeStart.bind(this)}
+                        />
+                    </div>
+                    <div style={{display:'inline-block'}}>
+                        <DatePicker
+                            className="datepicker"
+                            selected={this.state.endDate}
+                            selectsEnd
+                            startDate={this.state.startDate}
+                            endDate={this.state.endDate}
+                            onChange={this.handleChangeEnd.bind(this)}
+                        />
+                    </div>
+                </div>
+                {this.renderFloorObjectsButtons()}
+                {this.renderSegmentationButtons()}
                 {this.renderTable()}
 
             </div>

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Authorization from './Authorization.js';
 import {ajaxRequest} from './../../utils/utils';
 import {Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
 
-export default class LogOut extends Authorization {
+export default class LogOut extends Authorization { // Внимание! Этот класс наследует от класса авторизации
     constructor(props){
         super(props);
         this.state={
-            isLoggedIn:null
+            isLoggedIn:this.props.isLoggedIn
         }
     }
 
@@ -21,6 +21,12 @@ export default class LogOut extends Authorization {
             mode: 'cors'
         };
         this.sendDataForLogInAndOut(options);
+    }
+
+    componentWillReceiveProps(nextProps){
+            //if(nextProps.isLoggedIn === false){
+                this.setState({isLoggedIn:nextProps.isLoggedIn})
+            //}
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута

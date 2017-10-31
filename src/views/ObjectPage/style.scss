@@ -1,3 +1,19 @@
 .object-table td,.object-table th{
   text-align:center
 }
+
+.react-datepicker-popper{
+  z-index: 10;
+}
+
+.object_cont{
+  width:75%;
+  margin:auto
+}
+
+@media screen and (max-width:791px){
+  .object_cont{
+    width:100%;
+    margin:auto
+  }
+}

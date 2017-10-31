@@ -17,6 +17,7 @@ class Full extends Component {
         this.state = {
             isLoggedIn : null,
             availableCities:[],
+            userData:null,
             title:'',
             conceptions : [
                 {
@@ -50,6 +51,20 @@ class Full extends Component {
                 else
                     this.setState({isLoggedIn:false})
             })
+            .catch(error => {
+                console.log(error);
+                this.setState({isLoggedIn:false});
+            });
+    }
+
+    getUserData(){//парсинг пользовательских данных
+        let options = {
+            method:'GET',
+            credentials:'include',
+            mode: 'cors'
+        };
+        ajaxRequest(API.userData,options)
+            .then(data => this.setState({userData:data}))
             .catch(error => console.log(error));
     }
 
@@ -58,7 +73,7 @@ class Full extends Component {
             method:'GET',
             credentials:'include',
             mode: 'cors'
-        }
+        };
         ajaxRequest(API.nav,options)
             .then( data => {
                 let arr = this.state.conceptions;
@@ -87,9 +102,9 @@ class Full extends Component {
     }
 
     componentDidMount(){
-        this.checkEitherLoggedInOrNot();
-        this.receiveConceptionLists();
-        console.log('mount');
+        this.checkEitherLoggedInOrNot();//проверка авторизации
+        this.receiveConceptionLists();//получаем список ссылок для бокового меню
+        this.getUserData(); //парсинг пользовательских данных
     }
 
     setTitle(arr){  //установка заголовка страницы
@@ -114,11 +129,15 @@ class Full extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState){
+        console.log(prevProps,prevState)
+    }
+
     render() {
+        console.log('render');
         return (
             <div className="app">
                 <Header
-                    isLogged={this.state.isLoggedIn}
                     availableCities={this.state.availableCities}
                     conceptions={this.state.conceptions}
                     title={this.state.title}
@@ -127,7 +146,12 @@ class Full extends Component {
                     {...this.props}
                 />
                 <div className="app-body">
-                    <Sidebar conceptions={this.state.conceptions} {...this.props}/>
+                    <Sidebar
+                        conceptions={this.state.conceptions}
+                        userData={this.state.userData}
+                        isLoggedIn={this.state.isLoggedIn}
+                        {...this.props}
+                    />
                     <main className="main" onClick={this.mobileSidebarToggle}>
                         <Container fluid>
                             <Switch>

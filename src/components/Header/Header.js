@@ -38,28 +38,9 @@ class Header extends Component {
         document.body.classList.toggle('aside-menu-hidden');
     }
 
-    setTitle(arr){  //установка заголовка страницы
-        let url = window.location.href;
-        let idPosition = url.lastIndexOf('#');
-        let conceptionURL = url.slice(idPosition+1);
-        arr.forEach( item => {
-            if(item.url === conceptionURL)this.setState({title:item.full_name}); //если адрес текущей ссылки в браузере совпадает с любой ссылкой из концепций - устанавливаем концепцию как заголовок
-            else{
-                if(item.children){
-                    item.children.forEach( child => {
-                        if(child.url === conceptionURL)this.setState({title:child.full_name})//если нет совпадений смотрим в дочерних концепциях
-                    })
-                }
-            }
-        })
-    }
 
     sendDataUpward(name,value){ //отправка данных из дочернего компонента в родительский
         this.props.upState(name,value)
-    }
-
-    componentWillReceiveProps(nextProps){
-        //if(nextProps.conceptions.length > 1)this.setTitle(this.props.conceptions);
     }
 
 

@@ -3,7 +3,7 @@
 .card-header img.title-image{
     height: 60px;
     bottom: 0px;
-    right: 0px;
+    right: 12px;
     position:absolute;
     float: right;
     transition:visibility 0.4s linear 0s,opacity 0.2s linear 0s;
@@ -35,7 +35,7 @@
 .card-header img.title-image_hidden{
     height: 60px;
     bottom: 0px;
-    right: 0px;
+    right: 12px;
     position:absolute;
     float: right;
     opacity:0;

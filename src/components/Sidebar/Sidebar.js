@@ -103,16 +103,18 @@ class Sidebar extends Component {
             return items.map( (item, index) => navLink(item, index) );
         };
 
-
+        //'img/avatars/default.png'
         // sidebar-nav root
+        //DB: /app/img/users/134.png
+        //URL: https://re-ports.ru/app/img/users/134.png
         return (
             <div className="sidebar">
                 <NavbarToggler style={{fontSize: '2em'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
                 <NavbarToggler style={{fontSize: '2em'}} className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}>&#9776;</NavbarToggler>
                 <div className="sidebar-header">
-                    <img src={'img/avatars/1.gif'} className="img-avatar" alt="Avatar"/>
-                    <div><strong>Master Yoda</strong></div>
-                    <div className="text-muted"><small>Founder &amp; CEO Re-ports</small></div>
+                    <img src={(props.userData && props.userData.photo) ? `https://re-ports.ru${props.userData.photo}` : 'img/avatars/default.png'} className="img-avatar" alt="Avatar"/>
+                    <div><strong>{(props.userData) ? `${props.userData.first_name} ${props.userData.last_name}` : ''}</strong></div>
+                    <div className="text-muted"><small>{(props.userData) ? props.userData.job_position : ''}</small></div>
                     <div className="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" className="btn btn-link">
                             <i className="icon-settings"></i>
@@ -120,7 +122,7 @@ class Sidebar extends Component {
                         <button type="button" className="btn btn-link">
                             <i className="icon-user"></i>
                         </button>
-                        <LogOut/>
+                        <LogOut isLoggedIn={this.props.isLoggedIn}/>
                     </div>
                 </div>
                 <nav className="sidebar-nav">
