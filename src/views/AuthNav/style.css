@@ -1,0 +1,99 @@
+.auth-nav {
+  margin-bottom: 60px; }
+  .auth-nav a {
+    font-family: ProximaNova, sans-serif;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #354052; }
+    .auth-nav a:hover {
+      text-decoration: none; }
+    .auth-nav a.active {
+      border-bottom: solid 2.5px rgba(142, 214, 250, 0.8); }
+
+.auth-btn {
+  background: #8ed6fa;
+  color: #fff;
+  font-size: 130%;
+  padding: 5px 40px;
+  border-radius: 3px; }
+  .auth-btn:disabled {
+    background-color: rgba(216, 216, 216, 0.6);
+    box-shadow: 0 0 2px #b3b3b3; }
+
+.auth-window {
+  width: 40%;
+  margin: auto;
+  background: radial-gradient(rgba(245, 248, 250, 0.9), rgba(244, 245, 244, 0.9));
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 60px 80px;
+  border-radius: 3px;
+  -webkit-backdrop-filter: blur(8.5px);
+  box-shadow: 2.5px 4px 7.5px 0 rgba(149, 149, 149, 0.15), 0 -0.5px 7.5px 0 rgba(194, 194, 194, 0.07); }
+  .auth-window label {
+    font-weight: 400;
+    width: 70%;
+    position: relative;
+    margin-bottom: 35px; }
+  .auth-window form {
+    text-align: center; }
+  .auth-window input {
+    background: none;
+    border: none;
+    border-bottom: solid 1px rgba(161, 161, 161, 0.8);
+    width: 100%;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    font-size: 110%; }
+    .auth-window input:focus {
+      background: transparent; }
+  .auth-window .hintMessage {
+    width: 70%;
+    margin: auto; }
+
+.label-hint {
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  color: #a7a7a7; }
+
+@media screen and (max-width: 1600px) {
+  .auth-window {
+    width: 50% !important; } }
+
+@media screen and (max-width: 1400px) {
+  .auth-window {
+    width: 60% !important; } }
+
+@media screen and (max-width: 991px) {
+  .auth-window {
+    width: 60% !important; }
+    .auth-window label {
+      width: 100%; }
+    .auth-window .hintMessage {
+      width: 100%; }
+  .auth-nav a {
+    font-size: 1.6vw; }
+    .auth-nav a:active {
+      box-shadow: 0 2px 2px #b9b9b9;
+      background: #d8dedc;
+      padding: 1px;
+      -webkit-tap-highlight-color: transparent; } }
+
+@media screen and (max-width: 767px) {
+  .auth-window {
+    width: 100% !important;
+    padding: 60px 20px; }
+    .auth-window label {
+      width: 100% !important; }
+  .auth-nav a {
+    font-size: 1.5em; } }
+
+@media screen and (max-width: 400px) {
+  .empty-tmpl-app .container-fluid {
+    padding: 0; }
+  .auth-nav {
+    margin-bottom: 60px;
+    font-size: 90%;
+    padding: 10px; } }

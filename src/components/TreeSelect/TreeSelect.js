@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DropdownTreeSelect from 'react-dropdown-tree-select';
-import './style.css';
+import './style.scss';
 
 
 function setClasses(){
@@ -39,11 +39,11 @@ function clearAll(){
 
 
 
-const onAction = ({action, node}) => { console.log(`onAction:: [${action}]`, node) }
+const onAction = ({action, node}) => { console.log(`onAction:: [${action}]`, node) };
 const onNodeToggle = (currentNode) => {
     console.log('onNodeToggle::', currentNode);
     setTimeout(setClasses,10);
-}
+};
 
 export default class TreeSelect extends Component{
     constructor(props){

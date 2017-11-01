@@ -132,7 +132,8 @@ class Conception extends Component {
 
     componentDidUpdate(prevProps, prevState){
         if(this.props.match.params.child){
-            if(prevProps.match.params.child !== this.props.match.params.child)this.getAvailableCities();    //если роуты не совпадают - получить новый список городов
+            if(prevProps.match.params.child !== this.props.match.params.child)
+                this.getAvailableCities();    //если роуты не совпадают - получить новый список городов
         }
         else{
             if(prevProps.match.params.id !== this.props.match.params.id){
@@ -150,20 +151,19 @@ class Conception extends Component {
 
 
     renderObjects(){    // рендер карточек объектов
-        if(this.state.objects.length){
-            let objectsForRender = this.state.objects.filter( object => {
-                let cityId = object.city_id;
-                return this.state.cities.some( city => {
-                    if(city.ID === cityId && city.checked)return true
-                })
-            });
-            return(
-                <Table data={objectsForRender}/>
-            )
-        }
-        else return(
+        if(!this.state.objects.length)return(
             <Loading/>
+        );
+        let objectsForRender = this.state.objects.filter( object => {
+            let cityId = object.city_id;
+            return this.state.cities.some( city => {
+                if(city.ID === cityId && city.checked)return true
+            })
+        });
+        return(
+            <Table data={objectsForRender}/>
         )
+
     }
 
     render(){

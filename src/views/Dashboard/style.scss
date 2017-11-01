@@ -1,0 +1,83 @@
+.card-header img.title-image{
+    height: 60px;
+    bottom: 0px;
+    right: 12px;
+    position:absolute;
+    float: right;
+    transition:visibility 0.4s linear 0s,opacity 0.2s linear 0s;
+    opacity:1;
+    max-width: 110%;
+}
+.card{
+    padding-bottom: 10px;
+}
+.card-body, .card-block {
+    text-align: center;
+}
+.card-header{
+  border-bottom:1px solid #dfe2e5!important;
+  padding-top: 40px!important;
+}
+.card:hover img.title-image{
+  opacity:0;
+  visibility: hidden;
+
+}
+.card:hover img.title-image_hidden{
+  visibility: visible;
+  opacity:1;
+}
+.card:hover {
+    border: 1px solid #8ed6fb;
+}
+.card-header img.title-image_hidden{
+    height: 60px;
+    bottom: 0px;
+    right: 12px;
+    position:absolute;
+    float: right;
+    opacity:0;
+    visibility: hidden;
+    transition:visibility 0.4s linear 0s,opacity 0.2s linear 0s;
+    max-width: 110%;
+}
+
+.card-header h5{
+    display: inline-block;
+}
+p.contacts {
+    font-weight: 200;
+    color: #435164;
+}
+
+.text-muted,strong.h4.indicator {
+    word-wrap: normal;
+}
+strong.h4.indicator{
+  font-size:1rem
+}
+
+@media screen and (max-width:717px){
+  .card-header img.title-image,.card-header img.title-image_hidden{
+    height: 45px;
+  }
+  strong.h4.indicator{
+    font-size:1rem
+  }
+}
+
+@media screen and (max-width:1527px) and (min-width:1200px){
+  strong.h4.indicator{
+    font-size:0.7rem
+  }
+}
+
+.nav-dropdown-items a.nav-link {
+    margin-left: 20px;
+}
+.nav-dropdown-items .nav-dropdown-items a.nav-link {
+    margin-left: 40px;
+}
+.nav-link.active{
+  font-weight:600
+}
