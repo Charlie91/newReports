@@ -28,15 +28,38 @@ class Dashboard extends PureComponent {
         };
         return ajaxRequest(API.cities+id,options)
             .then( data => {
-                let formattedData = data.map( item => {
-                    item.checked = true;
-                    item.value = item.label = item.city_name;
+                console.log(data);
+                let formattedCities = data.cities.map( item => {
+                        item.checked = true;
+                        item.value = item.label = item.city_name;
+                        item.ID = item.id;
+                        delete item.city_name;      //сделать что-нибудь с множественными delete
+                        delete item.id;
+                        delete item.priority;
+                        return item
+                });
+                let formattedAreas = data.areas.map( item => {
+                    item.checked = false;
+                    item.value = item.label = item.name;
                     item.ID = item.id;
+                    if(item.cities)
+                        item.children = item.cities.map( city => {
+                            city.checked = false;
+                            city.value = city.label = city.city_name;
+                            city.ID = city.id;
+                            delete city.city_name;
+                            delete city.id;
+                            delete city.priority;
+                            return city
+                        });
+                    delete item.cities;
                     delete item.city_name;
                     delete item.id;
+                    delete item.name;
                     delete item.priority;
                     return item
                 });
+                let formattedData = formattedCities.concat(formattedAreas);
                 this.props.upState('availableCities',formattedData) //передаем данные в родительский компонент
             })
             .catch( error => console.log(error))
@@ -50,7 +73,16 @@ class Dashboard extends PureComponent {
         };
         let conceptID = 1;
         if (!this.state.cities.length || this.state.objects.length)return;
-        let [cities,arr] = [this.state.cities, [] ];
+        let [cities,arr] = [[], [] ];
+
+
+        this.state.cities.forEach(item => {
+            if(item.children){
+                item.children.forEach(child => cities.push(child))
+            }
+            else cities.push(item)
+        });
+
         let objects = Promise.all(cities.map(item => {
             return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
                 .then(data => data)
@@ -74,13 +106,17 @@ class Dashboard extends PureComponent {
     }
 
 
-
     renderObjects(){    // рендер карточек объектов
         if(this.state.objects.length){
             let objectsForRender = this.state.objects.filter( object => {
                 let cityId = object.city_id;
                 return this.state.cities.some( city => {
-                    if(city.ID === cityId && city.checked)return true
+                    if(city.children){
+                        return city.children.some( child => {
+                            if(child.ID === cityId && child.checked)return true
+                        })
+                    }
+                    if(city.ID === cityId && city.checked)return true;
                 })
             });
             return(
@@ -98,6 +134,8 @@ class Dashboard extends PureComponent {
             )
         }
     }
+
+
 
     componentDidMount(){
         mobileSidebarHidden();

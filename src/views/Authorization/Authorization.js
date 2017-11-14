@@ -51,7 +51,7 @@ export default class Authorization extends Component {
             return false;
         }
         else{
-            this.setState({hasErrors:false})
+            this.setState({hasErrors:false});
             return true;
         }
     }
@@ -192,6 +192,7 @@ export default class Authorization extends Component {
     componentDidMount(){
         this.checkEitherLoggedInOrNot();//при заходе на стр сразу проверяем авторизован ли юзер
     }
+
     render() {
         return (
             <div className="auth-window animated fadeIn">

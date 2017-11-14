@@ -2,6 +2,7 @@
 body{
   &.sidebar-mobile-show{
     overflow: hidden;
+    position:fixed;
   }
 }
 
@@ -232,6 +233,9 @@ main.main{
   }
   .navbar-brand{
     display:none!important
+  }
+  .navbar .tree_select{
+    text-align:center!important
   }
 }
 

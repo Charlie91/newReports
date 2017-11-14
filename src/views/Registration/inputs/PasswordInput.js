@@ -85,6 +85,7 @@ class PasswordInput extends Component {
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setPassword.bind(this)}
+                           defaultValue={this.props.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="password"
                            placeholder="Пароль"
@@ -92,6 +93,7 @@ class PasswordInput extends Component {
                     <input
                         onBlur={this.confirmationPasswords.bind(this)}
                         onChange={this.setConfirmPassword.bind(this)}
+                        defaultValue={this.props.value}
                         className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
                         type="password"
                         placeholder="Подтверждение пароля"

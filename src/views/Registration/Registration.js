@@ -28,12 +28,37 @@ class Registration extends Component {
             organization:null,
             email:null,
             phone:null,
-            registrationIsSuccess:false
+            registrationIsSuccess:false,
+            registrationStep:1
         }
     }
 
     fieldIsValid(field,boolean){
         this.setState({[field]:boolean})
+    }
+
+    firstValidation(){
+        let state = this.state;
+        let obj = {
+            login: state.login,
+            password: state.password,
+            passwordsAreConfirm:state.passwordsAreConfirm,
+            email: state.email,
+            phone: state.phone,
+        };
+
+        for( let key in obj){        //если поле не изменялось пользователем - переводим его в false(невалидным)
+            if(this.state[key] === null) {
+                this.setState({[key]:false})
+            }
+        }
+
+        for( let key in obj){
+            if(!obj[key]) {
+                return false;     //если есть невалидные поля - останавливаем выполнение функции
+            }
+        }
+        return true;
     }
 
     finalValidation(e){
@@ -92,7 +117,8 @@ class Registration extends Component {
             <div className="text-white bg-success text-center card">
                 <div className="card-body card-block">
                     Поздравляем с успешной регистрацией, <strong>{this.state.login}</strong>!
-                Теперь вы можете <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>
+                     Чтобы <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>, предварительно
+                    нужно попросить у офис-менеджера произвести активацию.
                 </div>
             </div>
         )
@@ -116,6 +142,63 @@ class Registration extends Component {
             .then(data => this.setState({isLoggedIn:data.authorized})) //если пользователь залогинен - редиректим на главную
     }
 
+    goToSecondStep(e){  //функция перехода на следующий шаг
+        e.preventDefault();
+        if(this.firstValidation()){
+            this.setState({registrationStep:2})
+        }
+    }
+
+    goToFirstStep(e){
+        e.preventDefault();
+        this.setState({registrationStep:1})
+    }
+
+    showRegistrationByStep(){   //рендер-функция выводящая шаги регистрации
+        if(this.state.registrationStep === 1)
+            return(
+                <form action="#" method="POST">
+                    <LoginInput  value={this.state.login} isValid={this.state.login} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <PasswordInput value={this.state.password} isValid={this.state.password} isConfirm={this.state.passwordsAreConfirm} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <EmailInput  value={this.state.email} isValid={this.state.email} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <PhoneInput  value={this.state.phone} isValid={this.state.phone} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    {this.showRegistrationErrors()}
+                    <button
+                        onClick={this.goToSecondStep.bind(this)}
+                        type="submit"
+                        className="btn auth-btn"
+                    >
+                        Дальше
+                    </button>
+                </form>
+            );
+        else return(
+            <form action="#" method="POST">
+                <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                {this.showRegistrationErrors()}
+                <div style={{width:'80%', margin:'auto'}}>
+                    <button
+                        onClick={this.goToFirstStep.bind(this)}
+                        type="submit"
+                        className="col-md-4 btn auth-btn"
+                    >
+                        Назад
+                    </button>
+                    <button
+                        onClick={this.finalValidation.bind(this)}
+                        type="submit"
+                        className="offset-md-1 col-md-7 btn auth-btn"
+                    >
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </form>
+        )
+    }
+
     render() {
         if(this.state.isLoggedIn)
             return (
@@ -132,24 +215,7 @@ class Registration extends Component {
             return (
                 <div className="registration-form auth-window animated fadeIn">
                     <AuthNav/>
-                    <form action="#" method="POST">
-                        <LoginInput  isValid={this.state.login} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <PasswordInput isValid={this.state.password} isConfirm={this.state.passwordsAreConfirm} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <NameInput  isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <SurnameInput  isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <OrganizationInput  isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <PositionInput  isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <EmailInput  isValid={this.state.email} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <PhoneInput  isValid={this.state.phone} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        {this.showRegistrationErrors()}
-                        <button
-                            onClick={this.finalValidation.bind(this)}
-                            type="submit"
-                            className="btn auth-btn"
-                        >
-                            Зарегистрироваться
-                        </button>
-                    </form>
+                    {this.showRegistrationByStep()}
                 </div>
             )
     }

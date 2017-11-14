@@ -2,12 +2,15 @@
   td,th{
     position:relative
   }
-  background:#fff;
   thead th{
     border-bottom:none
   }
   tr:first-child td{
     border-top:none;
+  }
+
+  tr td:first-child{
+    font-weight:800
   }
 
   .average_column{
@@ -21,10 +24,11 @@
     height:88px
   }
   .fixed-td{
-    position: absolute;
-    background: white;
+    position: sticky;
+    position: -webkit-sticky;
     width: 150px;
     z-index: 7;
+    background: #eff3f6;
     border-right: 1px solid #d1d4d7;
   }
 
@@ -63,4 +67,38 @@
     margin-right: -20px;
   }
 }
+
+#header {
+  width: 150%;
+  display: block;
+  position: fixed;
+  background: #fff;
+  overflow: hidden;
+  z-index: 1;
+}
+#header div {
+  display: table-cell;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  font-weight: bold;
+}
+
+.app-body{
+  overflow-x:visible;
+}
+.vertical-table{
+  table{
+    font-size:3em;
+  }
+  thead tr th{
+    position:sticky;
+    position: -webkit-sticky;
+    top: 87px;
+    background: #eff3f6;
+    z-index: 1;
+  }
+
+}
+
 

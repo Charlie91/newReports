@@ -13749,7 +13749,8 @@ select {
               color: #d1d4d7; }
 
 body.sidebar-mobile-show {
-  overflow: hidden; }
+  overflow: hidden;
+  position: fixed; }
 
 .navbar .sidebar-minimizer {
   min-width: 50px; }
@@ -13926,7 +13927,9 @@ main.main {
   .main {
     padding-top: 25px !important; }
   .navbar-brand {
-    display: none !important; } }
+    display: none !important; }
+  .navbar .tree_select {
+    text-align: center !important; } }
 
 @media screen and (max-width: 1486px) {
   .bigCities {

@@ -1,7 +1,8 @@
 import React, { Component, PureComponent } from 'react';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
-import Table from './Table.js';
+import TableVertical from './TableVertical.js';
+import TableHorizontal from './TableHorizontal.js';
 import {formatNumericValue} from './../../utils/utils';
 import Loading from './../Loading/Loading';
 
@@ -16,7 +17,7 @@ class Conception extends Component {
         };
     }
 
-    formatObjectToShowInTable(object,additionalData){   //форматирование полученных данных для показа их в таблице
+    formatObjectToShowInTable(object,additionalData){   //форматирование полученных данных для возможности показа их в горизонтальной таблице React-Bootstrap-Table
         let days = additionalData.day,
             months = additionalData.month,
             years = additionalData.year;
@@ -54,6 +55,7 @@ class Conception extends Component {
     }
 
 
+
     getObjects() {  //получаем список объектов из списка городов   Promise.all версия v2
         let options = {
             method: 'GET',
@@ -62,7 +64,13 @@ class Conception extends Component {
         };
         let conceptID = this.props.match.params.child || this.props.match.params.id;
         if (!this.state.cities.length)return;
-        let cities = this.state.cities;
+        let cities = [];
+        this.state.cities.forEach(item => {
+            if(item.children){
+                item.children.forEach(child => cities.push(child))
+            }
+            else cities.push(item)
+        });
         // let arr = [];
         let objects = Promise.all(cities.map(item => {
             return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
@@ -93,10 +101,8 @@ class Conception extends Component {
             newData.then(data => {
                 this.setState({objects:data})
             })
-
         })
     }
-
 
 
     getAvailableCities(){    //получаем города в которых доступны объекты
@@ -108,16 +114,38 @@ class Conception extends Component {
         };
         return ajaxRequest(API.cities+id,options)
             .then( data => {
-                let formattedData = data.map( (item,i) => {
-                    if(!i)item.checked = true;
-                    else item.checked = false;
+                let formattedCities = data.cities.map( item => {
+                    item.checked = true;
                     item.value = item.label = item.city_name;
                     item.ID = item.id;
-                    delete item.city_name;
+                    delete item.city_name;      //сделать что-нибудь с множественными delete
                     delete item.id;
                     delete item.priority;
                     return item
                 });
+                let formattedAreas = data.areas.map( item => {
+                    item.checked = false;
+                    item.value = item.label = item.name;
+                    item.ID = item.id;
+                    if(item.cities)
+                        item.children = item.cities.map( city => {
+                            city.checked = false;
+                            city.value = city.label = city.city_name;
+                            city.ID = city.id;
+                            delete city.city_name;
+                            delete city.id;
+                            delete city.priority;
+                            return city
+                        });
+                    delete item.cities;
+                    delete item.city_name;
+                    delete item.id;
+                    delete item.name;
+                    delete item.priority;
+                    return item
+                });
+                let formattedData = formattedCities.concat(formattedAreas);
+
                 this.props.upState('availableCities',formattedData) //передаем данные в родительский компонент
             })
             .catch( error => console.log(error))
@@ -157,13 +185,19 @@ class Conception extends Component {
         let objectsForRender = this.state.objects.filter( object => {
             let cityId = object.city_id;
             return this.state.cities.some( city => {
-                if(city.ID === cityId && city.checked)return true
+                if(city.children){
+                    return city.children.some( child => {
+                        if(child.ID === cityId && child.checked)return true
+                    })
+                }
+                if(city.ID === cityId && city.checked)return true;
             })
         });
         return(
-            <Table data={objectsForRender}/>
+            <div>
+                <TableVertical data={objectsForRender}/>
+            </div>
         )
-
     }
 
     render(){

@@ -165,6 +165,13 @@ export default class ObjectPage extends Component {
         this.setState({endDate: date}, () => this.getFloorsData());
     }
 
+    componentDidUpdate(){
+        if( this.state.endDate.diff(this.state.startDate,'days') > 60 && this.state.timeSegment === 'H'){
+            this.setState({timeSegment:'D'});
+            alert('Детализация по часам недоступна если временной промежуток больше 60ти дней.');
+        }
+    }
+
     componentDidMount(){
         if(this.props.location.params){ //если начальные данные переданы с пропсов - идем 1м путем
             let obj = this.props.location.params.obj;
@@ -174,6 +181,7 @@ export default class ObjectPage extends Component {
             this.getNewObjectsData()
         }
     }
+
 
     render(){
         return (

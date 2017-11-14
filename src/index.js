@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter,HashRouter, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import 'bootstrap/dist/css/bootstrap.css';
+import Promise from 'promise-polyfill';
 
 // Styles
 // Import Font Awesome Icons Set
@@ -17,6 +18,12 @@ import Full from './containers/Full/'
 import Empty from './containers/Empty/'
 
 const history = createBrowserHistory();
+
+
+// To add to window
+if (!window.Promise) {  //полифилл для промисов
+    window.Promise = Promise;
+}
 
 ReactDOM.render((
     <HashRouter history={history}>

@@ -105,6 +105,11 @@ class Full extends Component {
         this.checkEitherLoggedInOrNot();//проверка авторизации
         this.receiveConceptionLists();//получаем список ссылок для бокового меню
         this.getUserData(); //парсинг пользовательских данных
+        document.body.classList.add('sidebar-fixed'); //добавляем класс к body чтобы выровнять контентный блок
+    }
+
+    componentWillUnmount(){
+        document.body.classList.remove('sidebar-mobile-show'); //фикс бага с уходом контентной части вправо после логаута.
     }
 
     setTitle(arr){  //установка заголовка страницы

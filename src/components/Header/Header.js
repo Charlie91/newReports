@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TreeSelectComp from './../TreeSelect/TreeSelect.js';
+import TreeSelectComp from '../../views/TreeSelect/TreeSelect.js';
 
 import {
     Col,
