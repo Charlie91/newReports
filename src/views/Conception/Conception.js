@@ -118,6 +118,7 @@ class Conception extends Component {
                     item.checked = true;
                     item.value = item.label = item.city_name;
                     item.ID = item.id;
+                    item.className = 'bold';
                     delete item.city_name;      //сделать что-нибудь с множественными delete
                     delete item.id;
                     delete item.priority;
@@ -126,7 +127,9 @@ class Conception extends Component {
                 let formattedAreas = data.areas.map( item => {
                     item.checked = false;
                     item.value = item.label = item.name;
+                    item.expanded = true;
                     item.ID = item.id;
+                    if(item.value === 'Армения')item.className = 'armenia';
                     if(item.cities)
                         item.children = item.cities.map( city => {
                             city.checked = false;
@@ -178,7 +181,7 @@ class Conception extends Component {
     }
 
 
-    renderObjects(){    // рендер карточек объектов
+    renderObjects(){    // рендер таблицы объектов
         if(!this.state.objects.length)return(
             <Loading/>
         );
@@ -195,7 +198,12 @@ class Conception extends Component {
         });
         return(
             <div>
-                <TableVertical data={objectsForRender}/>
+                {
+                    (objectsForRender.length) ?
+                        <TableVertical data={objectsForRender}/>
+                        :
+                        <h4 className="no-data-message">Нет данных для отображения</h4>
+                }
             </div>
         )
     }

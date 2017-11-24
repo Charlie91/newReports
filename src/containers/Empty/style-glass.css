@@ -1,0 +1,80 @@
+body, html {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+
+}
+svg {
+  display: none;
+}
+
+/*#content {*/
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*position: absolute;*/
+  /*background: url('mountains.jpg') no-repeat center center;*/
+  /*background-size: cover;*/
+/*}*/
+
+#text {
+  z-index: 3;
+  padding: 110px 50px 0;
+  text-align: center;
+  color: #fff;
+
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
+}
+#frostedBk {
+  width: 400px;
+  height: 500px;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  background: rgba(0, 0, 0, .5);
+  margin:0;
+  padding: 0;
+  z-index: 101;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px 1px rgba(0, 0, 0, .5), inset 0 0 150px  50px rgba(0, 0, 0, 1);
+  border-radius: 3px;
+  transition: background .2s;
+}
+#frostedBk:hover {
+  cursor: move;
+  background: rgba(0, 0, 0, .4);
+}
+#frostedBk p {
+  color: #fff;
+  position: absolute;
+  font-size: 13px;
+  letter-spacing: .05em;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 238px;
+  opacity: .8;
+  transition: all .2s;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+  transform: translate3d(0, 0, 0);
+}
+#frostedBk:hover p {
+  transform: translate3d(-3px, -3px, 0);
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, .5);
+}
+#blurredContentFrame {
+  z-index: 100;
+  left:0;
+  top:0;
+  overflow: hidden;
+  position: absolute;
+}
+#blurredContent {
+  position: absolute;
+  filter:blur(8px);
+  -webkit-filter:blur(8px);
+}

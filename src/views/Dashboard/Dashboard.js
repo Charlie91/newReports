@@ -33,6 +33,7 @@ class Dashboard extends PureComponent {
                         item.checked = true;
                         item.value = item.label = item.city_name;
                         item.ID = item.id;
+                        item.className = 'bold';
                         delete item.city_name;      //сделать что-нибудь с множественными delete
                         delete item.id;
                         delete item.priority;
@@ -42,6 +43,8 @@ class Dashboard extends PureComponent {
                     item.checked = false;
                     item.value = item.label = item.name;
                     item.ID = item.id;
+                    item.expanded = true;
+                    if(item.value === 'Армения')item.className = 'armenia';
                     if(item.cities)
                         item.children = item.cities.map( city => {
                             city.checked = false;
@@ -121,10 +124,17 @@ class Dashboard extends PureComponent {
             });
             return(
                 <Row>
-                    {objectsForRender.map( (item,i) => {
-                            return <DataCard key={i} obj={item} />
-                        }
-                    )}
+                    {
+                        (objectsForRender.length) ?
+
+                            objectsForRender.map( (item,i) => {
+                                    return <DataCard key={i} obj={item} />
+                                }
+                            )
+                            :
+                            <h4 className="no-data-message">Нет данных для отображения</h4>
+
+                    }
                 </Row>
             )
         }
@@ -151,7 +161,7 @@ class Dashboard extends PureComponent {
 
     render() {
         return (
-            <div style={{marginTop:'15px'}} className="animated fadeIn">
+            <div style={{marginTop:'15px'}} className="animated dashboard fadeIn">
                 {this.renderObjects()}
             </div>
         )

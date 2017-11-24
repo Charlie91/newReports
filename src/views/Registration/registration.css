@@ -1,0 +1,50 @@
+.registration-form {
+  width: 40%;
+  margin: auto; }
+  .registration-form input[type="password"]:first-child {
+    margin-bottom: 10px; }
+  .registration-form label {
+    width: 80%; }
+  .registration-form .hintMessage {
+    color: #336573; }
+  .registration-form .errorMessage {
+    color: #fd0101; }
+  .registration-form .errorMessage, .registration-form .hintMessage {
+    position: absolute;
+    width: 100%;
+    line-height: 1; }
+  .registration-form input.form-control.hasErrors {
+    border-bottom: solid 1px #e60505; }
+  .registration-form input:focus {
+    border: none;
+    border-bottom: 1px solid #8bc8e8; }
+  .registration-form a.registr-link {
+    color: #fff;
+    font-weight: bold;
+    font-size: 110%; }
+  .registration-form button.clear-field {
+    display: inline;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #c1cacb;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 0; }
+  .registration-form .reg_title {
+    text-align: left; }
+  @media screen and (min-width: 1200px) {
+    .registration-form .password-inputs label .field {
+      position: relative;
+      width: 45%;
+      display: inline-block; }
+      .registration-form .password-inputs label .field:first-of-type {
+        margin-right: 10%; }
+      .registration-form .password-inputs label .field:last-of-type[placeholder] {
+        font-size: 110%;
+        padding-bottom: 11px; } }
+  @media screen and (max-width: 700px) {
+    .registration-form input:focus {
+      border-bottom: 2px solid #8bc8e8; } }

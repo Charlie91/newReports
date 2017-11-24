@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
+import ClearField from './ClearField';
+import ParentInput from './ParentInput';
 
-class PositionInput extends Component {
+class PositionInput extends ParentInput { //Внимание! Наследует от родительского компонента
     constructor(props){
         super(props);
         this.state = {
-            value:null,
+            value:(props.value) ? props.value : '',
             focus:null,
             isValid:props.isValid
         }
     }
 
-    setHint(){
-        this.setState({focus:true});
-    }
-
-    hideHint(){
-        this.setState({focus:false});
-    }
 
     showHint(){  //функция рендера сообщения подсказки
         if(this.state.focus && !(this.state.isValid === false)){
@@ -35,13 +30,9 @@ class PositionInput extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
-        this.setState({isValid:nextProps.isValid})
-    }
-
 
     validateField(e){//функция-валидация
-        let value = e.target.value;
+        let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{3,20}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
@@ -54,11 +45,6 @@ class PositionInput extends Component {
         }
     }
 
-    setValue(e){
-        this.setState({value:e.target.value})
-    }
-
-
     render() {
         return (
             <div className="form-group">
@@ -67,11 +53,12 @@ class PositionInput extends Component {
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
-                           defaultValue={(this.props.value) ? this.props.value : ''}
+                           value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Должность"
                     />
+                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
                     {this.showHint()}
                     {this.showError()}
                 </label>

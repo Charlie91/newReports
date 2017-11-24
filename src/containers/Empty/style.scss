@@ -1,5 +1,12 @@
 .auth-layer{
+  display:flex;
   background: url('img/backgroundv2.jpg');
   background-size: 140%;
   background-position: 40% 0%;
+  .main{
+    padding-top:0
+  }
+  .empty-tmpl-app{
+    margin: auto 0;
+  }
 }

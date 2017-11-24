@@ -1,0 +1,13 @@
+.label-enter {
+  margin-top: 20px; }
+
+.label-enter.label-enter-active {
+  margin-top: 0;
+  transition: margin-top 200ms ease-in; }
+
+.label-leave {
+  margin-top: 0; }
+
+.label-leave.label-leave-active {
+  margin-top: 20px;
+  transition: margin-top 200ms ease-in; }

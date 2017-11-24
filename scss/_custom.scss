@@ -1,6 +1,6 @@
 // Here you can add other styles
 body{
-  &.sidebar-mobile-show{
+  &.sidebar-mobile-show, &.dropdown-select-show {
     overflow: hidden;
     position:fixed;
   }
@@ -31,12 +31,13 @@ body{
   }
 }
 
-$sidebar-header-height: 200px;
+$sidebar-header-height: 170px;
 
 .sidebar {
   .sidebar-header {
     height: $sidebar-header-height;
     padding-bottom: 10px;
+    margin-top:-40px;
     text-align: center;
     background: $sidebar-header-bg;
 
@@ -45,6 +46,7 @@ $sidebar-header-height: 200px;
       height:80px;
       margin: 20px auto 10px;
       border-radius: 50em;
+      background:#b6bded
     }
 
     .text-muted {
@@ -130,10 +132,10 @@ $sidebar-header-height: 200px;
 
 .d-lg-none,.d-md-down-none{
   margin: auto;
-  display: block;
+  display: inline-block;
   color: #fff;
-  width:100%;
-  text-align: right;
+  text-align: left;
+  width: 100%;
 }
 
 .app-header.navbar{
@@ -150,15 +152,10 @@ $sidebar-header-height: 200px;
   background:#141519!important
 }
 
-.card{
-  border: 1px solid #d1d4d7;
-  border-radius: 1px 1px 2px 2px;
-  box-shadow: 0 0 4px #cecece;
-}
-
 .navbar.app-header button.d-lg-none.navbar-toggler {
   text-align: left;
-  width: 0;
+  color: #0f0f0f;
+  width: 60px;
   left: 0;
   position: absolute;
   display: inline;
@@ -172,9 +169,6 @@ $sidebar-header-height: 200px;
   display: none;
 }
 
-.dropdown-trigger{
-  min-width: 300px;
-}
 
 .link-to-object{
   color: #151b1e;
@@ -193,7 +187,7 @@ main.main{
   margin-right:15px;
 }
 .main{
-  padding-top: 130px;
+  padding-top: 90px;
 }
 .mr-3.btn-group{
   height: 35px
@@ -227,9 +221,60 @@ main.main{
   max-height:390px;
 }
 
+button.settings-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+  height: 38px;
+  img{
+    width:23px
+  }
+}
+
+.sidebar-minimized {
+  .app-header.navbar{
+    margin-left: 50px;
+  }
+  .hamburger {
+    width: 100%;
+    max-width: 100%;
+  }
+  .settings-btn{
+    display: none;
+  }
+}
+
+.armenia span.node-label::before {
+  background-image: url('../img/flags/Armenia-new.png');
+  width: 12px;
+  background-size: 12px;
+  height: 12px;
+  display: inline-block;
+  content: '';
+  position: absolute;
+  margin-left: -18px;
+  margin-top: 4px;
+}
+
+.layout{
+  display: block;
+  height: 100%;
+  width: 115%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 11;
+  position: fixed;
+  margin-left: -15%;
+  top: 0;
+  left:0
+}
+
 @media screen and (max-width:991px){
   .main {
-    padding-top: 25px!important;
+    padding-top: 0px!important;
+    .container-fluid {
+      padding: 0 5px;
+    }
   }
   .navbar-brand{
     display:none!important
@@ -245,7 +290,7 @@ main.main{
   }
 }
 
-.sidebar-minimized .app-header.navbar{
-  margin-left: 50px;
-}
+
+
+
 

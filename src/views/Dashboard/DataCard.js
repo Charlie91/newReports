@@ -20,7 +20,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
          if(current.y !== 2017)return sum + 0;
          else return sum + current.v
      }, currentMonth);
-   return formatNumericValue(currentYear)
+   return formatNumericValue(currentYear,'чел.')
  }
 
  function decorator(val){
@@ -32,7 +32,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>
-                     <Col md="6">
+                     <Col xs="8" md="6">
                          <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
                                className="link-to-object"
                          >
@@ -40,7 +40,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                          </Link>
                          <p className="contacts">{props.obj.address}</p>
                      </Col>
-                     <Col md="6">
+                     <Col xs="4" md="6">
                          <img className="title-image" src="img/TradeCenters/rio_leninskiy.png"/>
                          <img className="title-image_hidden" src="img/TradeCenters/rio_leninskiy_color.png"/>
                      </Col>
@@ -49,19 +49,28 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
              <CardBody>
                  <Row>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
-                         <small className="text-muted">Сегодня</small>
-                         <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? decorator(formatNumericValue(props.obj.data.day[0].v)) : '-' }</strong>
+                         <div className="block_title">
+                            <small className="text-muted">Сегодня</small>
+                         </div>
+                         <div>
+                            <strong className="h4 indicator">{(props.obj.data) ? decorator(formatNumericValue(props.obj.data.day[0].v,'чел.')) : '-' }</strong>
+                         </div>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
-                         <small className="text-muted">{months[date.getMonth()]}</small>
-                         <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day.reduce((sum, current) => sum + current.v, 0)) : '' }</strong>
+                         <div className="block_title">
+                            <small className="text-muted">{months[date.getMonth()]}</small>
+                         </div>
+                         <div>
+                            <strong className="h4 indicator">{(props.obj.data) ? formatNumericValue(props.obj.data.day.reduce((sum, current) => sum + current.v, 0),'чел.') : '' }</strong>
+                         </div>
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
-                         <small className="text-muted">2017</small>
-                         <br/>
-                         <strong className="h4 indicator">{(props.obj.data) ? toCountLastYear(props.obj) : '' }</strong>
+                         <div className="block_title">
+                             <small className="text-muted">2017</small>
+                         </div>
+                         <div>
+                            <strong className="h4 indicator">{(props.obj.data) ? toCountLastYear(props.obj) : '' }</strong>
+                         </div>
                      </Col>
                  </Row>
              </CardBody>

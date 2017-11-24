@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
+import ClearField from './ClearField';
+import ParentInput from './ParentInput';
 
-class PasswordInput extends Component {
+class PasswordInput extends ParentInput { //Внимание! Наследует от родительского компонента
     constructor(props){
         super(props);
         this.state = {
+            password:(props.value) ? props.value : '',
+            confirmPassword:(props.value) ? props.value : '',
             focus:null,
             isValid:props.isValid,
             isConfirm:props.isConfirm
         }
     }
 
-    setHint(){
-        this.setState({focus:true});
-    }
-    hideHint(){
-        this.setState({focus:false});
-    }
 
     showMessage(){
         if(this.state.focus && !(this.state.isValid === false)&& !(this.state.isConfirm === false) ){
@@ -39,7 +37,7 @@ class PasswordInput extends Component {
     }
     //^[a-zA-Z0-9-_\.]{1,20}$
     validateField(e){//функция-валидация
-        let value = e.target.value;
+        let value = this.state.password;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         let regExp = new RegExp('^[a-zA-Z0-9-_\.]{6,20}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
@@ -73,6 +71,16 @@ class PasswordInput extends Component {
         );
     }
 
+    clearField(e){
+        e.preventDefault();
+        this.setState({password:''},() =>  this.validateField());
+    }
+
+    clearConfirmField(e){
+        e.preventDefault();
+        this.setState({confirmPassword:''},() =>  this.confirmationPasswords());
+    }
+
     componentWillReceiveProps(nextProps){
         this.setState({isValid:nextProps.isValid, isConfirm:nextProps.isConfirm})
     }
@@ -81,23 +89,29 @@ class PasswordInput extends Component {
         return (
             <div className="form-group password-inputs">
                 <label>
-                    {animateDynamicLabel(this.state.password, 'Пароль')}
-                    <input onFocus={this.setHint.bind(this)}
-                           onBlur={this.validateField.bind(this)}
-                           onChange={this.setPassword.bind(this)}
-                           defaultValue={this.props.value}
-                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
-                           type="password"
-                           placeholder="Пароль"
-                    />
-                    <input
-                        onBlur={this.confirmationPasswords.bind(this)}
-                        onChange={this.setConfirmPassword.bind(this)}
-                        defaultValue={this.props.value}
-                        className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
-                        type="password"
-                        placeholder="Подтверждение пароля"
-                    />
+                    <div className="field">
+                        {animateDynamicLabel(this.state.password, 'Пароль')}
+                        <input onFocus={this.setHint.bind(this)}
+                               onBlur={this.validateField.bind(this)}
+                               onChange={this.setPassword.bind(this)}
+                               value={this.state.password}
+                               className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                               type="password"
+                               placeholder="Пароль"
+                        />
+                        <ClearField render={this.state.password} clearField={this.clearField.bind(this)}/>
+                    </div>
+                    <div className="field">
+                        <input
+                            onBlur={this.confirmationPasswords.bind(this)}
+                            onChange={this.setConfirmPassword.bind(this)}
+                            value={this.state.confirmPassword}
+                            className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
+                            type="password"
+                            placeholder="Подтверждение пароля"
+                        />
+                        <ClearField render={this.state.confirmPassword} clearField={this.clearConfirmField.bind(this)}/>
+                    </div>
                     {this.showMessage()}
                     {this.showError()}
                 </label>

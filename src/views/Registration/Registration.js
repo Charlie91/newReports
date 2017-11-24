@@ -12,14 +12,16 @@ import './registration.scss';
 import {ajaxRequest,checkEitherLoggedInOrNot} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import { Link, Redirect} from 'react-router-dom';
+import {
+    Row, Col
+} from "reactstrap";
 
 
 
 class Registration extends Component {
     constructor(props){
         super(props);
-        this.state = {    //состояние null у состояний значит что это поле еще не изменялось, т.е. начальное состояние
-            login:null,     //false - то, что поле невалидное
+        this.state = {    //состояние null у состояний значит что это поле еще не изменялось, т.е. начальное состояние//false - то, что поле невалидное
             password:null,  // любое трушное значение - что все ок
             passwordsAreConfirm:null,
             name:null,
@@ -37,10 +39,9 @@ class Registration extends Component {
         this.setState({[field]:boolean})
     }
 
-    firstValidation(){
+    firstValidation(){  //валидация на первом шаге
         let state = this.state;
         let obj = {
-            login: state.login,
             password: state.password,
             passwordsAreConfirm:state.passwordsAreConfirm,
             email: state.email,
@@ -48,7 +49,7 @@ class Registration extends Component {
         };
 
         for( let key in obj){        //если поле не изменялось пользователем - переводим его в false(невалидным)
-            if(this.state[key] === null) {
+            if(state[key] === null) {
                 this.setState({[key]:false})
             }
         }
@@ -61,18 +62,11 @@ class Registration extends Component {
         return true;
     }
 
-    finalValidation(e){
+    finalValidation(e){ //валидация на втором шаге
         e.preventDefault();
-
-        for( let key in this.state){        //если поле не изменялось пользователем - переводим его в false(невалидным)
-            if(this.state[key] === null) {
-                this.setState({[key]:false})
-            }
-        }
 
         let state = this.state;
         let obj = {
-            login: state.login,
             password: state.password,
             passwordsAreConfirm:state.passwordsAreConfirm,
             email: state.email,
@@ -82,6 +76,12 @@ class Registration extends Component {
             organization: state.organization,
             job: state.position
         };
+
+        for( let key in obj){        //если поле не изменялось пользователем - переводим его в false(невалидным)
+            if(state[key] === null) {
+                this.setState({[key]:false})
+            }
+        }
 
         for( let key in obj){
             if(!obj[key]) {
@@ -116,8 +116,8 @@ class Registration extends Component {
         return (
             <div className="text-white bg-success text-center card">
                 <div className="card-body card-block">
-                    Поздравляем с успешной регистрацией, <strong>{this.state.login}</strong>!
-                     Чтобы <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>, предварительно
+                    Поздравляем с успешной регистрацией, <strong>{this.state.name}</strong>!
+                    Чтобы <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>, предварительно
                     нужно попросить у офис-менеджера произвести активацию.
                 </div>
             </div>
@@ -127,11 +127,11 @@ class Registration extends Component {
     showRegistrationErrors(){
         if(this.state.registrationError){
             return (
-            <div className="text-white bg-danger text-center card">
-                <div className="card-body card-block">
-                    {this.state.registrationError}
+                <div className="text-white bg-danger text-center card">
+                    <div className="card-body card-block">
+                        {this.state.registrationError}
+                    </div>
                 </div>
-            </div>
             )
         }
     }
@@ -147,6 +147,9 @@ class Registration extends Component {
         if(this.firstValidation()){
             this.setState({registrationStep:2})
         }
+        else{
+            console.log('not valid')
+        }
     }
 
     goToFirstStep(e){
@@ -158,43 +161,56 @@ class Registration extends Component {
         if(this.state.registrationStep === 1)
             return(
                 <form action="#" method="POST">
-                    <LoginInput  value={this.state.login} isValid={this.state.login} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                    <PasswordInput value={this.state.password} isValid={this.state.password} isConfirm={this.state.passwordsAreConfirm} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <label><h4 className="reg_title">Шаг 1</h4></label>
                     <EmailInput  value={this.state.email} isValid={this.state.email} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <PasswordInput value={this.state.password} isValid={this.state.password} isConfirm={this.state.passwordsAreConfirm} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     <PhoneInput  value={this.state.phone} isValid={this.state.phone} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     {this.showRegistrationErrors()}
-                    <button
-                        onClick={this.goToSecondStep.bind(this)}
-                        type="submit"
-                        className="btn auth-btn"
-                    >
-                        Дальше
-                    </button>
+                    <label>
+                        <Row>
+                            <Col md={{ size: 6, offset:3}} xs={{ size: 7, offset: 5 }}>
+                                <button
+                                    onClick={this.goToSecondStep.bind(this)}
+                                    type="submit"
+                                    className="btn auth-btn"
+                                >
+                                    Дальше
+                                </button>
+                            </Col>
+                        </Row>
+                    </label>
                 </form>
             );
         else return(
             <form action="#" method="POST">
+                <label><h4 className="reg_title">Шаг 2</h4></label>
                 <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 {this.showRegistrationErrors()}
-                <div style={{width:'80%', margin:'auto'}}>
-                    <button
-                        onClick={this.goToFirstStep.bind(this)}
-                        type="submit"
-                        className="col-md-4 btn auth-btn"
-                    >
-                        Назад
-                    </button>
-                    <button
-                        onClick={this.finalValidation.bind(this)}
-                        type="submit"
-                        className="offset-md-1 col-md-7 btn auth-btn"
-                    >
-                        Зарегистрироваться
-                    </button>
-                </div>
+                <label>
+                    <Row>
+                        <Col md={{ size: 4}} xs={{ size: 4}}>
+                            <button
+                                onClick={this.goToFirstStep.bind(this)}
+                                type="submit"
+                                className="btn back-btn"
+                            >
+                                Назад
+                            </button>
+                        </Col>
+                        <Col md={{ size: 8}} xs={{ size: 8 }}>
+                            <button
+                                onClick={this.finalValidation.bind(this)}
+                                type="submit"
+                                className="btn auth-btn"
+                            >
+                                Зарегистрироваться
+                            </button>
+                        </Col>
+                    </Row>
+                </label>
             </form>
         )
     }
@@ -207,8 +223,8 @@ class Registration extends Component {
         else if(this.state.registrationIsSuccess)
             return (
                 <div className="registration-form auth-window animated fadeIn">
-                        <AuthNav/>
-                     {this.showSuccessMessage()}
+                    <AuthNav/>
+                    {this.showSuccessMessage()}
                 </div>
             );
         else

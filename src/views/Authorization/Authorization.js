@@ -5,7 +5,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest} from './../../utils/utils';
-
+import {
+    Row, Col
+} from "reactstrap";
 
 export function showDynamicLabel(nameProperty,text){    //динамический показ лейбла у форм
     if(nameProperty){
@@ -154,7 +156,7 @@ export default class Authorization extends Component {
     showForm(){
             return(
                 <div>
-                    <form action="#" method="POST">
+                    <form action="#" autoComplete="off" method="POST">
                         <div className="form-group">
                             <label>
                                 {animateDynamicLabel(this.state.login, 'Логин')}
@@ -162,6 +164,7 @@ export default class Authorization extends Component {
                                     onChange={this.setLogin.bind(this)}
                                     className="form-control"
                                     value={this.state.login}
+                                    autoComplete="new-password"
                                     placeholder="Логин"
                                 />
                             </label>
@@ -169,6 +172,7 @@ export default class Authorization extends Component {
                                 {animateDynamicLabel(this.state.password, 'Пароль')}
                                 <input
                                     type="password"
+                                    autoComplete="new-password"
                                     value={this.state.password}
                                     onChange={this.setPassword.bind(this)}
                                     className="form-control"
@@ -177,13 +181,17 @@ export default class Authorization extends Component {
                             </label>
                             {this.showError()}
                         </div>
-                        <button
-                            type="submit"
-                            className="btn auth-btn"
-                            onClick={this.logIn.bind(this)}
-                        >
-                            Войти
-                        </button>
+                        <Row>
+                            <Col md={{ size: 4, offset:4 }}>
+                                <button
+                                    type="submit"
+                                    className="btn auth-btn"
+                                    onClick={this.logIn.bind(this)}
+                                >
+                                    Войти
+                                </button>
+                            </Col>
+                        </Row>
                     </form>
                 </div>
             )
@@ -203,6 +211,7 @@ export default class Authorization extends Component {
                         :
                         this.showForm()
                 }
+                <div className="blur_layout"> </div>
             </div>
         )
     }

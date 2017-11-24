@@ -1,19 +1,38 @@
 
 
+//.label-enter {
+//  opacity: 0.01;
+//}                    // анимация fadeIn/fadeOut
+//
+//.label-enter.label-enter-active {
+//  opacity: 1;
+//  transition: opacity 500ms ease-in;
+//}
+//
+//.label-leave {
+//  opacity: 1;
+//}
+//
+//.label-leave.label-leave-active {
+//  opacity: 0.01;
+//  transition: opacity 300ms ease-in;
+//}
+
+
 .label-enter {
-  opacity: 0.01;
+  margin-top: 20px;
 }
 
 .label-enter.label-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+  margin-top: 0;
+  transition: margin-top 200ms ease-in;
 }
 
 .label-leave {
-  opacity: 1;
+  margin-top:0;
 }
 
 .label-leave.label-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  margin-top: 20px;
+  transition: margin-top 200ms ease-in;
 }

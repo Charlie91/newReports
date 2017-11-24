@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../adminka/React_Starter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../frosted-glass-effect" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../react-dropdown-tree-select" vcs="Git" />
   </component>
 </project>

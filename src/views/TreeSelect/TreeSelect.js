@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import DropdownTreeSelect from 'react-dropdown-tree-select';
-import './style.scss';
+import ReactDOM from 'react-dom';
+import DropdownTreeSelect from './react-dropdown-tree-select.js';//измененный компонент с добавленной функцией поиска.
+import './style.scss';                //Изначальный компонент в node_modules под названием react-dropdown-tree-select
+import Buttons from "./Buttons";
 
 
 function setClasses(){
@@ -64,26 +66,21 @@ export default class TreeSelect extends Component{
                     item.children.forEach(child => child.checked = currentNode.checked)
                 }
             }
-            else{
-                item.expanded = false;
-            }
             if(item.children){
                 item.children.forEach( child => {
                     if(child.value === currentNode.value){
                         child.checked = currentNode.checked;
-                        item.expanded = true;
                         if(currentNode.checked === false){
                             item.checked = false;
                         }
                     }
                 })
             }
-
             return item
         });
-
         this.setCities(cities);
     }
+
 
     disableInput(){
         let input = document.querySelector('.tag-item:last-child input');
@@ -97,11 +94,20 @@ export default class TreeSelect extends Component{
 
     checkAllOptions(e){
         e.preventDefault();
+        this.setCheckField(true);
+    }
+
+    clearAllOptions(e){
+        e.preventDefault();
+        this.setCheckField(false);
+    }
+
+    setCheckField(boolean){
         let cities = this.state.availableCities.map( item => {
-            item.checked = true;
+            item.checked = boolean;
             if(item.children){
                 item.children.forEach( child => {
-                    child.checked = true
+                    child.checked = boolean
                 })
             }
             return item
@@ -122,11 +128,34 @@ export default class TreeSelect extends Component{
     componentDidMount(){
         this.disableInput();
         setTimeout(setClasses,10);
+        this.fixSelect();
     }
+
+    fixSelect(){
+        if(document.body.clientWidth > 1199)return;
+        console.log(document.body.clientWidth);
+        let select = document.querySelector('.tree_select'),
+            ul = document.querySelector('ul.tag-list'),
+            layout = document.getElementsByClassName('layout')[0],
+            dropdown = document.getElementsByClassName('dropdown')[0],
+            links = document.getElementsByClassName('dropdown-button'),
+            header = document.getElementsByClassName('app-header')[0],
+            body = document.body;
+
+        layout.onclick = (e) => {
+            e.stopPropagation();
+            dropdown.classList.remove('dropdown--active');
+        };
+
+    }
+
     render(){
         return (
             <div className="tree_select">
                 <DropdownTreeSelect
+                    checkAll = {this.checkAllOptions.bind(this)}
+                    clearAll = {this.clearAllOptions.bind(this)}
+                    searchPlaceholderText = "Поиск города"
                     placeholderText="Выбрать город"
                     data={this.state.availableCities}
                     onChange={this.onChange.bind(this)}

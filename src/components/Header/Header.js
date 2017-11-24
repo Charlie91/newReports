@@ -44,21 +44,22 @@ class Header extends Component {
     }
 
 
+
+
     render() {
         return (
             <header className="app-header navbar">
                 <Col>
                     <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
-                    <h5 className="page-title" style={{ paddingLeft: '15px'}}>{this.props.title}</h5>
+                    <h5 className="page-title" >{this.props.title}</h5>
                     {(~this.props.location.pathname.indexOf('object')) ?
                         <p className="address">{this.props.address}</p>
-                            :
-                    < TreeSelectComp
-                        upState={this.sendDataUpward.bind(this)}
-                        availableCities={this.props.availableCities}
+                        :
+                        < TreeSelectComp
+                            upState={this.sendDataUpward.bind(this)}
+                            availableCities={this.props.availableCities}
                         />
                     }
-
                 </Col>
             </header>
         )

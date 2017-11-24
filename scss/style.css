@@ -8661,7 +8661,7 @@ app-root {
       left: 50%;
       margin-left: -100px; }
   .app-body {
-    margin-top: 105px; }
+    margin-top: 93px; }
   .sidebar {
     position: fixed;
     width: 250px;
@@ -13748,7 +13748,7 @@ select {
               margin: -2px 0px 0px 5px;
               color: #d1d4d7; }
 
-body.sidebar-mobile-show {
+body.sidebar-mobile-show, body.dropdown-select-show {
   overflow: hidden;
   position: fixed; }
 
@@ -13778,15 +13778,17 @@ body.sidebar-mobile-show {
   color: #9fa1a3; }
 
 .sidebar .sidebar-header {
-  height: 200px;
+  height: 170px;
   padding-bottom: 10px;
+  margin-top: -40px;
   text-align: center;
   background: transparent; }
   .sidebar .sidebar-header .img-avatar {
     width: 80px;
     height: 80px;
     margin: 20px auto 10px;
-    border-radius: 50em; }
+    border-radius: 50em;
+    background: #b6bded; }
   .sidebar .sidebar-header .text-muted {
     margin-top: -5px; }
   .sidebar .sidebar-header > .btn-group, .sidebar .sidebar-header > .fc-button-group {
@@ -13800,7 +13802,7 @@ body.sidebar-mobile-show {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 105px - 200px) !important; }
+  height: calc(100vh - 105px - 170px) !important; }
 
 .sidebar-minimized .sidebar-header {
   display: none; }
@@ -13838,10 +13840,10 @@ body.sidebar-mobile-show {
 
 .d-lg-none, .d-md-down-none {
   margin: auto;
-  display: block;
+  display: inline-block;
   color: #fff;
-  width: 100%;
-  text-align: right; }
+  text-align: left;
+  width: 100%; }
 
 .app-header.navbar {
   text-align: center;
@@ -13855,14 +13857,10 @@ body.sidebar-mobile-show {
 .nav-dropdown-items .nav-link, .nav-dropdown-items .navbar .dropdown-toggle, .navbar .nav-dropdown-items .dropdown-toggle {
   background: #141519 !important; }
 
-.card {
-  border: 1px solid #d1d4d7;
-  border-radius: 1px 1px 2px 2px;
-  box-shadow: 0 0 4px #cecece; }
-
 .navbar.app-header button.d-lg-none.navbar-toggler {
   text-align: left;
-  width: 0;
+  color: #0f0f0f;
+  width: 60px;
   left: 0;
   position: absolute;
   display: inline; }
@@ -13872,9 +13870,6 @@ body.sidebar-mobile-show {
 
 .sidebar-mobile-show .app-header button.d-lg-none.navbar-toggler {
   display: none; }
-
-.dropdown-trigger {
-  min-width: 300px; }
 
 .link-to-object {
   color: #151b1e; }
@@ -13890,7 +13885,7 @@ main.main {
   margin-right: 15px; }
 
 .main {
-  padding-top: 130px; }
+  padding-top: 90px; }
 
 .mr-3.btn-group, .mr-3.fc-button-group {
   height: 35px; }
@@ -13923,9 +13918,52 @@ main.main {
 .Select-menu {
   max-height: 390px; }
 
+button.settings-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+  height: 38px; }
+  button.settings-btn img {
+    width: 23px; }
+
+.sidebar-minimized .app-header.navbar {
+  margin-left: 50px; }
+
+.sidebar-minimized .hamburger {
+  width: 100%;
+  max-width: 100%; }
+
+.sidebar-minimized .settings-btn {
+  display: none; }
+
+.armenia span.node-label::before {
+  background-image: url("../img/flags/Armenia-new.png");
+  width: 12px;
+  background-size: 12px;
+  height: 12px;
+  display: inline-block;
+  content: '';
+  position: absolute;
+  margin-left: -18px;
+  margin-top: 4px; }
+
+.layout {
+  display: block;
+  height: 100%;
+  width: 115%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 11;
+  position: fixed;
+  margin-left: -15%;
+  top: 0;
+  left: 0; }
+
 @media screen and (max-width: 991px) {
   .main {
-    padding-top: 25px !important; }
+    padding-top: 0px !important; }
+    .main .container-fluid {
+      padding: 0 5px; }
   .navbar-brand {
     display: none !important; }
   .navbar .tree_select {
@@ -13934,6 +13972,3 @@ main.main {
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }
-
-.sidebar-minimized .app-header.navbar {
-  margin-left: 50px; }

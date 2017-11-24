@@ -11,20 +11,27 @@
       border-bottom: solid 2.5px rgba(142, 214, 250, 0.8); }
 
 .auth-btn {
+  width: 100%;
   background: #8ed6fa;
   color: #fff;
   font-size: 130%;
-  padding: 5px 40px;
   border-radius: 3px; }
   .auth-btn:disabled {
     background-color: rgba(216, 216, 216, 0.6);
     box-shadow: 0 0 2px #b3b3b3; }
 
+button.btn.back-btn {
+  background: no-repeat;
+  color: rgba(57, 67, 85, 0.8);
+  font-size: 18px; }
+  button.btn.back-btn:focus {
+    box-shadow: none; }
+
 .auth-window {
   width: 40%;
   margin: auto;
-  background: radial-gradient(rgba(245, 248, 250, 0.9), rgba(244, 245, 244, 0.9));
-  background-color: rgba(255, 255, 255, 0.9);
+  background: radial-gradient(rgba(245, 248, 250, 0.85), rgba(244, 245, 244, 0.85));
+  background-color: rgba(255, 255, 255, 0.85);
   text-align: center;
   padding: 60px 80px;
   border-radius: 3px;
@@ -37,6 +44,10 @@
     margin-bottom: 35px; }
   .auth-window form {
     text-align: center; }
+  .auth-window input:-webkit-autofill, .auth-window input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #3e515b !important;
+    color: #3e515b !important;
+    -webkit-box-shadow: 0 0 0px 1000px #f5f7f8 inset; }
   .auth-window input {
     background: none;
     border: none;
@@ -47,7 +58,10 @@
     margin-bottom: 5px;
     font-size: 110%; }
     .auth-window input:focus {
-      background: transparent; }
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #8bc8e8;
+      box-shadow: none; }
   .auth-window .hintMessage {
     width: 70%;
     margin: auto; }
@@ -56,7 +70,7 @@
   position: absolute;
   left: 10px;
   top: -20px;
-  color: #a7a7a7; }
+  color: #c1cacb; }
 
 @media screen and (max-width: 1600px) {
   .auth-window {
@@ -84,15 +98,21 @@
 @media screen and (max-width: 767px) {
   .auth-window {
     width: 100% !important;
+    border-radius: 10px;
     padding: 60px 20px; }
     .auth-window label {
       width: 100% !important; }
   .auth-nav a {
-    font-size: 1.5em; } }
+    font-size: 1.5em; }
+  .dropdown__content.dropdown-content {
+    height: auto;
+    max-height: 70vh; }
+  .empty-tmpl-app .container-fluid {
+    padding: 24px; } }
 
 @media screen and (max-width: 400px) {
   .empty-tmpl-app .container-fluid {
-    padding: 0; }
+    padding: 20px; }
   .auth-nav {
     margin-bottom: 60px;
     font-size: 90%;

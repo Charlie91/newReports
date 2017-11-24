@@ -36,12 +36,12 @@ export default class LogOut extends Authorization { // Внимание! Это�
             })
             .catch(error => console.log(error));
     }
-
+//<button className="btn btn-link" onClick={this.logOff.bind(this)}><i className="fa fa-user-times fa-lg mt-1"></i></button>
     render(){
         return (
             <div>
                 { (this.state.isLoggedIn === false) ? <Redirect to="/authorization"/> : ''}
-                <button className="btn btn-link" onClick={this.logOff.bind(this)}><i className="fa fa-user-times fa-lg mt-1"></i></button>
+                <button className="settings-btn" onClick={this.logOff.bind(this)}><img src="img/settings.png"/></button>
             </div>
         )
     }

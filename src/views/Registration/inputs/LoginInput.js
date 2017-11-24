@@ -2,23 +2,17 @@ import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
 import {API} from './../../../utils/api_paths';
 import {ajaxRequest,checkEitherLoggedInOrNot} from './../../../utils/utils';
+import ClearField from './ClearField';
+import ParentInput from './ParentInput';
 
-class LoginInput extends Component {
+class LoginInput extends ParentInput { //Внимание! Наследует от родительского компонента
     constructor(props){
         super(props);
         this.state = {
-            value:null,
+            value:(props.value) ? props.value : '',
             focus:null,
             isValid:props.isValid
         }
-    }
-
-    setHint(){
-        this.setState({focus:true});
-    }
-
-    hideHint(){
-        this.setState({focus:false});
     }
 
     showHint(){  //функция рендера сообщения подсказки
@@ -42,10 +36,6 @@ class LoginInput extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
-            this.setState({isValid:nextProps.isValid})
-    }
-
     checkAvailability(){
        let url = API.register + '?login=' + this.state.value;
         let options = {
@@ -62,9 +52,8 @@ class LoginInput extends Component {
             .catch(error => console.log(error));
     }
 
-
     validateField(e){//функция-валидация
-        let value = e.target.value;
+        let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         let regExp = new RegExp('^[a-zA-Z][a-zA-Z0-9-_\.]{5,20}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
@@ -78,10 +67,6 @@ class LoginInput extends Component {
         this.checkAvailability();
     }
 
-    setValue(e){
-        this.setState({value:e.target.value})
-    }
-
     render() {
         return (
             <div className="form-group">
@@ -90,11 +75,12 @@ class LoginInput extends Component {
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
-                           defaultValue={this.props.value}
+                           value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Логин"
                     />
+                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
                     {this.showHint()}
                     {this.showError()}
                 </label>

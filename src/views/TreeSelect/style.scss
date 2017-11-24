@@ -1,5 +1,5 @@
 @import "../../../scss/variables";
-
+$node-padding:3px 10px;
 
 @font-face {
     font-family: ProximaNova; /* Имя шрифта */
@@ -108,13 +108,13 @@ body{
     margin-right: 4px;
     padding: 1px 7px;
     color: #20a8d8;
-    border: 1px solid transparent;
+    border: solid 1px #8ed6fa;
     background-color: transparent;
     background-image: none;
-    border-color: #20a8d8;
     text-align: center;
     cursor:pointer;
     transition: all 0.1s ease-in;
+    border-radius: 4px;
 }
 .tag-item:last-child input {
     width: 130px;
@@ -123,7 +123,8 @@ body{
     cursor:pointer
 }
 .tag-item:last-child input::placeholder{
-    color:#20a8d8;
+    color:#354052;
+    font-weight:300;
 }
 .tag-item:last-child:hover {
     background-color: #20a8d8;
@@ -189,11 +190,8 @@ body{
 
 a.dropdown__trigger, .dropdown__content.dropdown-content{
     width:85%;
-    max-height: 300px;
 }
-ul.root{
-    max-height: 300px;
-}
+
 
 ul.tag-list {
     width: 100%;
@@ -216,7 +214,7 @@ input.checkbox-item + span {
     height: 100%;
 }
 span.node-label {
-    padding: 3px 10px;
+    padding: $node-padding;
 }
 .checkedField span.node-label{
     background-image: linear-gradient(to bottom, rgba(142, 214, 250, 0.15), rgba(142, 214, 250, 0.2));
@@ -235,7 +233,7 @@ li.node:hover {
 .tag-item:last-child::after{
     content: '\25BC';
     cursor: pointer;
-    color: #20a8d8;
+    color: #354052;
     font-size:10px;
     margin-left: -18px;
 }
@@ -245,6 +243,71 @@ li.node:hover {
 .tree_select{
     margin-left: 8px;
     text-align: left;
+}
+
+.dropdown__content.dropdown-content {
+    width: 300px;
+    left: 0;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 100;
+}
+
+li.node.leaf.clear-all, li.node.leaf.select-all {
+    width: 50%;
+    color: #6aa9c8;
+    display: inline-block;
+    text-align: center;
+    font-size: 95%;
+}
+li.node.leaf.clear-all span, li.node.leaf.select-all span {
+    text-decoration: underline;
+}
+li.node.leaf.select-all.checkedField span, li.node.leaf.clear-all.checkedField span {
+    background: none;
+}
+a.dropdown-button{
+    text-decoration: underline;
+    width: 50%;
+    display: inline-block;
+    text-align:left;
+    padding:$node-padding;
+    color:#6aa9c8;
+}
+
+.dropdown-content .toggle{
+    display:none
+}
+
+.dropdown-search-item{
+    background-color: rgba(235, 235, 235, 0.8);
+    padding: 8px 11px;
+    margin: -10px -10px 5px -10px;
+    input{
+        width: 100%;
+        padding: 0px 10px;
+        height: 22px;
+        border:none
+    }
+}
+
+.bold span.node-label{
+    font-weight:500
+}
+
+.page-title{
+    margin-bottom: 0px;
+    color:#354052;
+    padding-left:15px
+}
+
+.none{
+    display:none!important
+}
+a.dropdown__trigger.dropdown-trigger {
+    min-width: 300px;
 }
 @media screen and (max-width:1070px){
     .tag-item:not(:last-child){
@@ -274,37 +337,25 @@ li.node:hover {
     li.node {
         text-align: left;
     }
-
+    .page-title{
+        padding-left:0;
+    }
+    a.dropdown__trigger.dropdown-trigger {
+        min-width: 0;
+    }
 
 }
 @media screen and (max-width:400px){
-    .dropup, .dropdown,.dropdown__content.dropdown-content {
+    .dropup, .dropdown {
+        width: 180px!important;
+    }
+    .dropdown__content.dropdown-content{
         width: 295px!important;
+        margin-left: -32%;
     }
 }
 
-.dropdown__content.dropdown-content {
-    width: 300px;
-    left: 0;
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 
-li.node.leaf.clear-all, li.node.leaf.select-all {
-    width: 50%;
-    color: #6aa9c8;
-    display: inline-block;
-    text-align: center;
-    font-size: 95%;
-}
-li.node.leaf.clear-all span, li.node.leaf.select-all span {
-    text-decoration: underline;
-}
-li.node.leaf.select-all.checkedField span, li.node.leaf.clear-all.checkedField span {
-    background: none;
-}
 
 /*  ☰*/
 /*# sourceMappingURL=styles.css.map*/

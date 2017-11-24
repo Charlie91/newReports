@@ -72,7 +72,6 @@ class TableVertical extends Component {
         let cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type'),
             sidebarWidth = document.getElementsByClassName('sidebar')[0].offsetWidth,
             sidebarMarginLeft = getComputedStyle(document.getElementsByClassName('sidebar')[0]).marginLeft;
-            console.log(sidebarMarginLeft);
         cells.forEach( cell => {
             cell.classList.add('fixed-td');
             if(sidebarMarginLeft === '0px')
