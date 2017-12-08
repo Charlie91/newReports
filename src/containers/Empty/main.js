@@ -1,62 +1,50 @@
+import {getCoords} from './../../utils/utils';
+
 export default function frozenGlass(){
-    $(document.body).append('<div id="blurredContentFrame"><div id="blurredContent"></div></div>');
 
+    let frame = document.getElementById('blurredContentFrame'),
+        content = document.getElementById('blurredContent'),
+        auth_window = document.querySelector('.auth-window');
 
-    $('#blurredContentFrame').css({
-        'width': $('#frostedBk').width(),
-        'height': $('#frostedBk').height()
-    });
+    if(!frame){
+        addContent();
+    }
+    else{
+        document.body.removeChild(frame);
+        addContent();
+    }
 
-    $('.auth-layer').clone().appendTo('#blurredContent');
+    frame.style.cssText =
+        `width:${auth_window.offsetWidth}px;\
+         height:${auth_window.offsetHeight}px;`;
 
     sizeContent();
     positionBlur();
 
+    function addContent(){
+        document.body.insertAdjacentHTML('beforeEnd', '<div id="blurredContentFrame"><div id="blurredContent"></div></div>');
+        frame = document.getElementById('blurredContentFrame');
+        content = document.getElementById('blurredContent');
+        content.appendChild(document.querySelector('.auth-layer').cloneNode(true))
+    }
+
     function sizeContent() {
-        $('#blurredContent').css({
-            'width': $('.auth-layer').width(),
-            'height': $('.auth-layer').height()
-        });
+        let layer = document.querySelector('.auth-layer');
+        content.style.cssText +=
+            `width:${layer.offsetWidth}px;\
+             height:${layer.offsetHeight}px;`;
     }
 
     function positionBlur() {
-        var offset = $('#frostedBk').offset();
-        $('#blurredContentFrame').css({
-            'left': offset.left,
-            'top': offset.top
-        });
-        $('#blurredContent').css({
-            'left': -offset.left,
-            'top': -offset.top
-        });
+        let offset = getCoords(auth_window);
+
+        frame.style.cssText +=
+            `left:${offset.left}px;\
+             top:${offset.top}px;`;
+
+        content.style.cssText +=
+            `left:-${offset.left}px;\
+             top:-${offset.top}px;`;
     }
 
-    //
-    // var dragging = false;
-    // var startX, startY;
-    // var blockStartX, blockStartY;
-    //
-    // $('#frostedBk').mousedown(function(e){
-    //     e.preventDefault();
-    //     dragging = true;
-    //     startX = e.pageX;
-    //     startY = e.pageY;
-    //     blockStartX = parseInt($('#frostedBk').css('left'));
-    //     blockStartY = parseInt($('#frostedBk').css('top'));
-    // });
-    // $('#frostedBk').mouseup(function(e){
-    //     e.preventDefault();
-    //     dragging = false;
-    // });
-    //
-    // $(document).on('mousemove', function(e) {
-    //     if (dragging) {
-    //         $('#frostedBk').css({
-    //             'top': blockStartY + e.pageY - startY,
-    //             'left': blockStartX + e.pageX - startX
-    //         });
-    //         positionBlur();
-    //     }
-    // });
-    //$(window).on('resize', sizeContent);
 }

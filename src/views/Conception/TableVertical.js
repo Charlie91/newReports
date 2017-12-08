@@ -41,7 +41,7 @@ function fillMonths(){//создание наименований месяцев
     let currentMonth = today.getMonth();
     let months = ['Январь','Февраль','Март','Апрель','Май','Июнь', "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
     for(let i = 0; i < currentMonth;i++){
-        thisYearMonths.push(months[i] + ' 2017')
+        thisYearMonths.push(months[i])
     };
     return thisYearMonths.reverse()
 }
@@ -77,8 +77,9 @@ class TableVertical extends Component {
             if(sidebarMarginLeft === '0px')
                 cell.style.left = sidebarWidth + 'px';
             else
-                cell.style.left = '0px';
+                cell.style.left = '-10px';
         });
+
     }
 
     componentDidMount(){
@@ -89,7 +90,7 @@ class TableVertical extends Component {
     render() {
         return (
             <div>
-                <Table className="conceptions-table vertical-table" bordered striped>
+                <Table className="conceptions-table vertical-table">
                     <thead>
                     <tr>
                         <th> </th>
@@ -104,20 +105,20 @@ class TableVertical extends Component {
                     </tr>
                     </thead>
                     <tbody style={{overflowX:'scroll'}}>
-                    <tr>
-                        <td>Среднее по дням</td>
+                    <tr className="average_column">
+                        <td>Средний в день</td>
                         {this.props.data.map((item,i) =>
                             <td key={i}>{item.averageOfDays}</td>
                         )}
                     </tr>
-                    <tr>
+                    <tr className="today">
                         <td>Сегодня</td>
                         {this.props.data.map((item,i) =>
                             <td key={i}>{item.todayResults}</td>
                         )}
                     </tr>
                     {this.state.dates.map((item,i) =>
-                        <tr key={i}>
+                        <tr className={(~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days' : 'days'} key={i}>
                             <td>{item}</td>
                             {this.props.data.map((item,key) =>
                                 <td key={key}>{item['day' + (this.state.dates.length - i)]}</td>
@@ -125,8 +126,8 @@ class TableVertical extends Component {
                         </tr>
 
                     )}
-                    <tr>
-                        <td>Среднее по месяцам</td>
+                    <tr className="average_month">
+                        <td>Средний в месяц</td>
                         {this.props.data.map((item,i) =>
                             <td key={i}>{item.averageOfMonths}</td>
                         )}
@@ -144,13 +145,12 @@ class TableVertical extends Component {
                         )}
                     </tr>
                     {this.state.months.map((item,i) =>
-                        <tr key={i}>
+                        <tr key={i} className="months">
                             <td>{item}</td>
                             {this.props.data.map((item,key) =>
                                 <td key={key}>{item['month' + i]}</td>
                             )}
                         </tr>
-
                     )}
                     <tr>
                         <td>Текущий год</td>
@@ -165,7 +165,6 @@ class TableVertical extends Component {
                                 <td key={key}>{item['year' + i]}</td>
                             )}
                         </tr>
-
                     )}
                     </tbody>
                 </Table>

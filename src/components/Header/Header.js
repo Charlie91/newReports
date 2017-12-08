@@ -50,10 +50,11 @@ class Header extends Component {
         return (
             <header className="app-header navbar">
                 <Col>
-                    <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
+                    <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>
+                    </NavbarToggler>
                     <h5 className="page-title" >{this.props.title}</h5>
                     {(~this.props.location.pathname.indexOf('object')) ?
-                        <p className="address">{this.props.address}</p>
+                        ''
                         :
                         < TreeSelectComp
                             upState={this.sendDataUpward.bind(this)}

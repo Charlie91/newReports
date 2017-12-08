@@ -6,22 +6,69 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import Table from './Table.js';
 import './style.scss';
-import {
-    Row,
-    Col
-} from "reactstrap";
+import { Line} from "react-chartjs-2";
+import {formatNumericValue} from './../../utils/utils';
+import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 
+function formatNumberBySpaces(num){
+    if(num === undefined)return '';
+    let str = String(num);
+    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+}
+
+function formatMonths(index){
+    let months = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+    return months[index - 1];
+}
 
 export default class ObjectPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             object:'',
-            startDate: moment(),
+            type:'',
+            currency:'',
+            startDate: moment().add(-7,'days'),
             endDate: moment(),
-            timeSegment: 'M'
+            timeSegment: 'D',
+            chart :{
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Количество чел-к',
+                        fill: true,
+                        lineTension: 0.1,
+                        backgroundColor: '#f6aa2524',// rgba(163, 136, 227, 0.1)
+                        borderColor: '#f6aa25',// #886ce6
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: '#f6aa25',// #886ce6
+                        pointBackgroundColor: '#fff',
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#f6aa25',
+                        pointHoverBorderColor: '#f6aa25',
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: []
+                    }
+                ]
+            }
         };
         moment.locale('ru'); // локализуем библиотеку
+    }
+
+    fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
+        let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
+        let chart = this.getNewStyleForChart(typeArr);
+        this.setState({object:obj, type:typeArr[0], currency:typeArr[1]},() => {
+            this.getFloors();
+            this.props.upState('title',this.state.object.obj_name);
+            this.props.upState('address',this.state.object.address);
+        });
     }
 
     getNewObjectsData(){       // получение новых данных об объекте, если они не были переданы через props
@@ -35,17 +82,28 @@ export default class ObjectPage extends Component {
         let url = API.objects + '?conceptId=' + concept + '&cityId=' + city;
         ajaxRequest(url, options)
             .then(data => {
+                let obj;
                 data.forEach( object => {
                     if(+id === object.id){
-                        this.setState({object:object}, () => {
+                        obj = object;
+                    }
+                });
+                return obj;
+            })
+            .then(object =>  {
+                ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                    .then(data => {
+                        object.data = data;
+                        let typeArr = object.data_type.split(', ');//разбиваем строку с типом данных на массив
+                        let chart = this.getNewStyleForChart(typeArr);
+                        this.setState({object:object,type:typeArr[0], currency:typeArr[1]}, () => {
                             this.props.upState('title',this.state.object.obj_name);
                             this.props.upState('address',this.state.object.address);
                         })
-                    }
-                })
+                    })
+                    .then(data => this.getFloors())
+                    .catch(err => console.log(err))
             })
-            .then(data => this.getFloors())
-            .catch(err => console.log(err))
     }
 
     getFloors(){    //получение срезов данных об объекте
@@ -81,19 +139,76 @@ export default class ObjectPage extends Component {
         console.log(url);
         ajaxRequest(url,options)
             .then(data => {
-                let [headers, datas] = [ [],[] ];
-                this.setState({data:data})
+                console.log(data);
+                let chartObj = this.state.chart;
+                let [values,dates] = [ [], [] ] ;
+                data.floorData.forEach(item => {
+                    values.push(item.VALUE);
+                    dates.push(item.THEDATE);
+                });
+                chartObj.labels = dates;
+                chartObj.datasets[0].data = values;
+                this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
+
+                console.log(data);
+
             })
             .catch(err => console.log(err))
     }
 
-    fillInitialObjectData(obj){ //записываем данные с пропсов и парсим с сервера срезы
-        this.setState({object:obj},() => {
-            this.getFloors();
-            this.props.upState('title',this.state.object.obj_name);
-            this.props.upState('address',this.state.object.address);
-        });
+    getNewStyleForChart(typeArr){
+        let chart = this.state.chart;
+        if(typeArr[0] === 'Выручка')
+            chart.datasets = [
+                {
+                    label: 'Количество чел-к',
+                    fill: true,
+                    lineTension: 0.1,
+                    backgroundColor: 'rgba(246, 170, 37, 0.1)',// #f6aa2524
+                    borderColor: '#f6aa25',// #886ce6
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: '#f6aa25',// #886ce6
+                    pointBackgroundColor: '#fff',
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: '#f6aa25',
+                    pointHoverBorderColor: '#f6aa25',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: []
+                }
+            ];
+        else
+            chart.datasets = [
+                {
+                    label: 'Количество чел-к',
+                    fill: true,
+                    lineTension: 0.1,
+                    backgroundColor: 'rgba(163, 136, 227, 0.1)',//
+                    borderColor: '#886ce6',//
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: '#886ce6',//
+                    pointBackgroundColor: '#fff',
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: '#886ce6',
+                    pointHoverBorderColor: '#886ce6',
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: []
+                }
+            ];
+        return chart;
     }
+
 
     changeFloor(e){
         this.setState({floorIndex:+e.target.dataset.id},() => this.getFloorsData())
@@ -106,20 +221,17 @@ export default class ObjectPage extends Component {
     renderFloorObjectsButtons(){//функция рендера срезов
         if(!this.state.floors)return null;
         return(
-            <div style={{marginTop:'20px'}}>
-                <h5>Срезы</h5>
-                <div className="btn-group" role="group">
-                    {this.state.floors.map((item,i) =>
-                        <button type="button"
-                                key={i}
-                                data-id={i}
-                                className={'btn btn-secondary ' + ((this.state.floorIndex === i) ? 'active' : '')}
-                                onClick={this.changeFloor.bind(this)}
-                        >
-                            {item.name}
-                        </button>
-                    )}
-                </div>
+            <div className="floor_btn-wrp">
+                {this.state.floors.map((item,i) =>
+                    <button type="button"
+                            key={i}
+                            data-id={i}
+                            className={'btn ' + ((this.state.floorIndex === i) ? 'active' : '')}
+                            onClick={this.changeFloor.bind(this)}
+                    >
+                        {item.name}
+                    </button>
+                )}
             </div>
         )
     }
@@ -132,14 +244,13 @@ export default class ObjectPage extends Component {
             {val:'H',text:'По часам'}
         ];
         return (
-            <div style={{marginTop:'20px'}}>
-                <h5>Группировка</h5>
+            <div className='segmentation_btn-wrp'>
                 <div className="btn-group" role="group">
                     {arr.map( (item,i) =>
                         <button type="button"
                                 key={i}
                                 data-val={item.val}
-                                className={'btn btn-secondary ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
+                                className={'btn ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
                                 onClick={this.changeTimeSegment.bind(this)}
                         >
                             {item.text}
@@ -185,34 +296,119 @@ export default class ObjectPage extends Component {
 
     render(){
         return (
-            <div className="object_cont">
-                <div>
-                    <h5>Укажите период:</h5>
-                    <div style={{display:'inline-block'}}>
-                        <DatePicker
-                            className="datepicker"
-                            selected={this.state.startDate}
-                            selectsStart
-                            startDate={this.state.startDate}
-                            endDate={this.state.endDate}
-                            onChange={this.handleChangeStart.bind(this)}
-                        />
-                    </div>
-                    <div style={{display:'inline-block'}}>
-                        <DatePicker
-                            className="datepicker"
-                            selected={this.state.endDate}
-                            selectsEnd
-                            startDate={this.state.startDate}
-                            endDate={this.state.endDate}
-                            onChange={this.handleChangeEnd.bind(this)}
-                        />
-                    </div>
-                </div>
-                {this.renderFloorObjectsButtons()}
-                {this.renderSegmentationButtons()}
-                {this.renderTable()}
+            <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
+                <Card>
+                    <CardBody>
+                        <Row>
+                            <Col md="6"><img className="fullIMG" src="img/rio_full.jpg"/></Col>
+                            <Col className="announce" md="6">
+                                <div className="obj_title">
+                                    <h4>{this.state.object.obj_name}</h4>
+                                    <span className="muted">{this.state.object.address}</span>
+                                    <a href="#">сайт</a>
+                                </div>
+                                <div className="features">
+                                    <div><strong>Этажей:</strong>   4</div>
+                                    <div><strong>Площадь:</strong>   {this.state.object.area}м<sup>2</sup></div>
+                                    <div><strong>Дата открытия:</strong>   12 января 2008 года</div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </CardBody>
+                </Card>
 
+                <Card className="data_per_month">
+                    <div className="header">
+                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
+                    </div>
+                    <CardBody>
+                        <ul>
+                            {   (this.state.object) ?
+                                this.state.object.data.month.map( (item,i) => {
+                                    if( i < 12 ){
+                                        return(
+                                            <li key={i}>
+                                                <div>
+                                                    <strong>{formatNumericValue(item.v)}</strong>
+                                                </div>
+                                                <div className="muted">
+                                                    {`${formatMonths(item.m)} ${item.y}`}
+                                                </div>
+                                            </li>
+                                        )
+                                    }
+                                })
+                                :
+                                ''
+                            }
+                        </ul>
+                    </CardBody>
+                </Card>
+
+                <Card>
+                    <CardBody className="card-body">
+                        <h5 className="measure">{this.state.type}</h5>
+                        <Row>
+                            <Col md="6">
+                                <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
+                                <div className="datepicker_wrp">
+                                    <DatePicker
+                                        className="datepicker"
+                                        selected={this.state.startDate}
+                                        selectsStart
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        onChange={this.handleChangeStart.bind(this)}
+                                    />
+                                </div>
+                                <div className="datepicker_wrp">
+                                    <DatePicker
+                                        className="datepicker"
+                                        selected={this.state.endDate}
+                                        selectsEnd
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        onChange={this.handleChangeEnd.bind(this)}
+                                    />
+                                </div>
+                            </Col>
+                            <Col md="6">
+                                {this.renderFloorObjectsButtons()}
+                            </Col>
+                        </Row>
+                        <div className="totalSum">
+                            <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
+                            <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                        </div>
+                        {this.renderSegmentationButtons()}
+                        <div style={{maxHeight:'211px'}} className="chart-wrapper">
+                            <Line data={this.state.chart}
+                                  options={{
+                                      maintainAspectRatio: false,
+                                      legend:{
+                                          display:false
+                                      },
+                                      scales: {
+                                          xAxes: [{
+                                              gridLines: {
+                                                  color: "rgba(0, 0, 0, 0)",
+                                                  display:false
+                                              },
+
+                                          }],
+                                          yAxes: [{
+                                              display: false,
+                                              gridLines: {
+                                                  color: "rgba(0, 0, 0, 0)",
+                                              },
+
+                                          }]
+                                      }
+                                  }}
+                            />
+                        </div>
+                    </CardBody>
+                </Card>
             </div>
         )
     }

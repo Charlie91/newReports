@@ -177,7 +177,6 @@ class Full extends Component {
                                        }/>
                                 <Redirect from="/" to="/dashboard"/>
                             </Switch>
-                            <div className="layout none"> </div>
                         </Container>
                     </main>
                     <Aside/>

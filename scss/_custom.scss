@@ -139,9 +139,10 @@ $sidebar-header-height: 170px;
 }
 
 .app-header.navbar{
+  min-height: 50px;
   text-align:center;
+  padding-top:10px;
   margin-left: 250px;
-  padding-top: 10px;
   height:auto!important;
 }
 
@@ -155,7 +156,11 @@ $sidebar-header-height: 170px;
 .navbar.app-header button.d-lg-none.navbar-toggler {
   text-align: left;
   color: #0f0f0f;
-  width: 60px;
+  width: 45px;
+  background-image: url('../img/blackham.png');
+  background-repeat:no-repeat;
+  background-size: 65%;
+  padding:0;
   left: 0;
   position: absolute;
   display: inline;
@@ -262,11 +267,15 @@ button.settings-btn {
   height: 100%;
   width: 115%;
   background: rgba(0, 0, 0, 0.1);
-  z-index: 11;
+  z-index: 31;
   position: fixed;
   margin-left: -15%;
-  top: 0;
   left:0
+}
+
+button.clear-field {
+  background-image:url('../img/clear.png');
+  background-size:contain;
 }
 
 @media screen and (max-width:991px){

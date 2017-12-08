@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
 import ClearField from './ClearField';
 import ParentInput from './ParentInput';
+import {
+     Col
+} from "reactstrap";
 
 class NameInput extends ParentInput { //Внимание! Наследует от родительского компонента
     constructor(props){
@@ -46,22 +49,24 @@ class NameInput extends ParentInput { //Внимание! Наследует о�
 
     render() {
         return (
-            <div className="form-group">
-                <label>
-                    {animateDynamicLabel(this.state.value, 'Имя')}
-                    <input onFocus={this.setHint.bind(this)}
-                           onBlur={this.validateField.bind(this)}
-                           onChange={this.setValue.bind(this)}
-                           value={this.state.value}
-                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
-                           type="text"
-                           placeholder="Ваше Имя"
-                    />
-                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
-                    {this.showHint()}
-                    {this.showError()}
-                </label>
-            </div>
+            <Col xs='12' lg="6">
+                <div className="form-group name-group">
+                    <label>
+                        {animateDynamicLabel(this.state.value, 'Имя')}
+                        <input onFocus={this.setHint.bind(this)}
+                               onBlur={this.validateField.bind(this)}
+                               onChange={this.setValue.bind(this)}
+                               value={this.state.value}
+                               className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                               type="text"
+                               placeholder="Ваше Имя"
+                        />
+                        <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
+                        {this.showHint()}
+                        {this.showError()}
+                    </label>
+                </div>
+            </Col>
         )
     }
 }

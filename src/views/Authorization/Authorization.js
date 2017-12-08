@@ -84,7 +84,7 @@ export default class Authorization extends Component {
             .then(data => {
                 if(data.authorized === true){
                     this.setState({isLoggedIn:true});
-                    this.getUserData();
+                    //this.getUserData();
                 }
                 else
                     this.setState({isLoggedIn:false,password:''});

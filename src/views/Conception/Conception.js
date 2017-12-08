@@ -3,6 +3,7 @@ import {API} from './../../utils/api_paths';
 import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import TableVertical from './TableVertical.js';
 import TableHorizontal from './TableHorizontal.js';
+import TableVertNoStick from './TableVertNoStick.js';
 import {formatNumericValue} from './../../utils/utils';
 import Loading from './../Loading/Loading';
 
@@ -56,7 +57,7 @@ class Conception extends Component {
 
 
 
-    getObjects() {  //получаем список объектов из списка городов   Promise.all версия v2
+    getObjects() {  //получаем список объектов из списка городов
         let options = {
             method: 'GET',
             credentials: 'include',
@@ -200,7 +201,7 @@ class Conception extends Component {
             <div>
                 {
                     (objectsForRender.length) ?
-                        <TableVertical data={objectsForRender}/>
+                        <TableVertNoStick data={objectsForRender}/>
                         :
                         <h4 className="no-data-message">Нет данных для отображения</h4>
                 }

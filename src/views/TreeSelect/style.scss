@@ -1,6 +1,5 @@
 @import "../../../scss/variables";
 $node-padding:3px 10px;
-
 @font-face {
     font-family: ProximaNova; /* Имя шрифта */
     src: url('fonts/Proxima_Nova/regular.ttf'); /* Путь к файлу со шрифтом */
@@ -14,6 +13,11 @@ $node-padding:3px 10px;
     font-family: ProximaNova; /* Имя шрифта */
     src: url('fonts/Proxima_Nova/Proxima-Nova-Light.ttf'); /* Путь к файлу со шрифтом */
     font-weight:200
+}
+@font-face {
+    font-family: ProximaNova; /* Имя шрифта */
+    src: url('fonts/Proxima_Nova/Proxima-Nova-Regular-Italic.ttf'); /* Путь к файлу со шрифтом */
+    font-style:italic;
 }
 body{
     font-family: ProximaNova, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!important;
@@ -115,6 +119,9 @@ body{
     cursor:pointer;
     transition: all 0.1s ease-in;
     border-radius: 4px;
+}
+.tag-item:not(:last-child){
+    display:none
 }
 .tag-item:last-child input {
     width: 130px;
@@ -309,6 +316,12 @@ a.dropdown-button{
 a.dropdown__trigger.dropdown-trigger {
     min-width: 300px;
 }
+
+.navbar img{
+    width:25px;
+}
+
+
 @media screen and (max-width:1070px){
     .tag-item:not(:last-child){
         display: none
@@ -347,7 +360,7 @@ a.dropdown__trigger.dropdown-trigger {
 }
 @media screen and (max-width:400px){
     .dropup, .dropdown {
-        width: 180px!important;
+        width: 186px!important;
     }
     .dropdown__content.dropdown-content{
         width: 295px!important;

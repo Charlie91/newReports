@@ -184,8 +184,10 @@ class Registration extends Component {
         else return(
             <form action="#" method="POST">
                 <label><h4 className="reg_title">Шаг 2</h4></label>
-                <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                <Row className="name_group_wrapper">
+                    <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                </Row>
                 <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
                 {this.showRegistrationErrors()}

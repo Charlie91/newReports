@@ -133,7 +133,6 @@ export default class TreeSelect extends Component{
 
     fixSelect(){
         if(document.body.clientWidth > 1199)return;
-        console.log(document.body.clientWidth);
         let select = document.querySelector('.tree_select'),
             ul = document.querySelector('ul.tag-list'),
             layout = document.getElementsByClassName('layout')[0],
@@ -142,10 +141,10 @@ export default class TreeSelect extends Component{
             header = document.getElementsByClassName('app-header')[0],
             body = document.body;
 
-        layout.onclick = (e) => {
-            e.stopPropagation();
-            dropdown.classList.remove('dropdown--active');
-        };
+        // layout.onclick = (e) => {
+        //     e.stopPropagation();
+        //     dropdown.classList.remove('dropdown--active');
+        // };
 
     }
 

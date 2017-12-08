@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
 import ClearField from './ClearField';
 import ParentInput from './ParentInput';
+import {
+    Col
+} from "reactstrap";
 
 class SurnameInput extends ParentInput { //Внимание! Наследует от родительского компонента
     constructor(props){
@@ -47,22 +50,24 @@ class SurnameInput extends ParentInput { //Внимание! Наследует 
 
     render() {
         return (
-            <div className="form-group">
-                <label>
-                    {animateDynamicLabel(this.state.value, 'Фамилия')}
-                    <input onFocus={this.setHint.bind(this)}
-                           onBlur={this.validateField.bind(this)}
-                           onChange={this.setValue.bind(this)}
-                           value={this.state.value}
-                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
-                           type="text"
-                           placeholder="Фамилия"
-                    />
-                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
-                    {this.showHint()}
-                    {this.showError()}
-                </label>
-            </div>
+            <Col lg='6' xs='12'>
+                <div className="form-group name-group">
+                    <label>
+                        {animateDynamicLabel(this.state.value, 'Фамилия')}
+                        <input onFocus={this.setHint.bind(this)}
+                               onBlur={this.validateField.bind(this)}
+                               onChange={this.setValue.bind(this)}
+                               value={this.state.value}
+                               className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                               type="text"
+                               placeholder="Фамилия"
+                        />
+                        <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
+                        {this.showHint()}
+                        {this.showError()}
+                    </label>
+                </div>
+            </Col>
         )
     }
 }

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../1/.idea/1.iml" filepath="$PROJECT_DIR$/../1/.idea/1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../frosted-glass-effect/.idea/frosted-glass-effect.iml" filepath="$PROJECT_DIR$/../frosted-glass-effect/.idea/frosted-glass-effect.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/maket.iml" filepath="$PROJECT_DIR$/.idea/maket.iml" />
     </modules>
   </component>

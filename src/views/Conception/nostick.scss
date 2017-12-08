@@ -1,0 +1,79 @@
+#no-stick{
+
+  .fix-column {
+    float: left;
+    text-align: center;
+    width: 170px;
+    font-weight: 400;
+  }
+  .thead {
+    height: 100%;
+    white-space: nowrap;
+  }
+  .thead > span {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+  }
+  .trow {
+    white-space: nowrap;
+  }
+  .trow > span {
+    display: inline-block;
+    width: 120px;
+    line-height: 80px;
+    height: 80px;
+  }
+  .tbody {
+    height: 80vh;
+    overflow: auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .fix-column > .tbody {
+    overflow: hidden;
+    /*padding-bottom: 50px;*/
+  }
+  /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
+
+  .fix-column > .tbody > .trow {
+    margin-top: -50px;
+    margin-bottom: 50px;
+  }
+  .fix-column > .tbody > .trow:first-child {
+    margin-top: 0px;
+  }
+
+  .rest-columns {
+    width: auto;
+  }
+  .rest-columns > .thead {
+    /*padding-right: 50px;*/
+    overflow: hidden;
+    font-weight: 500;
+  }
+  /*.rest-columns > .thead > :last-child {margin-right: 50px;}*/
+  .rest-columns > .thead > span {
+    margin-right: 50px;
+    margin-left: -50px;
+  }
+  .rest-columns > .thead > :first-child {margin-left: 0px;}
+
+  .link-to-object{
+    white-space: normal;
+  }
+  .average_column{
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    opacity: 0.4;
+    font-weight: 500;
+  }
+  .average_month{
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    font-weight: 500;
+    td:first-child{
+      font-style: italic;
+    }
+  }
+}

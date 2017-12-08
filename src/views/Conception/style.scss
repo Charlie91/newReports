@@ -9,27 +9,37 @@
     border-top:none;
   }
 
-  tr td:first-child{
-    font-weight:800
-  }
-
   .average_column{
-    background:#fbf8f3
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    opacity: 0.4;
+    font-weight: 500;
+  }
+  .average_month{
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    font-weight: 500;
+    td:first-child{
+      font-style: italic;
+    }
   }
   .holidays_column{
     background:#f7fcf3
   }
 
   th.fixed-td{
-    height:88px
+    height:88px;
+    color: #1c1c1c;
   }
   .fixed-td{
     position: sticky;
     position: -webkit-sticky;
     width: 150px;
     z-index: 7;
-    background: #eff3f6;
-    border-right: 1px solid #d1d4d7;
+    background: inherit;
+    color: #1c1c1c;
+    font-weight: 400;
+    text-align:center
   }
 
   &.scrolled .fixed-header::before{
@@ -58,16 +68,6 @@
   border-bottom: 1px solid #d1d4d7;
 }
 
-
-
-@media screen and (max-width:501px){
-  .conceptions-table {
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-}
-
 #header {
   width: 150%;
   display: block;
@@ -85,20 +85,64 @@
 }
 
 .app-body{
-  overflow-x:visible;
+  overflow-x:scroll;//visible;
 }
 .vertical-table{
-  table{
-    font-size:3em;
-  }
+  width:100%;
+  max-width:100%;
+  overflow:scroll;
+  color: #2d2d2d;
+  background:#fff;
   thead tr th{
     position:sticky;
     position: -webkit-sticky;
-    top: 87px;
-    background: #eff3f6;
+    top: 80px;
+    background: inherit;
     z-index: 1;
+    color: #1c1c1c;
+    &:first-child{
+      z-index:20
+    }
   }
-
+  tr{
+    background:#fff
+  }
+  td{
+    border:none;
+  }
+  .today{
+    td{
+      font-style:italic;
+      font-weight:800
+    }
+  }
+  //.days{
+  //  .fixed-td{
+  //    text-align: left;
+  //    padding-left: 62px;
+  //  }
+  //}
+  //.months{
+  //  .fixed-td{
+  //    text-align: left;
+  //    padding-left: 62px;
+  //  }
+  //}
 }
 
+.app,#root,body,html{ //перенести в другое место
+  height:100%
+}
 
+@media screen and (max-width:501px){
+  .conceptions-table {
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .vertical-table{
+    thead tr th{
+      top:-10px
+    }
+  }
+}

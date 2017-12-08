@@ -108,7 +108,7 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
                             value={this.state.confirmPassword}
                             className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
                             type="password"
-                            placeholder="Подтверждение пароля"
+                            placeholder="Еще раз"
                         />
                         <ClearField render={this.state.confirmPassword} clearField={this.clearConfirmField.bind(this)}/>
                     </div>

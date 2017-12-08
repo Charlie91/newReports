@@ -25,16 +25,29 @@
   .registration-form button.clear-field {
     display: inline;
     position: absolute;
-    top: 0;
+    top: 0px;
     right: 0;
-    background: #c1cacb;
     color: #fff;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 16px;
+    border: none;
     padding: 0; }
   .registration-form .reg_title {
     text-align: left; }
+  .registration-form .form-group.name-group label {
+    width: 100%; }
+  @media screen and (min-width: 992px) {
+    .registration-form .name_group_wrapper > div {
+      padding: 0; }
+      .registration-form .name_group_wrapper > div:first-child {
+        padding-right: 15px; } }
+  @media screen and (min-width: 768px) {
+    .registration-form .name_group_wrapper {
+      width: 80%;
+      margin: auto; }
+      .registration-form .name_group_wrapper > div {
+        padding: 0; } }
   @media screen and (min-width: 1200px) {
     .registration-form .password-inputs label .field {
       position: relative;

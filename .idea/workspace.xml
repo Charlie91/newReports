@@ -2,17 +2,361 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69d4d65a-3624-47a3-943e-e14365ba1713" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Empty/mountains.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Empty/style-glass.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/Conception/TableVertNoStick.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/Conception/nostick.scss" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../react-dropdown-tree-select/src/search-in-dropdown/index.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../react-dropdown-tree-select/src/search-in-dropdown/index.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../frosted-glass-effect/css/mountains.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.4d4e520a54c2ce951b32.hot-update.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.89d9641b9da2504b58b7.hot-update.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4d4e520a54c2ce951b32.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/89d9641b9da2504b58b7.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e7e61aaadba2a6fff668.hot-update.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f5847ad90b6b8e9c5c51.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.004552d09c0f35d672cb.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.038b267056dcd63dba9b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.0554a8f55402536f2c36.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.0907d3373ca0aed6f5e8.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.142519e0d3fb28898a01.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.14482bf839d3d9a159f5.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.14e568acddc8967896a3.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.15463749d8aa1d2d138b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.17bf03996fc64d3714f6.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.17dd2568cdffd583b0f3.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.194b2b0d74b05b975c4f.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.1a003759b5f5b9dc2b18.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.1b3759edad96a1bf415b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.1c79b974027379894a9b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.1eda6bce92bcb32a6baa.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.23a085fc15475346ccde.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.2a5c2db498129ca6a0ae.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.2b2c3d0f3fd275f25ac4.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.2bf13a5b0336e223d0d0.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.2d0208f42ca2930f5d6b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.3001dd7e44516cab1a4b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.32ec468cfeee7524b473.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.35361b45d98ef801e957.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.36a0a40c37938323629b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.3996489814d5a8713186.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.3afb179184624cc3755f.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.419aeec8338de39b4e2a.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.48bac8bf90e7438a20d8.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.4e4136dde934b87df70d.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.5425e1d650053d1b4c92.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.5ece6d2a39e956f2fbec.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.5f326d7ae6432bc2f3a3.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.6460e32f787911f38896.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.686a30b5170c61d9c189.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.6b1797ef47a3b8be26e7.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.6cbaa806c78ffe01aa07.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.74f0c932dd1f1fc20155.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.751733d64258e85117ac.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.7abb28cdd0ab5f82c538.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.7fea56f823a87959fd47.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.81497f73c69d68e5ef08.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.8390f9bc0fa24b2bbb9d.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.8492a4450c543e939ae7.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.84d0037e2c97d6a86d7e.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.85bfc1762e31df559320.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.888d85622e3fd2b795b0.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.8b9dfb190f2b7805b725.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9018bbd1f8ebd35c7e95.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.902a596d77e6d8c3456e.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9261495d254b9bf3ae76.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.931a6716dd24383b0ce0.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.98f02b8c425293ef8a7c.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9b1b4fd5b10edb6c927e.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9bbfe4dd2dd00f053d54.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9d09c3bca18e6e107b87.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9d0dc7f8f0eca5c04084.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9d7578a31c1265cf07c6.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9e37068870118e2d9d25.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.9f32e3405637b00fd939.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.a34a9826c642f1079cbe.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.a45df69cda6155b8a888.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.a7c41fcfefd56a187ff3.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.ab8156f960876d94aae8.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.abaf9ca809f6fd859136.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.ad8e91f0c0b7a82ac7c5.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.aec95054b881953e66a0.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.af097b907f4dee135b59.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.b5bd8c33c70ec0272643.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.b5da1fafaae24f71b38d.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.bafff2a848d9f7d57e42.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.c3fcf5afa4e67a2498fc.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.c7bdec121519d7846f9d.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.c94236604d9e9117be2d.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.cbead9554bdeb7cf7874.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.cf343fd9038df01b89e2.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d21c3e8b89a5b90c5cb5.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d24f539cb2d90e7bbffd.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d3c77c1703585ff37a3e.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d5b32067473c0f1b3e63.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d8758425ecc3e9d64154.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d883702150905c300f6a.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.d9ba1bc7cc8b39369957.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.dbec4bb262b74af5ef76.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.defefb3ba82880a23373.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.e22654d200fb97328efc.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.e73dd27a7e8bbfe64832.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.e967b1ae09db13129121.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.ef1d8b9e91bf1772299b.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.f1ac5a23b3cdba030ef6.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.f2e1508de94ddff3d7ed.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.f756b5fbe1d34bc2a297.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.f77a2e6e14fb53da054a.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.f99a610bf7b7a73601f4.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.fa8a623b2424eac63af0.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0.fb001987249647edd76a.hot-update.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/004552d09c0f35d672cb.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/01a86c297c98ed0698a1.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/038b267056dcd63dba9b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/03f4182b108f82b7fdb9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0400768105bb35ef3d1c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0525f78bdca03552de87.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0554a8f55402536f2c36.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0662d4ffc68daaeef12a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/06aa8a826125936b5a50.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0758f2c6a6ffa4a59535.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0907d3373ca0aed6f5e8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0ab5a2996d34a8f257f7.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0e7bd3fac32647941301.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/0e7d1a1814e9bca12f9c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/130f0dd139e342de9e56.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/142519e0d3fb28898a01.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/14482bf839d3d9a159f5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/14e568acddc8967896a3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/15463749d8aa1d2d138b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/155dceffa2ec2aace2eb.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/17bf03996fc64d3714f6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/17dd2568cdffd583b0f3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/194b2b0d74b05b975c4f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/19950d4e390e06d2f2f3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1a003759b5f5b9dc2b18.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1a8b888dac76cd8d9398.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1b3759edad96a1bf415b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1b71afb5c9ab4971e4b1.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1c79b974027379894a9b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1d02b04c2827c4758417.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/1eda6bce92bcb32a6baa.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/216eea31c25d9c15ed56.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/23a085fc15475346ccde.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/23a4e04a59f8d6c2dfd4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/23be4fedbab93dfca342.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/25023738bbdc199ee889.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/257582b487b12c045a90.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/26edd88f5790b3ac8a2a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/28c11d2adc6da7567378.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/28f092b2c7946f40f226.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2a5c2db498129ca6a0ae.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2addbec8145ec2dad450.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2aef8e52833de32ec640.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2b2c3d0f3fd275f25ac4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2bd69b33a092502364bc.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2beb71d948a62a19140e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2bf13a5b0336e223d0d0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2c13163cd9f5266252cd.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2c457990b0347434b810.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/2d0208f42ca2930f5d6b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3001dd7e44516cab1a4b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/31bae0e42ffc8da65996.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/32ec468cfeee7524b473.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3392ed191ffe8f996b5c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/33ffa30e6e3a0290cda9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/35361b45d98ef801e957.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/36a0a40c37938323629b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/37441a228a1853e32191.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/375bd9a0fb5435724b5f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/384338aa3269c75b3100.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/393577dde1ef5605601a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/393bb6082b5fbd8c2f19.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/394503b001df747a89bd.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3996489814d5a8713186.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3afb179184624cc3755f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3d7bb4e82d1c511d8d5d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3ea33754c970a19f1ee1.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/3ee13ab35d5c5ea03eb6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/400ccc262179c7abc753.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/403500d2ff63c2769b63.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/419aeec8338de39b4e2a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4247eb8909461bb2d874.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/475365a2c156c9f292c5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/483ef76e87803b5278e6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/48bac8bf90e7438a20d8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4aa2cb63c48a4c05c5e3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4b815b0212a4d0a59bb9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4e4136dde934b87df70d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/4f0a8526ab05194f9152.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/50894251350630e46294.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/514fcebee2d174877ab0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5205241fc1ca956a077a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/52319899551206a2bfbe.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5274f4e7b9e4abc20b8d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/53d5c0ac09e0a55e33c9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5425e1d650053d1b4c92.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/543a04f18cbc88e96565.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/554962f7c2320f20bc3c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/571357aedc0ffd998772.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5adb902ba3417e4e7df0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5b4de8a2a39a7e0ac39c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5d45cbdf904f95f5566d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5ece6d2a39e956f2fbec.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/5f326d7ae6432bc2f3a3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6002a5f4f454d504fde6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/60d100aef116788a89a1.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/62072597c264214919ea.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/620c5982fcdb423b09a2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6325250637bb03b4e441.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6460e32f787911f38896.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/66163e29dc553432c447.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/686a30b5170c61d9c189.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6874456c3af169013ca4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6b1797ef47a3b8be26e7.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6cbaa806c78ffe01aa07.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6e2f07b9af257eadfb44.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6f21d7d7153ee3381f40.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/6f83a56020495898b209.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/740d5a59dd700ff65401.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/74f0c932dd1f1fc20155.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/751733d64258e85117ac.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/761e6609811e23d8395a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/76d65e015f34e6145372.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/774d06a0119897d7e427.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/778988343ac0d4bc1ed8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7834527cc0f4f44103f9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/799d75df6b50a3ed4820.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7ab3285195ce7fdef536.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7abb28cdd0ab5f82c538.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7e277c978b6f0db26e7e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7ec08f5b1a940d913c61.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/7fea56f823a87959fd47.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8042ae6cf25fe31828d8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/805f597f7ae0eb9dd3b2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/81497f73c69d68e5ef08.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/836a89dafc680bbb1e18.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8390f9bc0fa24b2bbb9d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8492a4450c543e939ae7.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/84d0037e2c97d6a86d7e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/84e8b210a4429165a285.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/858c0da1ac2e96171101.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/85bfc1762e31df559320.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/888d85622e3fd2b795b0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8927c4a79909f81812d9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/89844b0257a5c134f8c9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/89d5b178ae1a0509f382.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8b9dfb190f2b7805b725.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8e3e0484889c3de15243.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8e8e7387c57618445b81.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/8f34dfcc6c5cac522156.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9018bbd1f8ebd35c7e95.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/902a596d77e6d8c3456e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9087d68979d5cfd92819.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9131791f7eb0da6ab3cc.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9261495d254b9bf3ae76.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/931a6716dd24383b0ce0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/98f02b8c425293ef8a7c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9ae8ffeeacea78a1a1a4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9b1b4fd5b10edb6c927e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9bbfe4dd2dd00f053d54.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9d09c3bca18e6e107b87.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9d0dc7f8f0eca5c04084.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9d7578a31c1265cf07c6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9e37068870118e2d9d25.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9f05fb58355dc78a2a27.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/9f32e3405637b00fd939.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a0950749f63799537590.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a34a9826c642f1079cbe.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a39d04df847b66a99a6c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a45df69cda6155b8a888.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a63f91556b46135c6a28.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a7c41fcfefd56a187ff3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/a98cc47dc9559c5528b5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ab8156f960876d94aae8.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ab8cee84c70f690daa42.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/abaf9ca809f6fd859136.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ad8e91f0c0b7a82ac7c5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/aec95054b881953e66a0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/af097b907f4dee135b59.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/b0e4c266f93e39edd334.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/b322c159523dea2138af.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/b4224714d58207b5bf9b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/b5bd8c33c70ec0272643.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/b5da1fafaae24f71b38d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bab5cfdf191a891a5af5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bafff2a848d9f7d57e42.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/be9b0f29657999492172.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bea6e8f822548ba8b2d1.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/bed625c9a54c699251c3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c0615547611ccc43ec53.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c0e4bfd8f6890385a8ca.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c19c71fb915811bf82e0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c1d83c2033e3f5f51bb4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c210e74f21590655a504.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c29b98f7b41a19244f34.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c308577c071cd93f617e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c33d26365c5451367019.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c3fcf5afa4e67a2498fc.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c46abe7a7300b7be9211.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c4eb4af11c44555e9231.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c7bdec121519d7846f9d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/c94236604d9e9117be2d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ca19babd0a1ad4a05da2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cae83e1b36c2ec26f9dc.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cafa10f98146e084791f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cb6c12fc4745e14a4061.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cb811b097d99a4aece70.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cbe090b9afb109fc440d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cbead9554bdeb7cf7874.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cc39b67f2b2c1412e15d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ccc3accc2dd1afb5b6b9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cd1dee83614a9d123922.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ceb735e0b48ab975bc46.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/cf343fd9038df01b89e2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d21c3e8b89a5b90c5cb5.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d24f539cb2d90e7bbffd.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d356e8080f5d610de6d6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d35c59df50501e3a408d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d3c77c1703585ff37a3e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d444de37a9b54db6bc9d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d5581b3c5b6be9acca5e.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d5b32067473c0f1b3e63.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d8758425ecc3e9d64154.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d883702150905c300f6a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/d9ba1bc7cc8b39369957.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/da9da785ad23d2d3427d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/dad8c967e03c67d062ff.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/dbec4bb262b74af5ef76.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/defefb3ba82880a23373.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e1ccf1262dbd491616a4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e22654d200fb97328efc.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e3178fb17264c9832748.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e40efbe61e5ae148efd2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e58b9c561d932eaec6a0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e60fa3a3e1b338fa7a63.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e710c3d76753d7f5a8f2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e73dd27a7e8bbfe64832.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e8cde7856fdc83fbb5b7.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e967b1ae09db13129121.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/e9c152c620b3d8b62288.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/eaebf6e58240d3d5b76c.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ebbc40260785652c384f.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ec609ca225805ed590af.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ecfb90fe9bcb78b692f2.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ee882737792568035c1d.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ef1d8b9e91bf1772299b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f1ac5a23b3cdba030ef6.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f2e1508de94ddff3d7ed.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f4f3f8476b1c135af866.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f6fa9f17d9ffb331538b.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f756b5fbe1d34bc2a297.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f77a2e6e14fb53da054a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f937286b60832bf07443.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/f99a610bf7b7a73601f4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fa53ce711f63f43722f9.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fa8a623b2424eac63af0.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/faa51ecc8145ffa9e9a7.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fb001987249647edd76a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fcd4ffedc7c2aed81487.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fda7afadfd7a458d02a4.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fe9840b0c50226e00dc3.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/fee2c4268d65e3f4f588.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/ff48fcc0d4a8bae8208a.hot-update.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/containers/Empty/mountains.jpg" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/containers/Empty/style-glass.css" afterPath="$PROJECT_DIR$/src/containers/Empty/style-blur.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../adminka/React_Starter/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.bundle.js" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../adminka/React_Starter/build/index.styles.css" afterPath="$PROJECT_DIR$/../adminka/React_Starter/build/index.styles.css" />
@@ -20,7 +364,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../frosted-glass-effect/css/style.css" afterPath="$PROJECT_DIR$/../frosted-glass-effect/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/maket.iml" afterPath="$PROJECT_DIR$/.idea/maket.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.bundle.js" afterPath="$PROJECT_DIR$/build/index.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.fonts.css" afterPath="$PROJECT_DIR$/build/index.fonts.css" />
@@ -28,38 +371,30 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.styles.css" afterPath="$PROJECT_DIR$/build/index.styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/_custom.scss" afterPath="$PROJECT_DIR$/scss/_custom.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/core/_layout.scss" afterPath="$PROJECT_DIR$/scss/core/_layout.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/style.css" afterPath="$PROJECT_DIR$/scss/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Header/Header.js" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Empty/Empty.js" afterPath="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Empty/style.scss" afterPath="$PROJECT_DIR$/src/containers/Empty/style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Empty/main.js" afterPath="$PROJECT_DIR$/src/containers/Empty/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Full/Full.js" afterPath="$PROJECT_DIR$/src/containers/Full/Full.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/utils.js" afterPath="$PROJECT_DIR$/src/utils/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" afterPath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/AuthNav/style.css" afterPath="$PROJECT_DIR$/src/views/AuthNav/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/AuthNav/style.scss" afterPath="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" afterPath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Authorization/LogOut.js" afterPath="$PROJECT_DIR$/src/views/Authorization/LogOut.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Authorization/style.scss" afterPath="$PROJECT_DIR$/src/views/Authorization/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Conception/Conception.js" afterPath="$PROJECT_DIR$/src/views/Conception/Conception.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Conception/TableVertical.js" afterPath="$PROJECT_DIR$/src/views/Conception/TableVertical.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.js" afterPath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Dashboard/DataCard.js" afterPath="$PROJECT_DIR$/src/views/Dashboard/DataCard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Conception/style.css" afterPath="$PROJECT_DIR$/src/views/Conception/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Conception/style.scss" afterPath="$PROJECT_DIR$/src/views/Conception/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Dashboard/style.css" afterPath="$PROJECT_DIR$/src/views/Dashboard/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Dashboard/style.scss" afterPath="$PROJECT_DIR$/src/views/Dashboard/style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ObjectPage/ObjectPage.js" afterPath="$PROJECT_DIR$/src/views/ObjectPage/ObjectPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ObjectPage/style.scss" afterPath="$PROJECT_DIR$/src/views/ObjectPage/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/Registration.js" afterPath="$PROJECT_DIR$/src/views/Registration/Registration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/ParentInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/ParentInput.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/registration.css" afterPath="$PROJECT_DIR$/src/views/Registration/registration.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Registration/registration.scss" afterPath="$PROJECT_DIR$/src/views/Registration/registration.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/TreeSelect/Buttons.js" afterPath="$PROJECT_DIR$/src/views/TreeSelect/Buttons.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js" afterPath="$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js" afterPath="$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/TreeSelect/style.css" afterPath="$PROJECT_DIR$/src/views/TreeSelect/style.css" />
@@ -80,54 +415,46 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Empty.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Empty/Empty.js">
+      <file leaf-file-name="Conception.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/Conception/Conception.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+            <state relative-caret-position="473">
+              <caret line="176" column="0" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../frosted-glass-effect/index.html">
+      <file leaf-file-name="nostick.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/Conception/nostick.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state relative-caret-position="-224">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style-glass.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Empty/style-glass.css">
+      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/Conception/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="16" selection-end-column="3" />
+            <state relative-caret-position="222">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="24" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Empty/main.js">
+      <file leaf-file-name="TableVertNoStick.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/Conception/TableVertNoStick.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="6" lean-forward="false" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="92" lean-forward="false" selection-start-line="11" selection-start-column="92" selection-end-line="11" selection-end-column="92" />
-              <folding />
+            <state relative-caret-position="327">
+              <caret line="201" column="62" lean-forward="false" selection-start-line="201" selection-start-column="62" selection-end-line="201" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,40 +470,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select2</find>
-      <find>select2.</find>
-      <find>select2.png</find>
-      <find>focus</find>
-      <find>a</find>
-      <find>auth-w</find>
-      <find>auth-wi</find>
-      <find>auth-windo</find>
-      <find>auth-window</find>
-      <find>.form-control:focus</find>
-      <find>input</find>
-      <find>card</find>
-      <find>box-shadow</find>
-      <find>page-tit</find>
-      <find>matches</find>
-      <find>min-width</find>
-      <find>app</find>
-      <find>app-</find>
-      <find>app-heade</find>
-      <find>app-header</find>
-      <find>layo</find>
-      <find>layout</find>
+      <find>padding-to</find>
+      <find>padding-top</find>
+      <find>padding-top:10</find>
+      <find>padding-top:10px</find>
+      <find>padding-top:1</find>
+      <find>padding-top:</find>
+      <find>.</find>
+      <find>.navbar</find>
+      <find>m</find>
+      <find>mi</find>
+      <find>min</find>
+      <find>min-he</find>
+      <find>min-hei</find>
+      <find>min-height</find>
+      <find>navbar</find>
+      <find>min-height:50px</find>
+      <find>min-height:50p</find>
+      <find>min-height:50</find>
+      <find>min-height:5</find>
+      <find>min-height:</find>
+      <find>min-height: 50px;</find>
+      <find>clear-</find>
+      <find>l</find>
+      <find>la</find>
       <find>lay</find>
-      <find>button</find>
-      <find>main</find>
-      <find>2px</find>
-      <find>label-h</find>
-      <find>10px</find>
-      <find>auth-btn</find>
-      <find>pass</find>
+      <find>onDrowdownHide</find>
+      <find>onDrowdownShow</find>
+      <find>layout</find>
+      <find>formatNumericValue</find>
+      <find>totalSum</find>
     </findStrings>
     <replaceStrings>
       <replace>label</replace>
       <replace>&lt;CardBody&gt;</replace>
+      <replace>className</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/../adminka/React_Full_Project</dir>
@@ -184,9 +512,9 @@
       <dir>$PROJECT_DIR$/node_modules/bootstrap/dist/css</dir>
       <dir>$PROJECT_DIR$/node_modules/react-datepicker</dir>
       <dir>$PROJECT_DIR$/../adminka/React_Starter/src</dir>
-      <dir>$PROJECT_DIR$/src</dir>
       <dir>$PROJECT_DIR$/scss</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -195,57 +523,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/views/ObjectPage/ObjectPage.js" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/TreeSelect/style.scss" />
-        <option value="$PROJECT_DIR$/src/components/TreeSelect/TreeSelect.js" />
-        <option value="$PROJECT_DIR$/src/views/Conception/Table-Vertical.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/views/Conception/test.html" />
         <option value="$PROJECT_DIR$/src/views/Conception/TableVertical2.js" />
-        <option value="$PROJECT_DIR$/src/views/Conception/style.scss" />
-        <option value="$PROJECT_DIR$/src/views/Conception/TableVertical.js" />
         <option value="$PROJECT_DIR$/src/views/TreeSelect/Buttons.js" />
         <option value="$PROJECT_DIR$/../react-dropdown-tree-select/src/search-in-dropdown/index.js" />
         <option value="$PROJECT_DIR$/../react-dropdown-tree-select/src/tree-manager/index.js" />
         <option value="$PROJECT_DIR$/src/views/Dashboard/Dashboard.js" />
-        <option value="$PROJECT_DIR$/src/views/Conception/Conception.js" />
         <option value="$PROJECT_DIR$/scss/style.css" />
         <option value="$PROJECT_DIR$/src/utils/utils.js" />
         <option value="$PROJECT_DIR$/src/views/Authorization/LogOut.js" />
         <option value="$PROJECT_DIR$/production.config.js" />
         <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/views/Authorization/style.scss" />
-        <option value="$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js" />
         <option value="$PROJECT_DIR$/src/views/Dashboard/DataCard.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js" />
-        <option value="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" />
-        <option value="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/ParentInput.js" />
-        <option value="$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js" />
-        <option value="$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js" />
         <option value="$PROJECT_DIR$/scss/core/_variables.scss" />
-        <option value="$PROJECT_DIR$/src/components/Header/Header.js" />
-        <option value="$PROJECT_DIR$/src/views/Dashboard/style.scss" />
-        <option value="$PROJECT_DIR$/src/containers/Full/Full.js" />
-        <option value="$PROJECT_DIR$/../react-dropdown-tree-select/src/index.js" />
-        <option value="$PROJECT_DIR$/src/views/TreeSelect/style.scss" />
-        <option value="$PROJECT_DIR$/scss/_custom.scss" />
-        <option value="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
         <option value="$PROJECT_DIR$/src/containers/Empty/style.scss" />
-        <option value="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
-        <option value="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
         <option value="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" />
-        <option value="$PROJECT_DIR$/src/views/Registration/Registration.js" />
-        <option value="$PROJECT_DIR$/src/views/Registration/registration.scss" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/containers/Empty/style-glass.css" />
-        <option value="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
         <option value="$PROJECT_DIR$/src/containers/Empty/main.js" />
+        <option value="$PROJECT_DIR$/src/containers/Empty/style-glass.css" />
+        <option value="$PROJECT_DIR$/src/containers/Empty/style-blur.css" />
+        <option value="$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js" />
+        <option value="$PROJECT_DIR$/src/views/Dashboard/style.scss" />
+        <option value="$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js" />
+        <option value="$PROJECT_DIR$/src/views/Conception/style.scss" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/views/Conception/TableVertical.js" />
+        <option value="$PROJECT_DIR$/src/views/Conception/test.scss" />
+        <option value="$PROJECT_DIR$/src/components/Header/Header.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/Registration.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
+        <option value="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" />
+        <option value="$PROJECT_DIR$/src/views/Registration/registration.scss" />
+        <option value="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
+        <option value="$PROJECT_DIR$/src/containers/Full/Full.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/../react-dropdown-tree-select/src/index.js" />
+        <option value="$PROJECT_DIR$/scss/_custom.scss" />
+        <option value="$PROJECT_DIR$/src/containers/Empty/Empty.js" />
+        <option value="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
+        <option value="$PROJECT_DIR$/src/views/TreeSelect/style.scss" />
+        <option value="$PROJECT_DIR$/src/views/Conception/Conception.js" />
+        <option value="$PROJECT_DIR$/src/views/ObjectPage/style.scss" />
+        <option value="$PROJECT_DIR$/src/views/ObjectPage/ObjectPage.js" />
+        <option value="$PROJECT_DIR$/src/views/Conception/TableVertNoStick.js" />
+        <option value="$PROJECT_DIR$/src/views/Conception/nostick.scss" />
       </list>
     </option>
   </component>
@@ -283,6 +611,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -324,7 +653,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="containers" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,17 +671,16 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="containers" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Empty" />
+              <option name="myItemId" value="Conception" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,19 +692,19 @@
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/containers/Empty" />
-      <recent name="$PROJECT_DIR$/src/views/TreeSelect" />
-      <recent name="$PROJECT_DIR$/src/views/Registration/inputs" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/views/Conception" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/containers/Empty" />
       <recent name="$PROJECT_DIR$/src/views" />
       <recent name="$PROJECT_DIR$/scss" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/build" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views/TreeSelect" />
+      <recent name="$PROJECT_DIR$/src/views/Conception" />
+      <recent name="$PROJECT_DIR$/src/containers/Empty" />
+      <recent name="$PROJECT_DIR$/src/views/Registration/inputs" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -517,12 +845,22 @@
       <workItem from="1511252455928" duration="13165000" />
       <workItem from="1511333936130" duration="9572000" />
       <workItem from="1511421398238" duration="10492000" />
-      <workItem from="1511513891913" duration="1662000" />
+      <workItem from="1511513891913" duration="10327000" />
+      <workItem from="1511766392339" duration="7526000" />
+      <workItem from="1511852938581" duration="3545000" />
+      <workItem from="1511939129125" duration="9577000" />
+      <workItem from="1512026236757" duration="8412000" />
+      <workItem from="1512114083090" duration="10299000" />
+      <workItem from="1512373471667" duration="11463000" />
+      <workItem from="1512457536222" duration="8078000" />
+      <workItem from="1512544280340" duration="8038000" />
+      <workItem from="1512576247273" duration="33000" />
+      <workItem from="1512577681729" duration="18553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="421181000" />
+    <option name="totallyTimeSpent" value="515370000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -537,23 +875,23 @@
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22683705" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25026625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -570,268 +908,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/Conception/Conception.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="204" column="87" lean-forward="true" selection-start-line="204" selection-start-column="87" selection-end-line="204" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="8663" column="11" lean-forward="false" selection-start-line="8663" selection-start-column="11" selection-end-line="8663" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/core/_navbar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="23" column="2" lean-forward="false" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/_nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1670">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Authorization/LogOut.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="124" lean-forward="false" selection-start-line="38" selection-start-column="124" selection-end-line="38" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prod.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="52" column="45" lean-forward="false" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="119" column="140" lean-forward="false" selection-start-line="119" selection-start-column="140" selection-end-line="119" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/DataCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="5" lean-forward="false" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/PositionInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/ParentInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="74" lean-forward="false" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/LoginInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/AuthNav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/dist/react-dropdown-tree-select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/src/search-in-dropdown/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/docs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/src/tree-node/action.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/src/tree/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/core/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Loading/Loading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Full/Full.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="177" column="66" lean-forward="false" selection-start-line="177" selection-start-column="66" selection-end-line="177" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="5" column="13229" lean-forward="false" selection-start-line="5" selection-start-column="13229" selection-end-line="5" selection-end-column="13229" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="258" column="0" lean-forward="true" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="72" column="5" lean-forward="false" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="835">
-          <caret line="163" column="18" lean-forward="false" selection-start-line="163" selection-start-column="18" selection-end-line="163" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -842,60 +922,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Empty/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="103" column="43" lean-forward="false" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="19" column="93" lean-forward="false" selection-start-line="19" selection-start-column="93" selection-end-line="19" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/registration.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Registration/Registration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="164" column="32" lean-forward="false" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Authorization/Authorization.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="197" column="5" lean-forward="false" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -903,48 +933,348 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/src/containers/Empty/style.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="92" lean-forward="false" selection-start-line="11" selection-start-column="92" selection-end-line="11" selection-end-column="92" />
-          <folding />
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../frosted-glass-effect/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="75">
+          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Empty/mountains.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/containers/Empty/style-blur.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="58" lean-forward="false" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/TableHorizontal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="199" column="44" lean-forward="false" selection-start-line="199" selection-start-column="44" selection-end-line="199" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DOMEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-682">
+          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Empty/style-glass.css">
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Full_Project/src/views/Charts/Charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="16" selection-end-column="3" />
+        <state relative-caret-position="-2750">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/ModalWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="111" column="33" lean-forward="false" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/Table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="93" column="43" lean-forward="false" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="66" column="38" lean-forward="true" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adminka/React_Starter/src/widgets/MonitoringWidget/functions/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="66" column="37" lean-forward="true" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/DataCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/SurnameInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/ClearField.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/ParentInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="110" column="48" lean-forward="false" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/Registration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="186" column="50" lean-forward="false" selection-start-line="186" selection-start-column="50" selection-end-line="186" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="51" column="27" lean-forward="false" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/AuthNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Registration/registration.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-671">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="139" column="9" lean-forward="true" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Full/Full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="86" column="8" lean-forward="false" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/react-dropdown-tree-select.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="5" column="11812" lean-forward="false" selection-start-line="5" selection-start-column="11812" selection-end-line="5" selection-end-column="11812" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../react-dropdown-tree-select/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="79" column="54" lean-forward="false" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Empty/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/TreeSelect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="136" column="40" lean-forward="false" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/TreeSelect/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ObjectPage/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-701">
+          <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Authorization/LogOut.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Authorization/Authorization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="86" column="22" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Empty/Empty.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        <state relative-caret-position="270">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/TableVertical.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="92" column="66" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ObjectPage/ObjectPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="290" column="41" lean-forward="true" selection-start-line="290" selection-start-column="41" selection-end-line="290" selection-end-column="41" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Empty/main.js">
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/style.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="6" lean-forward="false" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        <state relative-caret-position="222">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="24" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/Conception.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="176" column="0" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/TableVertNoStick.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="201" column="62" lean-forward="false" selection-start-line="201" selection-start-column="62" selection-end-line="201" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Conception/nostick.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
         </state>
       </provider>
