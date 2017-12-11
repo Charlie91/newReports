@@ -13859,14 +13859,16 @@ body.sidebar-mobile-show, body.dropdown-select-show {
   background: #141519 !important; }
 
 .navbar.app-header button.d-lg-none.navbar-toggler {
+  background-image: url(./img/blackham.7af989a7d4c683f0f68e927228b19032.png);
   text-align: left;
   color: #0f0f0f;
-  width: 45px;
-  background-image: url(./img/blackham.7af989a7d4c683f0f68e927228b19032.png);
+  width: 25px;
   background-repeat: no-repeat;
-  background-size: 65%;
+  background-size: 100%;
   padding: 0;
-  left: 0;
+  height: 25px;
+  left: 15px;
+  top: 10%;
   position: absolute;
   display: inline; }
 
@@ -14093,6 +14095,9 @@ body {
   cursor: pointer;
   transition: all 0.1s ease-in;
   border-radius: 4px; }
+
+.tag-item:not(:last-child) {
+  display: none; }
 
 .tag-item:last-child input {
   width: 130px;
@@ -14577,23 +14582,23 @@ button.btn.back-btn {
   /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
   /*.rest-columns > .thead > :last-child {margin-right: 50px;}*/ }
   #no-stick .fix-column {
-    float: left; }
+    float: left;
+    text-align: center;
+    width: 170px;
+    font-weight: 400; }
   #no-stick .thead {
-    height: 40px;
-    white-space: nowrap; }
+    height: 100%;
+    white-space: nowrap;
+    margin: 15px; }
   #no-stick .thead > span {
     display: inline-block;
     width: 120px;
-    line-height: 40px;
-    box-shadow: inset 0 0 1px 0 rgba(0, 0, 0, 0.5);
-    background-color: rgba(255, 0, 0, 0.3);
-    text-align: center; }
+    text-align: left; }
   #no-stick .trow {
     white-space: nowrap; }
   #no-stick .trow > span {
     display: inline-block;
     width: 120px;
-    box-shadow: inset 0 0 1px 0 rgba(0, 0, 0, 0.5);
     line-height: 80px;
     height: 80px; }
   #no-stick .tbody {
@@ -14603,6 +14608,7 @@ button.btn.back-btn {
     box-sizing: border-box; }
   #no-stick .fix-column > .tbody {
     overflow: hidden;
+    border-right: 1px solid #a2a2a2;
     /*padding-bottom: 50px;*/ }
   #no-stick .fix-column > .tbody > .trow {
     margin-top: -50px;
@@ -14613,12 +14619,28 @@ button.btn.back-btn {
     width: auto; }
   #no-stick .rest-columns > .thead {
     /*padding-right: 50px;*/
-    overflow: hidden; }
+    overflow: hidden;
+    font-weight: 500; }
   #no-stick .rest-columns > .thead > span {
     margin-right: 50px;
     margin-left: -50px; }
+  #no-stick .rest-columns .tbody {
+    border-top: 1px solid #a2a2a2; }
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
+  #no-stick .link-to-object {
+    white-space: normal; }
+  #no-stick .average_column {
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    opacity: 0.4;
+    font-weight: 500; }
+  #no-stick .average_month {
+    background-color: #f8f5f1;
+    color: #2d2d2d;
+    font-weight: 500; }
+    #no-stick .average_month td:first-child {
+      font-style: italic; }
 @charset "UTF-8";
 .segmentation_btn-wrp {
   margin-top: 20px;
@@ -14634,6 +14656,18 @@ button.btn.back-btn {
     color: #fff; }
     .segmentation_btn-wrp .btn.active:focus {
       box-shadow: none; }
+
+.revenue .segmentation_btn-wrp .btn {
+  border: 1px solid #f6aa25; }
+
+.revenue .segmentation_btn-wrp .btn.active {
+  background-color: #f6aa25; }
+
+.revenue .floor_btn-wrp .btn.active {
+  background-color: #f6aa25; }
+
+.revenue .datepicker_wrp input.datepicker {
+  border: solid 1px #f6aa25; }
 
 .floor_btn-wrp .btn {
   color: #354052;
@@ -14666,6 +14700,23 @@ button.btn.back-btn {
     width: 73px;
     color: #7f8fa4; }
 
+.data_per_month .header {
+  padding: 1rem 2rem; }
+  .data_per_month .header h4 {
+    color: #354052; }
+
+.data_per_month > div.card-body {
+  overflow: scroll;
+  padding: 1.25rem; }
+  .data_per_month > div.card-body ul {
+    white-space: nowrap;
+    padding: 0; }
+    .data_per_month > div.card-body ul li {
+      display: inline-block;
+      width: 8.3%; }
+      .data_per_month > div.card-body ul li .muted {
+        font-size: 14px; }
+
 .object-table td, .object-table th {
   text-align: center; }
 
@@ -14673,7 +14724,6 @@ button.btn.back-btn {
   z-index: 10; }
 
 .object_cont {
-  width: 90%;
   margin: auto; }
   .object_cont .card-body:last-child {
     padding: 2rem; }
@@ -14768,6 +14818,8 @@ button.btn.back-btn {
     text-align: left; }
   .registration-form .form-group.name-group label {
     width: 100%; }
+  .registration-form .password-inputs .field:first-child {
+    margin-bottom: 55px; }
   @media screen and (min-width: 992px) {
     .registration-form .name_group_wrapper > div {
       padding: 0; }
@@ -14785,7 +14837,8 @@ button.btn.back-btn {
       width: 45%;
       display: inline-block; }
       .registration-form .password-inputs label .field:first-of-type {
-        margin-right: 10%; }
+        margin-right: 10%;
+        margin-bottom: 0; }
       .registration-form .password-inputs label .field:last-of-type[placeholder] {
         font-size: 110%;
         padding-bottom: 11px; } }

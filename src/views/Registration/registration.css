@@ -37,6 +37,8 @@
     text-align: left; }
   .registration-form .form-group.name-group label {
     width: 100%; }
+  .registration-form .password-inputs .field:first-child {
+    margin-bottom: 55px; }
   @media screen and (min-width: 992px) {
     .registration-form .name_group_wrapper > div {
       padding: 0; }
@@ -54,7 +56,8 @@
       width: 45%;
       display: inline-block; }
       .registration-form .password-inputs label .field:first-of-type {
-        margin-right: 10%; }
+        margin-right: 10%;
+        margin-bottom: 0; }
       .registration-form .password-inputs label .field:last-of-type[placeholder] {
         font-size: 110%;
         padding-bottom: 11px; } }

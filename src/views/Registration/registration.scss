@@ -52,6 +52,10 @@
     width:100%
   }
 
+  .password-inputs .field:first-child{
+    margin-bottom:55px;
+  }
+
   @media screen and (min-width:992px){
     .name_group_wrapper{
       >div{
@@ -81,6 +85,7 @@
       //padding: 10px;
       &:first-of-type{
         margin-right: 10%;
+        margin-bottom: 0;
       }
       &:last-of-type[placeholder] {
         font-size: 110%;

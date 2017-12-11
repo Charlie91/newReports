@@ -13859,14 +13859,16 @@ body.sidebar-mobile-show, body.dropdown-select-show {
   background: #141519 !important; }
 
 .navbar.app-header button.d-lg-none.navbar-toggler {
+  background-image: url("../img/blackham.png");
   text-align: left;
   color: #0f0f0f;
-  width: 45px;
-  background-image: url("../img/blackham.png");
+  width: 25px;
   background-repeat: no-repeat;
-  background-size: 65%;
+  background-size: 100%;
   padding: 0;
-  left: 0;
+  height: 25px;
+  left: 15px;
+  top: 10%;
   position: absolute;
   display: inline; }
 

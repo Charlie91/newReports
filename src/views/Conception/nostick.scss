@@ -9,6 +9,7 @@
   .thead {
     height: 100%;
     white-space: nowrap;
+    margin: 15px;
   }
   .thead > span {
     display: inline-block;
@@ -32,6 +33,7 @@
   }
   .fix-column > .tbody {
     overflow: hidden;
+    border-right: 1px solid #a2a2a2;
     /*padding-bottom: 50px;*/
   }
   /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
@@ -56,6 +58,9 @@
   .rest-columns > .thead > span {
     margin-right: 50px;
     margin-left: -50px;
+  }
+  .rest-columns .tbody {
+    border-top: 1px solid #a2a2a2;
   }
   .rest-columns > .thead > :first-child {margin-left: 0px;}
 

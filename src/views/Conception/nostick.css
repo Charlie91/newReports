@@ -8,7 +8,8 @@
     font-weight: 400; }
   #no-stick .thead {
     height: 100%;
-    white-space: nowrap; }
+    white-space: nowrap;
+    margin: 15px; }
   #no-stick .thead > span {
     display: inline-block;
     width: 120px;
@@ -27,6 +28,7 @@
     box-sizing: border-box; }
   #no-stick .fix-column > .tbody {
     overflow: hidden;
+    border-right: 1px solid #a2a2a2;
     /*padding-bottom: 50px;*/ }
   #no-stick .fix-column > .tbody > .trow {
     margin-top: -50px;
@@ -42,6 +44,8 @@
   #no-stick .rest-columns > .thead > span {
     margin-right: 50px;
     margin-left: -50px; }
+  #no-stick .rest-columns .tbody {
+    border-top: 1px solid #a2a2a2; }
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
