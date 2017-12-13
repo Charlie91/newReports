@@ -8,7 +8,9 @@
   .registration-form .hintMessage {
     color: #336573; }
   .registration-form .errorMessage {
-    color: #fd0101; }
+    color: #fd0101;
+    text-align: left;
+    text-transform: lowercase; }
   .registration-form .errorMessage, .registration-form .hintMessage {
     position: absolute;
     width: 100%;
@@ -23,7 +25,7 @@
     font-weight: bold;
     font-size: 110%; }
   .registration-form button.clear-field {
-    display: inline;
+    display: block;
     position: absolute;
     top: 0px;
     right: 0;
@@ -60,7 +62,9 @@
         margin-bottom: 0; }
       .registration-form .password-inputs label .field:last-of-type[placeholder] {
         font-size: 110%;
-        padding-bottom: 11px; } }
+        padding-bottom: 11px; }
+    .registration-form .confirmError {
+      margin-left: 55%; } }
   @media screen and (max-width: 700px) {
     .registration-form input:focus {
       border-bottom: 2px solid #8bc8e8; } }

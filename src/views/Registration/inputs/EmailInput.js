@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
 import {API} from './../../../utils/api_paths';
-import {ajaxRequest,checkEitherLoggedInOrNot} from './../../../utils/utils';
+import {ajaxRequest,checkEitherLoggedInOrNot,getCookie} from './../../../utils/utils';
 import ClearField from './ClearField';
 import ParentInput from './ParentInput';
 
@@ -9,7 +9,8 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     constructor(props){
         super(props);
         this.state = {
-            value:(props.value) ? props.value : '',
+            //value:(props.value) ? props.value : '',
+            value: props.value || getCookie('email') || '',
             focus:null,
             isValid:props.isValid
         }
@@ -27,7 +28,7 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="errorMessage">Адрес E-mail может быть не менее 3 символов,состоять только из латинских символов,@ или кириллицы</div>
+                <div className="errorMessage">Неверный адрес e-mail</div>
             )
         }
         else if(this.state.isNotAvailable){
@@ -54,8 +55,15 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     }
 
     validateField(e){//функция-валидация
-        let value = this.state.value;//e.target.value;
+        if(e && e.relatedTarget){ //фикс бага
+            if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
+        }
         this.hideHint(); //прячем окно с подсказкой
+        let value = this.state.value;//e.target.value;
+        if(value === ''){
+            this.props.fieldIsValid('email',null);
+            return;
+        }
         let regExp = new RegExp('^[a-zA-Zа-яА-Я0-9-_\.@]{3,30}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
@@ -67,23 +75,23 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
         }
         this.checkAvailability();
     }
-//
 
     render() {
         return (
             <div className="form-group">
                 <label>
                     {animateDynamicLabel(this.state.value, 'E-mail')}
-                    <input onFocus={this.setHint.bind(this)}
-                           onBlur={this.validateField.bind(this)}
+                    <input
                            onChange={this.setValue.bind(this)}
+                           onFocus={this.setHint.bind(this)}
+                           onBlur={this.validateField.bind(this)}
+                           onKeyPress={this.preventEnter.bind(this)}
                            value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Адрес E-mail"
                     />
-                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
-                    {this.showHint()}
+                    <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                     {this.showError()}
                 </label>
             </div>

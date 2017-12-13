@@ -80,8 +80,7 @@ class LoginInput extends ParentInput { //Внимание! Наследует о
                            type="text"
                            placeholder="Логин"
                     />
-                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
-                    {this.showHint()}
+                    <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                     {this.showError()}
                 </label>
             </div>

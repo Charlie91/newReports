@@ -16,7 +16,7 @@
   color: #fff;
   font-size: 130%;
   border-radius: 3px; }
-  .auth-btn:disabled {
+  .auth-btn:disabled, .auth-btn.dsbl {
     background-color: rgba(216, 216, 216, 0.6);
     box-shadow: 0 0 2px #b3b3b3; }
 

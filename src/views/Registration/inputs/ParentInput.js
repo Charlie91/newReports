@@ -18,6 +18,13 @@ class ParentInput extends Component {//Родительский класс дл�
         this.setState({focus:false});
     }
 
+    preventEnter(e){    //запрет нажатия клавиши Enter
+        if(e.charCode === 13){
+            e.preventDefault();
+            return false;
+        }
+    }
+
 
     componentWillReceiveProps(nextProps){
             this.setState({isValid:nextProps.isValid})
