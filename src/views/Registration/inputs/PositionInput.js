@@ -32,8 +32,15 @@ class PositionInput extends ParentInput { //Внимание! Наследует
 
 
     validateField(e){//функция-валидация
+        if(e && e.relatedTarget){ //фикс бага
+            if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
+        }
         let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
+        if(value === ''){
+            this.props.fieldIsValid('position',null);
+            return;
+        }
         let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{3,20}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
@@ -53,14 +60,13 @@ class PositionInput extends ParentInput { //Внимание! Наследует
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
+                           onKeyPress={this.preventEnter.bind(this)}
                            value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Должность"
                     />
-                    <ClearField render={this.state.value} clearField={this.clearField.bind(this)}/>
-                    {this.showHint()}
-                    {this.showError()}
+                    <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                 </label>
             </div>
         )

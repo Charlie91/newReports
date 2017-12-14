@@ -1,13 +1,14 @@
 .label-enter {
-  margin-top: 20px; }
+  margin-top: 20px;
+  opacity: 1; }
 
 .label-enter.label-enter-active {
   margin-top: 0;
-  transition: margin-top 200ms ease-in; }
+  transition: margin-top 100ms ease-in; }
 
 .label-leave {
-  margin-top: 0; }
+  opacity: 1; }
 
 .label-leave.label-leave-active {
-  margin-top: 20px;
-  transition: margin-top 200ms ease-in; }
+  opacity: 0;
+  transition: opacity 100ms ease-in; }

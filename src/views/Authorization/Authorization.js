@@ -4,7 +4,8 @@ import AuthNav from './../AuthNav/AuthNav';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest} from './../../utils/utils';
+import {ajaxRequest, deleteRegistrationCookies} from './../../utils/utils';
+
 import {
     Row, Col
 } from "reactstrap";
@@ -182,11 +183,12 @@ export default class Authorization extends Component {
                             {this.showError()}
                         </div>
                         <Row>
-                            <Col md={{ size: 4, offset:4 }}>
+                            <Col xs={{size: 8, offset:2}} md={{ size: 4, offset:4 }}>
                                 <button
                                     type="submit"
                                     className="btn auth-btn"
                                     onClick={this.logIn.bind(this)}
+                                    disabled={!(this.state.login && this.state.password)}
                                 >
                                     Войти
                                 </button>

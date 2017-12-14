@@ -15,6 +15,8 @@
   }
   .errorMessage {
     color: #fd0101;
+    text-align: left;
+    text-transform: lowercase;
   }
   .errorMessage, .hintMessage{
     position: absolute;
@@ -34,7 +36,7 @@
     font-size: 110%;
   }
   button.clear-field {
-    display: inline;
+    display:block;
     position: absolute;
     top: 0px;
     right: 0;
@@ -54,6 +56,11 @@
 
   .password-inputs .field:first-child{
     margin-bottom:55px;
+  }
+
+  .card.bg-danger {
+    width: 80%;
+    margin: auto;
   }
 
   @media screen and (min-width:992px){
@@ -91,6 +98,9 @@
         font-size: 110%;
         padding-bottom: 11px;
       }
+    }
+    .confirmError{
+      margin-left: 55%;
     }
   }
 

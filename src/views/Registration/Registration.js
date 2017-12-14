@@ -9,7 +9,7 @@ import PositionInput from './inputs/PositionInput.js';
 import OrganizationInput from './inputs/OrganizationInput.js';
 import AuthNav from './../AuthNav/AuthNav';
 import './registration.scss';
-import {ajaxRequest,checkEitherLoggedInOrNot} from './../../utils/utils';
+import {ajaxRequest,checkEitherLoggedInOrNot, getCookie, deleteRegistrationCookies} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import { Link, Redirect} from 'react-router-dom';
 import {
@@ -22,16 +22,16 @@ class Registration extends Component {
     constructor(props){
         super(props);
         this.state = {    //состояние null у состояний значит что это поле еще не изменялось, т.е. начальное состояние//false - то, что поле невалидное
-            password:null,  // любое трушное значение - что все ок
-            passwordsAreConfirm:null,
+            password: getCookie('password') || null,  // любое трушное значение - что все ок
+            passwordsAreConfirm:getCookie('password') || null,
             name:null,
             surname:null,
             position:null,
             organization:null,
-            email:null,
-            phone:null,
+            email: getCookie('email') || null,
+            phone: getCookie('phone') || null,
             registrationIsSuccess:false,
-            registrationStep:1
+            registrationStep:getCookie('registrationStep') || 1
         }
     }
 
@@ -70,9 +70,11 @@ class Registration extends Component {
             password: state.password,
             passwordsAreConfirm:state.passwordsAreConfirm,
             email: state.email,
+            login:state.email,
             firstName: state.name,
             lastName: state.surname,
             phone: state.phone,
+            position:state.position,
             organization: state.organization,
             job: state.position
         };
@@ -136,6 +138,14 @@ class Registration extends Component {
         }
     }
 
+    setRegistrationCookies(){
+        let date = new Date;
+        date.setHours(date.getHours() + 1);
+        document.cookie = `email=${this.state.email};password=${this.state.password};phone=${this.state.phone};expires=${date.toUTCString()}`;
+        document.cookie = `password=${this.state.password};expires=${date.toUTCString()}`;
+        document.cookie = `phone=${this.state.phone};expires=${date.toUTCString()}`;
+        document.cookie = `registrationStep=${this.state.registrationStep};expires=${date.toUTCString()}`;
+    }
 
     componentWillMount(){
         checkEitherLoggedInOrNot()
@@ -172,7 +182,15 @@ class Registration extends Component {
                                 <button
                                     onClick={this.goToSecondStep.bind(this)}
                                     type="submit"
-                                    className="btn auth-btn"
+                                    className={
+                                        (this.state.email && this.state.password && this.state.passwordsAreConfirm && this.state.phone)
+
+                                        ?
+                                            "btn auth-btn"
+                                            :
+                                            "dsbl btn auth-btn"
+                                    }
+                                    disabled={!(this.state.email || this.state.password || this.state.passwordsAreConfirm || this.state.phone )}
                                 >
                                     Дальше
                                 </button>
@@ -181,40 +199,51 @@ class Registration extends Component {
                     </label>
                 </form>
             );
-        else return(
-            <form action="#" method="POST">
-                <label><h4 className="reg_title">Шаг 2</h4></label>
-                <Row className="name_group_wrapper">
-                    <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                    <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                </Row>
-                <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                {this.showRegistrationErrors()}
-                <label>
-                    <Row>
-                        <Col md={{ size: 4}} xs={{ size: 4}}>
-                            <button
-                                onClick={this.goToFirstStep.bind(this)}
-                                type="submit"
-                                className="btn back-btn"
-                            >
-                                Назад
-                            </button>
-                        </Col>
-                        <Col md={{ size: 8}} xs={{ size: 8 }}>
-                            <button
-                                onClick={this.finalValidation.bind(this)}
-                                type="submit"
-                                className="btn auth-btn"
-                            >
-                                Зарегистрироваться
-                            </button>
-                        </Col>
+        else {
+            this.setRegistrationCookies();
+            return(
+                <form action="#" method="POST">
+                    <label><h4 className="reg_title">Шаг 2</h4></label>
+                    <Row className="name_group_wrapper">
+                        <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                        <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     </Row>
-                </label>
-            </form>
-        )
+                    <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                    {this.showRegistrationErrors()}
+                    <label>
+                        <Row>
+                            <Col md={{ size: 4}} xs={{ size: 4}}>
+                                <button
+                                    onClick={this.goToFirstStep.bind(this)}
+                                    type="submit"
+                                    className="btn back-btn"
+                                >
+                                    Назад
+                                </button>
+                            </Col>
+                            <Col md={{ size: 8}} xs={{ size: 8 }}>
+                                <button
+                                    onClick={this.finalValidation.bind(this)}
+                                    type="submit"
+                                    className={
+                                        (this.state.name && this.state.surname && this.state.position && this.state.organization)
+
+                                            ?
+                                            "btn auth-btn"
+                                            :
+                                            "dsbl btn auth-btn"
+                                    }
+                                    disabled={!(this.state.name || this.state.surname || this.state.position || this.state.organization)}
+                                >
+                                    Зарегистрироваться
+                                </button>
+                            </Col>
+                        </Row>
+                    </label>
+                </form>
+            )
+        }
     }
 
     render() {
@@ -222,13 +251,16 @@ class Registration extends Component {
             return (
                 <Redirect to="/dashboard"/>
             );
+
         else if(this.state.registrationIsSuccess)
             return (
                 <div className="registration-form auth-window animated fadeIn">
                     <AuthNav/>
+                    {deleteRegistrationCookies()}
                     {this.showSuccessMessage()}
                 </div>
             );
+
         else
             return (
                 <div className="registration-form auth-window animated fadeIn">

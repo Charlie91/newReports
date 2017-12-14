@@ -6,9 +6,12 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import Table from './Table.js';
 import './style.scss';
-import { Line} from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 import {formatNumericValue} from './../../utils/utils';
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
+import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
+import BarChart from './Bar';
+
 
 function formatNumberBySpaces(num){
     if(num === undefined)return '';
@@ -149,9 +152,6 @@ export default class ObjectPage extends Component {
                 chartObj.labels = dates;
                 chartObj.datasets[0].data = values;
                 this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
-
-                console.log(data);
-
             })
             .catch(err => console.log(err))
     }
@@ -217,6 +217,19 @@ export default class ObjectPage extends Component {
     changeTimeSegment(e){
         this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
     }
+
+    renderMap(){
+        const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 16, controls: [], behaviors:[], options:[] };
+        return (
+            <YMaps>
+                <Map state={mapState}
+                     width={'180px'}
+                     height={'180px'}
+                >
+                </Map>
+            </YMaps>
+        );
+    };
 
     renderFloorObjectsButtons(){//функция рендера срезов
         if(!this.state.floors)return null;
@@ -297,25 +310,38 @@ export default class ObjectPage extends Component {
     render(){
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
-                <Card>
-                    <CardBody>
-                        <Row>
-                            <Col md="6"><img className="fullIMG" src="img/rio_full.jpg"/></Col>
-                            <Col className="announce" md="6">
+                <Row className="announce">
+                    <Col  md="6">
+                        <Card>
+                            <CardBody>
                                 <div className="obj_title">
                                     <h4>{this.state.object.obj_name}</h4>
-                                    <span className="muted">{this.state.object.address}</span>
-                                    <a href="#">сайт</a>
+                                    <a href="#">рио.москва/дмитровка</a>
                                 </div>
-                                <div className="features">
-                                    <div><strong>Этажей:</strong>   4</div>
-                                    <div><strong>Площадь:</strong>   {this.state.object.area}м<sup>2</sup></div>
-                                    <div><strong>Дата открытия:</strong>   12 января 2008 года</div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </CardBody>
-                </Card>
+                                <Row>
+                                    <Col md="8" className="features">
+                                        <div><strong>Этажей:</strong>  <span className="muted">4</span> </div>
+                                        <div><strong>Площадь:</strong>   <span className="muted">{this.state.object.area}м<sup>2</sup></span></div>
+                                        <div><strong>Дата открытия:</strong>  <span className="muted">12 января 2008 года</span> </div>
+                                    </Col>
+                                    <Col md="4" className="geolocation">
+                                        <div className="map_wrapper">
+                                            {this.renderMap()}
+                                        </div>
+                                        <div className="address">
+                                            {this.state.object.address}
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col md="6">
+                                <img className="fullIMG" src="img/rio_full.jpg"/>
+                    </Col>
+                </Row>
+
+                <BarChart data={this.state.data}/>
 
                 <Card className="data_per_month">
                     <div className="header">
@@ -380,7 +406,6 @@ export default class ObjectPage extends Component {
                             <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
                             <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                         </div>
-                        {this.renderSegmentationButtons()}
                         <div style={{maxHeight:'211px'}} className="chart-wrapper">
                             <Line data={this.state.chart}
                                   options={{
@@ -394,7 +419,6 @@ export default class ObjectPage extends Component {
                                                   color: "rgba(0, 0, 0, 0)",
                                                   display:false
                                               },
-
                                           }],
                                           yAxes: [{
                                               display: false,
@@ -407,6 +431,7 @@ export default class ObjectPage extends Component {
                                   }}
                             />
                         </div>
+                        {this.renderSegmentationButtons()}
                     </CardBody>
                 </Card>
             </div>

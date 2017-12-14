@@ -83,7 +83,7 @@
 .object_cont {
   margin: auto; }
   .object_cont .card-body:last-child {
-    padding: 2rem; }
+    padding: 2.3rem; }
 
 .totalSum {
   margin-top: 3%; }
@@ -105,32 +105,47 @@
   color: #354052; }
 
 .fullIMG {
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
 
 .obj_title {
-  margin-top: 18%;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #dfe2e5; }
+  padding-bottom: 5px; }
+  .obj_title h4 {
+    font-size: 55px;
+    color: #354052; }
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
   .obj_title a {
-    font-size: 14px;
+    font-size: 20px;
     text-align: left;
-    color: #45bce5;
-    text-decoration: underline;
-    margin-left: 10px; }
-
-.features > div {
-  margin: 7px auto; }
-  .features > div > strong {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: left;
-    color: #354052; }
+    color: #354052;
+    box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052; }
 
 .announce {
-  padding: 0 50px; }
+  margin-bottom: 20px; }
+  .announce .card {
+    height: 100%; }
+  .announce .geolocation .map_wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden; }
+    .announce .geolocation .map_wrapper .ymaps-2-1-56-copyright__content {
+      display: none; }
+  .announce .geolocation .address {
+    text-align: center;
+    padding: 0; }
+  .announce .features > div {
+    margin: 7px auto; }
+    .announce .features > div > strong {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: left;
+      color: #354052; }
+    .announce .features > div > .muted {
+      font-size: 16px;
+      color: #7f8fa4; }
 
 @media screen and (max-width: 791px) {
   .object_cont {
