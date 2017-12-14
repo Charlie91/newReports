@@ -68,7 +68,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Номер телефона"
-                           mask="+7 (999) 999-99-99"
+                           mask="+9 (999) 999-99-99"
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                     {this.showError()}

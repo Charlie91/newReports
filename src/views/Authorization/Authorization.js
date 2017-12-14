@@ -167,6 +167,7 @@ export default class Authorization extends Component {
                                     value={this.state.login}
                                     autoComplete="new-password"
                                     placeholder="Логин"
+                                    size="5"
                                 />
                             </label>
                             <label>
