@@ -2,13 +2,15 @@
   margin-bottom: 60px; }
   .auth-nav a {
     font-family: ProximaNova, sans-serif;
-    font-size: 1.5em;
+    font-size: 1.625em;
     font-weight: 600;
-    color: #354052; }
+    color: #354052;
+    display: inline-block;
+    line-height: 40px; }
     .auth-nav a:hover {
       text-decoration: none; }
     .auth-nav a.active {
-      border-bottom: solid 2.5px rgba(142, 214, 250, 0.8); }
+      border-bottom: solid 5px rgba(142, 214, 250, 0.8); }
 
 .auth-btn {
   width: 100%;
