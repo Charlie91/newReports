@@ -21,7 +21,10 @@ export default function BarChart(props){
     }];
 
     if(props.data){
-        
+        bar = [];
+        props.data.weekAvg.forEach( (item,i) => {
+            console.log(item)
+        })
     }
 
 
