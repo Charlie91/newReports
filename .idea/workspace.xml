@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69d4d65a-3624-47a3-943e-e14365ba1713" name="Default" comment="font fix 1">
+    <list default="true" id="69d4d65a-3624-47a3-943e-e14365ba1713" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" afterPath="$PROJECT_DIR$/src/views/AuthNav/AuthNav.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/AuthNav/style.scss" afterPath="$PROJECT_DIR$/src/views/AuthNav/style.scss" />
-      <change beforePath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" afterPath="$PROJECT_DIR$/src/views/Authorization/Authorization.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/EmailInput.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/NameInput.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/OrganizationInput.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PasswordInput.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" afterPath="$PROJECT_DIR$/src/views/Registration/inputs/PhoneInput.js" />
-      <change beforePath="$PROJECT_DIR$/src/views/Registration/registration.scss" afterPath="$PROJECT_DIR$/src/views/Registration/registration.scss" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,8 +36,8 @@
       <file leaf-file-name="style.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+            <state relative-caret-position="486">
+              <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -515,7 +506,7 @@
       <workItem from="1512980741453" duration="996000" />
       <workItem from="1513090732400" duration="798000" />
       <workItem from="1513248730775" duration="937000" />
-      <workItem from="1513252447772" duration="16744000" />
+      <workItem from="1513252447772" duration="16765000" />
     </task>
     <task id="LOCAL-00001" summary="font fix 1">
       <created>1513255581681</created>
@@ -531,11 +522,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513255884334</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="font fix 1">
+      <created>1513279537195</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1513279537195</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="535519000" />
+    <option name="totallyTimeSpent" value="535540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -939,8 +937,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/AuthNav/style.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        <state relative-caret-position="486">
+          <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
           <folding />
         </state>
       </provider>
