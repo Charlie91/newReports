@@ -41,6 +41,9 @@
     width: 100%; }
   .registration-form .password-inputs .field:first-child {
     margin-bottom: 55px; }
+  .registration-form .card.bg-danger {
+    width: 80%;
+    margin: auto; }
   @media screen and (min-width: 992px) {
     .registration-form .name_group_wrapper > div {
       padding: 0; }

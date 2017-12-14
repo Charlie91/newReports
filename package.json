@@ -46,6 +46,7 @@
     "react-ladda": "5.0.7",
     "react-router-dom": "4.1.1",
     "react-text-mask": "4.1.0",
+    "react-yandex-maps": "^2.1.4",
     "reactstrap": "^5.0.0-alpha.3",
     "simple-line-icons": "^2.4.1",
     "whatwg-fetch": "^2.0.3"

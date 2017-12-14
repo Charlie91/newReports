@@ -14309,18 +14309,19 @@ a.dropdown__trigger.dropdown-trigger {
 
 /*  ☰*/
 .label-enter {
-  margin-top: 20px; }
+  margin-top: 20px;
+  opacity: 1; }
 
 .label-enter.label-enter-active {
   margin-top: 0;
-  transition: margin-top 200ms ease-in; }
+  transition: margin-top 100ms ease-in; }
 
 .label-leave {
-  margin-top: 0; }
+  opacity: 1; }
 
 .label-leave.label-leave-active {
-  margin-top: 20px;
-  transition: margin-top 200ms ease-in; }
+  opacity: 0;
+  transition: opacity 100ms ease-in; }
 .auth-nav {
   margin-bottom: 60px; }
   .auth-nav a {
@@ -14339,7 +14340,7 @@ a.dropdown__trigger.dropdown-trigger {
   color: #fff;
   font-size: 130%;
   border-radius: 3px; }
-  .auth-btn:disabled {
+  .auth-btn:disabled, .auth-btn.dsbl {
     background-color: rgba(216, 216, 216, 0.6);
     box-shadow: 0 0 2px #b3b3b3; }
 
@@ -14789,7 +14790,9 @@ button.btn.back-btn {
   .registration-form .hintMessage {
     color: #336573; }
   .registration-form .errorMessage {
-    color: #fd0101; }
+    color: #fd0101;
+    text-align: left;
+    text-transform: lowercase; }
   .registration-form .errorMessage, .registration-form .hintMessage {
     position: absolute;
     width: 100%;
@@ -14804,7 +14807,7 @@ button.btn.back-btn {
     font-weight: bold;
     font-size: 110%; }
   .registration-form button.clear-field {
-    display: inline;
+    display: block;
     position: absolute;
     top: 0px;
     right: 0;
@@ -14841,7 +14844,9 @@ button.btn.back-btn {
         margin-bottom: 0; }
       .registration-form .password-inputs label .field:last-of-type[placeholder] {
         font-size: 110%;
-        padding-bottom: 11px; } }
+        padding-bottom: 11px; }
+    .registration-form .confirmError {
+      margin-left: 55%; } }
   @media screen and (max-width: 700px) {
     .registration-form input:focus {
       border-bottom: 2px solid #8bc8e8; } }
