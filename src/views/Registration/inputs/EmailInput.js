@@ -28,12 +28,12 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="errorMessage">Неверный адрес e-mail</div>
+                <div className="errorMessage">проверьте правильность адреса</div>
             )
         }
         else if(this.state.isNotAvailable){
             return(
-                <div className="errorMessage">E-mail {this.state.isNotAvailable} занят</div>
+                <div className="errorMessage">e-mail {this.state.isNotAvailable} занят</div>
             )
         }
     }

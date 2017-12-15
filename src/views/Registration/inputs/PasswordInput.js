@@ -36,12 +36,12 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="errorMessage">Пароль должен быть не менее 6 символов</div>
+                <div className="errorMessage">не меньше 6 символов</div>
             )
         }
         if(this.state.isConfirm === false){
             return(
-                <div className="confirmError errorMessage">Пароли не совпадают</div>
+                <div className="confirmError errorMessage">пароли не совпадают</div>
             )
         }
     }

@@ -1,12 +1,14 @@
 .auth-nav{
-  margin-bottom: 60px;
+  margin-bottom: 53px;
   a {
+    width:209px;
     font-family: ProximaNova, sans-serif;
     font-size: 1.625em;
     font-weight: 600;
     color: #354052;
     display: inline-block;
-    line-height: 40px;
+    line-height: 41px;
+    padding : 0 7px 0 7px;
     &:hover {
       text-decoration: none
     }
@@ -20,8 +22,8 @@
   width:100%;
   background:#8ed6fa;
   color:#fff;
-  font-size: 130%;
-  //padding:5px 40px;
+  font-size: 1.5em;
+  margin-bottom: 35px;
   border-radius: 3px;
   &:disabled, &.dsbl {
     background-color: rgba(216, 216, 216, 0.6);
@@ -35,7 +37,7 @@ button.btn.back-btn {
   }
   background: no-repeat;
   color: rgba(57, 67, 85, 0.8);
-  font-size: 18px;
+  font-size: 1.5em;
 }
 
 .auth-window {
@@ -43,15 +45,16 @@ button.btn.back-btn {
   margin: auto;
   background-color: rgba(255, 255, 255, 0.55);
   text-align: center;
-  padding:60px 80px;
+  padding:63px 80px 0px 80px;
   border-radius:3px;
   -webkit-backdrop-filter: blur(8.5px);
   box-shadow: 5px 8px 15px 0 rgba(149, 149, 149, 0.15), 0 -1px 15px 0 rgba(194, 194, 194, 0.07);
+
   label{
     font-weight:400;
     width:70%;
     position:relative;
-    margin-bottom: 35px;
+    margin-bottom: 70px;
   }
   form {
     text-align: center;
@@ -61,7 +64,9 @@ button.btn.back-btn {
     color: #3e515b !important;
     -webkit-box-shadow: 0 0 0px 1000px #f5f7f8 inset;
   }
+
   input {
+    color: #363636;
     background: none;
     border: none;
     border-bottom: solid 1px rgba(161, 161, 161, 0.8);
@@ -69,14 +74,22 @@ button.btn.back-btn {
     padding-left:0;
     display: block;
     margin: auto;
-    margin-bottom: 5px;
-    font-size: 110%;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    padding-right: 25px;
+
+    &::placeholder {
+      color: #363636;
+    }
     &:focus {
       background: transparent;
       border:none;
       border-bottom: 1px solid #8bc8e8;
       box-shadow: none;
     }
+  }
+  .form-group {
+    margin-bottom: 17px;
   }
   .hintMessage{
     width:70%;
@@ -87,13 +100,14 @@ button.btn.back-btn {
 .label-hint{
   position: absolute;
   left: 0px;
-  top: -20px;
+  top: -23px;
   color: #c1cacb;
+  font-size: 1.25em;
 }
 
 @media screen and (max-width:1600px){
   .auth-window {
-    width: 50%!important;
+    width: 53%!important;
   }
 }
 

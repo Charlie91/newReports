@@ -67,7 +67,7 @@ class NameInput extends ParentInput { //Внимание! Наследует о�
                                value={this.state.value}
                                className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                                type="text"
-                               placeholder="Ваше Имя"
+                               placeholder="Имя"
                         />
                         <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                         {this.showError()}

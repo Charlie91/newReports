@@ -41,7 +41,7 @@ export default class OrganizationInput extends ParentInput { //Внимание!
             this.props.fieldIsValid('organization',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{3,20}$');
+        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{1,250}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('organization',false);
@@ -56,7 +56,7 @@ export default class OrganizationInput extends ParentInput { //Внимание!
         return (
             <div className="form-group">
                 <label>
-                    {animateDynamicLabel(this.state.value, 'Организация')}
+                    {animateDynamicLabel(this.state.value, 'Место работы')}
                     <input onFocus={this.setHint.bind(this)}
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
@@ -64,7 +64,7 @@ export default class OrganizationInput extends ParentInput { //Внимание!
                            value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
-                           placeholder="Организация"
+                           placeholder="Место работы"
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                 </label>
