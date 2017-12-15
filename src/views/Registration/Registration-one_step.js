@@ -145,7 +145,7 @@ class Registration extends Component {
                         <button
                             onClick={this.finalValidation.bind(this)}
                             type="submit"
-                            className="btn auth-btn"
+                            className="btn auth-btn finish-btn"
                         >
                             Зарегистрироваться
                         </button>

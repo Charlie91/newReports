@@ -230,9 +230,9 @@ class Registration extends Component {
                                         (this.state.name && this.state.surname && this.state.position && this.state.organization)
 
                                             ?
-                                            "btn auth-btn"
+                                            "btn auth-btn finish-btn"
                                             :
-                                            "dsbl btn auth-btn"
+                                            "dsbl btn auth-btn finish-btn"
                                     }
                                     disabled={!(this.state.name || this.state.surname || this.state.position || this.state.organization)}
                                 >

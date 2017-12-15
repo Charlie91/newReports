@@ -2,7 +2,7 @@
 
 
 .registration-form{
-  width:40%;
+  border-radius: 10px;
   margin: auto;
   input[type="password"]:first-child{
     margin-bottom:10px;
@@ -112,13 +112,58 @@
     }
   }
 
-  @media screen and (max-width:700px){
-    input:focus{
-      border-bottom: 2px solid #8bc8e8;
+  @media screen and (max-width:512px){
+    &.auth-window {
+      padding:0px 0px 2px 0px;
     }
-  }
+    .auth-nav {
+      margin-bottom: 3px;
+    }
+    input:focus{
+      border-bottom: 1px solid #8bc8e8;
+    }
+    .reg_title{
+      text-align:left;
+      font-size: 1.125em !important;
+      margin-bottom: 0px;
+    }
+    .password-inputs {
+      label {
+        position: relative;
+        margin-bottom: 0px !important;
+        .field {
+          position: relative;
+          margin-bottom: 35px !important;
+        }
+        .field +.errorMessage{
+          top:41px;
+        }
+        .field +.confirmError{
+          top:115px !important;
+        }
+      }
+    }
+
+    .auth-btn {
+      margin-top: 4px;
+      font-size: 1.125em !important;
+    }
+    .back-btn {
+      margin-top: 4px;
+      padding-left: -10px;
+      font-size: 1.125em !important;
+      margin-left: -38px;
+    }
+    .finish-btn{
+      margin-left: -38px;
+      width: 223px;
+    }
+
+
+    }
 
 }
+
 
 
 
