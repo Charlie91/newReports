@@ -160,14 +160,79 @@ export default function BarChart(props){
         <Card className="average_hours">
             <CardBody>
                 <h4>Средняя посещаемость по часам</h4>
-                {bar.map(item =>
-                    <div className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%'}}>
-                        <Bar data={item}
-                             options={{
-                                 maintainAspectRatio: false
-                             }}
-                        />
-                    </div>
+                {bar.map((item,i) =>{
+                    if(i === 0)
+                        return (
+                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'212px',position:'relative',top:'6px'}}>
+                                <Bar data={item}
+                                     options={{
+                                         maintainAspectRatio: false,
+                                         legend:{
+                                             display:false,
+                                         },
+                                         scales: {
+                                             display:false,
+                                             xAxes: [{
+                                                 display:false,
+                                                 gridLines: {
+                                                     color: "rgba(0, 0, 0, 0)",
+                                                     display:false
+                                                 }
+                                             }],
+                                             yAxes: [{
+                                                 ticks: {
+
+                                                     beginAtZero: true,
+                                                     steps: 10,
+                                                     stepValue: 5,
+                                                     max: 100
+                                                 },
+                                                 gridLines: {
+                                                     color: "rgba(0, 0, 0, 0.05)",
+                                                 },
+                                             }]
+                                         }
+                                     }}
+                                />
+                            </div>
+                        );
+                    else
+                        return(
+                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'200px'}}>
+                                <Bar data={item}
+                                     options={{
+                                         maintainAspectRatio: false,
+                                         legend:{
+                                             display:false,
+                                         },
+                                         scales: {
+                                             display:false,
+                                             xAxes: [{
+                                                 display:false,
+                                                 gridLines: {
+                                                     color: "rgba(0, 0, 0, 0)",
+                                                     display:false
+                                                 }
+                                             }],
+                                             yAxes: [{
+                                                 ticks: {
+                                                     display: false,
+                                                     beginAtZero: true,
+                                                     steps: 10,
+                                                     stepValue: 5,
+                                                     max: 100
+                                                 },
+                                                 gridLines: {
+                                                     color: "rgba(0, 0, 0, 0.05)",
+                                                 },
+                                             }]
+                                         }
+                                     }}
+                                />
+                            </div>
+                        )
+                }
+
                 )}
 
 
