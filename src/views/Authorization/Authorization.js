@@ -142,15 +142,15 @@ export default class Authorization extends Component {
     showError(){        //показ ошибок
         if(this.state.hasErrors)
             return(
-                <div className="hintMessage alert alert-danger">Введите логин и пароль</div>
+                <div className="hintMessage alert alert-danger">введите логин и пароль</div>
             );
         if(this.state.loginIsIncorrect)
             return(
-                <div className="hintMessage alert alert-danger">Авторизационные данные неверны</div>
+                <div className="hintMessage alert alert-danger">логин и пароль неверны</div>
             );
         if(this.state.connectionIsFailed)
             return(
-                <div className="hintMessage alert alert-danger">Соединение потеряно. Что-то пошло не так. Обратитесь в тех.поддержку или попробуйте еще раз</div>
+                <div className="hintMessage alert alert-danger">Соединение потеряно</div>
             )
     }
 
