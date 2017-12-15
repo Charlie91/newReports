@@ -13748,9 +13748,11 @@ select {
               margin: -2px 0px 0px 5px;
               color: #d1d4d7; }
 
-body.sidebar-mobile-show, body.dropdown-select-show {
-  overflow: hidden;
-  position: fixed; }
+body {
+  font-size: 16px; }
+  body.sidebar-mobile-show, body.dropdown-select-show {
+    overflow: hidden;
+    position: fixed; }
 
 .navbar .sidebar-minimizer {
   min-width: 50px; }

@@ -425,7 +425,6 @@ export default class ObjectPage extends Component {
                                               gridLines: {
                                                   color: "rgba(0, 0, 0, 0)",
                                               },
-
                                           }]
                                       }
                                   }}
