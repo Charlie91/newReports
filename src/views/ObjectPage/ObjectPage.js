@@ -10,7 +10,7 @@ import {Line} from "react-chartjs-2";
 import {formatNumericValue} from './../../utils/utils';
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
-import BarChart from './Bar';
+import BarChart from './BarChart';
 
 
 function formatNumberBySpaces(num){
