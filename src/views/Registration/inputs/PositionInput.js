@@ -61,12 +61,14 @@ class PositionInput extends ParentInput { //Внимание! Наследует
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
                            onKeyPress={this.preventEnter.bind(this)}
+                           ref={(input) => { this.input = input; }}
                            value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Должность"
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
+                    <div className="permanentMessage">чтобы настроить уровни доступа</div>
                 </label>
             </div>
         )

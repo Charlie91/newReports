@@ -61,12 +61,14 @@ export default class OrganizationInput extends ParentInput { //Внимание!
                            onBlur={this.validateField.bind(this)}
                            onChange={this.setValue.bind(this)}
                            onKeyPress={this.preventEnter.bind(this)}
+                           ref={(input) => { this.input = input; }}
                            value={this.state.value}
                            className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                            type="text"
                            placeholder="Место работы"
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
+                    <div className="permanentMessage">чтобы показывать только нужные объекты</div>
                 </label>
             </div>
         )

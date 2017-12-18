@@ -43,8 +43,8 @@ class NameInput extends ParentInput { //Внимание! Наследует о�
             this.props.fieldIsValid('name',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я-.]{1,256}$');
-        if(value.length < 1){   //проверка на соответствие регэкспу !regExp.test(value)
+        let regExp = new RegExp('^[a-zA-Zа-яА-Я-.]{2,256}$');
+        if(!regExp.test(value)){   //проверка на соответствие регэкспу !regExp.test(value)
             this.setState({isValid:false});
             this.props.fieldIsValid('name',false);
         }
@@ -64,13 +64,13 @@ class NameInput extends ParentInput { //Внимание! Наследует о�
                                onBlur={this.validateField.bind(this)}
                                onChange={this.setValue.bind(this)}
                                onKeyPress={this.preventEnter.bind(this)}
+                               ref={(input) => { this.input = input; }}
                                value={this.state.value}
                                className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                                type="text"
                                placeholder="Имя"
                         />
                         <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
-                        {this.showError()}
                     </label>
                 </div>
             </Col>

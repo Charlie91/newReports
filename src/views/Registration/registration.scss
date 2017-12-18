@@ -72,6 +72,13 @@
     margin: auto;
   }
 
+  .permanentMessage{
+    font-size: 12px;
+    line-height: 1.58;
+    text-align: left;
+    color: #394355;
+  }
+
   @media screen and (min-width:992px){
     .name_group_wrapper{
       >div{

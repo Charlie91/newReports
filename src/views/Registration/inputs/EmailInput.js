@@ -84,6 +84,7 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
                     <input
                            onChange={this.setValue.bind(this)}
                            onFocus={this.setHint.bind(this)}
+                           ref={(input) => { this.input = input; }}
                            onBlur={this.validateField.bind(this)}
                            onKeyPress={this.preventEnter.bind(this)}
                            value={this.state.value}

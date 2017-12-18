@@ -32,7 +32,11 @@ class ParentInput extends Component {//Родительский класс дл�
 
     clearField(e){
         e.preventDefault();
-        this.setState({value:''},() =>  this.validateField());
+        this.input.focus();
+        this.setState({value:''},() =>  {
+            this.validateField();
+            this.setHint();
+        });
     }
 
     setValue(e){

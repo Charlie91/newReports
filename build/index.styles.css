@@ -13748,9 +13748,11 @@ select {
               margin: -2px 0px 0px 5px;
               color: #d1d4d7; }
 
-body.sidebar-mobile-show, body.dropdown-select-show {
-  overflow: hidden;
-  position: fixed; }
+body {
+  font-size: 16px; }
+  body.sidebar-mobile-show, body.dropdown-select-show {
+    overflow: hidden;
+    position: fixed; }
 
 .navbar .sidebar-minimizer {
   min-width: 50px; }
@@ -14323,22 +14325,30 @@ a.dropdown__trigger.dropdown-trigger {
   opacity: 0;
   transition: opacity 100ms ease-in; }
 .auth-nav {
-  margin-bottom: 60px; }
+  margin-bottom: 53px; }
   .auth-nav a {
+    width: 209px;
     font-family: ProximaNova, sans-serif;
-    font-size: 1.5em;
+    font-size: 1.625em;
     font-weight: 600;
-    color: #354052; }
+    color: #354052;
+    display: inline-block;
+    line-height: 41px;
+    padding: 0 7px 0 7px; }
     .auth-nav a:hover {
       text-decoration: none; }
     .auth-nav a.active {
-      border-bottom: solid 2.5px rgba(142, 214, 250, 0.8); }
+      border-bottom: solid 5px rgba(142, 214, 250, 0.8); }
+
+.nextStep .auth-btn {
+  width: 185px; }
 
 .auth-btn {
   width: 100%;
   background: #8ed6fa;
   color: #fff;
-  font-size: 130%;
+  font-size: 1.5em;
+  margin-bottom: 35px;
   border-radius: 3px; }
   .auth-btn:disabled, .auth-btn.dsbl {
     background-color: rgba(216, 216, 216, 0.6);
@@ -14347,24 +14357,24 @@ a.dropdown__trigger.dropdown-trigger {
 button.btn.back-btn {
   background: no-repeat;
   color: rgba(57, 67, 85, 0.8);
-  font-size: 18px; }
+  font-size: 1.5em; }
   button.btn.back-btn:focus {
     box-shadow: none; }
 
 .auth-window {
-  width: 40%;
+  width: 805px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.55);
   text-align: center;
-  padding: 60px 80px;
-  border-radius: 3px;
+  padding: 63px 80px 0px 80px;
+  border-radius: 10px;
   -webkit-backdrop-filter: blur(8.5px);
   box-shadow: 5px 8px 15px 0 rgba(149, 149, 149, 0.15), 0 -1px 15px 0 rgba(194, 194, 194, 0.07); }
-  .auth-window label {
+  .auth-window label, .auth-window .nextStep {
     font-weight: 400;
     width: 70%;
     position: relative;
-    margin-bottom: 35px; }
+    margin-bottom: 70px; }
   .auth-window form {
     text-align: center; }
   .auth-window input:-webkit-autofill, .auth-window input:-webkit-autofill:focus {
@@ -14372,6 +14382,7 @@ button.btn.back-btn {
     color: #3e515b !important;
     -webkit-box-shadow: 0 0 0px 1000px #f5f7f8 inset; }
   .auth-window input {
+    color: #363636;
     background: none;
     border: none;
     border-bottom: solid 1px rgba(161, 161, 161, 0.8);
@@ -14379,53 +14390,39 @@ button.btn.back-btn {
     padding-left: 0;
     display: block;
     margin: auto;
-    margin-bottom: 5px;
-    font-size: 110%; }
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    padding-right: 25px; }
+    .auth-window input::placeholder {
+      color: #363636; }
     .auth-window input:focus {
       background: transparent;
       border: none;
       border-bottom: 1px solid #8bc8e8;
       box-shadow: none; }
+  .auth-window .form-group {
+    margin-bottom: 17px; }
   .auth-window .hintMessage {
     width: 70%;
-    margin: auto; }
+    margin: auto;
+    background-color: transparent;
+    border: 0px;
+    padding-top: 0px;
+    color: #fd0101; }
 
 .label-hint {
   position: absolute;
   left: 0px;
-  top: -20px;
-  color: #c1cacb; }
+  top: -23px;
+  color: #c1cacb;
+  font-size: 1.25em; }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 820px) {
   .auth-window {
-    width: 50% !important; } }
-
-@media screen and (max-width: 1400px) {
-  .auth-window {
-    width: 60% !important; } }
-
-@media screen and (max-width: 991px) {
-  .auth-window {
-    width: 60% !important; }
-    .auth-window label {
-      width: 100%; }
-    .auth-window .hintMessage {
-      width: 100%; }
-  .auth-nav a {
-    font-size: 2.3vw; }
-    .auth-nav a:active {
-      box-shadow: 0 2px 2px #b9b9b9;
-      background: #d8dedc;
-      padding: 1px;
-      -webkit-tap-highlight-color: transparent; } }
-
-@media screen and (max-width: 767px) {
-  .auth-window {
-    width: 100% !important;
-    border-radius: 10px;
-    padding: 60px 20px; }
-    .auth-window label {
-      width: 100% !important; }
+    width: 100%;
+    border-radius: 10px; }
+    .auth-window label, .auth-window .nextStep {
+      width: 90% !important; }
   .auth-nav a {
     font-size: 1.5em; }
   .dropdown__content.dropdown-content {
@@ -14434,17 +14431,45 @@ button.btn.back-btn {
   .empty-tmpl-app .container-fluid {
     padding: 24px; } }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 512px) {
+  .auth-window {
+    padding: 0px 0px 35px 0px; }
+    .auth-window input {
+      font-size: 1.125em; }
+    .auth-window label, .auth-window .nextStep {
+      width: 266px !important;
+      margin-bottom: 37px; }
+    .auth-window .form-group {
+      margin-bottom: 0px; }
+    .auth-window .auth_links {
+      padding: 0px; }
   .empty-tmpl-app .container-fluid {
-    padding: 20px; }
+    padding: 25px; }
   .auth-nav {
-    margin-bottom: 60px;
-    font-size: 90%;
-    padding: 10px; } }
+    margin-bottom: 27px;
+    padding: 19px; }
+    .auth-nav a {
+      width: 141px;
+      font-size: 1.125em !important;
+      padding: 0 3px 0 3px; }
+  .nextStep .auth-btn {
+    width: 154px; }
+  .auth-btn {
+    font-size: 1.25em !important;
+    width: 154px;
+    margin-top: -9px;
+    margin-bottom: 0px; }
+  .label-hint {
+    font-size: 0.875em;
+    top: -10px; }
+  button .auth-btn {
+    font-size: 1.125em !important; }
+  button .btn.back-btn {
+    font-size: 1.125em !important; } }
 
-@media screen and (max-width: 350px) {
-  .auth_links {
-    padding: 0; } }
+@media screen and (max-width: 325px) {
+  .empty-tmpl-app .container-fluid {
+    padding: 5px; } }
 .loading_process {
   z-index: 100;
   background: rgba(0, 0, 0, 0.47);
@@ -14727,7 +14752,7 @@ button.btn.back-btn {
 .object_cont {
   margin: auto; }
   .object_cont .card-body:last-child {
-    padding: 2rem; }
+    padding: 2.3rem; }
 
 .totalSum {
   margin-top: 3%; }
@@ -14749,44 +14774,65 @@ button.btn.back-btn {
   color: #354052; }
 
 .fullIMG {
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
 
 .obj_title {
-  margin-top: 18%;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #dfe2e5; }
+  padding-bottom: 5px; }
+  .obj_title h4 {
+    font-size: 55px;
+    color: #354052; }
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
   .obj_title a {
-    font-size: 14px;
+    font-size: 20px;
     text-align: left;
-    color: #45bce5;
-    text-decoration: underline;
-    margin-left: 10px; }
-
-.features > div {
-  margin: 7px auto; }
-  .features > div > strong {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: left;
-    color: #354052; }
+    color: #354052;
+    box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052; }
 
 .announce {
-  padding: 0 50px; }
+  margin-bottom: 20px; }
+  .announce .card {
+    height: 100%; }
+  .announce .geolocation .map_wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden; }
+    .announce .geolocation .map_wrapper .ymaps-2-1-56-copyright__content {
+      display: none; }
+  .announce .geolocation .address {
+    text-align: center;
+    padding: 0; }
+  .announce .features > div {
+    margin: 7px auto; }
+    .announce .features > div > strong {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: left;
+      color: #354052; }
+    .announce .features > div > .muted {
+      font-size: 16px;
+      color: #7f8fa4; }
 
 @media screen and (max-width: 791px) {
   .object_cont {
     width: 100%;
     margin: auto; } }
 .registration-form {
-  width: 40%;
+  border-radius: 10px;
   margin: auto; }
   .registration-form input[type="password"]:first-child {
     margin-bottom: 10px; }
-  .registration-form label {
-    width: 80%; }
+  .registration-form label, .registration-form .nextStep {
+    width: 70%;
+    margin-bottom: 33px; }
+    .registration-form label h4, .registration-form .nextStep h4 {
+      margin-bottom: 25px;
+      font-size: 1.625em; }
+    .registration-form label button, .registration-form .nextStep button {
+      margin-bottom: 5px; }
   .registration-form .hintMessage {
     color: #336573; }
   .registration-form .errorMessage {
@@ -14809,8 +14855,8 @@ button.btn.back-btn {
   .registration-form button.clear-field {
     display: block;
     position: absolute;
-    top: 0px;
-    right: 0;
+    top: 14px;
+    right: 2px;
     color: #fff;
     border-radius: 50%;
     width: 16px;
@@ -14823,14 +14869,17 @@ button.btn.back-btn {
     width: 100%; }
   .registration-form .password-inputs .field:first-child {
     margin-bottom: 55px; }
+  .registration-form .card.bg-danger {
+    width: 80%;
+    margin: auto; }
   @media screen and (min-width: 992px) {
     .registration-form .name_group_wrapper > div {
       padding: 0; }
       .registration-form .name_group_wrapper > div:first-child {
-        padding-right: 15px; } }
+        padding-right: 35px; } }
   @media screen and (min-width: 768px) {
     .registration-form .name_group_wrapper {
-      width: 80%;
+      width: 70%;
       margin: auto; }
       .registration-form .name_group_wrapper > div {
         padding: 0; } }
@@ -14847,9 +14896,38 @@ button.btn.back-btn {
         padding-bottom: 11px; }
     .registration-form .confirmError {
       margin-left: 55%; } }
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 512px) {
+    .registration-form.auth-window {
+      padding: 0px 0px 2px 0px; }
+    .registration-form .auth-nav {
+      margin-bottom: 3px; }
     .registration-form input:focus {
-      border-bottom: 2px solid #8bc8e8; } }
+      border-bottom: 1px solid #8bc8e8; }
+    .registration-form .reg_title {
+      text-align: left;
+      font-size: 1.125em !important;
+      margin-bottom: 0px; }
+    .registration-form .password-inputs label {
+      position: relative;
+      margin-bottom: 0px !important; }
+      .registration-form .password-inputs label .field {
+        position: relative;
+        margin-bottom: 35px !important; }
+      .registration-form .password-inputs label .field + .errorMessage {
+        top: 41px; }
+      .registration-form .password-inputs label .field + .confirmError {
+        top: 115px !important; }
+    .registration-form .auth-btn {
+      margin-top: 4px;
+      font-size: 1.125em !important; }
+    .registration-form .back-btn {
+      margin-top: 4px;
+      padding-left: -10px;
+      font-size: 1.125em !important;
+      margin-left: -38px; }
+    .registration-form .finish-btn {
+      margin-left: -38px;
+      width: 223px; } }
 .auth-layer {
   display: flex;
   background: url(./img/backgroundv2.86bc8d39d7d747c66f1e522473a2c745.jpg);

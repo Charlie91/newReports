@@ -78,13 +78,30 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
         }
     }
 
+    clearField(e){
+        e.preventDefault();
+        this.focusOnInput();
+        this.setState({value:''},() =>  {
+            this.validateField();
+            this.setHint();
+        });
+    }
+
+    focusOnInput(){
+        let input = document.querySelector('div.phone input');
+        console.log(input);
+        this.setState({value:''},() => {
+            input.focus();
+        });
+    }
+
     componentDidMount(){
         this.setPhonethroughMask();
     }
 
     render() {
         return (
-            <div className="form-group">
+            <div className="form-group phone">
                 <label>
                     {animateDynamicLabel(this.state.value, 'Телефон')}
                     <InputMask
@@ -98,7 +115,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
                         placeholder="Номер телефона"
                         mask={this.state.mask}
                     />
-                    <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
+                    <ClearField render={this.state.value && this.state.focus && (this.state.value !== "+_ (___) ___-__-__")} clearField={this.clearField.bind(this)}/>
                     {this.showError()}
                 </label>
             </div>

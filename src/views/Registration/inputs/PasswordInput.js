@@ -98,11 +98,16 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
 
     clearField(e){
         e.preventDefault();
-        this.setState({password:''},() =>  this.validateField());
+        this.input.focus();
+        this.setState({password:''},() =>  {
+            this.validateField();
+            this.setHint();
+        });
     }
 
     clearConfirmField(e){
         e.preventDefault();
+        this.confirmInput.focus();
         this.setState({confirmPassword:''},() =>  this.confirmationPasswords());
     }
 
@@ -120,6 +125,7 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
                                onBlur={this.validateField.bind(this)}
                                onChange={this.setPassword.bind(this)}
                                onKeyPress={this.preventEnter.bind(this)}
+                               ref={(input) => { this.input = input; }}
                                value={this.state.password}
                                className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                                type="password"
@@ -134,6 +140,7 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
                             onBlur={this.onBlurConfirmation.bind(this)}
                             onChange={this.setConfirmPassword.bind(this)}
                             onKeyPress={this.preventEnter.bind(this)}
+                            ref={(input) => { this.confirmInput = input; }}
                             value={this.state.confirmPassword}
                             className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
                             type="password"
