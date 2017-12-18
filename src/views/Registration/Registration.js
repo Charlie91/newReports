@@ -154,6 +154,7 @@ class Registration extends Component {
 
     goToSecondStep(e){  //функция перехода на следующий шаг
         e.preventDefault();
+        console.log(e.currentTarget);
         if(this.firstValidation()){
             this.setState({registrationStep:2})
         }
@@ -176,9 +177,8 @@ class Registration extends Component {
                     <PasswordInput value={this.state.password} isValid={this.state.password} isConfirm={this.state.passwordsAreConfirm} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     <PhoneInput  value={this.state.phone} isValid={this.state.phone} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     {this.showRegistrationErrors()}
-                    <label>
                         <Row>
-                            <Col md={{ size: 6, offset:3}} xs={{ size: 7, offset: 5 }}>
+                            <Col className="nextStep" md={{ size: 6, offset:3}} xs={{ size: 7, offset: 5 }}>
                                 <button
                                     onClick={this.goToSecondStep.bind(this)}
                                     type="submit"
@@ -196,7 +196,6 @@ class Registration extends Component {
                                 </button>
                             </Col>
                         </Row>
-                    </label>
                 </form>
             );
         else {

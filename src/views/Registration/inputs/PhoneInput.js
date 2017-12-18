@@ -9,10 +9,10 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
     constructor(props){
         super(props);
         this.state = {
-            //value:(props.value) ? props.value : '',
             value: props.value || getCookie('phone') || '',
             focus:null,
-            isValid:props.isValid
+            isValid:props.isValid,
+            mask:"+9 (999) 999-99-99"
         }
     }
 
@@ -33,6 +33,30 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
         }
     }
 
+    setPhonethroughMask(e){//играем маской телефона
+        let value = (!e) ? this.state.value : e.target.value;
+
+        if(value[1] === '8'){
+            let newStr = '';
+            for(let i = 0; i < value.length;i++){
+                if(i === 1 && value[i] === '8'){
+                    newStr += '7';
+                }
+                else
+                    newStr += value[i];
+            }
+            value = newStr;
+        }
+        else if(value[1] === '3'){
+            this.setState({mask:'+999 (99) 99-99-99'})
+        }
+        else{
+            this.setState({mask:'+9 (999) 999-99-99'})
+        }
+        //
+        this.setState({value:value});
+    }
+
     validateField(e){//функция-валидация
         if(e && e.relatedTarget){ //фикс бага
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
@@ -43,7 +67,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
             this.props.fieldIsValid('phone',null);
             return;
         }
-        let regExp = new RegExp('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$');
+        let regExp = new RegExp('^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('phone',false);
@@ -54,21 +78,25 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
         }
     }
 
+    componentDidMount(){
+        this.setPhonethroughMask();
+    }
+
     render() {
         return (
             <div className="form-group">
                 <label>
                     {animateDynamicLabel(this.state.value, 'Телефон')}
                     <InputMask
-                           onFocus={this.setHint.bind(this)}
-                           onBlur={this.validateField.bind(this)}
-                           onChange={this.setValue.bind(this)}
-                           onKeyPress={this.preventEnter.bind(this)}
-                           value={this.state.value}
-                           className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
-                           type="text"
-                           placeholder="Номер телефона"
-                           mask="+9 (999) 999-99-99"
+                        onFocus={this.setHint.bind(this)}
+                        onBlur={this.validateField.bind(this)}
+                        onChange={this.setPhonethroughMask.bind(this)}
+                        onKeyPress={this.preventEnter.bind(this)}
+                        value={this.state.value}
+                        className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
+                        type="text"
+                        placeholder="Номер телефона"
+                        mask={this.state.mask}
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
                     {this.showError()}

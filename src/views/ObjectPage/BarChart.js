@@ -152,7 +152,7 @@ export default class BarChart extends Component {
         }
     }
 
-    componentDidUpdate(){
+    addBorderRadiuses(){
         Chart.elements.Rectangle.prototype.draw = function() {
 
             var ctx = this._chart.ctx;
@@ -244,12 +244,12 @@ export default class BarChart extends Component {
                     nextCornerId = 0
                 }
 
-               var nextCorner = cornerAt(nextCornerId);
+                var nextCorner = cornerAt(nextCornerId);
 
-               var width = corners[2][0] - corners[1][0];
-               var height = corners[0][1] - corners[1][1];
-               var x = corners[1][0];
-               var y = corners[1][1];
+                var width = corners[2][0] - corners[1][0];
+                var height = corners[0][1] - corners[1][1];
+                var x = corners[1][0];
+                var y = corners[1][1];
 
                 var radius = cornerRadius;
 
@@ -263,11 +263,11 @@ export default class BarChart extends Component {
                 ctx.moveTo(x + radius, y);
                 ctx.lineTo(x + width - radius, y);
                 ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-                ctx.lineTo(x + width, y + height - radius);
-                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                ctx.lineTo(x + width, y + height/* - radius */);
+                ctx.quadraticCurveTo(x + width, y + height, x + width /*- radius */, y + height);
                 ctx.lineTo(x + radius, y + height);
-                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y + height, x, y + height /* - radius */);
+                ctx.lineTo(x, y + radius );
                 ctx.quadraticCurveTo(x, y, x + radius, y);
 
             }
@@ -277,7 +277,10 @@ export default class BarChart extends Component {
                 ctx.stroke();
             }
         };
+    }
 
+    componentDidUpdate(){           //добавляем border-radius'ы в график
+        this.addBorderRadiuses();
     }
 
 

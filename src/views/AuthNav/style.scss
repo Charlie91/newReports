@@ -18,6 +18,10 @@
   }
 }
 
+.nextStep .auth-btn{
+  width:185px
+}
+
 .auth-btn{
   width:100%;
   background:#8ed6fa;
@@ -51,7 +55,7 @@ button.btn.back-btn {
   -webkit-backdrop-filter: blur(8.5px);
   box-shadow: 5px 8px 15px 0 rgba(149, 149, 149, 0.15), 0 -1px 15px 0 rgba(194, 194, 194, 0.07);
 
-  label{
+  label,.nextStep{
     font-weight:400;
     width:70%;
     position:relative;
@@ -117,7 +121,7 @@ button.btn.back-btn {
     //width: 805px;
     border-radius:10px;
 
-    label{
+    label, .nextStep{
       width:90%!important
     }
   }
@@ -141,7 +145,7 @@ button.btn.back-btn {
     input {
       font-size: 1.125em;
     }
-    label {
+    label,.nextStep {
       width: 266px !important;
       margin-bottom: 37px;
 
@@ -164,6 +168,9 @@ button.btn.back-btn {
     }
     margin-bottom: 27px;
     padding: 19px;
+  }
+  .nextStep .auth-btn{
+    width:154px;
   }
   .auth-btn {
     font-size: 1.25em !important;
