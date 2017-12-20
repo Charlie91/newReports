@@ -46,10 +46,12 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
         };
         ajaxRequest(url,options)
             .then(data => {
-                if(data.present)
-                    this.setState({isNotAvailable:this.state.value})
-                else
-                    this.setState({isNotAvailable:false})
+                if (data.present) {
+                    //this.setState({isValid:false});
+                    //this.props.fieldIsValid('email',false);
+                    this.setState({isNotAvailable: this.state.value});
+                } else
+                    this.setState({isNotAvailable: false})
             })
             .catch(error => console.log(error));
     }
@@ -64,7 +66,10 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
             this.props.fieldIsValid('email',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я0-9-_\.@]{3,30}$');
+
+        let regExp = /^[\w._%+-]+@[\w.-]+\.\w{2,}$/;
+
+
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('email',false);
@@ -76,13 +81,20 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
         this.checkAvailability();
     }
 
+    setEmail(e){
+        this.setState(
+            {value:e.target.value},
+            () => this.validateField()
+        );
+    }
+
     render() {
         return (
             <div className="form-group">
                 <label>
                     {animateDynamicLabel(this.state.value, 'E-mail')}
                     <input
-                           onChange={this.setValue.bind(this)}
+                           onChange={this.setEmail.bind(this)}
                            onFocus={this.setHint.bind(this)}
                            ref={(input) => { this.input = input; }}
                            onBlur={this.validateField.bind(this)}
