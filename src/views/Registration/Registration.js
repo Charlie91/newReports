@@ -228,7 +228,7 @@ class Registration extends Component {
                                     onClick={this.finalValidation.bind(this)}
                                     type="submit"
                                     className={
-                                        (this.state.name && this.state.surname && this.state.position && this.state.organization)
+                                        (this.state.firstName && this.state.lastName && this.state.position && this.state.organization)
 
                                             ?
                                             "btn auth-btn finish-btn"
