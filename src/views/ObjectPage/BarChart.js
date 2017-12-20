@@ -232,7 +232,7 @@ export default class BarChart extends Component {
                     if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
             });
-            this.setState({bars: bars,maxVal:maxVal});
+            this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
             console.log(bars);
         }
     }
@@ -378,109 +378,114 @@ export default class BarChart extends Component {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
                                     return (
-                                        <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'212px',position:'relative',top:'6px',padding:'0px 15px'}}>
-                                            <Bar data={item}
-                                                 ref={(chart) => { this.chart = chart; }}
-                                                 options={{
-                                                     maintainAspectRatio: false,
-                                                     legend:{
-                                                         display:false,
-                                                     },
-                                                     title:{
-                                                         display:false,
-                                                         text:'Понедельник',
-                                                         position:'bottom'
-                                                     },
-                                                     tooltips: {
-                                                         enabled:true,
-                                                         backgroundColor:'#eff3f6',
-                                                         bodyFontColor:'#354052',
-                                                         titleFontColor:'#354052',
-                                                         titleFontStyle:'normal',
-                                                         displayColors:false,
-                                                         callbacks:{
-                                                             label:function(tooltipItem, data	){
-                                                                 return `${tooltipItem.yLabel} чел.`
-                                                             }
-                                                         }
-                                                     },
-                                                     scales: {
-                                                         display:false,
-                                                         xAxes: [{
+                                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'212px',position:'relative',top:'6px',padding:'0px 15px'}}>
+                                                <Bar data={item}
+                                                     ref={(chart) => { this.chart = chart; }}
+                                                     options={{
+                                                         maintainAspectRatio: false,
+                                                         legend:{
                                                              display:false,
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0)",
-                                                                 display:false
+                                                         },
+                                                         title:{
+                                                             display:false,
+                                                             text:'Понедельник',
+                                                             position:'bottom'
+                                                         },
+                                                         tooltips: {
+                                                             enabled:true,
+                                                             backgroundColor:'#eff3f6',
+                                                             bodyFontColor:'#354052',
+                                                             titleFontColor:'#354052',
+                                                             titleFontStyle:'normal',
+                                                             displayColors:false,
+                                                             callbacks:{
+                                                                 label:function(tooltipItem, data	){
+                                                                     return `${tooltipItem.yLabel} чел.`
+                                                                 }
                                                              }
-                                                         }],
-                                                         yAxes: [{
-                                                             ticks: {
-                                                                 max: this.state.maxVal,
-                                                                 beginAtZero: true,
-                                                                 steps: 10,
-                                                                 stepValue: 5,
-                                                             },
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0.05)",
-                                                             },
-                                                         }]
-                                                     }
-                                                 }}
-                                            />
-                                        </div>
+                                                         },
+                                                         scales: {
+                                                             display:false,
+                                                             xAxes: [{
+                                                                 display:false,
+                                                                 gridLines: {
+                                                                     color: "rgba(0, 0, 0, 0)",
+                                                                     display:false
+                                                                 }
+                                                             }],
+                                                             yAxes: [{
+                                                                 ticks: {
+                                                                     max: this.state.maxVal,
+                                                                     beginAtZero: true,
+                                                                     steps: 10,
+                                                                     stepValue: 5,
+                                                                 },
+                                                                 gridLines: {
+                                                                     color: "rgba(0, 0, 0, 0.05)",
+                                                                     drawBorder: false
+                                                                 },
+                                                             }]
+                                                         }
+                                                     }}
+                                                />
+                                                <div className="title">Понедельник</div>
+                                            </div>
                                     );
                                 else
                                     return(
-                                        <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'200px',padding:'0px 15px'}}>
-                                            <Bar data={item}
-                                                 ref={(chart) => { this.chart = chart; }}
-                                                 options={{
-                                                     maintainAspectRatio: false,
-                                                     legend:{
-                                                         display:false,
-                                                     },
-                                                     title:{
-                                                         display:false,
-                                                         text:'Понедельник',
-                                                         position:'bottom'
-                                                     },
-                                                     tooltips: {
-                                                         backgroundColor:'#eff3f6',
-                                                         bodyFontColor:'#354052',
-                                                         titleFontColor:'#354052',
-                                                         titleFontStyle:'normal',
-                                                         displayColors:false,
-                                                         callbacks:{
-                                                             label:function(tooltipItem, data	){
-                                                                 return `${tooltipItem.yLabel} чел.`
-                                                             }
-                                                         }
-                                                     },
-                                                     scales: {
-                                                         display:false,
-                                                         xAxes: [{
+                                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'200px',padding:'0px 15px'}}>
+                                                <Bar data={item}
+                                                     ref={(chart) => { this.chart = chart; }}
+                                                     options={{
+                                                         maintainAspectRatio: false,
+                                                         legend:{
                                                              display:false,
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0)",
-                                                                 display:false
+                                                         },
+                                                         title:{
+                                                             display:false,
+                                                             text:'Понедельник',
+                                                             position:'bottom'
+                                                         },
+                                                         tooltips: {
+                                                             backgroundColor:'#eff3f6',
+                                                             bodyFontColor:'#354052',
+                                                             titleFontColor:'#354052',
+                                                             titleFontStyle:'normal',
+                                                             displayColors:false,
+                                                             callbacks:{
+                                                                 label:function(tooltipItem, data	){
+                                                                     return `${tooltipItem.yLabel} чел.`
+                                                                 }
                                                              }
-                                                         }],
-                                                         yAxes: [{
-                                                             ticks: {
-                                                                 max: this.state.maxVal,
-                                                                 display: false,
-                                                                 beginAtZero: true,
-                                                                 steps: 10,
-                                                                 stepValue: 5,
-                                                             },
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0.05)",
-                                                             },
-                                                         }]
-                                                     }
-                                                 }}
-                                            />
-                                        </div>
+                                                         },
+                                                         scales: {
+                                                             display:false,
+                                                             xAxes: [{
+                                                                 display:false,
+                                                                 gridLines: {
+                                                                     color: "rgba(0, 0, 0, 0)",
+                                                                     display:false,
+                                                                     drawBorder: true
+                                                                 }
+                                                             }],
+                                                             yAxes: [{
+                                                                 ticks: {
+                                                                     max: this.state.maxVal,
+                                                                     display: false,
+                                                                     beginAtZero: true,
+                                                                     steps: 10,
+                                                                     stepValue: 5,
+                                                                 },
+                                                                 gridLines: {
+                                                                     color: "rgba(0, 0, 0, 0.05)",
+                                                                     drawBorder: false
+                                                                 },
+                                                             }]
+                                                         }
+                                                     }}
+                                                />
+                                                <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
+                                            </div>
                                     );
                             }
                         )}
