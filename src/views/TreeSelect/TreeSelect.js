@@ -39,8 +39,6 @@ function clearAll(){
     }
 }
 
-
-
 const onAction = ({action, node}) => { console.log(`onAction:: [${action}]`, node) };
 const onNodeToggle = (currentNode) => {
     console.log('onNodeToggle::', currentNode);

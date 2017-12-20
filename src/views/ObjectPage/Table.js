@@ -40,3 +40,5 @@ class Table2 extends Component {
 
 
 export default Table2;
+
+

@@ -40,17 +40,17 @@ class SurnameInput extends ParentInput { //Внимание! Наследует 
         let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         if(value === ''){
-            this.props.fieldIsValid('surname',null);
+            this.props.fieldIsValid('lastName',null);
             return;
         }
         let regExp = new RegExp('^[a-zA-Zа-яА-Я-.]{1,256}$');
         if(value.length < 1){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
-            this.props.fieldIsValid('surname',false);
+            this.props.fieldIsValid('lastName',false);
         }
         else{
             this.setState({isValid:true});
-            this.props.fieldIsValid('surname',value);
+            this.props.fieldIsValid('lastName',value);
         }
     }
 

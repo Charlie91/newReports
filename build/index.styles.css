@@ -14872,6 +14872,11 @@ button.btn.back-btn {
   .registration-form .card.bg-danger {
     width: 80%;
     margin: auto; }
+  .registration-form .permanentMessage {
+    font-size: 12px;
+    line-height: 1.58;
+    text-align: left;
+    color: #394355; }
   @media screen and (min-width: 992px) {
     .registration-form .name_group_wrapper > div {
       padding: 0; }

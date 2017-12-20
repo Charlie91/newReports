@@ -2,6 +2,91 @@ import React, { Component } from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 
+
+
+const customLabel = function(tooltipModel) {
+    // Tooltip Element
+    var tooltipEl = document.getElementById('chartjs-tooltip');
+
+    // Create element on first render
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.innerHTML = "<div></div>";
+        document.body.appendChild(tooltipEl);
+        //////////////////////////////
+        tooltipEl.style.position='absolute';
+        tooltipEl.style.textAlign='center';
+        tooltipEl.style.color=tooltipModel.bodyFontColor;
+        tooltipEl.style.backgroundColor=tooltipModel.backgroundColor;
+        tooltipEl.style.borderRadius='4px';
+        tooltipEl.style.fontFamily='ProximaNova';
+
+        ///////////////////////////////
+    }
+    console.log(tooltipModel);
+
+    // Hide if no tooltip
+    if (tooltipModel.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+    }
+
+    // Set caret Position
+    tooltipEl.classList.remove('above', 'below', 'no-transform');
+    if (tooltipModel.yAlign) {
+        tooltipEl.classList.add(tooltipModel.yAlign);
+    } else {
+        tooltipEl.classList.add('no-transform');
+    }
+
+    function getBody(bodyItem) {
+        return bodyItem.lines;
+    }
+
+    // Set Text
+    if (tooltipModel.body) {
+        var titleLines = tooltipModel.title || [];
+        var bodyLines = tooltipModel.body.map(getBody);
+
+        var innerHtml = '<div>';
+
+        titleLines.forEach(function(title) {
+            innerHtml += '<span class="tooltip_title">' + title + '</span>';
+        });
+        innerHtml += '</div><div>';
+
+        bodyLines.forEach(function(body, i) {
+            var colors = tooltipModel.labelColors[i];
+            var style = 'background:' + colors.backgroundColor;
+            style += '; border-color:' + colors.borderColor;
+            style += '; border-width: 2px';
+            innerHtml += '<span class="tooltip_body">'  + body + '</span>';
+        });
+        innerHtml += '</div>';
+
+        var tableRoot = tooltipEl.querySelector('div:first-of-type');
+        tableRoot.innerHTML = innerHtml;
+    }
+
+    tooltipEl.querySelector('.tooltip_title').style.fontSize=tooltipModel.titleFontSize + 'px';
+    tooltipEl.querySelector('.tooltip_body').style.fontSize=tooltipModel.bodyFontSize + 'px';
+    tooltipEl.querySelector('.tooltip_body').style.fontWeight='500';
+
+
+    // `this` will be the overall tooltip
+    var position = this._chart.canvas.getBoundingClientRect();
+
+    // Display, position, and set styles for font
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = position.left + tooltipModel.caretX + 'px';
+    tooltipEl.style.top = position.top + tooltipModel.caretY + 'px';
+    tooltipEl.style.fontFamily = tooltipModel._fontFamily;
+    tooltipEl.style.fontSize = tooltipModel.fontSize;
+    tooltipEl.style.fontStyle = tooltipModel._fontStyle;
+    tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+};
+
 export default class BarChart extends Component {
     constructor(props){
         super(props);
@@ -113,38 +198,38 @@ export default class BarChart extends Component {
             nextProps.data.weekAvg.forEach((item, i) => {
                 if (i < 8) {
                     bars[0].labels.push(item.ld + '-' + item.td);
-                    bars[0].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[0].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else if (i < 16) {
                     bars[1].labels.push(item.ld + '-' + item.td);
-                    bars[1].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[1].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else if (i < 24) {
                     bars[2].labels.push(item.ld + '-' + item.td);
-                    bars[2].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[2].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else if (i < 32) {
                     bars[3].labels.push(item.ld + '-' + item.td);
-                    bars[3].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[3].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else if (i < 40) {
                     bars[4].labels.push(item.ld + '-' + item.td);
-                    bars[4].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[4].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else if (i < 48) {
                     bars[5].labels.push(item.ld + '-' + item.td);
-                    bars[5].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[5].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
                 else {
                     bars[6].labels.push(item.ld + '-' + item.td);
-                    bars[6].datasets[0].data.push(item.avg);
-                    if(item.avg > maxVal)maxVal = item.avg;
+                    bars[6].datasets[0].data.push(Math.round(item.avg));
+                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
                 }
             });
             this.setState({bars: bars,maxVal:maxVal});
@@ -152,7 +237,7 @@ export default class BarChart extends Component {
         }
     }
 
-    addBorderRadiuses(){
+    addBorderRadiuses(){     //добавляем border-radius'ы в график
         Chart.elements.Rectangle.prototype.draw = function() {
 
             var ctx = this._chart.ctx;
@@ -301,6 +386,24 @@ export default class BarChart extends Component {
                                                      legend:{
                                                          display:false,
                                                      },
+                                                     title:{
+                                                         display:false,
+                                                         text:'Понедельник',
+                                                         position:'bottom'
+                                                     },
+                                                     tooltips: {
+                                                         enabled:true,
+                                                         backgroundColor:'#eff3f6',
+                                                         bodyFontColor:'#354052',
+                                                         titleFontColor:'#354052',
+                                                         titleFontStyle:'normal',
+                                                         displayColors:false,
+                                                         callbacks:{
+                                                             label:function(tooltipItem, data	){
+                                                                 return `${tooltipItem.yLabel} чел.`
+                                                             }
+                                                         }
+                                                     },
                                                      scales: {
                                                          display:false,
                                                          xAxes: [{
@@ -335,6 +438,23 @@ export default class BarChart extends Component {
                                                      maintainAspectRatio: false,
                                                      legend:{
                                                          display:false,
+                                                     },
+                                                     title:{
+                                                         display:false,
+                                                         text:'Понедельник',
+                                                         position:'bottom'
+                                                     },
+                                                     tooltips: {
+                                                         backgroundColor:'#eff3f6',
+                                                         bodyFontColor:'#354052',
+                                                         titleFontColor:'#354052',
+                                                         titleFontStyle:'normal',
+                                                         displayColors:false,
+                                                         callbacks:{
+                                                             label:function(tooltipItem, data	){
+                                                                 return `${tooltipItem.yLabel} чел.`
+                                                             }
+                                                         }
                                                      },
                                                      scales: {
                                                          display:false,

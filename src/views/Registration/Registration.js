@@ -12,6 +12,7 @@ import './registration.scss';
 import {ajaxRequest,checkEitherLoggedInOrNot, getCookie, deleteRegistrationCookies} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import { Link, Redirect} from 'react-router-dom';
+import frozenGlass from './../../containers/Empty/main';
 import {
     Row, Col
 } from "reactstrap";
@@ -24,8 +25,8 @@ class Registration extends Component {
         this.state = {    //состояние null у состояний значит что это поле еще не изменялось, т.е. начальное состояние//false - то, что поле невалидное
             password: getCookie('password') || null,  // любое трушное значение - что все ок
             passwordsAreConfirm:getCookie('password') || null,
-            name:null,
-            surname:null,
+            firstName:null,
+            lastName:null,
             position:null,
             organization:null,
             email: getCookie('email') || null,
@@ -71,8 +72,8 @@ class Registration extends Component {
             passwordsAreConfirm:state.passwordsAreConfirm,
             email: state.email,
             login:state.email,
-            name: state.name,
-            surname: state.surname,
+            firstName: state.firstName,
+            lastName: state.lastName,
             phone: state.phone,
             position:state.position,
             organization: state.organization,
@@ -118,7 +119,7 @@ class Registration extends Component {
         return (
             <div className="text-white bg-success text-center card">
                 <div className="card-body card-block">
-                    Поздравляем с успешной регистрацией, <strong>{this.state.name}</strong>!
+                    Поздравляем с успешной регистрацией, <strong>{this.state.firstName}</strong>!
                     Чтобы <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>, предварительно
                     нужно попросить у офис-менеджера произвести активацию.
                 </div>
@@ -204,8 +205,8 @@ class Registration extends Component {
                 <form action="#" method="POST">
                     <label><h4 className="reg_title">Шаг 2</h4></label>
                     <Row className="name_group_wrapper">
-                        <NameInput  value={this.state.name} isValid={this.state.name} fieldIsValid={this.fieldIsValid.bind(this)}/>
-                        <SurnameInput  value={this.state.surname} isValid={this.state.surname} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                        <NameInput  value={this.state.name} isValid={this.state.firstName} fieldIsValid={this.fieldIsValid.bind(this)}/>
+                        <SurnameInput  value={this.state.surname} isValid={this.state.lastName} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     </Row>
                     <OrganizationInput value={this.state.organization} isValid={this.state.organization} fieldIsValid={this.fieldIsValid.bind(this)}/>
                     <PositionInput  value={this.state.position} isValid={this.state.position} fieldIsValid={this.fieldIsValid.bind(this)}/>
@@ -245,6 +246,18 @@ class Registration extends Component {
         }
     }
 
+    componentDidUpdate(prevProps,prevState){
+        if(this.state.registrationIsSuccess)
+            frozenGlass();
+        else if(this.state.registrationStep !== prevState.registrationStep)
+            frozenGlass();
+    }
+
+    componentDidMount(){
+        //frozenGlass();
+    }
+
+
     render() {
         if(this.state.isLoggedIn)
             return (
@@ -253,7 +266,7 @@ class Registration extends Component {
 
         else if(this.state.registrationIsSuccess)
             return (
-                <div className="registration-form auth-window animated fadeIn">
+                <div style={{paddingBottom:'35px'}} className="registration-form auth-window animated fadeIn">
                     <AuthNav/>
                     {deleteRegistrationCookies()}
                     {this.showSuccessMessage()}
