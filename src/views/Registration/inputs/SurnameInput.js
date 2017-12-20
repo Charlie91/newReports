@@ -44,7 +44,7 @@ class SurnameInput extends ParentInput { //Внимание! Наследует 
             return;
         }
         let regExp = new RegExp('^[a-zA-Zа-яА-Я-.]{1,256}$');
-        if(value.length < 1){   //проверка на соответствие регэкспу
+        if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('lastName',false);
         }

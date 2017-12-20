@@ -86,7 +86,10 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
     }
 
     setPassword(e){
-        this.setState({password:e.target.value})
+        this.setState(
+            {password:e.target.value},
+            () => this.validateField()
+        );
     }
 
     setConfirmPassword(e){
