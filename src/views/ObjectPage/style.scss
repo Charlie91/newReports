@@ -152,11 +152,22 @@
     font-size:14px;
     font-weight: 400;
   }
-  a{
+  a.link_desktop{
     font-size: 20px;
     text-align: left;
     color: #354052;
     box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052;
+  }
+  .address_mobile{
+    display: none;
+  }
+  a.link_mobile{
+    display:none;
+    font-size: 14px;
+    text-align: left;
+    color: #45bce5;
+    text-decoration: underline;
+    line-height:1;
   }
 }
 
@@ -229,6 +240,29 @@
 @media screen and (max-width:791px){
   .object_cont{
     width:100%;
-    margin:auto
+    margin:auto;
+    .announce{
+      padding:16px;
+      .geolocation {
+        display:none
+      }
+      .obj_title{
+        h4{
+          font-size: 16px;
+        }
+        .address_mobile{
+          display: block;
+          &.muted{
+            font-size: 12px;
+          }
+        }
+        a.link_mobile{
+          display:block
+        }
+        a.link_desktop{
+          display: none;
+        }
+      }
+    }
   }
 }

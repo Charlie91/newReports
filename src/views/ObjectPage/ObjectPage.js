@@ -68,15 +68,15 @@ export default class ObjectPage extends Component {
         let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
         let chart = this.getNewStyleForChart(typeArr);
         this.setState({object:obj,
-            type:typeArr[0],
-            currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
+                type:typeArr[0],
+                currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
             },
             () => {
-            this.getFloors();
-            //this.props.upState('title',this.state.object.obj_name);
-            this.props.upState('title','Карточка объекта');
-            this.props.upState('address',this.state.object.address);
-        });
+                this.getFloors();
+                //this.props.upState('title',this.state.object.obj_name);
+                this.props.upState('title','Карточка объекта');
+                this.props.upState('address',this.state.object.address);
+            });
     }
 
     getNewObjectsData(){       // получение новых данных об объекте, если они не были переданы через props
@@ -314,7 +314,7 @@ export default class ObjectPage extends Component {
         else{   //если данных в пропсах не обнаружено - парсим их с сервера
             this.getNewObjectsData()
         }
-        document.querySelector('.page-title').style.fontSize='30px'; //с какого-то хрена размер заголовка на этой стр-е отличается от других
+        // document.querySelector('.page-title').style.fontSize='30px'; //с какого-то хрена размер заголовка на этой стр-е отличается от других
     }
 
 
@@ -322,12 +322,21 @@ export default class ObjectPage extends Component {
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
-                    <Col  md="6">
+                    <Col className="order-12 order-md-1" md="6" xs="12">
                         <Card>
                             <CardBody>
                                 <div className="obj_title">
-                                    <h4>{this.state.object.obj_name}</h4>
-                                    <a href="#">рио.москва/дмитровка</a>
+                                    <Row>
+                                        <Col md="12" xs="9">
+                                            <h4>{this.state.object.obj_name}</h4>
+                                        </Col>
+                                        <Col md="0" xs="3">
+                                            <a className="link_mobile" href="#">cайт</a>
+                                        </Col>
+                                    </Row>
+                                        <a className="link_desktop" href="#">рио.москва/дмитровка</a>
+                                        <p className="muted address_mobile">{this.state.object.address}</p>
+
                                 </div>
                                 <Row>
                                     <Col md="8" className="features">
@@ -347,8 +356,8 @@ export default class ObjectPage extends Component {
                             </CardBody>
                         </Card>
                     </Col>
-                    <Col md="6">
-                                <img className="fullIMG" src="img/rio_full.jpg"/>
+                    <Col className="order-1 order-md-12" md="6" xs="12">
+                        <img className="fullIMG" src="img/rio_full.jpg"/>
                     </Col>
                 </Row>
 
