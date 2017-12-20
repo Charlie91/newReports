@@ -253,10 +253,6 @@ class Registration extends Component {
             frozenGlass();
     }
 
-    componentDidMount(){
-        //frozenGlass();
-    }
-
 
     render() {
         if(this.state.isLoggedIn)

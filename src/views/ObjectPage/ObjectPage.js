@@ -69,7 +69,8 @@ export default class ObjectPage extends Component {
         let chart = this.getNewStyleForChart(typeArr);
         this.setState({object:obj, type:typeArr[0], currency:typeArr[1]},() => {
             this.getFloors();
-            this.props.upState('title',this.state.object.obj_name);
+            //this.props.upState('title',this.state.object.obj_name);
+            this.props.upState('title','Карточка объекта');
             this.props.upState('address',this.state.object.address);
         });
     }
@@ -100,7 +101,8 @@ export default class ObjectPage extends Component {
                         let typeArr = object.data_type.split(', ');//разбиваем строку с типом данных на массив
                         let chart = this.getNewStyleForChart(typeArr);
                         this.setState({object:object,type:typeArr[0], currency:typeArr[1]}, () => {
-                            this.props.upState('title',this.state.object.obj_name);
+                            //this.props.upState('title',this.state.object.obj_name);
+                            this.props.upState('title','Карточка объекта');
                             this.props.upState('address',this.state.object.address);
                         })
                     })
@@ -304,6 +306,7 @@ export default class ObjectPage extends Component {
         else{   //если данных в пропсах не обнаружено - парсим их с сервера
             this.getNewObjectsData()
         }
+        document.querySelector('.page-title').style.fontSize='30px'; //с какого-то хрена размер заголовка на этой стр-е отличается от других
     }
 
 
