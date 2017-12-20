@@ -54,7 +54,11 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
             this.setState({mask:'+9 (999) 999-99-99'})
         }
         //
-        this.setState({value:value});
+        if (typeof e !== 'undefined') {
+            this.setState({value: e.target.value},
+                () => this.validateField()
+            );
+        }
     }
 
     validateField(e){//функция-валидация
@@ -68,7 +72,8 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
             return;
         }
         let regExp = new RegExp('^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$');
-        if(!regExp.test(value)){   //проверка на соответствие регэкспу
+
+        if(!regExp.test(value) || ( value.replace(/[^0-9]/gim,'').length < 11) ){   //проверка на соответствие регэкспу and length
             this.setState({isValid:false});
             this.props.fieldIsValid('phone',false);
         }
@@ -76,6 +81,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
             this.setState({isValid:true});
             this.props.fieldIsValid('phone',value);
         }
+
     }
 
     clearField(e){
