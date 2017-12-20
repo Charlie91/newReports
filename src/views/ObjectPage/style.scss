@@ -119,10 +119,9 @@
 }
 
 .totalSum{
-  margin-top: 3%;
   .data{
     color: #354052;
-    font-size:3em;
+    font-size: 2.3em;
     display:block;
     line-height: 0.8;
   }
@@ -211,12 +210,20 @@
 
 .average_hours{
   .title{
-    text-align:center;
+    text-align: center;
     padding-left: 10px;
+    font-size: 14px;
+    line-height: 2.29;
+    color: #7f8fa4;
   }
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
   }
+}
+
+.all_data .line-chart-wrapper{
+  max-height:183px;
+  margin-top:15px;
 }
 
 @media screen and (max-width:791px){

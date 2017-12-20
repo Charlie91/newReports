@@ -229,7 +229,6 @@ class Registration extends Component {
                                     type="submit"
                                     className={
                                         (this.state.firstName && this.state.lastName && this.state.position && this.state.organization)
-
                                             ?
                                             "btn auth-btn finish-btn"
                                             :

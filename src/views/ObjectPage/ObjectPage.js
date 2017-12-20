@@ -67,7 +67,11 @@ export default class ObjectPage extends Component {
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
         let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
         let chart = this.getNewStyleForChart(typeArr);
-        this.setState({object:obj, type:typeArr[0], currency:typeArr[1]},() => {
+        this.setState({object:obj,
+            type:typeArr[0],
+            currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
+            },
+            () => {
             this.getFloors();
             //this.props.upState('title',this.state.object.obj_name);
             this.props.upState('title','Карточка объекта');
@@ -100,7 +104,11 @@ export default class ObjectPage extends Component {
                         object.data = data;
                         let typeArr = object.data_type.split(', ');//разбиваем строку с типом данных на массив
                         let chart = this.getNewStyleForChart(typeArr);
-                        this.setState({object:object,type:typeArr[0], currency:typeArr[1]}, () => {
+                        this.setState({
+                            object:object,
+                            type:typeArr[0],
+                            currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
+                        }, () => {
                             //this.props.upState('title',this.state.object.obj_name);
                             this.props.upState('title','Карточка объекта');
                             this.props.upState('address',this.state.object.address);
@@ -374,11 +382,11 @@ export default class ObjectPage extends Component {
                     </CardBody>
                 </Card>
 
-                <Card>
+                <Card className="all_data">
                     <CardBody className="card-body">
                         <h5 className="measure">{this.state.type}</h5>
                         <Row>
-                            <Col md="6">
+                            <Col md="3">
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
                                 <div className="datepicker_wrp">
                                     <DatePicker
@@ -404,12 +412,13 @@ export default class ObjectPage extends Component {
                             <Col md="6">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
+                            <Col md="3" className="totalSum">
+                                <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
+                                <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                            </Col>
                         </Row>
-                        <div className="totalSum">
-                            <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
-                            <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
-                        </div>
-                        <div style={{maxHeight:'211px'}} className="chart-wrapper">
+
+                        <div className="line-chart-wrapper">
                             <Line data={this.state.chart}
                                   options={{
                                       maintainAspectRatio: false,
