@@ -28,7 +28,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
     showError(){            //функция рендера сообщения об ошибке
         if(this.state.isValid === false){
             return(
-                <div className="errorMessage">Номер телефона невалиден</div>
+                <div className="errorMessage">Не менее 11 цифр</div>
             )
         }
     }

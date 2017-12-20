@@ -82,10 +82,11 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     }
 
     setEmail(e){
-        this.setState(
-            {value:e.target.value},
-            () => this.validateField()
-        );
+        //this.setState(
+        //    {value:e.target.value},
+        //    () => this.validateField()
+        //);
+        this.setState({value:e.target.value})
     }
 
     render() {
