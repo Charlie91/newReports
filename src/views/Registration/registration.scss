@@ -47,14 +47,14 @@
   button.clear-field {
     display:block;
     position: absolute;
-    top: 14px;
+    top: 3px;
     right: 2px;
     color: #fff;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 40px;
+    height: 40px;
     border: none;
     padding: 0;
+    margin-bottom: 0px !important;
   }
   .reg_title{
     text-align:left
@@ -141,10 +141,6 @@
           }
         }
       }
-    }
-
-    .confirmError{
-      margin-left: 55%;
     }
 
   }
