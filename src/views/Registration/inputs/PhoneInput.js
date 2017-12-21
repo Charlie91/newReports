@@ -12,7 +12,9 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
             value: props.value || getCookie('phone') || '',
             focus:null,
             isValid:props.isValid,
-            mask:"+9 (999) 999-99-99"
+            mask: "",
+            maskChar: " ",
+            //mask:"+9 (999) 999-99-99"
         }
     }
 
@@ -33,29 +35,29 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
         }
     }
 
-    setPhonethroughMask(e){//играем маской телефона
+    setPhonethroughMask(e) {//играем маской телефона
         let value = (!e) ? this.state.value : e.target.value;
+        let current_mask = '+9 (999) 999-99-99';
 
-        if(value[1] === '8'){
+        if (value[1] === '8') {
             let newStr = '';
-            for(let i = 0; i < value.length;i++){
-                if(i === 1 && value[i] === '8'){
+            for (let i = 0; i < value.length; i++) {
+                if (i === 1 && value[i] === '8') {
                     newStr += '7';
                 }
                 else
                     newStr += value[i];
             }
             value = newStr;
+        } else {
+            if (value[1] === '3') {
+                current_mask = '+999 (99) 99-99-99'
+            }
         }
-        else if(value[1] === '3'){
-            this.setState({mask:'+999 (99) 99-99-99'})
-        }
-        else{
-            this.setState({mask:'+9 (999) 999-99-99'})
-        }
-        //
+
         if (typeof e !== 'undefined') {
-            this.setState({value: e.target.value},
+            this.setState({mask: current_mask});
+            this.setState({value: value},
                 () => this.validateField()
             );
         }
@@ -120,6 +122,7 @@ class PhoneInput extends ParentInput { //Внимание! Наследует о
                         type="text"
                         placeholder="Номер телефона"
                         mask={this.state.mask}
+                        maskChar={null}
                     />
                     <ClearField render={this.state.value && this.state.focus && (this.state.value !== "+_ (___) ___-__-__")} clearField={this.clearField.bind(this)}/>
                     {this.showError()}
