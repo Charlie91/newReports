@@ -267,7 +267,7 @@ export default class ObjectPage extends Component {
             {val:'H',text:'По часам'}
         ];
         return (
-            <div className='segmentation_btn-wrp'>
+            <Col md='12' className='segmentation_btn-wrp order-1 order-md-12'>
                 <div className="btn-group" role="group">
                     {arr.map( (item,i) =>
                         <button type="button"
@@ -280,7 +280,7 @@ export default class ObjectPage extends Component {
                         </button>
                     )}
                 </div>
-            </div>
+            </Col>
         )
     }
 
@@ -338,6 +338,7 @@ export default class ObjectPage extends Component {
                                         <p className="muted address_mobile">{this.state.object.address}</p>
 
                                 </div>
+                                <hr className="divider"/>
                                 <Row>
                                     <Col md="8" className="features">
                                         <div><strong>Этажей:</strong>  <span className="muted">4</span> </div>
@@ -356,7 +357,7 @@ export default class ObjectPage extends Component {
                             </CardBody>
                         </Card>
                     </Col>
-                    <Col className="order-1 order-md-12" md="6" xs="12">
+                    <Col style={{maxHeight:'420px',overflow:'hidden'}} className="img_wrapper order-1 order-md-12" md="6" xs="12">
                         <img className="fullIMG" src="img/rio_full.jpg"/>
                     </Col>
                 </Row>
@@ -395,7 +396,7 @@ export default class ObjectPage extends Component {
                     <CardBody className="card-body">
                         <h5 className="measure">{this.state.type}</h5>
                         <Row>
-                            <Col md="3">
+                            <Col xs="12" md="3">
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
                                 <div className="datepicker_wrp">
                                     <DatePicker
@@ -418,16 +419,16 @@ export default class ObjectPage extends Component {
                                     />
                                 </div>
                             </Col>
-                            <Col md="6">
+                            <Col xs="12" md="6">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
-                            <Col md="3" className="totalSum">
+                            <Col xs="12" md="3" className="totalSum">
                                 <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-
-                        <div className="line-chart-wrapper">
+                        <Row>
+                        <Col md='12' className="line-chart-wrapper order-12 order-md-1">
                             <Line data={this.state.chart}
                                   options={{
                                       maintainAspectRatio: false,
@@ -450,8 +451,9 @@ export default class ObjectPage extends Component {
                                       }
                                   }}
                             />
-                        </div>
+                        </Col>
                         {this.renderSegmentationButtons()}
+                        </Row>
                     </CardBody>
                 </Card>
             </div>

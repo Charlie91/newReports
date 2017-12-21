@@ -1,3 +1,5 @@
+$crdbody-padding : 2.3rem;
+
 .segmentation_btn-wrp{
   margin-top:20px;
   text-align:center;
@@ -15,6 +17,10 @@
       box-shadow:none
     }
   }
+}
+
+.divider{
+  display:none
 }
 
 
@@ -41,7 +47,7 @@
 
 .floor_btn-wrp{
   .btn{
-    color: #354052;
+    color: #7f8fa4;
     background:#fff;
   }
   .btn.active{
@@ -95,6 +101,7 @@
       li{
         display: inline-block;
         width: 8.3%;
+        min-width: 99px;
         .muted{
           font-size:14px
         }
@@ -114,7 +121,7 @@
 .object_cont{
   margin:auto;
   .card-body:last-child{
-    padding: 2.3rem;
+    padding: $crdbody-padding;
   }
 }
 
@@ -241,6 +248,7 @@
   .object_cont{
     width:100%;
     margin:auto;
+    overflow-x: hidden;
     .announce{
       padding:16px;
       .geolocation {
@@ -254,6 +262,7 @@
           display: block;
           &.muted{
             font-size: 12px;
+            margin-bottom: 0;
           }
         }
         a.link_mobile{
@@ -263,6 +272,49 @@
           display: none;
         }
       }
+    }
+    .features{
+      >div{
+        >strong{
+          font-size: 14px;
+        }
+        >.muted{
+          font-size: 12px;
+        }
+      }
+    }
+    .data_per_month .header h4 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .all_data{
+      .line-chart-wrapper {
+        padding: 10px 0px;
+      }
+    }
+    .segmentation_btn-wrp{
+      padding:0;
+      .btn-group{
+        max-width:100%;
+        .btn{
+          max-width:25%;
+          font-size: 12px;
+          padding: 7px 0px;
+        }
+      }
+    }
+    .totalSum {
+      .data {
+        margin-top: 15px;
+      }
+    }
+    .floor_btn-wrp{
+      margin-top:15px
+    }
+    .divider{
+      margin-right: -$crdbody-padding;
+      margin-left: -$crdbody-padding;
+      display:block;
     }
   }
 }
