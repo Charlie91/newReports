@@ -131,7 +131,7 @@
 }
 
 .app,#root,body,html{ //перенести в другое место
-  height:100%
+  /*height:100% */ // kirill: login screen bug
 }
 
 @media screen and (max-width:501px){
