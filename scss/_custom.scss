@@ -278,7 +278,10 @@ button.settings-btn {
 
 button.clear-field {
   background-image:url('../img/clear.png');
-  background-size:contain;
+  background-size:16px;
+  background-position: right;
+  background-color: transparent !important;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width:991px){
