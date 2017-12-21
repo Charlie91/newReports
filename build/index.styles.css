@@ -13969,7 +13969,10 @@ button.settings-btn {
 
 button.clear-field {
   background-image: url(./img/clear.f4101408b8e83f798c81860f02d03d87.png);
-  background-size: contain; }
+  background-size: 16px;
+  background-position: right;
+  background-color: transparent !important;
+  background-repeat: no-repeat; }
 
 @media screen and (max-width: 991px) {
   .main {
@@ -14923,14 +14926,14 @@ button.btn.back-btn {
   .registration-form button.clear-field {
     display: block;
     position: absolute;
-    top: 14px;
+    top: 3px;
     right: 2px;
     color: #fff;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 40px;
+    height: 40px;
     border: none;
-    padding: 0; }
+    padding: 0;
+    margin-bottom: 0px !important; }
   .registration-form .reg_title {
     text-align: left; }
   .registration-form .form-group.name-group label {
@@ -14980,9 +14983,7 @@ button.btn.back-btn {
         .registration-form .password-inputs label .field .field + .errorMessage {
           top: 41px; }
         .registration-form .password-inputs label .field .field + .confirmError {
-          top: 115px !important; }
-    .registration-form .confirmError {
-      margin-left: 55%; } }
+          top: 115px !important; } }
   @media screen and (max-width: 670px) {
     .registration-form.auth-window {
       padding: 0px 0px 2px 0px; }
