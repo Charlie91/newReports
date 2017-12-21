@@ -14779,11 +14779,20 @@ button.btn.back-btn {
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
-  .obj_title a {
+  .obj_title a.link_desktop {
     font-size: 20px;
     text-align: left;
     color: #354052;
     box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052; }
+  .obj_title .address_mobile {
+    display: none; }
+  .obj_title a.link_mobile {
+    display: none;
+    font-size: 14px;
+    text-align: left;
+    color: #45bce5;
+    text-decoration: underline;
+    line-height: 1; }
 
 .announce {
   margin-bottom: 20px; }
@@ -14834,7 +14843,21 @@ button.btn.back-btn {
 @media screen and (max-width: 791px) {
   .object_cont {
     width: 100%;
-    margin: auto; } }
+    margin: auto; }
+    .object_cont .announce {
+      padding: 16px; }
+      .object_cont .announce .geolocation {
+        display: none; }
+      .object_cont .announce .obj_title h4 {
+        font-size: 16px; }
+      .object_cont .announce .obj_title .address_mobile {
+        display: block; }
+        .object_cont .announce .obj_title .address_mobile.muted {
+          font-size: 12px; }
+      .object_cont .announce .obj_title a.link_mobile {
+        display: block; }
+      .object_cont .announce .obj_title a.link_desktop {
+        display: none; } }
 .registration-form {
   border-radius: 10px;
   margin: auto; }
