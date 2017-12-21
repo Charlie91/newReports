@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {animateDynamicLabel} from '../../Authorization/Authorization';
 import {getCookie} from './../../../utils/utils';
 import ClearField from './ClearField';
+import {Col, Row} from "reactstrap";
 import ParentInput from './ParentInput';
 
 class PasswordInput extends ParentInput { //Внимание! Наследует от родительского компонента
@@ -33,18 +34,19 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
             )
         }
     }
-    showError(){            //функция рендера сообщения об ошибке
-        if(this.state.isValid === false){
-            return(
-                <div className="errorMessage">не меньше 6 символов</div>
-            )
-        }
-        if(this.state.isConfirm === false){
-            return(
-                <div className="confirmError errorMessage">пароли не совпадают</div>
-            )
+    showErrorPassword() { //функция рендера сообщения об ошибке
+        if (this.state.isValid === false) {
+            return (<div className="errorMessage">не меньше 6 символов</div>)
         }
     }
+
+
+    showErrorConfirm(){ //функция рендера сообщения об ошибке
+        if(this.state.isConfirm === false){
+            return(<div className="errorMessage">пароли не совпадают</div>)
+        }
+    }
+
     //^[a-zA-Z0-9-_\.]{1,20}$
     validateField(e){//функция-валидация
         if(e && e.relatedTarget){ //фикс бага
@@ -62,9 +64,14 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
             this.props.fieldIsValid('password',false);
         }
         else{
-            this.setState({isValid:true});
-            this.confirmationPasswords();
-            this.props.fieldIsValid('password',value);
+            if(this.state.confirmPassword.length !== 0 && this.state.password !== this.state.confirmPassword.substring(0,this.state.password.length) ){
+                this.props.fieldIsValid('passwordsAreConfirm',false);
+                this.setState({isValid: true});
+            } else {
+                this.setState({isValid: true});
+                this.confirmationPasswords();
+            }
+            this.props.fieldIsValid('password', value);
         }
     }
 
@@ -72,12 +79,20 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
         if(e && e.relatedTarget){ //фикс бага
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
-        this.confirmationPasswords();
+        this.confirmationPasswordsStrict();
         this.hideConfirmHint();
     }
 
     confirmationPasswords(){
-        if(this.state.confirmPassword === this.state.password){
+        if(this.state.confirmPassword === this.state.password.substring(0,this.state.confirmPassword.length) ){
+            this.props.fieldIsValid('passwordsAreConfirm',true);
+        }
+        else{
+            this.props.fieldIsValid('passwordsAreConfirm',false);
+        }
+    }
+    confirmationPasswordsStrict(){
+        if(this.state.confirmPassword === this.state.password ){
             this.props.fieldIsValid('passwordsAreConfirm',true);
         }
         else{
@@ -120,11 +135,12 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
 
     render() {
         return (
-            <div className="form-group password-inputs">
-                <label>
-                    <div className="field">
-                        {animateDynamicLabel(this.state.password, 'Пароль')}
-                        <input onFocus={this.setHint.bind(this)}
+            <Row className="name_group_wrapper">
+                <Col xs='12' lg="6">
+                    <div className="form-group name-group">
+                        <label>
+                                {animateDynamicLabel(this.state.password, 'Пароль')}
+                                <input onFocus={this.setHint.bind(this)}
                                onBlur={this.validateField.bind(this)}
                                onChange={this.setPassword.bind(this)}
                                onKeyPress={this.preventEnter.bind(this)}
@@ -133,27 +149,33 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
                                className={"form-control " + ( (this.state.isValid === false) ? 'hasErrors' : '') }
                                type="password"
                                placeholder="Пароль"
-                        />
-                        <ClearField render={this.state.password && this.state.focus} clearField={this.clearField.bind(this)}/>
+                                />
+                                <ClearField render={this.state.password && this.state.focus} clearField={this.clearField.bind(this)}/>
+                            {this.showErrorPassword()}
+                        </label>
                     </div>
-                    <div className="field">
-                        {animateDynamicLabel(this.state.confirmPassword, 'Еще раз')}
-                        <input
-                            onFocus={this.setConfirmHint.bind(this)}
-                            onBlur={this.onBlurConfirmation.bind(this)}
-                            onChange={this.setConfirmPassword.bind(this)}
-                            onKeyPress={this.preventEnter.bind(this)}
-                            ref={(input) => { this.confirmInput = input; }}
-                            value={this.state.confirmPassword}
-                            className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
-                            type="password"
-                            placeholder="Еще раз"
-                        />
-                        <ClearField render={this.state.confirmPassword && this.state.focus_confirm} clearField={this.clearConfirmField.bind(this)}/>
+                </Col>
+                <Col xs='12' lg="6">
+                    <div className="form-group name-group">
+                        <label>
+                                {animateDynamicLabel(this.state.confirmPassword, 'Еще раз')}
+                                <input
+                                onFocus={this.setConfirmHint.bind(this)}
+                                onBlur={this.onBlurConfirmation.bind(this)}
+                                onChange={this.setConfirmPassword.bind(this)}
+                                onKeyPress={this.preventEnter.bind(this)}
+                                ref={(input) => { this.confirmInput = input; }}
+                                value={this.state.confirmPassword}
+                                className={"form-control " + ( (this.state.isValid === false || this.state.isConfirm === false) ? 'hasErrors' : '') }
+                                type="password"
+                                placeholder="Еще раз"
+                                />
+                                <ClearField render={this.state.confirmPassword && this.state.focus_confirm} clearField={this.clearConfirmField.bind(this)}/>
+                            {this.showErrorConfirm()}
+                        </label>
                     </div>
-                    {this.showError()}
-                </label>
-            </div>
+                </Col>
+            </Row>
         )
     }
 }
