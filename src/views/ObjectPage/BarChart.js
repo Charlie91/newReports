@@ -17,11 +17,13 @@ export default class BarChart extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.data) {
             console.log(nextProps.data);
-            let bars = [
-                {
-                    labels: [],
-                    datasets: [
-                        {
+            let bars = [];
+            let maxVal = 0;
+            for(let i = 0;i < 7;i++){
+                if(i === 0){
+                    let firstChartPrototype = {
+                        labels:[],
+                        datasets:[{
                             backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             borderWidth: 10,
@@ -31,88 +33,26 @@ export default class BarChart extends Component {
                             hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
+                        }]
+                    };
+                    bars.push(firstChartPrototype);
+                }
+                else{
+                    let otherChartsPrototype = {
+                        labels:[],
+                        datasets:[{
                             backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             borderColor: 'transparent',
                             borderWidth: 1,
                             hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                             data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }
-                    ]
-                },
-                {
-                    labels: [],
-                    datasets: [
-                        {
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }
-                    ]
-                }];
-            let maxVal = 0;
+                        }]
+                    };
+                    bars.push(otherChartsPrototype);
+                }
+            };
+
             nextProps.data.weekAvg.forEach((item, i) => {
                 if (i < 8) {
                     bars[0].labels.push(item.ld + '-' + item.td);
