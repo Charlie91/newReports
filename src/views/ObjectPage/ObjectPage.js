@@ -157,7 +157,12 @@ export default class ObjectPage extends Component {
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {
                     values.push(item.VALUE);
-                    dates.push(item.THEDATE);
+                    if(+item.THEDATE.substr(0,4) === moment().year()){  //если год выводимой даты совпадает с текущей - показывать только число и месяц
+                        dates.push(moment(item.THEDATE).format('D MMM'));
+                    }
+                    else{
+                        dates.push(moment(item.THEDATE).format('D MMM \'YY'));//иначе - показывать также и год
+                    }
                 });
                 chartObj.labels = dates;
                 chartObj.datasets[0].data = values;
@@ -334,8 +339,8 @@ export default class ObjectPage extends Component {
                                             <a className="link_mobile" href="#">cайт</a>
                                         </Col>
                                     </Row>
-                                        <a className="link_desktop" href="#">рио.москва/дмитровка</a>
-                                        <p className="muted address_mobile">{this.state.object.address}</p>
+                                    <a className="link_desktop" href="#">рио.москва/дмитровка</a>
+                                    <p className="muted address_mobile">{this.state.object.address}</p>
 
                                 </div>
                                 <hr className="divider"/>
@@ -427,32 +432,32 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        <Row>
-                        <Col md='12' className="line-chart-wrapper order-12 order-md-1">
-                            <Line data={this.state.chart}
-                                  options={{
-                                      maintainAspectRatio: false,
-                                      legend:{
-                                          display:false
-                                      },
-                                      scales: {
-                                          xAxes: [{
-                                              gridLines: {
-                                                  color: "rgba(0, 0, 0, 0)",
-                                                  display:false
-                                              },
-                                          }],
-                                          yAxes: [{
-                                              display: false,
-                                              gridLines: {
-                                                  color: "rgba(0, 0, 0, 0)",
-                                              },
-                                          }]
-                                      }
-                                  }}
-                            />
-                        </Col>
-                        {this.renderSegmentationButtons()}
+                        <Row style={{marginRight:'-20px',marginLeft:'-20px'}}>
+                            <Col md='12' style={{padding:'0px',marginRight:'-15px',marginLeft:'-15px'}} className="line-chart-wrapper order-12 order-md-1">
+                                <Line data={this.state.chart}
+                                      options={{
+                                          maintainAspectRatio: false,
+                                          legend:{
+                                              display:false
+                                          },
+                                          scales: {
+                                              xAxes: [{
+                                                  gridLines: {
+                                                      color: "rgba(0, 0, 0, 0)",
+                                                      display:false
+                                                  },
+                                              }],
+                                              yAxes: [{
+                                                  display: false,
+                                                  gridLines: {
+                                                      color: "rgba(0, 0, 0, 0)",
+                                                  },
+                                              }]
+                                          }
+                                      }}
+                                />
+                            </Col>
+                            {this.renderSegmentationButtons()}
                         </Row>
                     </CardBody>
                 </Card>
