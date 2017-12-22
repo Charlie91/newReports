@@ -13967,7 +13967,7 @@ button.settings-btn {
   margin-left: -15%;
   left: 0; }
 
-button.clear-field {
+.clear-field {
   background-image: url(./img/clear.f4101408b8e83f798c81860f02d03d87.png);
   background-size: 16px;
   background-position: right;
@@ -14757,8 +14757,6 @@ button.btn.back-btn {
 
 .object_cont {
   margin: auto; }
-  .object_cont .card-body:last-child {
-    padding: 2.3rem; }
 
 .totalSum .data {
   color: #354052;
@@ -14842,6 +14840,30 @@ button.btn.back-btn {
 .average_hours .chart-wrapper:not(:first-of-type) .title {
   padding-left: 33%; }
 
+.average_hours.horizontal-bars .header {
+  padding: 1rem 1rem; }
+  .average_hours.horizontal-bars .header h4 {
+    color: #354052; }
+
+.average_hours.horizontal-bars .chart-wrapper {
+  display: inline-block;
+  max-width: 13.5%;
+  height: 200px;
+  padding: 0px 15px; }
+  .average_hours.horizontal-bars .chart-wrapper:first-of-type {
+    width: 18%;
+    max-width: none; }
+
+.average_hours.vertical-bars .chart-wrapper {
+  display: inline-block;
+  max-width: 14.2%;
+  height: 200px;
+  padding: 0px 15px; }
+  .average_hours.vertical-bars .chart-wrapper:first-of-type {
+    height: 212px;
+    position: relative;
+    top: 6px; }
+
 .all_data .line-chart-wrapper {
   max-height: 183px;
   margin-top: 15px; }
@@ -14850,6 +14872,7 @@ button.btn.back-btn {
   .object_cont {
     width: 100%;
     margin: auto;
+    margin-top: -15px;
     overflow-x: hidden; }
     .object_cont .announce {
       padding: 16px; }
@@ -14890,7 +14913,25 @@ button.btn.back-btn {
     .object_cont .divider {
       margin-right: -2.3rem;
       margin-left: -2.3rem;
-      display: block; } }
+      display: block; }
+    .object_cont .horizontal-bars {
+      white-space: nowrap; }
+      .object_cont .horizontal-bars h4 {
+        font-size: 18px;
+        font-weight: 400; }
+      .object_cont .horizontal-bars .card-body {
+        overflow: scroll; }
+        .object_cont .horizontal-bars .card-body .chart-wrapper {
+          max-width: 300px;
+          width: 200px;
+          min-width: 200px; }
+          .object_cont .horizontal-bars .card-body .chart-wrapper:first-of-type {
+            width: 250px; } }
+
+@media screen and (max-width: 320px) {
+  .datepicker_wrp input.datepicker {
+    width: 50px;
+    font-size: 10px; } }
 .registration-form {
   border-radius: 10px;
   margin: auto; }
@@ -14923,7 +14964,7 @@ button.btn.back-btn {
     color: #fff;
     font-weight: bold;
     font-size: 110%; }
-  .registration-form button.clear-field {
+  .registration-form .clear-field {
     display: block;
     position: absolute;
     top: 3px;
@@ -14933,7 +14974,8 @@ button.btn.back-btn {
     height: 40px;
     border: none;
     padding: 0;
-    margin-bottom: 0px !important; }
+    margin-bottom: 0px !important;
+    cursor: pointer; }
   .registration-form .reg_title {
     text-align: left; }
   .registration-form .form-group.name-group label {
@@ -15005,7 +15047,7 @@ button.btn.back-btn {
         top: 41px; }
       .registration-form .password-inputs label .field + .confirmError {
         top: 115px !important; }
-    .registration-form button.clear-field {
+    .registration-form .clear-field {
       top: 0px !important; }
     .registration-form .auth-btn {
       margin-top: 4px;

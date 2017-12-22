@@ -9,9 +9,7 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
     constructor(props){
         super(props);
         this.state = {
-            //password:(props.value) ? props.value : '',
             password: props.value || getCookie('password') || '',
-            //confirmPassword:(props.value) ? props.value : '',
             confirmPassword:props.value || getCookie('password') || '',
             focus:null,
             isValid:props.isValid,

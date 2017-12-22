@@ -14,6 +14,9 @@
     .segmentation_btn-wrp .btn.active:focus {
       box-shadow: none; }
 
+.divider {
+  display: none; }
+
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
 
@@ -27,7 +30,7 @@
   border: solid 1px #f6aa25; }
 
 .floor_btn-wrp .btn {
-  color: #354052;
+  color: #7f8fa4;
   background: #fff; }
 
 .floor_btn-wrp .btn.active {
@@ -70,7 +73,8 @@
     padding: 0; }
     .data_per_month > div.card-body ul li {
       display: inline-block;
-      width: 8.3%; }
+      width: 8.3%;
+      min-width: 99px; }
       .data_per_month > div.card-body ul li .muted {
         font-size: 14px; }
 
@@ -82,16 +86,12 @@
 
 .object_cont {
   margin: auto; }
-  .object_cont .card-body:last-child {
-    padding: 2.3rem; }
 
-.totalSum {
-  margin-top: 3%; }
-  .totalSum .data {
-    color: #354052;
-    font-size: 3em;
-    display: block;
-    line-height: 0.8; }
+.totalSum .data {
+  color: #354052;
+  font-size: 2.3em;
+  display: block;
+  line-height: 0.8; }
 
 .muted {
   font-size: 12px;
@@ -104,10 +104,6 @@
   font-weight: 600;
   color: #354052; }
 
-.fullIMG {
-  width: 100%;
-  height: 100%; }
-
 .obj_title {
   padding-bottom: 5px; }
   .obj_title h4 {
@@ -116,26 +112,42 @@
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
-  .obj_title a {
+  .obj_title a.link_desktop {
     font-size: 20px;
     text-align: left;
     color: #354052;
     box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052; }
+  .obj_title .address_mobile {
+    display: none; }
+  .obj_title a.link_mobile {
+    display: none;
+    font-size: 14px;
+    text-align: left;
+    color: #45bce5;
+    text-decoration: underline;
+    line-height: 1; }
 
 .announce {
   margin-bottom: 20px; }
-  .announce .card {
-    height: 100%; }
+  .announce > .col {
+    overflow: hidden;
+    max-height: 400px; }
+  .announce img.fullIMG {
+    max-width: 100%; }
   .announce .geolocation .map_wrapper {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    overflow: hidden; }
+    overflow: hidden;
+    margin: auto; }
     .announce .geolocation .map_wrapper .ymaps-2-1-56-copyright__content {
       display: none; }
   .announce .geolocation .address {
     text-align: center;
-    padding: 0; }
+    padding: 0;
+    font-size: 16px;
+    color: #7f8fa4;
+    margin-top: 14px; }
   .announce .features > div {
     margin: 7px auto; }
     .announce .features > div > strong {
@@ -147,7 +159,105 @@
       font-size: 16px;
       color: #7f8fa4; }
 
+.average_hours .title {
+  text-align: center;
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 2.29;
+  color: #7f8fa4; }
+
+.average_hours .chart-wrapper:not(:first-of-type) .title {
+  padding-left: 33%; }
+
+.average_hours.horizontal-bars .header {
+  padding: 1rem 1rem; }
+  .average_hours.horizontal-bars .header h4 {
+    color: #354052; }
+
+.average_hours.horizontal-bars .chart-wrapper {
+  display: inline-block;
+  max-width: 13.5%;
+  height: 200px;
+  padding: 0px 15px; }
+  .average_hours.horizontal-bars .chart-wrapper:first-of-type {
+    width: 18%;
+    max-width: none; }
+
+.average_hours.vertical-bars .chart-wrapper {
+  display: inline-block;
+  max-width: 14.2%;
+  height: 200px;
+  padding: 0px 15px; }
+  .average_hours.vertical-bars .chart-wrapper:first-of-type {
+    height: 212px;
+    position: relative;
+    top: 6px; }
+
+.all_data .line-chart-wrapper {
+  max-height: 183px;
+  margin-top: 15px; }
+
 @media screen and (max-width: 791px) {
   .object_cont {
     width: 100%;
-    margin: auto; } }
+    margin: auto;
+    margin-top: -15px;
+    overflow-x: hidden; }
+    .object_cont .announce {
+      padding: 16px; }
+      .object_cont .announce .geolocation {
+        display: none; }
+      .object_cont .announce .obj_title h4 {
+        font-size: 16px; }
+      .object_cont .announce .obj_title .address_mobile {
+        display: block; }
+        .object_cont .announce .obj_title .address_mobile.muted {
+          font-size: 12px;
+          margin-bottom: 0; }
+      .object_cont .announce .obj_title a.link_mobile {
+        display: block; }
+      .object_cont .announce .obj_title a.link_desktop {
+        display: none; }
+    .object_cont .features > div > strong {
+      font-size: 14px; }
+    .object_cont .features > div > .muted {
+      font-size: 12px; }
+    .object_cont .data_per_month .header h4 {
+      font-size: 18px;
+      font-weight: 400; }
+    .object_cont .all_data .line-chart-wrapper {
+      padding: 10px 0px; }
+    .object_cont .segmentation_btn-wrp {
+      padding: 0; }
+      .object_cont .segmentation_btn-wrp .btn-group {
+        max-width: 100%; }
+        .object_cont .segmentation_btn-wrp .btn-group .btn {
+          max-width: 25%;
+          font-size: 12px;
+          padding: 7px 0px; }
+    .object_cont .totalSum .data {
+      margin-top: 15px; }
+    .object_cont .floor_btn-wrp {
+      margin-top: 15px; }
+    .object_cont .divider {
+      margin-right: -2.3rem;
+      margin-left: -2.3rem;
+      display: block; }
+    .object_cont .horizontal-bars {
+      white-space: nowrap; }
+      .object_cont .horizontal-bars h4 {
+        font-size: 18px;
+        font-weight: 400; }
+      .object_cont .horizontal-bars .card-body {
+        overflow: scroll; }
+        .object_cont .horizontal-bars .card-body .chart-wrapper {
+          max-width: 300px;
+          width: 200px;
+          min-width: 200px; }
+          .object_cont .horizontal-bars .card-body .chart-wrapper:first-of-type {
+            width: 250px; } }
+
+@media screen and (max-width: 320px) {
+  .datepicker_wrp input.datepicker {
+    width: 50px;
+    font-size: 10px; } }
