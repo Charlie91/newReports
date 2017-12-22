@@ -7,10 +7,14 @@
   margin-left: 0; }
   .dashboard > .row > div {
     padding-right: 5px;
-    padding-left: 5px; }
+    padding-left: 5px;
+    margin: auto; }
 .dashboard .card-header {
   border-bottom: 0px;
-  padding-top: 44px !important; }
+  padding-bottom: 0px !important;
+  height: 90px; }
+  .dashboard .card-header > .row {
+    height: 100% !important; }
   .dashboard .card-header img.title-image {
     bottom: 0px;
     right: 12px;
@@ -28,11 +32,14 @@
   box-shadow: 0px 0 4px 1px rgba(150, 150, 150, 0.2); }
 .dashboard .card-body, .dashboard .card-block {
   text-align: center; }
-.dashboard .card-body .row div {
-  padding-left: 5px;
-  padding-right: 5px; }
-  .dashboard .card-body .row div.block_title {
-    line-height: 100%; }
+.dashboard .card-body {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem; }
+  .dashboard .card-body .row div {
+    padding-left: 5px;
+    padding-right: 5px; }
+    .dashboard .card-body .row div.block_title {
+      line-height: 100%; }
 .dashboard .card:hover img.title-image {
   opacity: 0;
   visibility: hidden; }
