@@ -34,12 +34,13 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>
                      <Col md="6">
-                         <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
-                               className="link-to-object"
-                         >
-                             <h5>{props.obj.obj_name}</h5>
-                         </Link>
-                         <p className="contacts">{props.obj.address}</p>
+                         <div className="card-name">
+                            <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
+                                  className="link-to-object">
+                                <h5>{props.obj.obj_name}</h5>
+                            </Link>
+                            <p className="contacts">{props.obj.address}</p>
+                         </div>
                      </Col>
                      <Col md="6">
                          <img className="title-image" src={`${API.imgPath}/${props.obj.thumb}`} />

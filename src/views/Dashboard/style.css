@@ -15,6 +15,9 @@
   height: 90px; }
   .dashboard .card-header > .row {
     height: 100% !important; }
+  .dashboard .card-header .card-name {
+    position: absolute;
+    bottom: 0px; }
   .dashboard .card-header img.title-image {
     bottom: 0px;
     right: 12px;
