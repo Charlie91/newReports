@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardBody
 } from "reactstrap";
+import {API} from "../../utils/api_paths";
 
 const date = new Date();
 const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
@@ -42,7 +43,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                      </Col>
                      <Col xs="4" md="6">
                          <img className="title-image" src="img/TradeCenters/rio_leninskiy.png"/>
-                         <img className="title-image_hidden" src="img/TradeCenters/rio_leninskiy_color.png"/>
+                         <img className="title-image" src={`${API.imgPath}/${props.obj.thumb}`} />
                      </Col>
                  </Row>
              </CardHeader>

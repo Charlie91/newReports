@@ -28,7 +28,7 @@ class Dashboard extends PureComponent {
         };
         return ajaxRequest(API.cities+id,options)
             .then( data => {
-                console.log(data);
+                //console.log(data);
                 let formattedCities = data.cities.map( item => {
                         item.checked = true;
                         item.value = item.label = item.city_name;
