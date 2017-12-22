@@ -15005,6 +15005,8 @@ button.btn.back-btn {
         top: 41px; }
       .registration-form .password-inputs label .field + .confirmError {
         top: 115px !important; }
+    .registration-form button.clear-field {
+      top: 0px !important; }
     .registration-form .auth-btn {
       margin-top: 4px;
       font-size: 1.125em !important; }

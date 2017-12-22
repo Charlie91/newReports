@@ -20,7 +20,7 @@ export default class BarChart extends Component {
             let bars = [];
             let maxVal = 0;
             for(let i = 0;i < 7;i++){
-                if(i === 0){
+                if(!i){
                     let firstChartPrototype = {
                         labels:[],
                         datasets:[{
@@ -54,44 +54,11 @@ export default class BarChart extends Component {
             };
 
             nextProps.data.weekAvg.forEach((item, i) => {
-                if (i < 8) {
-                    bars[0].labels.push(item.ld + '-' + item.td);
-                    bars[0].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else if (i < 16) {
-                    bars[1].labels.push(item.ld + '-' + item.td);
-                    bars[1].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else if (i < 24) {
-                    bars[2].labels.push(item.ld + '-' + item.td);
-                    bars[2].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else if (i < 32) {
-                    bars[3].labels.push(item.ld + '-' + item.td);
-                    bars[3].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else if (i < 40) {
-                    bars[4].labels.push(item.ld + '-' + item.td);
-                    bars[4].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else if (i < 48) {
-                    bars[5].labels.push(item.ld + '-' + item.td);
-                    bars[5].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
-                else {
-                    bars[6].labels.push(item.ld + '-' + item.td);
-                    bars[6].datasets[0].data.push(Math.round(item.avg));
-                    if(item.avg > maxVal)maxVal = Math.round(item.avg);
-                }
+                bars[Math.floor(i/8)].labels.push(item.ld + '-' + item.td);
+                bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
+                if(item.avg > maxVal)maxVal = Math.round(item.avg);
             });
             this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
-            console.log(bars);
         }
     }
 

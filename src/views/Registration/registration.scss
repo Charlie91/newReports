@@ -44,7 +44,7 @@
     font-weight: bold;
     font-size: 110%;
   }
-  button.clear-field {
+  .clear-field {
     display:block;
     position: absolute;
     top: 3px;
@@ -55,6 +55,7 @@
     border: none;
     padding: 0;
     margin-bottom: 0px !important;
+    cursor: pointer;
   }
   .reg_title{
     text-align:left
@@ -177,7 +178,7 @@
       }
     }
 
-    button.clear-field {
+    .clear-field {
       top: 0px !important;
     }
 
