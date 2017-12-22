@@ -11,6 +11,7 @@ import {formatNumericValue} from './../../utils/utils';
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
+import HorizontalBarChart from './HorizontalBarChart';
 
 
 function formatNumberBySpaces(num){
@@ -28,6 +29,7 @@ export default class ObjectPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            viewportWidth:window.innerWidth,
             object:'',
             type:'',
             currency:'',
@@ -157,12 +159,13 @@ export default class ObjectPage extends Component {
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {
                     values.push(item.VALUE);
-                    if(+item.THEDATE.substr(0,4) === moment().year()){  //если год выводимой даты совпадает с текущей - показывать только число и месяц
-                        dates.push(moment(item.THEDATE).format('D MMM'));
-                    }
-                    else{
-                        dates.push(moment(item.THEDATE).format('D MMM \'YY'));//иначе - показывать также и год
-                    }
+                    dates.push(item.THEDATE);
+                    // if(+item.THEDATE.substr(0,4) === moment().year()){  //если год выводимой даты совпадает с текущей - показывать только число и месяц
+                    //     dates.push(moment(item.THEDATE).format('D MMM'));
+                    // }
+                    // else{
+                    //     dates.push(moment(item.THEDATE).format('D MMM \'YY'));//иначе - показывать также и год
+                    // }
                 });
                 chartObj.labels = dates;
                 chartObj.datasets[0].data = values;
@@ -312,6 +315,8 @@ export default class ObjectPage extends Component {
     }
 
     componentDidMount(){
+        window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
+
         if(this.props.location.params){ //если начальные данные переданы с пропсов - идем 1м путем
             let obj = this.props.location.params.obj;
             this.fillInitialObjectData(obj);
@@ -319,7 +324,6 @@ export default class ObjectPage extends Component {
         else{   //если данных в пропсах не обнаружено - парсим их с сервера
             this.getNewObjectsData()
         }
-        // document.querySelector('.page-title').style.fontSize='30px'; //с какого-то хрена размер заголовка на этой стр-е отличается от других
     }
 
 
@@ -367,7 +371,14 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                <BarChart data={this.state.data}/>
+                {(this.state.viewportWidth > 791) ?
+
+                    <BarChart data={this.state.data}/>
+                    :
+                    <HorizontalBarChart data={this.state.data}/>
+                }
+
+
 
                 <Card className="data_per_month">
                     <div className="header">

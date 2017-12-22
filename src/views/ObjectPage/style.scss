@@ -1,5 +1,4 @@
 $crdbody-padding : 2.3rem;
-
 .segmentation_btn-wrp{
   margin-top:20px;
   text-align:center;
@@ -120,9 +119,6 @@ $crdbody-padding : 2.3rem;
 
 .object_cont{
   margin:auto;
-  .card-body:last-child{
-    padding: $crdbody-padding;
-  }
 }
 
 .totalSum{
@@ -237,6 +233,37 @@ $crdbody-padding : 2.3rem;
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
   }
+  &.horizontal-bars{
+    .header{
+      padding: 1rem 1rem;
+      h4{
+        color:#354052;
+      }
+    }
+    .chart-wrapper{
+      &:first-of-type{
+        width:18%;
+        max-width:none;
+      }
+      display:inline-block;
+      max-width:13.5%;
+      height:200px;
+      padding:0px 15px;
+    }
+  }
+  &.vertical-bars{
+    .chart-wrapper{
+      &:first-of-type{
+        height:212px;
+        position:relative;
+        top:6px;
+      }
+      display:inline-block;
+      max-width:14.2%;
+      height:200px;
+      padding:0px 15px;
+    }
+  }
 }
 
 .all_data .line-chart-wrapper{
@@ -248,6 +275,7 @@ $crdbody-padding : 2.3rem;
   .object_cont{
     width:100%;
     margin:auto;
+    margin-top: -15px;
     overflow-x: hidden;
     .announce{
       padding:16px;
@@ -316,5 +344,32 @@ $crdbody-padding : 2.3rem;
       margin-left: -$crdbody-padding;
       display:block;
     }
+    .horizontal-bars{
+      white-space: nowrap;
+      h4{
+        font-size: 18px;
+        font-weight: 400;
+      }
+      .card-body{
+        overflow: scroll;
+        .chart-wrapper{
+          &:first-of-type{
+            width:250px;
+          }
+          max-width:300px;
+          width:200px;
+          min-width: 200px;
+        }
+      }
+    }
   }
+}
+
+@media screen and (max-width:320px){
+  .datepicker_wrp input.datepicker {
+    width: 50px;
+    font-size: 10px;
+  }
+
+
 }

@@ -15,51 +15,53 @@ export default class BarChart extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.data) {
-            console.log(nextProps.data);
-            let bars = [];
-            let maxVal = 0;
-            for(let i = 0;i < 7;i++){
-                if(!i){
-                    let firstChartPrototype = {
-                        labels:[],
-                        datasets:[{
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderWidth: 10,
-                            radius:14,
-                            barBorderRadius: 10,
-                            hoverBorderWidth: 13,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }]
-                    };
-                    bars.push(firstChartPrototype);
-                }
-                else{
-                    let otherChartsPrototype = {
-                        labels:[],
-                        datasets:[{
-                            backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            borderColor: 'transparent',
-                            borderWidth: 1,
-                            hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                            data: []
-                        }]
-                    };
-                    bars.push(otherChartsPrototype);
-                }
-            };
+        if (nextProps.data)
+            this.fillBarsData(nextProps.data);
+    }
 
-            nextProps.data.weekAvg.forEach((item, i) => {
-                bars[Math.floor(i/8)].labels.push(item.ld + '-' + item.td);
-                bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
-                if(item.avg > maxVal)maxVal = Math.round(item.avg);
-            });
-            this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
-        }
+    fillBarsData(data){
+        let bars = [];
+        let maxVal = 0;
+        for(let i = 0;i < 7;i++){
+            if(!i){
+                let firstChartPrototype = {
+                    labels:[],
+                    datasets:[{
+                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        borderWidth: 10,
+                        radius:14,
+                        barBorderRadius: 10,
+                        hoverBorderWidth: 13,
+                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        data: []
+                    }]
+                };
+                bars.push(firstChartPrototype);
+            }
+            else{
+                let otherChartsPrototype = {
+                    labels:[],
+                    datasets:[{
+                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        data: []
+                    }]
+                };
+                bars.push(otherChartsPrototype);
+            }
+        };
+
+        data.weekAvg.forEach((item, i) => {
+            bars[Math.floor(i/8)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
+            bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
+            if(item.avg > maxVal)maxVal = Math.round(item.avg);
+        });
+        this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
     }
 
 
@@ -71,14 +73,14 @@ export default class BarChart extends Component {
 
     render(){
         return (
-            <Card className="average_hours">
+            <Card className="average_hours vertical-bars">
                 <CardBody>
                     <h4>Средняя посещаемость по часам</h4>
                     {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
                                     return (
-                                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'212px',position:'relative',top:'6px',padding:'0px 15px'}}>
+                                            <div key={i} className="chart-wrapper" >
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -133,7 +135,7 @@ export default class BarChart extends Component {
                                     );
                                 else
                                     return(
-                                            <div key={i} className="chart-wrapper" style={{display:'inline-block',maxWidth:'14.2%',height:'200px',padding:'0px 15px'}}>
+                                            <div key={i} className="chart-wrapper">
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
