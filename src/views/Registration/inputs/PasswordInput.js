@@ -49,9 +49,10 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
 
     //^[a-zA-Z0-9-_\.]{1,20}$
     validateField(e){//функция-валидация
-        if(e && e.relatedTarget){ //фикс бага
+        if(typeof e !== 'undefined' && e.relatedTarget){
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
+
         let value = this.state.password;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         if(value === ''){
@@ -76,9 +77,10 @@ class PasswordInput extends ParentInput { //Внимание! Наследует
     }
 
     onBlurConfirmation(e){
-        if(e && e.relatedTarget){ //фикс бага
+        if(typeof e !== 'undefined' && e.relatedTarget){
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
+
         this.confirmationPasswordsStrict();
         this.hideConfirmHint();
     }

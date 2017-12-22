@@ -42,9 +42,12 @@ class SurnameInput extends ParentInput { //Внимание! Наследует 
     }
 
     validateField(e){//функция-валидация
-        if(e && e.relatedTarget){ //фикс бага
+        if(typeof e !== 'undefined' && e.relatedTarget){
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
+        // if(e && e.relatedTarget){ //фикс бага
+        //     if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
+        // }
         let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         if(value === ''){

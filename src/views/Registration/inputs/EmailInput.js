@@ -26,7 +26,7 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     }
 
     showError(){            //функция рендера сообщения об ошибке
-        if(this.state.isValid === false){
+        if(this.state.isValid === false && this.state.isNotAvailable == false){
             return(
                 <div className="errorMessage">проверьте правильность адреса</div>
             )
@@ -47,9 +47,9 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
         ajaxRequest(url,options)
             .then(data => {
                 if (data.present) {
-                    //this.setState({isValid:false});
-                    //this.props.fieldIsValid('email',false);
                     this.setState({isNotAvailable: this.state.value});
+                    this.setState({isValid: false});
+                    this.props.fieldIsValid('email',false);
                 } else
                     this.setState({isNotAvailable: false})
             })
@@ -57,9 +57,11 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     }
 
     validateField(e){//функция-валидация
-        if(e && e.relatedTarget){ //фикс бага
-            if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
+
+        if(typeof e !== 'undefined' &&  e.relatedTarget){
+            if (e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
+
         this.hideHint(); //прячем окно с подсказкой
         let value = this.state.value;//e.target.value;
         if(value === ''){
@@ -82,11 +84,7 @@ class EmailInput extends ParentInput { //Внимание! Наследует о
     }
 
     setEmail(e){
-        //this.setState(
-        //    {value:e.target.value},
-        //    () => this.validateField()
-        //);
-        this.setState({value:e.target.value})
+        this.setState({value:e.target.value});
     }
 
     render() {
