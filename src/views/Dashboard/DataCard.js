@@ -33,7 +33,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>
-                     <Col xs="8" md="6">
+                     <Col md="6">
                          <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
                                className="link-to-object"
                          >
@@ -41,9 +41,9 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                          </Link>
                          <p className="contacts">{props.obj.address}</p>
                      </Col>
-                     <Col xs="4" md="6">
-                         <img className="title-image" src="img/TradeCenters/rio_leninskiy.png"/>
+                     <Col md="6">
                          <img className="title-image" src={`${API.imgPath}/${props.obj.thumb}`} />
+                         <img className="title-image_hidden" src={`${API.imgPath}/${props.obj.thumb_over}`} />
                      </Col>
                  </Row>
              </CardHeader>
