@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardBody
 } from "reactstrap";
+import {API} from "../../utils/api_paths";
 
 const date = new Date();
 const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
@@ -32,17 +33,18 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>
-                     <Col xs="8" md="6">
-                         <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
-                               className="link-to-object"
-                         >
-                             <h5>{props.obj.obj_name}</h5>
-                         </Link>
-                         <p className="contacts">{props.obj.address}</p>
+                     <Col md="6">
+                         <div className="card-name">
+                            <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }}
+                                  className="link-to-object">
+                                <h5>{props.obj.obj_name}</h5>
+                            </Link>
+                            <p className="contacts">{props.obj.address}</p>
+                         </div>
                      </Col>
-                     <Col xs="4" md="6">
-                         <img className="title-image" src="img/TradeCenters/rio_leninskiy.png"/>
-                         <img className="title-image_hidden" src="img/TradeCenters/rio_leninskiy_color.png"/>
+                     <Col md="6">
+                         <img className="title-image" src={`${API.imgPath}/${props.obj.thumb}`} />
+                         <img className="title-image_hidden" src={`${API.imgPath}/${props.obj.thumb_over}`} />
                      </Col>
                  </Row>
              </CardHeader>

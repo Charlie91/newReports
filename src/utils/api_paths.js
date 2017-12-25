@@ -11,7 +11,8 @@ if(PRODUCTION){
         objectsData:'https://repo.re-ports.ru/app/ObjectCache',
         floors:'https://repo.re-ports.ru/app/ObjectFloors?objId=',
         floorsData:'https://repo.re-ports.ru/app/FloorData',
-        userData:'https://repo.re-ports.ru/app/UserData'
+        userData:'https://repo.re-ports.ru/app/UserData',
+        imgPath:'https://re-ports.ru/app/img/malls/'
     };
 }
 else {
@@ -25,6 +26,7 @@ else {
         objectsData: 'https://repo.re-ports.ru/app_test/ObjectCache',
         floors:'https://repo.re-ports.ru/app_test/ObjectFloors?objId=',
         floorsData:'https://repo.re-ports.ru/app_test/FloorData',
-        userData:'https://repo.re-ports.ru/app_test/UserData'
+        userData:'https://repo.re-ports.ru/app_test/UserData',
+        imgPath:'https://re-ports.ru/app/img/malls/'
     }
 }

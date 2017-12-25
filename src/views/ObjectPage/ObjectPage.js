@@ -239,6 +239,7 @@ export default class ObjectPage extends Component {
     renderMap(){
         const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 16, controls: [], behaviors:[], options:[] };
         return (
+            <div>
             <YMaps>
                 <Map state={mapState}
                      width={'180px'}
@@ -246,6 +247,8 @@ export default class ObjectPage extends Component {
                 >
                 </Map>
             </YMaps>
+
+            </div>
         );
     };
 

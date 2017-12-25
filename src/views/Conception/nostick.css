@@ -1,11 +1,5 @@
 #no-stick {
-  /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
   /*.rest-columns > .thead > :last-child {margin-right: 50px;}*/ }
-  #no-stick .fix-column {
-    float: left;
-    text-align: center;
-    width: 170px;
-    font-weight: 400; }
   #no-stick .thead {
     height: 100%;
     white-space: nowrap;
@@ -22,14 +16,20 @@
     line-height: 80px;
     height: 80px; }
   #no-stick .tbody {
-    height: 80vh;
+    height: calc(100% - 222px);
+    height: -moz-calc(100% - 222px);
+    height: -webkit-calc(100vh - 222px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
+  #no-stick .fix-column {
+    float: left;
+    text-align: center;
+    width: 170px;
+    font-weight: 400; }
   #no-stick .fix-column > .tbody {
     overflow: hidden;
-    border-right: 1px solid #a2a2a2;
-    /*padding-bottom: 50px;*/ }
+    border-right: 1px solid #a2a2a2; }
   #no-stick .fix-column > .tbody > .trow {
     margin-top: -50px;
     margin-bottom: 50px; }
