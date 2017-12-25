@@ -1,11 +1,5 @@
 #no-stick{
 
-  .fix-column {
-    float: left;
-    text-align: center;
-    width: 170px;
-    font-weight: 400;
-  }
   .thead {
     height: 100%;
     white-space: nowrap;
@@ -15,6 +9,7 @@
     display: inline-block;
     width: 120px;
     text-align: left;
+
   }
   .trow {
     white-space: nowrap;
@@ -26,18 +21,23 @@
     height: 80px;
   }
   .tbody {
-    height: 80vh;
+    height: calc(100% - 222px);
+    height: -moz-calc(100% - 222px);
+    height: -webkit-calc(100vh - 222px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .fix-column {
+    float: left;
+    text-align: center;
+    width: 170px;
+    font-weight: 400;
+  }
   .fix-column > .tbody {
     overflow: hidden;
     border-right: 1px solid #a2a2a2;
-    /*padding-bottom: 50px;*/
   }
-  /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
-
   .fix-column > .tbody > .trow {
     margin-top: -50px;
     margin-bottom: 50px;

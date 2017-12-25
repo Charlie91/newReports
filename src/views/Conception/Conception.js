@@ -203,7 +203,7 @@ class Conception extends Component {
                     (objectsForRender.length) ?
                         <TableVertNoStick data={objectsForRender}/>
                         :
-                        <h4 className="no-data-message">Нет данных для отображения</h4>
+                        <h4 className="no-data-message">Выбирите город</h4>
                 }
             </div>
         )
