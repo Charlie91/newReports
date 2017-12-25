@@ -6,7 +6,7 @@ import Loading from './../Loading/Loading';
 import DataCard from './DataCard';
 
 import {
-    Row
+    Row, Card
 } from "reactstrap";
 
 

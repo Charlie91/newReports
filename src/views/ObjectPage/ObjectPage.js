@@ -307,6 +307,14 @@ export default class ObjectPage extends Component {
         this.setState({endDate: date}, () => this.getFloorsData());
     }
 
+    handleMobileChangeStart(e){
+        this.setState({startDate: moment(e.target.value)}, () => this.getFloorsData());
+    }
+
+    handleMobileChangeEnd(e){
+        this.setState({endDate: moment(e.target.value)}, () => this.getFloorsData());
+    }
+
     componentDidUpdate(){
         if( this.state.endDate.diff(this.state.startDate,'days') > 60 && this.state.timeSegment === 'H'){
             this.setState({timeSegment:'D'});
@@ -328,6 +336,7 @@ export default class ObjectPage extends Component {
 
 
     render(){
+        console.log(this.state.startDate, this.state.endDate);
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -415,25 +424,47 @@ export default class ObjectPage extends Component {
                             <Col xs="12" md="3">
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
                                 <div className="datepicker_wrp">
-                                    <DatePicker
-                                        className="datepicker"
-                                        selected={this.state.startDate}
-                                        selectsStart
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        onChange={this.handleChangeStart.bind(this)}
-                                    />
+                                    {
+                                        (this.state.viewportWidth > 791) ?
+                                            <DatePicker
+                                                className="datepicker"
+                                                selected={this.state.startDate}
+                                                selectsStart
+                                                startDate={this.state.startDate}
+                                                endDate={this.state.endDate}
+                                                onChange={this.handleChangeStart.bind(this)}
+                                            />
+                                            :
+                                            <input className="datepicker"
+                                                   value={this.state.startDate.format('YYYY-MM-DD')}
+                                                   onChange = {this.handleMobileChangeStart.bind(this)}
+                                                   type="date"
+                                            />
+                                    }
+
                                 </div>
                                 <div className="datepicker_wrp">
-                                    <DatePicker
-                                        className="datepicker"
-                                        selected={this.state.endDate}
-                                        selectsEnd
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        onChange={this.handleChangeEnd.bind(this)}
-                                    />
+                                    {
+                                        (this.state.viewportWidth > 791) ?
+                                            <DatePicker
+                                                className="datepicker"
+                                                selected={this.state.endDate}
+                                                selectsEnd
+                                                startDate={this.state.startDate}
+                                                endDate={this.state.endDate}
+                                                onChange={this.handleChangeEnd.bind(this)}
+                                            />
+                                            :
+                                            <input
+                                                className="datepicker"
+                                                value={this.state.endDate.format('YYYY-MM-DD')}
+                                                onChange = {this.handleMobileChangeEnd.bind(this)}
+                                                type="date"
+                                            />
+                                    }
+
                                 </div>
+
                             </Col>
                             <Col xs="12" md="6">
                                 {this.renderFloorObjectsButtons()}

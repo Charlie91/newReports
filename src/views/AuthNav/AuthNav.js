@@ -19,7 +19,8 @@ const AuthNav = (props) => {
                 <Col className="auth_links" xs="6" sm="5" md="5">
                     <NavLink to={'/registration'}  activeClassName="active">Регистрация</NavLink>
                 </Col>
-                <Col xs="0" sm="1" md="1"> </Col>
+                <Col xs="0" sm="1" md="1">
+                </Col>
             </Row>
     )
 }
