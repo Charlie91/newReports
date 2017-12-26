@@ -1,12 +1,16 @@
 .conceptions-table td, .conceptions-table th {
   position: relative; }
+
 .conceptions-table thead th {
   border-bottom: none; }
+
 .conceptions-table tr:first-child td {
   border-top: none; }
+
 .conceptions-table th.fixed-td {
   height: 88px;
   color: #1c1c1c; }
+
 .conceptions-table .fixed-td {
   position: sticky;
   position: -webkit-sticky;
@@ -16,6 +20,7 @@
   color: #1c1c1c;
   font-weight: 400;
   text-align: center; }
+
 .conceptions-table.scrolled .fixed-header::before {
   content: '';
   display: block;
@@ -68,7 +73,7 @@
     .vertical-table thead tr th:first-child {
       z-index: 20; }
   .vertical-table tr {
-    background: white; }
+    background: #fff; }
   .vertical-table td {
     border: none; }
   .vertical-table .today td {
@@ -83,6 +88,5 @@
     margin-top: -20px;
     margin-left: -20px;
     margin-right: -20px; }
-
   .vertical-table thead tr th {
     top: -10px; } }

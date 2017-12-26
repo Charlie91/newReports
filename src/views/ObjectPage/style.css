@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.app-body_new_margin {
+  margin-top: 55px; }
+
 .segmentation_btn-wrp {
   margin-top: 20px;
   text-align: center; }
@@ -203,7 +206,7 @@
   .object_cont {
     width: 100%;
     margin: auto;
-    margin-top: -15px;
+    margin-top: 0;
     padding: 0 10px;
     overflow-x: hidden; }
     .object_cont .announce .geolocation {

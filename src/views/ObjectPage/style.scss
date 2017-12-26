@@ -1,4 +1,9 @@
 $crdbody-padding : 1.3rem;
+
+
+.app-body_new_margin{
+  margin-top:55px
+}
 .segmentation_btn-wrp{
   margin-top:20px;
   text-align:center;
@@ -277,7 +282,7 @@ $crdbody-padding : 1.3rem;
   .object_cont{
     width:100%;
     margin:auto;
-    margin-top: -15px;
+    margin-top: 0;
     padding: 0 10px;
     overflow-x: hidden;
     .announce{
