@@ -34,8 +34,9 @@ class Full extends Component {
     }
 
     mobileSidebarToggle(e){
-        e.preventDefault();
-        document.body.classList.remove('sidebar-mobile-show');
+        //e.preventDefault();
+        if(document.body.classList.contains('sidebar-mobile-show'))
+            document.body.classList.remove('sidebar-mobile-show');
     }
 
     checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер

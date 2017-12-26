@@ -1,4 +1,4 @@
-$crdbody-padding : 2.3rem;
+$crdbody-padding : 1.3rem;
 .segmentation_btn-wrp{
   margin-top:20px;
   text-align:center;
@@ -80,7 +80,9 @@ $crdbody-padding : 2.3rem;
     border: solid 1px #886ce6;
     text-align: center;
     width: 73px;
+    font-size: 14px;
     color: #7f8fa4;
+    white-space: nowrap;
   }
 }
 
@@ -182,7 +184,7 @@ $crdbody-padding : 2.3rem;
     max-height:400px;
   }
   //height:400px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   img.fullIMG {
     max-width: 100%;
   }
@@ -271,25 +273,25 @@ $crdbody-padding : 2.3rem;
   margin-top:15px;
 }
 
-@media screen and (max-width:791px){
+@media screen and (max-width:767px){
   .object_cont{
     width:100%;
     margin:auto;
     margin-top: -15px;
+    padding: 0 10px;
     overflow-x: hidden;
     .announce{
-      padding:16px;
       .geolocation {
         display:none
       }
       .obj_title{
         h4{
-          font-size: 16px;
+          font-size: 18px;
         }
         .address_mobile{
           display: block;
           &.muted{
-            font-size: 12px;
+            font-size: 16px;
             margin-bottom: 0;
           }
         }
@@ -304,29 +306,35 @@ $crdbody-padding : 2.3rem;
     .features{
       >div{
         >strong{
-          font-size: 14px;
+          font-size: 16px;
         }
         >.muted{
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
-    .data_per_month .header h4 {
-      font-size: 18px;
-      font-weight: 400;
+    .data_per_month{
+        margin-right: -15px;
+        margin-left: -15px;
+        margin-top: 20px;
+        .header h4 {
+          font-size: 18px;
+          font-weight: 400;
+        }
     }
     .all_data{
+      margin-top: 20px;
       .line-chart-wrapper {
         padding: 10px 0px;
       }
     }
     .segmentation_btn-wrp{
-      padding:0;
+      padding: 0 10px;
       .btn-group{
         max-width:100%;
         .btn{
           max-width:25%;
-          font-size: 12px;
+          font-size: 14px;
           padding: 7px 0px;
         }
       }
@@ -346,6 +354,8 @@ $crdbody-padding : 2.3rem;
     }
     .horizontal-bars{
       white-space: nowrap;
+      margin-right: -15px;
+      margin-left: -15px;
       h4{
         font-size: 18px;
         font-weight: 400;
@@ -362,14 +372,77 @@ $crdbody-padding : 2.3rem;
         }
       }
     }
+    input[type="date"]::-webkit-clear-button {
+      display: none;
+    }
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
   }
 }
 
-@media screen and (max-width:320px){
-  .datepicker_wrp input.datepicker {
-    width: 50px;
-    font-size: 10px;
+@media screen and (max-width:575px){
+  .object_cont {
+    .announce{
+      .obj_title{
+        h4{
+          font-size: 16px;
+        }
+        .address_mobile{
+          &.muted{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .features{
+      >div{
+        >strong{
+          font-size: 14px;
+        }
+        >.muted{
+          font-size: 12px;
+        }
+      }
+    }
+    .segmentation_btn-wrp {
+      .btn-group {
+        .btn {
+          font-size: 12px;
+        }
+      }
+    }
+    .datepicker_wrp{
+      input.datepicker {
+        font-size: 12px;
+      }
+    }
   }
 
+}
 
+@media screen and (max-width:320px){
+  .datepicker_wrp{
+    &:last-of-type{
+      input.datepicker {
+        margin-right: -15px;
+      }
+    }
+    input.datepicker {
+      width: 63px;
+      font-size: 9px;
+    }
+    &:last-of-type{
+      margin-left: 7%;
+      &::before{
+        margin-left: -5.5%;
+        margin-top: 1.75%;
+      }
+    }
+  }
+  .object_cont .segmentation_btn-wrp .btn-group .btn{
+    font-size:11px;
+  }
 }
