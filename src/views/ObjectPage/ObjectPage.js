@@ -66,6 +66,10 @@ export default class ObjectPage extends Component {
         moment.locale('ru'); // локализуем библиотеку
     }
 
+    setSpecificCSSforPage(){
+        document.querySelector('.app-body').classList.add('app-body_new_margin');
+    }
+
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
         let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
         let chart = this.getNewStyleForChart(typeArr);
@@ -326,6 +330,7 @@ export default class ObjectPage extends Component {
     }
 
     componentDidMount(){
+        this.setSpecificCSSforPage();//установка margin к app-body
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
 
         if(this.props.location.params){ //если начальные данные переданы с пропсов - идем 1м путем
@@ -335,6 +340,10 @@ export default class ObjectPage extends Component {
         else{   //если данных в пропсах не обнаружено - парсим их с сервера
             this.getNewObjectsData()
         }
+    }
+
+    componentWillUnmount(){
+        document.querySelector('.app-body').classList.remove('app-body_new_margin');
     }
 
 
@@ -383,7 +392,7 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 791) ?
+                {(this.state.viewportWidth > 767) ?
 
                     <BarChart data={this.state.data}/>
                     :
@@ -428,7 +437,7 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
                                 <div className="datepicker_wrp">
                                     {
-                                        (this.state.viewportWidth > 791) ?
+                                        (this.state.viewportWidth > 767) ?
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.startDate}
@@ -448,7 +457,7 @@ export default class ObjectPage extends Component {
                                 </div>
                                 <div className="datepicker_wrp">
                                     {
-                                        (this.state.viewportWidth > 791) ?
+                                        (this.state.viewportWidth > 767) ?
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.endDate}
