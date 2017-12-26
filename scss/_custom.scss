@@ -10,7 +10,7 @@ body{
 .app-footer{
   position: absolute;
   bottom: 0px;
-  display: none;
+  display: none !important;
 }
 
 .navbar {
