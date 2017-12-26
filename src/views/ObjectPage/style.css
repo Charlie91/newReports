@@ -202,6 +202,10 @@
   max-height: 183px;
   margin-top: 15px; }
 
+@media screen and (max-width: 991px) {
+  .announce > div:first-of-type > .card {
+    overflow: hidden; } }
+
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;

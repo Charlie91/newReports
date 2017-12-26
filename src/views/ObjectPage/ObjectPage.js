@@ -330,7 +330,6 @@ export default class ObjectPage extends Component {
     }
 
     componentDidMount(){
-        this.setSpecificCSSforPage();//установка margin к app-body
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
 
         if(this.props.location.params){ //если начальные данные переданы с пропсов - идем 1м путем
@@ -342,9 +341,6 @@ export default class ObjectPage extends Component {
         }
     }
 
-    componentWillUnmount(){
-        document.querySelector('.app-body').classList.remove('app-body_new_margin');
-    }
 
 
     render(){
