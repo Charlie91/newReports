@@ -90,13 +90,16 @@
   z-index: 10; }
 
 .object_cont {
-  margin: auto; }
+  margin: auto;
+  margin-right: -13px;
+  margin-left: -13px; }
 
 .totalSum .data {
   color: #354052;
   font-size: 2.3em;
   display: block;
-  line-height: 0.8; }
+  line-height: 0.8;
+  word-wrap: initial; }
 
 .muted {
   font-size: 12px;
@@ -152,7 +155,8 @@
     padding: 0;
     font-size: 16px;
     color: #7f8fa4;
-    margin-top: 14px; }
+    margin-top: 14px;
+    font-weight: 400; }
   .announce .features > div {
     margin: 7px auto; }
     .announce .features > div > strong {
@@ -169,7 +173,8 @@
   padding-left: 10px;
   font-size: 14px;
   line-height: 2.29;
-  color: #7f8fa4; }
+  color: #7f8fa4;
+  white-space: nowrap; }
 
 .average_hours .chart-wrapper:not(:first-of-type) .title {
   padding-left: 33%; }
@@ -201,6 +206,56 @@
 .all_data .line-chart-wrapper {
   max-height: 183px;
   margin-top: 15px; }
+
+@media screen and (min-width: 1200px) {
+  .announce.row > div {
+    padding-right: 8px;
+    padding-left: 8px; }
+    .announce.row > div:first-of-type .card {
+      height: 100%; } }
+
+@media screen and (max-width: 1199px) {
+  .announce > div:first-of-type > .card {
+    overflow: hidden; }
+  .announce .features > div > strong {
+    font-size: 15px; }
+  .announce .features > div .muted {
+    font-size: 13px; }
+  .announce .geolocation .map_wrapper {
+    width: 100px;
+    height: 100px; }
+  .announce .geolocation .address {
+    font-size: 14px; }
+  .announce .obj_title h4 {
+    font-size: 32px; }
+  .datepicker_wrp:last-child {
+    margin-left: 10%; }
+    .datepicker_wrp:last-child::before {
+      margin-left: -7.5%;
+      margin-top: 1.75%; } }
+
+@media screen and (max-width: 991px) {
+  .object_cont {
+    margin-right: auto;
+    margin-left: auto; }
+  .horizontal-bars {
+    white-space: nowrap; }
+    .horizontal-bars h4 {
+      font-size: 18px;
+      font-weight: 400; }
+    .horizontal-bars .card-body {
+      overflow: scroll; }
+      .horizontal-bars .card-body .chart-wrapper {
+        max-width: 300px;
+        width: 200px;
+        min-width: 200px; }
+        .horizontal-bars .card-body .chart-wrapper:first-of-type {
+          width: 250px; }
+  .all_data .row:first-of-type > div:first-of-type {
+    white-space: nowrap; }
+  .all_data .datepicker_wrp input.datepicker {
+    width: 60px;
+    font-size: 12px; } }
 
 @media screen and (max-width: 767px) {
   .object_cont {
@@ -237,6 +292,9 @@
       margin-top: 20px; }
       .object_cont .all_data .line-chart-wrapper {
         padding: 10px 0px; }
+    .object_cont .horizontal-bars {
+      margin-right: -15px;
+      margin-left: -15px; }
     .object_cont .segmentation_btn-wrp {
       padding: 0 10px; }
       .object_cont .segmentation_btn-wrp .btn-group {
@@ -253,21 +311,6 @@
       margin-right: -1.3rem;
       margin-left: -1.3rem;
       display: block; }
-    .object_cont .horizontal-bars {
-      white-space: nowrap;
-      margin-right: -15px;
-      margin-left: -15px; }
-      .object_cont .horizontal-bars h4 {
-        font-size: 18px;
-        font-weight: 400; }
-      .object_cont .horizontal-bars .card-body {
-        overflow: scroll; }
-        .object_cont .horizontal-bars .card-body .chart-wrapper {
-          max-width: 300px;
-          width: 200px;
-          min-width: 200px; }
-          .object_cont .horizontal-bars .card-body .chart-wrapper:first-of-type {
-            width: 250px; }
     .object_cont input[type="date"]::-webkit-clear-button {
       display: none; }
     .object_cont input[type="date"]::-webkit-inner-spin-button,

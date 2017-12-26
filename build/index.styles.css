@@ -8661,7 +8661,7 @@ app-root {
       left: 50%;
       margin-left: -100px; }
   .app-body {
-    margin-top: 93px; }
+    margin-top: 85px; }
   .sidebar {
     position: fixed;
     width: 250px;
@@ -13754,6 +13754,11 @@ body {
     overflow: hidden;
     position: fixed; }
 
+.app-footer {
+  position: absolute;
+  bottom: 0px;
+  display: none !important; }
+
 .navbar .sidebar-minimizer {
   min-width: 50px; }
 
@@ -13811,7 +13816,8 @@ body {
 
 @media (min-width: 768px) {
   .page-title {
-    text-align: left !important; } }
+    text-align: left !important;
+    font-size: 1.5em; } }
 
 @media (min-width: 576px) {
   .sidebar-compact .sidebar .sidebar-header {
@@ -13850,7 +13856,7 @@ body {
 .app-header.navbar {
   min-height: 50px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 40px;
   margin-left: 250px;
   height: auto !important; }
 
@@ -13894,7 +13900,7 @@ main.main {
   margin-right: 15px; }
 
 .main {
-  padding-top: 90px; }
+  padding-top: 127px; }
 
 .mr-3.btn-group, .mr-3.fc-button-group {
   height: 35px; }
@@ -14149,6 +14155,7 @@ body {
 .dropdown-trigger {
   border-radius: 1px;
   padding: 4px;
+  padding-bottom: 13px;
   line-height: 20px;
   display: inline-block;
   max-height: 200px;
@@ -14218,7 +14225,7 @@ li.node:hover {
   content: '\25B2'; }
 
 .tree_select {
-  margin-left: 8px;
+  margin-left: 34px;
   text-align: left; }
 
 .dropdown__content.dropdown-content {
@@ -14270,7 +14277,7 @@ a.dropdown-button {
 .page-title {
   margin-bottom: 0px;
   color: #354052;
-  padding-left: 15px; }
+  padding-left: 41px; }
 
 .none {
   display: none !important; }
@@ -14503,22 +14510,6 @@ button.btn.back-btn {
 .conceptions-table tr:first-child td {
   border-top: none; }
 
-.conceptions-table .average_column {
-  background-color: #f8f5f1;
-  color: #2d2d2d;
-  opacity: 0.4;
-  font-weight: 500; }
-
-.conceptions-table .average_month {
-  background-color: #f8f5f1;
-  color: #2d2d2d;
-  font-weight: 500; }
-  .conceptions-table .average_month td:first-child {
-    font-style: italic; }
-
-.conceptions-table .holidays_column {
-  background: #f7fcf3; }
-
 .conceptions-table th.fixed-td {
   height: 88px;
   color: #1c1c1c; }
@@ -14570,13 +14561,9 @@ button.btn.back-btn {
   border-collapse: collapse;
   font-weight: bold; }
 
-.app-body {
-  overflow-x: scroll; }
-
 .vertical-table {
   width: 100%;
   max-width: 100%;
-  overflow: scroll;
   color: #2d2d2d;
   background: #fff; }
   .vertical-table thead tr th {
@@ -14607,69 +14594,134 @@ button.btn.back-btn {
   .vertical-table thead tr th {
     top: -10px; } }
 #no-stick {
-  /*.fix-column > .tbody > .trow:last-child {margin-bottom: 50px;}*/
-  /*.rest-columns > .thead > :last-child {margin-right: 50px;}*/ }
-  #no-stick .fix-column {
-    float: left;
-    text-align: center;
-    width: 170px;
-    font-weight: 400; }
+  padding-top: 34px;
+  overflow: hidden; }
   #no-stick .thead {
     height: 100%;
     white-space: nowrap;
-    margin: 15px; }
+    margin: 0px; }
   #no-stick .thead > span {
     display: inline-block;
-    width: 120px;
-    text-align: left; }
+    width: 101px;
+    text-align: left;
+    font-size: 0.875em;
+    line-height: 0px;
+    margin-top: 28px;
+    margin-bottom: 8px; }
+    #no-stick .thead > span a {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 18px;
+      width: 73px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 14px;
+      height: 28px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-weight: bold; }
   #no-stick .trow {
-    white-space: nowrap; }
-  #no-stick .trow > span {
-    display: inline-block;
-    width: 120px;
-    line-height: 80px;
-    height: 80px; }
+    white-space: nowrap;
+    display: inline-table; }
+    #no-stick .trow > span {
+      display: inline-block;
+      width: 101px;
+      line-height: 43px;
+      height: 43px;
+      font-size: 0.875em;
+      text-align: right;
+      padding-right: 15px;
+      color: #354052; }
+  #no-stick .trow:hover {
+    background-color: #e7e7e7; }
   #no-stick .tbody {
-    height: 80vh;
+    height: calc(100vh - 278px);
+    height: -moz-calc(100vh - 278px);
+    height: -webkit-calc(100vh - 278px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-  #no-stick .fix-column > .tbody {
-    overflow: hidden;
-    border-right: 1px solid #a2a2a2;
-    /*padding-bottom: 50px;*/ }
-  #no-stick .fix-column > .tbody > .trow {
-    margin-top: -50px;
-    margin-bottom: 50px; }
+  #no-stick .average_column {
+    background-color: #fee9ca;
+    color: #354052;
+    font-weight: normal;
+    font-style: italic; }
+    #no-stick .average_column span {
+      height: 15px;
+      line-height: 15px;
+      margin-top: 1px;
+      margin-bottom: 2px; }
+    #no-stick .average_column:hover {
+      background-color: #fee9ca !important; }
+  #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
+    background-color: #ffffff;
+    font-weight: bold; }
+  #no-stick .average_month {
+    background-color: #fee9ca;
+    color: #2d2d2d;
+    font-style: italic; }
+    #no-stick .average_month span {
+      height: 15px;
+      line-height: 15px;
+      margin-top: 1px;
+      margin-bottom: 2px; }
+    #no-stick .average_month:hover {
+      background-color: #fee9ca !important; }
+  #no-stick .conceptions-table .holidays_column {
+    background-color: #e7f3dd; }
+    #no-stick .conceptions-table .holidays_column:hover {
+      background-color: #e7f3dd !important; }
+  #no-stick .fix-column {
+    float: left;
+    text-align: center;
+    width: 139px;
+    font-weight: 400; }
+    #no-stick .fix-column > .tbody {
+      overflow: hidden; }
+      #no-stick .fix-column > .tbody > .trow {
+        width: 139px;
+        text-align: right;
+        padding-right: 21px; }
+        #no-stick .fix-column > .tbody > .trow span {
+          padding-right: 0px; }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
   #no-stick .rest-columns {
     width: auto; }
-  #no-stick .rest-columns > .thead {
-    /*padding-right: 50px;*/
-    overflow: hidden;
-    font-weight: 500; }
-  #no-stick .rest-columns > .thead > span {
-    margin-right: 50px;
-    margin-left: -50px; }
-  #no-stick .rest-columns .tbody {
-    border-top: 1px solid #a2a2a2; }
+    #no-stick .rest-columns > .thead {
+      /*padding-right: 50px;*/
+      overflow: hidden; }
+      #no-stick .rest-columns > .thead > span {
+        margin-right: 50px;
+        margin-left: -50px; }
+    #no-stick .rest-columns .tbody .trow {
+      font-family: Courier; }
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
     white-space: normal; }
-  #no-stick .average_column {
-    background-color: #f8f5f1;
-    color: #2d2d2d;
-    opacity: 0.4;
-    font-weight: 500; }
-  #no-stick .average_month {
-    background-color: #f8f5f1;
-    color: #2d2d2d;
-    font-weight: 500; }
-    #no-stick .average_month td:first-child {
-      font-style: italic; }
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 5px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #ddd; }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #ddd; }
 @charset "UTF-8";
+.app-body_new_margin {
+  margin-top: 55px; }
+
 .segmentation_btn-wrp {
   margin-top: 20px;
   text-align: center; }
@@ -14870,11 +14922,15 @@ button.btn.back-btn {
   max-height: 183px;
   margin-top: 15px; }
 
+@media screen and (max-width: 991px) {
+  .announce > div:first-of-type > .card {
+    overflow: hidden; } }
+
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;
     margin: auto;
-    margin-top: -15px;
+    margin-top: 0;
     padding: 0 10px;
     overflow-x: hidden; }
     .object_cont .announce .geolocation {
