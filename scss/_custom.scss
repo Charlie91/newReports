@@ -8,8 +8,9 @@ body{
 }
 
 .app-footer{
-  //position: absolute;
-  //bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  display: none !important;
 }
 
 .navbar {
@@ -90,6 +91,7 @@ $sidebar-header-height: 170px;
 @include media-breakpoint-up(md) {
   .page-title{
     text-align:left!important;
+    font-size: 1.5em;
   }
 }
 
@@ -147,7 +149,7 @@ $sidebar-header-height: 170px;
 .app-header.navbar{
   min-height: 50px;
   text-align:center;
-  padding-top:10px;
+  padding-top:40px;
   margin-left: 250px;
   height:auto!important;
 }
@@ -200,7 +202,7 @@ main.main{
   margin-right:15px;
 }
 .main{
-  padding-top: 90px;
+  padding-top: 127px;
 }
 .mr-3.btn-group{
   height: 35px

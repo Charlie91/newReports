@@ -160,6 +160,7 @@ body {
 .dropdown-trigger {
   border-radius: 1px;
   padding: 4px;
+  padding-bottom: 13px;
   line-height: 20px;
   display: inline-block;
   max-height: 200px;
@@ -229,7 +230,7 @@ li.node:hover {
   content: '\25B2'; }
 
 .tree_select {
-  margin-left: 8px;
+  margin-left: 34px;
   text-align: left; }
 
 .dropdown__content.dropdown-content {
@@ -281,7 +282,7 @@ a.dropdown-button {
 .page-title {
   margin-bottom: 0px;
   color: #354052;
-  padding-left: 15px; }
+  padding-left: 41px; }
 
 .none {
   display: none !important; }

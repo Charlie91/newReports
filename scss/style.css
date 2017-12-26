@@ -13754,6 +13754,11 @@ body {
     overflow: hidden;
     position: fixed; }
 
+.app-footer {
+  position: absolute;
+  bottom: 0px;
+  display: none !important; }
+
 .navbar .sidebar-minimizer {
   min-width: 50px; }
 
@@ -13811,7 +13816,8 @@ body {
 
 @media (min-width: 768px) {
   .page-title {
-    text-align: left !important; } }
+    text-align: left !important;
+    font-size: 1.5em; } }
 
 @media (min-width: 576px) {
   .sidebar-compact .sidebar .sidebar-header {
@@ -13850,7 +13856,7 @@ body {
 .app-header.navbar {
   min-height: 50px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 40px;
   margin-left: 250px;
   height: auto !important; }
 
@@ -13894,7 +13900,7 @@ main.main {
   margin-right: 15px; }
 
 .main {
-  padding-top: 90px; }
+  padding-top: 127px; }
 
 .mr-3.btn-group, .mr-3.fc-button-group {
   height: 35px; }
