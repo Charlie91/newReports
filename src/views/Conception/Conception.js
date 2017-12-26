@@ -5,6 +5,7 @@ import TableVertical from './TableVertical.js';
 import TableHorizontal from './TableHorizontal.js';
 import TableVertNoStick from './TableVertNoStick.js';
 import {formatNumericValue} from './../../utils/utils';
+import {formatNumericValueWithSpaces} from './../../utils/utils';
 import Loading from './../Loading/Loading';
 
 
@@ -24,9 +25,9 @@ class Conception extends Component {
             years = additionalData.year;
 
         object.data = additionalData;
-        object.todayResults = (additionalData.day[0].v) ? formatNumericValue(additionalData.day[0].v) : '-';
-        object.averageOfDays = formatNumericValue(Math.round(additionalData.day_avg));
-        object.averageOfMonths = formatNumericValue(Math.round(additionalData.month_avg));
+        object.todayResults = (additionalData.day[0].v) ? formatNumericValueWithSpaces(additionalData.day[0].v) : '-';
+        object.averageOfDays = formatNumericValueWithSpaces(Math.round(additionalData.day_avg));
+        object.averageOfMonths = formatNumericValueWithSpaces(Math.round(additionalData.month_avg));
 
         object.currentMonth = days.reduce((sum, current) => sum + current.v, 0);
 
@@ -35,21 +36,21 @@ class Conception extends Component {
             if(current.y !== 2017)return sum + 0;
             else return sum + current.v
         }, object.currentMonth);
-        object.currentYear = formatNumericValue(object.currentYear);
-        object.currentMonth = formatNumericValue(object.currentMonth);
+        object.currentYear = formatNumericValueWithSpaces(object.currentYear);
+        object.currentMonth = formatNumericValueWithSpaces(object.currentMonth);
 
         days.forEach( (item,i) => {                         //выводим данные по дням наверх и пригодными для вывода таблицей
             if(!i)return;
-            object['day' + (days.length - i)] = formatNumericValue(item.v);
+            object['day' + (days.length - i)] =  formatNumericValueWithSpaces(item.v);
         });
 
         months.forEach( (item,i) => {
             if(item.y !== 2017)return;
-            object['month' + i] = formatNumericValue(item.v);
+            object['month' + i] = formatNumericValueWithSpaces(item.v);
         });
 
         years.forEach( (item,i) => {
-            object['year' + i] = formatNumericValue(item.v);
+            object['year' + i] = formatNumericValueWithSpaces(item.v);
         });
 
         return object;
@@ -203,7 +204,7 @@ class Conception extends Component {
                     (objectsForRender.length) ?
                         <TableVertNoStick data={objectsForRender}/>
                         :
-                        <h4 className="no-data-message">Выбирите город</h4>
+                        <h4 className="no-data-message">....</h4>
                 }
             </div>
         )

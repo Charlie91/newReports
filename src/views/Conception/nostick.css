@@ -24,10 +24,10 @@
       height: 28px;
       margin-top: 0px;
       margin-bottom: 0px;
-      font-weight: bold; }
+      font-weight: bold;
+      cursor: pointer; }
   #no-stick .trow {
-    white-space: nowrap;
-    display: inline-table; }
+    white-space: nowrap; }
     #no-stick .trow > span {
       display: inline-block;
       width: 101px;
@@ -37,17 +37,17 @@
       text-align: right;
       padding-right: 15px;
       color: #354052; }
-  #no-stick .trow:hover {
+  #no-stick .trow_hover_d {
     background-color: #e7e7e7; }
   #no-stick .tbody {
-    height: calc(100vh - 278px);
-    height: -moz-calc(100vh - 278px);
-    height: -webkit-calc(100vh - 278px);
+    height: calc(100vh - 248px);
+    height: -moz-calc(100vh - 248px);
+    height: -webkit-calc(100vh - 248px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   #no-stick .average_column {
-    background-color: #fee9ca;
+    background-color: rgba(246, 170, 37, 0.25);
     color: #354052;
     font-weight: normal;
     font-style: italic; }
@@ -57,12 +57,11 @@
       margin-top: 1px;
       margin-bottom: 2px; }
     #no-stick .average_column:hover {
-      background-color: #fee9ca !important; }
+      background-color: rgba(246, 170, 37, 0.25) !important; }
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
-    background-color: #ffffff;
     font-weight: bold; }
   #no-stick .average_month {
-    background-color: #fee9ca;
+    background-color: rgba(246, 170, 37, 0.25);
     color: #2d2d2d;
     font-style: italic; }
     #no-stick .average_month span {
@@ -71,36 +70,48 @@
       margin-top: 1px;
       margin-bottom: 2px; }
     #no-stick .average_month:hover {
-      background-color: #fee9ca !important; }
+      background-color: rgba(246, 170, 37, 0.25) !important; }
   #no-stick .conceptions-table .holidays_column {
-    background-color: #e7f3dd; }
+    background-color: rgba(159, 212, 115, 0.25); }
     #no-stick .conceptions-table .holidays_column:hover {
-      background-color: #e7f3dd !important; }
+      background-color: rgba(159, 212, 115, 0.25) !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
     width: 139px;
     font-weight: 400; }
     #no-stick .fix-column > .tbody {
-      overflow: hidden; }
+      overflow: hidden;
+      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8);
+      transition: box-shadow 0.2s ease-in-out; }
       #no-stick .fix-column > .tbody > .trow {
         width: 139px;
         text-align: right;
-        padding-right: 21px; }
+        padding-right: 21px;
+        display: block; }
         #no-stick .fix-column > .tbody > .trow span {
           padding-right: 0px; }
+      #no-stick .fix-column > .tbody.v_shadow {
+        box-shadow: 1px 3px 8px 0px rgba(200, 200, 200, 0.8); }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
+  #no-stick .fix-column > .tbody > .trow:last-child {
+    padding-bottom: 10px; }
   #no-stick .rest-columns {
     width: auto; }
     #no-stick .rest-columns > .thead {
       /*padding-right: 50px;*/
-      overflow: hidden; }
+      overflow: hidden;
+      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8);
+      transition: box-shadow 0.2s ease-in-out; }
       #no-stick .rest-columns > .thead > span {
         margin-right: 50px;
         margin-left: -50px; }
+      #no-stick .rest-columns > .thead.h_shadow {
+        box-shadow: 0px 6px 8px -3px rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
-      font-family: Courier; }
+      font-family: Courier;
+      display: table; }
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
@@ -108,7 +119,8 @@
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-  width: 5px; }
+  width: 5px;
+  height: 10px; }
 
 /* Track */
 ::-webkit-scrollbar-track {

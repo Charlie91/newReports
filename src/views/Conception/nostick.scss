@@ -25,13 +25,13 @@
       margin-top: 0px;
       margin-bottom: 0px;
       font-weight: bold;
+      cursor: pointer;
     }
     margin-top: 28px;
     margin-bottom: 8px;
   }
   .trow {
     white-space: nowrap;
-    display: inline-table;
     > span {
       display: inline-block;
       width: 101px;
@@ -43,22 +43,20 @@
       color: #354052;
     }
   }
-  .trow:hover{
+  .trow_hover_d{
     background-color: #e7e7e7;
   }
   .tbody {
-    height: calc(100vh - 278px);
-    height: -moz-calc(100vh - 278px);
-    height: -webkit-calc(100vh - 278px);
+    height: calc(100vh - 248px);
+    height: -moz-calc(100vh - 248px);
+    height: -webkit-calc(100vh - 248px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    .trow{
-    }
   }
 
   .average_column {
-    background-color: #fee9ca;
+    background-color: rgba(246, 170, 37, 0.25);
     color: #354052;
     font-weight: normal;
     font-style: italic;
@@ -69,16 +67,16 @@
       margin-bottom: 2px;
     }
     &:hover{
-      background-color: #fee9ca !important;
+      background-color: rgba(246, 170, 37, 0.25) !important;
     }
   }
   .today_trow, .current_year, .current_month, .forecast_month {
-    background-color: #ffffff;
+    //background-color: #ffffff;
     font-weight: bold;
   }
 
   .average_month{
-    background-color: #fee9ca;
+    background-color: rgba(246, 170, 37, 0.25);
     color: #2d2d2d;
     font-style: italic;
     span {
@@ -88,13 +86,13 @@
       margin-bottom: 2px;
     }
     &:hover{
-      background-color: #fee9ca !important;
+      background-color: rgba(246, 170, 37, 0.25) !important;
     }
   }
   .conceptions-table .holidays_column {
-    background-color: #e7f3dd;
+    background-color: rgba(159, 212, 115, 0.25);
     &:hover{
-      background-color: #e7f3dd !important;
+      background-color: rgba(159, 212, 115, 0.25) !important;
     }
   }
 
@@ -106,19 +104,27 @@
 
     >.tbody {
       overflow: hidden;
-      //border-right: 1px solid #a2a2a2;
+      box-shadow: 0px 0px 0px 0px rgba(200,200,200,0.8);
+      transition: box-shadow 0.2s ease-in-out;
       > .trow {
         width: 139px;
         text-align: right;
         padding-right: 21px;
+        display: block;
         span{
           padding-right: 0px;
         }
+      }
+      &.v_shadow{
+        box-shadow: 1px 3px 8px 0px rgba(200,200,200,0.8);
       }
     }
   }
   .fix-column > .tbody > .trow:first-child {
     margin-top: 0px;
+  }
+  .fix-column > .tbody > .trow:last-child {
+    padding-bottom: 10px;
   }
 
   .rest-columns {
@@ -126,16 +132,22 @@
     > .thead {
       /*padding-right: 50px;*/
       overflow: hidden;
+      box-shadow: 0px 0px 0px 0px rgba(200,200,200,0.8);
+      transition: box-shadow 0.2s ease-in-out;
       //font-weight: 500;
       > span {
         margin-right: 50px;
         margin-left: -50px;
+      }
+      &.h_shadow{
+        box-shadow: 0px 6px 8px -3px rgba(200,200,200,0.8);
       }
     }
     .tbody {
       //border-top: 1px solid #a2a2a2;
       .trow{
         font-family: Courier;
+        display: table;
       }
     }
   }
@@ -149,6 +161,7 @@
 /* Let's get this party started */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 10px;
 }
 
 /* Track */

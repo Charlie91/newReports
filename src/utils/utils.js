@@ -70,6 +70,35 @@ export function formatNumericValue(number,object){
     }
 }
 
+export function formatNumericValueWithSpaces(number,object) {
+
+    if(!object)object = '';
+    if(typeof number === 'number'){
+        if(number > 999){
+            let str_number = String(number);
+            if(str_number.length > 9){
+                let millions = str_number.substr(-9,3);
+                let billions = str_number.slice(0,str_number.length - 9);
+                return billions + ',' +  millions  + ' млрд.' + ' ' + object
+            }
+            //if(str_number.length > 6){
+            //    let thousands = str_number.substr(-6,2);
+            //    let millions = str_number.slice(0,str_number.length - 6);
+            //    return millions + ',' +  thousands  + ' млн.' + ' ' + object
+            //} <div class="digit_space"></div>
+            if(str_number.length > 3){
+                let units = str_number.substr(-3,1);
+                let thousands = str_number.slice(0,str_number.length - 3);
+                return thousands.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1<div class="digit_space"></div>') + ',' + units + '<div class="digit_space"></div>т.' + '<div class="digit_space"></div>' + object
+            }
+        }
+        return number + ' ' + object
+    }
+    else{
+        console.log('Тип передаваемого аргумента - не число')
+    }
+}
+
 export function setCookie(name, value, options) {   //более полная функция установки кук
     options = options || {};
 

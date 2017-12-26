@@ -126,16 +126,16 @@ class TableVertical extends Component {
                         </tr>
 
                     )}
-                    <tr className="average_month">
-                        <td>Средний в месяц</td>
-                        {this.props.data.map((item,i) =>
-                            <td key={i}>{item.averageOfMonths}</td>
-                        )}
-                    </tr>
                     <tr>
                         <td>Текущий месяц</td>
                         {this.props.data.map((item,i) =>
                             <td key={i}>{item.currentMonth}</td>
+                        )}
+                    </tr>
+                    <tr className="average_month">
+                        <td>Средний в месяц</td>
+                        {this.props.data.map((item,i) =>
+                            <td key={i}>{item.averageOfMonths}</td>
                         )}
                     </tr>
                     <tr>

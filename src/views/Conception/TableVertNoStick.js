@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {getCoords} from './../../utils/utils';
 import {Link} from 'react-router-dom';
 import {formatNumericValue} from './../../utils/utils';
+import {formatNumericValueWithSpaces} from './../../utils/utils';
 import './react-bootstrap-table.css';
 import './nostick.scss';
 import {
     Table,
 } from "reactstrap";
+import {getCookie} from "../../utils/utils";
 
 
 
@@ -35,13 +37,16 @@ function fillDates(){ //создание массива с предыдущим�
     return dates;
 }
 
+function getMonthName(i){
+    return ['Январь','Февраль','Март','Апрель','Май','Июнь', "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"][i];
+}
+
 function fillMonths(){//создание наименований месяцев
     const thisYearMonths = [];
     let today = new Date();
     let currentMonth = today.getMonth();
-    let months = ['Январь','Февраль','Март','Апрель','Май','Июнь', "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
     for(let i = 0; i < currentMonth;i++){
-        thisYearMonths.push(months[i])
+        thisYearMonths.push(getMonthName(i))
     };
     return thisYearMonths.reverse()
 }
@@ -61,7 +66,22 @@ function fillYears(){//заполняем года
 class TableVerticalNoStick extends Component {
     constructor(props) {
         super(props);
-    };
+        this.state = {
+            scrollTop: props.scrollTop,
+            scrollLeft: props.scrollLeft,
+            rowHover: props.rowHover
+        }
+    }
+
+    changeShadow(e){
+        this.setState({scrollTop: (e.target.scrollTop !== 0) });
+        this.setState({scrollLeft: (e.target.scrollLeft !== 0) });
+    }
+
+    changeRowHover(index){
+        this.setState({rowHover: index });
+        //console.log(index);
+    }
 
     fixingFirstColumn(e){//фиксируем первую колонку
         let cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type'),
@@ -126,8 +146,9 @@ class TableVerticalNoStick extends Component {
         fixHead.style.height = rcHead + 'px';
     }
 
+
     render() {
-        console.log(this.props.data);
+        //console.log(this.props.data);
         return (
             <div id="no-stick">
                 <div className="total-wrapper conceptions-table vertical-table">
@@ -135,7 +156,7 @@ class TableVerticalNoStick extends Component {
                         <div className="thead">
                             <span> </span>
                         </div>
-                        <div className="tbody">
+                        <div className={"tbody " + ( (this.state.scrollLeft) ? 'v_shadow' : '') }>
                             <div className="trow average_column">
                                 <span>Средний в день</span>
                             </div>
@@ -143,18 +164,20 @@ class TableVerticalNoStick extends Component {
                                 <span>Сегодня</span>
                             </div>
                             {this.state.dates.map((item,i) =>
-                                <div className={(~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow'} key={i}>
+                                <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
+                                    ( (i === this.state.rowHover) ? ' trow_hover_d' : '')
+                                } key={i}>
                                     <span>{item}</span>
                                 </div>
                             )}
+                            <div className="trow current_month">
+                                <span>{getMonthName((new Date()).getMonth())}</span>
+                            </div>
                             <div className="trow average_month">
                                 <span>Средний в месяц</span>
                             </div>
-                            <div className="trow current_month">
-                                <span>Текущий месяц</span>
-                            </div>
                             <div className="trow forecast_month">
-                                <span>Прогноз на месяц</span>
+                                <span>Прогноз на {getMonthName((new Date()).getMonth())}</span>
                             </div>
                             {this.state.months.map((item,i) =>
                                 <div className='trow' key={i}>
@@ -172,65 +195,71 @@ class TableVerticalNoStick extends Component {
                         </div>
                     </div>
                     <div className="rest-columns">
-                        <div className="thead">
+                        <div className={"thead " + ( (this.state.scrollTop) ? 'h_shadow' : '')}>
                             {this.props.data.map((item,i) =>
                                 <span key={i}><Link
                                     to={{ pathname: `/concept${item.conception}/city${item.city_id}/object${item.id}`, params:{obj:item} }}
-                                    className="link-to-object"
+                                    className="link-to-object "
                                 >
                                     {item.obj_name}
                                 </Link></span>
                             )}
                         </div>
-                        <div className="tbody">
+                        <div className="tbody"
+                             onScroll={this.changeShadow.bind(this)}
+                        >
                             <div className="trow average_column">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}>{item.averageOfDays}</span>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: item.averageOfDays }}></span>
                                 )}
                             </div>
                             <div className="trow today_trow">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}>{item.todayResults}</span>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: item.todayResults }}></span>
                                 )}
                             </div>
                             {this.state.dates.map((item,i) =>
-                                <div className={(~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow'} key={i}>
+                                <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
+                                ( (i === this.state.rowHover) ? ' trow_hover_d' : '') }
+                                     key={i}
+                                     onMouseEnter={this.changeRowHover.bind(this,i)}
+                                >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key}>{item['day' + (this.state.dates.length - i)]}</span>
+                                        <span key={key} dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] }}></span>
                                     )}
                                 </div>
                             )}
-                            <div className="trow average_month">
-                                {this.props.data.map((item,i) =>
-                                    <span key={i}>{item.averageOfMonths}</span>
-                                )}
-                            </div>
                             <div className="trow current_month">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}>{item.currentMonth}</span>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: item.currentMonth }}></span>
+                                )}
+                            </div>
+                            <div className="trow average_month">
+                                {this.props.data.map((item,i) =>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: item.averageOfMonths }}></span>
                                 )}
                             </div>
                             <div className="trow forecast_month">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}>{formatNumericValue(Math.floor(item.data.month_pred))}</span>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: formatNumericValueWithSpaces(item.data.month_pred) }}></span>
                                 )}
                             </div>
                             {this.state.months.map((item,i) =>
                                 <div className="trow" key={i}>
                                     {this.props.data.map((item,key) =>
-                                        <span key={key}>{item['month' + i]}</span>
+                                        <span key={key} dangerouslySetInnerHTML={{__html: item[ 'month' + i] }}></span>
                                     )}
                                 </div>
                             )}
                             <div className="trow current_year">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}>{item.currentYear}</span>
+                                    <span key={i} dangerouslySetInnerHTML={{__html: item.currentYear }}></span>
                                 )}
                             </div>
                             {this.state.years.map((item,i) =>
                                 <div className="trow" key={i}>
                                     {this.props.data.map((item,key) =>
-                                        <span key={key}>{item['year' + i]}</span>
+                                        <span key={key} dangerouslySetInnerHTML={{__html: item['year' + i] }}></span>
                                     )}
                                 </div>
                             )}

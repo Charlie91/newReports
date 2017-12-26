@@ -88,6 +88,11 @@ $sidebar-header-height: 170px;
   }
 }
 
+.digit_space{
+  display: inline;
+  margin-left: .2em;
+}
+
 @include media-breakpoint-up(md) {
   .page-title{
     text-align:left!important;
