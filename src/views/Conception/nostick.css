@@ -26,7 +26,8 @@
       margin-bottom: 0px;
       font-weight: bold; }
   #no-stick .trow {
-    white-space: nowrap; }
+    white-space: nowrap;
+    display: inline-table; }
     #no-stick .trow > span {
       display: inline-block;
       width: 101px;
@@ -72,8 +73,8 @@
     #no-stick .average_month:hover {
       background-color: #fee9ca !important; }
   #no-stick .conceptions-table .holidays_column {
-    background: #e7f3dd; }
-    #no-stick .conceptions-table .holidays_column :hover {
+    background-color: #e7f3dd; }
+    #no-stick .conceptions-table .holidays_column:hover {
       background-color: #e7f3dd !important; }
   #no-stick .fix-column {
     float: left;
@@ -83,10 +84,11 @@
     #no-stick .fix-column > .tbody {
       overflow: hidden; }
       #no-stick .fix-column > .tbody > .trow {
-        margin-top: -50px;
-        margin-bottom: 50px;
+        width: 139px;
         text-align: right;
         padding-right: 21px; }
+        #no-stick .fix-column > .tbody > .trow span {
+          padding-right: 0px; }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
   #no-stick .rest-columns {
