@@ -246,8 +246,8 @@ export default class ObjectPage extends Component {
             <div>
             <YMaps>
                 <Map state={mapState}
-                     width={'180px'}
-                     height={'180px'}
+                     width={(this.state.viewportWidth < 1199) ? '100px' : '180px'}
+                     height={(this.state.viewportWidth < 1199) ? '100px' : '180px'}
                 >
                 </Map>
             </YMaps>
@@ -366,12 +366,12 @@ export default class ObjectPage extends Component {
                                 </div>
                                 <hr className="divider"/>
                                 <Row>
-                                    <Col md="8" className="features">
+                                    <Col md="7" className="features">
                                         <div><strong>Этажей:</strong>  <span className="muted">4</span> </div>
                                         <div><strong>Площадь:</strong>   <span className="muted">{this.state.object.area}м<sup>2</sup></span></div>
-                                        <div><strong>Дата открытия:</strong>  <span className="muted">12 января 2008 года</span> </div>
+                                        <div><strong>Дата открытия:</strong>  <span className="muted">12 января 2008 г.</span> </div>
                                     </Col>
-                                    <Col md="4" className="geolocation">
+                                    <Col md="5" className="geolocation">
                                         <div className="map_wrapper">
                                             {this.renderMap()}
                                         </div>
@@ -388,7 +388,7 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 767) ?
+                {(this.state.viewportWidth > 991) ?
 
                     <BarChart data={this.state.data}/>
                     :
@@ -429,7 +429,7 @@ export default class ObjectPage extends Component {
                     <CardBody className="card-body">
                         <h5 className="measure">{this.state.type}</h5>
                         <Row>
-                            <Col xs="12" md="3">
+                            <Col xs="12" md="4" lg="3" xl="4">
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
                                 <div className="datepicker_wrp">
                                     {
@@ -474,7 +474,7 @@ export default class ObjectPage extends Component {
                                 </div>
 
                             </Col>
-                            <Col xs="12" md="6">
+                            <Col xs="12" md="5" lg="6" xl="5">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">

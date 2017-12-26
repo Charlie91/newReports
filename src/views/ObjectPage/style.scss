@@ -126,6 +126,8 @@ $crdbody-padding : 1.3rem;
 
 .object_cont{
   margin:auto;
+  margin-right: -13px;
+  margin-left: -13px;
 }
 
 .totalSum{
@@ -134,6 +136,7 @@ $crdbody-padding : 1.3rem;
     font-size: 2.3em;
     display:block;
     line-height: 0.8;
+    word-wrap: initial;
   }
 }
 
@@ -210,6 +213,7 @@ $crdbody-padding : 1.3rem;
       font-size: 16px;
       color: #7f8fa4;
       margin-top: 14px;
+      font-weight: 400;
     }
   }
   .features{
@@ -236,6 +240,7 @@ $crdbody-padding : 1.3rem;
     font-size: 14px;
     line-height: 2.29;
     color: #7f8fa4;
+    white-space: nowrap;
   }
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
@@ -278,9 +283,97 @@ $crdbody-padding : 1.3rem;
   margin-top:15px;
 }
 
-@media screen and (max-width:991px){
-  .announce > div:first-of-type>.card{
-    overflow:hidden
+@media screen and (min-width:1200px) {
+  .announce{
+    &.row > div {
+      padding-right: 8px;
+      padding-left: 8px;
+      &:first-of-type{
+        .card{
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:1199px) {
+  .announce {
+    > div:first-of-type {
+      > .card {
+        overflow: hidden
+      }
+    }
+    .features {
+      > div {
+        > strong {
+          font-size: 15px;
+        }
+        .muted{
+          font-size: 13px;
+        }
+      }
+    }
+    .geolocation {
+      .map_wrapper {
+        width: 100px;
+        height: 100px
+      }
+      .address{
+        font-size:14px;
+      }
+    }
+    .obj_title h4 {
+      font-size: 32px;
+    }
+  }
+  .datepicker_wrp{
+    &:last-child {
+      margin-left: 10%;
+      &::before{
+        margin-left: -7.5%;
+        margin-top: 1.75%;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width:991px) {
+  .object_cont{
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .horizontal-bars{
+    white-space: nowrap;
+    h4{
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .card-body{
+      overflow: scroll;
+      .chart-wrapper{
+        &:first-of-type{
+          width:250px;
+        }
+        max-width:300px;
+        width:200px;
+        min-width: 200px;
+      }
+    }
+  }
+  .all_data {
+    .row:first-of-type{
+      >div:first-of-type{
+        white-space: nowrap;
+      }
+    }
+    .datepicker_wrp{
+      input.datepicker{
+        width: 60px;
+        font-size: 12px;
+      }
+    }
   }
 
 }
@@ -340,6 +433,10 @@ $crdbody-padding : 1.3rem;
         padding: 10px 0px;
       }
     }
+    .horizontal-bars{
+      margin-right: -15px;
+      margin-left: -15px;
+    }
     .segmentation_btn-wrp{
       padding: 0 10px;
       .btn-group{
@@ -363,26 +460,6 @@ $crdbody-padding : 1.3rem;
       margin-right: -$crdbody-padding;
       margin-left: -$crdbody-padding;
       display:block;
-    }
-    .horizontal-bars{
-      white-space: nowrap;
-      margin-right: -15px;
-      margin-left: -15px;
-      h4{
-        font-size: 18px;
-        font-weight: 400;
-      }
-      .card-body{
-        overflow: scroll;
-        .chart-wrapper{
-          &:first-of-type{
-            width:250px;
-          }
-          max-width:300px;
-          width:200px;
-          min-width: 200px;
-        }
-      }
     }
     input[type="date"]::-webkit-clear-button {
       display: none;
