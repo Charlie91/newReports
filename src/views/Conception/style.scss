@@ -9,23 +9,6 @@
     border-top:none;
   }
 
-  .average_column{
-    background-color: #f8f5f1;
-    color: #2d2d2d;
-    opacity: 0.4;
-    font-weight: 500;
-  }
-  .average_month{
-    background-color: #f8f5f1;
-    color: #2d2d2d;
-    font-weight: 500;
-    td:first-child{
-      font-style: italic;
-    }
-  }
-  .holidays_column{
-    background:#f7fcf3
-  }
 
   th.fixed-td{
     height:88px;
@@ -85,12 +68,12 @@
 }
 
 .app-body{
-  overflow-x:scroll;//visible;
+  //overflow-x:scroll;//visible;
 }
 .vertical-table{
   width:100%;
   max-width:100%;
-  overflow:scroll;
+  //overflow:scroll;
   color: #2d2d2d;
   background:#fff;
   thead tr th{

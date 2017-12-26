@@ -29,7 +29,7 @@ function fillDates(){ //создание массива с предыдущим�
     for(let i = 1; i < todayDate; i++){
         let newDate = getDateAgo(today, i);
         let [day , date] = [getWeekDay(newDate), newDate.getDate()];
-        let result = `${day},${date}`;
+        let result = `${day}, ${date}`;
         dates.push(result);
     }
     return dates;
@@ -112,9 +112,10 @@ class TableVerticalNoStick extends Component {
             sum = document.querySelector(".fix-column").offsetWidth;
         for(let i = 0; i < rcHead.children.length; i++){
             sum += rcHead.children[i].offsetWidth;
+            //console.log(rcHead.children[i].offsetWidth);
         }
         if(stick.offsetWidth > sum)
-            wrapper.style.width = sum + 'px';
+            wrapper.style.width = (sum +15) + 'px';
         else
             wrapper.style.width = 'auto';
     }
@@ -138,7 +139,7 @@ class TableVerticalNoStick extends Component {
                             <div className="trow average_column">
                                 <span>Средний в день</span>
                             </div>
-                            <div className="trow">
+                            <div className="trow today_trow">
                                 <span>Сегодня</span>
                             </div>
                             {this.state.dates.map((item,i) =>
@@ -149,10 +150,10 @@ class TableVerticalNoStick extends Component {
                             <div className="trow average_month">
                                 <span>Средний в месяц</span>
                             </div>
-                            <div className="trow">
+                            <div className="trow current_month">
                                 <span>Текущий месяц</span>
                             </div>
-                            <div className="trow">
+                            <div className="trow forecast_month">
                                 <span>Прогноз на месяц</span>
                             </div>
                             {this.state.months.map((item,i) =>
@@ -160,7 +161,7 @@ class TableVerticalNoStick extends Component {
                                     <span>{item}</span>
                                 </div>
                             )}
-                            <div className="trow">
+                            <div className="trow current_year">
                                 <span>Текущий год</span>
                             </div>
                             {this.state.years.map((item,i) =>
@@ -187,7 +188,7 @@ class TableVerticalNoStick extends Component {
                                     <span key={i}>{item.averageOfDays}</span>
                                 )}
                             </div>
-                            <div className="trow">
+                            <div className="trow today_trow">
                                 {this.props.data.map((item,i) =>
                                     <span key={i}>{item.todayResults}</span>
                                 )}
@@ -204,12 +205,12 @@ class TableVerticalNoStick extends Component {
                                     <span key={i}>{item.averageOfMonths}</span>
                                 )}
                             </div>
-                            <div className="trow">
+                            <div className="trow current_month">
                                 {this.props.data.map((item,i) =>
                                     <span key={i}>{item.currentMonth}</span>
                                 )}
                             </div>
-                            <div className="trow">
+                            <div className="trow forecast_month">
                                 {this.props.data.map((item,i) =>
                                     <span key={i}>{formatNumericValue(Math.floor(item.data.month_pred))}</span>
                                 )}
@@ -221,7 +222,7 @@ class TableVerticalNoStick extends Component {
                                     )}
                                 </div>
                             )}
-                            <div className="trow">
+                            <div className="trow current_year">
                                 {this.props.data.map((item,i) =>
                                     <span key={i}>{item.currentYear}</span>
                                 )}

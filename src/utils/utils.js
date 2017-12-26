@@ -52,11 +52,11 @@ export function formatNumericValue(number,object){
                 let billions = str_number.slice(0,str_number.length - 9);
                 return billions + ',' +  millions  + ' млрд.' + ' ' + object
             }
-            if(str_number.length > 6){
-                let thousands = str_number.substr(-6,2);
-                let millions = str_number.slice(0,str_number.length - 6);
-                return millions + ',' +  thousands  + ' млн.' + ' ' + object
-            }
+            //if(str_number.length > 6){
+            //    let thousands = str_number.substr(-6,2);
+            //    let millions = str_number.slice(0,str_number.length - 6);
+            //    return millions + ',' +  thousands  + ' млн.' + ' ' + object
+            //}
             if(str_number.length > 3){
                 let units = str_number.substr(-3,1);
                 let thousands = str_number.slice(0,str_number.length - 3);
