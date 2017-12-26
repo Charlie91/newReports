@@ -31,6 +31,7 @@
   }
   .trow {
     white-space: nowrap;
+    display: inline-table;
     > span {
       display: inline-block;
       width: 101px;
@@ -91,8 +92,8 @@
     }
   }
   .conceptions-table .holidays_column {
-    background: #e7f3dd;
-    :hover{
+    background-color: #e7f3dd;
+    &:hover{
       background-color: #e7f3dd !important;
     }
   }
@@ -107,10 +108,12 @@
       overflow: hidden;
       //border-right: 1px solid #a2a2a2;
       > .trow {
-        margin-top: -50px;
-        margin-bottom: 50px;
+        width: 139px;
         text-align: right;
         padding-right: 21px;
+        span{
+          padding-right: 0px;
+        }
       }
     }
   }
