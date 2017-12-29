@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh -i nextcloud/in-tention/keys/lab.pem ubuntu@reports-lab.ru  './update.sh'
+ssh -i ~/.ssh/lab.pem ubuntu@reports-lab.ru  './update.sh'
