@@ -80,7 +80,6 @@ class TableVerticalNoStick extends Component {
 
     changeRowHover(index){
         this.setState({rowHover: index });
-        //console.log(index);
     }
 
     fixingFirstColumn(e){//фиксируем первую колонку
@@ -158,40 +157,43 @@ class TableVerticalNoStick extends Component {
                         </div>
                         <div className={"tbody " + ( (this.state.scrollLeft) ? 'v_shadow' : '') }>
                             <div className="trow average_column">
-                                <span>Средний в день</span>
+                                <span><div>Ср. в день</div></span>
                             </div>
-                            <div className="trow today_trow">
-                                <span>Сегодня</span>
+                            <div className={"trow today_trow" + (('today_trow' === this.state.rowHover) ? ' trow_hover_d' : '')}>
+                                <span><div>Сегодня</div></span>
                             </div>
                             {this.state.dates.map((item,i) =>
                                 <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
-                                    ( (i === this.state.rowHover) ? ' trow_hover_d' : '')
+                                    ( (i + 'd' === this.state.rowHover) ? ' trow_hover_d' : '')
                                 } key={i}>
-                                    <span>{item}</span>
+                                    <span><div>{item}</div></span>
                                 </div>
                             )}
-                            <div className="trow current_month">
-                                <span>{getMonthName((new Date()).getMonth())}</span>
+                            <div className={"trow current_month" + (('current_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
+                                <span><div>{getMonthName((new Date()).getMonth())}</div></span>
                             </div>
                             <div className="trow average_month">
-                                <span>Средний в месяц</span>
+                                <span><div>Ср. в месяц</div></span>
                             </div>
-                            <div className="trow forecast_month">
-                                <span>Прогноз на {getMonthName((new Date()).getMonth())}</span>
+                            <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
+                                <span><div>Прогноз на {getMonthName((new Date()).getMonth())}</div></span>
                             </div>
                             {this.state.months.map((item,i) =>
-                                <div className='trow' key={i}>
-                                    <span>{item}</span>
+                                <div className={'trow' + ( (i + 'm' === this.state.rowHover) ? ' trow_hover_d' : '')} key={i}>
+                                    <span><div>{item}</div></span>
                                 </div>
                             )}
-                            <div className="trow current_year">
-                                <span>Текущий год</span>
+                            <div className={"trow current_year" + (('current_year' === this.state.rowHover) ? ' trow_hover_d' : '')}>
+                                <span><div>{(new Date()).getFullYear()}</div></span>
                             </div>
                             {this.state.years.map((item,i) =>
-                                <div className='trow' key={i}>
-                                    <span>{item}</span>
+                                <div className={'trow' + ( (i + 'y' === this.state.rowHover) ? ' trow_hover_d' : '')} key={i}>
+                                    <span><div>{item}</div></span>
                                 </div>
                             )}
+                            <div className="trow empty_row">
+                                <span className={'empty_col'}></span>
+                            </div>
                         </div>
                     </div>
                     <div className="rest-columns">
@@ -210,59 +212,88 @@ class TableVerticalNoStick extends Component {
                         >
                             <div className="trow average_column">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: item.averageOfDays }}></span>
+                                    <span key={i}  ><div dangerouslySetInnerHTML={{__html: item.averageOfDays }} ></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
-                            <div className="trow today_trow">
+                            <div className={"trow today_trow" + (('today_trow' === this.state.rowHover) ? ' trow_hover_d' : '')}
+                                 onMouseEnter={this.changeRowHover.bind(this,'today_trow')}
+                            >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: item.todayResults }}></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.todayResults }}></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
                             {this.state.dates.map((item,i) =>
                                 <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
-                                ( (i === this.state.rowHover) ? ' trow_hover_d' : '') }
+                                ( (i + 'd' === this.state.rowHover) ? ' trow_hover_d' : '') }
                                      key={i}
-                                     onMouseEnter={this.changeRowHover.bind(this,i)}
+                                     onMouseEnter={this.changeRowHover.bind(this,i + 'd')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] }}></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] }}></div></span>
                                     )}
+                                    <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
-                            <div className="trow current_month">
+                            <div className={"trow current_month"  + (('current_month' === this.state.rowHover) ? ' trow_hover_d' : '')}
+                                 onMouseEnter={this.changeRowHover.bind(this,'current_month')}
+                            >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: item.currentMonth }}></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentMonth }}></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
                             <div className="trow average_month">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: item.averageOfMonths }}></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.averageOfMonths }}></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
-                            <div className="trow forecast_month">
+                            <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}
+                                 onMouseEnter={this.changeRowHover.bind(this,'forecast_month')}
+                            >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: formatNumericValueWithSpaces(item.data.month_pred) }}></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: formatNumericValueWithSpaces(item.data.month_pred) }}></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
                             {this.state.months.map((item,i) =>
-                                <div className="trow" key={i}>
+                                <div className={"trow" + ( (i + 'm' === this.state.rowHover) ? ' trow_hover_d' : '') }
+                                     key={i}
+                                     onMouseEnter={this.changeRowHover.bind(this,i + 'm')}
+                                >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} dangerouslySetInnerHTML={{__html: item[ 'month' + i] }}></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + i] }}></div></span>
                                     )}
+                                    <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
-                            <div className="trow current_year">
+                            <div className={"trow current_year" + (('current_year' === this.state.rowHover) ? ' trow_hover_d' : '')}
+                                 onMouseEnter={this.changeRowHover.bind(this,'current_year')}
+                            >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} dangerouslySetInnerHTML={{__html: item.currentYear }}></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentYear }}></div></span>
                                 )}
+                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
                             {this.state.years.map((item,i) =>
-                                <div className="trow" key={i}>
+                                <div className={"trow" + ( (i + 'y' === this.state.rowHover) ? ' trow_hover_d' : '') }
+                                     key={i}
+                                     onMouseEnter={this.changeRowHover.bind(this,i + 'y')}
+                                >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} dangerouslySetInnerHTML={{__html: item['year' + i] }}></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['year' + i] }}></div></span>
                                     )}
+                                    <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+                            <div className="trow empty_row">
+                                {this.props.data.map((item,i) =>
+                                    <span className={'empty_col'}></span>
+                                )}
+                                <span className={'empty_row_col_last'}></span>
+                            </div>
                         </div>
                     </div>
                 </div>

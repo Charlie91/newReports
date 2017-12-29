@@ -1,4 +1,28 @@
-// Here you can add other styles
+@font-face {
+  font-family: HelveticaNeue; /* Имя шрифта */
+  src: url('fonts/Helvetica_Neue/HelveticaNeue.ttf'); /* Путь к файлу со шрифтом */
+}
+@font-face {
+  font-family: ProximaNova; /* Имя шрифта */
+  src: url('fonts/Proxima_Nova/ProximaNova-Regular.ttf'); /* Путь к файлу со шрифтом */
+}
+@font-face {
+  font-family: ProximaNova; /* Имя шрифта */
+  src: url('fonts/Proxima_Nova/ProximaNova-Semibold.ttf'); /* Путь к файлу со шрифтом */
+  font-weight:500
+}
+@font-face {
+  font-family: ProximaNova; /* Имя шрифта */
+  src: url('fonts/Proxima_Nova/ProximaNova-Light.ttf'); /* Путь к файлу со шрифтом */
+  font-weight:200
+}
+@font-face {
+  font-family: ProximaNova; /* Имя шрифта */
+  src: url('fonts/Proxima_Nova/ProximaNova-RegularIt.ttf'); /* Путь к файлу со шрифтом */
+  font-style:italic;
+}
+
+
 body{
   font-size:16px;
   &.sidebar-mobile-show, &.dropdown-select-show {
@@ -90,14 +114,18 @@ $sidebar-header-height: 170px;
 
 .digit_space{
   display: inline;
-  margin-left: .2em;
+  margin: 0 !important;
+  margin-left: .2em !important;
+  padding: 0 !important;
+  height: 0px !important;
+  line-height: 0px !important;
+}
+
+.page-title{
+  text-align:left;
 }
 
 @include media-breakpoint-up(md) {
-  .page-title{
-    text-align:left!important;
-    font-size: 1.5em;
-  }
 }
 
 @include media-breakpoint-up(sm) {
@@ -117,15 +145,35 @@ $sidebar-header-height: 170px;
       }
     }
   }
-  .page-title{
-    text-align:center;
-  }
 }
 
-@include media-breakpoint-up(xs) {
-  .page-title{
-    text-align:center;
+@include media-breakpoint-down(sm) {
+  .app-body{
+  margin-top: 65px;
   }
+  .navbar{
+    .page-title{
+      text-align:center;
+      font-size: 1em;
+    }
+    .tree_select{
+      height: 38px;
+      font-size: 0.688em;
+      .tag-item:last-child{
+        padding: 0px;
+        input{
+          width:110px;
+        }
+      }
+      .dropdown-trigger{
+        padding: 0px;
+      }
+    }
+    .navbar-toggler-icon{
+      height: 46px;
+    }
+  }
+
 }
 
 
@@ -309,6 +357,15 @@ button.settings-btn {
   .navbar .tree_select{
     text-align:center!important
   }
+
+  .app-header.navbar{
+    min-height: 50px;
+    text-align:center;
+    padding-top:9px;
+    margin-left: 250px;
+    height:auto!important;
+  }
+
 }
 
 @media screen and (max-width:1486px){

@@ -1,31 +1,62 @@
 #no-stick {
   padding-top: 34px;
-  overflow: hidden; }
+  overflow: hidden;
+  font-size: 0.875em; }
+  #no-stick .empty_row {
+    padding-bottom: 2px;
+    background-color: #eff3f6 !important;
+    width: 100% !important;
+    height: 10px !important;
+    line-height: 1px !important; }
+  #no-stick .empty_col {
+    min-width: 70px;
+    background-color: #eff3f6 !important;
+    height: 10px !important;
+    line-height: 1px !important; }
+  #no-stick .empty_col_last {
+    padding-right: 15px;
+    width: 10px !important;
+    background-color: #eff3f6 !important; }
+    #no-stick .empty_col_last > div {
+      padding-right: 0px !important;
+      background-color: #eff3f6 !important;
+      width: 1px !important;
+      margin-right: 0px;
+      margin-left: 0px; }
+  #no-stick .empty_row_col_last {
+    padding-right: 15px;
+    width: 10px !important;
+    height: 100% !important;
+    background-color: #eff3f6 !important;
+    line-height: 1px !important; }
   #no-stick .thead {
-    height: 100%;
+    background-color: #eff3f6;
     white-space: nowrap;
-    margin: 0px; }
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 0px; }
   #no-stick .thead > span {
+    height: 64px;
+    background-color: #fff;
     display: inline-block;
     width: 101px;
     text-align: left;
-    font-size: 0.875em;
     line-height: 0px;
-    margin-top: 28px;
-    margin-bottom: 8px; }
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px; }
     #no-stick .thead > span a {
-      display: inline-block;
+      position: absolute;
+      bottom: 0px;
       margin-left: 10px;
       margin-right: 18px;
+      margin-top: 28px;
+      margin-bottom: 8px;
       width: 73px;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 14px;
-      height: 28px;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      font-weight: bold;
-      cursor: pointer; }
+      height: auto; }
   #no-stick .trow {
     white-space: nowrap; }
     #no-stick .trow > span {
@@ -33,16 +64,15 @@
       width: 101px;
       line-height: 43px;
       height: 43px;
-      font-size: 0.875em;
       text-align: right;
-      padding-right: 15px;
-      color: #354052; }
-  #no-stick .trow_hover_d {
+      color: #354052;
+      cursor: pointer; }
+  #no-stick .trow_hover_d > span > div {
     background-color: #e7e7e7; }
   #no-stick .tbody {
-    height: calc(100vh - 248px);
-    height: -moz-calc(100vh - 248px);
-    height: -webkit-calc(100vh - 248px);
+    height: calc(100vh - 230px);
+    height: -moz-calc(100vh - 230px);
+    height: -webkit-calc(100vh - 230px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
@@ -56,6 +86,11 @@
       line-height: 15px;
       margin-top: 1px;
       margin-bottom: 2px; }
+      #no-stick .average_column span > div {
+        margin-top: 0px !important;
+        margin-top: 0px !important;
+        line-height: 15px !important;
+        height: 15px !important; }
     #no-stick .average_column:hover {
       background-color: rgba(246, 170, 37, 0.25) !important; }
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
@@ -69,65 +104,78 @@
       line-height: 15px;
       margin-top: 1px;
       margin-bottom: 2px; }
+      #no-stick .average_month span > div {
+        margin-top: 6px;
+        line-height: 15px !important;
+        height: 15px !important; }
     #no-stick .average_month:hover {
       background-color: rgba(246, 170, 37, 0.25) !important; }
   #no-stick .conceptions-table .holidays_column {
     background-color: rgba(159, 212, 115, 0.25); }
+    #no-stick .conceptions-table .holidays_column > span > div {
+      background-color: transparent !important; }
+      #no-stick .conceptions-table .holidays_column > span > div:hover {
+        background-color: transparent !important; }
     #no-stick .conceptions-table .holidays_column:hover {
       background-color: rgba(159, 212, 115, 0.25) !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
-    width: 139px;
     font-weight: 400; }
+    #no-stick .fix-column .thead > span {
+      width: 139px; }
     #no-stick .fix-column > .tbody {
       overflow: hidden;
-      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8);
-      transition: box-shadow 0.2s ease-in-out; }
+      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8); }
       #no-stick .fix-column > .tbody > .trow {
-        width: 139px;
         text-align: right;
-        padding-right: 21px;
         display: block; }
         #no-stick .fix-column > .tbody > .trow span {
-          padding-right: 0px; }
+          padding-right: 0px;
+          width: 139px; }
+          #no-stick .fix-column > .tbody > .trow span > div {
+            width: 139px;
+            height: 31px;
+            padding-right: 21px;
+            line-height: 31px;
+            margin-top: 6px; }
       #no-stick .fix-column > .tbody.v_shadow {
         box-shadow: 1px 3px 8px 0px rgba(200, 200, 200, 0.8); }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
   #no-stick .fix-column > .tbody > .trow:last-child {
-    padding-bottom: 10px; }
+    padding-bottom: 26px; }
   #no-stick .rest-columns {
     width: auto; }
     #no-stick .rest-columns > .thead {
-      /*padding-right: 50px;*/
       overflow: hidden;
-      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8);
-      transition: box-shadow 0.2s ease-in-out; }
+      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8); }
       #no-stick .rest-columns > .thead > span {
         margin-right: 50px;
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
         box-shadow: 0px 6px 8px -3px rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
-      font-family: Courier;
+      font-family: HelveticaNeue;
       display: table; }
+      #no-stick .rest-columns .tbody .trow > span > div {
+        height: 31px;
+        padding-right: 15px;
+        line-height: 31px;
+        margin-top: 6px; }
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
     white-space: normal; }
 
-/* Let's get this party started */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
   height: 10px; }
 
-/* Track */
 ::-webkit-scrollbar-track {
   -webkit-border-radius: 10px;
   border-radius: 10px; }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
@@ -135,3 +183,88 @@
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #ddd; }
+
+@media screen and (max-width: 991px) {
+  .tbody {
+    height: calc(100vh - 190px) !important;
+    height: -moz-calc(100vh - 190px) !important;
+    height: -webkit-calc(100vh - 190px) !important; } }
+@media screen and (max-width: 767px) {
+  .container-fluid {
+    padding: 0px !important; }
+
+  #no-stick {
+    font-size: 0.688em;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px; }
+    #no-stick .thead {
+      height: 44px; }
+      #no-stick .thead > span {
+        height: 44px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 70px;
+        position: relative; }
+        #no-stick .thead > span > a {
+          position: absolute;
+          bottom: 0px;
+          line-height: 12px;
+          height: auto;
+          margin-left: 8px;
+          margin-right: 5px;
+          width: 60px; }
+    #no-stick .tbody {
+      height: calc(100vh - 110px) !important;
+      height: -moz-calc(100vh - 110px) !important;
+      height: -webkit-calc(100vh - 110px) !important; }
+      #no-stick .tbody .trow span {
+        line-height: 34px;
+        height: 34px; }
+        #no-stick .tbody .trow span > div {
+          line-height: 20px !important;
+          margin-top: 7px !important;
+          margin-bottom: 7px !important; }
+    #no-stick .fix-column > .thead > span {
+      width: 80px; }
+    #no-stick .fix-column > .tbody > .trow.days {
+      font-weight: bold; }
+    #no-stick .fix-column > .tbody > .trow > span {
+      width: 80px; }
+      #no-stick .fix-column > .tbody > .trow > span > div {
+        width: 80px;
+        height: 20px;
+        padding-right: 10px;
+        line-height: 20px; }
+    #no-stick .rest-columns > .tbody > .trow > span {
+      width: 70px; }
+      #no-stick .rest-columns > .tbody > .trow > span > div {
+        width: 70px;
+        height: 20px;
+        padding-right: 6px;
+        line-height: 20px; }
+    #no-stick .average_column, #no-stick .average_month {
+      background-color: inherit; }
+      #no-stick .average_column span, #no-stick .average_month span {
+        background-color: inherit;
+        margin-top: 0px;
+        margin-bottom: 0px; }
+        #no-stick .average_column span > div, #no-stick .average_month span > div {
+          background-color: rgba(246, 170, 37, 0.25);
+          margin-top: 7px !important;
+          margin-bottom: 7px !important;
+          height: 20px !important;
+          padding-right: 6px;
+          line-height: 20px !important; }
+    #no-stick ::-webkit-scrollbar {
+      width: 0px;
+      height: 0px; }
+    #no-stick ::-webkit-scrollbar-track {
+      -webkit-border-radius: auto;
+      border-radius: auto; }
+    #no-stick ::-webkit-scrollbar-thumb {
+      -webkit-border-radius: auto;
+      border-radius: auto;
+      background: auto; }
+    #no-stick ::-webkit-scrollbar-thumb:window-inactive {
+      background: auto; } }

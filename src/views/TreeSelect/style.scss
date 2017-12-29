@@ -1,26 +1,9 @@
 @import "../../../scss/variables";
 $node-padding:3px 10px;
-@font-face {
-    font-family: ProximaNova; /* Имя шрифта */
-    src: url('fonts/Proxima_Nova/regular.ttf'); /* Путь к файлу со шрифтом */
-}
-@font-face {
-    font-family: ProximaNova; /* Имя шрифта */
-    src: url('fonts/Proxima_Nova/Proxima-Nova-Semibold.ttf'); /* Путь к файлу со шрифтом */
-    font-weight:500
-}
-@font-face {
-    font-family: ProximaNova; /* Имя шрифта */
-    src: url('fonts/Proxima_Nova/Proxima-Nova-Light.ttf'); /* Путь к файлу со шрифтом */
-    font-weight:200
-}
-@font-face {
-    font-family: ProximaNova; /* Имя шрифта */
-    src: url('fonts/Proxima_Nova/Proxima-Nova-Regular-Italic.ttf'); /* Путь к файлу со шрифтом */
-    font-style:italic;
-}
+
+
 body{
-    font-family: ProximaNova, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!important;
+    font-family: ProximaNova, "Segoe UI", Roboto, "HelveticaNeue", Arial, sans-serif!important;
     font-weight:200!important
 }
 .tree_select{

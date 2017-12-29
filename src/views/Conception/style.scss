@@ -116,16 +116,3 @@
 .app,#root,body,html{ //перенести в другое место
   /*height:100% */ // kirill: login screen bug
 }
-
-@media screen and (max-width:501px){
-  .conceptions-table {
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-  .vertical-table{
-    thead tr th{
-      top:-10px
-    }
-  }
-}
