@@ -21,7 +21,7 @@ module.exports = {
         path: BUILD_DIR,
         filename: '[name].bundle.js'
     },
-    watch: true,
+    watch: false,
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: BUILD_DIR,
