@@ -55,7 +55,7 @@ function fillYears(){//заполняем года
     const years = [];
     let today = new Date();
     let currentYear = today.getFullYear();
-    for(let i = currentYear - 1; i >= 2011 ; i--){
+    for(let i = currentYear - 1; i >= 2012 ; i--){
         years.push(i);
     }
     return years

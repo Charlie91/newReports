@@ -75,6 +75,7 @@ $font_size_mobile: 0.688em;
     }
   }
   .trow {
+    background-color: #fff;
     white-space: nowrap;
     > span {
       display: inline-block;
@@ -90,6 +91,7 @@ $font_size_mobile: 0.688em;
     background-color: #e7e7e7;
   }
   .tbody {
+    background-color: #eff3f6;
     height: calc(100vh - 230px);
     height: -moz-calc(100vh - 230px);
     height: -webkit-calc(100vh - 230px);
@@ -116,7 +118,7 @@ $font_size_mobile: 0.688em;
       }
     }
     &:hover{
-      background-color: rgba(246, 170, 37, 0.25) !important;
+      //background-color: #fff;
     }
   }
   .today_trow, .current_year, .current_month, .forecast_month {
@@ -254,7 +256,7 @@ $font_size_mobile: 0.688em;
 
 @media screen and (max-width:767px){
   .container-fluid{
-    padding: 0px !important;
+    //padding: 0px !important;
   }
   #no-stick {
     font-size: $font_size_mobile;
@@ -331,7 +333,7 @@ $font_size_mobile: 0.688em;
     }
 
     .average_column, .average_month {
-      background-color: inherit;
+      background-color: #fff;
       span {
         background-color:inherit;
         margin-top: 0px;

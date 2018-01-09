@@ -58,6 +58,7 @@
       line-height: 14px;
       height: auto; }
   #no-stick .trow {
+    background-color: #fff;
     white-space: nowrap; }
     #no-stick .trow > span {
       display: inline-block;
@@ -70,6 +71,7 @@
   #no-stick .trow_hover_d > span > div {
     background-color: #e7e7e7; }
   #no-stick .tbody {
+    background-color: #eff3f6;
     height: calc(100vh - 230px);
     height: -moz-calc(100vh - 230px);
     height: -webkit-calc(100vh - 230px);
@@ -91,8 +93,6 @@
         margin-top: 0px !important;
         line-height: 15px !important;
         height: 15px !important; }
-    #no-stick .average_column:hover {
-      background-color: rgba(246, 170, 37, 0.25) !important; }
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
     font-weight: bold; }
   #no-stick .average_month {
@@ -190,9 +190,6 @@
     height: -moz-calc(100vh - 190px) !important;
     height: -webkit-calc(100vh - 190px) !important; } }
 @media screen and (max-width: 767px) {
-  .container-fluid {
-    padding: 0px !important; }
-
   #no-stick {
     font-size: 0.688em;
     padding-top: 0px;
@@ -244,7 +241,7 @@
         padding-right: 6px;
         line-height: 20px; }
     #no-stick .average_column, #no-stick .average_month {
-      background-color: inherit; }
+      background-color: #fff; }
       #no-stick .average_column span, #no-stick .average_month span {
         background-color: inherit;
         margin-top: 0px;
