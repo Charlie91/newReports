@@ -156,7 +156,7 @@ body{
 .dropdown-trigger {
     border-radius: 1px;
     padding: 4px;
-    padding-bottom: 13px;
+    //padding-bottom: 13px;
     line-height: 20px;
     display: inline-block;
     max-height: 200px;
@@ -291,7 +291,8 @@ a.dropdown-button{
 .page-title{
     margin-bottom: 0px;
     color:#354052;
-    padding-left:41px
+    padding-left:41px;
+    font-size: 24px;
 }
 
 .none{

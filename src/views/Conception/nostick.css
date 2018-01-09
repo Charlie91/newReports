@@ -189,10 +189,10 @@
     height: calc(100vh - 190px) !important;
     height: -moz-calc(100vh - 190px) !important;
     height: -webkit-calc(100vh - 190px) !important; } }
+
 @media screen and (max-width: 767px) {
   .container-fluid {
     padding: 0px !important; }
-
   #no-stick {
     font-size: 0.688em;
     padding-top: 0px;

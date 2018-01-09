@@ -339,6 +339,15 @@ export default class ObjectPage extends Component {
         else{   //если данных в пропсах не обнаружено - парсим их с сервера
             this.getNewObjectsData()
         }
+
+        document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
+        document.querySelector('.app-body').classList.add('app-body__reduce-margin');
+    }
+
+    componentWillUnmount(){
+        document.querySelector('.main').classList.remove('main__additional-padding');//кастомизация хтмл элементов под страницу - удаление
+        document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
+        window.onresize = () => {};
     }
 
 
@@ -482,8 +491,8 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        <Row style={{marginRight:'-20px',marginLeft:'-20px'}}>
-                            <Col md='12' style={{padding:'0px',marginRight:'-15px',marginLeft:'-15px'}} className="line-chart-wrapper order-12 order-md-1">
+                        <Row >
+                            <Col md='12' style={{padding:'0px'}} className="line-chart-wrapper order-12 order-md-1">
                                 <Line data={this.state.chart}
                                       options={{
                                           maintainAspectRatio: false,
