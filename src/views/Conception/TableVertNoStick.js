@@ -255,7 +255,7 @@ class TableVerticalNoStick extends Component {
                                  onMouseEnter={this.changeRowHover.bind(this,'forecast_month')}
                             >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: formatNumericValueWithSpaces(item.data.month_pred) }}></div></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.predictionOfMonths }}></div></span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>

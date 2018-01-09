@@ -22,6 +22,8 @@
   font-style:italic;
 }
 
+$sidebar-header-height: 170px;
+
 
 body{
   font-size:16px;
@@ -66,8 +68,6 @@ body{
   }
 }
 
-$sidebar-header-height: 170px;
-
 .sidebar {
   .sidebar-header {
     height: $sidebar-header-height;
@@ -106,7 +106,7 @@ $sidebar-header-height: 170px;
     }
   }
   .sidebar-header + .sidebar-nav {
-    height: calc(100vh - #{$navbar-height} - #{$sidebar-header-height}) !important;
+    height: calc(100vh - #{$sidebar-header-height}) !important;
   }
 }
 
@@ -376,7 +376,7 @@ button.settings-btn {
     min-height: 50px;
     text-align:center;
     padding-top:9px;
-    padding-bottom: 9px;
+    padding-bottom: 1px;
     margin-left: 250px;
     height:auto!important;
   }
