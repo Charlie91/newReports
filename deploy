@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh -i ~/.ssh/lab.pem ubuntu@reports-lab.ru  './update.sh'
+sudo ssh -i ~/.ssh/lab.pem ubuntu@reports-lab.ru  './update.sh'
