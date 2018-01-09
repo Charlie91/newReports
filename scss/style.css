@@ -14044,6 +14044,9 @@ button.settings-btn {
     padding-top: 0px !important; }
     .main .container-fluid {
       padding: 0 5px; }
+  .app-header .page-title {
+    text-align: center;
+    padding-left: 0; }
   .navbar-brand {
     display: none !important; }
   .navbar .tree_select {
