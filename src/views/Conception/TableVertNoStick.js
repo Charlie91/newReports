@@ -290,7 +290,7 @@ class TableVerticalNoStick extends Component {
                             )}
                             <div className="trow empty_row">
                                 {this.props.data.map((item,i) =>
-                                    <span className={'empty_col'}></span>
+                                    <span key={i} className={'empty_col'}></span>
                                 )}
                                 <span className={'empty_row_col_last'}></span>
                             </div>

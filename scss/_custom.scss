@@ -37,6 +37,10 @@ body{
   display: none !important;
 }
 
+.main__additional-padding{
+  padding-top: 95px!important;
+}
+
 .navbar {
   .sidebar-minimizer {
     min-width: 50px;
@@ -202,7 +206,7 @@ $sidebar-header-height: 170px;
 .app-header.navbar{
   min-height: 50px;
   text-align:center;
-  padding-top:40px;
+  padding: 25px 0;
   margin-left: 250px;
   height:auto!important;
 }
@@ -344,6 +348,12 @@ button.settings-btn {
   background-repeat: no-repeat;
 }
 
+@media screen and (max-width:1486px){
+  .bigCities{
+    display:none;
+  }
+}
+
 @media screen and (max-width:991px){
   .main {
     padding-top: 0px!important;
@@ -362,19 +372,21 @@ button.settings-btn {
     min-height: 50px;
     text-align:center;
     padding-top:9px;
+    padding-bottom: 9px;
     margin-left: 250px;
     height:auto!important;
   }
 
+  .app-body__reduce-margin{
+    margin-top: 70px;
+  }
+
 }
 
-@media screen and (max-width:1486px){
-  .bigCities{
-    display:none;
+@media screen and (max-width:767px){
+  .app-body__reduce-margin{
+    margin-top: 55px;
   }
 }
-
-
-
 
 
