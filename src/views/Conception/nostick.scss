@@ -11,7 +11,7 @@ $font_size_mobile: 0.688em;
   .empty_row{
     padding-bottom: 2px;
     background-color: #eff3f6 !important;
-    width: 100% !important;
+    //width: 100% !important;
     height: 10px !important;
     line-height: 1px !important;
   }
@@ -22,7 +22,7 @@ $font_size_mobile: 0.688em;
     line-height: 1px !important;
   }
   .empty_col_last{
-    padding-right: 15px;
+    padding-right: 0px;
     width: 10px !important;
     background-color: #eff3f6 !important;
     >div{
@@ -34,11 +34,15 @@ $font_size_mobile: 0.688em;
     }
   }
   .empty_row_col_last{
-    padding-right: 15px;
+    padding-right: 0px;
     width: 10px !important;
     height: 100% !important;
     background-color: #eff3f6 !important;
     line-height: 1px !important;
+  }
+  .thead > .last_span_head{
+    width: 10px;
+    background-color: #eff3f6;
   }
 
 
@@ -75,6 +79,7 @@ $font_size_mobile: 0.688em;
     }
   }
   .trow {
+    //background-color: #fff;
     white-space: nowrap;
     > span {
       display: inline-block;
@@ -90,6 +95,7 @@ $font_size_mobile: 0.688em;
     background-color: #e7e7e7;
   }
   .tbody {
+    //background-color: #eff3f6;
     height: calc(100vh - 230px);
     height: -moz-calc(100vh - 230px);
     height: -webkit-calc(100vh - 230px);
@@ -116,7 +122,7 @@ $font_size_mobile: 0.688em;
       }
     }
     &:hover{
-      background-color: rgba(246, 170, 37, 0.25) !important;
+      //background-color: #fff;
     }
   }
   .today_trow, .current_year, .current_month, .forecast_month {
@@ -139,7 +145,7 @@ $font_size_mobile: 0.688em;
       }
     }
     &:hover{
-      background-color: rgba(246, 170, 37, 0.25) !important;
+      //background-color: rgba(246, 170, 37, 0.25) !important;
     }
   }
   .conceptions-table .holidays_column {
@@ -226,22 +232,8 @@ $font_size_mobile: 0.688em;
   }
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #ddd;
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: #ddd;
-}
+
+
 
 @media screen and (max-width: 991px){
   .tbody {
@@ -254,7 +246,7 @@ $font_size_mobile: 0.688em;
 
 @media screen and (max-width:767px){
   .container-fluid{
-    padding: 0px !important;
+    //padding: 0px !important;
   }
   #no-stick {
     font-size: $font_size_mobile;
@@ -331,7 +323,7 @@ $font_size_mobile: 0.688em;
     }
 
     .average_column, .average_month {
-      background-color: inherit;
+      background-color:inherit;
       span {
         background-color:inherit;
         margin-top: 0px;
@@ -350,23 +342,28 @@ $font_size_mobile: 0.688em;
 
 
     ::-webkit-scrollbar {
-      width: 0px;
-      height: 0px;
-    }
-    ::-webkit-scrollbar-track {
-      -webkit-border-radius: auto;
-      border-radius: auto;
-    }
-    ::-webkit-scrollbar-thumb {
-      -webkit-border-radius: auto;
-      border-radius: auto;
-      background: auto;
-    }
-    ::-webkit-scrollbar-thumb:window-inactive {
-      background: auto;
+      display: none;
     }
 
 
   }
 
+}
+
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #ddd;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #ddd;
 }

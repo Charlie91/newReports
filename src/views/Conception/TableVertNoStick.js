@@ -3,7 +3,7 @@ import {getCoords} from './../../utils/utils';
 import {Link} from 'react-router-dom';
 import {formatNumericValue} from './../../utils/utils';
 import {formatNumericValueWithSpaces} from './../../utils/utils';
-import './react-bootstrap-table.css';
+//import './react-bootstrap-table.css';
 import './nostick.scss';
 import {
     Table,
@@ -133,8 +133,10 @@ class TableVerticalNoStick extends Component {
             sum += rcHead.children[i].offsetWidth;
             //console.log(rcHead.children[i].offsetWidth);
         }
+        if(stick.offsetWidth > 767)
+            sum+=7;
         if(stick.offsetWidth > sum)
-            wrapper.style.width = (sum +15) + 'px';
+            wrapper.style.width = (sum) + 'px';
         else
             wrapper.style.width = 'auto';
     }
@@ -206,9 +208,10 @@ class TableVerticalNoStick extends Component {
                                     {item.obj_name}
                                 </Link></span>
                             )}
+                            <span className={'last_span_head'}><div></div></span>
                         </div>
                         <div className="tbody"
-                             onScroll={this.changeShadow.bind(this)}
+ame                          onScroll={this.changeShadow.bind(this)}
                         >
                             <div className="trow average_column">
                                 {this.props.data.map((item,i) =>
