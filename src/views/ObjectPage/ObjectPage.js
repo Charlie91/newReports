@@ -392,7 +392,7 @@ export default class ObjectPage extends Component {
                             </CardBody>
                         </Card>
                     </Col>
-                    <Col style={{maxHeight:'420px',overflow:'hidden'}} className="img_wrapper order-1 order-md-12" md="6" xs="12">
+                    <Col style={{overflow:'hidden'}} className="img_wrapper order-1 order-md-12" md="6" xs="12">
                         <img className="fullIMG" src="img/rio_full.jpg"/>
                     </Col>
                 </Row>

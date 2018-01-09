@@ -127,14 +127,14 @@ class Conception extends Component {
                     return item
                 });
                 let formattedAreas = data.areas.map( item => {
-                    item.checked = false;
+                    item.checked = true;
                     item.value = item.label = item.name;
                     item.expanded = true;
                     item.ID = item.id;
                     if(item.value === 'Армения')item.className = 'armenia';
                     if(item.cities)
                         item.children = item.cities.map( city => {
-                            city.checked = false;
+                            city.checked = true;
                             city.value = city.label = city.city_name;
                             city.ID = city.id;
                             delete city.city_name;

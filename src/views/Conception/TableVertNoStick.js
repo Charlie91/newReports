@@ -210,9 +210,7 @@ class TableVerticalNoStick extends Component {
                             )}
                             <span className={'last_span_head'}><div></div></span>
                         </div>
-                        <div className="tbody"
-ame                          onScroll={this.changeShadow.bind(this)}
-                        >
+                        <div className="tbody" onScroll={this.changeShadow.bind(this)}>
                             <div className="trow average_column">
                                 {this.props.data.map((item,i) =>
                                     <span key={i}  ><div dangerouslySetInnerHTML={{__html: item.averageOfDays }} ></div></span>
