@@ -19,15 +19,17 @@ class Conception extends Component {
         };
     }
 
-    formatObjectToShowInTable(object,additionalData){   //форматирование полученных данных для возможности показа их в горизонтальной таблице React-Bootstrap-Table
+    formatObjectToShowInTable(object,additionalData){   //форматирование полученных данных для возможности показа их в горизонтальной таблице
         let days = additionalData.day,
             months = additionalData.month,
             years = additionalData.year;
 
         object.data = additionalData;
         object.todayResults = (additionalData.day[0].v) ? formatNumericValueWithSpaces(additionalData.day[0].v) : '-';
-        object.averageOfDays = formatNumericValueWithSpaces(Math.round(additionalData.day_avg));
-        object.averageOfMonths = formatNumericValueWithSpaces(Math.round(additionalData.month_avg));
+        object.averageOfDays = (additionalData.day_avg) ? formatNumericValueWithSpaces(Math.round(additionalData.day_avg)) : '-';
+        object.averageOfMonths = (additionalData.month_avg) ?  formatNumericValueWithSpaces(Math.round(additionalData.month_avg)) : '-';
+        object.averageOfMonths = (additionalData.month_avg) ?  formatNumericValueWithSpaces(Math.round(additionalData.month_avg)) : '-';
+        object.predictionOfMonths = (additionalData.month_pred) ?  formatNumericValueWithSpaces(Math.round(additionalData.month_pred)) : '-';
 
         object.currentMonth = days.reduce((sum, current) => sum + current.v, 0);
 
