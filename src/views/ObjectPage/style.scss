@@ -68,14 +68,14 @@ $crdbody-padding : 1.3rem;
   display:inline-block;
   &:last-of-type::before{
     content: 'по';
-    margin-left: -3.5%;
+    margin-left: -17px;
     position: absolute;
     margin-top: 0.75%;
     font-size: 12px;
     color: #7f8fa4;
   }
   &:last-child{
-    margin-left: 5%;
+    margin-left: 20px;
 
   }
   input.datepicker {
@@ -248,6 +248,7 @@ $crdbody-padding : 1.3rem;
   }
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
+
   }
   &.horizontal-bars{
     .header{
@@ -265,6 +266,9 @@ $crdbody-padding : 1.3rem;
       max-width:13.5%;
       height:200px;
       padding:0px 15px;
+      &:not(:first-of-type) .title{
+        padding-left: 0%;
+      }
     }
   }
   &.vertical-bars{
@@ -273,6 +277,10 @@ $crdbody-padding : 1.3rem;
         height:212px;
         position:relative;
         top:6px;
+      }
+      &:not(:first-of-type) .title{
+        top: 6px;
+        position: relative;
       }
       display:inline-block;
       max-width:14.2%;
@@ -346,10 +354,10 @@ $crdbody-padding : 1.3rem;
   }
   .datepicker_wrp{
     &:last-child {
-      margin-left: 10%;
+      margin-left: 20px;
       &::before{
-        margin-left: -7.5%;
-        margin-top: 1.75%;
+        margin-left: -17px;
+        margin-top: 5px;
       }
     }
 
@@ -545,25 +553,29 @@ $crdbody-padding : 1.3rem;
 }
 
 @media screen and (max-width:320px){
-  .datepicker_wrp{
-    &:last-of-type{
+  .object_cont{
+    .datepicker_wrp{
+      &:last-of-type{
+        input.datepicker {
+          margin-right: -15px;
+        }
+      }
       input.datepicker {
-        margin-right: -15px;
+        width: 63px;
+        font-size: 9px;
       }
-    }
-    input.datepicker {
-      width: 63px;
-      font-size: 9px;
-    }
-    &:last-of-type{
-      margin-left: 7%;
-      &::before{
-        margin-left: -5.5%;
-        margin-top: 1.75%;
+      &:last-of-type{
+        margin-left: 7%;
+        &::before{
+          margin-left: -5.5%;
+          margin-top: 1.75%;
+        }
+      }
+      .segmentation_btn-wrp .btn-group .btn{
+        font-size:11px;
       }
     }
   }
-  .object_cont .segmentation_btn-wrp .btn-group .btn{
-    font-size:11px;
-  }
+
+
 }

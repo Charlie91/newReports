@@ -47,13 +47,13 @@
   display: inline-block; }
   .datepicker_wrp:last-of-type::before {
     content: 'по';
-    margin-left: -3.5%;
+    margin-left: -17px;
     position: absolute;
     margin-top: 0.75%;
     font-size: 12px;
     color: #7f8fa4; }
   .datepicker_wrp:last-child {
-    margin-left: 5%; }
+    margin-left: 20px; }
   .datepicker_wrp input.datepicker {
     border-radius: 5px;
     box-shadow: none;
@@ -195,6 +195,8 @@
   .average_hours.horizontal-bars .chart-wrapper:first-of-type {
     width: 18%;
     max-width: none; }
+  .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
+    padding-left: 0%; }
 
 .average_hours.vertical-bars .chart-wrapper {
   display: inline-block;
@@ -205,6 +207,9 @@
     height: 212px;
     position: relative;
     top: 6px; }
+  .average_hours.vertical-bars .chart-wrapper:not(:first-of-type) .title {
+    top: 6px;
+    position: relative; }
 
 .all_data .line-chart-wrapper {
   max-height: 183px;
@@ -240,10 +245,10 @@
   .announce .obj_title h4 {
     font-size: 32px; }
   .datepicker_wrp:last-child {
-    margin-left: 10%; }
+    margin-left: 20px; }
     .datepicker_wrp:last-child::before {
-      margin-left: -7.5%;
-      margin-top: 1.75%; } }
+      margin-left: -17px;
+      margin-top: 5px; } }
 
 @media screen and (max-width: 991px) {
   .announce .img_wrapper {
@@ -351,15 +356,15 @@
     font-size: 12px; } }
 
 @media screen and (max-width: 320px) {
-  .datepicker_wrp:last-of-type input.datepicker {
+  .object_cont .datepicker_wrp:last-of-type input.datepicker {
     margin-right: -15px; }
-  .datepicker_wrp input.datepicker {
+  .object_cont .datepicker_wrp input.datepicker {
     width: 63px;
     font-size: 9px; }
-  .datepicker_wrp:last-of-type {
+  .object_cont .datepicker_wrp:last-of-type {
     margin-left: 7%; }
-    .datepicker_wrp:last-of-type::before {
+    .object_cont .datepicker_wrp:last-of-type::before {
       margin-left: -5.5%;
       margin-top: 1.75%; }
-  .object_cont .segmentation_btn-wrp .btn-group .btn {
+  .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }

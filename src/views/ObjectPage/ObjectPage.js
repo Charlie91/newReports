@@ -438,52 +438,51 @@ export default class ObjectPage extends Component {
                     <CardBody className="card-body">
                         <h5 className="measure">{this.state.type}</h5>
                         <Row>
-                            <Col xs="12" md="4" lg="3" xl="4">
+                            <Col xs="12" md="4" lg="4" xl="4">
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
-                                <div className="datepicker_wrp">
-                                    {
-                                        (this.state.viewportWidth > 767) ?
-                                            <DatePicker
-                                                className="datepicker"
-                                                selected={this.state.startDate}
-                                                selectsStart
-                                                startDate={this.state.startDate}
-                                                endDate={this.state.endDate}
-                                                onChange={this.handleChangeStart.bind(this)}
-                                            />
-                                            :
-                                            <input className="datepicker"
-                                                   value={this.state.startDate.format('YYYY-MM-DD')}
-                                                   onChange = {this.handleMobileChangeStart.bind(this)}
-                                                   type="date"
-                                            />
-                                    }
-
-                                </div>
-                                <div className="datepicker_wrp">
-                                    {
-                                        (this.state.viewportWidth > 767) ?
-                                            <DatePicker
-                                                className="datepicker"
-                                                selected={this.state.endDate}
-                                                selectsEnd
-                                                startDate={this.state.startDate}
-                                                endDate={this.state.endDate}
-                                                onChange={this.handleChangeEnd.bind(this)}
-                                            />
-                                            :
-                                            <input
-                                                className="datepicker"
-                                                value={this.state.endDate.format('YYYY-MM-DD')}
-                                                onChange = {this.handleMobileChangeEnd.bind(this)}
-                                                type="date"
-                                            />
-                                    }
-
-                                </div>
-
+                                    <div className="datepicker_wrp">
+                                        {
+                                            (this.state.viewportWidth > 767) ?
+                                                <DatePicker
+                                                    className="datepicker"
+                                                    selected={this.state.startDate}
+                                                    selectsStart
+                                                    startDate={this.state.startDate}
+                                                    endDate={this.state.endDate}
+                                                    dateFormat="DD MMM YY"
+                                                    onChange={this.handleChangeStart.bind(this)}
+                                                />
+                                                :
+                                                <input className="datepicker"
+                                                       value={this.state.startDate.format('YYYY-MM-DD')}
+                                                       onChange = {this.handleMobileChangeStart.bind(this)}
+                                                       type="date"
+                                                />
+                                        }
+                                    </div>
+                                    <div className="datepicker_wrp">
+                                        {
+                                            (this.state.viewportWidth > 767) ?
+                                                <DatePicker
+                                                    className="datepicker"
+                                                    selected={this.state.endDate}
+                                                    selectsEnd
+                                                    startDate={this.state.startDate}
+                                                    endDate={this.state.endDate}
+                                                    dateFormat="DD MMM YY"
+                                                    onChange={this.handleChangeEnd.bind(this)}
+                                                />
+                                                :
+                                                <input
+                                                    className="datepicker"
+                                                    value={this.state.endDate.format('YYYY-MM-DD')}
+                                                    onChange = {this.handleMobileChangeEnd.bind(this)}
+                                                    type="date"
+                                                />
+                                        }
+                                    </div>
                             </Col>
-                            <Col xs="12" md="5" lg="6" xl="5">
+                            <Col xs="12" md="5" lg="5" xl="5">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">
