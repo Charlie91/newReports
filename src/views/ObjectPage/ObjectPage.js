@@ -312,7 +312,7 @@ export default class ObjectPage extends Component {
     }
 
     trackActualSegments(startDate, endDate){
-        let value = 'D';
+        let value = 'D';    // начальное значение
         if(startDate.format('YYYY') === endDate.format('YYYY'))
             value = 'M';
         if(startDate.format('YYYY-MM') === endDate.format('YYYY-MM'))
@@ -520,11 +520,13 @@ export default class ObjectPage extends Component {
                                               xAxes: [{
                                                   gridLines: {
                                                       color: "rgba(0, 0, 0, 0)",
-                                                      display:false
                                                   },
                                               }],
                                               yAxes: [{
-                                                  display: false,
+                                                  ticks:{
+                                                      beginAtZero: true
+                                                  },
+                                                  // display: false,
                                                   gridLines: {
                                                       color: "rgba(0, 0, 0, 0)",
                                                   },
