@@ -93,9 +93,12 @@ $crdbody-padding : 1.3rem;
 
 .data_per_month{
   .header{
-    padding: 1rem 2rem;
+    padding: 10px 20px;
     h4{
-      color:#354052;
+      padding: 10px 20px;
+      color: #354052;
+      font-size: 30px;
+
     }
   }
   >div.card-body{
@@ -246,6 +249,11 @@ $crdbody-padding : 1.3rem;
     color: #7f8fa4;
     white-space: nowrap;
   }
+  h4{
+    padding: 0px 20px;
+    color: #354052;
+    font-size: 30px;
+  }
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
 
@@ -290,11 +298,22 @@ $crdbody-padding : 1.3rem;
   }
 }
 
-.all_data .line-chart-wrapper{
-  max-height:183px;
-  margin-top:15px;
+.all_data {
+  .card-body{
+    padding: 25px 40px;
+    h5{
+      font-size:30px
+    }
+  }
+  .line-chart-wrapper {
+    max-height: 183px;
+    margin-top: 15px;
+  }
 }
 @media screen and (min-width:1320px) {
+  .muted{
+    font-size: 14px;
+  }
   .announce{
     img.fullIMG{
       height:auto;
@@ -315,6 +334,9 @@ $crdbody-padding : 1.3rem;
     }
     .img_wrapper{
       max-height:420px;
+    }
+    .card-body{
+      padding: 35px 40px;
     }
   }
 }

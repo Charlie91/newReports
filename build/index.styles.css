@@ -13845,7 +13845,7 @@ body {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 105px - 170px) !important; }
+  height: calc(100vh - 170px) !important; }
 
 .sidebar-minimized .sidebar-header {
   display: none; }
@@ -14055,7 +14055,7 @@ button.settings-btn {
     min-height: 50px;
     text-align: center;
     padding-top: 9px;
-    padding-bottom: 9px;
+    padding-bottom: 1px;
     margin-left: 250px;
     height: auto !important; }
   .app-body__reduce-margin {
@@ -14953,9 +14953,11 @@ button.btn.back-btn {
     white-space: nowrap; }
 
 .data_per_month .header {
-  padding: 1rem 2rem; }
+  padding: 10px 20px; }
   .data_per_month .header h4 {
-    color: #354052; }
+    padding: 10px 20px;
+    color: #354052;
+    font-size: 30px; }
 
 .data_per_month > div.card-body {
   overflow: scroll;
@@ -15066,6 +15068,11 @@ button.btn.back-btn {
   color: #7f8fa4;
   white-space: nowrap; }
 
+.average_hours h4 {
+  padding: 0px 20px;
+  color: #354052;
+  font-size: 30px; }
+
 .average_hours .chart-wrapper:not(:first-of-type) .title {
   padding-left: 33%; }
 
@@ -15098,11 +15105,18 @@ button.btn.back-btn {
     top: 6px;
     position: relative; }
 
+.all_data .card-body {
+  padding: 25px 40px; }
+  .all_data .card-body h5 {
+    font-size: 30px; }
+
 .all_data .line-chart-wrapper {
   max-height: 183px;
   margin-top: 15px; }
 
 @media screen and (min-width: 1320px) {
+  .muted {
+    font-size: 14px; }
   .announce img.fullIMG {
     height: auto; } }
 
@@ -15113,7 +15127,9 @@ button.btn.back-btn {
     .announce.row > div:first-of-type .card {
       height: 100%; }
   .announce .img_wrapper {
-    max-height: 420px; } }
+    max-height: 420px; }
+  .announce .card-body {
+    padding: 35px 40px; } }
 
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type > .card {
