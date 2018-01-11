@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Bar, Line,Chart, HorizontalBar} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
-
+import Loading from './../Loading/Small';
 
 
 export default class HorizontalBarChart extends Component {
@@ -192,13 +192,22 @@ export default class HorizontalBarChart extends Component {
 
 
     render(){
-        return (
+        if(!this.props.data){
+            return (
+                <Card className="average_hours horizontal-bars">
+                    <div className="header">
+                        <h4>Средняя посещаемость по часам</h4>
+                    </div>
+                    <Loading/>
+                </Card>
+            )
+        }
+        else return (
             <Card className="average_hours horizontal-bars">
                 <div className="header">
                     <h4>Средняя посещаемость по часам</h4>
                 </div>
                 <CardBody>
-
                     {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)

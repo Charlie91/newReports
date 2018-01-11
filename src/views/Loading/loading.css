@@ -5,8 +5,7 @@
   height: 100%;
   width: 100%;
   top: 0;
-  left: 0;
-}
+  left: 0; }
 
 .load_title {
   top: 70%;
@@ -14,23 +13,19 @@
   color: #FFF;
   display: block;
   width: 100%;
-  text-align: center;
-}
+  text-align: center; }
 
 .load_image {
   left: 50%;
   top: 50%;
   margin-left: -22px;
-  position: absolute;
-}
+  position: absolute; }
 
 .sk-wave {
   margin: 40px auto;
   width: 50px;
   height: 18px;
   text-align: center;
-  font-size: 10px;
-  .sk-rect{
-    background-color:rgba(58, 68, 85, 0.8);
-  }
-}
+  font-size: 10px; }
+  .sk-wave .sk-rect {
+    background-color: rgba(58, 68, 85, 0.8); }

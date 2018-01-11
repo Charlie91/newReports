@@ -109,6 +109,11 @@ class Full extends Component {
         document.body.classList.add('sidebar-fixed'); //добавляем класс к body чтобы выровнять контентный блок
     }
 
+    componentDidUpdate(){
+       console.log(1);
+        //this.checkEitherLoggedInOrNot();//проверка авторизации
+    }
+
     componentWillUnmount(){
         document.body.classList.remove('sidebar-mobile-show'); //фикс бага с уходом контентной части вправо после логаута.
     }

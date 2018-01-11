@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
+import Loading from './../Loading/Small';
+import {customLabel} from './customtooltip';
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график
     Chart.elements.Rectangle.prototype.draw = function() {
@@ -197,7 +199,17 @@ export default class BarChart extends Component {
 
 
     render(){
-        return (
+        if(!this.props.data){
+            return (
+                <Card className="average_hours vertical-bars">
+                    <CardBody>
+                        <h4>Средняя посещаемость по часам</h4>
+                        <Loading/>
+                    </CardBody>
+                </Card>
+            )
+        }
+        else return (
             <Card className="average_hours vertical-bars">
                 <CardBody>
                     <h4>Средняя посещаемость по часам</h4>
@@ -219,7 +231,8 @@ export default class BarChart extends Component {
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
-                                                             enabled:true,
+                                                             custom:customLabel,
+                                                             enabled:false,
                                                              backgroundColor:'#eff3f6',
                                                              bodyFontColor:'#354052',
                                                              titleFontColor:'#354052',
