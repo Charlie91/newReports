@@ -231,8 +231,7 @@ export default class BarChart extends Component {
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
-                                                             custom:customLabel,
-                                                             enabled:false,
+                                                             enabled:true,
                                                              backgroundColor:'#eff3f6',
                                                              bodyFontColor:'#354052',
                                                              titleFontColor:'#354052',
@@ -250,19 +249,23 @@ export default class BarChart extends Component {
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
-                                                                     display:false
+                                                                     display:true,
+                                                                     drawBorder:false,
+                                                                 },
+                                                                 ticks:{
+                                                                     beginAtZero: false
+
                                                                  }
                                                              }],
                                                              yAxes: [{
                                                                  ticks: {
                                                                      max: this.state.maxVal,
-                                                                     beginAtZero: true,
-                                                                     steps: 10,
-                                                                     stepValue: 5,
+                                                                     min:10
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
-                                                                     drawBorder: false
+                                                                     drawBorder: false,
+                                                                     zeroLineColor:"rgba(0, 0, 0, 0.0)"
                                                                  },
                                                              }]
                                                          }

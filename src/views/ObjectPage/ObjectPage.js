@@ -509,7 +509,7 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        <Row >
+                        <Row>
                             <Col md='12' style={{padding:'0px'}} className="line-chart-wrapper order-12 order-md-1">
                                 {(!this.state.chart.datasets[0].data.length) ?
                                     <Loading/>

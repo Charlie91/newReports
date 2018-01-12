@@ -110,7 +110,6 @@ class Full extends Component {
     }
 
     componentDidUpdate(){
-       console.log(1);
         //this.checkEitherLoggedInOrNot();//проверка авторизации
     }
 
