@@ -77,19 +77,19 @@ class TableVerticalNoStick extends Component {
     changeShadow(e){
 
         if (e.target.scrollTop !== 0){
-            if (this.state.scrollTop == false) {
+            if (this.state.scrollTop === false) {
                 this.setState({scrollTop: true});
             }
-        } else { if (this.state.scrollTop == true) {
+        } else { if (this.state.scrollTop === true) {
             this.setState({scrollTop: false});
             }
         }
 
         if (e.target.scrollLeft !== 0){
-            if (this.state.scrollLeft == false) {
+            if (this.state.scrollLeft === false) {
                 this.setState({scrollLeft: true});
             }
-        } else { if (this.state.scrollLeft == true) {
+        } else { if (this.state.scrollLeft === true) {
                 this.setState({scrollLeft: false});
             }
         }
