@@ -238,8 +238,8 @@ export default class ObjectPage extends Component {
             <div>
                 <YMaps>
                     <Map state={mapState}
-                         width={(this.state.viewportWidth < 1199) ? '100px' : '180px'}
-                         height={(this.state.viewportWidth < 1199) ? '100px' : '180px'}
+                         width={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
+                         height={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
                     >
                     </Map>
                 </YMaps>

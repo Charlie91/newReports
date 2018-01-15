@@ -198,20 +198,21 @@ $crdbody-padding : 1.3rem;
   > div:first-of-type > .card{
     height:100%;
   }
-  //height:400px;
+
   margin-bottom: 15px;
   .img_wrapper{
-    border-radius: 0 0 1% 1%;
-  }
-  img.fullIMG {
-    max-width: 100%;
-    height:100%;
+    border-radius:4px;
+    img.fullIMG {
+      max-width: 100%;
+      height:100%;
+    }
   }
 
   .geolocation{
     .map_wrapper{
-      width: 180px;
-      height: 180px;
+      width: 360px;
+      height: 360px;
+      zoom:50%;
       border-radius: 50%;
       overflow: hidden;
       margin: auto;
