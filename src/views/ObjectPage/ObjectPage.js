@@ -63,6 +63,15 @@ export default class ObjectPage extends Component {
             }
         };
         moment.locale('ru'); // локализуем библиотеку
+        moment.updateLocale('ru', {
+            monthsShort : [
+                "янв", "фев", "мар", "апр", "май", "июн", "июл",
+                "авг", "сен", "окт", "ноя", "дек"
+            ]
+        });
+
+
+
     }
 
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
@@ -233,7 +242,7 @@ export default class ObjectPage extends Component {
     }
 
     renderMap(){
-        const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 15, controls: [], behaviors:[], options:[] };
+        const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 16, controls: [], behaviors:[], options:[] };
         return (
             <div>
                 <YMaps>
