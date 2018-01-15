@@ -79,7 +79,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   #no-stick .average_column {
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #354052;
     font-weight: normal;
     font-style: italic; }
@@ -96,7 +96,7 @@
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
     font-weight: bold; }
   #no-stick .average_month {
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #2d2d2d;
     font-style: italic; }
     #no-stick .average_month span {
@@ -109,13 +109,13 @@
         line-height: 15px !important;
         height: 15px !important; }
   #no-stick .conceptions-table .holidays_column {
-    background-color: rgba(159, 212, 115, 0.25); }
+    background-color: rgba(142, 214, 250, 0.15); }
     #no-stick .conceptions-table .holidays_column > span > div {
       background-color: transparent !important; }
       #no-stick .conceptions-table .holidays_column > span > div:hover {
         background-color: transparent !important; }
     #no-stick .conceptions-table .holidays_column:hover {
-      background-color: rgba(159, 212, 115, 0.25) !important; }
+      background-color: rgba(142, 214, 250, 0.15) !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
@@ -171,7 +171,6 @@
     height: calc(100vh - 190px) !important;
     height: -moz-calc(100vh - 190px) !important;
     height: -webkit-calc(100vh - 190px) !important; } }
-
 @media screen and (max-width: 767px) {
   #no-stick {
     font-size: 0.688em;
@@ -230,7 +229,7 @@
         margin-top: 0px;
         margin-bottom: 0px; }
         #no-stick .average_column span > div, #no-stick .average_month span > div {
-          background-color: rgba(246, 170, 37, 0.25);
+          background-color: rgba(255, 238, 28, 0.15);
           margin-top: 7px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
@@ -238,7 +237,6 @@
           line-height: 20px !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
-
 ::-webkit-scrollbar {
   width: 7px;
   height: 10px; }

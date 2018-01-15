@@ -105,7 +105,7 @@ $font_size_mobile: 0.688em;
   }
 
   .average_column {
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #354052;
     font-weight: normal;
     font-style: italic;
@@ -130,7 +130,7 @@ $font_size_mobile: 0.688em;
   }
 
   .average_month{
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #2d2d2d;
     font-style: italic;
     span {
@@ -149,7 +149,7 @@ $font_size_mobile: 0.688em;
     }
   }
   .conceptions-table .holidays_column {
-    background-color: rgba(159, 212, 115, 0.25);
+    background-color: rgba(142, 214, 250, 0.15);
     >span>div{
       background-color: transparent !important;
       &:hover{
@@ -157,7 +157,7 @@ $font_size_mobile: 0.688em;
       }
     }
     &:hover{
-      background-color: rgba(159, 212, 115, 0.25) !important;
+      background-color: rgba(142, 214, 250, 0.15) !important;
     }
   }
 
@@ -329,7 +329,7 @@ $font_size_mobile: 0.688em;
         margin-top: 0px;
         margin-bottom: 0px;
         >div{
-          background-color: rgba(246, 170, 37, 0.25);
+          background-color: rgba(255, 238, 28, 0.15);
           margin-top: 7px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
