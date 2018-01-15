@@ -455,6 +455,7 @@ export default class ObjectPage extends Component {
                 <Card className="data_per_month">
                     <div className="header">
                         <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
+                        <p className="muted">Поясняющий текст о том, что тут показано</p>
                     </div>
                     <CardBody>
                         <ul>
@@ -548,8 +549,10 @@ export default class ObjectPage extends Component {
                                               scales: {
                                                   xAxes: [{
                                                       gridLines: {
-                                                          color: "rgba(0, 0, 0, 0)",
-                                                          zeroLineColor:'#dfe2e5'
+                                                          color: "rgba(0, 0, 0, 0.1)",
+                                                          borderDash: [4, 4],
+                                                          drawOnChartArea:true,
+                                                          zeroLineColor:'#dfe2e5',
                                                       },
                                                   }],
                                                   yAxes: [{
@@ -558,8 +561,9 @@ export default class ObjectPage extends Component {
                                                       },
                                                       // display: false,
                                                       gridLines: {
-                                                          color: "rgba(0, 0, 0, 0)",
-                                                          zeroLineColor:'#dfe2e5'
+                                                          color: "rgba(0, 0, 0, 0.1)",
+                                                          borderDash: [4, 4],
+                                                          zeroLineColor:'#dfe2e5',
                                                       },
                                                   }]
                                               }

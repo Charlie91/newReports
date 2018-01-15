@@ -214,6 +214,7 @@ export default class BarChart extends Component {
             <Card className="average_hours vertical-bars">
                 <CardBody>
                     <h4>Средняя посещаемость по часам</h4>
+                    <p className="muted">Поясняющий текст о том, что тут показано</p>
                     {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
@@ -268,7 +269,8 @@ export default class BarChart extends Component {
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
                                                                      drawBorder: false,
-                                                                     zeroLineColor:"rgba(0, 0, 0, 0.0)"
+                                                                     zeroLineColor:"rgba(0, 0, 0, 0.0)",
+                                                                     borderDash: [4, 4],
                                                                  },
                                                              }]
                                                          }
@@ -324,7 +326,8 @@ export default class BarChart extends Component {
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
-                                                                     drawBorder: false
+                                                                     drawBorder: false,
+                                                                     borderDash: [4, 4],
                                                                  },
                                                              }]
                                                          }
