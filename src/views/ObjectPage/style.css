@@ -71,7 +71,11 @@
   .data_per_month .header h4 {
     padding: 10px 20px;
     color: #354052;
-    font-size: 30px; }
+    font-size: 30px;
+    padding-bottom: 0;
+    margin-bottom: 2px; }
+  .data_per_month .header .muted {
+    padding-left: 20px; }
 
 .data_per_month > div.card-body {
   overflow: scroll;
@@ -189,7 +193,10 @@
   .average_hours h4 {
     padding: 0px 20px;
     color: #354052;
-    font-size: 30px; }
+    font-size: 30px;
+    margin-bottom: 2px; }
+  .average_hours .muted {
+    padding-left: 20px; }
   .average_hours .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%; }
   .average_hours.horizontal-bars .header {

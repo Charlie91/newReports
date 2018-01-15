@@ -99,7 +99,11 @@ $crdbody-padding : 1.3rem;
       padding: 10px 20px;
       color: #354052;
       font-size: 30px;
-
+      padding-bottom: 0;
+      margin-bottom: 2px;
+    }
+    .muted{
+      padding-left: 20px;
     }
   }
   >div.card-body{
@@ -260,6 +264,10 @@ $crdbody-padding : 1.3rem;
     padding: 0px 20px;
     color: #354052;
     font-size: 30px;
+    margin-bottom: 2px;
+  }
+  .muted{
+    padding-left: 20px;
   }
   .chart-wrapper:not(:first-of-type) .title {
     padding-left: 33%;
