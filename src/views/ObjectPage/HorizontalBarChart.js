@@ -192,6 +192,7 @@ export default class HorizontalBarChart extends Component {
 
 
     render(){
+        if(!this.props.render)return null;
         if(!this.props.data){
             return (
                 <Card className="average_hours horizontal-bars">

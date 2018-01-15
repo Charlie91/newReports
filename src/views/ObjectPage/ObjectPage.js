@@ -101,7 +101,7 @@ export default class ObjectPage extends Component {
                 this.setState({
                     object:obj,
                     type:typeArr[0],
-                    currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
+                    currency: typeArr[1]
                 }, () => {
                     this.props.upState('title','Карточка объекта');
                     this.props.upState('address',this.state.object.address);
@@ -209,13 +209,13 @@ export default class ObjectPage extends Component {
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
                     pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
-                    pointBackgroundColor: '#fff',
+                    pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                     pointBorderWidth: 5,
                     pointHoverRadius: 5,
                     pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                     pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                     pointHoverBorderWidth: 2,
-                    pointRadius: 1,
+                    pointRadius: 2.5,
                     pointHitRadius: 10,
                     data: []
                 }
@@ -233,7 +233,7 @@ export default class ObjectPage extends Component {
     }
 
     renderMap(){
-        const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 16, controls: [], behaviors:[], options:[] };
+        const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 15, controls: [], behaviors:[], options:[] };
         return (
             <div>
                 <YMaps>
@@ -309,11 +309,13 @@ export default class ObjectPage extends Component {
     }
 
     handleChangeStart(date) {
+        if(this.state.endDate - date < 0)return false;
         let newSegment = this.trackActualSegments(date,this.state.endDate);
         this.setState({startDate: date,timeSegment:newSegment}, () => this.getFloorsData());
     }
 
     handleChangeEnd(date) {
+        if(date - this.state.startDate < 0)return false;
         let newSegment = this.trackActualSegments(this.state.startDate,date);
         this.setState({endDate: date,timeSegment:newSegment}, () => this.getFloorsData());
     }
@@ -324,6 +326,15 @@ export default class ObjectPage extends Component {
 
     handleMobileChangeEnd(e){
         this.setState({endDate: moment(e.target.value)}, () => this.getFloorsData());
+    }
+
+    removeDotFromDatepicker(){  //преобразуем формат даты "08 янв. 17" в "08 янв 17" под требования дизайнера
+        let datepickers = document.querySelectorAll('.datepicker');
+
+        for(let i = 0;i < datepickers.length; i++){
+            let val = datepickers[i].value;
+            datepickers[i].setAttribute('value', 1);
+        }
     }
 
     componentDidUpdate(){
@@ -348,7 +359,7 @@ export default class ObjectPage extends Component {
         document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
         document.querySelector('.app-body').classList.add('app-body__reduce-margin');
 
-
+        this.removeDotFromDatepicker();
     }
 
     componentWillUnmount(){
@@ -420,10 +431,15 @@ export default class ObjectPage extends Component {
                 </Row>
 
                 {(this.state.viewportWidth > 991) ?
-
-                    <BarChart data={this.state.data}/>
+                    <BarChart
+                        render={!(this.state.type === 'Выручка')}
+                        data={this.state.data}
+                    />
                     :
-                    <HorizontalBarChart data={this.state.data}/>
+                    <HorizontalBarChart
+                        render={!(this.state.type === 'Выручка')}
+                        data={this.state.data}
+                    />
                 }
 
 
@@ -468,7 +484,7 @@ export default class ObjectPage extends Component {
                                                 selectsStart
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
-                                                dateFormat="DD MMM YY"
+                                                dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeStart.bind(this)}
                                             />
                                             :
@@ -488,7 +504,7 @@ export default class ObjectPage extends Component {
                                                 selectsEnd
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
-                                                dateFormat="DD MMM YY"
+                                                dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeEnd.bind(this)}
                                             />
                                             :
@@ -505,7 +521,7 @@ export default class ObjectPage extends Component {
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">
-                                <span className="data">{`${formatNumberBySpaces(this.state.totalSum)} ${this.state.currency}`} </span>
+                                <span className="data">{formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency} </span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
@@ -524,6 +540,7 @@ export default class ObjectPage extends Component {
                                                   xAxes: [{
                                                       gridLines: {
                                                           color: "rgba(0, 0, 0, 0)",
+                                                          zeroLineColor:'#dfe2e5'
                                                       },
                                                   }],
                                                   yAxes: [{
@@ -533,6 +550,7 @@ export default class ObjectPage extends Component {
                                                       // display: false,
                                                       gridLines: {
                                                           color: "rgba(0, 0, 0, 0)",
+                                                          zeroLineColor:'#dfe2e5'
                                                       },
                                                   }]
                                               }

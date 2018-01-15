@@ -34,7 +34,6 @@ function addBorderRadiuses(){     //добавляем border-radius'ы в гр�
             signY = 1;
             borderSkipped = vm.borderSkipped || 'left';
         }
-
         // Canvas doesn't allow us to stroke inside the width so we can
         // adjust the sizes to fit if we're setting a stroke on the line
         if (borderWidth) {
@@ -156,10 +155,10 @@ export default class BarChart extends Component {
                     datasets:[{
                         backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderWidth: 10,
+                        borderWidth: 1,
                         radius:14,
                         barBorderRadius: 10,
-                        hoverBorderWidth: 13,
+                        hoverBorderWidth: 2,
                         hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         data: []
@@ -188,7 +187,8 @@ export default class BarChart extends Component {
             bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
-        this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
+        //this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
+        this.setState({bars: bars,maxVal:(Math.ceil(maxVal/50) * 50)});
     }
 
 
@@ -199,6 +199,7 @@ export default class BarChart extends Component {
 
 
     render(){
+        if(!this.props.render)return null;
         if(!this.props.data){
             return (
                 <Card className="average_hours vertical-bars">
@@ -260,7 +261,9 @@ export default class BarChart extends Component {
                                                              yAxes: [{
                                                                  ticks: {
                                                                      max: this.state.maxVal,
-                                                                     min:10
+                                                                     beginAtZero: false,
+                                                                     steps: 10,
+                                                                     stepValue: 5,
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
