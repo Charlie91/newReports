@@ -71,12 +71,13 @@ class TableVerticalNoStick extends Component {
             scrollLeft: props.scrollLeft,
             rowHover: props.rowHover
         };
-        this.changeShadow = this.changeShadow.bind(this);
+        //this.changeShadow = this.changeShadow.bind(this);
     }
 
     changeShadow(e){
 
-        if (e.target.scrollTop !== 0){
+        let event = e.target;
+        if (event.scrollTop !== 0){
             if (this.state.scrollTop === false) {
                 this.setState({scrollTop: true});
             }
@@ -85,7 +86,7 @@ class TableVerticalNoStick extends Component {
             }
         }
 
-        if (e.target.scrollLeft !== 0){
+        if (event.scrollLeft !== 0){
             if (this.state.scrollLeft === false) {
                 this.setState({scrollLeft: true});
             }
@@ -93,7 +94,6 @@ class TableVerticalNoStick extends Component {
                 this.setState({scrollLeft: false});
             }
         }
-
     }
 
     changeRowHover(index){
