@@ -120,8 +120,8 @@ class TableVerticalNoStick extends Component {
     }
 
     componentDidUpdate(){
-        this.setWrapperWidth();
-        this.equalizeTableHeaderHeight();
+        //this.setWrapperWidth();
+        //this.equalizeTableHeaderHeight();
     }
 
     setWrapperWidth(){
