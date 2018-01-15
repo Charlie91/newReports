@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
+import Loading from './../Loading/Small';
+import {customLabel} from './customtooltip';
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график
     Chart.elements.Rectangle.prototype.draw = function() {
@@ -197,7 +199,17 @@ export default class BarChart extends Component {
 
 
     render(){
-        return (
+        if(!this.props.data){
+            return (
+                <Card className="average_hours vertical-bars">
+                    <CardBody>
+                        <h4>Средняя посещаемость по часам</h4>
+                        <Loading/>
+                    </CardBody>
+                </Card>
+            )
+        }
+        else return (
             <Card className="average_hours vertical-bars">
                 <CardBody>
                     <h4>Средняя посещаемость по часам</h4>
@@ -237,19 +249,23 @@ export default class BarChart extends Component {
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
-                                                                     display:false
+                                                                     display:true,
+                                                                     drawBorder:false,
+                                                                 },
+                                                                 ticks:{
+                                                                     beginAtZero: false
+
                                                                  }
                                                              }],
                                                              yAxes: [{
                                                                  ticks: {
                                                                      max: this.state.maxVal,
-                                                                     beginAtZero: true,
-                                                                     steps: 10,
-                                                                     stepValue: 5,
+                                                                     min:10
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
-                                                                     drawBorder: false
+                                                                     drawBorder: false,
+                                                                     zeroLineColor:"rgba(0, 0, 0, 0.0)"
                                                                  },
                                                              }]
                                                          }

@@ -10,6 +10,7 @@ $crdbody-padding : 1.3rem;
   .btn{
     border:1px solid #886ce6;
     color: #354052;
+    padding: 2px 5px;
     width: 106px;
     background:#fff;
   }
@@ -199,10 +200,14 @@ $crdbody-padding : 1.3rem;
   }
   //height:400px;
   margin-bottom: 15px;
+  .img_wrapper{
+    border-radius: 0 0 1% 1%;
+  }
   img.fullIMG {
     max-width: 100%;
     height:100%;
   }
+
   .geolocation{
     .map_wrapper{
       width: 180px;
@@ -241,6 +246,7 @@ $crdbody-padding : 1.3rem;
 }
 
 .average_hours{
+  padding-bottom: 10px;
   .title{
     text-align: center;
     padding-left: 10px;
@@ -503,7 +509,7 @@ $crdbody-padding : 1.3rem;
         .btn{
           max-width:25%;
           font-size: 14px;
-          padding: 7px 0px;
+          padding: 2px 0px;
         }
       }
     }

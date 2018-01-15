@@ -12,6 +12,7 @@ export function checkEitherLoggedInOrNot(){ //проверка залогине�
 export function ajaxRequest(url,options){   //функция-шаблон для ajax-запросов
     return  fetch(url, options)
         .then(function (response) {
+            if(response.status === 401)window.location.reload();//перезагружаем страницу и редиректим если незалогинен
             if (!response.ok) {
                 return Promise.reject(new Error(
                     'Response failed: ' + response.status + ' (' + response.statusText + ')'
