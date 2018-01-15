@@ -539,7 +539,9 @@ export default class ObjectPage extends Component {
                                               scales: {
                                                   xAxes: [{
                                                       gridLines: {
-                                                          color: "rgba(0, 0, 0, 0)",
+                                                          color: "rgba(0, 0, 0, 0.1)",
+                                                          borderDash: [4, 4],
+                                                          drawOnChartArea:true,
                                                           zeroLineColor:'#dfe2e5'
                                                       },
                                                   }],
@@ -549,7 +551,8 @@ export default class ObjectPage extends Component {
                                                       },
                                                       // display: false,
                                                       gridLines: {
-                                                          color: "rgba(0, 0, 0, 0)",
+                                                          color: "rgba(0, 0, 0, 0.1)",
+                                                          borderDash: [4, 4],
                                                           zeroLineColor:'#dfe2e5'
                                                       },
                                                   }]
