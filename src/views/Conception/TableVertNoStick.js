@@ -70,18 +70,37 @@ class TableVerticalNoStick extends Component {
             scrollTop: props.scrollTop,
             scrollLeft: props.scrollLeft,
             rowHover: props.rowHover
-        }
+        };
+        this.changeShadow = this.changeShadow.bind(this);
     }
 
     changeShadow(e){
-        this.setState({scrollTop: (e.target.scrollTop !== 0) });
-        this.setState({scrollLeft: (e.target.scrollLeft !== 0) });
+
+        if (e.target.scrollTop !== 0){
+            if (this.state.scrollTop == false) {
+                this.setState({scrollTop: true});
+            }
+        } else { if (this.state.scrollTop == true) {
+            this.setState({scrollTop: false});
+            }
+        }
+
+        if (e.target.scrollLeft !== 0){
+            if (this.state.scrollLeft == false) {
+                this.setState({scrollLeft: true});
+            }
+        } else { if (this.state.scrollLeft == true) {
+                this.setState({scrollLeft: false});
+            }
+        }
+
     }
 
     changeRowHover(index){
         this.setState({rowHover: index });
     }
 
+    /*
     fixingFirstColumn(e){//фиксируем первую колонку
         let cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type'),
             sidebarWidth = document.getElementsByClassName('sidebar')[0].offsetWidth,
@@ -93,8 +112,8 @@ class TableVerticalNoStick extends Component {
             else
                 cell.style.left = '-10px';
         });
-
     }
+    */
 
     componentWillMount(){
         let [dates,months,years] = [ fillDates(),fillMonths(), fillYears() ];
@@ -113,6 +132,8 @@ class TableVerticalNoStick extends Component {
         this.setWrapperWidth();
         this.equalizeTableHeaderHeight()
         window.onresize = () => this.setWrapperWidth();
+        this.setState({scrollTop: false});
+        this.setState({scrollLeft: false});
     }
 
     componentWillUnmount(){
@@ -139,6 +160,7 @@ class TableVerticalNoStick extends Component {
             wrapper.style.width = (sum) + 'px';
         else
             wrapper.style.width = 'auto';
+
     }
 
     equalizeTableHeaderHeight(){
