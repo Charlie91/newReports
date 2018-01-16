@@ -71,27 +71,30 @@ class TableVerticalNoStick extends Component {
             scrollLeft: props.scrollLeft,
             rowHover: props.rowHover
         };
-        //this.changeShadow = this.changeShadow.bind(this);
     }
 
     changeShadow(e){
-
         let event = e.target;
-        if (event.scrollTop !== 0){
-            if (this.state.scrollTop === false) {
-                this.setState({scrollTop: true});
-            }
-        } else { if (this.state.scrollTop === true) {
-            this.setState({scrollTop: false});
+        if(!(event.scrollTop & 1)) {
+            if (event.scrollTop !== 0) {
+                if (this.state.scrollTop === false) {
+                    this.setState({scrollTop: true});
+                }
+            } else {
+                if (this.state.scrollTop === true) {
+                    this.setState({scrollTop: false});
+                }
             }
         }
-
-        if (event.scrollLeft !== 0){
-            if (this.state.scrollLeft === false) {
-                this.setState({scrollLeft: true});
-            }
-        } else { if (this.state.scrollLeft === true) {
-                this.setState({scrollLeft: false});
+        if(!(event.scrollLeft & 1)) {
+            if (event.scrollLeft !== 0) {
+                if (this.state.scrollLeft === false) {
+                    this.setState({scrollLeft: true});
+                }
+            } else {
+                if (this.state.scrollLeft === true) {
+                    this.setState({scrollLeft: false});
+                }
             }
         }
     }
@@ -134,6 +137,7 @@ class TableVerticalNoStick extends Component {
         window.onresize = () => this.setWrapperWidth();
         this.setState({scrollTop: false});
         this.setState({scrollLeft: false});
+
     }
 
     componentWillUnmount(){
