@@ -154,11 +154,9 @@ export default class BarChart extends Component {
                     labels:[],
                     datasets:[{
                         backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderWidth: 1,
-                        radius:14,
-                        barBorderRadius: 10,
-                        hoverBorderWidth: 2,
+                        borderColor: 'transparent',
+                        borderWidth: 0,
+                        hoverBorderWidth: 1,
                         hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         data: []
@@ -171,8 +169,9 @@ export default class BarChart extends Component {
                     labels:[],
                     datasets:[{
                         backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderColor: 'transparent',
-                        borderWidth: 1,
+                        borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        borderWidth: 0,
+                        hoverBorderWidth: 5,
                         hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
                         data: []
@@ -220,6 +219,7 @@ export default class BarChart extends Component {
                                 if(i === 0)
                                     return (
                                             <div key={i} className="chart-wrapper" >
+                                                <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -227,9 +227,18 @@ export default class BarChart extends Component {
                                                          legend:{
                                                              display:false,
                                                          },
+                                                         layout: {
+                                                             padding: {
+                                                                 right: 7,
+                                                             }
+                                                         },
                                                          title:{
                                                              display:false,
                                                              text:'Понедельник',
+                                                             fontFamily:'ProximaNova',
+                                                             fontColor:'#7f8fa4',
+                                                             fontStyle:'normal',
+                                                             fontSize:14,
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
@@ -248,6 +257,8 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
+                                                                 barPercentage: 0.9,
+                                                                 categoryPercentage:0.7,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
@@ -265,6 +276,7 @@ export default class BarChart extends Component {
                                                                      beginAtZero: false,
                                                                      steps: 10,
                                                                      stepValue: 5,
+                                                                     fontColor:'#7f8fa4'
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
@@ -276,12 +288,14 @@ export default class BarChart extends Component {
                                                          }
                                                      }}
                                                 />
+                                                </div>
                                                 <div className="title">Понедельник</div>
                                             </div>
                                     );
                                 else
                                     return(
                                             <div key={i} className="chart-wrapper">
+                                                <div style={{height:'88%',marginLeft: '-20px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -289,9 +303,18 @@ export default class BarChart extends Component {
                                                          legend:{
                                                              display:false,
                                                          },
+                                                         layout: {
+                                                             padding: {
+                                                                 right: 7,
+                                                             }
+                                                         },
                                                          title:{
                                                              display:false,
-                                                             text:'Понедельник',
+                                                             text:['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i],
+                                                             fontFamily:'ProximaNova',
+                                                             fontColor:'#7f8fa4',
+                                                             fontStyle:'normal',
+                                                             fontSize:14,
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
@@ -309,30 +332,37 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
+                                                                 barPercentage: 0.9,
+                                                                 categoryPercentage:0.7,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
                                                                      display:false,
-                                                                     drawBorder: true
+                                                                     drawBorder: true,
+
                                                                  }
                                                              }],
                                                              yAxes: [{
                                                                  ticks: {
                                                                      max: this.state.maxVal,
-                                                                     display: false,
+                                                                     display: true,
                                                                      beginAtZero: true,
                                                                      steps: 10,
                                                                      stepValue: 5,
+                                                                     fontColor: "rgba(0, 0, 0, 0)",
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
                                                                      drawBorder: false,
                                                                      borderDash: [4, 4],
+                                                                     zeroLineColor:"rgba(0, 0, 0, 0.0)",
+
                                                                  },
                                                              }]
                                                          }
                                                      }}
                                                 />
+                                                </div>
                                                 <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
                                             </div>
                                     );

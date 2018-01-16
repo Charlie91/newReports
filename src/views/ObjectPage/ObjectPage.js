@@ -439,7 +439,7 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 991) ?
+                {(this.state.viewportWidth > 1567) ?
                     <BarChart
                         render={!(this.state.type === 'Выручка')}
                         data={this.state.data}
