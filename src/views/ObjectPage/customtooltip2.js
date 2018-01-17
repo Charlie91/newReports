@@ -1,4 +1,4 @@
-export const customLabel = function(tooltipModel) {
+export const customLabel2 = function(tooltipModel) {
     // Tooltip Element
     var tooltipEl = document.getElementById('chartjs-tooltip');
 
@@ -58,6 +58,6 @@ export const customLabel = function(tooltipModel) {
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -59) + 'px';
     tooltipEl.style.opacity = 1;
 };

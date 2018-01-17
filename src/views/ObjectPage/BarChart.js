@@ -212,8 +212,8 @@ export default class BarChart extends Component {
         else return (
             <Card className="average_hours vertical-bars">
                 <CardBody>
-                    <h4>Средняя посещаемость по часам</h4>
-                    <p className="muted">Поясняющий текст о том, что тут показано</p>
+                    <h4>Средняя посещаемость по часам по дням недели</h4>
+                    <p className="muted">Указано среднее кол-во человек проходящее с 0 до 24 часов по дням недели </p>
                     {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
@@ -242,7 +242,8 @@ export default class BarChart extends Component {
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
-                                                             enabled:true,
+                                                             custom: customLabel,
+                                                             enabled:false,
                                                              backgroundColor:'#eff3f6',
                                                              bodyFontColor:'#354052',
                                                              titleFontColor:'#354052',
@@ -257,7 +258,7 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
-                                                                 barPercentage: 0.9,
+                                                                 barPercentage: 0.82,
                                                                  categoryPercentage:0.7,
                                                                  display:false,
                                                                  gridLines: {
@@ -276,7 +277,9 @@ export default class BarChart extends Component {
                                                                      beginAtZero: false,
                                                                      steps: 10,
                                                                      stepValue: 5,
-                                                                     fontColor:'#7f8fa4'
+                                                                     fontColor:'#7f8fa4',
+                                                                     fontSize: 11,
+                                                                     fontFamily: 'ProximaNova'
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
@@ -294,8 +297,8 @@ export default class BarChart extends Component {
                                     );
                                 else
                                     return(
-                                        <div key={i} className="chart-wrapper">
-                                            <div style={{height:'88%',marginLeft: '-20px'}}>
+                                            <div key={i} className="chart-wrapper">
+                                                <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -318,7 +321,8 @@ export default class BarChart extends Component {
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
-                                                             enabled:true,
+                                                             custom: customLabel,
+                                                             enabled:false,
                                                              backgroundColor:'#eff3f6',
                                                              bodyFontColor:'#354052',
                                                              titleFontColor:'#354052',
@@ -333,8 +337,8 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
-                                                                 barPercentage: 0.9,
-                                                                 categoryPercentage:0.7,
+                                                                 barPercentage: 0.845,
+                                                                 categoryPercentage:0.72,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
@@ -351,6 +355,8 @@ export default class BarChart extends Component {
                                                                      steps: 10,
                                                                      stepValue: 5,
                                                                      fontColor: "rgba(0, 0, 0, 0)",
+                                                                     fontSize: 11,
+                                                                     fontFamily: 'ProximaNova'
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
