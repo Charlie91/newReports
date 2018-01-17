@@ -23,20 +23,18 @@
 
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
-
 .revenue .segmentation_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .floor_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
 
 .floor_btn-wrp .btn {
   color: #7f8fa4;
-  background: #fff; }
-
+  background: #fff;
+  padding-top: 2px;
+  padding-bottom: 2px; }
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
   background-color: #886ce6;
@@ -76,7 +74,6 @@
     margin-bottom: 2px; }
   .data_per_month .header .muted {
     padding-left: 20px; }
-
 .data_per_month > div.card-body {
   overflow: scroll;
   padding: 1.25rem; }
@@ -226,7 +223,6 @@
   padding: 25px 40px; }
   .all_data .card-body h5 {
     font-size: 30px; }
-
 .all_data .line-chart-wrapper {
   max-height: 183px;
   margin-top: 15px; }
@@ -234,9 +230,9 @@
 @media screen and (min-width: 1320px) {
   .muted {
     font-size: 14px; }
+
   .announce img.fullIMG {
     height: auto !important; } }
-
 @media screen and (min-width: 1200px) {
   .announce.row > div {
     padding-right: 8px;
@@ -247,7 +243,6 @@
     max-height: 420px; }
   .announce .card-body {
     padding: 35px 40px; } }
-
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type > .card {
     overflow: hidden; }
@@ -264,20 +259,22 @@
     font-size: 14px; }
   .announce .obj_title h4 {
     font-size: 32px; }
+
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
       margin-left: -17px;
       margin-top: 5px; } }
-
 @media screen and (max-width: 991px) {
   .announce .img_wrapper {
     max-height: 300px; }
     .announce .img_wrapper img.fullIMG {
       height: auto; }
+
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
+
   .horizontal-bars {
     white-space: nowrap; }
     .horizontal-bars h4 {
@@ -291,12 +288,12 @@
         min-width: 200px; }
         .horizontal-bars .card-body .chart-wrapper:first-of-type {
           width: 250px; }
+
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
     width: 60px;
     font-size: 12px; } }
-
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;
@@ -358,7 +355,6 @@
     .object_cont input[type="date"]::-webkit-inner-spin-button,
     .object_cont input[type="date"]::-webkit-calendar-picker-indicator {
       display: none; } }
-
 @media screen and (max-width: 575px) {
   .object_cont .announce .img_wrapper {
     max-height: 190px; }
@@ -374,7 +370,6 @@
     font-size: 12px; }
   .object_cont .datepicker_wrp input.datepicker {
     font-size: 12px; } }
-
 @media screen and (max-width: 320px) {
   .object_cont .datepicker_wrp:last-of-type input.datepicker {
     margin-right: -15px; }

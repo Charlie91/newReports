@@ -1,6 +1,6 @@
-#chartjs-tooltip {
-  width: 100px;
-  height: 46px;
+#chartjs-tooltip, #chartjs-tooltip2 {
+  width: initial;
+  height: initial;
   .tooltip_title {
     font-size: 10px;
     line-height: 12px;
@@ -13,44 +13,50 @@
     height: 17px;
     font-weight: normal;
   }
+
+  >div {
+    width: 100px;
+    padding: 6px;
+    font-family: ProximaNova;
+    position: relative;
+    border-radius: 4px;
+    background-color: #eff3f6;
+    color: #354052;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(153, 153, 153, 0.6);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(153, 153, 153, 0.6);
+    box-shadow: 0px 3px 5px 0px rgba(153, 153, 153, 0.6);
+
+    &:after, &:before {
+      top: 100%;
+      left: 50%;
+      border: 1px solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after{
+      border: 1px solid #d1d4d7;
+      border-color: rgba(239, 243, 246, 0);
+      border-top-color: #eff3f6;
+      border-width: 4px;
+      margin-left: -4px;
+    }
+    &:before{
+      border: 1px solid #d1d4d7;
+      border-color: rgba(239, 243, 246, 0);
+      border-top-color: #eff3f6;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+  }
 }
 
-
-#chartjs-tooltip>div {
-  width: 100px;
+#chartjs-tooltip>div{
   height: 46px;
-  padding: 6px;
-  font-family: ProximaNova;
-  position: relative;
-  border-radius: 4px;
-  background-color: #eff3f6;
-  color: #354052;
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(153,153,153,0.6);
-  -moz-box-shadow: 0px 3px 5px 0px rgba(153,153,153,0.6);
-  box-shadow: 0px 3px 5px 0px rgba(153,153,153,0.6);
 }
-#chartjs-tooltip>div:after, #chartjs-tooltip>div:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-#chartjs-tooltip>div:after {
-  border: 1px solid #d1d4d7;
-  border-color: rgba(239, 243, 246, 0);
-  border-top-color: #eff3f6;
-  border-width: 4px;
-  margin-left: -4px;
-}
-#chartjs-tooltip>div:before {
-  border: 1px solid #d1d4d7;
-  border-color: rgba(209, 212, 215, 0);
-  border-top-color: #d1d4d7;
-  border-width: 5px;
-  margin-left: -5px;
+#chartjs-tooltip2>div{
+  height: 30px;
 }
