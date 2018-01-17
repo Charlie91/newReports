@@ -217,12 +217,14 @@
         margin-bottom: 0; }
         .average_hours.horizontal-bars .card-body ul.ranges.fixed {
           position: absolute !important;
-          top: 22.5%;
+          top: 21.7%;
           padding-right: 5px;
           padding-top: 21px;
           border-right: 2px solid rgba(208, 208, 208, 0.5);
           bottom: 36px;
-          margin-top: 9px; }
+          margin-top: 9px;
+          padding-left: 20px;
+          left: 0; }
         .average_hours.horizontal-bars .card-body ul.ranges li {
           height: auto;
           line-height: 1.4;
@@ -242,7 +244,7 @@
       .average_hours.horizontal-bars .chart-wrapper:first-of-type {
         margin-left: 13px; }
       .average_hours.horizontal-bars .chart-wrapper.fixed {
-        margin-left: 40px; }
+        margin-left: 38px; }
       .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
         padding-left: 0%; }
   .average_hours.vertical-bars .chart-wrapper {
@@ -268,7 +270,9 @@
   .muted {
     font-size: 14px; }
   .announce img.fullIMG {
-    height: auto !important; } }
+    height: auto !important; }
+  .average_hours.horizontal-bars .card-body ul.ranges.fixed {
+    top: 22.5%; } }
 
 @media screen and (min-width: 1200px) {
   .announce.row > div {
@@ -311,11 +315,19 @@
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
-  .horizontal-bars h4 {
+  .average_hours.horizontal-bars h4 {
     font-size: 18px;
     font-weight: 400; }
-  .horizontal-bars .card-body {
+  .average_hours.horizontal-bars .card-body {
     overflow: scroll; }
+    .average_hours.horizontal-bars .card-body ul.ranges.fixed {
+      position: absolute !important;
+      top: 17.7%;
+      padding-right: 5px;
+      padding-top: 21px;
+      border-right: 2px solid rgba(208, 208, 208, 0.5);
+      bottom: 36px;
+      margin-top: 9px; }
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {

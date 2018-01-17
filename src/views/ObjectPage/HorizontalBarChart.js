@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Bar, Line,Chart, HorizontalBar} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
+import {customLabel} from './customtooltip';
+
 
 
 export default class HorizontalBarChart extends Component {
@@ -285,6 +287,8 @@ export default class HorizontalBarChart extends Component {
                                                                        position:'bottom'
                                                                    },
                                                                    tooltips: {
+                                                                       custom: customLabel,
+                                                                       enabled:false,
                                                                        backgroundColor:'#eff3f6',
                                                                        bodyFontColor:'#354052',
                                                                        titleFontColor:'#354052',
@@ -371,6 +375,8 @@ export default class HorizontalBarChart extends Component {
                                                          position:'bottom'
                                                      },
                                                      tooltips: {
+                                                         custom: customLabel,
+                                                         enabled:false,
                                                          backgroundColor:'#eff3f6',
                                                          bodyFontColor:'#354052',
                                                          titleFontColor:'#354052',

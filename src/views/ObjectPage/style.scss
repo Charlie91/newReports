@@ -295,12 +295,14 @@ $crdbody-padding : 1.3rem;
         margin-bottom: 0;
         &.fixed{
           position: absolute !important;
-          top: 22.5%;
+          top: 21.7%;
           padding-right: 5px;
           padding-top: 21px;
           border-right: 2px solid rgba(208, 208, 208, 0.5);
           bottom: 36px;
           margin-top: 9px;
+          padding-left: 20px;
+          left: 0;
         }
         li{
           height: auto;
@@ -321,7 +323,7 @@ $crdbody-padding : 1.3rem;
         margin-left:13px;
       }
       &.fixed{
-        margin-left:40px;
+        margin-left:38px;
       }
       display:inline-block;
       max-width:132px;
@@ -376,6 +378,9 @@ $crdbody-padding : 1.3rem;
     img.fullIMG{
       height:auto!important;
     }
+  }
+  .average_hours.horizontal-bars .card-body ul.ranges.fixed {
+    top: 22.5%;
   }
 }
 
@@ -458,15 +463,27 @@ $crdbody-padding : 1.3rem;
     margin-right: auto;
     margin-left: auto;
   }
-  .horizontal-bars{
-    h4{
-      font-size: 18px;
-      font-weight: 400;
-    }
-    .card-body{
-      overflow: scroll;
+  .average_hours{
+    &.horizontal-bars{
+      h4{
+        font-size: 18px;
+        font-weight: 400;
+      }
+      .card-body{
+        overflow: scroll;
+        ul.ranges.fixed {
+          position: absolute !important;
+          top: 17.7%;
+          padding-right: 5px;
+          padding-top: 21px;
+          border-right: 2px solid rgba(208, 208, 208, 0.5);
+          bottom: 36px;
+          margin-top: 9px;
+        }
+      }
     }
   }
+
   .all_data {
     .row:first-of-type{
       >div:first-of-type{
