@@ -52,7 +52,7 @@ export const customLabel2 = function(tooltipModel) {
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 50) + 'px';
+    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 40) + 'px';
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - 43) + 'px';
     tooltipEl.style.opacity = 1;
 };
