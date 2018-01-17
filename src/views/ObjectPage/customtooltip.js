@@ -11,14 +11,9 @@ export const customLabel = function(tooltipModel) {
         //////////////////////////////
         tooltipEl.style.position='absolute';
         tooltipEl.style.textAlign='center';
-        tooltipEl.style.color=tooltipModel.bodyFontColor;
-        tooltipEl.style.backgroundColor=tooltipModel.backgroundColor;
-        tooltipEl.style.borderRadius='4px';
-        tooltipEl.style.fontFamily='ProximaNova';
 
         ///////////////////////////////
     }
-    console.log(tooltipModel);
 
     // Hide if no tooltip
     if (tooltipModel.opacity === 0) {
@@ -43,19 +38,15 @@ export const customLabel = function(tooltipModel) {
         var titleLines = tooltipModel.title || [];
         var bodyLines = tooltipModel.body.map(getBody);
 
-        var innerHtml = '<div>';
+        var innerHtml = '<div class="tooltip_title">';
 
         titleLines.forEach(function(title) {
-            innerHtml += '<span class="tooltip_title">' + title + '</span>';
+            innerHtml += '<span>' + title + '</span>';
         });
-        innerHtml += '</div><div>';
+        innerHtml += '</div><div class="tooltip_body">';
 
         bodyLines.forEach(function(body, i) {
-            var colors = tooltipModel.labelColors[i];
-            var style = 'background:' + colors.backgroundColor;
-            style += '; border-color:' + colors.borderColor;
-            style += '; border-width: 2px';
-            innerHtml += '<span class="tooltip_body">'  + body + '</span>';
+            innerHtml += '<span>'  + body + '</span>';
         });
         innerHtml += '</div>';
 
@@ -63,20 +54,14 @@ export const customLabel = function(tooltipModel) {
         tableRoot.innerHTML = innerHtml;
     }
 
-    tooltipEl.querySelector('.tooltip_title').style.fontSize=tooltipModel.titleFontSize + 'px';
-    tooltipEl.querySelector('.tooltip_body').style.fontSize=tooltipModel.bodyFontSize + 'px';
-    tooltipEl.querySelector('.tooltip_body').style.fontWeight='500';
-
-
     // `this` will be the overall tooltip
     var position = this._chart.canvas.getBoundingClientRect();
+    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
 
     // Display, position, and set styles for font
     tooltipEl.style.opacity = 1;
-    tooltipEl.style.left = position.left + tooltipModel.caretX + 'px';
-    tooltipEl.style.top = position.top + tooltipModel.caretY + 'px';
-    tooltipEl.style.fontFamily = tooltipModel._fontFamily;
-    tooltipEl.style.fontSize = tooltipModel.fontSize;
-    tooltipEl.style.fontStyle = tooltipModel._fontStyle;
-    tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
 };
