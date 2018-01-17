@@ -1,11 +1,11 @@
 export const customLabel2 = function(tooltipModel) {
     // Tooltip Element
-    var tooltipEl = document.getElementById('chartjs-tooltip');
+    var tooltipEl = document.getElementById('chartjs-tooltip2');
 
     // Create element on first render
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
-        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.id = 'chartjs-tooltip2';
         tooltipEl.innerHTML = "<div></div>";
         document.body.appendChild(tooltipEl);
         //////////////////////////////
@@ -38,12 +38,7 @@ export const customLabel2 = function(tooltipModel) {
         var titleLines = tooltipModel.title || [];
         var bodyLines = tooltipModel.body.map(getBody);
 
-        var innerHtml = '<div class="tooltip_title">';
-
-        titleLines.forEach(function(title) {
-            innerHtml += '<span>' + title + '</span>';
-        });
-        innerHtml += '</div><div class="tooltip_body">';
+        var innerHtml = '<div class="tooltip_body">';
 
         bodyLines.forEach(function(body, i) {
             innerHtml += '<span>'  + body + '</span>';
@@ -57,7 +52,7 @@ export const customLabel2 = function(tooltipModel) {
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -59) + 'px';
+    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 40) + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - 43) + 'px';
     tooltipEl.style.opacity = 1;
 };

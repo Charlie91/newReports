@@ -35,7 +35,9 @@
 
 .floor_btn-wrp .btn {
   color: #7f8fa4;
-  background: #fff; }
+  background: #fff;
+  padding-top: 2px;
+  padding-bottom: 2px; }
 
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
