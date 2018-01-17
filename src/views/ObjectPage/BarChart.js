@@ -218,8 +218,8 @@ export default class BarChart extends Component {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
                                     return (
-                                            <div key={i} className="chart-wrapper" >
-                                                <div style={{height:'88%',marginLeft: '-30px'}}>
+                                        <div key={i} className="chart-wrapper" >
+                                            <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -291,9 +291,9 @@ export default class BarChart extends Component {
                                                          }
                                                      }}
                                                 />
-                                                </div>
-                                                <div className="title">Понедельник</div>
                                             </div>
+                                            <div className="title">Понедельник</div>
+                                        </div>
                                     );
                                 else
                                     return(
@@ -369,9 +369,9 @@ export default class BarChart extends Component {
                                                          }
                                                      }}
                                                 />
-                                                </div>
-                                                <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
                                             </div>
+                                            <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
+                                        </div>
                                     );
                             }
                         )}

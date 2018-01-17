@@ -14545,6 +14545,15 @@ button.btn.back-btn {
   top: 50%;
   margin-left: -22px;
   position: absolute; }
+
+.sk-wave {
+  margin: 40px auto;
+  width: 50px;
+  height: 18px;
+  text-align: center;
+  font-size: 10px; }
+  .sk-wave .sk-rect {
+    background-color: rgba(58, 68, 85, 0.8); }
 .conceptions-table td, .conceptions-table th {
   position: relative; }
 
@@ -14710,7 +14719,7 @@ button.btn.back-btn {
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   #no-stick .average_column {
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #354052;
     font-weight: normal;
     font-style: italic; }
@@ -14727,7 +14736,7 @@ button.btn.back-btn {
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
     font-weight: bold; }
   #no-stick .average_month {
-    background-color: rgba(246, 170, 37, 0.25);
+    background-color: rgba(255, 238, 28, 0.15);
     color: #2d2d2d;
     font-style: italic; }
     #no-stick .average_month span {
@@ -14740,13 +14749,13 @@ button.btn.back-btn {
         line-height: 15px !important;
         height: 15px !important; }
   #no-stick .conceptions-table .holidays_column {
-    background-color: rgba(159, 212, 115, 0.25); }
+    background-color: rgba(142, 214, 250, 0.15); }
     #no-stick .conceptions-table .holidays_column > span > div {
       background-color: transparent !important; }
       #no-stick .conceptions-table .holidays_column > span > div:hover {
         background-color: transparent !important; }
     #no-stick .conceptions-table .holidays_column:hover {
-      background-color: rgba(159, 212, 115, 0.25) !important; }
+      background-color: rgba(142, 214, 250, 0.15) !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
@@ -14861,7 +14870,7 @@ button.btn.back-btn {
         margin-top: 0px;
         margin-bottom: 0px; }
         #no-stick .average_column span > div, #no-stick .average_month span > div {
-          background-color: rgba(246, 170, 37, 0.25);
+          background-color: rgba(255, 238, 28, 0.15);
           margin-top: 7px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
@@ -14895,6 +14904,7 @@ button.btn.back-btn {
   .segmentation_btn-wrp .btn {
     border: 1px solid #886ce6;
     color: #354052;
+    padding: 2px 5px;
     width: 106px;
     background: #fff; }
   .segmentation_btn-wrp .btn.active {
@@ -14947,7 +14957,7 @@ button.btn.back-btn {
     outline: none;
     border: solid 1px #886ce6;
     text-align: center;
-    width: 73px;
+    width: 84px;
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap; }
@@ -14957,7 +14967,11 @@ button.btn.back-btn {
   .data_per_month .header h4 {
     padding: 10px 20px;
     color: #354052;
-    font-size: 30px; }
+    font-size: 30px;
+    padding-bottom: 0;
+    margin-bottom: 2px; }
+  .data_per_month .header .muted {
+    padding-left: 20px; }
 
 .data_per_month > div.card-body {
   overflow: scroll;
@@ -15031,12 +15045,15 @@ button.btn.back-btn {
     max-height: 400px; }
   .announce > div:first-of-type > .card {
     height: 100%; }
-  .announce img.fullIMG {
-    max-width: 100%;
-    height: 100%; }
+  .announce .img_wrapper {
+    border-radius: 4px; }
+    .announce .img_wrapper img.fullIMG {
+      max-width: 100%;
+      height: 100%; }
   .announce .geolocation .map_wrapper {
-    width: 180px;
-    height: 180px;
+    width: 360px;
+    height: 360px;
+    zoom: 50%;
     border-radius: 50%;
     overflow: hidden;
     margin: auto; }
@@ -15060,50 +15077,48 @@ button.btn.back-btn {
       font-size: 16px;
       color: #7f8fa4; }
 
-.average_hours .title {
+.average_hours {
   text-align: center;
-  padding-left: 10px;
-  font-size: 14px;
-  line-height: 2.29;
-  color: #7f8fa4;
-  white-space: nowrap; }
-
-.average_hours h4 {
-  padding: 0px 20px;
-  color: #354052;
-  font-size: 30px; }
-
-.average_hours .chart-wrapper:not(:first-of-type) .title {
-  padding-left: 33%; }
-
-.average_hours.horizontal-bars .header {
-  padding: 1rem 1rem; }
-  .average_hours.horizontal-bars .header h4 {
-    color: #354052; }
-
-.average_hours.horizontal-bars .chart-wrapper {
-  display: inline-block;
-  max-width: 13.5%;
-  height: 200px;
-  padding: 0px 15px; }
-  .average_hours.horizontal-bars .chart-wrapper:first-of-type {
-    width: 18%;
-    max-width: none; }
-  .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
-    padding-left: 0%; }
-
-.average_hours.vertical-bars .chart-wrapper {
-  display: inline-block;
-  max-width: 14.2%;
-  height: 200px;
-  padding: 0px 15px; }
-  .average_hours.vertical-bars .chart-wrapper:first-of-type {
-    height: 212px;
+  padding-bottom: 10px; }
+  .average_hours .title {
+    text-align: center;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #7f8fa4;
+    white-space: nowrap; }
+  .average_hours h4 {
+    padding: 0px 20px;
+    color: #354052;
+    font-size: 30px;
+    margin-bottom: 2px;
+    text-align: left; }
+  .average_hours .muted {
+    padding-left: 20px; }
+  .average_hours.horizontal-bars .header {
+    padding: 1rem 1rem; }
+    .average_hours.horizontal-bars .header h4 {
+      color: #354052; }
+  .average_hours.horizontal-bars .chart-wrapper {
+    display: inline-block;
+    max-width: 132px;
+    height: 200px;
+    padding: 0px 15px;
+    border: 1px solid grey; }
+    .average_hours.horizontal-bars .chart-wrapper:first-of-type {
+      width: 18%;
+      margin-left: 13px;
+      max-width: none; }
+    .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
+      padding-left: 0%; }
+  .average_hours.vertical-bars .chart-wrapper {
+    display: inline-block;
+    width: 151.3px;
+    height: 254px;
+    padding: 0;
+    border: solid 1px #f5f5f5;
+    padding-top: 5.6px;
     position: relative;
-    top: 6px; }
-  .average_hours.vertical-bars .chart-wrapper:not(:first-of-type) .title {
-    top: 6px;
-    position: relative; }
+    margin: 0 13px; }
 
 .all_data .card-body {
   padding: 25px 40px; }
@@ -15118,7 +15133,7 @@ button.btn.back-btn {
   .muted {
     font-size: 14px; }
   .announce img.fullIMG {
-    height: auto; } }
+    height: auto !important; } }
 
 @media screen and (min-width: 1200px) {
   .announce.row > div {
@@ -15227,7 +15242,7 @@ button.btn.back-btn {
         .object_cont .segmentation_btn-wrp .btn-group .btn {
           max-width: 25%;
           font-size: 14px;
-          padding: 7px 0px; }
+          padding: 2px 0px; }
     .object_cont .totalSum .data {
       margin-top: 15px; }
     .object_cont .floor_btn-wrp {
