@@ -2,8 +2,9 @@ import React, { Component, PureComponent } from 'react';
 import './style.css';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
-import Loading from './../Loading/Loading';
+//import Loading from './../Loading/Loading';
 import DataCard from './DataCard';
+import Loading from './../Loading/Small';
 
 import {
     Row, Card
