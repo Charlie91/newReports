@@ -63,5 +63,5 @@ export const customLabel = function(tooltipModel) {
     // Display, position, and set styles for font
     tooltipEl.style.opacity = 1;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -51) + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
 };
