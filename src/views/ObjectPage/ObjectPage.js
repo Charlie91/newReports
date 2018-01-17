@@ -12,7 +12,7 @@ import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
-import {customLabel} from "./customtooltip";
+import {customLabel2} from "./customtooltip2";
 
 
 function formatNumberBySpaces(num){
@@ -548,7 +548,7 @@ export default class ObjectPage extends Component {
                                                   display: false
                                               },
                                               tooltips: {
-                                                  custom: customLabel,
+                                                  custom: customLabel2,
                                                   enabled:false,
                                                   callbacks:{
                                                       label:function(tooltipItem, data	){
