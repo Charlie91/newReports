@@ -59,8 +59,8 @@
   opacity: 0;
   visibility: hidden;
   transition: visibility 0.4s linear 0s, opacity 0.2s linear 0s;
-  width: 159px;
-  height: 84px; }
+  width: 143px;
+  height: 76px; }
 .dashboard .card-header h5 {
   display: inline-block;
   font-size: 1em; }
