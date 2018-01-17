@@ -13,13 +13,8 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
+import {formatNumberBySpaces} from './../../utils/utils';
 
-
-function formatNumberBySpaces(num){
-    if(num === undefined)return '';
-    let str = String(num);
-    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-}
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -551,8 +546,8 @@ export default class ObjectPage extends Component {
                                                   custom: customLabel2,
                                                   enabled:false,
                                                   callbacks:{
-                                                      label:function(tooltipItem, data	){
-                                                          return `${tooltipItem.yLabel} чел.`
+                                                      label:function(tooltipItem, data ){
+                                                          return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
                                                       }
                                                   }
                                               },

@@ -43,6 +43,12 @@ export function mobileSidebarHidden() { //скрываем моб-е меню е
     document.body.classList.remove('sidebar-mobile-show');
 }
 
+export function formatNumberBySpaces(num){
+    if(num === undefined)return '';
+    let str = String(num);
+    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+}
+
 export function formatNumericValue(number,object){
     if(!object)object = '';
     if(typeof number === 'number'){
@@ -82,11 +88,6 @@ export function formatNumericValueWithSpaces(number,object) {
                 let billions = str_number.slice(0,str_number.length - 9);
                 return billions + ',' +  millions  + ' млрд.' + ' ' + object
             }
-            //if(str_number.length > 6){
-            //    let thousands = str_number.substr(-6,2);
-            //    let millions = str_number.slice(0,str_number.length - 6);
-            //    return millions + ',' +  thousands  + ' млн.' + ' ' + object
-            //} <div class="digit_space"></div>
             if(str_number.length > 3){
                 let units = str_number.substr(-3,1);
                 let thousands = str_number.slice(0,str_number.length - 3);
