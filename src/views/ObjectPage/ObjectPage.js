@@ -527,7 +527,7 @@ export default class ObjectPage extends Component {
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">
-                                <span className="data">{formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency} </span>
+                                <span className="data" dangerouslySetInnerHTML={{__html: formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency}} ></span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>

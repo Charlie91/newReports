@@ -46,7 +46,7 @@ export function mobileSidebarHidden() { //скрываем моб-е меню е
 export function formatNumberBySpaces(num){
     if(num === undefined)return '';
     let str = String(num);
-    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1<div class="digit_space"></div>');
 }
 
 export function formatNumericValue(number,object){
