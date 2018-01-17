@@ -86,7 +86,7 @@ $crdbody-padding : 1.3rem;
     outline: none;
     border: solid 1px #886ce6;
     text-align: center;
-    width: 84px;
+    width: 78px;
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap;
@@ -94,6 +94,7 @@ $crdbody-padding : 1.3rem;
 }
 
 .data_per_month{
+  margin-bottom: 19px;
   .header{
     padding: 10px 20px;
     h4{
@@ -125,6 +126,10 @@ $crdbody-padding : 1.3rem;
   }
 }
 
+.all_data {
+  margin-bottom: 50px;
+}
+
 .object-table td,.object-table th{
   text-align:center
 }
@@ -135,8 +140,8 @@ $crdbody-padding : 1.3rem;
 
 .object_cont{
   margin:auto;
-  margin-right: -13px;
-  margin-left: -13px;
+  //margin-right: -13px;
+  //margin-left: -13px;
 }
 
 .totalSum{
@@ -196,6 +201,10 @@ $crdbody-padding : 1.3rem;
 
 
 .announce{
+
+  .data_wrapper{
+    padding-right: 4px !important;
+  }
   >.col{
     overflow:hidden;
     max-height:400px;
@@ -204,7 +213,7 @@ $crdbody-padding : 1.3rem;
     height:100%;
   }
 
-  margin-bottom: 15px;
+  margin-bottom: 31px;
   .img_wrapper{
     border-radius:4px;
     img.fullIMG {
@@ -254,6 +263,7 @@ $crdbody-padding : 1.3rem;
 .average_hours{
   text-align:center;
   padding-bottom: 10px;
+  margin-bottom: 19px;
   .title{
     text-align: center;
     padding-left: 10px;
@@ -389,8 +399,8 @@ $crdbody-padding : 1.3rem;
 @media screen and (min-width:1200px) {
   .announce{
     &.row > div {
-      padding-right: 8px;
-      padding-left: 8px;
+      //padding-right: 8px;
+      //padding-left: 8px;
       &:first-of-type{
         .card{
           height: 100%;
@@ -408,9 +418,9 @@ $crdbody-padding : 1.3rem;
 
 @media screen and (max-width:1199px) {
   .announce {
-    > div:first-of-type {
-      > .card {
-        overflow: hidden
+    >div:first-of-type {
+      >.card {
+        overflow: hidden;
       }
     }
     .img_wrapper{
@@ -439,6 +449,7 @@ $crdbody-padding : 1.3rem;
       font-size: 32px;
     }
   }
+
   .datepicker_wrp{
     &:last-child {
       margin-left: 20px;

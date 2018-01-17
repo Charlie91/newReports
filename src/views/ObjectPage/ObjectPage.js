@@ -379,7 +379,7 @@ export default class ObjectPage extends Component {
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
-                    <Col className="order-12 order-md-1" md="6" xs="12">
+                    <Col className="data_wrapper order-12 order-md-1" md="6" xs="12">
                         <Card>
                             <CardBody>
                                 <div className="obj_title">
@@ -562,7 +562,10 @@ export default class ObjectPage extends Component {
                                                   }],
                                                   yAxes: [{
                                                       ticks: {
-                                                          beginAtZero: true
+                                                          beginAtZero: true,
+                                                          fontColor:'#7f8fa4',
+                                                          fontSize: 11,
+                                                          fontFamily: 'ProximaNova'
                                                       },
                                                       // display: false,
                                                       gridLines: {

@@ -17,7 +17,7 @@ export const customLabel = function(tooltipModel) {
 
     // Hide if no tooltip
     if (tooltipModel.opacity === 0) {
-        tooltipEl.style.opacity = 0;
+        tooltipEl.style.display = 'none';
         return;
     }
 
@@ -59,5 +59,6 @@ export const customLabel = function(tooltipModel) {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
+    tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
 };
