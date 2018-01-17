@@ -218,8 +218,8 @@ export default class BarChart extends Component {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
                                     return (
-                                            <div key={i} className="chart-wrapper" >
-                                                <div style={{height:'88%',marginLeft: '-30px'}}>
+                                        <div key={i} className="chart-wrapper" >
+                                            <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -288,14 +288,14 @@ export default class BarChart extends Component {
                                                          }
                                                      }}
                                                 />
-                                                </div>
-                                                <div className="title">Понедельник</div>
                                             </div>
+                                            <div className="title">Понедельник</div>
+                                        </div>
                                     );
                                 else
                                     return(
-                                            <div key={i} className="chart-wrapper">
-                                                <div style={{height:'88%',marginLeft: '-20px'}}>
+                                        <div key={i} className="chart-wrapper">
+                                            <div style={{height:'88%',marginLeft: '-20px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -318,6 +318,7 @@ export default class BarChart extends Component {
                                                              position:'bottom'
                                                          },
                                                          tooltips: {
+                                                             enabled:true,
                                                              backgroundColor:'#eff3f6',
                                                              bodyFontColor:'#354052',
                                                              titleFontColor:'#354052',
@@ -362,9 +363,9 @@ export default class BarChart extends Component {
                                                          }
                                                      }}
                                                 />
-                                                </div>
-                                                <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
                                             </div>
+                                            <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
+                                        </div>
                                     );
                             }
                         )}

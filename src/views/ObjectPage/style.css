@@ -198,20 +198,53 @@
     text-align: left; }
   .average_hours .muted {
     padding-left: 20px; }
-  .average_hours.horizontal-bars .header {
-    padding: 1rem 1rem; }
-    .average_hours.horizontal-bars .header h4 {
-      color: #354052; }
-  .average_hours.horizontal-bars .chart-wrapper {
-    display: inline-block;
-    max-width: 13.5%;
-    height: 200px;
-    padding: 0px 15px; }
-    .average_hours.horizontal-bars .chart-wrapper:first-of-type {
-      width: 18%;
-      max-width: none; }
-    .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
-      padding-left: 0%; }
+  .average_hours.horizontal-bars {
+    white-space: nowrap; }
+    .average_hours.horizontal-bars .header {
+      padding: 1rem 1rem;
+      padding-bottom: 0; }
+      .average_hours.horizontal-bars .header h4 {
+        color: #354052; }
+    .average_hours.horizontal-bars .card-body {
+      overflow: scroll;
+      padding-top: 0; }
+      .average_hours.horizontal-bars .card-body ul.ranges {
+        display: inline-block;
+        position: relative;
+        background: #fff;
+        bottom: 23px;
+        padding: 0;
+        margin-bottom: 0; }
+        .average_hours.horizontal-bars .card-body ul.ranges.fixed {
+          position: absolute !important;
+          top: 22.5%;
+          padding-right: 5px;
+          padding-top: 21px;
+          border-right: 2px solid rgba(208, 208, 208, 0.5);
+          bottom: 36px;
+          margin-top: 9px; }
+        .average_hours.horizontal-bars .card-body ul.ranges li {
+          height: auto;
+          line-height: 1.4;
+          vertical-align: top;
+          list-style: none;
+          font-size: 9px;
+          margin-bottom: 8.5px;
+          color: #7f8fa4; }
+          .average_hours.horizontal-bars .card-body ul.ranges li:last-of-type {
+            margin-bottom: 0; }
+    .average_hours.horizontal-bars .chart-wrapper {
+      display: inline-block;
+      max-width: 132px;
+      margin-right: 20px;
+      height: 200px;
+      border: 1px solid #f5f5f5; }
+      .average_hours.horizontal-bars .chart-wrapper:first-of-type {
+        margin-left: 13px; }
+      .average_hours.horizontal-bars .chart-wrapper.fixed {
+        margin-left: 40px; }
+      .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
+        padding-left: 0%; }
   .average_hours.vertical-bars .chart-wrapper {
     display: inline-block;
     width: 151.3px;
@@ -278,19 +311,11 @@
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
-  .horizontal-bars {
-    white-space: nowrap; }
-    .horizontal-bars h4 {
-      font-size: 18px;
-      font-weight: 400; }
-    .horizontal-bars .card-body {
-      overflow: scroll; }
-      .horizontal-bars .card-body .chart-wrapper {
-        max-width: 300px;
-        width: 200px;
-        min-width: 200px; }
-        .horizontal-bars .card-body .chart-wrapper:first-of-type {
-          width: 250px; }
+  .horizontal-bars h4 {
+    font-size: 18px;
+    font-weight: 400; }
+  .horizontal-bars .card-body {
+    overflow: scroll; }
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
