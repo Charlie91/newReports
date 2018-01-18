@@ -110,6 +110,7 @@ $crdbody-padding : 1.3rem;
   >div.card-body{
     overflow:scroll;
     padding: 1.25rem;
+    padding-left: 40px;
     ul{
       white-space: nowrap;
       padding: 0;
@@ -209,7 +210,9 @@ $crdbody-padding : 1.3rem;
     border-radius:4px;
     img.fullIMG {
       max-width: 100%;
+      width: 100%;//удалить если нужно отключить растягивание картинки
       height:100%;
+      border-radius: 0 0 3px 3px;
     }
   }
 
@@ -235,8 +238,9 @@ $crdbody-padding : 1.3rem;
     }
   }
   .features{
+    margin-top:15px;
     >div{
-      margin: 7px auto;
+      margin: -2px auto;
       >strong{
         font-size: 20px;
         font-weight: bold;
@@ -246,6 +250,7 @@ $crdbody-padding : 1.3rem;
       >.muted{
         font-size: 16px;
         color: #7f8fa4;
+        font-weight: 400;
       }
     }
   }
@@ -378,7 +383,7 @@ $crdbody-padding : 1.3rem;
   }
   .announce{
     img.fullIMG{
-      height:auto!important;
+      //height:auto!important;
     }
   }
   .average_hours.horizontal-bars .card-body ul.ranges.fixed {
@@ -388,6 +393,8 @@ $crdbody-padding : 1.3rem;
 
 @media screen and (min-width:1200px) {
   .announce{
+    margin-right: -7px;
+    margin-left: -7px;
     &.row > div {
       padding-right: 8px;
       padding-left: 8px;
@@ -398,10 +405,10 @@ $crdbody-padding : 1.3rem;
       }
     }
     .img_wrapper{
-      max-height:420px;
+      max-height:427px;
     }
     .card-body{
-      padding: 35px 40px;
+      padding: 25px 35px;
     }
   }
 }
@@ -409,12 +416,14 @@ $crdbody-padding : 1.3rem;
 @media screen and (max-width:1199px) {
   .announce {
     > div:first-of-type {
+      padding-right: 8px;
       > .card {
         overflow: hidden
       }
     }
     .img_wrapper{
       max-height:320px;
+      padding-left: 8px;
     }
     .features {
       > div {
@@ -510,8 +519,12 @@ $crdbody-padding : 1.3rem;
     padding: 0 15px;
     overflow-x: hidden;
     .announce{
+      > div:first-of-type{
+        padding-right: 15px;
+      }
       .img_wrapper{
         max-height:280px;
+        padding-left: 15px;
       }
       .geolocation {
         display:none
@@ -586,6 +599,8 @@ $crdbody-padding : 1.3rem;
     .divider{
       margin-right: -$crdbody-padding;
       margin-left: -$crdbody-padding;
+      margin-top: 10px;
+      margin-bottom: 10px;
       display:block;
     }
     input[type="date"]::-webkit-clear-button {
@@ -602,12 +617,21 @@ $crdbody-padding : 1.3rem;
 @media screen and (max-width:575px){
   .object_cont {
     .announce{
+      .features{
+        margin-top: 0;
+        >div{
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 5px;
+        }
+      }
       .img_wrapper{
         max-height:190px;
       }
       .obj_title{
         h4{
           font-size: 16px;
+          margin-bottom: 2px;
         }
         .address_mobile{
           &.muted{

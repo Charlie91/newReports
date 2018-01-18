@@ -326,6 +326,7 @@ export default class ObjectPage extends Component {
 
     handleChangeEnd(date) {
         if(date - this.state.startDate < 0)return false;
+        if(date > moment())return false;
         let newSegment = this.trackActualSegments(this.state.startDate,date);
         this.setState({endDate: date,timeSegment:newSegment}, () => this.getFloorsData());
     }
