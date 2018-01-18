@@ -192,14 +192,9 @@ li.node:hover {
   background: #ececec; }
 
 .tag-item:last-child::after {
-  content: '\25BC';
   cursor: pointer;
   color: #354052;
-  font-size: 10px;
-  margin-left: -18px; }
-
-.dropdown--active .tag-item:last-child::after {
-  content: '\25B2'; }
+  margin-left: -14px; }
 
 .tree_select {
   margin-left: 34px;
@@ -281,6 +276,10 @@ a.dropdown__trigger.dropdown-trigger {
 @media screen and (max-width: 700px) {
   .tag-item:last-child {
     margin-left: 0; }
+  .tag-item:last-child::after {
+    cursor: pointer;
+    color: #354052;
+    margin-left: -25px; }
   .dropdown__content.dropdown-content {
     right: 0%; }
   li.node {

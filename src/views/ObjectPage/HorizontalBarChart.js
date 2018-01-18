@@ -199,12 +199,10 @@ export default class HorizontalBarChart extends Component {
             let firstChart = document.querySelector('.average_hours.horizontal-bars .chart-wrapper:first-of-type');
 
             if(wrapper.scrollLeft){
-                ranges.classList.add('fixed');
-                firstChart.classList.add('fixed');
+                 ranges.classList.add('fixed');
             }
             else{
-                ranges.classList.remove('fixed');
-                firstChart.classList.remove('fixed');
+                 ranges.classList.remove('fixed');
             }
         }
     }
@@ -217,7 +215,7 @@ export default class HorizontalBarChart extends Component {
                 <Card className="average_hours horizontal-bars">
                     <div className="header">
                         <h4>Средняя посещаемость по часам</h4>
-                        <p className="muted">Поясняющий текст о том, что тут показано</p>
+                        <p className="muted">Указано среднее кол-во человек проходящее с 0 до 24 часов по дням недели</p>
                     </div>
                     <CardBody>
                         <Loading/>
@@ -229,7 +227,7 @@ export default class HorizontalBarChart extends Component {
             <Card className="average_hours horizontal-bars">
                 <div className="header">
                     <h4>Средняя посещаемость по часам</h4>
-                    <p className="muted">Поясняющий текст о том, что тут показано</p>
+                    <p className="muted">Указано среднее кол-во человек проходящее с 0 до 24 часов по дням недели</p>
                 </div>
                 <CardBody>
                     <ul className="ranges">

@@ -9181,8 +9181,8 @@ a.text-dark:focus, a.text-dark:hover {
     transition: visibility 0.4s linear 0s, opacity 0.2s linear 0s;
     opacity: 1;
     /*max-width: 110%;*/
-    width: 159px;
-    height: 84px; }
+    width: 143px;
+    height: 76px; }
 
 .dashboard .card {
   border: solid 1px rgba(169, 218, 235, 0.5);
@@ -9221,8 +9221,8 @@ a.text-dark:focus, a.text-dark:hover {
   opacity: 0;
   visibility: hidden;
   transition: visibility 0.4s linear 0s, opacity 0.2s linear 0s;
-  width: 159px;
-  height: 84px; }
+  width: 143px;
+  height: 76px; }
 
 .dashboard .card-header h5 {
   display: inline-block;
@@ -9269,7 +9269,7 @@ a.text-dark:focus, a.text-dark:hover {
     margin-left: auto;
     margin-right: auto; } }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 310px) {
   .dashboard .card img.title-image {
     display: none; }
   .dashboard .card img.title-image_hidden {
