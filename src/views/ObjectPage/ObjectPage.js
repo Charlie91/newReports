@@ -480,8 +480,8 @@ export default class ObjectPage extends Component {
                     <CardBody className="card-body">
                         <h5 className="measure">{this.state.type}</h5>
                         <Row>
-                            <Col xs="12" md="4" lg="4" xl="4">
-                                <span className="muted">{(this.state.type === 'Выручка') ? 'Количество выручки' : 'Количество людей'} с </span>
+                            <Col className="datepickers" xs="12" md="5" lg="5" xl="4">
+                                <span className="muted">{(this.state.type === 'Выручка') ? 'Кол-во выручки' : 'Кол-во людей'} с </span>
                                 <div className="datepicker_wrp">
                                     {
                                         (this.state.viewportWidth > 767) ?
@@ -524,7 +524,7 @@ export default class ObjectPage extends Component {
                                     }
                                 </div>
                             </Col>
-                            <Col xs="12" md="5" lg="5" xl="5">
+                            <Col xs="12" md="4" lg="4" xl="5">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">

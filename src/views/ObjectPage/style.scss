@@ -129,6 +129,12 @@ $crdbody-padding : 1.3rem;
 
 .all_data {
   margin-bottom: 50px;
+  .datepickers{
+    white-space: nowrap;
+    .muted{
+      margin-right:2px
+    }
+  }
 }
 
 .object-table td,.object-table th{
@@ -146,12 +152,12 @@ $crdbody-padding : 1.3rem;
 }
 
 .totalSum{
+  white-space: nowrap;
   .data{
     color: #354052;
     font-size: 2.3em;
     display:block;
     line-height: 0.8;
-    word-wrap: initial;
   }
 }
 
@@ -202,9 +208,8 @@ $crdbody-padding : 1.3rem;
 
 
 .announce{
-
   .data_wrapper{
-    padding-right: 4px !important;
+    padding-right: 4px;
   }
   >.col{
     overflow:hidden;
@@ -286,6 +291,7 @@ $crdbody-padding : 1.3rem;
   }
   .muted{
     padding-left: 20px;
+    white-space: normal;
   }
   .chart-wrapper:not(:first-of-type) .title {
     //padding-left: 33%;
@@ -305,21 +311,14 @@ $crdbody-padding : 1.3rem;
       padding-top: 0;
       ul.ranges {
         display: inline-block;
-        position: relative;
+        position: absolute;
         background: #fff;
-        bottom: 23px;
-        padding: 0;
-        margin-bottom: 0;
+        left: 0;
+        height: 210px;
+        margin-top: -5px;
+        padding: 21px 7px 0 10px;
         &.fixed{
-          position: absolute !important;
-          top: 21.7%;
-          padding-right: 5px;
-          padding-top: 21px;
-          border-right: 2px solid rgba(208, 208, 208, 0.5);
-          bottom: 36px;
-          margin-top: 9px;
-          padding-left: 20px;
-          left: 0;
+          border-right:1px solid rgba(208, 208, 208, 0.5);
         }
         li{
           height: auto;
@@ -337,7 +336,7 @@ $crdbody-padding : 1.3rem;
     }
     .chart-wrapper{
       &:first-of-type{
-        margin-left:13px;
+        margin-left:21px;
       }
       &.fixed{
         margin-left:38px;
@@ -396,15 +395,10 @@ $crdbody-padding : 1.3rem;
       //height:auto!important;
     }
   }
-  .average_hours.horizontal-bars .card-body ul.ranges.fixed {
-    top: 22.5%;
-  }
 }
 
 @media screen and (min-width:1200px) {
   .announce{
-    margin-right: -7px;
-    margin-left: -7px;
     &.row > div {
       //padding-right: 8px;
       //padding-left: 8px;
@@ -471,6 +465,14 @@ $crdbody-padding : 1.3rem;
   }
 }
 
+@media screen and (min-width:992px) and (max-width: 1060px) {
+  .totalSum{
+    .muted{
+      font-size:11px
+    }
+  }
+}
+
 @media screen and (max-width:991px) {
   .announce{
     .img_wrapper{
@@ -493,15 +495,6 @@ $crdbody-padding : 1.3rem;
       }
       .card-body{
         overflow: scroll;
-        ul.ranges.fixed {
-          position: absolute !important;
-          top: 17.7%;
-          padding-right: 5px;
-          padding-top: 21px;
-          border-right: 2px solid rgba(208, 208, 208, 0.5);
-          bottom: 36px;
-          margin-top: 9px;
-        }
       }
     }
   }
@@ -514,7 +507,7 @@ $crdbody-padding : 1.3rem;
     }
     .datepicker_wrp{
       input.datepicker{
-        width: 60px;
+        width: 73px;
         font-size: 12px;
       }
     }
@@ -593,7 +586,7 @@ $crdbody-padding : 1.3rem;
       .btn-group{
         max-width:100%;
         .btn{
-          max-width:25%;
+          max-width: 100px;
           font-size: 14px;
           padding: 2px 0px;
         }

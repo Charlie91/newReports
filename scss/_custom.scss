@@ -348,6 +348,20 @@ button.settings-btn {
   background-repeat: no-repeat;
 }
 
+
+.tag-item:last-child::after{
+  content:url('../img/dropdown.png');
+}
+
+.tag-item:last-child:hover::after{
+  content:url('../img/dropup.png');
+}
+
+.dropdown--active .tag-item:last-child::after {
+  content:url('../img/dropup.png');
+}
+
+
 @media screen and (max-width:1486px){
   .bigCities{
     display:none;
