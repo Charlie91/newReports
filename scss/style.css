@@ -7205,7 +7205,7 @@ base-chart.chart {
     padding-left: 7.5px; }
 
 .main .container-fluid {
-  padding: 0 30px; }
+  padding: 0 20px; }
 
 .input-group-addon,
 .input-group-btn {
@@ -14117,4 +14117,4 @@ button.settings-btn {
 
 #chartjs-tooltip2 > div {
   height: 30px;
-  width: 80px; }
+  width: 100px; }

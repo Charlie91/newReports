@@ -34,8 +34,8 @@
       transition: visibility 0.4s linear 0s, opacity 0.2s linear 0s;
       opacity: 1;
       /*max-width: 110%;*/
-      width: 159px;
-      height: 84px;
+      width: 143px;
+      height: 76px;
     }
 
   }
@@ -80,8 +80,8 @@
     visibility: hidden;
     transition: visibility 0.4s linear 0s, opacity 0.2s linear 0s;
     //max-width: 110%;
-    width: 159px;
-    height: 84px;
+    width: 143px;
+    height: 76px;
   }
 
   .card-header h5 {
@@ -152,7 +152,7 @@
   }
 }
 
-@media screen and (max-width:390px){
+@media screen and (max-width:310px){
   .dashboard {
     .card img.title-image {
       display: none;

@@ -3,6 +3,8 @@ import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
+import {formatNumberBySpaces} from './../../utils/utils';
+
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график
     Chart.elements.Rectangle.prototype.draw = function() {
@@ -251,7 +253,7 @@ export default class BarChart extends Component {
                                                              displayColors:false,
                                                              callbacks:{
                                                                  label:function(tooltipItem, data	){
-                                                                     return `${tooltipItem.yLabel} чел.`
+                                                                     return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
                                                                  }
                                                              }
                                                          },

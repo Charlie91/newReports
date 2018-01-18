@@ -13,13 +13,8 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
+import {formatNumberBySpaces} from './../../utils/utils';
 
-
-function formatNumberBySpaces(num){
-    if(num === undefined)return '';
-    let str = String(num);
-    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-}
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -385,7 +380,7 @@ export default class ObjectPage extends Component {
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
-                    <Col className="order-12 order-md-1" md="6" xs="12">
+                    <Col className="data_wrapper order-12 order-md-1" md="6" xs="12">
                         <Card>
                             <CardBody>
                                 <div className="obj_title">
@@ -533,7 +528,7 @@ export default class ObjectPage extends Component {
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">
-                                <span className="data">{formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency} </span>
+                                <span className="data" dangerouslySetInnerHTML={{__html: formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency}} ></span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
@@ -552,8 +547,8 @@ export default class ObjectPage extends Component {
                                                   custom: customLabel2,
                                                   enabled:false,
                                                   callbacks:{
-                                                      label:function(tooltipItem, data	){
-                                                          return `${tooltipItem.yLabel} чел.`
+                                                      label:function(tooltipItem, data ){
+                                                          return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
                                                       }
                                                   }
                                               },
@@ -568,7 +563,10 @@ export default class ObjectPage extends Component {
                                                   }],
                                                   yAxes: [{
                                                       ticks: {
-                                                          beginAtZero: true
+                                                          beginAtZero: true,
+                                                          fontColor:'#7f8fa4',
+                                                          fontSize: 11,
+                                                          fontFamily: 'ProximaNova'
                                                       },
                                                       // display: false,
                                                       gridLines: {

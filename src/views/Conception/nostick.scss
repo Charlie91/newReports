@@ -6,6 +6,7 @@ $font_size_mobile: 0.688em;
   padding-top: 34px;
   overflow: hidden;
   font-size: $font_size;
+  margin-right: -20px;
 
 
   .empty_row{
@@ -96,9 +97,9 @@ $font_size_mobile: 0.688em;
   }
   .tbody {
     //background-color: #eff3f6;
-    height: calc(100vh - 230px);
-    height: -moz-calc(100vh - 230px);
-    height: -webkit-calc(100vh - 230px);
+    height: calc(100vh - 225px);
+    height: -moz-calc(100vh - 225px);
+    height: -webkit-calc(100vh - 225px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -236,18 +237,18 @@ $font_size_mobile: 0.688em;
 
 
 @media screen and (max-width: 991px){
-  .tbody {
-    height: calc(100vh - 190px) !important;
-    height: -moz-calc(100vh - 190px)!important;
-    height: -webkit-calc(100vh - 190px) !important;
+  #no-stick {
+    margin-right: 0px;
+    .tbody {
+      height: calc(100vh - 190px) !important;
+      height: -moz-calc(100vh - 190px) !important;
+      height: -webkit-calc(100vh - 190px) !important;
+    }
   }
 }
 
 
 @media screen and (max-width:767px){
-  .container-fluid{
-    //padding: 0px !important;
-  }
   #no-stick {
     font-size: $font_size_mobile;
     padding-top: 0px;
@@ -353,7 +354,7 @@ $font_size_mobile: 0.688em;
 
 ::-webkit-scrollbar {
   width: 7px;
-  height: 10px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   -webkit-border-radius: 10px;
