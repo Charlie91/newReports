@@ -181,6 +181,7 @@ $crdbody-padding : 1.3rem;
   h4{
     font-size: 55px;
     color: #354052;
+    white-space: nowrap;
   }
   .muted{
     font-size:14px;
@@ -210,6 +211,7 @@ $crdbody-padding : 1.3rem;
 .announce{
   .data_wrapper{
     padding-right: 4px;
+    overflow:hidden;
   }
   >.col{
     overflow:hidden;
@@ -408,11 +410,11 @@ $crdbody-padding : 1.3rem;
         }
       }
     }
-    .img_wrapper{
+    .img_wrapper,.data_wrapper{
       max-height:427px;
     }
     .card-body{
-      padding: 25px 35px;
+      padding: 25px 40px;
     }
   }
 }
