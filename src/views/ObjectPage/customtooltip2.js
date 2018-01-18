@@ -1,11 +1,16 @@
+import moment from "moment/moment";
+
+
 export const customLabel2 = function(tooltipModel) {
     // Tooltip Element
-    var tooltipEl = document.getElementById('chartjs-tooltip2');
+    var tooltipEl = document.getElementById('chartjs-tooltip');
+    if (!tooltipEl) {
+        var tooltipEl = document.getElementById('chartjs-tooltip2');
+    }
 
     // Create element on first render
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
-        tooltipEl.id = 'chartjs-tooltip2';
         tooltipEl.innerHTML = "<div></div>";
         document.body.appendChild(tooltipEl);
         //////////////////////////////
@@ -38,22 +43,33 @@ export const customLabel2 = function(tooltipModel) {
         var titleLines = tooltipModel.title || [];
         var bodyLines = tooltipModel.body.map(getBody);
 
-        var innerHtml = '<div class="tooltip_body">';
-
-        bodyLines.forEach(function(body, i) {
-            innerHtml += '<span>'  + body + '</span>';
+        let innerHtmlTitle = '';
+        titleLines.forEach(function(title) {
+            if (moment(title).format("hh:mm") == '12:00' ){
+                tooltipEl.id = 'chartjs-tooltip2';
+            } else {
+                innerHtmlTitle += '<div class="tooltip_title">';
+                tooltipEl.id = 'chartjs-tooltip';
+                innerHtmlTitle += '<span>' +  moment(title).format("hh:mm DD.MM.YYYY") + '</span>';
+                innerHtmlTitle += '</div>';
+            }
         });
-        innerHtml += '</div>';
+
+        let innerHtmlBody = '<div class="tooltip_body">';
+        bodyLines.forEach(function(body, i) {
+            innerHtmlBody += '<span>'  + body + '</span>';
+        });
+        innerHtmlBody += '</div>';
 
         var tableRoot = tooltipEl.querySelector('div:first-of-type');
-        tableRoot.innerHTML = innerHtml;
+        tableRoot.innerHTML = innerHtmlTitle + innerHtmlBody;
     }
 
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 50) + 'px';
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - 43) + 'px';
+    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
 };

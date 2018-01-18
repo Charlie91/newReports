@@ -1,3 +1,6 @@
+import moment from "moment/moment";
+
+
 export const customLabel = function(tooltipModel) {
     // Tooltip Element
     var tooltipEl = document.getElementById('chartjs-tooltip');
@@ -38,20 +41,22 @@ export const customLabel = function(tooltipModel) {
         var titleLines = tooltipModel.title || [];
         var bodyLines = tooltipModel.body.map(getBody);
 
-        var innerHtml = '<div class="tooltip_title">';
+        var innerHtmlTitle = '<div class="tooltip_title">';
 
         titleLines.forEach(function(title) {
-            innerHtml += '<span>' + title + '</span>';
-        });
-        innerHtml += '</div><div class="tooltip_body">';
 
-        bodyLines.forEach(function(body, i) {
-            innerHtml += '<span>'  + body + '</span>';
+            innerHtmlTitle += '<span>' + title + '</span>';
         });
-        innerHtml += '</div>';
+        innerHtmlTitle += '</div>';
+
+        let innerHtmlBody = '<div class="tooltip_body">';
+        bodyLines.forEach(function(body, i) {
+            innerHtmlBody += '<span>'  + body + '</span>';
+        });
+        innerHtmlBody += '</div>';
 
         var tableRoot = tooltipEl.querySelector('div:first-of-type');
-        tableRoot.innerHTML = innerHtml;
+        tableRoot.innerHTML = innerHtmlTitle + innerHtmlBody;
     }
 
     var position = this._chart.canvas.getBoundingClientRect();
