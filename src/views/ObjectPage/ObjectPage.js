@@ -410,14 +410,18 @@ export default class ObjectPage extends Component {
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            {this.state.object.area}м<sup>2</sup>
+                                            <b>{this.state.object.area}м<sup>2</sup></b>
                                             <span className="muted">  GLA</span>
-                                            {this.state.object.gl_area}м<sup>2</sup>
+                                            <b>{this.state.object.gl_area}м<sup>2</sup></b>
                                         </div>
 
                                         <div>
                                             <strong>Дата открытия:</strong>
                                             <span className="muted">  12 января 2008 г.</span>
+                                        </div>
+
+                                        <div className="floor_plans">
+                                            <strong>Поэтажные планы</strong>
                                         </div>
 
                                     </Col>
@@ -576,30 +580,8 @@ export default class ObjectPage extends Component {
                                                           time: {
                                                               unit: "day",
                                                               displayFormats: {
-                                                                  day: "D"
+                                                                  day: "D MMM"
                                                               }
-                                                          }
-                                                      },
-                                                      {
-                                                          id: "x-months",
-                                                          afterFit: function(scale) {
-                                                              scale.height = 18
-                                                          },
-                                                          gridLines: {
-                                                              display: false,
-                                                              drawBorder: false,
-                                                              tickMarkLength:1
-                                                          },
-                                                          type: "time",
-                                                          display: true,
-                                                          time: {
-                                                              unit: "day",
-                                                              displayFormats: { day: "MMM" }
-                                                          },
-                                                          ticks: {
-                                                              fontColor:'#7f8fa4',
-                                                              fontSize: 14,
-                                                              fontFamily: 'ProximaNova',
                                                           }
                                                       },
                                                       {
