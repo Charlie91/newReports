@@ -145,7 +145,7 @@ class TableVerticalNoStick extends Component {
     }
 
     componentDidUpdate(){
-        //this.setWrapperWidth();
+        this.setWrapperWidth();
         //this.equalizeTableHeaderHeight();
     }
 
@@ -156,7 +156,6 @@ class TableVerticalNoStick extends Component {
             sum = document.querySelector(".fix-column").offsetWidth;
         for(let i = 0; i < rcHead.children.length; i++){
             sum += rcHead.children[i].offsetWidth;
-            //console.log(rcHead.children[i].offsetWidth);
         }
         if(stick.offsetWidth > 767)
             sum+=7;
@@ -164,7 +163,6 @@ class TableVerticalNoStick extends Component {
             wrapper.style.width = (sum) + 'px';
         else
             wrapper.style.width = 'auto';
-
     }
 
     equalizeTableHeaderHeight(){
