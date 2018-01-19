@@ -50,7 +50,7 @@ export const customLabel2 = function(tooltipModel) {
             } else {
                 innerHtmlTitle += '<div class="tooltip_title">';
                 tooltipEl.id = 'chartjs-tooltip';
-                innerHtmlTitle += '<span>' +  moment(title).format("HH:mm DD.MM.YYYY") + '</span>';
+                innerHtmlTitle += '<span>' +  moment(title).format("HH:mm, DD.MM.YYYY") + '</span>';
                 innerHtmlTitle += '</div>';
             }
         });
