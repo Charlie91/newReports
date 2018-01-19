@@ -133,7 +133,8 @@
   padding-bottom: 5px; }
   .obj_title h4 {
     font-size: 55px;
-    color: #354052; }
+    color: #354052;
+    white-space: nowrap; }
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
@@ -155,7 +156,8 @@
 .announce {
   margin-bottom: 31px; }
   .announce .data_wrapper {
-    padding-right: 4px; }
+    padding-right: 4px;
+    overflow: hidden; }
   .announce > .col {
     overflow: hidden;
     max-height: 400px; }
@@ -285,10 +287,10 @@
 @media screen and (min-width: 1200px) {
   .announce.row > div:first-of-type .card {
     height: 100%; }
-  .announce .img_wrapper {
+  .announce .img_wrapper, .announce .data_wrapper {
     max-height: 427px; }
   .announce .card-body {
-    padding: 25px 35px; } }
+    padding: 25px 40px; } }
 
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
