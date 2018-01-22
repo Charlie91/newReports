@@ -422,7 +422,8 @@ $crdbody-padding : 1.3rem;
 
 .all_data {
   .card-body{
-    padding: 25px 40px;
+    padding: 25px 0px 25px 40px;
+    overflow: hidden;
     h5{
       font-size:30px
     }

@@ -302,7 +302,8 @@
     margin: 0 13px; }
 
 .all_data .card-body {
-  padding: 25px 40px; }
+  padding: 25px 0px 25px 40px;
+  overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
 .all_data .line-chart-wrapper {

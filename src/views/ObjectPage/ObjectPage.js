@@ -576,6 +576,10 @@ export default class ObjectPage extends Component {
                                                               fontColor:'#7f8fa4',
                                                               fontSize: 14,
                                                               fontFamily: 'ProximaNova',
+                                                              callback: function(value, index, values) {
+                                                                  return (index === 0 || index === values.length -1) ?
+                                                                      '' : value;
+                                                              }
                                                           },
                                                           gridLines: {
                                                               color: "rgba(0, 0, 0, 0.1)",
@@ -608,6 +612,10 @@ export default class ObjectPage extends Component {
                                                               fontColor:'#7f8fa4',
                                                               fontSize: 14,
                                                               fontFamily: 'ProximaNova',
+                                                              callback: function(value, index, values) {
+                                                                  return (index === 0 || index === values.length -1) ?
+                                                                      '' : value;
+                                                              }
                                                           }
                                                       }
                                                   ],
