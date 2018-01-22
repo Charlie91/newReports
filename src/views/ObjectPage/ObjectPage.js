@@ -368,6 +368,7 @@ export default class ObjectPage extends Component {
         document.querySelector('.app-body').classList.add('app-body__reduce-margin');
 
         this.removeDotFromDatepicker();
+
     }
 
     componentWillUnmount(){
