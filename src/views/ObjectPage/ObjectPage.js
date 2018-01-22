@@ -609,8 +609,10 @@ export default class ObjectPage extends Component {
                                                               gridLines: {
                                                                   color: "rgba(0, 0, 0, 0.1)",
                                                                   borderDash: [4, 4],
-                                                                  drawOnChartArea:true,
-                                                                  zeroLineColor:'#dfe2e5'
+                                                                  zeroLineColor:'#dfe2e5',
+                                                                  drawBorder: false,
+                                                                  drawOnChartArea: true,
+                                                                  drawTicks:false
                                                               },
                                                               type: 'time',
                                                               time: {
