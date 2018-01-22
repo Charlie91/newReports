@@ -119,30 +119,49 @@ $crdbody-padding : 1.3rem;
 .data_per_month{
   margin-bottom: 19px;
   .header{
-    padding: 10px 20px;
+    padding: 25px 40px;
     h4{
-      padding: 10px 20px;
       color: #354052;
       font-size: 30px;
+      line-height: 37px;
       padding-bottom: 0;
       margin-bottom: 2px;
     }
     .muted{
-      padding-left: 20px;
+      font-size: 14px;
+      line-height: 17px;
     }
   }
   >div.card-body{
     overflow:scroll;
-    padding: 1.25rem;
+    padding-top: 8px;
+    padding-right: 40px;
     padding-left: 40px;
+    padding-bottom: 15px;
     ul{
+      line-height:default;
+      height: 38px;
+      min-width: 1272px;
+      margin: 0px;
       white-space: nowrap;
       padding: 0;
       li{
         display: inline-block;
         width: 8.3%;
-        min-width: 99px;
+        div{
+          height: 18px;
+          line-height: 18px;
+          strong{
+            height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 99px;
+          }
+        }
         .muted{
+          height: 18px;
+          font-size: 14px;
+          line-height: 18px;
           font-size:14px
         }
       }
@@ -200,12 +219,17 @@ $crdbody-padding : 1.3rem;
 
 
 .obj_title{
+
   padding-bottom: 5px;
+
   h4{
     font-size: 55px;
+    line-height: 68px;
     color: #354052;
     white-space: nowrap;
+    margin: 0px !important;
   }
+
   .muted{
     font-size:14px;
     font-weight: 400;
@@ -225,7 +249,7 @@ $crdbody-padding : 1.3rem;
     text-align: left;
     color: #45bce5;
     text-decoration: underline;
-    line-height:1;
+    line-height:0;
   }
 }
 
@@ -277,20 +301,29 @@ $crdbody-padding : 1.3rem;
     }
   }
   .features{
-    margin-top:15px;
+    margin-top:25px;
     >div{
-      margin: -2px auto;
-      margin-bottom: 5px;
+      line-height: 24px;
+      margin-bottom: 4px;
       >strong{
         font-size: 20px;
+        line-height: 24px;
         font-weight: bold;
         text-align: left;
         color: #354052;
+        padding-right: 5px;
       }
       >.muted{
         font-size: 16px;
         color: #7f8fa4;
+        line-height: 24px;
         font-weight: 400;
+      }
+      >.muted-bold{
+        font-size: 16px;
+        color: #354052;
+        line-height: 24px;
+        font-weight: 500;
       }
     }
     .floor_plans{
@@ -405,7 +438,8 @@ $crdbody-padding : 1.3rem;
 
 .all_data {
   .card-body{
-    padding: 25px 40px;
+    padding: 25px 0px 25px 40px;
+    overflow: hidden;
     h5{
       font-size:30px
     }
@@ -457,7 +491,7 @@ $crdbody-padding : 1.3rem;
       max-height:400px;
     }
     .card-body{
-      padding: 40px 35px 16px 35px;
+      padding: 40px 35px 16px 40px;
     }
   }
 }
@@ -486,9 +520,7 @@ $crdbody-padding : 1.3rem;
     }
     .geolocation {
       .map_wrapper {
-        width: 100px;
-        height: 100px;
-
+          display: none;
       }
       .address{
         font-size:14px;
@@ -602,7 +634,7 @@ $crdbody-padding : 1.3rem;
           }
         }
         a.link_mobile{
-          display:block
+          display:block;
         }
         a.link_desktop{
           display: none;

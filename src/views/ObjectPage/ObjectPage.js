@@ -246,7 +246,7 @@ export default class ObjectPage extends Component {
                 <YMaps>
                     <Map state={mapState}
                          width={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
-                         height={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
+                         height={(this.state.viewportWidth < 1199) ? '100px' : '420px'}
                     >
                     </Map>
                 </YMaps>
@@ -453,9 +453,9 @@ export default class ObjectPage extends Component {
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <b>{this.state.object.area}м<sup>2</sup></b>
+                                            <span className="muted-bold">{this.state.object.area} м<sup>2</sup>,</span>
                                             <span className="muted">  GLA</span>
-                                            <b>{this.state.object.gl_area}м<sup>2</sup></b>
+                                            <span className="muted-bold">{this.state.object.gl_area} м<sup>2</sup></span>
                                         </div>
 
                                         <div>
@@ -473,7 +473,9 @@ export default class ObjectPage extends Component {
                                             {this.renderMap()}
                                         </div>
                                         <div className="address">
-                                            {this.state.object.address}
+                                            {this.state.object.city_name},
+                                            <br/>
+                                            {String(this.state.object.address).replace(this.state.object.city_name + ',', '' )}
                                         </div>
                                     </Col>
                                 </Row>
@@ -501,23 +503,27 @@ export default class ObjectPage extends Component {
                 <Card className="data_per_month">
                     <div className="header">
                         <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
-                        <p className="muted">Поясняющий текст о том, что тут показано</p>
+                        <div className="muted">Поясняющий текст о том, что тут показано</div>
                     </div>
                     <CardBody>
                         <ul>
-                            {  (this.state.monthlyData) ?
-                                this.state.monthlyData.map( (item,i) => {
-                                    return(
-                                        <li key={i}>
-                                            <div>
-                                                <strong>{formatNumericValue(item.value)}</strong>
-                                            </div>
-                                            <div className="muted">
-                                                {`${formatMonths(item.month)} ${item.year}`}
-                                            </div>
-                                        </li>
-                                    )
-                                })
+                            {
+                                (this.state.monthlyData) ?
+                                    this.state.monthlyData.reverse().map( (item,i) => {
+                                            return(
+                                                <li key={i}>
+                                                    <div>
+                                                        <strong>{formatNumericValue(item.value) +
+                                                        ((this.state.type === 'Выручка') ? '' : 'чел.') }
+                                                        </strong>
+                                                    </div>
+                                                    <div className="muted">
+                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : item.year) }` }
+                                                    </div>
+                                                </li>
+                                            )
+                                    }
+                                )
                                 :
                                 <Loading/>
                             }
@@ -666,18 +672,66 @@ export default class ObjectPage extends Component {
                                                           ticks: {
                                                               beginAtZero: true,
                                                               fontColor:'#7f8fa4',
-                                                              fontSize: 11,
-                                                              fontFamily: 'ProximaNova'
+                                                              fontSize: 14,
+                                                              fontFamily: 'ProximaNova',
+                                                              callback: function(value, index, values) {
+                                                                  return (index === 0 || index === values.length -1) ?
+                                                                      '' : value;
+                                                              }
                                                           },
                                                           gridLines: {
                                                               color: "rgba(0, 0, 0, 0.1)",
                                                               borderDash: [4, 4],
                                                               zeroLineColor:'#dfe2e5',
                                                           },
-                                                      }]
-                                                  }
-                                              }}
-                                        />
+                                                          type: 'time',
+                                                          time: {
+                                                              unit: "day",
+                                                              displayFormats: {
+                                                                  day: "D MMM"
+                                                              }
+                                                          }
+                                                      },
+                                                      {
+                                                          id: "x-year",
+                                                          gridLines: {
+                                                              display: false,
+                                                              drawBorder: false,
+                                                              tickMarkLength:1
+                                                          },
+                                                          type: "time",
+                                                          display: true,
+                                                          time: {
+                                                              unit: "day",
+                                                              displayFormats: { day: "YYYY" }
+                                                          },
+                                                          ticks: {
+                                                              fontColor:'#7f8fa4',
+                                                              fontSize: 14,
+                                                              fontFamily: 'ProximaNova',
+                                                              callback: function(value, index, values) {
+                                                                  return (index === 0 || index === values.length -1) ?
+                                                                      '' : value;
+                                                              }
+                                                          }
+                                                      }
+                                                  ],
+                                                  yAxes: [{
+                                                      ticks: {
+                                                          beginAtZero: true,
+                                                          fontColor:'#7f8fa4',
+                                                          fontSize: 11,
+                                                          fontFamily: 'ProximaNova'
+                                                      },
+                                                      gridLines: {
+                                                          color: "rgba(0, 0, 0, 0.1)",
+                                                          borderDash: [4, 4],
+                                                          zeroLineColor:'#dfe2e5',
+                                                      },
+                                                  }]
+                                              }
+                                          }}
+                                    />
                                     </div>
                                 }
                                 <canvas id="scrollYAxis" height="200" width="0"></canvas>

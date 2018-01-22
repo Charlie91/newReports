@@ -3,24 +3,27 @@ import moment from "moment/moment";
 
 export const customLabel = function(tooltipModel) {
     // Tooltip Element
-    var tooltipEl = document.getElementById('chartjs-tooltip');
+
+
+    // Tooltip Element
+    var tip = document.getElementById('chartjs-tooltip');
+    if(tip) tip.remove();
+    var tip2 = document.getElementById('chartjs-tooltip2');
+    if(tip2) tip2.remove();
 
     // Create element on first render
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.id = 'chartjs-tooltip';
-        tooltipEl.innerHTML = "<div></div>";
-        document.body.appendChild(tooltipEl);
-        //////////////////////////////
-        tooltipEl.style.position='absolute';
-        tooltipEl.style.textAlign='center';
+    var tooltipEl = document.createElement('div');
+    tooltipEl.id = 'chartjs-tooltip';
+    tooltipEl.innerHTML = "<div></div>";
+    document.body.appendChild(tooltipEl);
+    //////////////////////////////
+    tooltipEl.style.position='absolute';
+    tooltipEl.style.textAlign='center';
 
-        ///////////////////////////////
-    }
 
     // Hide if no tooltip
     if (tooltipModel.opacity === 0) {
-        tooltipEl.style.display = 'none';
+        tooltipEl.remove();
         return;
     }
 
