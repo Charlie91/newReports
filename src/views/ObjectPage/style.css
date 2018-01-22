@@ -190,20 +190,25 @@
   .announce .features {
     margin-top: 25px; }
     .announce .features > div {
-      height: 24px;
       line-height: 24px;
-      margin-bottom: 5px; }
+      margin-bottom: 4px; }
       .announce .features > div > strong {
         font-size: 20px;
         line-height: 24px;
         font-weight: bold;
         text-align: left;
-        color: #354052; }
+        color: #354052;
+        padding-right: 5px; }
       .announce .features > div > .muted {
         font-size: 16px;
         color: #7f8fa4;
         line-height: 24px;
         font-weight: 400; }
+      .announce .features > div > .muted-bold {
+        font-size: 16px;
+        color: #354052;
+        line-height: 24px;
+        font-weight: 500; }
     .announce .features .floor_plans {
       text-decoration: underline;
       margin-top: 30px; }

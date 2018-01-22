@@ -267,21 +267,27 @@ $crdbody-padding : 1.3rem;
   .features{
     margin-top:25px;
     >div{
-      height: 24px;
       line-height: 24px;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       >strong{
         font-size: 20px;
         line-height: 24px;
         font-weight: bold;
         text-align: left;
         color: #354052;
+        padding-right: 5px;
       }
       >.muted{
         font-size: 16px;
         color: #7f8fa4;
         line-height: 24px;
         font-weight: 400;
+      }
+      >.muted-bold{
+        font-size: 16px;
+        color: #354052;
+        line-height: 24px;
+        font-weight: 500;
       }
     }
     .floor_plans{

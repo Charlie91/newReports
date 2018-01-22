@@ -411,9 +411,9 @@ export default class ObjectPage extends Component {
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <b>{this.state.object.area}м<sup>2</sup></b>
+                                            <span className="muted-bold">{this.state.object.area} м<sup>2</sup>,</span>
                                             <span className="muted">  GLA</span>
-                                            <b>{this.state.object.gl_area}м<sup>2</sup></b>
+                                            <span className="muted-bold">{this.state.object.gl_area} м<sup>2</sup></span>
                                         </div>
 
                                         <div>
@@ -431,7 +431,9 @@ export default class ObjectPage extends Component {
                                             {this.renderMap()}
                                         </div>
                                         <div className="address">
-                                            {this.state.object.address}
+                                            {this.state.object.city_name},
+                                            <br/>
+                                            {String(this.state.object.address).replace(this.state.object.city_name + ',', '' )}
                                         </div>
                                     </Col>
                                 </Row>
