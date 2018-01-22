@@ -12,7 +12,6 @@ import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
-import {customLabel} from "./customtooltip";
 import {customLabel2} from "./customtooltip2";
 
 import {formatNumberBySpaces} from './../../utils/utils';
@@ -490,7 +489,7 @@ export default class ObjectPage extends Component {
                                                         </strong>
                                                     </div>
                                                     <div className="muted">
-                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : item.year) }` }
+                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
                                                     </div>
                                                 </li>
                                             )
@@ -598,13 +597,18 @@ export default class ObjectPage extends Component {
                                                       xAxes: [
                                                           {
                                                               id: "x-days",
-                                                              afterFit: function(scale) {
-                                                                  scale.height = 25
+                                                              afterFit: function (scale) {
+                                                                  scale.height = 29;
                                                               },
                                                               ticks: {
+                                                                  padding: 12,
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
+                                                                  callback: function(value, index, values) {
+                                                                      return (index === 0 || index === values.length -1) ?
+                                                                          '' : value;
+                                                                  }
                                                               },
                                                               gridLines: {
                                                                   color: "rgba(0, 0, 0, 0.1)",
@@ -636,76 +640,30 @@ export default class ObjectPage extends Component {
                                                                   displayFormats: { day: "YYYY" }
                                                               },
                                                               ticks: {
+                                                                  padding: 0,
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
+                                                                  callback: function(value, index, values) {
+                                                                      return (index === 0 || index === values.length -1) ?
+                                                                          '' : value;
+                                                                  }
                                                               }
                                                           }
                                                       ],
-                                                      yAxes: [{
-                                                          ticks: {
-                                                              beginAtZero: true,
-                                                              fontColor:'#7f8fa4',
-                                                              fontSize: 14,
-                                                              fontFamily: 'ProximaNova',
-                                                              callback: function(value, index, values) {
-                                                                  return (index === 0 || index === values.length -1) ?
-                                                                      '' : value;
-                                                              }
-                                                          },
-                                                          gridLines: {
-                                                              color: "rgba(0, 0, 0, 0.1)",
-                                                              borderDash: [4, 4],
-                                                              borderDashOffset: 0,
-                                                              zeroLineColor:'#dfe2e5',
-                                                              drawBorder: false,
-                                                              drawOnChartArea: true,
-                                                              drawTicks:false
-                                                          },
-                                                          type: 'time',
-                                                          time: {
-                                                              unit: "day",
-                                                              displayFormats: {
-                                                                  day: "D MMM"
-                                                              }
-                                                          }
-                                                      },
-                                                      {
-                                                          id: "x-year",
-                                                          gridLines: {
-                                                              display: false,
-                                                              drawBorder: false,
-                                                              tickMarkLength:1
-                                                          },
-                                                          type: "time",
-                                                          display: true,
-                                                          time: {
-                                                              unit: "day",
-                                                              displayFormats: { day: "YYYY" }
-                                                          },
-                                                          ticks: {
-                                                              fontColor:'#7f8fa4',
-                                                              fontSize: 14,
-                                                              fontFamily: 'ProximaNova',
-                                                              callback: function(value, index, values) {
-                                                                  return (index === 0 || index === values.length -1) ?
-                                                                      '' : value;
-                                                              }
-                                                          }
-                                                      }
-                                                  ],
                                                   yAxes: [{
                                                       ticks: {
                                                           beginAtZero: true,
                                                           fontColor:'#7f8fa4',
                                                           fontSize: 11,
-                                                          fontFamily: 'ProximaNova'
+                                                          fontFamily: 'ProximaNova',
+                                                          padding: 10
                                                       },
                                                       gridLines: {
                                                           color: "rgba(0, 0, 0, 0.1)",
                                                           borderDash: [4, 4],
                                                           zeroLineColor:'#dfe2e5',
-                                                          drawBorder: false,
+                                                          drawBorder: true,
                                                           drawOnChartArea: true,
                                                           drawTicks:false
                                                       },
