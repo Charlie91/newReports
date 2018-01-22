@@ -70,27 +70,44 @@
 .data_per_month {
   margin-bottom: 19px; }
   .data_per_month .header {
-    padding: 10px 20px; }
+    padding: 25px 40px; }
     .data_per_month .header h4 {
-      padding: 10px 20px;
       color: #354052;
       font-size: 30px;
+      line-height: 37px;
       padding-bottom: 0;
       margin-bottom: 2px; }
     .data_per_month .header .muted {
-      padding-left: 20px; }
+      font-size: 14px;
+      line-height: 17px; }
   .data_per_month > div.card-body {
     overflow: scroll;
-    padding: 1.25rem;
-    padding-left: 40px; }
+    padding-top: 8px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 15px; }
     .data_per_month > div.card-body ul {
+      line-height: default;
+      height: 38px;
+      min-width: 1272px;
+      margin: 0px;
       white-space: nowrap;
       padding: 0; }
       .data_per_month > div.card-body ul li {
         display: inline-block;
-        width: 8.3%;
-        min-width: 99px; }
+        width: 8.3%; }
+        .data_per_month > div.card-body ul li div {
+          height: 18px;
+          line-height: 18px; }
+          .data_per_month > div.card-body ul li div strong {
+            height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 99px; }
         .data_per_month > div.card-body ul li .muted {
+          height: 18px;
+          font-size: 14px;
+          line-height: 18px;
           font-size: 14px; }
 
 .all_data {

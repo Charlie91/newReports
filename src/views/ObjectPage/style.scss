@@ -102,30 +102,49 @@ $crdbody-padding : 1.3rem;
 .data_per_month{
   margin-bottom: 19px;
   .header{
-    padding: 10px 20px;
+    padding: 25px 40px;
     h4{
-      padding: 10px 20px;
       color: #354052;
       font-size: 30px;
+      line-height: 37px;
       padding-bottom: 0;
       margin-bottom: 2px;
     }
     .muted{
-      padding-left: 20px;
+      font-size: 14px;
+      line-height: 17px;
     }
   }
   >div.card-body{
     overflow:scroll;
-    padding: 1.25rem;
+    padding-top: 8px;
+    padding-right: 40px;
     padding-left: 40px;
+    padding-bottom: 15px;
     ul{
+      line-height:default;
+      height: 38px;
+      min-width: 1272px;
+      margin: 0px;
       white-space: nowrap;
       padding: 0;
       li{
         display: inline-block;
         width: 8.3%;
-        min-width: 99px;
+        div{
+          height: 18px;
+          line-height: 18px;
+          strong{
+            height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 99px;
+          }
+        }
         .muted{
+          height: 18px;
+          font-size: 14px;
+          line-height: 18px;
           font-size:14px
         }
       }

@@ -461,12 +461,12 @@ export default class ObjectPage extends Component {
                 <Card className="data_per_month">
                     <div className="header">
                         <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
-                        <p className="muted">Поясняющий текст о том, что тут показано</p>
+                        <div className="muted">Поясняющий текст о том, что тут показано</div>
                     </div>
                     <CardBody>
                         <ul>
                             {  (this.state.monthlyData) ?
-                                this.state.monthlyData.map( (item,i) => {
+                                this.state.monthlyData.reverse().map( (item,i) => {
                                         return(
                                             <li key={i}>
                                                 <div>
