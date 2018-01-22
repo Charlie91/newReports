@@ -487,9 +487,7 @@ $crdbody-padding : 1.3rem;
     }
     .geolocation {
       .map_wrapper {
-        width: 100px;
-        height: 100px;
-
+          display: none;
       }
       .address{
         font-size:14px;

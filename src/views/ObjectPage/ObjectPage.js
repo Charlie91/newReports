@@ -465,19 +465,23 @@ export default class ObjectPage extends Component {
                     </div>
                     <CardBody>
                         <ul>
-                            {  (this.state.monthlyData) ?
-                                this.state.monthlyData.reverse().map( (item,i) => {
-                                        return(
-                                            <li key={i}>
-                                                <div>
-                                                    <strong>{formatNumericValue(item.value)}</strong>
-                                                </div>
-                                                <div className="muted">
-                                                    {`${formatMonths(item.month)} ${item.year}`}
-                                                </div>
-                                            </li>
-                                        )
-                                })
+                            {
+                                (this.state.monthlyData) ?
+                                    this.state.monthlyData.reverse().map( (item,i) => {
+                                            return(
+                                                <li key={i}>
+                                                    <div>
+                                                        <strong>{formatNumericValue(item.value) +
+                                                        ((this.state.type === 'Выручка') ? '' : 'чел.') }
+                                                        </strong>
+                                                    </div>
+                                                    <div className="muted">
+                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : item.year) }` }
+                                                    </div>
+                                                </li>
+                                            )
+                                    }
+                                )
                                 :
                                 <Loading/>
                             }

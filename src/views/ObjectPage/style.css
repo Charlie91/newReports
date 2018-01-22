@@ -332,8 +332,7 @@
   .announce .features > div .muted {
     font-size: 13px; }
   .announce .geolocation .map_wrapper {
-    width: 100px;
-    height: 100px; }
+    display: none; }
   .announce .geolocation .address {
     font-size: 14px; }
   .announce .obj_title h4 {
