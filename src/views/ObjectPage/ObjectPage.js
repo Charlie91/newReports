@@ -584,8 +584,11 @@ export default class ObjectPage extends Component {
                                                           gridLines: {
                                                               color: "rgba(0, 0, 0, 0.1)",
                                                               borderDash: [4, 4],
-                                                              drawOnChartArea:true,
-                                                              zeroLineColor:'#dfe2e5'
+                                                              borderDashOffset: 0,
+                                                              zeroLineColor:'#dfe2e5',
+                                                              drawBorder: false,
+                                                              drawOnChartArea: true,
+                                                              drawTicks:false
                                                           },
                                                           type: 'time',
                                                           time: {
@@ -630,6 +633,9 @@ export default class ObjectPage extends Component {
                                                           color: "rgba(0, 0, 0, 0.1)",
                                                           borderDash: [4, 4],
                                                           zeroLineColor:'#dfe2e5',
+                                                          drawBorder: false,
+                                                          drawOnChartArea: true,
+                                                          drawTicks:false
                                                       },
                                                   }]
                                               }
