@@ -267,7 +267,9 @@ $crdbody-padding : 1.3rem;
   .features{
     margin-top:25px;
     >div{
+      height: 24px;
       line-height: 24px;
+      margin-bottom: 5px;
       >strong{
         font-size: 20px;
         line-height: 24px;
@@ -431,7 +433,7 @@ $crdbody-padding : 1.3rem;
       max-height:400px;
     }
     .card-body{
-      padding: 40px 35px 16px 35px;
+      padding: 40px 35px 16px 40px;
     }
   }
 }

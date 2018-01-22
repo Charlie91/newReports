@@ -190,7 +190,9 @@
   .announce .features {
     margin-top: 25px; }
     .announce .features > div {
-      line-height: 24px; }
+      height: 24px;
+      line-height: 24px;
+      margin-bottom: 5px; }
       .announce .features > div > strong {
         font-size: 20px;
         line-height: 24px;
@@ -294,7 +296,7 @@
   .announce .img_wrapper, .announce .data_wrapper {
     max-height: 400px; }
   .announce .card-body {
-    padding: 40px 35px 16px 35px; } }
+    padding: 40px 35px 16px 40px; } }
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
     padding-right: 8px; }
