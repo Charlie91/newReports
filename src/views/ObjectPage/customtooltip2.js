@@ -2,27 +2,26 @@ import moment from "moment/moment";
 
 
 export const customLabel2 = function(tooltipModel) {
+
+
     // Tooltip Element
-    var tooltipEl = document.getElementById('chartjs-tooltip');
-    if (!tooltipEl) {
-        var tooltipEl = document.getElementById('chartjs-tooltip2');
-    }
+    var tip = document.getElementById('chartjs-tooltip');
+    if(tip) tip.remove();
+    var tip2 = document.getElementById('chartjs-tooltip2');
+    if(tip2) tip2.remove();
 
     // Create element on first render
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.innerHTML = "<div></div>";
-        document.body.appendChild(tooltipEl);
-        //////////////////////////////
-        tooltipEl.style.position='absolute';
-        tooltipEl.style.textAlign='center';
+    var tooltipEl = document.createElement('div');
+    tooltipEl.innerHTML = "<div></div>";
+    document.body.appendChild(tooltipEl);
+    //////////////////////////////
+    tooltipEl.style.position='absolute';
+    tooltipEl.style.textAlign='center';
 
-        ///////////////////////////////
-    }
 
     // Hide if no tooltip
     if (tooltipModel.opacity === 0) {
-        tooltipEl.style.display = 'none';
+        tooltipEl.remove();
         return;
     }
 
@@ -69,7 +68,8 @@ export const customLabel2 = function(tooltipModel) {
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY -53) + 'px';
+    console.log(tooltipEl.clientHeight);
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 12 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
 };
