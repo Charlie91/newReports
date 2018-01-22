@@ -18,18 +18,18 @@
     .segmentation_btn-wrp .btn.active:focus {
       box-shadow: none; }
 
+.underline {
+  text-decoration: underline; }
+
 .divider {
   display: none; }
 
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
-
 .revenue .segmentation_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .floor_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
 
@@ -38,7 +38,6 @@
   background: #fff;
   padding-top: 2px;
   padding-bottom: 2px; }
-
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
   background-color: #886ce6;
@@ -50,20 +49,20 @@
   display: inline-block; }
   .datepicker_wrp:last-of-type::before {
     content: 'по';
-    margin-left: -17px;
+    margin-left: -22px;
     position: absolute;
-    margin-top: 0.75%;
-    font-size: 12px;
+    margin-top: 2.7px;
+    font-size: 14px;
     color: #7f8fa4; }
   .datepicker_wrp:last-child {
-    margin-left: 20px; }
+    margin-left: 30px; }
   .datepicker_wrp input.datepicker {
     border-radius: 5px;
     box-shadow: none;
     outline: none;
     border: solid 1px #886ce6;
     text-align: center;
-    width: 78px;
+    width: 82px;
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap; }
@@ -189,7 +188,8 @@
   .announce .features {
     margin-top: 15px; }
     .announce .features > div {
-      margin: -2px auto; }
+      margin: -2px auto;
+      margin-bottom: 5px; }
       .announce .features > div > strong {
         font-size: 20px;
         font-weight: bold;
@@ -199,6 +199,9 @@
         font-size: 16px;
         color: #7f8fa4;
         font-weight: 400; }
+    .announce .features .floor_plans {
+      text-decoration: underline;
+      margin-top: 30px; }
 
 .average_hours {
   text-align: center;
@@ -275,23 +278,20 @@
   padding: 25px 40px; }
   .all_data .card-body h5 {
     font-size: 30px; }
-
 .all_data .line-chart-wrapper {
-  max-height: 183px;
+  min-height: 200px;
   margin-top: 15px; }
 
 @media screen and (min-width: 1320px) {
   .muted {
     font-size: 14px; } }
-
 @media screen and (min-width: 1200px) {
   .announce.row > div:first-of-type .card {
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
-    max-height: 427px; }
+    max-height: 400px; }
   .announce .card-body {
-    padding: 25px 40px; } }
-
+    padding: 40px 35px 16px 35px; } }
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
     padding-right: 8px; }
@@ -311,35 +311,36 @@
     font-size: 14px; }
   .announce .obj_title h4 {
     font-size: 32px; }
+
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
       margin-left: -17px;
       margin-top: 5px; } }
-
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }
-
 @media screen and (max-width: 991px) {
   .announce .img_wrapper {
     max-height: 300px; }
     .announce .img_wrapper img.fullIMG {
       height: auto; }
+
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
+
   .average_hours.horizontal-bars h4 {
     font-size: 18px;
     font-weight: 400; }
   .average_hours.horizontal-bars .card-body {
     overflow: scroll; }
+
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
     width: 73px;
     font-size: 12px; } }
-
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;
@@ -406,7 +407,6 @@
     .object_cont input[type="date"]::-webkit-inner-spin-button,
     .object_cont input[type="date"]::-webkit-calendar-picker-indicator {
       display: none; } }
-
 @media screen and (max-width: 575px) {
   .object_cont .announce .features {
     margin-top: 0; }
@@ -429,7 +429,6 @@
     font-size: 12px; }
   .object_cont .datepicker_wrp input.datepicker {
     font-size: 12px; } }
-
 @media screen and (max-width: 320px) {
   .object_cont .datepicker_wrp:last-of-type input.datepicker {
     margin-right: -15px; }
