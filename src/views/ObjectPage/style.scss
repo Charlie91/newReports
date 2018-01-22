@@ -181,12 +181,17 @@ $crdbody-padding : 1.3rem;
 
 
 .obj_title{
+
   padding-bottom: 5px;
+
   h4{
     font-size: 55px;
+    line-height: 68px;
     color: #354052;
     white-space: nowrap;
+    margin: 0px !important;
   }
+
   .muted{
     font-size:14px;
     font-weight: 400;
@@ -206,7 +211,7 @@ $crdbody-padding : 1.3rem;
     text-align: left;
     color: #45bce5;
     text-decoration: underline;
-    line-height:1;
+    line-height:0;
   }
 }
 
@@ -258,12 +263,12 @@ $crdbody-padding : 1.3rem;
     }
   }
   .features{
-    margin-top:15px;
+    margin-top:25px;
     >div{
-      margin: -2px auto;
-      margin-bottom: 5px;
+      line-height: 24px;
       >strong{
         font-size: 20px;
+        line-height: 24px;
         font-weight: bold;
         text-align: left;
         color: #354052;
@@ -271,6 +276,7 @@ $crdbody-padding : 1.3rem;
       >.muted{
         font-size: 16px;
         color: #7f8fa4;
+        line-height: 24px;
         font-weight: 400;
       }
     }
@@ -557,7 +563,7 @@ $crdbody-padding : 1.3rem;
           }
         }
         a.link_mobile{
-          display:block
+          display:block;
         }
         a.link_desktop{
           display: none;

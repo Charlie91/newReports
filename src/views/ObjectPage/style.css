@@ -132,8 +132,10 @@
   padding-bottom: 5px; }
   .obj_title h4 {
     font-size: 55px;
+    line-height: 68px;
     color: #354052;
-    white-space: nowrap; }
+    white-space: nowrap;
+    margin: 0px !important; }
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
@@ -150,7 +152,7 @@
     text-align: left;
     color: #45bce5;
     text-decoration: underline;
-    line-height: 1; }
+    line-height: 0; }
 
 .announce {
   margin-bottom: 31px; }
@@ -186,18 +188,19 @@
     margin-top: 14px;
     font-weight: 400; }
   .announce .features {
-    margin-top: 15px; }
+    margin-top: 25px; }
     .announce .features > div {
-      margin: -2px auto;
-      margin-bottom: 5px; }
+      line-height: 24px; }
       .announce .features > div > strong {
         font-size: 20px;
+        line-height: 24px;
         font-weight: bold;
         text-align: left;
         color: #354052; }
       .announce .features > div > .muted {
         font-size: 16px;
         color: #7f8fa4;
+        line-height: 24px;
         font-weight: 400; }
     .announce .features .floor_plans {
       text-decoration: underline;
