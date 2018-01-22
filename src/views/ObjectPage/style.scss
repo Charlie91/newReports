@@ -1,7 +1,24 @@
 $crdbody-padding : 1.3rem;
+/////////////////delete that from this line
 
+.chartWrapper {
+  //position: relative;
+  width:600px;
+  overflow: scroll;
+}
 
+.chartWrapper > canvas {
+  position: absolute;
+  top: 0;
+  pointer-events:none;
+}
 
+.chartAreaWrapper {
+  width: 1200px;
+  overflow-x: scroll;
+}
+
+/////////////////to that
 .app-body_new_margin{
   margin-top:55px
 }
@@ -308,7 +325,6 @@ $crdbody-padding : 1.3rem;
   }
   .chart-wrapper:not(:first-of-type) .title {
     //padding-left: 33%;
-
   }
   &.horizontal-bars{
     white-space: nowrap;
@@ -394,9 +410,25 @@ $crdbody-padding : 1.3rem;
       font-size:30px
     }
   }
-  .line-chart-wrapper {
+  .line-chart-wrapper{
     min-height: 200px;
     margin-top: 15px;
+    >#scrollYAxis{
+      display: none;
+      position: absolute;
+      top: 0;
+      margin-top: 15px;
+      pointer-events: none;
+    }
+    .scrolled{
+      background: #fff;
+      border-right: 1px solid rgba(208, 208, 208, 0.5);
+      padding-bottom: 33px;
+      display: block!important;
+    }
+    .linechart_area_wrapper{
+      min-height: 200px;
+    }
   }
 }
 @media screen and (min-width:1320px) {
@@ -525,6 +557,17 @@ $crdbody-padding : 1.3rem;
         font-size: 12px;
       }
     }
+    .line-chart-wrapper {
+      width: 100%;
+      overflow: scroll;
+      position: static;
+      >#scrollYAxis{
+        display: none;
+      }
+      .linechart_area_wrapper{
+        width:1244px;
+      }
+    }
   }
 
 }
@@ -589,6 +632,9 @@ $crdbody-padding : 1.3rem;
       margin-top: 20px;
       .line-chart-wrapper {
         padding: 10px 0px;
+        #scrollYAxis{
+          margin-top: 25px;
+        }
       }
     }
     .horizontal-bars{

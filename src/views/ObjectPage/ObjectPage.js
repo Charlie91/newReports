@@ -176,10 +176,10 @@ export default class ObjectPage extends Component {
     getMonthlyDataPerYear(){
         if(!this.state.floors)return null;
         let options = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        },
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors'
+            },
             floorID = '';
 
         let [startDate, endDate] = [ moment().add(-11,'months').format("YYYYMMDD"), moment().format("YYYYMMDD") ];
@@ -191,12 +191,12 @@ export default class ObjectPage extends Component {
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=M`;
         ajaxRequest(url,options)
             .then(data => {
-               let newArr = data.floorData.map(item => {
-                   let obj = {};
-                   obj.value = Math.round(item.VALUE);
-                   [obj.month, obj.year] = [moment(item.THEDATE).month(), moment(item.THEDATE).year()];
-                   return obj
-               });
+                let newArr = data.floorData.map(item => {
+                    let obj = {};
+                    obj.value = Math.round(item.VALUE);
+                    [obj.month, obj.year] = [moment(item.THEDATE).month(), moment(item.THEDATE).year()];
+                    return obj
+                });
                 this.setState({monthlyData:newArr})
             })
             .catch(err => console.log(err))
@@ -204,29 +204,29 @@ export default class ObjectPage extends Component {
 
     getNewStyleForChart(typeArr){
         let chart = this.state.chart;
-            chart.datasets = [
-                {
-                    label: (typeArr[0] === 'Выручка') ? 'Выручка' : 'Количество чел-к',
-                    fill: true,
-                    lineTension: 0.1,
-                    backgroundColor: (typeArr[0] === 'Выручка') ? 'rgba(246, 170, 37, 0.1)' : 'rgba(163, 136, 227, 0.1)',// #f6aa2524
-                    borderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
-                    pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
-                    pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 2.5,
-                    pointHitRadius: 10,
-                    data: []
-                }
-            ];
+        chart.datasets = [
+            {
+                label: (typeArr[0] === 'Выручка') ? 'Выручка' : 'Количество чел-к',
+                fill: true,
+                lineTension: 0.1,
+                backgroundColor: (typeArr[0] === 'Выручка') ? 'rgba(246, 170, 37, 0.1)' : 'rgba(163, 136, 227, 0.1)',// #f6aa2524
+                borderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
+                pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointBorderWidth: 5,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointHoverBorderWidth: 2,
+                pointRadius: 2.5,
+                pointHitRadius: 10,
+                data: []
+            }
+        ];
         return chart;
     }
 
@@ -336,6 +336,17 @@ export default class ObjectPage extends Component {
         this.setState({endDate: moment(e.target.value)}, () => this.getFloorsData());
     }
 
+    handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
+        let chart = document.querySelector('.line-chart-wrapper'),
+            Yaxis = document.getElementById('scrollYAxis');
+        chart.onscroll = () => {
+            if(chart.scrollLeft)
+                Yaxis.classList.add('scrolled');
+            else
+                Yaxis.classList.remove('scrolled');
+        }
+    }
+
     removeDotFromDatepicker(){  //преобразуем формат даты "08 янв. 17" в "08 янв 17" под требования дизайнера
         let datepickers = document.querySelectorAll('.datepicker');
 
@@ -369,6 +380,9 @@ export default class ObjectPage extends Component {
 
         this.removeDotFromDatepicker();
 
+        this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
+
+
     }
 
     componentWillUnmount(){
@@ -380,6 +394,34 @@ export default class ObjectPage extends Component {
 
 
     render(){
+
+        let testdata = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+
+
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -465,16 +507,16 @@ export default class ObjectPage extends Component {
                         <ul>
                             {  (this.state.monthlyData) ?
                                 this.state.monthlyData.map( (item,i) => {
-                                        return(
-                                            <li key={i}>
-                                                <div>
-                                                    <strong>{formatNumericValue(item.value)}</strong>
-                                                </div>
-                                                <div className="muted">
-                                                    {`${formatMonths(item.month)} ${item.year}`}
-                                                </div>
-                                            </li>
-                                        )
+                                    return(
+                                        <li key={i}>
+                                            <div>
+                                                <strong>{formatNumericValue(item.value)}</strong>
+                                            </div>
+                                            <div className="muted">
+                                                {`${formatMonths(item.month)} ${item.year}`}
+                                            </div>
+                                        </li>
+                                    )
                                 })
                                 :
                                 <Loading/>
@@ -540,88 +582,106 @@ export default class ObjectPage extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md='12' style={{padding:'0px'}} className="line-chart-wrapper order-12 order-md-1">
+                            <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
+                            <div  className="line-chart-wrapper">
                                 {(!this.state.chart.datasets[0].data.length) ?
                                     <Loading/>
-                                        :
-                                    <Line data={this.state.chart}
-                                          options={{
-                                              maintainAspectRatio: false,
-                                              legend: {
-                                                  display: false
-                                              },
-                                              tooltips: {
-                                                  custom: customLabel2,
-                                                  enabled:false,
-                                                  callbacks:{
-                                                      label:function(tooltipItem, data ){
-                                                          return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
+                                    :
+                                    <div className="linechart_area_wrapper">
+                                        <Line data={this.state.chart}
+                                              options={{
+                                                  maintainAspectRatio: false,
+                                                  animation: {
+                                                      duration: 0,
+                                                      onComplete: function () {
+                                                          var sourceCanvas = this.chart.ctx.canvas;
+                                                          //var copyWidth = this.scale.xScalePaddingLeft - 5;
+                                                          // the +5 is so that the bottommost y axis label is not clipped off
+                                                          // we could factor this in using measureText if we wanted to be generic
+                                                          // var copyHeight = this.scale.endPoint + 5;
+                                                          var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
+                                                          targetCtx.canvas.width = 28;
+                                                          targetCtx.canvas.height = 160;
+                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 44, 400, 0, 0, 22, 200);
+                                                      }},
+                                                  legend: {
+                                                      display: false
+                                                  },
+                                                  tooltips: {
+                                                      custom: customLabel2,
+                                                      enabled:false,
+                                                      callbacks:{
+                                                          label:function(tooltipItem, data ){
+                                                              return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
+                                                          }
                                                       }
-                                                  }
-                                              },
-                                              scales: {
-                                                  xAxes: [
-                                                      {
-                                                          id: "x-days",
-                                                          afterFit: function(scale) {
-                                                              scale.height = 25
+                                                  },
+                                                  scales: {
+                                                      xAxes: [
+                                                          {
+                                                              id: "x-days",
+                                                              afterFit: function(scale) {
+                                                                  scale.height = 25
+                                                              },
+                                                              ticks: {
+                                                                  fontColor:'#7f8fa4',
+                                                                  fontSize: 14,
+                                                                  fontFamily: 'ProximaNova',
+                                                              },
+                                                              gridLines: {
+                                                                  color: "rgba(0, 0, 0, 0.1)",
+                                                                  borderDash: [4, 4],
+                                                                  drawOnChartArea:true,
+                                                                  zeroLineColor:'#dfe2e5'
+                                                              },
+                                                              type: 'time',
+                                                              time: {
+                                                                  unit: "day",
+                                                                  displayFormats: {
+                                                                      day: "D MMM"
+                                                                  }
+                                                              }
                                                           },
+                                                          {
+                                                              id: "x-year",
+                                                              gridLines: {
+                                                                  display: false,
+                                                                  drawBorder: false,
+                                                                  tickMarkLength:1
+                                                              },
+                                                              type: "time",
+                                                              display: true,
+                                                              time: {
+                                                                  unit: "day",
+                                                                  displayFormats: { day: "YYYY" }
+                                                              },
+                                                              ticks: {
+                                                                  fontColor:'#7f8fa4',
+                                                                  fontSize: 14,
+                                                                  fontFamily: 'ProximaNova',
+                                                              }
+                                                          }
+                                                      ],
+                                                      yAxes: [{
                                                           ticks: {
+                                                              beginAtZero: true,
                                                               fontColor:'#7f8fa4',
-                                                              fontSize: 14,
-                                                              fontFamily: 'ProximaNova',
+                                                              fontSize: 11,
+                                                              fontFamily: 'ProximaNova'
                                                           },
                                                           gridLines: {
                                                               color: "rgba(0, 0, 0, 0.1)",
                                                               borderDash: [4, 4],
-                                                              drawOnChartArea:true,
-                                                              zeroLineColor:'#dfe2e5'
+                                                              zeroLineColor:'#dfe2e5',
                                                           },
-                                                          type: 'time',
-                                                          time: {
-                                                              unit: "day",
-                                                              displayFormats: {
-                                                                  day: "D MMM"
-                                                              }
-                                                          }
-                                                      },
-                                                      {
-                                                          id: "x-year",
-                                                          gridLines: {
-                                                              display: false,
-                                                              drawBorder: false,
-                                                              tickMarkLength:1
-                                                          },
-                                                          type: "time",
-                                                          display: true,
-                                                          time: {
-                                                              unit: "day",
-                                                              displayFormats: { day: "YYYY" }
-                                                          },
-                                                          ticks: {
-                                                              fontColor:'#7f8fa4',
-                                                              fontSize: 14,
-                                                              fontFamily: 'ProximaNova',
-                                                          }
-                                                      }
-                                                  ],
-                                                  yAxes: [{
-                                                      ticks: {
-                                                          beginAtZero: true,
-                                                          fontColor:'#7f8fa4',
-                                                          fontSize: 11,
-                                                          fontFamily: 'ProximaNova'
-                                                      },
-                                                      gridLines: {
-                                                          color: "rgba(0, 0, 0, 0.1)",
-                                                          borderDash: [4, 4],
-                                                          zeroLineColor:'#dfe2e5',
-                                                      },
-                                                  }]
-                                              }
-                                          }}
-                                    />
+                                                      }]
+                                                  }
+                                              }}
+                                        />
+                                    </div>
                                 }
+                                <canvas id="scrollYAxis" height="200" width="0"></canvas>
+                            </div>
                             </Col>
                             {this.renderSegmentationButtons()}
                         </Row>
