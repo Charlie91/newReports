@@ -394,34 +394,6 @@ export default class ObjectPage extends Component {
 
 
     render(){
-
-        let testdata = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        };
-
-
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -439,12 +411,10 @@ export default class ObjectPage extends Component {
                                     </Row>
                                     <a className="link_desktop" href="#">рио.москва/дмитровка</a>
                                     <p className="muted address_mobile">{this.state.object.address}</p>
-
                                 </div>
                                 <hr className="divider"/>
                                 <Row>
                                     <Col md="7" className="features">
-
                                         <div>
                                             <strong>Этажей:</strong>
                                             <span className="muted"> 4</span>

@@ -15048,27 +15048,44 @@ button.btn.back-btn {
 .data_per_month {
   margin-bottom: 19px; }
   .data_per_month .header {
-    padding: 10px 20px; }
+    padding: 25px 40px; }
     .data_per_month .header h4 {
-      padding: 10px 20px;
       color: #354052;
       font-size: 30px;
+      line-height: 37px;
       padding-bottom: 0;
       margin-bottom: 2px; }
     .data_per_month .header .muted {
-      padding-left: 20px; }
+      font-size: 14px;
+      line-height: 17px; }
   .data_per_month > div.card-body {
     overflow: scroll;
-    padding: 1.25rem;
-    padding-left: 40px; }
+    padding-top: 8px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 15px; }
     .data_per_month > div.card-body ul {
+      line-height: default;
+      height: 38px;
+      min-width: 1272px;
+      margin: 0px;
       white-space: nowrap;
       padding: 0; }
       .data_per_month > div.card-body ul li {
         display: inline-block;
-        width: 8.3%;
-        min-width: 99px; }
+        width: 8.3%; }
+        .data_per_month > div.card-body ul li div {
+          height: 18px;
+          line-height: 18px; }
+          .data_per_month > div.card-body ul li div strong {
+            height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 99px; }
         .data_per_month > div.card-body ul li .muted {
+          height: 18px;
+          font-size: 14px;
+          line-height: 18px;
           font-size: 14px; }
 
 .all_data {
@@ -15110,8 +15127,10 @@ button.btn.back-btn {
   padding-bottom: 5px; }
   .obj_title h4 {
     font-size: 55px;
+    line-height: 68px;
     color: #354052;
-    white-space: nowrap; }
+    white-space: nowrap;
+    margin: 0px !important; }
   .obj_title .muted {
     font-size: 14px;
     font-weight: 400; }
@@ -15128,7 +15147,7 @@ button.btn.back-btn {
     text-align: left;
     color: #45bce5;
     text-decoration: underline;
-    line-height: 1; }
+    line-height: 0; }
 
 .announce {
   margin-bottom: 31px; }
@@ -15164,19 +15183,27 @@ button.btn.back-btn {
     margin-top: 14px;
     font-weight: 400; }
   .announce .features {
-    margin-top: 15px; }
+    margin-top: 25px; }
     .announce .features > div {
-      margin: -2px auto;
-      margin-bottom: 5px; }
+      line-height: 24px;
+      margin-bottom: 4px; }
       .announce .features > div > strong {
         font-size: 20px;
+        line-height: 24px;
         font-weight: bold;
         text-align: left;
-        color: #354052; }
+        color: #354052;
+        padding-right: 5px; }
       .announce .features > div > .muted {
         font-size: 16px;
         color: #7f8fa4;
+        line-height: 24px;
         font-weight: 400; }
+      .announce .features > div > .muted-bold {
+        font-size: 16px;
+        color: #354052;
+        line-height: 24px;
+        font-weight: 500; }
     .announce .features .floor_plans {
       text-decoration: underline;
       margin-top: 30px; }
@@ -15253,7 +15280,8 @@ button.btn.back-btn {
     margin: 0 13px; }
 
 .all_data .card-body {
-  padding: 25px 40px; }
+  padding: 25px 0px 25px 40px;
+  overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
 
@@ -15284,7 +15312,7 @@ button.btn.back-btn {
   .announce .img_wrapper, .announce .data_wrapper {
     max-height: 400px; }
   .announce .card-body {
-    padding: 40px 35px 16px 35px; } }
+    padding: 40px 35px 16px 40px; } }
 
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
@@ -15299,8 +15327,7 @@ button.btn.back-btn {
   .announce .features > div .muted {
     font-size: 13px; }
   .announce .geolocation .map_wrapper {
-    width: 100px;
-    height: 100px; }
+    display: none; }
   .announce .geolocation .address {
     font-size: 14px; }
   .announce .obj_title h4 {
