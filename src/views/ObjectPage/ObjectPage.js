@@ -281,11 +281,14 @@ export default class ObjectPage extends Component {
     }
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
+
+        console.log( moment(this.state.startDate).diff(moment(this.state.endDate), 'days') );
+
         let arr = [
             {val:'Y',text:'По годам',render:(this.state.startDate.year() !== this.state.endDate.year())},
             {val:'M',text:'По месяцам',render:(this.state.startDate.format('YYYY-MM') !== this.state.endDate.format('YYYY-MM'))},
             {val:'D',text:'По дням',render:(this.state.startDate.format('YYYY-MM-DD') !== this.state.endDate.format('YYYY-MM-DD'))},
-            {val:'H',text:'По часам',render:true}
+            {val:'H',text:'По часам',render:( moment(this.state.startDate).diff(moment(this.state.endDate), 'days') > -14 )},
         ];
         return (
             <Col md='12' className='segmentation_btn-wrp order-1 order-md-12'>
@@ -364,9 +367,9 @@ export default class ObjectPage extends Component {
     }
 
     componentDidUpdate(){
-        if( this.state.endDate.diff(this.state.startDate,'days') > 60 && this.state.timeSegment === 'H'){
+        if( this.state.endDate.diff(this.state.startDate,'days') > 14 && this.state.timeSegment === 'H'){
             this.setState({timeSegment:'D'});
-            alert('Детализация по часам недоступна если временной промежуток больше 60ти дней.');
+            //alert('Детализация по часам недоступна если временной промежуток больше 60ти дней.');
         }
     }
 
@@ -657,6 +660,9 @@ export default class ObjectPage extends Component {
                                                           }
                                                       ],
                                                   yAxes: [{
+                                                      afterFit: function (scale) {
+                                                          scale.width = 40;
+                                                      },
                                                       ticks: {
                                                           beginAtZero: true,
                                                           fontColor:'#7f8fa4',
