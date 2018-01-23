@@ -146,7 +146,7 @@ export default class ObjectPage extends Component {
                 let diff = moment(dates[0]).diff(moment(dates[1]));
                 let first_date = moment(moment(dates[0]) + diff).format();
                 let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
-                let avg = average(values);
+                let avg = parseInt(average(values));
                 values.unshift(avg);
                 dates.unshift(first_date);
                 values.push(avg);
@@ -155,7 +155,7 @@ export default class ObjectPage extends Component {
                 let values2 = values.slice(1, values.length-1 );
                 values2.push(NaN);
                 values2.unshift(NaN);
-                chartObj.labels = dates
+                chartObj.labels = dates;
                 chartObj.datasets[1].data = values2;
 
                 this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
@@ -407,6 +407,7 @@ export default class ObjectPage extends Component {
 
 
     render(){
+        console.log(navigator);
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -529,6 +530,7 @@ export default class ObjectPage extends Component {
                                                 selectsStart
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
+                                                maxDate={moment()}
                                                 dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeStart.bind(this)}
                                             />
@@ -549,6 +551,7 @@ export default class ObjectPage extends Component {
                                                 selectsEnd
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
+                                                maxDate={moment()}
                                                 dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeEnd.bind(this)}
                                             />
