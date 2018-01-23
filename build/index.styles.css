@@ -13793,7 +13793,7 @@ body {
   display: none !important; }
 
 .main__additional-padding {
-  padding-top: 95px !important; }
+  padding-top: 117px !important; }
 
 .navbar .sidebar-minimizer {
   min-width: 50px; }
@@ -13912,6 +13912,7 @@ body {
   min-height: 50px;
   text-align: center;
   padding: 25px 0;
+  padding-right: 250px;
   margin-left: 250px;
   height: auto !important; }
 
@@ -14044,6 +14045,25 @@ button.settings-btn {
 .dropdown--active .tag-item:last-child::after {
   content: url(./img/dropup.900f133604d70813c3563ec9a1ab6756.png); }
 
+.dateBlock {
+  text-align: center;
+  line-height: 0.9;
+  font-weight: 300;
+  color: #354052;
+  right: 38px;
+  display: inline-block;
+  padding: 0;
+  max-width: 59px;
+  width: 59px; }
+  .dateBlock .date {
+    font-size: 48px; }
+  .dateBlock .month {
+    font-size: 18px; }
+
+.changeHeaderPadding {
+  padding: 17px 0 !important;
+  padding-right: 250px !important; }
+
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }
@@ -14066,9 +14086,12 @@ button.settings-btn {
     padding-top: 9px;
     padding-bottom: 1px;
     margin-left: 250px;
+    padding-right: 0 !important;
     height: auto !important; }
   .app-body__reduce-margin {
-    margin-top: 70px; } }
+    margin-top: 70px; }
+  .dateBlock {
+    display: none; } }
 
 @media screen and (max-width: 767px) {
   .app-body__reduce-margin {
@@ -15280,7 +15303,7 @@ button.btn.back-btn {
     margin: 0 13px; }
 
 .all_data .card-body {
-  padding: 25px 0px 25px 40px;
+  padding: 25px 11px 25px 40px;
   overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }

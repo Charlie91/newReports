@@ -13,7 +13,6 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-
 import {formatNumberBySpaces} from './../../utils/utils';
 import {average} from './../../utils/utils';
 
@@ -52,7 +51,6 @@ export default class ObjectPage extends Component {
                 ]
             }
         };
-
     }
 
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
