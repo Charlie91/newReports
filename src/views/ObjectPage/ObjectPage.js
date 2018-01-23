@@ -13,10 +13,9 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-
 import {formatNumberBySpaces} from './../../utils/utils';
 import {average} from './../../utils/utils';
-
+import parser from 'ua-parser-js';
 
 
 function formatMonths(index){
@@ -52,7 +51,6 @@ export default class ObjectPage extends Component {
                 ]
             }
         };
-
     }
 
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
@@ -148,7 +146,7 @@ export default class ObjectPage extends Component {
                 let diff = moment(dates[0]).diff(moment(dates[1]));
                 let first_date = moment(moment(dates[0]) + diff).format();
                 let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
-                let avg = average(values);
+                let avg = parseInt(average(values));
                 values.unshift(avg);
                 dates.unshift(first_date);
                 values.push(avg);
@@ -157,7 +155,7 @@ export default class ObjectPage extends Component {
                 let values2 = values.slice(1, values.length-1 );
                 values2.push(NaN);
                 values2.unshift(NaN);
-                chartObj.labels = dates
+                chartObj.labels = dates;
                 chartObj.datasets[1].data = values2;
 
                 this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
@@ -283,9 +281,6 @@ export default class ObjectPage extends Component {
     }
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
-
-        console.log( moment(this.state.startDate).diff(moment(this.state.endDate), 'days') );
-
         let arr = [
             {val:'Y',text:'По годам',render:(this.state.startDate.year() !== this.state.endDate.year())},
             {val:'M',text:'По месяцам',render:(this.state.startDate.format('YYYY-MM') !== this.state.endDate.format('YYYY-MM'))},
@@ -409,6 +404,7 @@ export default class ObjectPage extends Component {
 
 
     render(){
+        console.log(parser().device.type !== 'mobile' && parser().device.type !== 'tablet');
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -524,13 +520,14 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Кол-во выручки' : 'Кол-во людей'} с </span>
                                 <div className="datepicker_wrp">
                                     {
-                                        (this.state.viewportWidth > 767) ?
+                                        (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.startDate}
                                                 selectsStart
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
+                                                maxDate={moment()}
                                                 dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeStart.bind(this)}
                                             />
@@ -544,13 +541,14 @@ export default class ObjectPage extends Component {
                                 </div>
                                 <div className="datepicker_wrp">
                                     {
-                                        (this.state.viewportWidth > 767) ?
+                                        (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.endDate}
                                                 selectsEnd
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
+                                                maxDate={moment()}
                                                 dateFormat="DD MMM YYYY"
                                                 onChange={this.handleChangeEnd.bind(this)}
                                             />
