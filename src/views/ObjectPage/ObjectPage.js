@@ -15,6 +15,8 @@ import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
 
 import {formatNumberBySpaces} from './../../utils/utils';
+import {average} from './../../utils/utils';
+
 
 
 function formatMonths(index){
@@ -24,6 +26,15 @@ function formatMonths(index){
 export default class ObjectPage extends Component {
     constructor(props) {
         super(props);
+
+        moment.locale('ru'); // локализуем библиотеку
+        moment.updateLocale('ru', {
+            monthsShort : [
+                "янв", "фев", "мар", "апр", "май", "июн", "июл",
+                "авг", "сен", "окт", "ноя", "дек"
+            ]
+        });
+
         this.state = {
             viewportWidth:window.innerWidth,
             object:'',
@@ -36,36 +47,14 @@ export default class ObjectPage extends Component {
                 labels: [],
                 datasets: [
                     {
-                        label: 'Количество чел-к',
-                        fill: true,
-                        lineTension: 0.1,
-                        backgroundColor: '#f6aa2524',// rgba(163, 136, 227, 0.1)
-                        borderColor: '#f6aa25',// #886ce6
-                        borderCapStyle: 'butt',
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: 'miter',
-                        pointBorderColor: '#f6aa25',// #886ce6
-                        pointBackgroundColor: '#fff',
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: '#f6aa25',
-                        pointHoverBorderColor: '#f6aa25',
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
+                        data: []
+                    },
+                    {
                         data: []
                     }
                 ]
             }
         };
-        moment.locale('ru'); // локализуем библиотеку
-        moment.updateLocale('ru', {
-            monthsShort : [
-                "янв", "фев", "мар", "апр", "май", "июн", "июл",
-                "авг", "сен", "окт", "ноя", "дек"
-            ]
-        });
 
 
 
@@ -149,24 +138,33 @@ export default class ObjectPage extends Component {
             if(this.state.floorIndex === i)floorID = item.id
         });
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
-        console.log(url);
+        //console.log(url);
+
+
         ajaxRequest(url,options)
             .then(data => {
-                console.log(data);
                 let chartObj = this.state.chart;
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {
                     values.push(item.VALUE);
                     dates.push(item.THEDATE);
-                    // if(+item.THEDATE.substr(0,4) === moment().year()){  //если год выводимой даты совпадает с текущей - показывать только число и месяц
-                    //     dates.push(moment(item.THEDATE).format('D MMM'));
-                    // }
-                    // else{
-                    //     dates.push(moment(item.THEDATE).format('D MMM \'YY'));//иначе - показывать также и год
-                    // }
                 });
-                chartObj.labels = dates;
+
+                let diff = moment(dates[0]).diff(moment(dates[1]));
+                let first_date = moment(moment(dates[0]) + diff).format();
+                let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
+                let avg = average(values);
+                values.unshift(avg);
+                dates.unshift(first_date);
+                values.push(avg);
+                dates.push(last_date);
                 chartObj.datasets[0].data = values;
+                let values2 = values.slice(1, values.length-1 );
+                values2.push(NaN);
+                values2.unshift(NaN);
+                chartObj.labels = dates
+                chartObj.datasets[1].data = values2;
+
                 this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
             })
             .catch(err => console.log(err))
@@ -214,14 +212,31 @@ export default class ObjectPage extends Component {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
+                borderWidth: 0,
                 pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
+                pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointBorderWidth: 0,
+                pointHoverRadius: 0,
+                pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
+                pointHoverBorderWidth: 0,
+                pointRadius: 0,
+                pointHitRadius: 0,
+                data: []
+            },
+            {
+                label: '',
+                fill: false,
+                borderDash: [],
+                borderWidth: 0,
+                pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointBorderWidth: 5,
                 pointHoverRadius: 5,
                 pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointHoverBorderWidth: 2,
-                pointRadius: 2.5,
+                pointRadius: 2.4,
                 pointHitRadius: 10,
                 data: []
             }
@@ -569,13 +584,9 @@ export default class ObjectPage extends Component {
                                               options={{
                                                   maintainAspectRatio: false,
                                                   animation: {
-                                                      duration: 0,
+                                                      duration: 700,
                                                       onComplete: function () {
                                                           var sourceCanvas = this.chart.ctx.canvas;
-                                                          //var copyWidth = this.scale.xScalePaddingLeft - 5;
-                                                          // the +5 is so that the bottommost y axis label is not clipped off
-                                                          // we could factor this in using measureText if we wanted to be generic
-                                                          // var copyHeight = this.scale.endPoint + 5;
                                                           var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
                                                           targetCtx.canvas.width = 28;
                                                           targetCtx.canvas.height = 160;

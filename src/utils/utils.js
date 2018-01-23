@@ -151,3 +151,8 @@ export function deleteRegistrationCookies(){
     deleteCookie('registrationStep');
 }
 
+export function average (arr) {
+    let sum = arr.reduce((previous, current) => current += previous);
+    return sum / arr.length;
+}
+
