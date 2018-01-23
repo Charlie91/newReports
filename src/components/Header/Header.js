@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import TreeSelectComp from '../../views/TreeSelect/TreeSelect.js';
+import moment from 'moment';
 
 import {
     Col,
     NavbarToggler,
 } from 'reactstrap';
-
 
 
 
@@ -49,7 +49,7 @@ class Header extends Component {
     render() {
         return (
             <header className="app-header navbar">
-                <Col>
+                <Col md="12" lg="6">
                     <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>
                     </NavbarToggler>
                     <h5 className="page-title" >{this.props.title}</h5>
@@ -61,6 +61,12 @@ class Header extends Component {
                             availableCities={this.props.availableCities}
                         />
                     }
+                </Col>
+                <Col md="0" lg="1" xl="1" className="dateBlock">
+                    <div className="date">{moment().date()}</div>
+                    <div className="month">
+                        {['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][moment().month()]}
+                    </div>
                 </Col>
             </header>
         )
