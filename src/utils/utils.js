@@ -156,3 +156,19 @@ export function average (arr) {
     return sum / arr.length;
 }
 
+export function getCountsOfDigits(number) {
+    return(number == 0) ? 1 : Math.ceil(Math.log10(Math.abs(number) + 0.5));
+}
+
+export function getStepSize(number, timeSegment){
+    let value = 1;
+    if(timeSegment === 'Y')
+        value = number*30;
+    if(timeSegment === 'M')
+        value = number*2;
+    if(timeSegment === 'D')
+        value = parseInt(number<21 ? 1: number/20);
+    if(timeSegment === 'H')
+        value = 1;
+    return value;
+}

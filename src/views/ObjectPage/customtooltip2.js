@@ -69,7 +69,7 @@ export const customLabel2 = function(tooltipModel) {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
     console.log(tooltipEl.clientHeight);
-    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 12 + 'px';
+    tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 14 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
 };

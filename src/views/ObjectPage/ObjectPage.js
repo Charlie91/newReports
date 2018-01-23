@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {API} from './../../utils/api_paths';
+import moment from 'moment';
 import {ajaxRequest} from './../../utils/utils';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
 import {Line} from "react-chartjs-2";
@@ -15,6 +15,8 @@ import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
 import {formatNumberBySpaces} from './../../utils/utils';
 import {average} from './../../utils/utils';
+import {getStepSize} from './../../utils/utils';
+
 import parser from 'ua-parser-js';
 
 
@@ -224,8 +226,8 @@ export default class ObjectPage extends Component {
                 borderWidth: 0,
                 pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
-                pointBorderWidth: 5,
-                pointHoverRadius: 5,
+                pointBorderWidth: 6,
+                pointHoverRadius: 6,
                 pointHoverBackgroundColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointHoverBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
                 pointHoverBorderWidth: 2,
@@ -608,15 +610,23 @@ export default class ObjectPage extends Component {
                                                               afterFit: function (scale) {
                                                                   scale.height = 29;
                                                               },
+                                                              type: 'time',
+                                                              time: {
+                                                                  unit: "day",
+                                                                  unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                                                  displayFormats: {
+                                                                      day: "D MMM"
+                                                                  }
+                                                              },
                                                               ticks: {
+                                                                  beginAtZero:false,
                                                                   padding: 12,
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: function(value, index, values) {
-                                                                      return value;
-                                                                      //return (index === 0 || index === values.length -1) ?
-                                                                      //    '' : value;
+                                                                      return (index === 0 || index === values.length -1) ?
+                                                                          '' : moment(value).format("D MMM");
                                                                   }
                                                               },
                                                               gridLines: {
@@ -626,13 +636,6 @@ export default class ObjectPage extends Component {
                                                                   drawBorder: false,
                                                                   drawOnChartArea: true,
                                                                   drawTicks:false
-                                                              },
-                                                              type: 'time',
-                                                              time: {
-                                                                  unit: "day",
-                                                                  displayFormats: {
-                                                                      day: "D MMM"
-                                                                  }
                                                               }
                                                           },
                                                           {
@@ -643,20 +646,23 @@ export default class ObjectPage extends Component {
                                                                   tickMarkLength:1
                                                               },
                                                               type: "time",
-                                                              display: true,
                                                               time: {
                                                                   unit: "day",
-                                                                  displayFormats: { day: "YYYY" }
+                                                                  unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                                                  displayFormats: {
+                                                                      day: "YYYY"
+                                                                  }
                                                               },
+                                                              display: (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')),
                                                               ticks: {
+                                                                  beginAtZero:false,
                                                                   padding: 0,
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: function(value, index, values) {
-                                                                      return value;
-                                                                      //return (index === 0 || index === values.length -1) ?
-                                                                      //    '' : value;
+                                                                      return (index === 0 || index === values.length -1) ?
+                                                                         '' : value;
                                                                   }
                                                               }
                                                           }
