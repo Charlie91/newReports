@@ -391,6 +391,8 @@ export default class ObjectPage extends Component {
 
         document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
         document.querySelector('.app-body').classList.add('app-body__reduce-margin');
+        document.querySelector('.navbar').classList.add('changeHeaderPadding');
+
 
         this.removeDotFromDatepicker();
 
@@ -402,6 +404,7 @@ export default class ObjectPage extends Component {
     componentWillUnmount(){
         document.querySelector('.main').classList.remove('main__additional-padding');//кастомизация хтмл элементов под страницу - удаление
         document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
+        document.querySelector('.navbar').classList.remove('changeHeaderPadding');
         window.onresize = () => {};
     }
 
@@ -425,12 +428,10 @@ export default class ObjectPage extends Component {
                                     </Row>
                                     <a className="link_desktop" href="#">рио.москва/дмитровка</a>
                                     <p className="muted address_mobile">{this.state.object.address}</p>
-
                                 </div>
                                 <hr className="divider"/>
                                 <Row>
                                     <Col md="7" className="features">
-
                                         <div>
                                             <strong>Этажей:</strong>
                                             <span className="muted"> 4</span>
