@@ -618,6 +618,7 @@ export default class ObjectPage extends Component {
                                                                       day: "D MMM"
                                                                   }
                                                               },
+                                                              display: (this.state.timeSegment !== 'Y'),
                                                               ticks: {
                                                                   beginAtZero:false,
                                                                   padding: 12,
