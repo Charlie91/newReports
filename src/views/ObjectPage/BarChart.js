@@ -276,6 +276,7 @@ export default class BarChart extends Component {
                                                              }],
                                                              yAxes: [{
                                                                  ticks: {
+                                                                     padding: 20,
                                                                      max: this.state.maxVal,
                                                                      beginAtZero: false,
                                                                      steps: 10,
@@ -352,6 +353,7 @@ export default class BarChart extends Component {
                                                              }],
                                                              yAxes: [{
                                                                  ticks: {
+                                                                     padding:10,
                                                                      max: this.state.maxVal,
                                                                      display: true,
                                                                      beginAtZero: true,
