@@ -616,8 +616,9 @@ export default class ObjectPage extends Component {
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: function(value, index, values) {
-                                                                      return (index === 0 || index === values.length -1) ?
-                                                                          '' : value;
+                                                                      return value;
+                                                                      //return (index === 0 || index === values.length -1) ?
+                                                                      //    '' : value;
                                                                   }
                                                               },
                                                               gridLines: {
@@ -655,8 +656,9 @@ export default class ObjectPage extends Component {
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: function(value, index, values) {
-                                                                      return (index === 0 || index === values.length -1) ?
-                                                                          '' : value;
+                                                                      return value;
+                                                                      //return (index === 0 || index === values.length -1) ?
+                                                                      //    '' : value;
                                                                   }
                                                               }
                                                           }
