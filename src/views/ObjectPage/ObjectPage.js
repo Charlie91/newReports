@@ -48,15 +48,10 @@ export default class ObjectPage extends Component {
                 datasets: [
                     {
                         data: []
-                    },
-                    {
-                        data: []
                     }
                 ]
             }
         };
-
-
 
     }
 
