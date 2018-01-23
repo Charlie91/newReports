@@ -50,6 +50,7 @@
     "react-yandex-maps": "^2.1.4",
     "reactstrap": "^5.0.0-alpha.3",
     "simple-line-icons": "^2.4.1",
+    "ua-parser-js": "^0.7.17",
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
