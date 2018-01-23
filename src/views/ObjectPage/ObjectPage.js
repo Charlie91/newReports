@@ -664,6 +664,9 @@ export default class ObjectPage extends Component {
                                                           }
                                                       ],
                                                   yAxes: [{
+                                                      afterFit: function (scale) {
+                                                          scale.width = 40;
+                                                      },
                                                       ticks: {
                                                           beginAtZero: true,
                                                           fontColor:'#7f8fa4',
