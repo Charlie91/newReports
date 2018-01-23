@@ -65,6 +65,16 @@ export default class HorizontalBarChart extends Component {
         this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
     }
 
+    countBars(dataArr){
+        let count = 0;
+        dataArr.forEach(item => {
+            item.datasets[0].data.forEach(dataitem => {
+                if(dataitem)count +=1;
+            });
+        });
+        return(count > 7);
+    }
+
 
 
     componentDidUpdate(){       //добавляем border-radius'ы в график
@@ -194,6 +204,7 @@ export default class HorizontalBarChart extends Component {
 
     componentDidMount(){
         let wrapper = document.querySelector('.horizontal-bars .card-body');
+        if(!wrapper)return;
         wrapper.onscroll = function(e) {
             let ranges = document.querySelector('.horizontal-bars .card-body .ranges');
             let firstChart = document.querySelector('.average_hours.horizontal-bars .chart-wrapper:first-of-type');
@@ -209,7 +220,7 @@ export default class HorizontalBarChart extends Component {
 
 
     render(){
-        if(!this.props.render)return null;
+        if(!this.props.render || !this.countBars(this.state.bars))return null;
         if(!this.props.data){
             return (
                 <Card className="average_hours horizontal-bars">

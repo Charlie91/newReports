@@ -8,7 +8,6 @@ import {formatNumberBySpaces} from './../../utils/utils';
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график
     Chart.elements.Rectangle.prototype.draw = function() {
-
         var ctx = this._chart.ctx;
         var vm = this._view;
         var left, right, top, bottom, signX, signY, borderSkipped, radius;
@@ -192,6 +191,16 @@ export default class BarChart extends Component {
         this.setState({bars: bars,maxVal:(Math.ceil(maxVal/50) * 50)});
     }
 
+    countBars(dataArr){
+        let count = 0;
+        dataArr.forEach(item => {
+            item.datasets[0].data.forEach(dataitem => {
+                if(dataitem)count +=1;
+            });
+        });
+        return(count > 7);
+    }
+
 
 
     componentDidUpdate(){       //добавляем border-radius'ы в график
@@ -200,7 +209,7 @@ export default class BarChart extends Component {
 
 
     render(){
-        if(!this.props.render)return null;
+        if(!this.props.render || !this.countBars(this.state.bars))return null;
         if(!this.props.data){
             return (
                 <Card className="average_hours vertical-bars">
