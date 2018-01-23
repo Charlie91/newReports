@@ -36,24 +36,6 @@ export default class ObjectPage extends Component {
                 labels: [],
                 datasets: [
                     {
-                        label: 'Количество чел-к',
-                        fill: true,
-                        lineTension: 0.1,
-                        backgroundColor: '#f6aa2524',// rgba(163, 136, 227, 0.1)
-                        borderColor: '#f6aa25',// #886ce6
-                        borderCapStyle: 'butt',
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: 'miter',
-                        pointBorderColor: '#f6aa25',// #886ce6
-                        pointBackgroundColor: '#fff',
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: '#f6aa25',
-                        pointHoverBorderColor: '#f6aa25',
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
                         data: []
                     }
                 ]
