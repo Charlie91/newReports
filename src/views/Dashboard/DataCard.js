@@ -43,8 +43,8 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                          </div>
                      </Col>
                      <Col md="6">
-                         <img className="title-image" src={`${API.imgPath}/${props.obj.thumb}`} />
-                         <img className="title-image_hidden" src={`${API.imgPath}/${props.obj.thumb_over}`} />
+                         <img className="title-image" src={`${API.thumbPath}/${props.obj.thumb}`} />
+                         <img className="title-image_hidden" src={`${API.thumbPath}/${props.obj.thumb_over}`} />
                      </Col>
                  </Row>
              </CardHeader>

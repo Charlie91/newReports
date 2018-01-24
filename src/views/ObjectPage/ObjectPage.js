@@ -21,7 +21,6 @@ import {getStepSize} from './../../utils/utils';
 
 import parser from 'ua-parser-js';
 
-
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
 }
@@ -41,6 +40,7 @@ export default class ObjectPage extends Component {
         this.state = {
             viewportWidth:window.innerWidth,
             object:'',
+            images:[],
             type:'',
             currency:'',
             startDate: moment().add(-7,'days'),
@@ -60,7 +60,9 @@ export default class ObjectPage extends Component {
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
         let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
         this.getNewStyleForChart(typeArr);
-        this.setState({object:obj,
+        this.setState({
+                object:obj,
+                images:obj.picture_set,
                 type:typeArr[0],
                 currency:(typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
             },
@@ -92,6 +94,7 @@ export default class ObjectPage extends Component {
                 this.getNewStyleForChart(typeArr);
                 this.setState({
                     object:obj,
+                    images:obj.picture_set,
                     type:typeArr[0],
                     currency: typeArr[1]
                 }, () => {
@@ -409,6 +412,7 @@ export default class ObjectPage extends Component {
 
 
     render(){
+        let state = this.state;
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -467,11 +471,11 @@ export default class ObjectPage extends Component {
                         </Card>
                     </Col>
                     <Col style={{overflow:'hidden'}} className="img_wrapper order-1 order-md-12" md="6" xs="12">
-                        <img className="fullIMG" src="img/rio_full.jpg"/>
+                        <img className="fullIMG" src={state.images.length ? (API.imgPath + '/' + state.object.id + '/' + state.images[0]) : "img/rio_full.jpg"}/>
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 1367) ?
+                {(this.state.viewportWidth > 1467) ?
                     <BarChart
                         render={!(this.state.type === 'Выручка')}
                         data={this.state.data}
