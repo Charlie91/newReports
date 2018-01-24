@@ -609,8 +609,8 @@ export default class ObjectPage extends Component {
                                                       custom: customLabel2,
                                                       enabled:false,
                                                       callbacks:{
-                                                          label:function(tooltipItem, data ){
-                                                              return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
+                                                          label: (tooltipItem, data ) => {
+                                                              return `${formatNumberBySpaces(tooltipItem.yLabel)} ${this.state.currency}`
                                                           }
                                                       }
                                                   },
@@ -687,13 +687,15 @@ export default class ObjectPage extends Component {
                                                               },
                                                               type: "time",
                                                               time: {
-                                                                  unit: 'day',
+                                                                  unit: getStepTick(this.state.timeSegment),
                                                                   unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
                                                                   displayFormats: {
                                                                       day: "YYYY"
                                                                   }
                                                               },
-                                                              display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) && (this.state.timeSegment === 'D')),
+                                                              display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) &&
+                                                                ((this.state.timeSegment === 'D') || (this.state.timeSegment === 'M'))
+                                                              ),
                                                               ticks: {
                                                                   beginAtZero:false,
                                                                   padding: 0,
@@ -708,15 +710,15 @@ export default class ObjectPage extends Component {
                                                                       // if end
                                                                       if(index === 0){
                                                                           return ( side && (len - values.length) < 1 ) ? '' :
-                                                                              value;
+                                                                              moment(value).format('YYYY');
                                                                       }
                                                                       // if end
                                                                       if(index === (values.length -1)){
                                                                           return ( side && (len - values.length) < 2 ) ? '' :
-                                                                              value;
+                                                                              moment(value).format('YYYY');
                                                                       }
 
-                                                                      return value;
+                                                                      return moment(value).format('YYYY');
                                                                   }
                                                               }
                                                           }
