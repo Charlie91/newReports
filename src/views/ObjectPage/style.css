@@ -425,27 +425,32 @@
     .object_cont .announce .geolocation {
       display: none; }
     .object_cont .announce .obj_title h4 {
-      font-size: 18px; }
+      font-size: 18px;
+      line-height: normal; }
     .object_cont .announce .obj_title .address_mobile {
       display: block; }
       .object_cont .announce .obj_title .address_mobile.muted {
         font-size: 16px;
         margin-bottom: 0; }
     .object_cont .announce .obj_title a.link_mobile {
-      display: block; }
+      display: block;
+      line-height: normal; }
     .object_cont .announce .obj_title a.link_desktop {
       display: none; }
     .object_cont .features > div > strong {
       font-size: 16px; }
     .object_cont .features > div > .muted {
       font-size: 14px; }
+    .object_cont .features .floor_plans {
+      margin-top: 15px; }
     .object_cont .data_per_month {
       margin-right: -15px;
       margin-left: -15px;
       margin-top: 20px; }
       .object_cont .data_per_month .header h4 {
         font-size: 18px;
-        font-weight: 400; }
+        font-weight: 400;
+        line-height: normal; }
     .object_cont .all_data {
       margin-top: 20px; }
       .object_cont .all_data .line-chart-wrapper {

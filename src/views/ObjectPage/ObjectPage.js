@@ -593,9 +593,9 @@ export default class ObjectPage extends Component {
                                                       onComplete: function () {
                                                           var sourceCanvas = this.chart.ctx.canvas;
                                                           var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
-                                                          targetCtx.canvas.width = 28;
+                                                          targetCtx.canvas.width = 40;
                                                           targetCtx.canvas.height = 160;
-                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 44, 400, 0, 0, 22, 200);
+                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 80, 400, 0, 0, 40, 200);
                                                       }},
                                                   legend: {
                                                       display: false
