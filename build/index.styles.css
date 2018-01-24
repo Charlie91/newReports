@@ -13942,9 +13942,6 @@ body {
 .sidebar-mobile-show .app-header button.d-lg-none.navbar-toggler {
   display: none; }
 
-.link-to-object {
-  color: #151b1e; }
-
 .address {
   text-align: left;
   padding-left: 15px; }
@@ -15069,7 +15066,7 @@ button.btn.back-btn {
     white-space: nowrap; }
 
 .data_per_month {
-  margin-bottom: 19px; }
+  margin-bottom: 30px; }
   .data_per_month .header {
     padding: 25px 40px; }
     .data_per_month .header h4 {
@@ -15234,7 +15231,7 @@ button.btn.back-btn {
 .average_hours {
   text-align: center;
   padding-bottom: 10px;
-  margin-bottom: 19px; }
+  margin-bottom: 30px; }
   .average_hours .title {
     text-align: center;
     padding-left: 10px;
@@ -15292,15 +15289,19 @@ button.btn.back-btn {
         margin-left: 38px; }
       .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
         padding-left: 0%; }
-  .average_hours.vertical-bars .chart-wrapper {
-    display: inline-block;
-    width: 151.3px;
-    height: 254px;
-    padding: 0;
-    border: solid 1px #f5f5f5;
-    padding-top: 5.6px;
-    position: relative;
-    margin: 0 13px; }
+  .average_hours.vertical-bars .bars_wrapper {
+    display: flex; }
+    .average_hours.vertical-bars .bars_wrapper .chart-wrapper {
+      display: inline-block;
+      width: 151.3px;
+      height: 254px;
+      padding: 0;
+      border: solid 1px #f5f5f5;
+      padding-top: 5.6px;
+      position: relative;
+      margin: auto; }
+      .average_hours.vertical-bars .bars_wrapper .chart-wrapper:first-of-type {
+        margin-left: 21px; }
 
 .all_data .card-body {
   padding: 25px 11px 25px 40px;

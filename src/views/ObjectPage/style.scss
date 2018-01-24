@@ -135,19 +135,23 @@ $crdbody-padding : 1.3rem;
   >div.card-body{
     overflow:scroll;
     padding-top: 8px;
-    padding-right: 40px;
     padding-left: 40px;
     padding-bottom: 15px;
     ul{
       line-height:default;
+      min-width:1274px;
       height: 38px;
-      min-width: 1272px;
       margin: 0px;
       white-space: nowrap;
       padding: 0;
       li{
         display: inline-block;
-        width: 8.3%;
+        width: 7%;
+        margin-right: 1.8%;
+        &:last-of-type {
+          margin-right: 5px;
+          width: 60px;
+        }
         div{
           height: 18px;
           line-height: 18px;
@@ -269,15 +273,6 @@ $crdbody-padding : 1.3rem;
   }
 
   margin-bottom: 31px;
-  .img_wrapper{
-    border-radius:4px;
-    img.fullIMG {
-      max-width: 100%;
-      width: 100%;//удалить если нужно отключить растягивание картинки
-      height:100%;
-      border-radius: 0 0 3px 3px;
-    }
-  }
 
   .geolocation{
     .map_wrapper{
@@ -494,6 +489,7 @@ $crdbody-padding : 1.3rem;
     }
     .img_wrapper,.data_wrapper{
       max-height:400px;
+      max-width: 49.5%;
     }
     .card-body{
       padding: 40px 35px 16px 40px;
@@ -505,13 +501,15 @@ $crdbody-padding : 1.3rem;
   .announce {
     > div:first-of-type {
       padding-right: 8px;
+      max-height: 340px;
       > .card {
         overflow: hidden
       }
     }
     .img_wrapper{
-      max-height:320px;
+      max-height: 340px;
       padding-left: 8px;
+      max-width: 48%;
     }
     .features {
       > div {
@@ -559,7 +557,6 @@ $crdbody-padding : 1.3rem;
 @media screen and (max-width:991px) {
   .announce{
     .img_wrapper{
-      max-height:300px;
       img.fullIMG{
         height:auto;
       }
@@ -623,6 +620,7 @@ $crdbody-padding : 1.3rem;
       .img_wrapper{
         max-height:280px;
         padding-left: 15px;
+        max-width: none;
       }
       .geolocation {
         display:none

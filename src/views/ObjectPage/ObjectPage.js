@@ -5,6 +5,7 @@ import {ajaxRequest} from './../../utils/utils';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
+import './images.scss';
 import {Line} from "react-chartjs-2";
 import {formatNumericValue} from './../../utils/utils';
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
