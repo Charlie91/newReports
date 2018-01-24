@@ -13,7 +13,9 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
+import {formatNumberBySimpleSpaces} from './../../utils/utils';
 import {formatNumberBySpaces} from './../../utils/utils';
+
 import {average} from './../../utils/utils';
 import {getStepSize} from './../../utils/utils';
 
@@ -676,7 +678,10 @@ export default class ObjectPage extends Component {
                                                           fontColor:'#7f8fa4',
                                                           fontSize: 11,
                                                           fontFamily: 'ProximaNova',
-                                                          padding: 10
+                                                          padding: 10,
+                                                          callback: function(value, index, values) {
+                                                              return formatNumberBySimpleSpaces(value);
+                                                          }
                                                       },
                                                       gridLines: {
                                                           color: "rgba(0, 0, 0, 0.1)",

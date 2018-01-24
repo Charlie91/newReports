@@ -43,6 +43,13 @@ export function mobileSidebarHidden() { //скрываем моб-е меню е
     document.body.classList.remove('sidebar-mobile-show');
 }
 
+export function formatNumberBySimpleSpaces(num){
+    if(num === undefined)return '';
+    let str = String(num);
+    return str.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+}
+
+
 export function formatNumberBySpaces(num){
     if(num === undefined)return '';
     let str = String(num);
@@ -167,7 +174,7 @@ export function getStepSize(number, timeSegment){
     if(timeSegment === 'M')
         value = number*2;
     if(timeSegment === 'D')
-        value = parseInt(number<21 ? 1: number/20);
+        value = parseInt(number<21 ? 1: number/15);
     if(timeSegment === 'H')
         value = 1;
     return value;
