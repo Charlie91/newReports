@@ -167,6 +167,21 @@ export function getCountsOfDigits(number) {
     return(number == 0) ? 1 : Math.ceil(Math.log10(Math.abs(number) + 0.5));
 }
 
+
+export function getStepSize2(number, timeSegment){
+    let value = 'hour';
+    if(timeSegment === 'Y')
+        value = 'year';
+    if(timeSegment === 'M')
+        value = 'month';
+    if(timeSegment === 'D')
+        value = 'day';
+    if(timeSegment === 'H')
+        value = 'hour';
+    return value;
+}
+
+
 export function getStepSize(number, timeSegment){
     let value = 1;
     if(timeSegment === 'Y')

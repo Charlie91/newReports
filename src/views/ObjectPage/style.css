@@ -81,7 +81,7 @@
     white-space: nowrap; }
 
 .data_per_month {
-  margin-bottom: 19px; }
+  margin-bottom: 30px; }
   .data_per_month .header {
     padding: 25px 40px; }
     .data_per_month .header h4 {
@@ -246,7 +246,7 @@
 .average_hours {
   text-align: center;
   padding-bottom: 10px;
-  margin-bottom: 19px; }
+  margin-bottom: 30px; }
   .average_hours .title {
     text-align: center;
     padding-left: 10px;

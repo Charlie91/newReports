@@ -188,7 +188,9 @@ export default class BarChart extends Component {
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
         //this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
-        this.setState({bars: bars,maxVal: (Math.round(maxVal/10)*10)  });//(Math.ceil(maxVal/50) * 50)});
+        //this.setState({bars: bars,maxVal: (Math.round(maxVal/10)*10)  });
+        this.setState({bars: bars,maxVal: (Math.ceil(maxVal/50) * 50)});
+
     }
 
     countBars(dataArr){
