@@ -270,8 +270,8 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
-                                                                 barPercentage: 0.82,
-                                                                 categoryPercentage:0.7,
+                                                                 barPercentage: 0.845,
+                                                                 categoryPercentage:0.72,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
@@ -284,6 +284,9 @@ export default class BarChart extends Component {
                                                                  }
                                                              }],
                                                              yAxes: [{
+                                                                 afterFit: function (scale) {
+                                                                     scale.width = 46;
+                                                                 },
                                                                  ticks: {
                                                                      padding: 20,
                                                                      max: this.state.maxVal,
@@ -361,8 +364,11 @@ export default class BarChart extends Component {
                                                                  }
                                                              }],
                                                              yAxes: [{
+                                                                 afterFit: function (scale) {
+                                                                     scale.width = 46;
+                                                                 },
                                                                  ticks: {
-                                                                     padding:10,
+                                                                     padding: 20,
                                                                      max: this.state.maxVal,
                                                                      display: true,
                                                                      beginAtZero: true,
