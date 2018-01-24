@@ -117,7 +117,7 @@ $crdbody-padding : 1.3rem;
 }
 
 .data_per_month{
-  margin-bottom: 19px;
+  margin-bottom: 30px;
   .header{
     padding: 25px 40px;
     h4{
@@ -336,7 +336,7 @@ $crdbody-padding : 1.3rem;
 .average_hours{
   text-align:center;
   padding-bottom: 10px;
-  margin-bottom: 19px;
+  margin-bottom: 30px;
   .title{
     text-align: center;
     padding-left: 10px;
@@ -421,6 +421,7 @@ $crdbody-padding : 1.3rem;
           //padding-top: 0;
           //position: relative;
           //top: 4px;
+          margin-left:21px;
         }
         &:not(:first-of-type) .title{
           //top: 6px;

@@ -29,7 +29,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
  }
 
  const DataCard = (props) => (
-     <Col style={{ marginBottom: '20px'}} xs="12" sm="6" md="6" lg="6" xl="4">
+     <Col style={{ marginBottom: '30px'}} xs="12" sm="6" md="6" lg="6" xl="4">
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
                  <Row>

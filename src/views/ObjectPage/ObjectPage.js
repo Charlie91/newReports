@@ -193,7 +193,7 @@ export default class ObjectPage extends Component {
                     obj.value = Math.round(item.VALUE);
                     [obj.month, obj.year] = [moment(item.THEDATE).month(), moment(item.THEDATE).year()];
                     return obj
-                });
+                }).reverse();
                 this.setState({monthlyData:newArr})
             })
             .catch(err => console.log(err))
@@ -227,6 +227,7 @@ export default class ObjectPage extends Component {
             {
                 label: '',
                 fill: false,
+                lineTension: 0,
                 borderDash: [],
                 borderWidth: 0,
                 pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',
@@ -497,7 +498,7 @@ export default class ObjectPage extends Component {
                         <ul>
                             {
                                 (this.state.monthlyData) ?
-                                    this.state.monthlyData.reverse().map( (item,i) => {
+                                    this.state.monthlyData.map( (item,i) => {
                                             return(
                                                 <li key={i}>
                                                     <div>
