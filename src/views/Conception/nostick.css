@@ -165,7 +165,8 @@
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
-    white-space: normal; }
+    white-space: normal;
+    color: #354052; }
 
 @media screen and (max-width: 991px) {
   #no-stick {

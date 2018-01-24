@@ -95,8 +95,6 @@
 .dashboard .link-to-object {
   color: #151b1e;
   text-decoration: none; }
-  .dashboard .link-to-object:hover h5 {
-    color: #167495; }
 
 @media screen and (max-width: 717px) {
   .dashboard strong.h4.indicator {
