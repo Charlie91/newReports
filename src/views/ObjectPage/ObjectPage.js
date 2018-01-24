@@ -230,6 +230,7 @@ export default class ObjectPage extends Component {
                 data: []
             },
             {
+                xAxisID: 'main-x-axis',
                 label: '',
                 fill: false,
                 lineTension: 0,
@@ -616,7 +617,7 @@ export default class ObjectPage extends Component {
                                                   scales: {
                                                       xAxes: [
                                                           {
-                                                              id: "x-days",
+                                                              id: 'main-x-axis',
                                                               afterFit: function (scale) {
                                                                   scale.height = 29;
                                                               },
@@ -636,10 +637,9 @@ export default class ObjectPage extends Component {
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: (value, index, values) => {
-                                                                      let kray = ( (index === 0) || (index === (values.length -1)) );
-                                                                      let dd = ((values.length & 1) == 0);
-                                                                      console.log(index, kray, dd);
-                                                                      return ( kray && dd == true ) ? '' :
+                                                                      let side = ( (index === 0) || (index === (values.length -1)) );
+                                                                      let len = Math.ceil(this.state.chart.labels.length / getStepSize(this.state.chart.labels.length, this.state.timeSegment));
+                                                                      return ( side && values.length == len ) ? '' :
                                                                           moment(value).format( getStepName(this.state.timeSegment) );
                                                                   }
                                                               },
@@ -653,7 +653,7 @@ export default class ObjectPage extends Component {
                                                               }
                                                           },
                                                           {
-                                                              id: "x-year",
+                                                              id: "main-x-axis2",
                                                               gridLines: {
                                                                   display: false,
                                                                   drawBorder: false,
