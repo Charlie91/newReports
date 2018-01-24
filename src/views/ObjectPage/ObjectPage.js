@@ -637,10 +637,36 @@ export default class ObjectPage extends Component {
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: (value, index, values) => {
+
+
+                                                                      if (!moment(value).isValid()){
+                                                                          return '';
+                                                                      }
+
                                                                       let side = ( (index === 0) || (index === (values.length -1)) );
-                                                                      let len = Math.ceil(this.state.chart.labels.length / getStepSize(this.state.chart.labels.length, this.state.timeSegment));
-                                                                      return ( side && values.length == len ) ? '' :
-                                                                          moment(value).format( getStepName(this.state.timeSegment) );
+                                                                      let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
+                                                                      let len = Math.ceil(this.state.chart.labels.length / step);
+
+                                                                      //console.log('---');
+                                                                      //console.log(this.state.chart.labels.length);
+                                                                      //console.log(step);
+                                                                      //console.log(values.length);
+                                                                      //console.log(len);
+
+
+
+                                                                      // if end
+                                                                      if(index === 0){
+                                                                          return ( side && (len - values.length) < 1 ) ? '' :
+                                                                              moment(value).format( getStepName(this.state.timeSegment) );
+                                                                      }
+                                                                      // if end
+                                                                      if(index === (values.length -1)){
+                                                                          return ( side && (len - values.length) < 2 ) ? '' :
+                                                                              moment(value).format( getStepName(this.state.timeSegment) );
+                                                                      }
+
+                                                                      return moment(value).format( getStepName(this.state.timeSegment) );
                                                                   }
                                                               },
                                                               gridLines: {
@@ -674,16 +700,30 @@ export default class ObjectPage extends Component {
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
-                                                                  callback: function(value, index, values) {
-                                                                      return (index === 0 || index === values.length -1) ?
-                                                                         '' : value;
+                                                                  callback: (value, index, values) => {
+                                                                      let side = ( (index === 0) || (index === (values.length -1)) );
+                                                                      let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
+                                                                      let len = Math.ceil(this.state.chart.labels.length / step);
+
+                                                                      // if end
+                                                                      if(index === 0){
+                                                                          return ( side && (len - values.length) < 1 ) ? '' :
+                                                                              value;
+                                                                      }
+                                                                      // if end
+                                                                      if(index === (values.length -1)){
+                                                                          return ( side && (len - values.length) < 2 ) ? '' :
+                                                                              value;
+                                                                      }
+
+                                                                      return value;
                                                                   }
                                                               }
                                                           }
                                                       ],
                                                   yAxes: [{
                                                       afterFit: function (scale) {
-                                                          scale.width = 46;
+                                                          scale.width = 66;
                                                       },
                                                       ticks: {
                                                           beginAtZero: true,

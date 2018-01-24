@@ -200,7 +200,7 @@ export function getStepName(timeSegment){
     if(timeSegment === 'Y')
         value = 'YYYY';
     if(timeSegment === 'M')
-        value = 'MMMM';
+        value = 'MMM';
     if(timeSegment === 'D')
         value = 'DD MMM';
     if(timeSegment === 'H')

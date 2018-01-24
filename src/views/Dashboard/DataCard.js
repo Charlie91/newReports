@@ -29,7 +29,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
  }
 
  const DataCard = (props) => (
-     <Col style={{ marginBottom: '30px'}} xs="12" sm="6" md="6" lg="6" xl="4">
+     <Col xs="12" sm="6" md="6" lg="6" xl="4">
          <Link to={{ pathname: `/concept${props.obj.conception}/city${props.obj.city_id}/object${props.obj.id}`, params:props }} className="link-to-object">
          <Card>
              <CardHeader style={{ paddingBottom: '0'}}>
