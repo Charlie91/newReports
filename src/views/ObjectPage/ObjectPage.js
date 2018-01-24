@@ -438,9 +438,8 @@ export default class ObjectPage extends Component {
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <span className="muted-bold">{this.state.object.area} м<sup>2</sup>,</span>
-                                            <span className="muted">  GLA</span>
-                                            <span className="muted-bold">{this.state.object.gl_area} м<sup>2</sup></span>
+                                            <span className="muted-bold">{this.state.object.area} м<sup>2</sup></span>
+                                            { (this.state.object.gl_area === -1) ? '' : <span className="muted">, GLA <b>{this.state.object.gl_area} м<sup>2</sup></b></span>}
                                         </div>
 
                                         <div>
@@ -672,7 +671,7 @@ export default class ObjectPage extends Component {
                                                       ],
                                                   yAxes: [{
                                                       afterFit: function (scale) {
-                                                          scale.width = 40;
+                                                          scale.width = 46;
                                                       },
                                                       ticks: {
                                                           beginAtZero: true,
