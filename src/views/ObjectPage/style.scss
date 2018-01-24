@@ -223,9 +223,7 @@ $crdbody-padding : 1.3rem;
 
 
 .obj_title{
-
   padding-bottom: 5px;
-
   h4{
     font-size: 55px;
     line-height: 68px;
@@ -628,6 +626,7 @@ $crdbody-padding : 1.3rem;
       .obj_title{
         h4{
           font-size: 18px;
+          line-height: normal;
         }
         .address_mobile{
           display: block;
@@ -638,6 +637,7 @@ $crdbody-padding : 1.3rem;
         }
         a.link_mobile{
           display:block;
+          line-height: normal;
         }
         a.link_desktop{
           display: none;
@@ -653,6 +653,9 @@ $crdbody-padding : 1.3rem;
           font-size: 14px;
         }
       }
+      .floor_plans{
+        margin-top: 15px;
+      }
     }
     .data_per_month{
         margin-right: -15px;
@@ -661,6 +664,7 @@ $crdbody-padding : 1.3rem;
         .header h4 {
           font-size: 18px;
           font-weight: 400;
+          line-height: normal;
         }
     }
     .all_data{
