@@ -168,8 +168,8 @@ export function getCountsOfDigits(number) {
 }
 
 
-export function getStepSize2(number, timeSegment){
-    let value = 'hour';
+export function getStepTick(timeSegment){
+    let value = 'day';
     if(timeSegment === 'Y')
         value = 'year';
     if(timeSegment === 'M')
@@ -177,7 +177,7 @@ export function getStepSize2(number, timeSegment){
     if(timeSegment === 'D')
         value = 'day';
     if(timeSegment === 'H')
-        value = 'hour';
+        value = 'day';
     return value;
 }
 
@@ -185,12 +185,25 @@ export function getStepSize2(number, timeSegment){
 export function getStepSize(number, timeSegment){
     let value = 1;
     if(timeSegment === 'Y')
-        value = number*30;
+        value = parseInt(number<21 ? 1: number/15);
     if(timeSegment === 'M')
-        value = number*2;
+        value = parseInt(number<21 ? 1: number/15);
     if(timeSegment === 'D')
         value = parseInt(number<21 ? 1: number/15);
     if(timeSegment === 'H')
         value = 1;
+    return value;
+}
+
+export function getStepName(timeSegment){
+    let value = 'DD MMM';
+    if(timeSegment === 'Y')
+        value = 'YYYY';
+    if(timeSegment === 'M')
+        value = 'MMMM';
+    if(timeSegment === 'D')
+        value = 'DD MMM';
+    if(timeSegment === 'H')
+        value = 'DD MMM';
     return value;
 }

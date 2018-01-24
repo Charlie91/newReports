@@ -18,6 +18,10 @@ import {formatNumberBySpaces} from './../../utils/utils';
 
 import {average} from './../../utils/utils';
 import {getStepSize} from './../../utils/utils';
+import {getStepTick} from './../../utils/utils';
+import {getStepName} from './../../utils/utils';
+
+
 
 import parser from 'ua-parser-js';
 
@@ -617,22 +621,25 @@ export default class ObjectPage extends Component {
                                                               },
                                                               type: 'time',
                                                               time: {
-                                                                  unit: "day",
+                                                                  unit: getStepTick(this.state.timeSegment),
                                                                   unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
                                                                   displayFormats: {
-                                                                      day: "D MMM"
+                                                                      day: getStepName(this.state.timeSegment),
                                                                   }
                                                               },
-                                                              display: (this.state.timeSegment !== 'Y'),
+                                                              display: true,
                                                               ticks: {
                                                                   beginAtZero:false,
                                                                   padding: 12,
                                                                   fontColor:'#7f8fa4',
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
-                                                                  callback: function(value, index, values) {
-                                                                      return (index === 0 || index === values.length -1) ?
-                                                                          '' : moment(value).format("D MMM");
+                                                                  callback: (value, index, values) => {
+                                                                      let kray = ( (index === 0) || (index === (values.length -1)) );
+                                                                      let dd = ((values.length & 1) == 0);
+                                                                      console.log(index, kray, dd);
+                                                                      return ( kray && dd == true ) ? '' :
+                                                                          moment(value).format( getStepName(this.state.timeSegment) );
                                                                   }
                                                               },
                                                               gridLines: {
@@ -653,13 +660,13 @@ export default class ObjectPage extends Component {
                                                               },
                                                               type: "time",
                                                               time: {
-                                                                  unit: "day",
+                                                                  unit: 'day',
                                                                   unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
                                                                   displayFormats: {
                                                                       day: "YYYY"
                                                                   }
                                                               },
-                                                              display: (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')),
+                                                              display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) && (this.state.timeSegment === 'D')),
                                                               ticks: {
                                                                   beginAtZero:false,
                                                                   padding: 0,
