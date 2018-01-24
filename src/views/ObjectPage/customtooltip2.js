@@ -44,7 +44,7 @@ export const customLabel2 = function(tooltipModel) {
 
         let innerHtmlTitle = '';
         titleLines.forEach(function(title) {
-            if (moment(title).format("hh:mm") == '12:00' ){
+            if ( title.length < 11 ){
                 tooltipEl.id = 'chartjs-tooltip2';
             } else {
                 innerHtmlTitle += '<div class="tooltip_title">';
@@ -68,7 +68,7 @@ export const customLabel2 = function(tooltipModel) {
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
-    console.log(tooltipEl.clientHeight);
+    //console.log(tooltipEl.clientHeight);
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 14 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
