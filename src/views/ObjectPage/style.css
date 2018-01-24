@@ -304,15 +304,17 @@
         margin-left: 38px; }
       .average_hours.horizontal-bars .chart-wrapper:not(:first-of-type) .title {
         padding-left: 0%; }
-  .average_hours.vertical-bars .chart-wrapper {
-    display: inline-block;
-    width: 151.3px;
-    height: 254px;
-    padding: 0;
-    border: solid 1px #f5f5f5;
-    padding-top: 5.6px;
-    position: relative;
-    margin: 0 13px; }
+  .average_hours.vertical-bars .bars_wrapper {
+    display: flex; }
+    .average_hours.vertical-bars .bars_wrapper .chart-wrapper {
+      display: inline-block;
+      width: 151.3px;
+      height: 254px;
+      padding: 0;
+      border: solid 1px #f5f5f5;
+      padding-top: 5.6px;
+      position: relative;
+      margin: auto; }
 
 .all_data .card-body {
   padding: 25px 11px 25px 40px;

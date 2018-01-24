@@ -408,7 +408,6 @@ export default class ObjectPage extends Component {
 
 
     render(){
-        console.log(parser().device.type !== 'mobile' && parser().device.type !== 'tablet');
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -472,7 +471,7 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 1567) ?
+                {(this.state.viewportWidth > 1367) ?
                     <BarChart
                         render={!(this.state.type === 'Выручка')}
                         data={this.state.data}
@@ -499,7 +498,7 @@ export default class ObjectPage extends Component {
                                                 <li key={i}>
                                                     <div>
                                                         <strong>{formatNumericValue(item.value) +
-                                                        ((this.state.type === 'Выручка') ? '' : 'чел.') }
+                                                            ((this.state.type === 'Выручка') ? '' : 'чел.') }
                                                         </strong>
                                                     </div>
                                                     <div className="muted">
