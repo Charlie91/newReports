@@ -499,10 +499,10 @@ export default class ObjectPage extends Component {
                         <div className="muted">Поясняющий текст о том, что тут показано</div>
                     </div>
                     <CardBody>
-                        <ul>
                             {
                                 (this.state.monthlyData) ?
-                                    this.state.monthlyData.map( (item,i) => {
+                                    <ul>
+                                        { this.state.monthlyData.map( (item,i) => {
                                             return(
                                                 <li key={i}>
                                                     <div>
@@ -515,12 +515,12 @@ export default class ObjectPage extends Component {
                                                     </div>
                                                 </li>
                                             )
-                                    }
-                                )
+                                         })
+                                        }
+                                    </ul>
                                 :
                                 <Loading/>
                             }
-                        </ul>
                     </CardBody>
                 </Card>
 
