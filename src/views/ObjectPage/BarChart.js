@@ -188,7 +188,7 @@ export default class BarChart extends Component {
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
         //this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
-        this.setState({bars: bars,maxVal:(Math.ceil(maxVal/50) * 50)});
+        this.setState({bars: bars,maxVal: (Math.round(maxVal/10)*10)  });//(Math.ceil(maxVal/50) * 50)});
     }
 
     countBars(dataArr){
@@ -285,10 +285,10 @@ export default class BarChart extends Component {
                                                              }],
                                                              yAxes: [{
                                                                  afterFit: function (scale) {
-                                                                     scale.width = 46;
+                                                                     scale.width = 56;
                                                                  },
                                                                  ticks: {
-                                                                     padding: 20,
+                                                                     padding: 26,
                                                                      max: this.state.maxVal,
                                                                      beginAtZero: false,
                                                                      steps: 10,
@@ -365,10 +365,10 @@ export default class BarChart extends Component {
                                                              }],
                                                              yAxes: [{
                                                                  afterFit: function (scale) {
-                                                                     scale.width = 46;
+                                                                     scale.width = 56;
                                                                  },
                                                                  ticks: {
-                                                                     padding: 20,
+                                                                     padding: 26,
                                                                      max: this.state.maxVal,
                                                                      display: true,
                                                                      beginAtZero: true,
