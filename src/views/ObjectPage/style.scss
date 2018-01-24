@@ -414,25 +414,29 @@ $crdbody-padding : 1.3rem;
     }
   }
   &.vertical-bars{
-    .chart-wrapper{
-      &:first-of-type{
-        //padding-top: 0;
-        //position: relative;
-        //top: 4px;
+    .bars_wrapper{
+      display:flex;
+      .chart-wrapper{
+        &:first-of-type{
+          //padding-top: 0;
+          //position: relative;
+          //top: 4px;
+        }
+        &:not(:first-of-type) .title{
+          //top: 6px;
+          //position: relative;
+        }
+        display: inline-block;
+        width: 151.3px;
+        height: 254px;
+        padding: 0;
+        border: solid 1px #f5f5f5;
+        padding-top: 5.6px;
+        position: relative;
+        margin: auto;
       }
-      &:not(:first-of-type) .title{
-        //top: 6px;
-        //position: relative;
-      }
-      display: inline-block;
-      width: 151.3px;
-      height: 254px;
-      padding: 0;
-      border: solid 1px #f5f5f5;
-      padding-top: 5.6px;
-      position: relative;
-      margin: 0 13px;
     }
+
   }
 }
 
