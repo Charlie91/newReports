@@ -494,7 +494,7 @@ export default class ObjectPage extends Component {
                         <ul>
                             {
                                 (this.state.monthlyData) ?
-                                    this.state.monthlyData.reverse().map( (item,i) => {
+                                    this.state.monthlyData.map( (item,i) => {
                                             return(
                                                 <li key={i}>
                                                     <div>
