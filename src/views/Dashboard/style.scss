@@ -9,7 +9,6 @@
     >div{
       padding-right:20px;
       padding-left:20px;
-      margin: auto;
     }
   }
   .card-header {
@@ -44,6 +43,9 @@
     border-radius: 4px;
     background-color: #a9daeb;
     box-shadow: 0px 0 3px 1px rgba(150, 150, 150, 0.2);
+    &:hover{
+      top: -1px;
+    }
   }
   .card-body, .card-block {
     text-align: center;
@@ -106,6 +108,15 @@
   }
   strong.h4.indicator {
     font-size: 0.875em
+  }
+  .link-to-object{
+    color: #151b1e;
+    text-decoration: none;
+    &:hover{
+      h5{
+        color: #167495;
+      }
+    }
   }
 }
 
