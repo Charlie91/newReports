@@ -187,12 +187,9 @@ export default class BarChart extends Component {
             bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
-        //this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
-        this.setState({bars: bars,maxVal: (Math.round(maxVal/10)*10)  });
-        this.setState({bars: bars,maxVal: maxVal});
-        //alert( (Math.round(maxVal/10)*10));
-        //alert( maxVal);
 
+        maxVal = Math.ceil(maxVal/10)*10;
+        this.setState({bars: bars,maxVal: maxVal  });
     }
 
     countBars(dataArr){
@@ -295,8 +292,7 @@ export default class BarChart extends Component {
                                                                      padding: 26,
                                                                      max: this.state.maxVal,
                                                                      beginAtZero: false,
-                                                                     steps: 10,
-                                                                     stepValue: 5,
+                                                                     stepSize: (Math.ceil(this.state.maxVal/7/10)*10),
                                                                      fontColor:'#7f8fa4',
                                                                      fontSize: 11,
                                                                      fontFamily: 'ProximaNova'
@@ -374,10 +370,10 @@ export default class BarChart extends Component {
                                                                  ticks: {
                                                                      padding: 26,
                                                                      max: this.state.maxVal,
+                                                                     min: 0,
+                                                                     stepSize: (Math.ceil(this.state.maxVal/7/10)*10),
                                                                      display: true,
                                                                      beginAtZero: true,
-                                                                     steps: 10,
-                                                                     stepValue: 5,
                                                                      fontColor: "rgba(0, 0, 0, 0)",
                                                                      fontSize: 11,
                                                                      fontFamily: 'ProximaNova'
