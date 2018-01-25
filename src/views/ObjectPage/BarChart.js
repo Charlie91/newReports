@@ -137,7 +137,8 @@ export default class BarChart extends Component {
         super(props);
         this.state = {
             bars:[],
-            maxValue : 0
+            maxValue : 0,
+            step : 0
         }
     }
 
@@ -188,8 +189,9 @@ export default class BarChart extends Component {
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
 
-        maxVal = Math.ceil(maxVal/10)*10;
-        this.setState({bars: bars,maxVal: maxVal  });
+        maxVal = Math.ceil(maxVal/20)*20;
+        let step =  maxVal/5;
+        this.setState({bars: bars,maxVal: maxVal, step: step  });
     }
 
     countBars(dataArr){
@@ -292,7 +294,7 @@ export default class BarChart extends Component {
                                                                      padding: 26,
                                                                      max: this.state.maxVal,
                                                                      beginAtZero: false,
-                                                                     stepSize: (Math.ceil(this.state.maxVal/7/10)*10),
+                                                                     stepSize: this.state.step,
                                                                      fontColor:'#7f8fa4',
                                                                      fontSize: 11,
                                                                      fontFamily: 'ProximaNova'
@@ -371,7 +373,7 @@ export default class BarChart extends Component {
                                                                      padding: 26,
                                                                      max: this.state.maxVal,
                                                                      min: 0,
-                                                                     stepSize: (Math.ceil(this.state.maxVal/7/10)*10),
+                                                                     stepSize: this.state.step,
                                                                      display: true,
                                                                      beginAtZero: true,
                                                                      fontColor: "rgba(0, 0, 0, 0)",
