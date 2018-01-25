@@ -485,8 +485,8 @@ export default class ObjectPage extends Component {
                             </CardBody>
                         </Card>
                     </Col>
-                    <Col style={{overflow:'hidden'}} className="img_wrapper order-1 order-md-12" md="6" xs="12">
-                        <img className="fullIMG" src={state.images.length ? `${API.imgPath}/${state.object.id}/${state.images[0]}` : "img/rio_full.jpg"}/>
+                    <Col style={{overflow:'hidden', backgroundImage: (state.images.length ? `url(${API.imgPath}/${state.object.id}/${state.images[0]})` : "url(img/rio_full.jpg)") }}
+                         className="img_wrapper order-1 order-md-12" md="6" xs="12">
                     </Col>
                 </Row>
 

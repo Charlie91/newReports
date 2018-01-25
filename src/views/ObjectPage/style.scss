@@ -244,7 +244,7 @@ $crdbody-padding : 1.3rem;
 
 .announce{
   .data_wrapper{
-    padding-right: 4px;
+    //padding-right: 4px;
     overflow:hidden;
   }
   >.col{
@@ -473,6 +473,11 @@ $crdbody-padding : 1.3rem;
     .img_wrapper,.data_wrapper{
       max-height:400px;
       max-width: 49.5%;
+      background-size: 100%;
+      img{
+        display: none;
+      }
+
     }
     .card-body{
       padding: 40px 35px 16px 40px;
