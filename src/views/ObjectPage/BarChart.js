@@ -4,6 +4,8 @@ import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
+import moment from "moment/moment";
+import {getStepSize} from "../../utils/utils";
 
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график
@@ -197,7 +199,8 @@ export default class BarChart extends Component {
         });
 
         maxVal = Math.ceil(maxVal/20)*20;
-        let step =  maxVal/5;
+        let step =  Math.ceil(Math.ceil(maxVal/5)/10)*10;
+        maxVal = step*5;
         this.setState({bars: bars,maxVal: maxVal, step: step  });
     }
 
@@ -240,7 +243,7 @@ export default class BarChart extends Component {
                         this.state.bars.map((item,i) =>{
                                 if(i === 0)
                                     return (
-                                        <div key={i} className="chart-wrapper" >
+                                        <div key={i} className="chart-wrapper" style={{paddingTop: 30}} >
                                             <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
@@ -304,7 +307,17 @@ export default class BarChart extends Component {
                                                                      stepSize: this.state.step,
                                                                      fontColor:'#7f8fa4',
                                                                      fontSize: 11,
-                                                                     fontFamily: 'ProximaNova'
+                                                                     fontFamily: 'ProximaNova',
+                                                                     callback: (value, index, values) => {
+                                                                         return value;
+                                                                         // if end
+                                                                         if(index === 0){
+                                                                             return '';
+                                                                         } else {
+                                                                             return value;
+                                                                         }
+
+                                                                     }
                                                                  },
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0.05)",
@@ -322,7 +335,7 @@ export default class BarChart extends Component {
                                     );
                                 else
                                     return(
-                                            <div key={i} className="chart-wrapper">
+                                            <div key={i} className="chart-wrapper" style={{paddingTop: 30}}>
                                                 <div style={{height:'88%',marginLeft: '-30px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
