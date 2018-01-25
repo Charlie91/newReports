@@ -39,10 +39,13 @@
 
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
+
 .revenue .segmentation_btn-wrp .btn.active {
   background-color: #f6aa25; }
+
 .revenue .floor_btn-wrp .btn.active {
   background-color: #f6aa25; }
+
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
 
@@ -51,6 +54,7 @@
   background: #fff;
   padding-top: 2px;
   padding-bottom: 2px; }
+
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
   background-color: #886ce6;
@@ -319,6 +323,7 @@
   overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
+
 .all_data .line-chart-wrapper {
   min-height: 200px;
   margin-top: 15px; }
@@ -339,6 +344,7 @@
 @media screen and (min-width: 1320px) {
   .muted {
     font-size: 14px; } }
+
 @media screen and (min-width: 1200px) {
   .announce.row > div:first-of-type .card {
     height: 100%; }
@@ -347,6 +353,7 @@
     max-width: 49.5%; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
+
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
     padding-right: 8px;
@@ -367,29 +374,27 @@
     font-size: 14px; }
   .announce .obj_title h4 {
     font-size: 32px; }
-
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
       margin-left: -17px;
       margin-top: 5px; } }
+
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }
+
 @media screen and (max-width: 991px) {
   .announce .img_wrapper img.fullIMG {
     height: auto; }
-
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
-
   .average_hours.horizontal-bars h4 {
     font-size: 18px;
     font-weight: 400; }
   .average_hours.horizontal-bars .card-body {
     overflow: scroll; }
-
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
@@ -403,6 +408,7 @@
       display: none; }
     .all_data .line-chart-wrapper .linechart_area_wrapper {
       width: 1244px; } }
+
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;
@@ -412,6 +418,9 @@
     overflow-x: hidden; }
     .object_cont .announce > div:first-of-type {
       padding-right: 15px; }
+    .object_cont .announce .data_wrapper .card-body {
+      padding-top: 16px;
+      padding-bottom: 13px; }
     .object_cont .announce .img_wrapper {
       max-height: 280px;
       padding-left: 15px;
@@ -420,7 +429,7 @@
       display: none; }
     .object_cont .announce .obj_title h4 {
       font-size: 18px;
-      line-height: normal; }
+      line-height: 20px; }
     .object_cont .announce .obj_title .address_mobile {
       display: block; }
       .object_cont .announce .obj_title .address_mobile.muted {
@@ -428,15 +437,19 @@
         margin-bottom: 0; }
     .object_cont .announce .obj_title a.link_mobile {
       display: block;
-      line-height: normal; }
+      line-height: normal;
+      text-align: center; }
     .object_cont .announce .obj_title a.link_desktop {
       display: none; }
     .object_cont .features > div > strong {
-      font-size: 16px; }
+      font-size: 16px;
+      padding-right: 6px; }
+    .object_cont .features > div > .muted-bold {
+      font-size: 12px; }
     .object_cont .features > div > .muted {
       font-size: 14px; }
     .object_cont .features .floor_plans {
-      margin-top: 15px; }
+      margin-top: 10px; }
     .object_cont .data_per_month {
       margin-right: -15px;
       margin-left: -15px;
@@ -469,21 +482,22 @@
     .object_cont .divider {
       margin-right: -1.3rem;
       margin-left: -1.3rem;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 7px;
+      margin-bottom: 6px;
       display: block; }
     .object_cont input[type="date"]::-webkit-clear-button {
       display: none; }
     .object_cont input[type="date"]::-webkit-inner-spin-button,
     .object_cont input[type="date"]::-webkit-calendar-picker-indicator {
       display: none; } }
+
 @media screen and (max-width: 575px) {
   .object_cont .announce .features {
     margin-top: 0; }
     .object_cont .announce .features > div {
       font-size: 12px;
       font-weight: 400;
-      margin-bottom: 5px; }
+      margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
     max-height: 190px; }
   .object_cont .announce .obj_title h4 {
@@ -499,6 +513,7 @@
     font-size: 12px; }
   .object_cont .datepicker_wrp input.datepicker {
     font-size: 12px; } }
+
 @media screen and (max-width: 320px) {
   .object_cont .datepicker_wrp:last-of-type input.datepicker {
     margin-right: -15px; }

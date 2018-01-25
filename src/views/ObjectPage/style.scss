@@ -615,6 +615,12 @@ $crdbody-padding : 1.3rem;
       > div:first-of-type{
         padding-right: 15px;
       }
+      .data_wrapper{
+        .card-body{
+          padding-top:16px;
+          padding-bottom: 13px;
+        }
+      }
       .img_wrapper{
         max-height:280px;
         padding-left: 15px;
@@ -626,7 +632,7 @@ $crdbody-padding : 1.3rem;
       .obj_title{
         h4{
           font-size: 18px;
-          line-height: normal;
+          line-height: 20px;
         }
         .address_mobile{
           display: block;
@@ -638,6 +644,7 @@ $crdbody-padding : 1.3rem;
         a.link_mobile{
           display:block;
           line-height: normal;
+          text-align: center;
         }
         a.link_desktop{
           display: none;
@@ -648,13 +655,17 @@ $crdbody-padding : 1.3rem;
       >div{
         >strong{
           font-size: 16px;
+          padding-right: 6px;
+        }
+        >.muted-bold{
+          font-size: 12px;
         }
         >.muted{
           font-size: 14px;
         }
       }
       .floor_plans{
-        margin-top: 15px;
+        margin-top: 10px;
       }
     }
     .data_per_month{
@@ -702,8 +713,8 @@ $crdbody-padding : 1.3rem;
     .divider{
       margin-right: -$crdbody-padding;
       margin-left: -$crdbody-padding;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 7px;
+      margin-bottom: 6px;
       display:block;
     }
     input[type="date"]::-webkit-clear-button {
@@ -725,7 +736,7 @@ $crdbody-padding : 1.3rem;
         >div{
           font-size: 12px;
           font-weight: 400;
-          margin-bottom: 5px;
+          margin-bottom: 1px;
         }
       }
       .img_wrapper{

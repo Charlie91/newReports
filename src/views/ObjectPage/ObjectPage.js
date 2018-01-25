@@ -418,7 +418,8 @@ export default class ObjectPage extends Component {
 
 
     render(){
-        let state = this.state;
+        let state = this.state,
+            pixelRatio = window.devicePixelRatio;//ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -598,9 +599,9 @@ export default class ObjectPage extends Component {
                                                       onComplete: function () {
                                                           var sourceCanvas = this.chart.ctx.canvas;
                                                           var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
-                                                          targetCtx.canvas.width = 40;
-                                                          targetCtx.canvas.height = 160;
-                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 80, 400, 0, 0, 40, 200);
+                                                          targetCtx.canvas.width = 65;
+                                                          targetCtx.canvas.height = 165;
+                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65 * pixelRatio, 200 * pixelRatio);
                                                       }},
                                                   legend: {
                                                       display: false
