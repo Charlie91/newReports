@@ -67,7 +67,7 @@ export const customLabel2 = function(tooltipModel) {
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -50) + 'px';
+    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX -55) + 'px';
     //console.log(tooltipEl.clientHeight);
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 14 + 'px';
     tooltipEl.style.display = 'block';

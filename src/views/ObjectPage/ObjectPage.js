@@ -611,7 +611,7 @@ export default class ObjectPage extends Component {
                                                       enabled:false,
                                                       callbacks:{
                                                           label: (tooltipItem, data ) => {
-                                                              return `${formatNumberBySpaces(tooltipItem.yLabel)} ${this.state.currency}`
+                                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
                                                           }
                                                       }
                                                   },
@@ -647,14 +647,6 @@ export default class ObjectPage extends Component {
                                                                       let side = ( (index === 0) || (index === (values.length -1)) );
                                                                       let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
                                                                       let len = Math.ceil(this.state.chart.labels.length / step);
-
-                                                                      //console.log('---');
-                                                                      //console.log(this.state.chart.labels.length);
-                                                                      //console.log(step);
-                                                                      //console.log(values.length);
-                                                                      //console.log(len);
-
-
 
                                                                       // if end
                                                                       if(index === 0){
