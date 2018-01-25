@@ -7,23 +7,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
 import './images.scss';
 import {Line} from "react-chartjs-2";
-import {formatNumericValue} from './../../utils/utils';
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-import {formatNumberBySimpleSpaces} from './../../utils/utils';
-import {formatNumberBySpaces} from './../../utils/utils';
-
-import {average} from './../../utils/utils';
-import {getStepSize} from './../../utils/utils';
-import {getStepTick} from './../../utils/utils';
-import {getStepName} from './../../utils/utils';
-
-
-
+import {formatNumericValue,formatNumberBySimpleSpaces,formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
 import parser from 'ua-parser-js';
 
 function formatMonths(index){
@@ -254,12 +244,12 @@ export default class ObjectPage extends Component {
 
 
     changeFloor(e){
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
+        this.addOpacityToChart();
         this.setState({floorIndex:+e.target.dataset.id},() => this.getFloorsData())
     }
 
     changeTimeSegment(e){
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
+        this.addOpacityToChart();
         this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
     }
 
@@ -327,9 +317,8 @@ export default class ObjectPage extends Component {
         )
     }
 
-
-    trackActualSegments(startDate, endDate){ //меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
-        let value = this.state.timeSegment;    // начальное значение
+    trackActualSegments(startDate, endDate){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
+        let value = this.state.timeSegment;    //  начальное значение
         if(startDate.format('YYYY') === endDate.format('YYYY'))
             value = 'M';
         if(startDate.format('YYYY-MM') === endDate.format('YYYY-MM'))
@@ -339,29 +328,41 @@ export default class ObjectPage extends Component {
         return value
     }
 
-    handleChangeStart(date) {
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
+    handleChangeStart(date) { //функции-обработчики смены дат в datepickers
         if(this.state.endDate - date < 0)return false;
+        this.addOpacityToChart();
         let newSegment = this.trackActualSegments(date,this.state.endDate);
-        this.setState({startDate: date,timeSegment:newSegment}, () => this.getFloorsData());
+        this.setState(
+            {startDate: date,timeSegment:newSegment},
+            () => this.getFloorsData()
+        );
     }
 
     handleChangeEnd(date) {
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         if(date - this.state.startDate < 0)return false;
         if(date > moment())return false;
+        this.addOpacityToChart();
         let newSegment = this.trackActualSegments(this.state.startDate,date);
-        this.setState({endDate: date,timeSegment:newSegment}, () => this.getFloorsData());
+        this.setState(
+            {endDate: date,timeSegment:newSegment},
+            () => this.getFloorsData()
+        );
     }
 
     handleMobileChangeStart(e){
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
-        this.setState({startDate: moment(e.target.value)}, () => this.getFloorsData());
+        this.addOpacityToChart();
+        this.setState(
+            {startDate: moment(e.target.value)},
+            () => this.getFloorsData())
+        ;
     }
 
     handleMobileChangeEnd(e){
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
-        this.setState({endDate: moment(e.target.value)}, () => this.getFloorsData());
+        this.addOpacityToChart();
+        this.setState(
+            {endDate: moment(e.target.value)},
+            () => this.getFloorsData()
+        );
     }
 
     handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
@@ -375,22 +376,29 @@ export default class ObjectPage extends Component {
         }
     }
 
-    removeDotFromDatepicker(){  //преобразуем формат даты "08 янв. 17" в "08 янв 17" под требования дизайнера
-        let datepickers = document.querySelectorAll('.datepicker');
+    addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
+    }
 
-        for(let i = 0;i < datepickers.length; i++){
-            let val = datepickers[i].value;
-            datepickers[i].setAttribute('value', 1);
-        }
+    removeOpacityFromChart(){
+        document.querySelector('.line-chart-wrapper').classList.remove('half-opacity');//удаляем прозрачность с графика
+    }
+
+    addSpecificStyles(){
+        document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
+        document.querySelector('.app-body').classList.add('app-body__reduce-margin');
+        document.querySelector('.navbar').classList.add('changeHeaderPadding');
+    }
+
+    removeSpecificStyles(){
+        document.querySelector('.main').classList.remove('main__additional-padding');//кастомизация хтмл элементов под страницу - удаление
+        document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
+        document.querySelector('.navbar').classList.remove('changeHeaderPadding');
     }
 
     componentDidUpdate(prevProps, prevState){
-        if( this.state.endDate.diff(this.state.startDate,'days') > 14 && this.state.timeSegment === 'H'){
-            this.setState({timeSegment:'D'});
-            //alert('Детализация по часам недоступна если временной промежуток больше 60ти дней.');
-        }
-        if(prevState.data !== this.state.data)document.querySelector('.line-chart-wrapper').classList.remove('half-opacity');
-
+        if(prevState.data !== this.state.data)
+            this.removeOpacityFromChart();
     }
 
 
@@ -404,22 +412,12 @@ export default class ObjectPage extends Component {
         }
 
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
-
-        document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
-        document.querySelector('.app-body').classList.add('app-body__reduce-margin');
-        document.querySelector('.navbar').classList.add('changeHeaderPadding');
-
-
-        this.removeDotFromDatepicker();
+        this.addSpecificStyles();
         this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
-
-
     }
 
     componentWillUnmount(){
-        document.querySelector('.main').classList.remove('main__additional-padding');//кастомизация хтмл элементов под страницу - удаление
-        document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
-        document.querySelector('.navbar').classList.remove('changeHeaderPadding');
+        this.removeSpecificStyles();
         window.onresize = () => {};
     }
 
