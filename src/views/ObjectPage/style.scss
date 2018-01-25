@@ -131,7 +131,7 @@ $crdbody-padding : 1.3rem;
       padding: 0;
       li{
         display: inline-block;
-        width: 7%;
+        width: 6.7%;
         margin-right: 1.8%;
         &:last-of-type {
           margin-right: 5px;
@@ -473,7 +473,7 @@ $crdbody-padding : 1.3rem;
     .img_wrapper,.data_wrapper{
       max-height:400px;
       max-width: 49.5%;
-      background-size: 100%;
+      background-position: top;
       img{
         display: none;
       }
