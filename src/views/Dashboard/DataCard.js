@@ -40,7 +40,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
 
                                 <h5>{props.obj.obj_name}</h5>
 
-                            <p className="contacts">{props.obj.address}</p>
+                            <p className="contacts" dangerouslySetInnerHTML={{__html: props.obj.address}} />
                          </div>
                      </Col>
                      <Col md="6">

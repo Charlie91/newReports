@@ -444,7 +444,7 @@ export default class ObjectPage extends Component {
                                         </Col>
                                     </Row>
                                     <a className="link_desktop" href="#">рио.москва/дмитровка</a>
-                                    <p className="muted address_mobile">{this.state.object.address}</p>
+                                    <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: this.state.object.address}} />
                                 </div>
                                 <hr className="divider"/>
                                 <Row>
@@ -619,7 +619,7 @@ export default class ObjectPage extends Component {
                                                       enabled:false,
                                                       callbacks:{
                                                           label: (tooltipItem, data ) => {
-                                                              return `${formatNumberBySpaces(tooltipItem.yLabel)} ${this.state.currency}`
+                                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
                                                           }
                                                       }
                                                   },
@@ -646,8 +646,6 @@ export default class ObjectPage extends Component {
                                                                   fontSize: 14,
                                                                   fontFamily: 'ProximaNova',
                                                                   callback: (value, index, values) => {
-
-
                                                                       if (!moment(value).isValid()){
                                                                           return '';
                                                                       }
@@ -655,10 +653,6 @@ export default class ObjectPage extends Component {
                                                                       let side = ( (index === 0) || (index === (values.length -1)) );
                                                                       let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
                                                                       let len = Math.ceil(this.state.chart.labels.length / step);
-
-
-
-
                                                                       // if end
                                                                       if(index === 0){
                                                                           return ( side && (len - values.length) < 1 ) ? '' :
