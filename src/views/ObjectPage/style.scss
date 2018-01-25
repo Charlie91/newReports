@@ -1,24 +1,5 @@
 $crdbody-padding : 1.3rem;
-/////////////////delete that from this line
 
-.chartWrapper {
-  //position: relative;
-  width:600px;
-  overflow: scroll;
-}
-
-.chartWrapper > canvas {
-  position: absolute;
-  top: 0;
-  pointer-events:none;
-}
-
-.chartAreaWrapper {
-  width: 1200px;
-  overflow-x: scroll;
-}
-
-/////////////////to that
 .app-body_new_margin{
   margin-top:55px
 }
@@ -40,6 +21,10 @@ $crdbody-padding : 1.3rem;
       box-shadow:none
     }
   }
+}
+
+.half-opacity{
+  opacity:0.5;
 }
 
 .underline{

@@ -9161,7 +9161,8 @@ a.text-dark:focus, a.text-dark:hover {
   margin-left: 0; }
   .dashboard > .row > div {
     padding-right: 20px;
-    padding-left: 20px; }
+    padding-left: 20px;
+    margin-bottom: 30px; }
 
 .dashboard .card-header {
   border-bottom: 0px;
@@ -9249,8 +9250,6 @@ a.text-dark:focus, a.text-dark:hover {
 .dashboard .link-to-object {
   color: #151b1e;
   text-decoration: none; }
-  .dashboard .link-to-object:hover h5 {
-    color: #167495; }
 
 @media screen and (max-width: 717px) {
   .dashboard strong.h4.indicator {
@@ -9270,6 +9269,10 @@ a.text-dark:focus, a.text-dark:hover {
     max-width: 50%; } }
 
 @media screen and (max-width: 800px) {
+  .dashboard > .row > div {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-bottom: 5px; }
   .dashboard .col-lg-6 {
     flex: 0 0 100%;
     max-width: 400px;

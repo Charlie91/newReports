@@ -121,6 +121,7 @@ export default class ObjectPage extends Component {
         let url = API.floors + id;
         ajaxRequest(url, options)
             .then(data => {
+                console.log(data);
                 this.setState({floors:data, floorIndex:0}, () => {
                     this.getFloorsData();
                     this.getMonthlyDataPerYear();
@@ -253,10 +254,12 @@ export default class ObjectPage extends Component {
 
 
     changeFloor(e){
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         this.setState({floorIndex:+e.target.dataset.id},() => this.getFloorsData())
     }
 
     changeTimeSegment(e){
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
     }
 
@@ -337,12 +340,14 @@ export default class ObjectPage extends Component {
     }
 
     handleChangeStart(date) {
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         if(this.state.endDate - date < 0)return false;
         let newSegment = this.trackActualSegments(date,this.state.endDate);
         this.setState({startDate: date,timeSegment:newSegment}, () => this.getFloorsData());
     }
 
     handleChangeEnd(date) {
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         if(date - this.state.startDate < 0)return false;
         if(date > moment())return false;
         let newSegment = this.trackActualSegments(this.state.startDate,date);
@@ -350,10 +355,12 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeStart(e){
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         this.setState({startDate: moment(e.target.value)}, () => this.getFloorsData());
     }
 
     handleMobileChangeEnd(e){
+        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
         this.setState({endDate: moment(e.target.value)}, () => this.getFloorsData());
     }
 
@@ -377,11 +384,13 @@ export default class ObjectPage extends Component {
         }
     }
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps, prevState){
         if( this.state.endDate.diff(this.state.startDate,'days') > 14 && this.state.timeSegment === 'H'){
             this.setState({timeSegment:'D'});
             //alert('Детализация по часам недоступна если временной промежуток больше 60ти дней.');
         }
+        if(prevState.data !== this.state.data)document.querySelector('.line-chart-wrapper').classList.remove('half-opacity');
+
     }
 
 
@@ -402,7 +411,6 @@ export default class ObjectPage extends Component {
 
 
         this.removeDotFromDatepicker();
-
         this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
 
 
@@ -601,7 +609,7 @@ export default class ObjectPage extends Component {
                                                           var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
                                                           targetCtx.canvas.width = 65;
                                                           targetCtx.canvas.height = 165;
-                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65 * pixelRatio, 200 * pixelRatio);
+                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65, 200);
                                                       }},
                                                   legend: {
                                                       display: false
@@ -648,11 +656,6 @@ export default class ObjectPage extends Component {
                                                                       let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
                                                                       let len = Math.ceil(this.state.chart.labels.length / step);
 
-                                                                      //console.log('---');
-                                                                      //console.log(this.state.chart.labels.length);
-                                                                      //console.log(step);
-                                                                      //console.log(values.length);
-                                                                      //console.log(len);
 
 
 

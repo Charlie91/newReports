@@ -75,9 +75,7 @@ export default class HorizontalBarChart extends Component {
         return(count > 7);
     }
 
-
-
-    componentDidUpdate(){       //добавляем border-radius'ы в график
+    addRadiusestoChart(){
         Chart.elements.Rectangle.prototype.draw = function() {
 
             var ctx = this._chart.ctx;
@@ -199,21 +197,23 @@ export default class HorizontalBarChart extends Component {
                 ctx.stroke();
             }
         };
-
     }
 
-    componentDidMount(){
-        let wrapper = document.querySelector('.horizontal-bars .card-body');
-        if(!wrapper)return;
-        wrapper.onscroll = function(e) {
-            let ranges = document.querySelector('.horizontal-bars .card-body .ranges');
-            let firstChart = document.querySelector('.average_hours.horizontal-bars .chart-wrapper:first-of-type');
 
-            if(wrapper.scrollLeft){
-                 ranges.classList.add('fixed');
-            }
-            else{
-                 ranges.classList.remove('fixed');
+
+    componentDidUpdate(){       //добавляем border-radius'ы в график
+        this.addRadiusestoChart();
+        if(this.props.data){
+            let wrapper = document.querySelector('.horizontal-bars .card-body');
+            wrapper.onscroll = function(e) {
+                let ranges = document.querySelector('.horizontal-bars .card-body .ranges');
+                let firstChart = document.querySelector('.average_hours.horizontal-bars .chart-wrapper:first-of-type');
+                if(wrapper.scrollLeft){
+                    ranges.classList.add('fixed');
+                }
+                else{
+                    ranges.classList.remove('fixed');
+                }
             }
         }
     }

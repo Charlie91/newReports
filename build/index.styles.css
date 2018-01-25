@@ -14887,7 +14887,8 @@ button.btn.back-btn {
   #no-stick .rest-columns > .thead > :first-child {
     margin-left: 0px; }
   #no-stick .link-to-object {
-    white-space: normal; }
+    white-space: normal;
+    color: #354052; }
 
 @media screen and (max-width: 991px) {
   #no-stick {
@@ -15081,19 +15082,22 @@ button.btn.back-btn {
   .data_per_month > div.card-body {
     overflow: scroll;
     padding-top: 8px;
-    padding-right: 40px;
     padding-left: 40px;
     padding-bottom: 15px; }
     .data_per_month > div.card-body ul {
       line-height: default;
+      min-width: 1274px;
       height: 38px;
-      min-width: 1272px;
       margin: 0px;
       white-space: nowrap;
       padding: 0; }
       .data_per_month > div.card-body ul li {
         display: inline-block;
-        width: 8.3%; }
+        width: 7%;
+        margin-right: 1.8%; }
+        .data_per_month > div.card-body ul li:last-of-type {
+          margin-right: 5px;
+          width: 60px; }
         .data_per_month > div.card-body ul li div {
           height: 18px;
           line-height: 18px; }
@@ -15179,13 +15183,6 @@ button.btn.back-btn {
     max-height: 400px; }
   .announce > div:first-of-type > .card {
     height: 100%; }
-  .announce .img_wrapper {
-    border-radius: 4px; }
-    .announce .img_wrapper img.fullIMG {
-      max-width: 100%;
-      width: 100%;
-      height: 100%;
-      border-radius: 0 0 3px 3px; }
   .announce .geolocation .map_wrapper {
     width: 360px;
     height: 360px;
@@ -15304,7 +15301,7 @@ button.btn.back-btn {
         margin-left: 21px; }
 
 .all_data .card-body {
-  padding: 25px 11px 25px 40px;
+  padding: 25px 0px 25px 40px;
   overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
@@ -15334,18 +15331,21 @@ button.btn.back-btn {
   .announce.row > div:first-of-type .card {
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
-    max-height: 400px; }
+    max-height: 400px;
+    max-width: 49.5%; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 
 @media screen and (max-width: 1199px) {
   .announce > div:first-of-type {
-    padding-right: 8px; }
+    padding-right: 8px;
+    max-height: 340px; }
     .announce > div:first-of-type > .card {
       overflow: hidden; }
   .announce .img_wrapper {
-    max-height: 320px;
-    padding-left: 8px; }
+    max-height: 340px;
+    padding-left: 8px;
+    max-width: 48%; }
   .announce .features > div > strong {
     font-size: 15px; }
   .announce .features > div .muted {
@@ -15367,10 +15367,8 @@ button.btn.back-btn {
     font-size: 11px; } }
 
 @media screen and (max-width: 991px) {
-  .announce .img_wrapper {
-    max-height: 300px; }
-    .announce .img_wrapper img.fullIMG {
-      height: auto; }
+  .announce .img_wrapper img.fullIMG {
+    height: auto; }
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
@@ -15402,33 +15400,46 @@ button.btn.back-btn {
     overflow-x: hidden; }
     .object_cont .announce > div:first-of-type {
       padding-right: 15px; }
+    .object_cont .announce .data_wrapper .card-body {
+      padding-top: 16px;
+      padding-bottom: 13px; }
     .object_cont .announce .img_wrapper {
       max-height: 280px;
-      padding-left: 15px; }
+      padding-left: 15px;
+      max-width: none; }
     .object_cont .announce .geolocation {
       display: none; }
     .object_cont .announce .obj_title h4 {
-      font-size: 18px; }
+      font-size: 18px;
+      line-height: 20px; }
     .object_cont .announce .obj_title .address_mobile {
       display: block; }
       .object_cont .announce .obj_title .address_mobile.muted {
         font-size: 16px;
         margin-bottom: 0; }
     .object_cont .announce .obj_title a.link_mobile {
-      display: block; }
+      display: block;
+      line-height: normal;
+      text-align: center; }
     .object_cont .announce .obj_title a.link_desktop {
       display: none; }
     .object_cont .features > div > strong {
-      font-size: 16px; }
+      font-size: 16px;
+      padding-right: 6px; }
+    .object_cont .features > div > .muted-bold {
+      font-size: 12px; }
     .object_cont .features > div > .muted {
       font-size: 14px; }
+    .object_cont .features .floor_plans {
+      margin-top: 10px; }
     .object_cont .data_per_month {
       margin-right: -15px;
       margin-left: -15px;
       margin-top: 20px; }
       .object_cont .data_per_month .header h4 {
         font-size: 18px;
-        font-weight: 400; }
+        font-weight: 400;
+        line-height: normal; }
     .object_cont .all_data {
       margin-top: 20px; }
       .object_cont .all_data .line-chart-wrapper {
@@ -15453,8 +15464,8 @@ button.btn.back-btn {
     .object_cont .divider {
       margin-right: -1.3rem;
       margin-left: -1.3rem;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 7px;
+      margin-bottom: 6px;
       display: block; }
     .object_cont input[type="date"]::-webkit-clear-button {
       display: none; }
@@ -15468,7 +15479,7 @@ button.btn.back-btn {
     .object_cont .announce .features > div {
       font-size: 12px;
       font-weight: 400;
-      margin-bottom: 5px; }
+      margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
     max-height: 190px; }
   .object_cont .announce .obj_title h4 {
@@ -15498,6 +15509,31 @@ button.btn.back-btn {
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
+.announce .img_wrapper {
+  border-radius: 4px; }
+  .announce .img_wrapper img.fullIMG {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0 0 3px 3px; }
+
+@media screen and (max-width: 1500px) {
+  .announce .img_wrapper img.fullIMG {
+    max-width: 100%;
+    height: 100%; } }
+
+@media screen and (max-width: 1400px) {
+  .announce .img_wrapper img.fullIMG {
+    max-width: none; } }
+
+@media screen and (max-width: 991px) {
+  .announce .img_wrapper img.fullIMG {
+    max-width: none;
+    height: 100%; } }
+
+@media screen and (max-width: 767px) {
+  .announce .img_wrapper img.fullIMG {
+    max-width: 100%;
+    height: auto; } }
 .registration-form {
   border-radius: 10px;
   margin: auto; }
