@@ -473,11 +473,7 @@ export default class ObjectPage extends Component {
                                         <div className="map_wrapper">
                                             {this.renderMap()}
                                         </div>
-                                        <div className="address">
-                                            {this.state.object.city_name},
-                                            <br/>
-                                            {String(this.state.object.address).replace(this.state.object.city_name + ',', '' )}
-                                        </div>
+                                        <div className="address" dangerouslySetInnerHTML={{__html: this.state.object.city_name + ',<br/>' + String(this.state.object.address).replace(this.state.object.city_name + ',', '' ) }} />
                                     </Col>
                                 </Row>
                             </CardBody>

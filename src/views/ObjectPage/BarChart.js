@@ -155,12 +155,12 @@ export default class BarChart extends Component {
                 let firstChartPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        backgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
                         borderColor: 'transparent',
                         borderWidth: 0,
                         hoverBorderWidth: 1,
-                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        hoverBackgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        hoverBorderColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
                         data: []
                     }]
                 };
@@ -170,13 +170,20 @@ export default class BarChart extends Component {
                 let otherChartsPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        backgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        borderColor: 'transparent',
                         borderWidth: 0,
                         hoverBorderWidth: 5,
-                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        hoverBackgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        hoverBorderColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
                         data: []
+                        //backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        //borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        //borderWidth: 0,
+                        //hoverBorderWidth: 5,
+                        //hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        //hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        //data: []
                     }]
                 };
                 bars.push(otherChartsPrototype);
