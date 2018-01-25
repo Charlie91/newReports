@@ -190,7 +190,6 @@
 .announce {
   margin-bottom: 31px; }
   .announce .data_wrapper {
-    padding-right: 4px;
     overflow: hidden; }
   .announce > .col {
     overflow: hidden;
@@ -344,7 +343,8 @@
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
     max-height: 400px;
-    max-width: 49.5%; }
+    max-width: 49.5%;
+    background-size: 100%; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 @media screen and (max-width: 1199px) {
