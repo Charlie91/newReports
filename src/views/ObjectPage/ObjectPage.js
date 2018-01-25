@@ -436,7 +436,7 @@ export default class ObjectPage extends Component {
                                         </Col>
                                     </Row>
                                     <a className="link_desktop" href="#">рио.москва/дмитровка</a>
-                                    <p className="muted address_mobile">{this.state.object.address}</p>
+                                    <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: this.state.object.address}} />
                                 </div>
                                 <hr className="divider"/>
                                 <Row>
