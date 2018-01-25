@@ -345,6 +345,8 @@
     max-height: 400px;
     max-width: 49.5%;
     background-size: 100%; }
+    .announce .img_wrapper img, .announce .data_wrapper img {
+      display: none; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 @media screen and (max-width: 1199px) {
