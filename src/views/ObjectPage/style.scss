@@ -628,10 +628,7 @@ $crdbody-padding : 1.3rem;
         height:280px;
         padding-left: 15px;
         max-width: none;
-        background-size: 74%;
-        background-position: 50% 73%;
-        background-repeat: no-repeat;
-        background-color: #fff;
+        background-size: cover;
       }
       .geolocation {
         display:none
@@ -799,10 +796,6 @@ $crdbody-padding : 1.3rem;
       .img_wrapper{
         max-height: 190px;
         height: 190px;
-        background-size: 74%;
-        background-position: 50% 73%;
-        background-repeat: no-repeat;
-        background-color: #fff;
       }
       .obj_title{
         h4{

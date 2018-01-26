@@ -423,10 +423,7 @@
         height: 280px;
         padding-left: 15px;
         max-width: none;
-        background-size: 74%;
-        background-position: 50% 73%;
-        background-repeat: no-repeat;
-        background-color: #fff; }
+        background-size: cover; }
       .object_cont .announce .geolocation {
         display: none; }
       .object_cont .announce .obj_title h4 {
@@ -535,11 +532,7 @@
       margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
     max-height: 190px;
-    height: 190px;
-    background-size: 74%;
-    background-position: 50% 73%;
-    background-repeat: no-repeat;
-    background-color: #fff; }
+    height: 190px; }
   .object_cont .announce .obj_title h4 {
     font-size: 16px;
     margin-bottom: 2px; }

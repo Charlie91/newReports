@@ -242,14 +242,14 @@ export default class HorizontalBarChart extends Component {
                 </div>
                 <CardBody>
                     <ul className="ranges">
-                        <li>00-03</li>
-                        <li>03-06</li>
-                        <li>06-09</li>
-                        <li>09-12</li>
-                        <li>12-15</li>
-                        <li>15-18</li>
-                        <li>18-21</li>
-                        <li>21-24</li>
+                        <li>00&ndash;03</li>
+                        <li>03&ndash;06</li>
+                        <li>06&ndash;09</li>
+                        <li>09&ndash;12</li>
+                        <li>12&ndash;15</li>
+                        <li>15&ndash;18</li>
+                        <li>18&ndash;21</li>
+                        <li>21&ndash;24</li>
                     </ul>
                     {
                         this.state.bars.map((item,i) =>{
