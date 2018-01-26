@@ -387,8 +387,9 @@ $crdbody-padding : 1.3rem;
       display:inline-block;
       max-width:132px;
       margin-right:20px;
-      height:200px;
+      height:202px;
       border: 1px solid #f5f5f5;
+      border-radius: 4px;
       &:not(:first-of-type) .title{
         padding-left: 0%;
       }
@@ -563,6 +564,14 @@ $crdbody-padding : 1.3rem;
     }
   }
 
+  .card{
+    border: 1px solid #dfe2e5;
+    .card-body{
+      padding: 1.5rem;
+      padding-bottom: 38px;
+    }
+  }
+
   .object_cont{
     margin-right: auto;
     margin-left: auto;
@@ -575,6 +584,9 @@ $crdbody-padding : 1.3rem;
       }
       .card-body{
         overflow: scroll;
+      }
+      .title{
+        padding-top: 8px;
       }
     }
   }
@@ -613,9 +625,6 @@ $crdbody-padding : 1.3rem;
     height: 0px;
   }
 
-  .card{
-    border: 1px solid #dfe2e5;
-  }
   .object_cont{
     width:100%;
     margin:auto;

@@ -283,8 +283,9 @@
       display: inline-block;
       max-width: 132px;
       margin-right: 20px;
-      height: 200px;
-      border: 1px solid #f5f5f5; }
+      height: 202px;
+      border: 1px solid #f5f5f5;
+      border-radius: 4px; }
       .average_hours.horizontal-bars .chart-wrapper:first-of-type {
         margin-left: 21px; }
       .average_hours.horizontal-bars .chart-wrapper.fixed {
@@ -380,6 +381,12 @@
   .announce .img_wrapper img.fullIMG {
     height: auto; }
 
+  .card {
+    border: 1px solid #dfe2e5; }
+    .card .card-body {
+      padding: 1.5rem;
+      padding-bottom: 38px; }
+
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
@@ -389,6 +396,8 @@
     font-weight: 400; }
   .average_hours.horizontal-bars .card-body {
     overflow: scroll; }
+  .average_hours.horizontal-bars .title {
+    padding-top: 8px; }
 
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
@@ -407,9 +416,6 @@
   ::-webkit-scrollbar {
     width: 0px;
     height: 0px; }
-
-  .card {
-    border: 1px solid #dfe2e5; }
 
   .object_cont {
     width: 100%;
