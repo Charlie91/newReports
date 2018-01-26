@@ -198,9 +198,11 @@ export default class BarChart extends Component {
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
 
+
         maxVal = Math.ceil(maxVal/20)*20;
-        let step =  Math.ceil(Math.ceil(maxVal/5)/10)*10;
-        maxVal = step*5;
+        let step_size = (maxVal % 6 === 0) ? 6: 5;
+        let step =  Math.ceil(Math.ceil(maxVal/step_size)/10)*10;
+        maxVal = step*step_size;
         this.setState({bars: bars,maxVal: maxVal, step: step  });
     }
 
