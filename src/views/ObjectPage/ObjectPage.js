@@ -528,7 +528,7 @@ export default class ObjectPage extends Component {
                                             <li key={i}>
                                                 <div>
                                                     <strong>{formatNumericValue(item.value) +
-                                                    ((this.state.type === 'Выручка') ? '' : 'человек') }
+                                                    ((this.state.type === 'Выручка') ? '' : 'чел.') }
                                                     </strong>
                                                 </div>
                                                 <div className="muted">
