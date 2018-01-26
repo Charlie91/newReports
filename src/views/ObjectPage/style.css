@@ -403,6 +403,10 @@
     .all_data .line-chart-wrapper .linechart_area_wrapper {
       width: 1244px; } }
 @media screen and (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px; }
+
   .card {
     border: 1px solid #dfe2e5; }
 
@@ -562,6 +566,3 @@
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
-::-webkit-scrollbar {
-  width: 0px;
-  height: 0px; }
