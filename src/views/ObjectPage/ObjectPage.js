@@ -13,7 +13,7 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-import {formatNumericValue,formatNumberBySimpleSpaces,formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
+import {formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
 import parser from 'ua-parser-js';
 
 function formatMonths(index){
@@ -746,7 +746,7 @@ export default class ObjectPage extends Component {
                                                                   fontFamily: 'ProximaNova',
                                                                   padding: 10,
                                                                   callback: function(value, index, values) {
-                                                                      return formatNumberBySimpleSpaces(value);
+                                                                      return formatNumericValueWithMnl(value);
                                                                   }
                                                               },
                                                               gridLines: {
