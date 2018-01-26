@@ -391,13 +391,24 @@
     margin-right: auto;
     margin-left: auto; }
 
-  .average_hours.horizontal-bars h4 {
-    font-size: 18px;
-    font-weight: 400; }
-  .average_hours.horizontal-bars .card-body {
-    overflow: scroll; }
-  .average_hours.horizontal-bars .title {
-    padding-top: 8px; }
+  .average_hours {
+    border: 0px;
+    border-radius: 0px; }
+    .average_hours.horizontal-bars h4 {
+      padding-left: 0px;
+      font-size: 18px;
+      font-weight: 400; }
+    .average_hours.horizontal-bars .muted {
+      padding-left: 0px; }
+    .average_hours.horizontal-bars .card-body {
+      overflow: scroll; }
+    .average_hours.horizontal-bars .title {
+      padding-top: 6px;
+      padding-bottom: 2px; }
+
+  .data_per_month {
+    border: 0px;
+    border-radius: 0px; }
 
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }

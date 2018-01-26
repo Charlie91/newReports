@@ -577,18 +577,29 @@ $crdbody-padding : 1.3rem;
     margin-left: auto;
   }
   .average_hours{
+    border: 0px;
+    border-radius: 0px;
     &.horizontal-bars{
       h4{
+        padding-left: 0px;
         font-size: 18px;
         font-weight: 400;
+      }
+      .muted{
+        padding-left: 0px;
       }
       .card-body{
         overflow: scroll;
       }
       .title{
-        padding-top: 8px;
+        padding-top: 6px;
+        padding-bottom: 2px;
       }
     }
+  }
+  .data_per_month{
+    border: 0px;
+    border-radius: 0px;
   }
 
   .all_data {
