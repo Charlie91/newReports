@@ -201,12 +201,12 @@ export default class ObjectPage extends Component {
             {
                 label: (typeArr[0] === 'Выручка') ? 'Выручка' : 'Количество чел-к',
                 fill: true,
-                lineTension: 0.1,
+                lineTension: 0,
                 backgroundColor: (typeArr[0] === 'Выручка') ? 'rgba(246, 170, 37, 0.1)' : 'rgba(163, 136, 227, 0.1)',// #f6aa2524
                 borderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
                 borderCapStyle: 'butt',
                 borderDash: [],
-                borderDashOffset: 0.0,
+                borderDashOffsent: 0.0,
                 borderJoinStyle: 'miter',
                 borderWidth: 0,
                 pointBorderColor: (typeArr[0] === 'Выручка') ? '#f6aa25' : '#886ce6',// #886ce6
@@ -455,7 +455,7 @@ export default class ObjectPage extends Component {
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <span className="muted-bold">{this.state.object.area} м<sup>2</sup></span>
+                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.area) + " м<sup>2</sup>"}} />
                                             { (this.state.object.gl_area === -1) ? '' : <span className="muted">, GLA <b>{this.state.object.gl_area} м<sup>2</sup></b></span>}
                                         </div>
 
