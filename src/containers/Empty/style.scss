@@ -1,8 +1,9 @@
 .auth-layer{
   display:flex;
   background: url('img/backgroundv2.jpg');
-  background-size: 140%;
-  background-position: 40% 0%;
+  background-size: cover;
+  background-position: 50%;
+
   height: inherit !important;
   .main{
     padding-top:0
