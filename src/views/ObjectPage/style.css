@@ -450,6 +450,8 @@
         text-align: center; }
       .object_cont .announce .obj_title a.link_desktop {
         display: none; }
+    .object_cont .average_hours {
+      padding-bottom: 0px; }
     .object_cont .features > div > strong {
       font-size: 16px;
       padding-right: 6px; }
@@ -572,3 +574,6 @@
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; }

@@ -658,6 +658,9 @@ $crdbody-padding : 1.3rem;
         }
       }
     }
+    .average_hours{
+      padding-bottom: 0px;
+    }
     .features{
       >div{
         >strong{
@@ -864,4 +867,10 @@ $crdbody-padding : 1.3rem;
   }
 
 
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }

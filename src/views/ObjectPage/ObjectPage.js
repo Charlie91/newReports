@@ -13,7 +13,7 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-import {formatNumericValue,formatNumberBySimpleSpaces,formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
+import {formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
 import parser from 'ua-parser-js';
 
 function formatMonths(index){
@@ -516,8 +516,8 @@ export default class ObjectPage extends Component {
 
                 <Card className="data_per_month">
                     <div className="header">
-                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
-                        <div className="muted">Поясняющий текст о том, что тут показано</div>
+                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
+                        <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                     </div>
                     <CardBody>
                         {
@@ -746,7 +746,7 @@ export default class ObjectPage extends Component {
                                                                   fontFamily: 'ProximaNova',
                                                                   padding: 10,
                                                                   callback: function(value, index, values) {
-                                                                      return formatNumberBySimpleSpaces(value);
+                                                                      return formatNumericValueWithMnl(value);
                                                                   }
                                                               },
                                                               gridLines: {

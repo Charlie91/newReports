@@ -198,9 +198,11 @@ export default class BarChart extends Component {
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
 
+
         maxVal = Math.ceil(maxVal/20)*20;
-        let step =  Math.ceil(Math.ceil(maxVal/5)/10)*10;
-        maxVal = step*5;
+        let step_size = (maxVal % 6 === 0) ? 6: 5;
+        let step =  Math.ceil(Math.ceil(maxVal/step_size)/10)*10;
+        maxVal = step*step_size;
         this.setState({bars: bars,maxVal: maxVal, step: step  });
     }
 
@@ -236,8 +238,8 @@ export default class BarChart extends Component {
         else return (
             <Card className="average_hours vertical-bars">
                 <CardBody>
-                    <h4>Средняя посещаемость по часам по дням недели</h4>
-                    <p className="muted">Указано среднее кол-во человек проходящее с 0 до 24 часов по дням недели </p>
+                    <h4>Средняя посещаемость по дням недели</h4>
+                    <p className="muted">Указано кол-во человек проходящее с 0 до 24 часов</p>
                     <div className="bars_wrapper">
                     {
                         this.state.bars.map((item,i) =>{
