@@ -514,8 +514,8 @@ export default class ObjectPage extends Component {
 
                 <Card className="data_per_month">
                     <div className="header">
-                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за последние 12 месяцев</h4>
-                        <div className="muted">Поясняющий текст о том, что тут показано</div>
+                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
+                        <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                     </div>
                     <CardBody>
                         {

@@ -236,8 +236,8 @@ export default class BarChart extends Component {
         else return (
             <Card className="average_hours vertical-bars">
                 <CardBody>
-                    <h4>Средняя посещаемость по часам по дням недели</h4>
-                    <p className="muted">Указано среднее кол-во человек проходящее с 0 до 24 часов по дням недели </p>
+                    <h4>Средняя посещаемость по дням недели</h4>
+                    <p className="muted">Указано кол-во человек проходящее с 0 до 24 часов</p>
                     <div className="bars_wrapper">
                     {
                         this.state.bars.map((item,i) =>{
