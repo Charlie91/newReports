@@ -14146,7 +14146,7 @@ button.settings-btn {
 
 #chartjs-tooltip2 > div {
   height: 30px;
-  width: 100px; }
+  width: 110px; }
 @charset "UTF-8";
 body {
   font-family: ProximaNova, "Segoe UI", Roboto, "HelveticaNeue", Arial, sans-serif !important;
@@ -14416,11 +14416,15 @@ a.dropdown__trigger.dropdown-trigger {
   li.node:hover {
     background: none; }
   .tag-item:last-child {
-    /*margin-left:-44px*/ }
+    margin-left: 35px; }
   .tree_select {
     margin-left: 0; }
   .dropup, .dropdown {
     width: 300px; } }
+
+@media screen and (min-width: 992px) {
+  .navbar > div:first-of-type {
+    top: 6px; } }
 
 @media screen and (max-width: 700px) {
   .tag-item:last-child {
@@ -14981,19 +14985,6 @@ button.btn.back-btn {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #ddd; }
 @charset "UTF-8";
-.chartWrapper {
-  width: 600px;
-  overflow: scroll; }
-
-.chartWrapper > canvas {
-  position: absolute;
-  top: 0;
-  pointer-events: none; }
-
-.chartAreaWrapper {
-  width: 1200px;
-  overflow-x: scroll; }
-
 .app-body_new_margin {
   margin-top: 55px; }
 
@@ -15012,6 +15003,9 @@ button.btn.back-btn {
     color: #fff; }
     .segmentation_btn-wrp .btn.active:focus {
       box-shadow: none; }
+
+.half-opacity {
+  opacity: 0.5; }
 
 .underline {
   text-decoration: underline; }
@@ -15093,7 +15087,7 @@ button.btn.back-btn {
       padding: 0; }
       .data_per_month > div.card-body ul li {
         display: inline-block;
-        width: 7%;
+        width: 6.7%;
         margin-right: 1.8%; }
         .data_per_month > div.card-body ul li:last-of-type {
           margin-right: 5px;
@@ -15176,7 +15170,6 @@ button.btn.back-btn {
 .announce {
   margin-bottom: 31px; }
   .announce .data_wrapper {
-    padding-right: 4px;
     overflow: hidden; }
   .announce > .col {
     overflow: hidden;
@@ -15294,17 +15287,22 @@ button.btn.back-btn {
       height: 254px;
       padding: 0;
       border: solid 1px #f5f5f5;
-      padding-top: 5.6px;
       position: relative;
       margin: auto; }
       .average_hours.vertical-bars .bars_wrapper .chart-wrapper:first-of-type {
-        margin-left: 21px; }
+        margin-left: 30px; }
 
 .all_data .card-body {
   padding: 25px 0px 25px 40px;
   overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
+
+.all_data .error-message {
+  text-align: center;
+  font-size: 2em;
+  height: 200px;
+  line-height: 220px; }
 
 .all_data .line-chart-wrapper {
   min-height: 200px;
@@ -15332,7 +15330,11 @@ button.btn.back-btn {
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
     max-height: 400px;
-    max-width: 49.5%; }
+    max-width: 49.5%;
+    background-position: center center;
+    background-size: cover; }
+    .announce .img_wrapper img, .announce .data_wrapper img {
+      display: none; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 
@@ -15398,31 +15400,34 @@ button.btn.back-btn {
     margin-top: 0;
     padding: 0 15px;
     overflow-x: hidden; }
-    .object_cont .announce > div:first-of-type {
-      padding-right: 15px; }
-    .object_cont .announce .data_wrapper .card-body {
-      padding-top: 16px;
-      padding-bottom: 13px; }
-    .object_cont .announce .img_wrapper {
-      max-height: 280px;
-      padding-left: 15px;
-      max-width: none; }
-    .object_cont .announce .geolocation {
-      display: none; }
-    .object_cont .announce .obj_title h4 {
-      font-size: 18px;
-      line-height: 20px; }
-    .object_cont .announce .obj_title .address_mobile {
-      display: block; }
-      .object_cont .announce .obj_title .address_mobile.muted {
-        font-size: 16px;
-        margin-bottom: 0; }
-    .object_cont .announce .obj_title a.link_mobile {
-      display: block;
-      line-height: normal;
-      text-align: center; }
-    .object_cont .announce .obj_title a.link_desktop {
-      display: none; }
+    .object_cont .announce {
+      padding: 0 15px; }
+      .object_cont .announce > div:first-of-type {
+        padding-right: 0;
+        padding-left: 0; }
+      .object_cont .announce .data_wrapper .card-body {
+        padding-top: 16px;
+        padding-bottom: 13px; }
+      .object_cont .announce .img_wrapper {
+        max-height: 280px;
+        padding-left: 15px;
+        max-width: none; }
+      .object_cont .announce .geolocation {
+        display: none; }
+      .object_cont .announce .obj_title h4 {
+        font-size: 18px;
+        line-height: 20px; }
+      .object_cont .announce .obj_title .address_mobile {
+        display: block; }
+        .object_cont .announce .obj_title .address_mobile.muted {
+          font-size: 16px;
+          margin-bottom: 0; }
+      .object_cont .announce .obj_title a.link_mobile {
+        display: block;
+        line-height: normal;
+        text-align: center; }
+      .object_cont .announce .obj_title a.link_desktop {
+        display: none; }
     .object_cont .features > div > strong {
       font-size: 16px;
       padding-right: 6px; }
@@ -15481,7 +15486,8 @@ button.btn.back-btn {
       font-weight: 400;
       margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
-    max-height: 190px; }
+    max-height: 190px;
+    height: 190px; }
   .object_cont .announce .obj_title h4 {
     font-size: 16px;
     margin-bottom: 2px; }
