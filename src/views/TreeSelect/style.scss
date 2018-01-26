@@ -324,6 +324,9 @@ a.dropdown__trigger.dropdown-trigger {
     .navbar >div:first-of-type {
         top: 6px;
     }
+    .additional_position{//фикс позиции на разных страницах. убрать позже
+        top:0px!important
+    }
 }
 
 @media screen and (max-width:700px){

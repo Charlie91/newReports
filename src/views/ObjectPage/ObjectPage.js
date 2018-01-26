@@ -393,12 +393,14 @@ export default class ObjectPage extends Component {
         document.querySelector('.main').classList.add('main__additional-padding');//кастомизация хтмл элементов под страницу - добавление
         document.querySelector('.app-body').classList.add('app-body__reduce-margin');
         document.querySelector('.navbar').classList.add('changeHeaderPadding');
+        document.querySelector('.navbar >div:first-of-type').classList.add('additional_position');
     }
 
     removeSpecificStyles(){
         document.querySelector('.main').classList.remove('main__additional-padding');//кастомизация хтмл элементов под страницу - удаление
         document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
         document.querySelector('.navbar').classList.remove('changeHeaderPadding');
+        document.querySelector('.navbar >div:first-of-type').classList.remove('additional_position');
     }
 
     requestIsStarted(){
