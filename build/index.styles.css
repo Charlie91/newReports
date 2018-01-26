@@ -14424,7 +14424,9 @@ a.dropdown__trigger.dropdown-trigger {
 
 @media screen and (min-width: 992px) {
   .navbar > div:first-of-type {
-    top: 6px; } }
+    top: 6px; }
+  .additional_position {
+    top: 0px !important; } }
 
 @media screen and (max-width: 700px) {
   .tag-item:last-child {
@@ -15315,7 +15317,6 @@ button.btn.back-btn {
     pointer-events: none; }
   .all_data .line-chart-wrapper .scrolled {
     background: #fff;
-    border-right: 1px solid rgba(208, 208, 208, 0.5);
     padding-bottom: 33px;
     display: block !important; }
   .all_data .line-chart-wrapper .linechart_area_wrapper {
@@ -15335,6 +15336,8 @@ button.btn.back-btn {
     background-size: cover; }
     .announce .img_wrapper img, .announce .data_wrapper img {
       display: none; }
+  .announce .img_wrapper {
+    border: 1px solid #d1d4d7; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 
@@ -15401,7 +15404,8 @@ button.btn.back-btn {
     padding: 0 15px;
     overflow-x: hidden; }
     .object_cont .announce {
-      padding: 0 15px; }
+      padding: 0 15px;
+      margin-bottom: 20px; }
       .object_cont .announce > div:first-of-type {
         padding-right: 0;
         padding-left: 0; }
@@ -15410,8 +15414,13 @@ button.btn.back-btn {
         padding-bottom: 13px; }
       .object_cont .announce .img_wrapper {
         max-height: 280px;
+        height: 280px;
         padding-left: 15px;
-        max-width: none; }
+        max-width: none;
+        background-size: 74%;
+        background-position: 50% 73%;
+        background-repeat: no-repeat;
+        background-color: #fff; }
       .object_cont .announce .geolocation {
         display: none; }
       .object_cont .announce .obj_title h4 {
@@ -15440,17 +15449,48 @@ button.btn.back-btn {
     .object_cont .data_per_month {
       margin-right: -15px;
       margin-left: -15px;
-      margin-top: 20px; }
-      .object_cont .data_per_month .header h4 {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: normal; }
+      margin-top: 20px;
+      margin-bottom: 20px; }
+      .object_cont .data_per_month .header {
+        padding-left: 35px;
+        padding-right: 5px;
+        padding-bottom: 20px; }
+        .object_cont .data_per_month .header h4 {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: normal; }
+        .object_cont .data_per_month .header .muted {
+          font-size: 12px; }
+      .object_cont .data_per_month > div.card-body {
+        padding-left: 35px;
+        padding-top: 0;
+        padding-bottom: 11px; }
+        .object_cont .data_per_month > div.card-body ul {
+          min-width: 500px; }
+          .object_cont .data_per_month > div.card-body ul li {
+            margin-right: 10%; }
+            .object_cont .data_per_month > div.card-body ul li div strong {
+              font-size: 12px; }
+            .object_cont .data_per_month > div.card-body ul li .muted {
+              font-size: 12px;
+              line-height: 15px; }
+    .object_cont .average_hours {
+      margin-bottom: 20px; }
+      .object_cont .average_hours .title {
+        font-size: 12px; }
     .object_cont .all_data {
       margin-top: 20px; }
-      .object_cont .all_data .line-chart-wrapper {
-        padding: 10px 0px; }
-        .object_cont .all_data .line-chart-wrapper #scrollYAxis {
-          margin-top: 25px; }
+      .object_cont .all_data .card-body {
+        padding: 23px 0px 25px 18px; }
+        .object_cont .all_data .card-body h5 {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 22px;
+          margin-bottom: 0; }
+        .object_cont .all_data .card-body .line-chart-wrapper {
+          padding: 10px 0px; }
+          .object_cont .all_data .card-body .line-chart-wrapper #scrollYAxis {
+            margin-top: 25px; }
     .object_cont .horizontal-bars {
       margin-right: -15px;
       margin-left: -15px; }
@@ -15461,7 +15501,7 @@ button.btn.back-btn {
         .object_cont .segmentation_btn-wrp .btn-group .btn {
           max-width: 100px;
           font-size: 14px;
-          padding: 2px 0px; }
+          padding: 3px 0px; }
     .object_cont .totalSum .data {
       margin-top: 15px; }
     .object_cont .floor_btn-wrp {
@@ -15487,7 +15527,11 @@ button.btn.back-btn {
       margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
     max-height: 190px;
-    height: 190px; }
+    height: 190px;
+    background-size: 74%;
+    background-position: 50% 73%;
+    background-repeat: no-repeat;
+    background-color: #fff; }
   .object_cont .announce .obj_title h4 {
     font-size: 16px;
     margin-bottom: 2px; }

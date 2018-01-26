@@ -445,7 +445,7 @@ $crdbody-padding : 1.3rem;
     }
     .scrolled{
       background: #fff;
-      border-right: 1px solid rgba(208, 208, 208, 0.5);
+      border-right: 1px solid transparent;
       padding-bottom: 33px;
       display: block!important;
     }
@@ -612,6 +612,7 @@ $crdbody-padding : 1.3rem;
     overflow-x: hidden;
     .announce{
       padding:0 15px;
+      margin-bottom: 20px;
       > div:first-of-type{
         padding-right: 0;
         padding-left: 0;
@@ -624,8 +625,13 @@ $crdbody-padding : 1.3rem;
       }
       .img_wrapper{
         max-height:280px;
+        height:280px;
         padding-left: 15px;
         max-width: none;
+        background-size: 74%;
+        background-position: 50% 73%;
+        background-repeat: no-repeat;
+        background-color: #fff;
       }
       .geolocation {
         display:none
@@ -673,20 +679,66 @@ $crdbody-padding : 1.3rem;
         margin-right: -15px;
         margin-left: -15px;
         margin-top: 20px;
-        .header h4 {
-          font-size: 18px;
-          font-weight: 400;
-          line-height: normal;
+        margin-bottom: 20px;
+        .header {
+          padding-left:35px;
+          padding-right:5px;
+          padding-bottom: 20px;
+          h4 {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: normal;
+          }
+          .muted{
+            font-size: 12px;
+          }
         }
+       > div.card-body{
+         padding-left: 35px;
+         padding-top:0;
+         padding-bottom: 11px;
+         ul{
+           min-width:500px;
+           li{
+             margin-right: 10%;
+             div{
+               strong{
+                 font-size: 12px;
+               }
+             }
+             .muted{
+               font-size: 12px;
+               line-height: 15px;
+             }
+           }
+         }
+
+       }
+    }
+    .average_hours{
+      margin-bottom: 20px;
+      .title{
+        font-size: 12px;
+      }
     }
     .all_data{
       margin-top: 20px;
-      .line-chart-wrapper {
-        padding: 10px 0px;
-        #scrollYAxis{
-          margin-top: 25px;
+      .card-body{
+        padding: 23px 0px 25px 18px;
+        h5{
+          font-size: 18px;
+          font-weight: 400;
+          line-height:22px;
+          margin-bottom: 0;
+        }
+        .line-chart-wrapper {
+          padding: 10px 0px;
+          #scrollYAxis{
+            margin-top: 25px;
+          }
         }
       }
+
     }
     .horizontal-bars{
       margin-right: -15px;
@@ -699,7 +751,7 @@ $crdbody-padding : 1.3rem;
         .btn{
           max-width: 100px;
           font-size: 14px;
-          padding: 2px 0px;
+          padding: 3px 0px;
         }
       }
     }
@@ -741,8 +793,12 @@ $crdbody-padding : 1.3rem;
         }
       }
       .img_wrapper{
-        max-height:190px;
+        max-height: 190px;
         height: 190px;
+        background-size: 74%;
+        background-position: 50% 73%;
+        background-repeat: no-repeat;
+        background-color: #fff;
       }
       .obj_title{
         h4{

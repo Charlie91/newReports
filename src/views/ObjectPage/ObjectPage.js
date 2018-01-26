@@ -373,12 +373,12 @@ export default class ObjectPage extends Component {
     handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
         let chart = document.querySelector('.line-chart-wrapper'),
             Yaxis = document.getElementById('scrollYAxis');
-        // chart.onscroll = () => {
-        //     if(chart.scrollLeft)
-        //         Yaxis.classList.add('scrolled');
-        //     else
-        //         Yaxis.classList.remove('scrolled');
-        // }
+        chart.onscroll = () => {
+            if(chart.scrollLeft)
+                Yaxis.style.cssText = 'border-right-color:rgba(208, 208, 208, 0.5);';
+            else
+                Yaxis.style.cssText = '';
+        }
     }
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
