@@ -358,7 +358,10 @@ $crdbody-padding : 1.3rem;
         margin-top: -5px;
         padding: 21px 7px 0 10px;
         &.fixed{
-          border-right:1px solid rgba(208, 208, 208, 0.5);
+          -webkit-box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
+          -moz-box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
+          box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
+          //border-right:1px solid rgba(208, 208, 208, 0.5);
         }
         li{
           height: auto;
@@ -445,7 +448,7 @@ $crdbody-padding : 1.3rem;
     }
     .scrolled{
       background: #fff;
-      border-right: 1px solid transparent;
+      //border-right: 1px solid transparent;
       padding-bottom: 33px;
       display: block!important;
     }
