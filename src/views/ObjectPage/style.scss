@@ -602,8 +602,10 @@ $crdbody-padding : 1.3rem;
     padding: 0 15px;
     overflow-x: hidden;
     .announce{
+      padding:0 15px;
       > div:first-of-type{
-        padding-right: 15px;
+        padding-right: 0;
+        padding-left: 0;
       }
       .data_wrapper{
         .card-body{
@@ -731,6 +733,7 @@ $crdbody-padding : 1.3rem;
       }
       .img_wrapper{
         max-height:190px;
+        height: 190px;
       }
       .obj_title{
         h4{

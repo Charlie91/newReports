@@ -34,6 +34,7 @@ export default class ObjectPage extends Component {
 
         this.state = {
             viewportWidth:window.innerWidth,
+            requestIsInProcess:false,
             object:'',
             images:[],
             type:'',
@@ -139,6 +140,7 @@ export default class ObjectPage extends Component {
 
         ajaxRequest(url,options)
             .then(data => {
+                console.log(data);
                 let chartObj = this.state.chart;
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {
@@ -244,12 +246,12 @@ export default class ObjectPage extends Component {
 
 
     changeFloor(e){
-        this.addOpacityToChart();
+        this.requestIsStarted();
         this.setState({floorIndex:+e.target.dataset.id},() => this.getFloorsData())
     }
 
     changeTimeSegment(e){
-        this.addOpacityToChart();
+        this.requestIsStarted();
         this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
     }
 
@@ -277,6 +279,7 @@ export default class ObjectPage extends Component {
                     <button type="button"
                             key={i}
                             data-id={i}
+                            disabled={this.state.requestIsInProcess}
                             className={'btn ' + ((this.state.floorIndex === i) ? 'active' : '')}
                             onClick={this.changeFloor.bind(this)}
                     >
@@ -302,6 +305,7 @@ export default class ObjectPage extends Component {
                             <button type="button"
                                     key={i}
                                     data-val={item.val}
+                                    disabled={this.state.requestIsInProcess}
                                     className={'btn ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
                                     onClick={this.changeTimeSegment.bind(this)}
                             >
@@ -330,7 +334,7 @@ export default class ObjectPage extends Component {
 
     handleChangeStart(date) { //функции-обработчики смены дат в datepickers
         if(this.state.endDate - date < 0)return false;
-        this.addOpacityToChart();
+        this.requestIsStarted();
         let newSegment = this.trackActualSegments(date,this.state.endDate);
         this.setState(
             {startDate: date,timeSegment:newSegment},
@@ -341,7 +345,7 @@ export default class ObjectPage extends Component {
     handleChangeEnd(date) {
         if(date - this.state.startDate < 0)return false;
         if(date > moment())return false;
-        this.addOpacityToChart();
+        this.requestIsStarted();
         let newSegment = this.trackActualSegments(this.state.startDate,date);
         this.setState(
             {endDate: date,timeSegment:newSegment},
@@ -350,7 +354,7 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeStart(e){
-        this.addOpacityToChart();
+        this.requestIsStarted();
         this.setState(
             {startDate: moment(e.target.value)},
             () => this.getFloorsData())
@@ -358,7 +362,7 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeEnd(e){
-        this.addOpacityToChart();
+        this.requestIsStarted();
         this.setState(
             {endDate: moment(e.target.value)},
             () => this.getFloorsData()
@@ -396,9 +400,19 @@ export default class ObjectPage extends Component {
         document.querySelector('.navbar').classList.remove('changeHeaderPadding');
     }
 
+    requestIsStarted(){
+        this.addOpacityToChart();
+        this.setState({requestIsInProcess:true})
+    }
+
+    requestIsEnded(){
+        this.removeOpacityFromChart();
+        this.setState({requestIsInProcess:false})
+    }
+
     componentDidUpdate(prevProps, prevState){
         if(prevState.data !== this.state.data)
-            this.removeOpacityFromChart();
+            this.requestIsEnded();
     }
 
 
@@ -540,6 +554,7 @@ export default class ObjectPage extends Component {
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.startDate}
+                                                disabled={this.state.requestIsInProcess}
                                                 selectsStart
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}
@@ -561,6 +576,7 @@ export default class ObjectPage extends Component {
                                             <DatePicker
                                                 className="datepicker"
                                                 selected={this.state.endDate}
+                                                disabled={this.state.requestIsInProcess}
                                                 selectsEnd
                                                 startDate={this.state.startDate}
                                                 endDate={this.state.endDate}

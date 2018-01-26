@@ -407,31 +407,34 @@
     margin-top: 0;
     padding: 0 15px;
     overflow-x: hidden; }
-    .object_cont .announce > div:first-of-type {
-      padding-right: 15px; }
-    .object_cont .announce .data_wrapper .card-body {
-      padding-top: 16px;
-      padding-bottom: 13px; }
-    .object_cont .announce .img_wrapper {
-      max-height: 280px;
-      padding-left: 15px;
-      max-width: none; }
-    .object_cont .announce .geolocation {
-      display: none; }
-    .object_cont .announce .obj_title h4 {
-      font-size: 18px;
-      line-height: 20px; }
-    .object_cont .announce .obj_title .address_mobile {
-      display: block; }
-      .object_cont .announce .obj_title .address_mobile.muted {
-        font-size: 16px;
-        margin-bottom: 0; }
-    .object_cont .announce .obj_title a.link_mobile {
-      display: block;
-      line-height: normal;
-      text-align: center; }
-    .object_cont .announce .obj_title a.link_desktop {
-      display: none; }
+    .object_cont .announce {
+      padding: 0 15px; }
+      .object_cont .announce > div:first-of-type {
+        padding-right: 0;
+        padding-left: 0; }
+      .object_cont .announce .data_wrapper .card-body {
+        padding-top: 16px;
+        padding-bottom: 13px; }
+      .object_cont .announce .img_wrapper {
+        max-height: 280px;
+        padding-left: 15px;
+        max-width: none; }
+      .object_cont .announce .geolocation {
+        display: none; }
+      .object_cont .announce .obj_title h4 {
+        font-size: 18px;
+        line-height: 20px; }
+      .object_cont .announce .obj_title .address_mobile {
+        display: block; }
+        .object_cont .announce .obj_title .address_mobile.muted {
+          font-size: 16px;
+          margin-bottom: 0; }
+      .object_cont .announce .obj_title a.link_mobile {
+        display: block;
+        line-height: normal;
+        text-align: center; }
+      .object_cont .announce .obj_title a.link_desktop {
+        display: none; }
     .object_cont .features > div > strong {
       font-size: 16px;
       padding-right: 6px; }
@@ -490,7 +493,8 @@
       font-weight: 400;
       margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
-    max-height: 190px; }
+    max-height: 190px;
+    height: 190px; }
   .object_cont .announce .obj_title h4 {
     font-size: 16px;
     margin-bottom: 2px; }
