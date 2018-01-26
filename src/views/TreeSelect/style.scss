@@ -310,13 +310,19 @@ a.dropdown__trigger.dropdown-trigger {
         background: none;
     }
     .tag-item:last-child{
-        /*margin-left:-44px*/
+        margin-left: 35px;
     }
     .tree_select{
         margin-left:0;
     }
     .dropup, .dropdown {
         width: 300px;
+    }
+}
+
+@media screen and (min-width:992px){
+    .navbar >div:first-of-type {
+        top: 6px;
     }
 }
 

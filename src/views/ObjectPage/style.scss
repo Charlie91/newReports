@@ -427,6 +427,12 @@ $crdbody-padding : 1.3rem;
       font-size:30px
     }
   }
+  .error-message{
+    text-align: center;
+    font-size: 2em;
+    height: 200px;
+    line-height: 220px;
+  }
   .line-chart-wrapper{
     min-height: 200px;
     margin-top: 15px;

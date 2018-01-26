@@ -312,6 +312,12 @@
   .all_data .card-body h5 {
     font-size: 30px; }
 
+.all_data .error-message {
+  text-align: center;
+  font-size: 2em;
+  height: 200px;
+  line-height: 220px; }
+
 .all_data .line-chart-wrapper {
   min-height: 200px;
   margin-top: 15px; }
