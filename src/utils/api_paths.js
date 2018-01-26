@@ -12,7 +12,7 @@ if(PRODUCTION){
         floors:'https://repo.re-ports.ru/app/ObjectFloors?objId=',
         floorsData:'https://repo.re-ports.ru/app/FloorData',
         userData:'https://repo.re-ports.ru/app/UserData',
-        imgPath:'https://re-ports.ru/app/img/malls/resize/',
+        imgPath:'https://re-ports.ru/app/img/malls/resize',
         thumbPath:'https://re-ports.ru/app/img/malls/thumb/'
     };
 }
@@ -28,7 +28,7 @@ else {
         floors:'https://repo.re-ports.ru/app_test/ObjectFloors?objId=',
         floorsData:'https://repo.re-ports.ru/app_test/FloorData',
         userData:'https://repo.re-ports.ru/app_test/UserData',
-        imgPath:'https://re-ports.ru/app/img/malls/resize/',
+        imgPath:'https://re-ports.ru/app/img/malls/resize',
         thumbPath:'https://re-ports.ru/app/img/malls/thumb/'
     }
 }

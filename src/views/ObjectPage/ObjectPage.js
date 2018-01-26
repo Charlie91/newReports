@@ -136,34 +136,35 @@ export default class ObjectPage extends Component {
         });
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         //console.log(url);
-
-
         ajaxRequest(url,options)
             .then(data => {
-                console.log(data);
                 let chartObj = this.state.chart;
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {
                     values.push(item.VALUE);
                     dates.push(item.THEDATE);
                 });
-
-                let diff = moment(dates[0]).diff(moment(dates[1]));
-                let first_date = moment(moment(dates[0]) + diff).format();
-                let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
-                let avg = parseInt(average(values));
-                values.unshift(avg);
-                dates.unshift(first_date);
-                values.push(avg);
-                dates.push(last_date);
-                chartObj.datasets[0].data = values;
-                let values2 = values.slice(1, values.length-1 );
-                values2.push(NaN);
-                values2.unshift(NaN);
-                chartObj.labels = dates;
-                chartObj.datasets[1].data = values2;
-
-                this.setState({data:data,chart:chartObj,totalSum:data.totalSum});
+                if(!dates.length){
+                    this.setState({emptyData:true});
+                    this.requestIsEnded();
+                }
+                else{
+                    let diff = moment(dates[0]).diff(moment(dates[1]));
+                    let first_date = moment(moment(dates[0]) + diff).format();
+                    let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
+                    let avg = parseInt(average(values));
+                    values.unshift(avg);
+                    dates.unshift(first_date);
+                    values.push(avg);
+                    dates.push(last_date);
+                    chartObj.datasets[0].data = values;
+                    let values2 = values.slice(1, values.length-1 );
+                    values2.push(NaN);
+                    values2.unshift(NaN);
+                    chartObj.labels = dates;
+                    chartObj.datasets[1].data = values2;
+                    this.setState({data:data,chart:chartObj,totalSum:data.totalSum,emptyData:false});
+                }
             })
             .catch(err => console.log(err))
     }
@@ -372,12 +373,12 @@ export default class ObjectPage extends Component {
     handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
         let chart = document.querySelector('.line-chart-wrapper'),
             Yaxis = document.getElementById('scrollYAxis');
-        chart.onscroll = () => {
-            if(chart.scrollLeft)
-                Yaxis.classList.add('scrolled');
-            else
-                Yaxis.classList.remove('scrolled');
-        }
+        // chart.onscroll = () => {
+        //     if(chart.scrollLeft)
+        //         Yaxis.classList.add('scrolled');
+        //     else
+        //         Yaxis.classList.remove('scrolled');
+        // }
     }
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
@@ -517,28 +518,28 @@ export default class ObjectPage extends Component {
                         <div className="muted">Поясняющий текст о том, что тут показано</div>
                     </div>
                     <CardBody>
-                            {
-                                (this.state.monthlyData) ?
-                                    <ul>
-                                        { this.state.monthlyData.map( (item,i) => {
-                                            return(
-                                                <li key={i}>
-                                                    <div>
-                                                        <strong>{formatNumericValue(item.value) +
-                                                            ((this.state.type === 'Выручка') ? '' : 'чел.') }
-                                                        </strong>
-                                                    </div>
-                                                    <div className="muted">
-                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
-                                                    </div>
-                                                </li>
-                                            )
-                                         })
-                                        }
-                                    </ul>
+                        {
+                            (this.state.monthlyData) ?
+                                <ul>
+                                    { this.state.monthlyData.map( (item,i) => {
+                                        return(
+                                            <li key={i}>
+                                                <div>
+                                                    <strong>{formatNumericValue(item.value) +
+                                                    ((this.state.type === 'Выручка') ? '' : 'чел.') }
+                                                    </strong>
+                                                </div>
+                                                <div className="muted">
+                                                    {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                    }
+                                </ul>
                                 :
                                 <Loading/>
-                            }
+                        }
                     </CardBody>
                 </Card>
 
@@ -604,163 +605,164 @@ export default class ObjectPage extends Component {
                         </Row>
                         <Row>
                             <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
-                            <div  className="line-chart-wrapper">
-                                {(!this.state.chart.datasets[0].data.length) ?
-                                    <Loading/>
-                                    :
-                                    <div className="linechart_area_wrapper">
-                                        <Line data={this.state.chart}
-                                              options={{
-                                                  maintainAspectRatio: false,
-                                                  animation: {
-                                                      duration: 700,
-                                                      onComplete: function () {
-                                                          var sourceCanvas = this.chart.ctx.canvas;
-                                                          var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
-                                                          targetCtx.canvas.width = 65;
-                                                          targetCtx.canvas.height = 165;
-                                                          targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65, 200);
-                                                      }},
-                                                  legend: {
-                                                      display: false
-                                                  },
-                                                  tooltips: {
-                                                      custom: customLabel2,
-                                                      enabled:false,
-                                                      callbacks:{
-                                                          label: (tooltipItem, data ) => {
-                                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
+                                {this.state.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
+                                <div style={this.state.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
+                                    {(!this.state.chart.datasets[0].data.length) ?
+                                        <Loading/>
+                                        :
+                                        <div className="linechart_area_wrapper">
+                                            <Line data={this.state.chart}
+                                                  options={{
+                                                      maintainAspectRatio: false,
+                                                      animation: {
+                                                          duration: 700,
+                                                          onComplete: function () {
+                                                              var sourceCanvas = this.chart.ctx.canvas;
+                                                              var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
+                                                              targetCtx.canvas.width = 65;
+                                                              targetCtx.canvas.height = 165;
+                                                              targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65, 200);
+                                                          }},
+                                                      legend: {
+                                                          display: false
+                                                      },
+                                                      tooltips: {
+                                                          custom: customLabel2,
+                                                          enabled:false,
+                                                          callbacks:{
+                                                              label: (tooltipItem, data ) => {
+                                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
+                                                              }
                                                           }
-                                                      }
-                                                  },
-                                                  scales: {
-                                                      xAxes: [
-                                                          {
-                                                              id: 'main-x-axis',
-                                                              afterFit: function (scale) {
-                                                                  scale.height = 29;
-                                                              },
-                                                              type: 'time',
-                                                              time: {
-                                                                  unit: getStepTick(this.state.timeSegment),
-                                                                  unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
-                                                                  displayFormats: {
-                                                                      day: getStepName(this.state.timeSegment),
+                                                      },
+                                                      scales: {
+                                                          xAxes: [
+                                                              {
+                                                                  id: 'main-x-axis',
+                                                                  afterFit: function (scale) {
+                                                                      scale.height = 29;
+                                                                  },
+                                                                  type: 'time',
+                                                                  time: {
+                                                                      unit: getStepTick(this.state.timeSegment),
+                                                                      unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                                                      displayFormats: {
+                                                                          day: getStepName(this.state.timeSegment),
+                                                                      }
+                                                                  },
+                                                                  display: true,
+                                                                  ticks: {
+                                                                      beginAtZero:false,
+                                                                      padding: 12,
+                                                                      fontColor:'#7f8fa4',
+                                                                      fontSize: 14,
+                                                                      fontFamily: 'ProximaNova',
+                                                                      callback: (value, index, values) => {
+                                                                          if (!moment(value).isValid()){
+                                                                              return '';
+                                                                          }
+
+                                                                          let side = ( (index === 0) || (index === (values.length -1)) );
+                                                                          let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
+                                                                          let len = Math.ceil(this.state.chart.labels.length / step);
+                                                                          // if end
+                                                                          if(index === 0){
+                                                                              return ( side && (len - values.length) < 1 ) ? '' :
+                                                                                  moment(value).format( getStepName(this.state.timeSegment) );
+                                                                          }
+                                                                          // if end
+                                                                          if(index === (values.length -1)){
+                                                                              return ( side && (len - values.length) < 2 ) ? '' :
+                                                                                  moment(value).format( getStepName(this.state.timeSegment) );
+                                                                          }
+
+                                                                          return moment(value).format( getStepName(this.state.timeSegment) );
+                                                                      }
+                                                                  },
+                                                                  gridLines: {
+                                                                      color: "rgba(0, 0, 0, 0.1)",
+                                                                      borderDash: [4, 4],
+                                                                      zeroLineColor:'#dfe2e5',
+                                                                      drawBorder: false,
+                                                                      drawOnChartArea: true,
+                                                                      drawTicks:false
                                                                   }
                                                               },
-                                                              display: true,
+                                                              {
+                                                                  id: "main-x-axis2",
+                                                                  gridLines: {
+                                                                      display: false,
+                                                                      drawBorder: false,
+                                                                      tickMarkLength:1
+                                                                  },
+                                                                  type: "time",
+                                                                  time: {
+                                                                      unit: getStepTick(this.state.timeSegment),
+                                                                      unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                                                      displayFormats: {
+                                                                          day: "YYYY"
+                                                                      }
+                                                                  },
+                                                                  display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) &&
+                                                                      ((this.state.timeSegment === 'D') || (this.state.timeSegment === 'M'))
+                                                                  ),
+                                                                  ticks: {
+                                                                      beginAtZero:false,
+                                                                      padding: 0,
+                                                                      fontColor:'#7f8fa4',
+                                                                      fontSize: 14,
+                                                                      fontFamily: 'ProximaNova',
+                                                                      callback: (value, index, values) => {
+                                                                          let side = ( (index === 0) || (index === (values.length -1)) );
+                                                                          let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
+                                                                          let len = Math.ceil(this.state.chart.labels.length / step);
+
+                                                                          // if end
+                                                                          if(index === 0){
+                                                                              return ( side && (len - values.length) < 1 ) ? '' :
+                                                                                  moment(value).format('YYYY');
+                                                                          }
+                                                                          // if end
+                                                                          if(index === (values.length -1)){
+                                                                              return ( side && (len - values.length) < 2 ) ? '' :
+                                                                                  moment(value).format('YYYY');
+                                                                          }
+
+                                                                          return moment(value).format('YYYY');
+                                                                      }
+                                                                  }
+                                                              }
+                                                          ],
+                                                          yAxes: [{
+                                                              afterFit: function (scale) {
+                                                                  scale.width = 66;
+                                                              },
                                                               ticks: {
-                                                                  beginAtZero:false,
-                                                                  padding: 12,
+                                                                  beginAtZero: true,
                                                                   fontColor:'#7f8fa4',
-                                                                  fontSize: 14,
+                                                                  fontSize: 11,
                                                                   fontFamily: 'ProximaNova',
-                                                                  callback: (value, index, values) => {
-                                                                      if (!moment(value).isValid()){
-                                                                          return '';
-                                                                      }
-
-                                                                      let side = ( (index === 0) || (index === (values.length -1)) );
-                                                                      let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                                      let len = Math.ceil(this.state.chart.labels.length / step);
-                                                                      // if end
-                                                                      if(index === 0){
-                                                                          return ( side && (len - values.length) < 1 ) ? '' :
-                                                                              moment(value).format( getStepName(this.state.timeSegment) );
-                                                                      }
-                                                                      // if end
-                                                                      if(index === (values.length -1)){
-                                                                          return ( side && (len - values.length) < 2 ) ? '' :
-                                                                              moment(value).format( getStepName(this.state.timeSegment) );
-                                                                      }
-
-                                                                      return moment(value).format( getStepName(this.state.timeSegment) );
+                                                                  padding: 10,
+                                                                  callback: function(value, index, values) {
+                                                                      return formatNumberBySimpleSpaces(value);
                                                                   }
                                                               },
                                                               gridLines: {
                                                                   color: "rgba(0, 0, 0, 0.1)",
                                                                   borderDash: [4, 4],
                                                                   zeroLineColor:'#dfe2e5',
-                                                                  drawBorder: false,
+                                                                  drawBorder: true,
                                                                   drawOnChartArea: true,
                                                                   drawTicks:false
-                                                              }
-                                                          },
-                                                          {
-                                                              id: "main-x-axis2",
-                                                              gridLines: {
-                                                                  display: false,
-                                                                  drawBorder: false,
-                                                                  tickMarkLength:1
                                                               },
-                                                              type: "time",
-                                                              time: {
-                                                                  unit: getStepTick(this.state.timeSegment),
-                                                                  unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
-                                                                  displayFormats: {
-                                                                      day: "YYYY"
-                                                                  }
-                                                              },
-                                                              display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) &&
-                                                                ((this.state.timeSegment === 'D') || (this.state.timeSegment === 'M'))
-                                                              ),
-                                                              ticks: {
-                                                                  beginAtZero:false,
-                                                                  padding: 0,
-                                                                  fontColor:'#7f8fa4',
-                                                                  fontSize: 14,
-                                                                  fontFamily: 'ProximaNova',
-                                                                  callback: (value, index, values) => {
-                                                                      let side = ( (index === 0) || (index === (values.length -1)) );
-                                                                      let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                                      let len = Math.ceil(this.state.chart.labels.length / step);
-
-                                                                      // if end
-                                                                      if(index === 0){
-                                                                          return ( side && (len - values.length) < 1 ) ? '' :
-                                                                              moment(value).format('YYYY');
-                                                                      }
-                                                                      // if end
-                                                                      if(index === (values.length -1)){
-                                                                          return ( side && (len - values.length) < 2 ) ? '' :
-                                                                              moment(value).format('YYYY');
-                                                                      }
-
-                                                                      return moment(value).format('YYYY');
-                                                                  }
-                                                              }
-                                                          }
-                                                      ],
-                                                  yAxes: [{
-                                                      afterFit: function (scale) {
-                                                          scale.width = 66;
-                                                      },
-                                                      ticks: {
-                                                          beginAtZero: true,
-                                                          fontColor:'#7f8fa4',
-                                                          fontSize: 11,
-                                                          fontFamily: 'ProximaNova',
-                                                          padding: 10,
-                                                          callback: function(value, index, values) {
-                                                              return formatNumberBySimpleSpaces(value);
-                                                          }
-                                                      },
-                                                      gridLines: {
-                                                          color: "rgba(0, 0, 0, 0.1)",
-                                                          borderDash: [4, 4],
-                                                          zeroLineColor:'#dfe2e5',
-                                                          drawBorder: true,
-                                                          drawOnChartArea: true,
-                                                          drawTicks:false
-                                                      },
-                                                  }]
-                                              }
-                                          }}
-                                    />
-                                    </div>
-                                }
-                                <canvas id="scrollYAxis" height="200" width="0"></canvas>
-                            </div>
+                                                          }]
+                                                      }
+                                                  }}
+                                            />
+                                        </div>
+                                    }
+                                    <canvas id="scrollYAxis" className={this.state.viewportWidth < 992 ? 'scrolled' : ''} height="200" width="0"></canvas>
+                                </div>
                             </Col>
                             {this.renderSegmentationButtons()}
                         </Row>
