@@ -465,7 +465,7 @@ $crdbody-padding : 1.3rem;
   }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width:1444px) {
   .announce{
     &.row > div {
       //padding-right: 8px;
@@ -494,7 +494,7 @@ $crdbody-padding : 1.3rem;
   }
 }
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1444px) {
   .announce {
     > div:first-of-type {
       padding-right: 8px;

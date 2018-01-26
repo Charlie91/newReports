@@ -29,13 +29,10 @@
 
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
-
 .revenue .segmentation_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .floor_btn-wrp .btn.active {
   background-color: #f6aa25; }
-
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
 
@@ -44,7 +41,6 @@
   background: #fff;
   padding-top: 2px;
   padding-bottom: 2px; }
-
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
   background-color: #886ce6;
@@ -311,13 +307,11 @@
   overflow: hidden; }
   .all_data .card-body h5 {
     font-size: 30px; }
-
 .all_data .error-message {
   text-align: center;
   font-size: 2em;
   height: 200px;
   line-height: 220px; }
-
 .all_data .line-chart-wrapper {
   min-height: 200px;
   margin-top: 15px; }
@@ -338,8 +332,7 @@
 @media screen and (min-width: 1320px) {
   .muted {
     font-size: 14px; } }
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1444px) {
   .announce.row > div:first-of-type .card {
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
@@ -353,8 +346,7 @@
     border: 1px solid #d1d4d7; }
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
-
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1444px) {
   .announce > div:first-of-type {
     padding-right: 8px;
     max-height: 340px; }
@@ -374,27 +366,29 @@
     font-size: 14px; }
   .announce .obj_title h4 {
     font-size: 32px; }
+
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
       margin-left: -17px;
       margin-top: 5px; } }
-
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }
-
 @media screen and (max-width: 991px) {
   .announce .img_wrapper img.fullIMG {
     height: auto; }
+
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
+
   .average_hours.horizontal-bars h4 {
     font-size: 18px;
     font-weight: 400; }
   .average_hours.horizontal-bars .card-body {
     overflow: scroll; }
+
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
@@ -408,7 +402,6 @@
       display: none; }
     .all_data .line-chart-wrapper .linechart_area_wrapper {
       width: 1244px; } }
-
 @media screen and (max-width: 767px) {
   .object_cont {
     width: 100%;
@@ -533,7 +526,6 @@
     .object_cont input[type="date"]::-webkit-inner-spin-button,
     .object_cont input[type="date"]::-webkit-calendar-picker-indicator {
       display: none; } }
-
 @media screen and (max-width: 575px) {
   .object_cont .announce .features {
     margin-top: 0; }
@@ -561,7 +553,6 @@
     font-size: 12px; }
   .object_cont .datepicker_wrp input.datepicker {
     font-size: 12px; } }
-
 @media screen and (max-width: 320px) {
   .object_cont .datepicker_wrp:last-of-type input.datepicker {
     margin-right: -15px; }
@@ -575,7 +566,6 @@
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px; }
