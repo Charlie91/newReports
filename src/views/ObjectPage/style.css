@@ -345,7 +345,8 @@
   .announce .img_wrapper, .announce .data_wrapper {
     max-height: 400px;
     max-width: 49.5%;
-    background-position: center center; }
+    background-position: center center;
+    background-size: cover; }
     .announce .img_wrapper img, .announce .data_wrapper img {
       display: none; }
   .announce .card-body {
