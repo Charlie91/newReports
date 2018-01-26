@@ -15317,6 +15317,7 @@ button.btn.back-btn {
     pointer-events: none; }
   .all_data .line-chart-wrapper .scrolled {
     background: #fff;
+    border-right: 1px solid transparent;
     padding-bottom: 33px;
     display: block !important; }
   .all_data .line-chart-wrapper .linechart_area_wrapper {
@@ -15437,6 +15438,8 @@ button.btn.back-btn {
         text-align: center; }
       .object_cont .announce .obj_title a.link_desktop {
         display: none; }
+    .object_cont .average_hours {
+      padding-bottom: 0px; }
     .object_cont .features > div > strong {
       font-size: 16px;
       padding-right: 6px; }
@@ -15559,6 +15562,10 @@ button.btn.back-btn {
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; }
 .announce .img_wrapper {
   border-radius: 4px; }
   .announce .img_wrapper img.fullIMG {

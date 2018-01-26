@@ -92,7 +92,7 @@ export default class ObjectPage extends Component {
                     object:obj,
                     images:obj.picture_set,
                     type:typeArr[0],
-                    currency: typeArr[1]
+                    currency: (typeArr[1] === 'чел.') ? 'человек' : typeArr[1]
                 }, () => {
                     this.props.upState('title','Карточка объекта');
                     this.props.upState('address',this.state.object.address);
@@ -528,7 +528,7 @@ export default class ObjectPage extends Component {
                                             <li key={i}>
                                                 <div>
                                                     <strong>{formatNumericValue(item.value) +
-                                                    ((this.state.type === 'Выручка') ? '' : 'чел.') }
+                                                    ((this.state.type === 'Выручка') ? '' : 'человек') }
                                                     </strong>
                                                 </div>
                                                 <div className="muted">
