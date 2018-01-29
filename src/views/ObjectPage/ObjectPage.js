@@ -566,6 +566,7 @@ export default class ObjectPage extends Component {
                                             />
                                             :
                                             <input className="datepicker"
+                                                   required
                                                    value={this.state.startDate.format('YYYY-MM-DD')}
                                                    onChange = {this.handleMobileChangeStart.bind(this)}
                                                    type="date"
@@ -589,6 +590,7 @@ export default class ObjectPage extends Component {
                                             :
                                             <input
                                                 className="datepicker"
+                                                required
                                                 value={this.state.endDate.format('YYYY-MM-DD')}
                                                 onChange = {this.handleMobileChangeEnd.bind(this)}
                                                 type="date"
@@ -604,7 +606,7 @@ export default class ObjectPage extends Component {
                                       dangerouslySetInnerHTML=
                                           {{
                                               __html:
-                                                  this.state.totalSum ?
+                                                  (this.state.totalSum !== undefined) ?
                                                       (formatNumericValueWithMnl(this.state.totalSum) + ' ' + this.state.currency) : ''
                                           }}
                                 >

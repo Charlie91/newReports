@@ -75,6 +75,10 @@ $crdbody-padding : 1.3rem;
 }
 
 .datepicker_wrp{
+  ::-webkit-inner-spin-button, ::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
   display:inline-block;
   &:last-of-type::before{
     content: 'по';
@@ -98,6 +102,7 @@ $crdbody-padding : 1.3rem;
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap;
+
   }
 }
 
@@ -449,7 +454,7 @@ $crdbody-padding : 1.3rem;
     }
     .scrolled{
       background: #fff;
-      //border-right: 1px solid transparent;
+      border-right: 1px solid transparent;
       padding-bottom: 33px;
       display: block!important;
     }

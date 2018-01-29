@@ -385,7 +385,18 @@ export default class HorizontalBarChart extends Component {
                                                          position:'bottom'
                                                      },
                                                      tooltips: {
-                                                         enabled:false
+                                                         custom: customLabel,
+                                                         enabled:false,
+                                                         backgroundColor:'#eff3f6',
+                                                         bodyFontColor:'#354052',
+                                                         titleFontColor:'#354052',
+                                                         titleFontStyle:'normal',
+                                                         displayColors:false,
+                                                         callbacks:{
+                                                             label:function(tooltipItem, data	){
+                                                                 return `${tooltipItem.xLabel} чел.`
+                                                             }
+                                                         }
                                                      },
                                                      scales: {
                                                          display:false,
