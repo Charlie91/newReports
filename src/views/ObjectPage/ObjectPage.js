@@ -368,7 +368,7 @@ export default class ObjectPage extends Component {
         );
     }
 
-    handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
+    /*handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
         let chart = document.querySelector('.line-chart-wrapper'),
             Yaxis = document.getElementById('scrollYAxis');
         chart.onscroll = () => {
@@ -378,6 +378,7 @@ export default class ObjectPage extends Component {
                 Yaxis.style.cssText = '';
         }
     }
+    */
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
         document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
@@ -428,7 +429,7 @@ export default class ObjectPage extends Component {
 
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         this.addSpecificStyles();
-        this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
+        //this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
     }
 
     componentWillUnmount(){
@@ -627,11 +628,12 @@ export default class ObjectPage extends Component {
                                                       animation: {
                                                           duration: 700,
                                                           onComplete: function () {
-                                                              var sourceCanvas = this.chart.ctx.canvas;
+                                                              /*var sourceCanvas = this.chart.ctx.canvas;
                                                               var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
                                                               targetCtx.canvas.width = 65;
                                                               targetCtx.canvas.height = 165;
                                                               targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65, 200);
+                                                              */
                                                           }},
                                                       legend: {
                                                           display: false
@@ -771,7 +773,6 @@ export default class ObjectPage extends Component {
                                             />
                                         </div>
                                     }
-                                    <canvas id="scrollYAxis" className={this.state.viewportWidth < 992 ? 'scrolled' : ''} height="200" width="0"></canvas>
                                 </div>
                             </Col>
                             {this.renderSegmentationButtons()}
