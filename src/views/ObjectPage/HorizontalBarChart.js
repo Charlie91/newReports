@@ -205,6 +205,7 @@ export default class HorizontalBarChart extends Component {
         this.addRadiusestoChart();
         if(this.props.data){
             let wrapper = document.querySelector('.horizontal-bars .card-body');
+            if(!wrapper)return; //если компонент не рендерится - не обрабатывать
             wrapper.onscroll = function(e) {
                 let ranges = document.querySelector('.horizontal-bars .card-body .ranges');
                 let firstChart = document.querySelector('.average_hours.horizontal-bars .chart-wrapper:first-of-type');
@@ -384,7 +385,18 @@ export default class HorizontalBarChart extends Component {
                                                          position:'bottom'
                                                      },
                                                      tooltips: {
-                                                         enabled:false
+                                                         custom: customLabel,
+                                                         enabled:false,
+                                                         backgroundColor:'#eff3f6',
+                                                         bodyFontColor:'#354052',
+                                                         titleFontColor:'#354052',
+                                                         titleFontStyle:'normal',
+                                                         displayColors:false,
+                                                         callbacks:{
+                                                             label:function(tooltipItem, data	){
+                                                                 return `${tooltipItem.xLabel} чел.`
+                                                             }
+                                                         }
                                                      },
                                                      scales: {
                                                          display:false,

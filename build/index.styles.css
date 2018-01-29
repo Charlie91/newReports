@@ -15042,6 +15042,9 @@ button.btn.back-btn {
 
 .datepicker_wrp {
   display: inline-block; }
+  .datepicker_wrp ::-webkit-inner-spin-button, .datepicker_wrp ::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none; }
   .datepicker_wrp:last-of-type::before {
     content: '\43F\43E';
     margin-left: -22px;
@@ -15258,7 +15261,9 @@ button.btn.back-btn {
         margin-top: -5px;
         padding: 21px 7px 0 10px; }
         .average_hours.horizontal-bars .card-body ul.ranges.fixed {
-          border-right: 1px solid rgba(208, 208, 208, 0.5); }
+          -webkit-box-shadow: 2px 0px 3px -1px #d7d9db;
+          -moz-box-shadow: 2px 0px 3px -1px #d7d9db;
+          box-shadow: 2px 0px 3px -1px #d7d9db; }
         .average_hours.horizontal-bars .card-body ul.ranges li {
           height: auto;
           line-height: 1.4;
@@ -15273,8 +15278,9 @@ button.btn.back-btn {
       display: inline-block;
       max-width: 132px;
       margin-right: 20px;
-      height: 200px;
-      border: 1px solid #f5f5f5; }
+      height: 202px;
+      border: 1px solid #f5f5f5;
+      border-radius: 4px; }
       .average_hours.horizontal-bars .chart-wrapper:first-of-type {
         margin-left: 21px; }
       .average_hours.horizontal-bars .chart-wrapper.fixed {
@@ -15317,7 +15323,6 @@ button.btn.back-btn {
     pointer-events: none; }
   .all_data .line-chart-wrapper .scrolled {
     background: #fff;
-    border-right: 1px solid transparent;
     padding-bottom: 33px;
     display: block !important; }
   .all_data .line-chart-wrapper .linechart_area_wrapper {
@@ -15327,7 +15332,7 @@ button.btn.back-btn {
   .muted {
     font-size: 14px; } }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1444px) {
   .announce.row > div:first-of-type .card {
     height: 100%; }
   .announce .img_wrapper, .announce .data_wrapper {
@@ -15342,7 +15347,7 @@ button.btn.back-btn {
   .announce .card-body {
     padding: 40px 35px 16px 40px; } }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1444px) {
   .announce > div:first-of-type {
     padding-right: 8px;
     max-height: 340px; }
@@ -15375,14 +15380,31 @@ button.btn.back-btn {
 @media screen and (max-width: 991px) {
   .announce .img_wrapper img.fullIMG {
     height: auto; }
+  .card {
+    border: 1px solid #dfe2e5; }
+    .card .card-body {
+      padding: 1.5rem;
+      padding-bottom: 38px; }
   .object_cont {
     margin-right: auto;
     margin-left: auto; }
-  .average_hours.horizontal-bars h4 {
-    font-size: 18px;
-    font-weight: 400; }
-  .average_hours.horizontal-bars .card-body {
-    overflow: scroll; }
+  .average_hours {
+    border: 0px;
+    border-radius: 0px; }
+    .average_hours.horizontal-bars h4 {
+      padding-left: 0px;
+      font-size: 18px;
+      font-weight: 400; }
+    .average_hours.horizontal-bars .muted {
+      padding-left: 0px; }
+    .average_hours.horizontal-bars .card-body {
+      overflow: scroll; }
+    .average_hours.horizontal-bars .title {
+      padding-top: 6px;
+      padding-bottom: 2px; }
+  .data_per_month {
+    border: 0px;
+    border-radius: 0px; }
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
@@ -15398,6 +15420,9 @@ button.btn.back-btn {
       width: 1244px; } }
 
 @media screen and (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px; }
   .object_cont {
     width: 100%;
     margin: auto;
@@ -15418,10 +15443,7 @@ button.btn.back-btn {
         height: 280px;
         padding-left: 15px;
         max-width: none;
-        background-size: 74%;
-        background-position: 50% 73%;
-        background-repeat: no-repeat;
-        background-color: #fff; }
+        background-size: cover; }
       .object_cont .announce .geolocation {
         display: none; }
       .object_cont .announce .obj_title h4 {
@@ -15456,6 +15478,7 @@ button.btn.back-btn {
       margin-bottom: 20px; }
       .object_cont .data_per_month .header {
         padding-left: 35px;
+        padding-top: 17px;
         padding-right: 5px;
         padding-bottom: 20px; }
         .object_cont .data_per_month .header h4 {
@@ -15530,11 +15553,7 @@ button.btn.back-btn {
       margin-bottom: 1px; }
   .object_cont .announce .img_wrapper {
     max-height: 190px;
-    height: 190px;
-    background-size: 74%;
-    background-position: 50% 73%;
-    background-repeat: no-repeat;
-    background-color: #fff; }
+    height: 190px; }
   .object_cont .announce .obj_title h4 {
     font-size: 16px;
     margin-bottom: 2px; }
@@ -15562,35 +15581,6 @@ button.btn.back-btn {
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px; }
-.announce .img_wrapper {
-  border-radius: 4px; }
-  .announce .img_wrapper img.fullIMG {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0 0 3px 3px; }
-
-@media screen and (max-width: 1500px) {
-  .announce .img_wrapper img.fullIMG {
-    max-width: 100%;
-    height: 100%; } }
-
-@media screen and (max-width: 1400px) {
-  .announce .img_wrapper img.fullIMG {
-    max-width: none; } }
-
-@media screen and (max-width: 991px) {
-  .announce .img_wrapper img.fullIMG {
-    max-width: none;
-    height: 100%; } }
-
-@media screen and (max-width: 767px) {
-  .announce .img_wrapper img.fullIMG {
-    max-width: 100%;
-    height: auto; } }
 .registration-form {
   border-radius: 10px;
   margin: auto; }
@@ -15722,8 +15712,8 @@ button.btn.back-btn {
 .auth-layer {
   display: flex;
   background: url(./img/backgroundv2.86bc8d39d7d747c66f1e522473a2c745.jpg);
-  background-size: 140%;
-  background-position: 40% 0%;
+  background-size: cover;
+  background-position: 50%;
   height: inherit !important; }
   .auth-layer .main {
     padding-top: 0; }
