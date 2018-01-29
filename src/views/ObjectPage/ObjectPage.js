@@ -5,7 +5,6 @@ import {ajaxRequest} from './../../utils/utils';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
-import './images.scss';
 import {Line} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
@@ -601,7 +600,15 @@ export default class ObjectPage extends Component {
                                 {this.renderFloorObjectsButtons()}
                             </Col>
                             <Col xs="12" md="3" className="totalSum">
-                                <span className="data" dangerouslySetInnerHTML={{__html: formatNumericValueWithMnl(this.state.totalSum) + ' ' + this.state.currency}} ></span>
+                                <span className="data"
+                                      dangerouslySetInnerHTML=
+                                          {{
+                                              __html:
+                                                  this.state.totalSum ?
+                                                      (formatNumericValueWithMnl(this.state.totalSum) + ' ' + this.state.currency) : ''
+                                          }}
+                                >
+                                </span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
