@@ -134,7 +134,6 @@ export default class ObjectPage extends Component {
             if(this.state.floorIndex === i)floorID = item.id
         });
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
-        //console.log(url);
         ajaxRequest(url,options)
             .then(data => {
                 let chartObj = this.state.chart;
@@ -496,7 +495,7 @@ export default class ObjectPage extends Component {
                         </Card>
                     </Col>
                     <Col style={{overflow:'hidden', backgroundImage: (state.images.length ? `url(${API.imgPath}/${state.object.id}/${state.images[0]})` : `url(${API.imgPath}/mall_default.jpg)`) }}
-                         className="img_wrapper order-1 order-md-12" md="6" xs="12">
+                         className={((state.images.length) ? "img_wrapper_full" : "img_wrapper_def") + ' img_wrapper order-1 order-md-12'} md="6" xs="12">
                     </Col>
                 </Row>
 

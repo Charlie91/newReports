@@ -210,7 +210,7 @@ $font_size_mobile: 0.688em;
         margin-left: -50px;
       }
       &.h_shadow{
-        box-shadow: 0px 6px 8px -3px rgba(200,200,200,0.8);
+        box-shadow: 0px 6px 6px -4px rgba(200,200,200,0.8);
       }
     }
     .tbody {
@@ -360,12 +360,13 @@ $font_size_mobile: 0.688em;
 ::-webkit-scrollbar-track {
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  background: #eff3f6;
 }
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #ddd;
+  background: #e1e4e6;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: #ddd;
+  background: #e1e4e6;
 }
