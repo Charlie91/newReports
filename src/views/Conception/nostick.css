@@ -153,7 +153,7 @@
         margin-right: 50px;
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
-        box-shadow: 0px 6px 8px -3px rgba(200, 200, 200, 0.8); }
+        box-shadow: 0px 6px 6px -4px rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
       display: table; }
@@ -175,7 +175,6 @@
       height: calc(100vh - 190px) !important;
       height: -moz-calc(100vh - 190px) !important;
       height: -webkit-calc(100vh - 190px) !important; } }
-
 @media screen and (max-width: 767px) {
   #no-stick {
     font-size: 0.688em;
@@ -242,19 +241,19 @@
           line-height: 20px !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
-
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px; }
 
 ::-webkit-scrollbar-track {
   -webkit-border-radius: 10px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  background: #eff3f6; }
 
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #ddd; }
+  background: #e1e4e6; }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: #ddd; }
+  background: #e1e4e6; }

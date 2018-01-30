@@ -10,6 +10,7 @@ import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
+import DataChart from './DataChart';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
 import {formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
@@ -134,7 +135,6 @@ export default class ObjectPage extends Component {
             if(this.state.floorIndex === i)floorID = item.id
         });
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
-        //console.log(url);
         ajaxRequest(url,options)
             .then(data => {
                 let chartObj = this.state.chart;
@@ -369,7 +369,7 @@ export default class ObjectPage extends Component {
         );
     }
 
-    handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
+    /*handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
         let chart = document.querySelector('.line-chart-wrapper'),
             Yaxis = document.getElementById('scrollYAxis');
         chart.onscroll = () => {
@@ -379,6 +379,7 @@ export default class ObjectPage extends Component {
                 Yaxis.style.cssText = '';
         }
     }
+    */
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
         document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
@@ -429,7 +430,7 @@ export default class ObjectPage extends Component {
 
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         this.addSpecificStyles();
-        this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
+        //this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
     }
 
     componentWillUnmount(){
@@ -496,7 +497,7 @@ export default class ObjectPage extends Component {
                         </Card>
                     </Col>
                     <Col style={{overflow:'hidden', backgroundImage: (state.images.length ? `url(${API.imgPath}/${state.object.id}/${state.images[0]})` : `url(${API.imgPath}/mall_default.jpg)`) }}
-                         className="img_wrapper order-1 order-md-12" md="6" xs="12">
+                         className={((state.images.length) ? "img_wrapper_full" : "img_wrapper_def") + ' img_wrapper order-1 order-md-12'} md="6" xs="12">
                     </Col>
                 </Row>
 
@@ -615,166 +616,16 @@ export default class ObjectPage extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
-                                {this.state.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
-                                <div style={this.state.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
-                                    {(!this.state.chart.datasets[0].data.length) ?
-                                        <Loading/>
-                                        :
-                                        <div className="linechart_area_wrapper">
-                                            <Line data={this.state.chart}
-                                                  options={{
-                                                      maintainAspectRatio: false,
-                                                      animation: {
-                                                          duration: 700,
-                                                          onComplete: function () {
-                                                              var sourceCanvas = this.chart.ctx.canvas;
-                                                              var targetCtx = document.getElementById("scrollYAxis").getContext("2d");
-                                                              targetCtx.canvas.width = 65;
-                                                              targetCtx.canvas.height = 165;
-                                                              targetCtx.drawImage(sourceCanvas, 0, 0, 65 * pixelRatio, 200 * pixelRatio, 0, 0, 65, 200);
-                                                          }},
-                                                      legend: {
-                                                          display: false
-                                                      },
-                                                      tooltips: {
-                                                          custom: customLabel2,
-                                                          enabled:false,
-                                                          callbacks:{
-                                                              label: (tooltipItem, data ) => {
-                                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
-                                                              }
-                                                          }
-                                                      },
-                                                      scales: {
-                                                          xAxes: [
-                                                              {
-                                                                  id: 'main-x-axis',
-                                                                  afterFit: function (scale) {
-                                                                      scale.height = 29;
-                                                                  },
-                                                                  type: 'time',
-                                                                  time: {
-                                                                      unit: getStepTick(this.state.timeSegment),
-                                                                      unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
-                                                                      displayFormats: {
-                                                                          day: getStepName(this.state.timeSegment),
-                                                                      }
-                                                                  },
-                                                                  display: true,
-                                                                  ticks: {
-                                                                      beginAtZero:false,
-                                                                      padding: 12,
-                                                                      fontColor:'#7f8fa4',
-                                                                      fontSize: 14,
-                                                                      fontFamily: 'ProximaNova',
-                                                                      callback: (value, index, values) => {
-                                                                          if (!moment(value).isValid()){
-                                                                              return '';
-                                                                          }
+                            <DataChart
+                                render={!(this.state.type === 'Выручка')}
+                                data={this.state.chart}
+                                startDate={this.state.startDate}
+                                endDate={this.state.endDate}
+                                currency={this.state.currency}
+                                timeSegment={this.state.timeSegment}
+                                emptyData={this.state.emptyData}
 
-                                                                          let side = ( (index === 0) || (index === (values.length -1)) );
-                                                                          let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                                          let len = Math.ceil(this.state.chart.labels.length / step);
-                                                                          // if end
-                                                                          if(index === 0){
-                                                                              return ( side && (len - values.length) < 1 ) ? '' :
-                                                                                  moment(value).format( getStepName(this.state.timeSegment) );
-                                                                          }
-                                                                          // if end
-                                                                          if(index === (values.length -1)){
-                                                                              return ( side && (len - values.length) < 2 ) ? '' :
-                                                                                  moment(value).format( getStepName(this.state.timeSegment) );
-                                                                          }
-
-                                                                          return moment(value).format( getStepName(this.state.timeSegment) );
-                                                                      }
-                                                                  },
-                                                                  gridLines: {
-                                                                      color: "rgba(0, 0, 0, 0.1)",
-                                                                      borderDash: [4, 4],
-                                                                      zeroLineColor:'#dfe2e5',
-                                                                      drawBorder: false,
-                                                                      drawOnChartArea: true,
-                                                                      drawTicks:false
-                                                                  }
-                                                              },
-                                                              {
-                                                                  id: "main-x-axis2",
-                                                                  gridLines: {
-                                                                      display: false,
-                                                                      drawBorder: false,
-                                                                      tickMarkLength:1
-                                                                  },
-                                                                  type: "time",
-                                                                  time: {
-                                                                      unit: getStepTick(this.state.timeSegment),
-                                                                      unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
-                                                                      displayFormats: {
-                                                                          day: "YYYY"
-                                                                      }
-                                                                  },
-                                                                  display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) &&
-                                                                      ((this.state.timeSegment === 'D') || (this.state.timeSegment === 'M'))
-                                                                  ),
-                                                                  ticks: {
-                                                                      beginAtZero:false,
-                                                                      padding: 0,
-                                                                      fontColor:'#7f8fa4',
-                                                                      fontSize: 14,
-                                                                      fontFamily: 'ProximaNova',
-                                                                      callback: (value, index, values) => {
-                                                                          let side = ( (index === 0) || (index === (values.length -1)) );
-                                                                          let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                                          let len = Math.ceil(this.state.chart.labels.length / step);
-
-                                                                          // if end
-                                                                          if(index === 0){
-                                                                              return ( side && (len - values.length) < 1 ) ? '' :
-                                                                                  moment(value).format('YYYY');
-                                                                          }
-                                                                          // if end
-                                                                          if(index === (values.length -1)){
-                                                                              return ( side && (len - values.length) < 2 ) ? '' :
-                                                                                  moment(value).format('YYYY');
-                                                                          }
-
-                                                                          return moment(value).format('YYYY');
-                                                                      }
-                                                                  }
-                                                              }
-                                                          ],
-                                                          yAxes: [{
-                                                              afterFit: function (scale) {
-                                                                  scale.width = 66;
-                                                              },
-                                                              ticks: {
-                                                                  beginAtZero: true,
-                                                                  fontColor:'#7f8fa4',
-                                                                  fontSize: 11,
-                                                                  fontFamily: 'ProximaNova',
-                                                                  padding: 10,
-                                                                  callback: function(value, index, values) {
-                                                                      return formatNumericValueWithMnl(value);
-                                                                  }
-                                                              },
-                                                              gridLines: {
-                                                                  color: "rgba(0, 0, 0, 0.1)",
-                                                                  borderDash: [4, 4],
-                                                                  zeroLineColor:'#dfe2e5',
-                                                                  drawBorder: true,
-                                                                  drawOnChartArea: true,
-                                                                  drawTicks:false
-                                                              },
-                                                          }]
-                                                      }
-                                                  }}
-                                            />
-                                        </div>
-                                    }
-                                    <canvas id="scrollYAxis" className={this.state.viewportWidth < 992 ? 'scrolled' : ''} height="200" width="0"></canvas>
-                                </div>
-                            </Col>
+                            />
                             {this.renderSegmentationButtons()}
                         </Row>
                     </CardBody>
