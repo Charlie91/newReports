@@ -194,7 +194,7 @@
   .announce .img_wrapper_full {
     background-position: center center;
     background-size: cover;
-    border: 0; }
+    border: 1px solid #d1d4d7; }
   .announce .img_wrapper_def {
     border: 1px solid #d1d4d7;
     background-position: center center;
@@ -249,7 +249,7 @@
   margin-bottom: 30px; }
   .average_hours .title {
     text-align: center;
-    padding-left: 10px;
+    padding-left: 0px;
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap;
@@ -345,7 +345,7 @@
   .all_data .line-chart-wrapper .linechart_area_wrapper {
     min-height: 200px; }
   .all_data .line-chart-wrapper .linechart_area_wrapper_small {
-    height: 100px; }
+    height: 120px; }
 
 @media screen and (min-width: 1320px) {
   .muted {

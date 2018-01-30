@@ -265,7 +265,7 @@ $crdbody-padding : 1.3rem;
   .img_wrapper_full{
     background-position: center center;
     background-size: cover;
-    border: 0;
+    border: 1px solid #d1d4d7;
   }
   .img_wrapper_def{
     border: 1px solid #d1d4d7;
@@ -335,7 +335,7 @@ $crdbody-padding : 1.3rem;
   margin-bottom: 30px;
   .title{
     text-align: center;
-    padding-left: 10px;
+    padding-left: 0px;
     font-size: 14px;
     //line-height: 2.29;
     color: #7f8fa4;
@@ -469,7 +469,7 @@ $crdbody-padding : 1.3rem;
       min-height: 200px;
     }
     .linechart_area_wrapper_small{
-      height: 100px;
+      height: 120px;
     }
   }
 }
