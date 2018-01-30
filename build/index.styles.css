@@ -15323,6 +15323,7 @@ button.btn.back-btn {
     pointer-events: none; }
   .all_data .line-chart-wrapper .scrolled {
     background: #fff;
+    border-right: 1px solid transparent;
     padding-bottom: 33px;
     display: block !important; }
   .all_data .line-chart-wrapper .linechart_area_wrapper {
