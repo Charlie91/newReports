@@ -157,12 +157,12 @@ export default class BarChart extends Component {
                 let firstChartPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        backgroundColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
                         borderColor: 'transparent',
                         borderWidth: 0,
                         hoverBorderWidth: 1,
-                        hoverBackgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
-                        hoverBorderColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        hoverBackgroundColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
+                        hoverBorderColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
                         data: []
                     }]
                 };
@@ -172,20 +172,13 @@ export default class BarChart extends Component {
                 let otherChartsPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        backgroundColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
                         borderColor: 'transparent',
                         borderWidth: 0,
                         hoverBorderWidth: 5,
-                        hoverBackgroundColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
-                        hoverBorderColor: ["#8570ce","#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#e07c95'],
+                        hoverBackgroundColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
+                        hoverBorderColor: ["#74c2e8","#73d2ca", '#9fd473', "#f0e238", "#ea9772"],
                         data: []
-                        //backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        //borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        //borderWidth: 0,
-                        //hoverBorderWidth: 5,
-                        //hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        //hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        //data: []
                     }]
                 };
                 bars.push(otherChartsPrototype);
@@ -193,8 +186,8 @@ export default class BarChart extends Component {
         };
 
         data.weekAvg.forEach((item, i) => {
-            bars[Math.floor(i/8)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
-            bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
+            bars[Math.floor(i/5)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
+            bars[Math.floor(i/5)].datasets[0].data.push(Math.round(item.avg));
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
 
@@ -256,7 +249,8 @@ export default class BarChart extends Component {
                                                          },
                                                          layout: {
                                                              padding: {
-                                                                 right: 7,
+                                                                 right:32,
+                                                                 left:4
                                                              }
                                                          },
                                                          title:{
@@ -277,7 +271,7 @@ export default class BarChart extends Component {
                                                              titleFontStyle:'normal',
                                                              displayColors:false,
                                                              callbacks:{
-                                                                 label:function(tooltipItem, data	){
+                                                                 label:function(tooltipItem, data){
                                                                      return `${formatNumberBySpaces(tooltipItem.yLabel)} чел.`
                                                                  }
                                                              }
@@ -285,17 +279,14 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
-                                                                 barPercentage: 0.845,
-                                                                 categoryPercentage:0.72,
+                                                                 barThickness:10,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
-                                                                     display:true,
                                                                      drawBorder:false,
                                                                  },
                                                                  ticks:{
                                                                      beginAtZero: false
-
                                                                  }
                                                              }],
                                                              yAxes: [{
@@ -325,7 +316,7 @@ export default class BarChart extends Component {
                                                                      color: "rgba(0, 0, 0, 0.05)",
                                                                      drawBorder: false,
                                                                      zeroLineColor:"rgba(0, 0, 0, 0.0)",
-                                                                     borderDash: [4, 4],
+                                                                     borderDash: [4, 4]
                                                                  },
                                                              }]
                                                          }
@@ -348,7 +339,8 @@ export default class BarChart extends Component {
                                                          },
                                                          layout: {
                                                              padding: {
-                                                                 right: 7,
+                                                                 right:32,
+                                                                 left:4
                                                              }
                                                          },
                                                          title:{
@@ -377,14 +369,12 @@ export default class BarChart extends Component {
                                                          scales: {
                                                              display:false,
                                                              xAxes: [{
-                                                                 barPercentage: 0.845,
-                                                                 categoryPercentage:0.72,
+                                                                 barThickness:10,
                                                                  display:false,
                                                                  gridLines: {
                                                                      color: "rgba(0, 0, 0, 0)",
                                                                      display:false,
                                                                      drawBorder: true,
-
                                                                  }
                                                              }],
                                                              yAxes: [{

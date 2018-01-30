@@ -28,14 +28,11 @@ export default class HorizontalBarChart extends Component {
                 let firstChartPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        borderWidth: 10,
-                        radius:14,
-                        barBorderRadius: 10,
-                        hoverBorderWidth: 13,
-                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        backgroundColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        hoverBackgroundColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
+                        hoverBorderColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
                         data: []
                     }]
                 };
@@ -45,21 +42,21 @@ export default class HorizontalBarChart extends Component {
                 let otherChartsPrototype = {
                     labels:[],
                     datasets:[{
-                        backgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        backgroundColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
                         borderColor: 'transparent',
                         borderWidth: 1,
-                        hoverBackgroundColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
-                        hoverBorderColor: ["#8570ce", '#688bda', "#74c2e8", "#73d2ca", "#9fd473", '#f0e238','#ea9772','#e07c95'],
+                        hoverBackgroundColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
+                        hoverBorderColor: ["#74c3e8", '#72d3cb', "#9fd572", "#f0e338", "#e07c94"],
                         data: []
                     }]
                 };
                 bars.push(otherChartsPrototype);
             }
         };
-
+        console.log(data.weekAvg);
         data.weekAvg.forEach((item, i) => {
-            bars[Math.floor(i/8)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
-            bars[Math.floor(i/8)].datasets[0].data.push(Math.round(item.avg));
+            bars[Math.floor(i/5)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
+            bars[Math.floor(i/5)].datasets[0].data.push(Math.round(item.avg));
             if(item.avg > maxVal)maxVal = Math.round(item.avg);
         });
         this.setState({bars: bars,maxVal:(Math.ceil(maxVal/10) * 10)});
@@ -243,9 +240,6 @@ export default class HorizontalBarChart extends Component {
                 </div>
                 <CardBody>
                     <ul className="ranges">
-                        <li>00&ndash;03</li>
-                        <li>03&ndash;06</li>
-                        <li>06&ndash;09</li>
                         <li>09&ndash;12</li>
                         <li>12&ndash;15</li>
                         <li>15&ndash;18</li>
@@ -257,7 +251,7 @@ export default class HorizontalBarChart extends Component {
                                 if(i === 0)
                                     return (
                                         <div key={i} className="chart-wrapper">
-                                            <div style={{height:'88%'}}>
+                                            <div style={{height:'80%'}}>
                                                 <HorizontalBar data={item}
                                                                ref={(chart) => { this.chart = chart; }}
                                                                options={{
@@ -297,7 +291,7 @@ export default class HorizontalBarChart extends Component {
                                                                        position:'bottom'
                                                                    },
                                                                    tooltips: {
-                                                                       custom: customLabel,
+                                                                       //custom: customLabel,
                                                                        enabled:false,
                                                                        backgroundColor:'#eff3f6',
                                                                        bodyFontColor:'#354052',
@@ -345,7 +339,7 @@ export default class HorizontalBarChart extends Component {
                                 else
                                     return(
                                         <div key={i} className="chart-wrapper">
-                                            <div style={{height:'88%'}}>
+                                            <div style={{height:'80%'}}>
                                             <HorizontalBar data={item}
                                                  ref={(chart) => { this.chart = chart; }}
                                                  options={{
@@ -385,7 +379,6 @@ export default class HorizontalBarChart extends Component {
                                                          position:'bottom'
                                                      },
                                                      tooltips: {
-                                                         custom: customLabel,
                                                          enabled:false,
                                                          backgroundColor:'#eff3f6',
                                                          bodyFontColor:'#354052',
@@ -393,7 +386,7 @@ export default class HorizontalBarChart extends Component {
                                                          titleFontStyle:'normal',
                                                          displayColors:false,
                                                          callbacks:{
-                                                             label:function(tooltipItem, data	){
+                                                             label:function(tooltipItem, data){
                                                                  return `${tooltipItem.xLabel} чел.`
                                                              }
                                                          }
