@@ -388,13 +388,7 @@
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
-<<<<<<< HEAD
       margin-left: -17px; } }
-
-=======
-      margin-left: -17px;
-      margin-top: 5px; } }
->>>>>>> 1d3fb0f064c36fcc174c2213ab8ff9138bd5c785
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }
