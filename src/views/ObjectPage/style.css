@@ -282,8 +282,6 @@
         margin-top: -5px;
         padding: 18px 7px 0 10px; }
         .average_hours.horizontal-bars .card-body ul.ranges.fixed {
-          -webkit-box-shadow: 2px 0px 3px -1px #d7d9db;
-          -moz-box-shadow: 2px 0px 3px -1px #d7d9db;
           box-shadow: 2px 0px 3px -1px #d7d9db; }
         .average_hours.horizontal-bars .card-body ul.ranges li {
           height: auto;
