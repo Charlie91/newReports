@@ -104,16 +104,16 @@ class Sidebar extends Component {
         const navList = (items) => {
             return items.map( (item, index) => navLink(item, index) );
         };
+        //<LogOut isLoggedIn={this.props.isLoggedIn}/>      &#9776;
 
         return (
             <div className="sidebar">
                 <Row>
-                    <Col className="hamburger" md="6">
-                        <NavbarToggler style={{fontSize: '2em'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
-                        <NavbarToggler style={{fontSize: '2em'}} className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}>&#9776;</NavbarToggler>
-                    </Col>
                     <Col md="6">
-                        <LogOut isLoggedIn={this.props.isLoggedIn}/>
+                    </Col>
+                    <Col className="hamburger" md="6">
+                        <NavbarToggler style={{fontSize: '2em'}} className="d-lg-none" onClick={this.mobileSidebarToggle}></NavbarToggler>
+                        <NavbarToggler style={{fontSize: '2em'}} className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}></NavbarToggler>
                     </Col>
                 </Row>
                 <div className="sidebar-header">

@@ -199,8 +199,12 @@ body{
   margin: auto;
   display: inline-block;
   color: #fff;
-  text-align: left;
+  text-align: right;
   width: 100%;
+  background-image: url('../img/menu.png');
+  background-repeat: no-repeat;
+  background-size: 25px 20px;
+  background-position: 75% 50%;
 }
 
 .app-header.navbar{
