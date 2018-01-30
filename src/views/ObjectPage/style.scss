@@ -451,7 +451,6 @@ $crdbody-padding : 1.3rem;
     line-height: 220px;
   }
   .line-chart-wrapper{
-    min-height: 200px;
     margin-top: 15px;
     >#scrollYAxis{
       display: none;
@@ -468,6 +467,9 @@ $crdbody-padding : 1.3rem;
     }
     .linechart_area_wrapper{
       min-height: 200px;
+    }
+    .linechart_area_wrapper_small{
+      height: 100px;
     }
   }
 }
@@ -631,6 +633,13 @@ $crdbody-padding : 1.3rem;
       .linechart_area_wrapper{
         width:1244px;
       }
+      .linechart_area_wrapper_small{
+        width:700px;
+      }
+    }
+    .line-chart-wrapper_small {
+      position: relative;
+      left: -7px;
     }
   }
 
@@ -769,7 +778,7 @@ $crdbody-padding : 1.3rem;
     .all_data{
       margin-top: 20px;
       .card-body{
-        padding: 23px 0px 25px 18px;
+        padding: 23px 0px 6px 18px;
         h5{
           font-size: 18px;
           font-weight: 400;

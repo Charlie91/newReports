@@ -11,6 +11,7 @@ import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import DataChart from './DataChart';
+import DataChartSmall from './DataChartSmall';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
 import {formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
@@ -608,7 +609,7 @@ export default class ObjectPage extends Component {
                                           {{
                                               __html:
                                                   (this.state.totalSum !== undefined) ?
-                                                      (formatNumericValueWithMnl(this.state.totalSum) + ' ' + this.state.currency) : ''
+                                                      (formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency) : ''
                                           }}
                                 >
                                 </span>
@@ -616,16 +617,30 @@ export default class ObjectPage extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <DataChart
-                                render={!(this.state.type === 'Выручка')}
-                                data={this.state.chart}
-                                startDate={this.state.startDate}
-                                endDate={this.state.endDate}
-                                currency={this.state.currency}
-                                timeSegment={this.state.timeSegment}
-                                emptyData={this.state.emptyData}
 
-                            />
+                            {(this.state.viewportWidth > 720) ?
+                                <DataChart
+                                    render={!(this.state.type === 'Выручка')}
+                                    data={this.state.chart}
+                                    startDate={this.state.startDate}
+                                    endDate={this.state.endDate}
+                                    currency={this.state.currency}
+                                    timeSegment={this.state.timeSegment}
+                                    emptyData={this.state.emptyData}
+
+                                />
+                                :
+                                <DataChartSmall
+                                    render={!(this.state.type === 'Выручка')}
+                                    data={this.state.chart}
+                                    startDate={this.state.startDate}
+                                    endDate={this.state.endDate}
+                                    currency={this.state.currency}
+                                    timeSegment={this.state.timeSegment}
+                                    emptyData={this.state.emptyData}
+
+                                />
+                            }
                             {this.renderSegmentationButtons()}
                         </Row>
                     </CardBody>
