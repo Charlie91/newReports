@@ -338,7 +338,6 @@
   line-height: 220px; }
 
 .all_data .line-chart-wrapper {
-  min-height: 200px;
   margin-top: 15px; }
   .all_data .line-chart-wrapper > #scrollYAxis {
     display: none;
@@ -353,6 +352,8 @@
     display: block !important; }
   .all_data .line-chart-wrapper .linechart_area_wrapper {
     min-height: 200px; }
+  .all_data .line-chart-wrapper .linechart_area_wrapper_small {
+    height: 100px; }
 
 @media screen and (min-width: 1320px) {
   .muted {
@@ -439,8 +440,17 @@
     .all_data .line-chart-wrapper > #scrollYAxis {
       display: none; }
     .all_data .line-chart-wrapper .linechart_area_wrapper {
+<<<<<<< HEAD
       width: 1244px; } }
 
+=======
+      width: 1244px; }
+    .all_data .line-chart-wrapper .linechart_area_wrapper_small {
+      width: 700px; }
+  .all_data .line-chart-wrapper_small {
+    position: relative;
+    left: -7px; } }
+>>>>>>> 86b23be5eb63db1d8f17646f8741e4e65864c6b8
 @media screen and (max-width: 767px) {
   ::-webkit-scrollbar {
     width: 0px;
@@ -533,7 +543,7 @@
     .object_cont .all_data {
       margin-top: 20px; }
       .object_cont .all_data .card-body {
-        padding: 23px 0px 25px 18px; }
+        padding: 23px 0px 6px 18px; }
         .object_cont .all_data .card-body h5 {
           font-size: 18px;
           font-weight: 400;
