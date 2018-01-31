@@ -395,6 +395,7 @@ export default class ObjectPage extends Component {
         document.querySelector('.app-body').classList.add('app-body__reduce-margin');
         document.querySelector('.navbar').classList.add('changeHeaderPadding');
         document.querySelector('.navbar >div:first-of-type').classList.add('additional_position');
+        document.querySelector('.navbar-toggler').classList.add('new_position_for_ham');
     }
 
     removeSpecificStyles(){
@@ -402,6 +403,7 @@ export default class ObjectPage extends Component {
         document.querySelector('.app-body').classList.remove('app-body__reduce-margin');
         document.querySelector('.navbar').classList.remove('changeHeaderPadding');
         document.querySelector('.navbar >div:first-of-type').classList.remove('additional_position');
+        document.querySelector('.navbar-toggler').classList.remove('new_position_for_ham');
     }
 
     requestIsStarted(){

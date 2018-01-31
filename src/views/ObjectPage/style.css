@@ -2,6 +2,10 @@
 .app-body_new_margin {
   margin-top: 55px; }
 
+.new_position_for_ham {
+  top: 0 !important;
+  margin-top: -2px; }
+
 .segmentation_btn-wrp {
   margin-top: 20px;
   text-align: center; }
@@ -394,10 +398,7 @@
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
       margin-left: -17px; } }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2ea373da636f10ed410ddf68ff5c06bd7c4cb077
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }

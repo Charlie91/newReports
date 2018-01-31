@@ -36,7 +36,6 @@ export default class LogOut extends Authorization { // Внимание! Это�
             .catch(error => console.log(error));
     }
     render(){
-        console.log(1);
         return (
             <div>
                 { (this.state.isLoggedIn === false) ? <Redirect to="/authorization"/> : ''}
