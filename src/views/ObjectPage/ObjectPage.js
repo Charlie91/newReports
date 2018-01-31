@@ -14,7 +14,7 @@ import DataChart from './DataChart';
 import DataChartSmall from './DataChartSmall';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-import {formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
+import {digitCount, formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
 import parser from 'ua-parser-js';
 
 function formatMonths(index){
@@ -609,7 +609,16 @@ export default class ObjectPage extends Component {
                                           {{
                                               __html:
                                                   (this.state.totalSum !== undefined) ?
-                                                      (formatNumberBySpaces(this.state.totalSum) + ' ' + this.state.currency) : ''
+                                                      (formatNumberBySpaces(this.state.totalSum) +
+                                                      ' ' +
+                                                          (( (digitCount(this.state.totalSum) > 6) || ( this.state.viewportWidth > 768 && this.state.viewportWidth < 1525)) ?
+                                                          this.state.currency.substring(0,3) + '.'
+                                                          :
+                                                          this.state.currency
+                                                          )
+                                                      )
+                                              :
+                                              ''
                                           }}
                                 >
                                 </span>
