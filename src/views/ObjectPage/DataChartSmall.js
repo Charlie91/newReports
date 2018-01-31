@@ -4,7 +4,7 @@ import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
-import {customLabel2} from "./customtooltip2";
+import {customLabel3} from "./customtooltip3";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
 
@@ -78,7 +78,7 @@ export default class DataChartSmall extends Component {
                                   display: false
                               },
                               tooltips: {
-                                  custom: customLabel2,
+                                  custom: customLabel3,
                                   enabled:false,
                                   callbacks:{
                                       label: (tooltipItem, data ) => {

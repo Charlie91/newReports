@@ -69,7 +69,7 @@ $crdbody-padding : 1.3rem;
     background-color: #886ce6;
     color:#fff;
     &:focus{
-      box-shadow:none
+      box-shadow:none;
     }
   }
 }
@@ -265,7 +265,7 @@ $crdbody-padding : 1.3rem;
   .img_wrapper_full{
     background-position: center center;
     background-size: cover;
-    border: 0;
+    border: 1px solid #d1d4d7;
   }
   .img_wrapper_def{
     border: 1px solid #d1d4d7;
@@ -335,7 +335,7 @@ $crdbody-padding : 1.3rem;
   margin-bottom: 30px;
   .title{
     text-align: center;
-    padding-left: 10px;
+    padding-left: 0px;
     font-size: 14px;
     //line-height: 2.29;
     color: #7f8fa4;
@@ -377,9 +377,7 @@ $crdbody-padding : 1.3rem;
         margin-top: -5px;
         padding: 18px 7px 0 10px;
         &.fixed{
-          -webkit-box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
-          -moz-box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
-          box-shadow: 2px 0px 3px -1px rgba(215,217,219,1);
+          box-shadow: 4px 0px 4px -4px #d7d9db;
           //border-right:1px solid rgba(208, 208, 208, 0.5);
         }
         li{
@@ -471,7 +469,7 @@ $crdbody-padding : 1.3rem;
       min-height: 200px;
     }
     .linechart_area_wrapper_small{
-      height: 100px;
+      height: 120px;
     }
   }
 }
@@ -661,6 +659,7 @@ $crdbody-padding : 1.3rem;
     .announce{
       padding:0 15px;
       margin-bottom: 20px;
+      margin-top: 16px;
       > div:first-of-type{
         padding-right: 0;
         padding-left: 0;

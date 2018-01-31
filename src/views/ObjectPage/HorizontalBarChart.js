@@ -269,7 +269,7 @@ export default class HorizontalBarChart extends Component {
                                                                            // render the value of the chart above the bar
                                                                            let ctx = this.chart.ctx;
                                                                            let chartWidth = this.chart.width;
-                                                                           ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 1, 'normal', Chart.defaults.global.defaultFontFamily);
+                                                                           ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 3, 'normal', Chart.defaults.global.defaultFontFamily);
                                                                            ctx.fillStyle = this.chart.config.options.defaultFontColor;
                                                                            ctx.fillStyle = '#7f8fa4';
                                                                            ctx.textAlign = 'center';
@@ -277,7 +277,7 @@ export default class HorizontalBarChart extends Component {
                                                                            this.data.datasets.forEach(function (dataset) {
                                                                                for (var i = 0; i < dataset.data.length; i++) {
                                                                                    var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-                                                                                   ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 7);
+                                                                                   ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 5);
                                                                                }
                                                                            });
                                                                        }},
@@ -286,6 +286,7 @@ export default class HorizontalBarChart extends Component {
                                                                        display:false,
                                                                    },
                                                                    title:{
+                                                                       fontSize: 12,
                                                                        display:false,
                                                                        text:'Понедельник',
                                                                        position:'bottom'
@@ -357,7 +358,7 @@ export default class HorizontalBarChart extends Component {
                                                              // render the value of the chart above the bar
                                                              let ctx = this.chart.ctx;
                                                              let chartWidth = this.chart.width;
-                                                             ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 1, 'normal', Chart.defaults.global.defaultFontFamily);
+                                                             ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 3, 'normal', Chart.defaults.global.defaultFontFamily);
                                                              ctx.fillStyle = this.chart.config.options.defaultFontColor;
                                                              ctx.fillStyle = '#7f8fa4';
                                                              ctx.textAlign = 'center';
@@ -365,7 +366,7 @@ export default class HorizontalBarChart extends Component {
                                                              this.data.datasets.forEach(function (dataset) {
                                                                  for (var i = 0; i < dataset.data.length; i++) {
                                                                      var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-                                                                     ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 7);
+                                                                     ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 5);
                                                                  }
                                                              });
                                                          }},
