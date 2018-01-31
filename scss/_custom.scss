@@ -22,7 +22,7 @@
   font-style:italic;
 }
 
-$sidebar-header-height: 170px;
+$sidebar-header-height: 215px;
 
 
 body{
@@ -69,23 +69,30 @@ body{
 }
 
 .sidebar {
+  .sidebar-title{
+    margin-top:21px;
+  }
   .sidebar-header {
     height: $sidebar-header-height;
     padding-bottom: 10px;
-    margin-top:-40px;
+    margin-top:-10px;
     text-align: center;
     background: $sidebar-header-bg;
-
+    margin-bottom: 29px;
     .img-avatar {
-      width: 80px;
-      height:80px;
-      margin: 20px auto 10px;
+      width: 97px;
+      height:97px;
+      margin: 20px auto 13px;
       border-radius: 50em;
       background:#b6bded
     }
 
     .text-muted {
       margin-top: -5px;
+      margin-bottom: 18px;
+      .small{
+        font-size: 12px;
+      }
     }
 
     > .btn-group {
@@ -110,11 +117,6 @@ body{
   }
 }
 
-.sidebar-minimized {
-  .sidebar-header {
-    display: none;
-  }
-}
 
 .digit_space{
   display: inline;
@@ -181,6 +183,14 @@ body{
 }
 
 
+.main-title{
+  font-family: ProximaNova;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: left;
+  color: #ffffff;
+  line-height:37px;
+}
 
 .sidebar .navbar-brand{
   display: inline-block;
@@ -204,7 +214,8 @@ body{
   background-image: url('../img/menu.png');
   background-repeat: no-repeat;
   background-size: 25px 20px;
-  background-position: 75% 50%;
+  background-position: 50%;
+  margin-left: -12px;
 }
 
 .app-header.navbar{
@@ -294,17 +305,26 @@ main.main{
   max-height:390px;
 }
 
-button.settings-btn {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: right;
-  height: 38px;
-  img{
-    width:23px
-  }
+.exit-btn--full,.exit-btn--minimize {
+  text-align: left;
+  width: 77px;
+  height: 23px;
+  margin: auto;
+  cursor: pointer;
+  border: 1px solid #fff;
+  line-height: 20px;
+  padding-left: 5px;
+  background-image: url('../img/logout.png');
+  background-repeat: no-repeat;
+  background-size: 1em;
+  background-position: 88%;
+  font-size: 14px;
+  font-weight: 400;
 }
-
+.exit-btn--minimize{
+  display: none;
+  margin: auto;
+}
 .sidebar-minimized {
   .app-header.navbar{
     margin-left: 50px;
@@ -312,9 +332,35 @@ button.settings-btn {
   .hamburger {
     width: 100%;
     max-width: 100%;
+    .d-lg-none, .d-md-down-none{
+      margin-left:0;
+    }
   }
   .settings-btn{
     display: none;
+  }
+  .sidebar-header {
+    height: 140px;
+    .full-name,.text-muted{
+      display: none;
+    }
+    .img-avatar{
+      width: 45px;
+      height: auto;
+      margin-top: 34px;
+    }
+  }
+  .exit-btn--full{
+    display: none;
+  }
+  .exit-btn--minimize{
+    display: block;
+    width: 44px;
+    margin-top: 13px;
+    background-position: 58%;
+  }
+  .main-title{
+    display:none
   }
 }
 

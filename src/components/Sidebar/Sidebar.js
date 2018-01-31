@@ -104,22 +104,30 @@ class Sidebar extends Component {
         const navList = (items) => {
             return items.map( (item, index) => navLink(item, index) );
         };
-        //<LogOut isLoggedIn={this.props.isLoggedIn}/>      &#9776;
+        //    &#9776;
 
         return (
             <div className="sidebar">
-                <Row>
-                    <Col md="6">
+                <Row className="sidebar-title">
+                    <Col xs={{ size: 6, offset: 3 }}>
+                        <p className="main-title">Reports</p>
                     </Col>
-                    <Col className="hamburger" md="6">
-                        <NavbarToggler style={{fontSize: '2em'}} className="d-lg-none" onClick={this.mobileSidebarToggle}></NavbarToggler>
-                        <NavbarToggler style={{fontSize: '2em'}} className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}></NavbarToggler>
+                    <Col className="hamburger" xs="3">
+                        <NavbarToggler  className="d-lg-none" onClick={this.mobileSidebarToggle}></NavbarToggler>
+                        <NavbarToggler  className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}></NavbarToggler>
                     </Col>
                 </Row>
                 <div className="sidebar-header">
                     <img src={(props.userData && props.userData.photo) ? `https://re-ports.ru${props.userData.photo}` : 'img/avatars/default.png'} className="img-avatar" alt="Avatar"/>
-                    <div><strong>{(props.userData) ? `${props.userData.first_name} ${props.userData.last_name}` : ''}</strong></div>
-                    <div className="text-muted"><small>{(props.userData) ? props.userData.job_position : ''}</small></div>
+                    <div className="full-name">
+                        <strong>{(props.userData) ? `${props.userData.first_name} ${props.userData.last_name}` : ''}</strong>
+                    </div>
+                    <div className="text-muted">
+                        <small>{(props.userData) ? props.userData.job_position : ''}</small>
+                    </div>
+                    <div>
+                        <LogOut isLoggedIn={this.props.isLoggedIn}/>
+                    </div>
                 </div>
                 <nav className="sidebar-nav">
                     <Nav>

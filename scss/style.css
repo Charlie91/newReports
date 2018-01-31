@@ -7701,13 +7701,13 @@ base-chart.chart {
       overflow: visible; }
     .sidebar-minimized .sidebar .sidebar-nav {
       overflow: visible;
-      width: 50px; }
+      width: 60px; }
     .sidebar-minimized .sidebar .nav {
-      width: 50px; }
+      width: 60px; }
       .sidebar-minimized .sidebar .nav .nav-title, .sidebar-minimized .sidebar .nav .divider {
         display: none; }
       .sidebar-minimized .sidebar .nav .nav-item {
-        width: 50px;
+        width: 60px;
         overflow: hidden;
         border-left: 0 !important; }
         .sidebar-minimized .sidebar .nav .nav-item ul {
@@ -7723,7 +7723,7 @@ base-chart.chart {
           .sidebar-minimized .sidebar .nav .nav-item .nav-link i, .sidebar-minimized .sidebar .nav .nav-item .navbar .dropdown-toggle i, .navbar .sidebar-minimized .sidebar .nav .nav-item .dropdown-toggle i {
             display: block;
             float: left;
-            width: 50px;
+            width: 60px;
             padding: 0;
             margin: 0 !important;
             font-size: 18px; }
@@ -7737,12 +7737,12 @@ base-chart.chart {
               display: inline; }
         .sidebar-minimized .sidebar .nav .nav-item ul {
           position: absolute;
-          left: 50px; }
+          left: 60px; }
           .sidebar-minimized .sidebar .nav .nav-item ul li {
             position: relative;
             padding: 0; }
             .sidebar-minimized .sidebar .nav .nav-item ul li .nav-link, .sidebar-minimized .sidebar .nav .nav-item ul li .navbar .dropdown-toggle, .navbar .sidebar-minimized .sidebar .nav .nav-item ul li .dropdown-toggle {
-              width: 200px; }
+              width: 190px; }
             .sidebar-minimized .sidebar .nav .nav-item ul li ul, .sidebar-minimized .sidebar .nav .nav-item ul li ol {
               position: absolute;
               top: 0;
@@ -7754,12 +7754,12 @@ base-chart.chart {
           .sidebar-minimized .sidebar .nav .nav-item.nav-dropdown.open > ul, .sidebar-minimized .sidebar .nav .nav-item.nav-dropdown.open > ol {
             display: none; }
         .sidebar-minimized .sidebar .nav .nav-item:hover {
-          width: 300px;
+          width: 310px;
           overflow: visible;
           background: transparent !important;
           transition: 0s; }
           .sidebar-minimized .sidebar .nav .nav-item:hover > .nav-link, .sidebar-minimized .sidebar .nav .navbar .nav-item:hover > .dropdown-toggle, .navbar .sidebar-minimized .sidebar .nav .nav-item:hover > .dropdown-toggle {
-            width: 300px; }
+            width: 310px; }
           .sidebar-minimized .sidebar .nav .nav-item:hover > ul, .sidebar-minimized .sidebar .nav .nav-item:hover > ol {
             display: inline;
             max-height: 10000px;
@@ -8559,13 +8559,13 @@ app-root {
   .sidebar-compact.sidebar-fixed.sidebar-hidden .main, .sidebar-compact.sidebar-fixed.sidebar-hidden .app-footer {
     margin-left: 0; }
   .sidebar-minimized .sidebar {
-    flex: 0 0 50px; }
+    flex: 0 0 60px; }
   .sidebar-minimized.sidebar-hidden .sidebar {
-    margin-left: -50px; }
+    margin-left: -60px; }
   .sidebar-minimized.sidebar-fixed .main, .sidebar-minimized.sidebar-fixed .app-footer {
-    margin-left: 50px; }
+    margin-left: 60px; }
   .sidebar-minimized.sidebar-fixed .sidebar {
-    width: 50px; }
+    width: 60px; }
   .sidebar-minimized.sidebar-fixed.sidebar-hidden .main, .sidebar-minimized.sidebar-fixed.sidebar-hidden .app-footer {
     margin-left: 0; } }
 
@@ -8615,7 +8615,7 @@ app-root {
   right: 0; }
 
 .breadcrumb-fixed.sidebar-minimized .main .breadcrumb {
-  left: 50px; }
+  left: 60px; }
 
 .breadcrumb-fixed.sidebar-hidden .main .breadcrumb, .breadcrumb-fixed.sidebar-off-canvas .main .breadcrumb {
   left: 0; }
@@ -8805,11 +8805,11 @@ hr.transparent {
   *[dir="rtl"] .sidebar-fixed.sidebar-hidden .main, *[dir="rtl"] .sidebar-fixed.sidebar-hidden .app-footer {
     margin-right: 0; }
   *[dir="rtl"] .sidebar-minimized .sidebar {
-    flex: 0 0 50px; }
+    flex: 0 0 60px; }
   *[dir="rtl"] .sidebar-minimized.sidebar-hidden .sidebar {
-    margin-left: -50px; }
+    margin-left: -60px; }
   *[dir="rtl"] .sidebar-minimized.sidebar-fixed .main, *[dir="rtl"] .sidebar-minimized.sidebar-fixed .app-footer {
-    margin-left: 50px; }
+    margin-left: 60px; }
   *[dir="rtl"] .sidebar-minimized.sidebar-fixed.sidebar-hidden .main, *[dir="rtl"] .sidebar-minimized.sidebar-fixed.sidebar-hidden .app-footer {
     margin-left: 0; }
   *[dir="rtl"] .aside-menu-hidden .aside-menu {
@@ -13820,20 +13820,27 @@ body {
 .navbar .form-inline .form-control:-ms-input-placeholder, .navbar .form-inline .daterangepicker .input-mini:-ms-input-placeholder, .daterangepicker .navbar .form-inline .input-mini:-ms-input-placeholder, .navbar .form-inline .input-group > .ui-select-bootstrap > input.ui-select-search.form-control:-ms-input-placeholder {
   color: #9fa1a3; }
 
+.sidebar .sidebar-title {
+  margin-top: 21px; }
+
 .sidebar .sidebar-header {
-  height: 170px;
+  height: 215px;
   padding-bottom: 10px;
-  margin-top: -40px;
+  margin-top: -10px;
   text-align: center;
-  background: transparent; }
+  background: transparent;
+  margin-bottom: 29px; }
   .sidebar .sidebar-header .img-avatar {
-    width: 80px;
-    height: 80px;
-    margin: 20px auto 10px;
+    width: 97px;
+    height: 97px;
+    margin: 20px auto 13px;
     border-radius: 50em;
     background: #b6bded; }
   .sidebar .sidebar-header .text-muted {
-    margin-top: -5px; }
+    margin-top: -5px;
+    margin-bottom: 18px; }
+    .sidebar .sidebar-header .text-muted .small {
+      font-size: 12px; }
   .sidebar .sidebar-header > .btn-group, .sidebar .sidebar-header > .fc-button-group {
     margin-top: 10px; }
   .sidebar .sidebar-header .btn-link {
@@ -13845,10 +13852,7 @@ body {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 170px) !important; }
-
-.sidebar-minimized .sidebar-header {
-  display: none; }
+  height: calc(100vh - 215px) !important; }
 
 .digit_space {
   display: inline;
@@ -13889,6 +13893,14 @@ body {
   .navbar .navbar-toggler-icon {
     height: 46px; } }
 
+.main-title {
+  font-family: ProximaNova;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: left;
+  color: #ffffff;
+  line-height: 37px; }
+
 .sidebar .navbar-brand {
   display: inline-block;
   width: 200px;
@@ -13910,7 +13922,8 @@ body {
   background-image: url("../img/menu.png");
   background-repeat: no-repeat;
   background-size: 25px 20px;
-  background-position: 75% 50%; }
+  background-position: 50%;
+  margin-left: -12px; }
 
 .app-header.navbar {
   min-height: 50px;
@@ -13990,14 +14003,25 @@ main.main {
 .Select-menu {
   max-height: 390px; }
 
-button.settings-btn {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: right;
-  height: 38px; }
-  button.settings-btn img {
-    width: 23px; }
+.exit-btn--full, .exit-btn--minimize {
+  text-align: left;
+  width: 77px;
+  height: 23px;
+  margin: auto;
+  cursor: pointer;
+  border: 1px solid #fff;
+  line-height: 20px;
+  padding-left: 5px;
+  background-image: url("../img/logout.png");
+  background-repeat: no-repeat;
+  background-size: 1em;
+  background-position: 88%;
+  font-size: 14px;
+  font-weight: 400; }
+
+.exit-btn--minimize {
+  display: none;
+  margin: auto; }
 
 .sidebar-minimized .app-header.navbar {
   margin-left: 50px; }
@@ -14005,8 +14029,31 @@ button.settings-btn {
 .sidebar-minimized .hamburger {
   width: 100%;
   max-width: 100%; }
+  .sidebar-minimized .hamburger .d-lg-none, .sidebar-minimized .hamburger .d-md-down-none {
+    margin-left: 0; }
 
 .sidebar-minimized .settings-btn {
+  display: none; }
+
+.sidebar-minimized .sidebar-header {
+  height: 140px; }
+  .sidebar-minimized .sidebar-header .full-name, .sidebar-minimized .sidebar-header .text-muted {
+    display: none; }
+  .sidebar-minimized .sidebar-header .img-avatar {
+    width: 45px;
+    height: auto;
+    margin-top: 34px; }
+
+.sidebar-minimized .exit-btn--full {
+  display: none; }
+
+.sidebar-minimized .exit-btn--minimize {
+  display: block;
+  width: 44px;
+  margin-top: 13px;
+  background-position: 58%; }
+
+.sidebar-minimized .main-title {
   display: none; }
 
 .armenia span.node-label::before {

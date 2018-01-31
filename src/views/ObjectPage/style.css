@@ -440,17 +440,13 @@
     .all_data .line-chart-wrapper > #scrollYAxis {
       display: none; }
     .all_data .line-chart-wrapper .linechart_area_wrapper {
-<<<<<<< HEAD
-      width: 1244px; } }
-
-=======
       width: 1244px; }
     .all_data .line-chart-wrapper .linechart_area_wrapper_small {
       width: 700px; }
   .all_data .line-chart-wrapper_small {
     position: relative;
     left: -7px; } }
->>>>>>> 86b23be5eb63db1d8f17646f8741e4e65864c6b8
+
 @media screen and (max-width: 767px) {
   ::-webkit-scrollbar {
     width: 0px;
