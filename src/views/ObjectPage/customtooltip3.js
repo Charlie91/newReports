@@ -67,8 +67,17 @@ export const customLabel3 = function(tooltipModel) {
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX + 2) + 'px';
-    //console.log(tooltipEl.clientHeight);
+    console.log(position.left);
+    console.log(scrollLeft);
+    console.log(tooltipModel.caretX);
+    let tool_left = position.left + scrollLeft + tooltipModel.caretX + tooltipEl.offsetWidth + 2;
+    let window_width = window.innerWidth;
+
+    if(tool_left < window_width){
+        tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX + 2) + 'px';
+    } else {
+        tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 2 - tooltipEl.offsetWidth) + 'px';
+    }
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 8 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;

@@ -377,7 +377,7 @@ $crdbody-padding : 1.3rem;
         margin-top: -5px;
         padding: 18px 7px 0 10px;
         &.fixed{
-          box-shadow: 2px 0px 3px -1px #d7d9db;
+          box-shadow: 4px 0px 4px -4px #d7d9db;
           //border-right:1px solid rgba(208, 208, 208, 0.5);
         }
         li{
@@ -659,6 +659,7 @@ $crdbody-padding : 1.3rem;
     .announce{
       padding:0 15px;
       margin-bottom: 20px;
+      margin-top: 16px;
       > div:first-of-type{
         padding-right: 0;
         padding-left: 0;

@@ -55,23 +55,29 @@
 }
 
 #chartjs-tooltip>div{
-  height: 46px;
-  width: 100px;
+  height: auto;
+  width: auto;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 #chartjs-tooltip2>div{
-  height: 30px;
-  width: 110px;
+  height: auto;
+  width: auto;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #chartjs-tooltip_small, #chartjs-tooltip2_small {
   .tooltip_title {
-    font-size: 8px;
+    font-size: 11px;
     line-height: 11px;
     height: 11px;
     margin-bottom: 1px;
   }
   .tooltip_body {
-    font-size: 8px;
+    font-size: 11px;
     line-height: 11px;
     height: 11px;
     font-weight: normal;
@@ -90,13 +96,12 @@
 }
 
 #chartjs-tooltip_small>div{
-  height: 24px;
+  height: auto;
   width: auto;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding: 2px;
 }
 #chartjs-tooltip2_small>div{
   width: auto;
-  padding-left: 2px;
-  padding-right: 2px;
+  height: auto;
+  padding: 2px;
 }
