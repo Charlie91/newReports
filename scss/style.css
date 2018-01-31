@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 /**
  * GenesisUI - Bootstrap 4 Admin Template
@@ -14236,3 +14237,90 @@ main.main {
   width: auto;
   height: auto;
   padding: 2px; }
+=======
+/*
+Syntax error: Invalid CSS after "  blue": expected ")", was ":              ..."
+        on line 31 of _bootstrap-variables.scss
+        from line 9 of style.scss
+
+26: $green:                           #4dbd74;
+27: $teal:                            #20c997 !default;
+28: $cyan:                            #63c2de;
+29: 
+30: $colors: (
+31:   blue:                           $blue,
+32:   indigo:                         $indigo,
+33:   purple:                         $purple,
+34:   pink:                           $pink,
+35:   red:                            $red,
+36:   orange:                         $orange,
+
+Backtrace:
+_bootstrap-variables.scss:31
+style.scss:9
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:1147:in `expected'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/lexer.rb:206:in `expected!'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:483:in `assert_tok'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:433:in `paren'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:418:in `special_fun'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:413:in `raw'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:337:in `funcall'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:319:in `ident'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:228:in `unary_not'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:228:in `unary_div'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:228:in `unary_minus'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:228:in `unary_plus'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `times_div_or_mod'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `plus_or_minus'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `relational'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `eq_or_neq'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `and_expr'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:209:in `or_expr'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:298:in `space'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:283:in `interpolation'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:246:in `expr'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:477:in `assert_expr'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/script/parser.rb:49:in `parse'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:1022:in `sass_script'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:514:in `variable'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:553:in `block_child'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:546:in `block_contents'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:82:in `stylesheet'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/scss/parser.rb:27:in `parse'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/engine.rb:342:in `_to_tree'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/engine.rb:274:in `to_tree'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:225:in `visit_import'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `each'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/exec.rb:443:in `watch_or_update'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/exec.rb:326:in `process_result'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/exec.rb:41:in `parse'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/lib/sass/exec.rb:21:in `parse!'
+/home/tashir/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.2.19/bin/sass:13:in `<top (required)>'
+/home/tashir/.rbenv/versions/2.3.1/bin/sass:23:in `load'
+/home/tashir/.rbenv/versions/2.3.1/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"  blue\": expected \")\", was \":              ...\"\A         on line 31 of _bootstrap-variables.scss\A         from line 9 of style.scss\A \A 26: $green:                           #4dbd74;\A 27: $teal:                            #20c997 !default;\A 28: $cyan:                            #63c2de;\A 29: \A 30: $colors: (\A 31:   blue:                           $blue,\A 32:   indigo:                         $indigo,\A 33:   purple:                         $purple,\A 34:   pink:                           $pink,\A 35:   red:                            $red,\A 36:   orange:                         $orange,"; }
+>>>>>>> 3eb9a6fcbd52a30f4569435808cb2cd9ed732a15

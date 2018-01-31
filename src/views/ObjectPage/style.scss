@@ -127,7 +127,8 @@ $crdbody-padding : 1.3rem;
     }
   }
   >div.card-body{
-    overflow:scroll;
+    overflow-x:scroll;
+    overflow-y: hidden;
     padding-top: 8px;
     padding-left: 40px;
     padding-bottom: 15px;
@@ -141,6 +142,7 @@ $crdbody-padding : 1.3rem;
       li{
         display: inline-block;
         width: 6.7%;
+        min-width: 46px;
         margin-right: 1.8%;
         &:last-of-type {
           margin-right: 5px;
@@ -335,7 +337,7 @@ $crdbody-padding : 1.3rem;
 
 .average_hours{
   text-align:center;
-  padding-bottom: 10px;
+  //padding-bottom: 10px;
   margin-bottom: 30px;
   .title{
     text-align: center;
@@ -370,8 +372,10 @@ $crdbody-padding : 1.3rem;
       }
     }
     .card-body{
-      overflow: scroll;
+      overflow-x: scroll;
+      overflow-y: hidden;
       padding-top: 0;
+padding-bottom: 30px;
       ul.ranges {
         display: inline-block;
         position: absolute;
@@ -601,7 +605,8 @@ $crdbody-padding : 1.3rem;
         padding-left: 0px;
       }
       .card-body{
-        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: hidden;
       }
       .title{
         padding-bottom: 2px;
@@ -627,7 +632,8 @@ $crdbody-padding : 1.3rem;
     }
     .line-chart-wrapper {
       width: 100%;
-      overflow: scroll;
+      overflow-x: scroll;
+      overflow-y: hidden;
       position: static;
       >#scrollYAxis{
         display: none;

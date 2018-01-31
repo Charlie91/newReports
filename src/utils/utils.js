@@ -235,3 +235,8 @@ export function getStepName(timeSegment){
         value = 'DD MMM';
     return value;
 }
+
+
+export function digitCount(number) {
+    return number.toString().length;
+}
