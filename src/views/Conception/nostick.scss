@@ -106,7 +106,7 @@ $font_size_mobile: 0.688em;
   }
 
   .average_column {
-    background-color: rgba(255, 238, 28, 0.15);
+    background-color: rgba(255, 238, 28, 0.15)!important;
     color: #354052;
     font-weight: normal;
     font-style: italic;
@@ -131,7 +131,7 @@ $font_size_mobile: 0.688em;
   }
 
   .average_month{
-    background-color: rgba(255, 238, 28, 0.15);
+    background-color: rgba(255, 238, 28, 0.15)!important;
     color: #2d2d2d;
     font-style: italic;
     span {
@@ -333,13 +333,13 @@ $font_size_mobile: 0.688em;
     }
 
     .average_column, .average_month {
-      background-color:inherit;
+      background-color:inherit!important;
       span {
-        background-color:inherit;
+        background-color:inherit!important;
         margin-top: 0px;
         margin-bottom: 0px;
         >div{
-          background-color: rgba(255, 238, 28, 0.15);
+          background-color: rgba(255, 238, 28, 0.15)!important;
           margin-top: 7px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
