@@ -80,7 +80,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   #no-stick .average_column {
-    background-color: rgba(255, 238, 28, 0.15) !important;
+    background-color: #fffddd !important;
     color: #354052;
     font-weight: normal;
     font-style: italic; }
@@ -97,7 +97,7 @@
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
     font-weight: bold; }
   #no-stick .average_month {
-    background-color: rgba(255, 238, 28, 0.15) !important;
+    background-color: #fffddd !important;
     color: #2d2d2d;
     font-style: italic; }
     #no-stick .average_month span {
@@ -179,7 +179,6 @@
       height: calc(100vh - 190px) !important;
       height: -moz-calc(100vh - 190px) !important;
       height: -webkit-calc(100vh - 190px) !important; } }
-
 @media screen and (max-width: 767px) {
   #no-stick {
     font-size: 0.688em;
@@ -246,7 +245,6 @@
           line-height: 20px !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
-
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px; }
