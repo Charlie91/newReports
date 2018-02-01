@@ -204,6 +204,7 @@ class TableVerticalNoStick extends Component {
                             <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
                                 <span><div>Прог. на {getMonthName((new Date()).getMonth()).substring(0,3)}</div></span>
                             </div>
+
                             {this.state.months.map((item,i) =>
                                 <div className={'trow' + ( (i + 'm' === this.state.rowHover) ? ' trow_hover_d' : '')} key={i}>
                                     <span><div>{item}</div></span>
@@ -288,8 +289,9 @@ class TableVerticalNoStick extends Component {
                                      key={i}
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'm')}
                                 >
+                                    {console.log(this.props.data)}
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + i] }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>

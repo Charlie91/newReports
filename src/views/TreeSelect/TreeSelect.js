@@ -53,7 +53,6 @@ export default class TreeSelect extends Component{
         }
     }
 
-
     onChange(currentNode, selectedNodes){
         console.log('onChange::', currentNode, selectedNodes);
 
@@ -138,12 +137,6 @@ export default class TreeSelect extends Component{
             links = document.getElementsByClassName('dropdown-button'),
             header = document.getElementsByClassName('app-header')[0],
             body = document.body;
-
-        // layout.onclick = (e) => {
-        //     e.stopPropagation();
-        //     dropdown.classList.remove('dropdown--active');
-        // };
-
     }
 
     render(){

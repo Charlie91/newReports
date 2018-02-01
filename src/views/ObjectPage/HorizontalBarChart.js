@@ -53,7 +53,6 @@ export default class HorizontalBarChart extends Component {
                 bars.push(otherChartsPrototype);
             }
         };
-        console.log(data.weekAvg);
         data.weekAvg.forEach((item, i) => {
             bars[Math.floor(i/5)].labels.push(item.ld + '-' + item.td); //распихиваем по 8 значений на 1 график
             bars[Math.floor(i/5)].datasets[0].data.push(Math.round(item.avg));

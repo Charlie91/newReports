@@ -67,9 +67,6 @@ export const customLabel3 = function(tooltipModel) {
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    console.log(position.left);
-    console.log(scrollLeft);
-    console.log(tooltipModel.caretX);
     let tool_left = position.left + scrollLeft + tooltipModel.caretX + tooltipEl.offsetWidth + 2;
     let window_width = window.innerWidth;
 
