@@ -3,7 +3,7 @@
   overflow: hidden;
   font-size: 0.875em;
   margin-right: -20px; }
-  #no-stick .empty_row {
+  #no-stick .tbody > .trow + .empty_row {
     padding-bottom: 2px;
     background-color: #eff3f6 !important;
     height: 10px !important;
@@ -160,7 +160,7 @@
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
       display: table;
-      background: #fff; }
+      background-color: #fff; }
       #no-stick .rest-columns .tbody .trow > span > div {
         height: 31px;
         padding-right: 15px;
@@ -215,22 +215,26 @@
           margin-bottom: 7px !important; }
     #no-stick .fix-column > .thead > span {
       width: 80px; }
-    #no-stick .fix-column > .tbody > .trow.days {
-      font-weight: bold; }
-    #no-stick .fix-column > .tbody > .trow > span {
-      width: 80px; }
-      #no-stick .fix-column > .tbody > .trow > span > div {
-        width: 80px;
-        height: 20px;
-        padding-right: 10px;
-        line-height: 20px; }
-    #no-stick .rest-columns > .tbody > .trow > span {
-      width: 70px; }
-      #no-stick .rest-columns > .tbody > .trow > span > div {
-        width: 70px;
-        height: 20px;
-        padding-right: 6px;
-        line-height: 20px; }
+    #no-stick .fix-column > .tbody > .trow {
+      background-color: #fff !important; }
+      #no-stick .fix-column > .tbody > .trow.days {
+        font-weight: bold; }
+      #no-stick .fix-column > .tbody > .trow > span {
+        width: 80px; }
+        #no-stick .fix-column > .tbody > .trow > span > div {
+          width: 80px;
+          height: 20px;
+          padding-right: 10px;
+          line-height: 20px; }
+    #no-stick .rest-columns > .tbody > .trow {
+      background-color: #fff !important; }
+      #no-stick .rest-columns > .tbody > .trow > span {
+        width: 70px; }
+        #no-stick .rest-columns > .tbody > .trow > span > div {
+          width: 70px;
+          height: 20px;
+          padding-right: 6px;
+          line-height: 20px; }
     #no-stick .average_column, #no-stick .average_month {
       background-color: inherit !important; }
       #no-stick .average_column span, #no-stick .average_month span {
@@ -244,6 +248,8 @@
           height: 20px !important;
           padding-right: 6px;
           line-height: 20px !important; }
+    #no-stick .tbody > .trow + .empty_row {
+      background-color: #eff3f6 !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
 

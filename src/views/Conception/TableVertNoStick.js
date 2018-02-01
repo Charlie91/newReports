@@ -218,8 +218,8 @@ class TableVerticalNoStick extends Component {
                                     <span><div>{item}</div></span>
                                 </div>
                             )}
-                            <div className="trow empty_row">
-                                <span className={'empty_col'}></span>
+                            <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
+                                <span className={'empty_col'} style={{backgroundColor: '#eff3f6'}}></span>
                             </div>
                         </div>
                     </div>
@@ -314,11 +314,11 @@ class TableVerticalNoStick extends Component {
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
-                            <div className="trow empty_row">
+                            <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
                                 {this.props.data.map((item,i) =>
                                     <span key={i} className={'empty_col'}></span>
                                 )}
-                                <span className={'empty_row_col_last'}></span>
+                                <span className={'empty_row_col_last'} style={{backgroundColor: '#eff3f6'}} ></span>
                             </div>
                         </div>
                     </div>
