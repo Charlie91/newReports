@@ -311,7 +311,6 @@ export default class BarChart extends Component {
                                                                  },
                                                                  afterFit: function (scale) {
                                                                      if(scale.chart.chartArea){
-                                                                         console.log(scale.chart);
                                                                          var dataset = scale.chart.config.data.datasets[0];
                                                                          var offset = 20;
 

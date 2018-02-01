@@ -289,9 +289,8 @@ class TableVerticalNoStick extends Component {
                                      key={i}
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'm')}
                                 >
-                                    {console.log(this.props.data)}
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] ? item[ 'month' + ( i )] : '' }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
@@ -300,7 +299,7 @@ class TableVerticalNoStick extends Component {
                                  onMouseEnter={this.changeRowHover.bind(this,'current_year')}
                             >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentYear }}></div></span>
+                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentYear ? item.currentYear : '-' }}></div></span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
@@ -310,7 +309,7 @@ class TableVerticalNoStick extends Component {
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'y')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['year' + i] }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['year' + i] ? item['year' + i] : '-' }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
