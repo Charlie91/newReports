@@ -9,7 +9,7 @@ $font_size_mobile: 0.688em;
   margin-right: -20px;
 
 
-  .empty_row{
+  .tbody > .trow + .empty_row{
     padding-bottom: 2px;
     background-color: #eff3f6 !important;
     //width: 100% !important;
@@ -224,7 +224,7 @@ $font_size_mobile: 0.688em;
       .trow{
         font-family: HelveticaNeue;
         display: table;
-        background: #fff;
+        background-color: #fff;
         >span>div {
           height: 31px;
           padding-right: 15px;
@@ -317,6 +317,8 @@ $font_size_mobile: 0.688em;
             line-height: 20px;
           }
         }
+        background-color: #fff !important;
+
       }
     }
 
@@ -330,6 +332,8 @@ $font_size_mobile: 0.688em;
           line-height: 20px;
         }
       }
+
+      background-color: #fff !important;
     }
 
     .average_column, .average_month {
@@ -347,6 +351,10 @@ $font_size_mobile: 0.688em;
           line-height: 20px !important;
         }
       }
+    }
+
+    .tbody > .trow + .empty_row {
+      background-color: #eff3f6 !important;
     }
 
 
