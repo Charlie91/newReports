@@ -176,6 +176,7 @@ $font_size_mobile: 0.688em;
       > .trow {
         text-align: right;
         display: block;
+        background: #fff;
         span{
           padding-right: 0px;
           width: 139px;
@@ -189,7 +190,10 @@ $font_size_mobile: 0.688em;
         }
       }
       &.v_shadow{
-        box-shadow: 1px 3px 8px 0px rgba(200,200,200,0.8);
+       // box-shadow: 1px 3px 8px 0px rgba(200,200,200,0.8);
+        .trow:not(:last-of-type){
+          border-right:1px solid rgba(200, 200, 200, 0.8)
+        }
       }
     }
   }
@@ -211,12 +215,16 @@ $font_size_mobile: 0.688em;
       }
       &.h_shadow{
         box-shadow: 0px 6px 6px -4px rgba(200,200,200,0.8);
+        span{
+          border-right:1px solid rgba(200,200,200,0.8);
+        }
       }
     }
     .tbody {
       .trow{
         font-family: HelveticaNeue;
         display: table;
+        background: #fff;
         >span>div {
           height: 31px;
           padding-right: 15px;

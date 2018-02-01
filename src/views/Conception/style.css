@@ -61,8 +61,7 @@
 .vertical-table {
   width: 100%;
   max-width: 100%;
-  color: #2d2d2d;
-  background: #fff; }
+  color: #2d2d2d; }
   .vertical-table thead tr th {
     position: sticky;
     position: -webkit-sticky;

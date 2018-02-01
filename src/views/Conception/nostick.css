@@ -128,7 +128,8 @@
       box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8); }
       #no-stick .fix-column > .tbody > .trow {
         text-align: right;
-        display: block; }
+        display: block;
+        background: #fff; }
         #no-stick .fix-column > .tbody > .trow span {
           padding-right: 0px;
           width: 139px; }
@@ -138,8 +139,8 @@
             padding-right: 21px;
             line-height: 31px;
             margin-top: 6px; }
-      #no-stick .fix-column > .tbody.v_shadow {
-        box-shadow: 1px 3px 8px 0px rgba(200, 200, 200, 0.8); }
+      #no-stick .fix-column > .tbody.v_shadow .trow:not(:last-of-type) {
+        border-right: 1px solid rgba(200, 200, 200, 0.8); }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
   #no-stick .fix-column > .tbody > .trow:last-child {
@@ -154,9 +155,12 @@
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
         box-shadow: 0px 6px 6px -4px rgba(200, 200, 200, 0.8); }
+        #no-stick .rest-columns > .thead.h_shadow span {
+          border-right: 1px solid rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
-      display: table; }
+      display: table;
+      background: #fff; }
       #no-stick .rest-columns .tbody .trow > span > div {
         height: 31px;
         padding-right: 15px;

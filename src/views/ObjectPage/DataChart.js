@@ -49,9 +49,7 @@ export default class DataChart extends Component {
     }
 
     render(){
-        console.log("renderee");
         return (
-
             <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
         {this.state.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
         <div style={this.state.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
@@ -75,7 +73,6 @@ export default class DataChart extends Component {
                                   callbacks:{
                                       label: (tooltipItem, data ) => {
                                           let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                          console.log(tooltipItem);
                                           if (step === 1){
                                               return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
                                           } else {
