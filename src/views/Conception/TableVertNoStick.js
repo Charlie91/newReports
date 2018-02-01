@@ -291,7 +291,7 @@ class TableVerticalNoStick extends Component {
                                 >
                                     {console.log(this.props.data)}
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i + 1 )] }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
