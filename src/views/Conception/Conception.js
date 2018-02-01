@@ -36,24 +36,24 @@ class Conception extends Component {
 
 
         object.currentYear = months.reduce((sum, current) => {
-            if(current.y !== 2017)return sum + 0;
+            if(current.y !== 2018)return sum + 0;
             else return sum + current.v
         }, object.currentMonth);
-        object.currentYear = formatNumericValueWithSpaces(object.currentYear);
-        object.currentMonth = formatNumericValueWithSpaces(object.currentMonth);
+        object.currentYear = (object.currentYear) ?  formatNumericValueWithSpaces(object.currentYear) : '-';
+        object.currentMonth = (object.currentMonth) ?   formatNumericValueWithSpaces(object.currentMonth) : '-';
 
         days.forEach( (item,i) => {                         //выводим данные по дням наверх и пригодными для вывода таблицей
             if(!i)return;
-            object['day' + (days.length - i)] =  formatNumericValueWithSpaces(item.v);
+            object['day' + (days.length - i)] =  (item.v) ? formatNumericValueWithSpaces(item.v) : '-';
         });
 
         months.forEach( (item,i) => {
-            if(item.y !== 2017)return;
-            object['month' + i] = formatNumericValueWithSpaces(item.v);
+            if(item.y !== 2018)return;
+            object['month' + i] = (item.v) ? formatNumericValueWithSpaces(item.v) : '-';
         });
 
         years.forEach( (item,i) => {
-            object['year' + i] = formatNumericValueWithSpaces(item.v);
+            object['year' + i] = (item.v) ? formatNumericValueWithSpaces(item.v) : '-';
         });
 
         return object;
