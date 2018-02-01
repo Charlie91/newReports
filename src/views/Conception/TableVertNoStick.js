@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {getCoords} from './../../utils/utils';
 import {Link} from 'react-router-dom';
 import {formatNumericValue} from './../../utils/utils';
 import {formatNumericValueWithSpaces} from './../../utils/utils';
@@ -8,7 +7,7 @@ import './nostick.scss';
 import {
     Table,
 } from "reactstrap";
-import {getCookie} from "../../utils/utils";
+import {getCookie, getCoords} from "../../utils/utils";
 
 
 
@@ -133,7 +132,7 @@ class TableVerticalNoStick extends Component {
             }, { passive: true });
 
         this.setWrapperWidth();
-        this.equalizeTableHeaderHeight()
+        this.equalizeTableHeaderHeight();
         window.onresize = () => this.setWrapperWidth();
         this.setState({scrollTop: false});
         this.setState({scrollLeft: false});
@@ -146,7 +145,8 @@ class TableVerticalNoStick extends Component {
 
     componentDidUpdate(){
         this.setWrapperWidth();
-        //this.equalizeTableHeaderHeight();
+        this.equalizeTableColumnHeight()
+
     }
 
     setWrapperWidth(){
@@ -169,6 +169,25 @@ class TableVerticalNoStick extends Component {
         let rcHead = document.querySelector(".rest-columns > .thead").offsetHeight,
             fixHead = document.querySelector(".fix-column > .thead");
         fixHead.style.height = rcHead + 'px';
+    }
+
+    equalizeTableColumnHeight(){
+        let column = document.querySelector('#no-stick .fix-column > .tbody'),
+            thead = document.querySelector('#no-stick .thead'),
+            cells = document.querySelectorAll('#no-stick .fix-column > .tbody > .trow'),
+            cellsHeight = 0;
+
+        for(let i = 0; i < cells.length - 1; i++){
+            cellsHeight += cells[i].offsetHeight;
+        }
+
+        console.log(getCoords(column).top + cellsHeight, document.body.clientHeight);
+
+        if( (getCoords(column).top + cellsHeight) < document.body.clientHeight){
+            column.style.height = cellsHeight + 'px';
+        }
+        else column.style.height = '';
+
     }
 
 
@@ -290,7 +309,7 @@ class TableVerticalNoStick extends Component {
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'm')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] ? item[ 'month' + ( i )] : '' }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item[ 'month' + ( i )] ? item[ 'month' + ( i )] : '-' }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
