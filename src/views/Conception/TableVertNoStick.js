@@ -202,7 +202,7 @@ class TableVerticalNoStick extends Component {
                                 <span><div>Ср. в месяц</div></span>
                             </div>
                             <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
-                                <span><div>Прогноз на {getMonthName((new Date()).getMonth())}</div></span>
+                                <span><div>Прог. на {getMonthName((new Date()).getMonth()).substring(0,3)}</div></span>
                             </div>
                             {this.state.months.map((item,i) =>
                                 <div className={'trow' + ( (i + 'm' === this.state.rowHover) ? ' trow_hover_d' : '')} key={i}>

@@ -24,12 +24,12 @@ $font_size_mobile: 0.688em;
   }
   .empty_col_last{
     padding-right: 0px;
-    width: 10px !important;
+    width: 0px !important;
     background-color: #eff3f6 !important;
     >div{
       padding-right: 0px !important;
       background-color: #eff3f6 !important;
-      width: 1px !important;
+      width: 0px !important;
       margin-right: 0px;
       margin-left: 0px;
     }
@@ -42,7 +42,7 @@ $font_size_mobile: 0.688em;
     line-height: 1px !important;
   }
   .thead > .last_span_head{
-    width: 10px;
+    width: 0px;
     background-color: #eff3f6;
   }
 
