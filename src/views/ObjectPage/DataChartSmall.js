@@ -60,7 +60,6 @@ export default class DataChartSmall extends Component {
 
     render(){
         return (
-
             <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
         {this.state.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
         <div style={this.state.emptyData ? {display:'none'} : {}} className="line-chart-wrapper line-chart-wrapper_small">
@@ -203,5 +202,4 @@ export default class DataChartSmall extends Component {
         </Col>
         )
     }
-
 }

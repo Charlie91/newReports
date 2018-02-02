@@ -628,7 +628,6 @@ export default class ObjectPage extends Component {
                             </Col>
                         </Row>
                         <Row>
-
                             {(this.state.viewportWidth > 720) ?
                                 <DataChart
                                     render={!(this.state.type === 'Выручка')}
@@ -638,7 +637,6 @@ export default class ObjectPage extends Component {
                                     currency={this.state.currency}
                                     timeSegment={this.state.timeSegment}
                                     emptyData={this.state.emptyData}
-
                                 />
                                 :
                                 <DataChartSmall
@@ -649,7 +647,6 @@ export default class ObjectPage extends Component {
                                     currency={this.state.currency}
                                     timeSegment={this.state.timeSegment}
                                     emptyData={this.state.emptyData}
-
                                 />
                             }
                             {this.renderSegmentationButtons()}

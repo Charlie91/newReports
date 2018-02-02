@@ -61,9 +61,8 @@ export default class DataChart extends Component {
                           options={{
                               maintainAspectRatio: false,
                               animation: {
-                                  duration: 700,
-                                  onComplete: function () {
-                                  }},
+                                  duration: 700
+                              },
                               legend: {
                                   display: false
                               },

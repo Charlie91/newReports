@@ -224,15 +224,15 @@ export function getStepSize(number, timeSegment){
 }
 
 export function getStepName(timeSegment){
-    let value = 'DD MMM';
+    let value = 'MMM DD';
     if(timeSegment === 'Y')
         value = 'YYYY';
     if(timeSegment === 'M')
         value = 'MMM';
     if(timeSegment === 'D')
-        value = 'DD MMM';
+        value = 'MMM DD';
     if(timeSegment === 'H')
-        value = 'DD MMM';
+        value = 'MMM DD';
     return value;
 }
 
