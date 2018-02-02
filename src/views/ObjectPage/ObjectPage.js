@@ -14,8 +14,10 @@ import DataChart from './DataChart';
 import DataChartSmall from './DataChartSmall';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customtooltip2";
-import {digitCount, formatNumericValue,formatNumberBySimpleSpaces, formatNumericValueWithMnl, formatNumberBySpaces,average,getStepSize,getStepTick,getStepName} from './../../utils/utils';
+import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
+        formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import parser from 'ua-parser-js';
+import punycode from 'punycode';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -455,13 +457,13 @@ export default class ObjectPage extends Component {
                                 <div className="obj_title">
                                     <Row>
                                         <Col md="12" xs="9">
-                                            <h4>{this.state.object.obj_name}</h4>
+                                            <h4>{state.object.obj_name}</h4>
                                         </Col>
                                         <Col md="0" xs="3">
-                                            <a className="link_mobile" href="#">cайт</a>
+                                            <a className="link_mobile" href={state.object.website}>cайт</a>
                                         </Col>
                                     </Row>
-                                    <a className="link_desktop" href={this.state.object.website} target="_blank">сайт</a>
+                                    <a className="link_desktop" href={this.state.object.website} target="_blank">{decodeHalfPunycodeLink(state.object.website) || ''}</a>
                                     <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: this.state.object.address}} />
                                 </div>
                                 <hr className="divider"/>

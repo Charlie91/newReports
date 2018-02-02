@@ -1,4 +1,5 @@
 import {API} from './api_paths';
+import punycode from 'punycode';
 
 export function checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
     let options = {
@@ -239,4 +240,19 @@ export function getStepName(timeSegment){
 
 export function digitCount(number) {
     return number.toString().length;
+}
+
+export function deleteURLPrefixes(link){
+    if(typeof link !== 'string') return link;
+    let prefixEndIndex = link.lastIndexOf('http://www.');
+    return link.slice(prefixEndIndex + 'http://www.'.length);
+}
+
+export function decodeHalfPunycodeLink(link){
+    if(typeof link !== 'string') return link;
+    link = deleteURLPrefixes(link);
+
+    let okPartIndex = link.lastIndexOf('/',link.length - 2);
+    let [punycodePart,okPart] = [link.slice(0,okPartIndex),link.slice(okPartIndex)];
+    return punycode.toUnicode(punycodePart) + okPart
 }
