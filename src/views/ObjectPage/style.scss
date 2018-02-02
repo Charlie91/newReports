@@ -382,7 +382,7 @@ padding-bottom: 30px;
         background: #fff;
         left: 0;
         height: 130px;
-        margin-top: -5px;
+        margin-top: -5.5px;
         padding: 18px 7px 0 10px;
         &.fixed{
           box-shadow: 4px 0px 4px -4px #d7d9db;
@@ -394,6 +394,7 @@ padding-bottom: 30px;
           vertical-align: top;
           list-style: none;
           font-size: 9px;
+          font-weight: 400;
           margin-bottom: 4px;
           color: #7f8fa4;
           &:last-of-type{
@@ -827,8 +828,8 @@ padding-bottom: 30px;
       margin-top:15px
     }
     .divider{
-      margin-right: -$crdbody-padding;
-      margin-left: -$crdbody-padding;
+      margin-right: -1.5rem;
+      margin-left: -1.5rem;
       margin-top: 7px;
       margin-bottom: 6px;
       display:block;

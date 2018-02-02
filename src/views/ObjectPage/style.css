@@ -290,7 +290,7 @@
         background: #fff;
         left: 0;
         height: 130px;
-        margin-top: -5px;
+        margin-top: -5.5px;
         padding: 18px 7px 0 10px; }
         .average_hours.horizontal-bars .card-body ul.ranges.fixed {
           box-shadow: 4px 0px 4px -4px #d7d9db; }
@@ -300,6 +300,7 @@
           vertical-align: top;
           list-style: none;
           font-size: 9px;
+          font-weight: 400;
           margin-bottom: 4px;
           color: #7f8fa4; }
           .average_hours.horizontal-bars .card-body ul.ranges li:last-of-type {
@@ -573,8 +574,8 @@
     .object_cont .floor_btn-wrp {
       margin-top: 15px; }
     .object_cont .divider {
-      margin-right: -1.3rem;
-      margin-left: -1.3rem;
+      margin-right: -1.5rem;
+      margin-left: -1.5rem;
       margin-top: 7px;
       margin-bottom: 6px;
       display: block; }

@@ -268,7 +268,11 @@ export default class HorizontalBarChart extends Component {
                                                                            // render the value of the chart above the bar
                                                                            let ctx = this.chart.ctx;
                                                                            let chartWidth = this.chart.width;
-                                                                           ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 3, 'normal', Chart.defaults.global.defaultFontFamily);
+                                                                           ctx.font = Chart.helpers.fontString(
+                                                                               Chart.defaults.global.defaultFontSize - 3,
+                                                                               'normal',
+                                                                               "'ProximaNova','Segoe UI',sans-serif"
+                                                                           );
                                                                            ctx.fillStyle = this.chart.config.options.defaultFontColor;
                                                                            ctx.fillStyle = '#7f8fa4';
                                                                            ctx.textAlign = 'center';
@@ -357,7 +361,11 @@ export default class HorizontalBarChart extends Component {
                                                              // render the value of the chart above the bar
                                                              let ctx = this.chart.ctx;
                                                              let chartWidth = this.chart.width;
-                                                             ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize - 3, 'normal', Chart.defaults.global.defaultFontFamily);
+                                                             ctx.font = Chart.helpers.fontString(
+                                                                 Chart.defaults.global.defaultFontSize - 3,
+                                                                 'normal',
+                                                                 "'ProximaNova','Segoe UI',sans-serif"
+                                                             );
                                                              ctx.fillStyle = this.chart.config.options.defaultFontColor;
                                                              ctx.fillStyle = '#7f8fa4';
                                                              ctx.textAlign = 'center';

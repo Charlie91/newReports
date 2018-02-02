@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {formatNumericValue} from './../../utils/utils';
-import {formatNumericValueWithSpaces} from './../../utils/utils';
 //import './react-bootstrap-table.css';
 import './nostick.scss';
 import {
@@ -145,8 +143,7 @@ class TableVerticalNoStick extends Component {
 
     componentDidUpdate(){
         this.setWrapperWidth();
-        this.equalizeTableColumnHeight()
-
+        this.equalizeTableColumnHeight()// фикс бага с высотой таблицы
     }
 
     setWrapperWidth(){
@@ -171,7 +168,7 @@ class TableVerticalNoStick extends Component {
         fixHead.style.height = rcHead + 'px';
     }
 
-    equalizeTableColumnHeight(){
+    equalizeTableColumnHeight(){    // фикс бага с высотой таблицы
         let column = document.querySelector('#no-stick .fix-column > .tbody'),
             thead = document.querySelector('#no-stick .thead'),
             cells = document.querySelectorAll('#no-stick .fix-column > .tbody > .trow'),
@@ -181,18 +178,14 @@ class TableVerticalNoStick extends Component {
             cellsHeight += cells[i].offsetHeight;
         }
 
-        console.log(getCoords(column).top + cellsHeight, document.body.clientHeight);
-
-        if( (getCoords(column).top + cellsHeight) < document.body.clientHeight){
+        if((getCoords(column).top + cellsHeight) < document.body.clientHeight)
             column.style.height = cellsHeight + 'px';
-        }
-        else column.style.height = '';
-
+        else
+            column.style.height = '';
     }
 
 
     render() {
-        //console.log(this.props.data);
         return (
             <div id="no-stick">
                 <div className="total-wrapper conceptions-table vertical-table">
@@ -333,6 +326,7 @@ class TableVerticalNoStick extends Component {
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+
                             <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
                                 {this.props.data.map((item,i) =>
                                     <span key={i} className={'empty_col'}></span>
