@@ -15268,7 +15268,8 @@ button.btn.back-btn {
     font-size: 20px;
     text-align: left;
     color: #354052;
-    box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052; }
+    box-shadow: inset 0 -3px 0 white, inset 0 -4px 0 #354052;
+    font-weight: 400; }
   .obj_title .address_mobile {
     display: none; }
   .obj_title a.link_mobile {
