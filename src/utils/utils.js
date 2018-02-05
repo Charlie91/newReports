@@ -244,8 +244,16 @@ export function digitCount(number) {
 
 export function deleteURLPrefixes(link){
     if(typeof link !== 'string') return link;
-    let prefixEndIndex = link.lastIndexOf('http://www.');
-    return link.slice(prefixEndIndex + 'http://www.'.length);
+    let cuttedValues = ['http://www.','https://www.','http://', 'https://'],
+        cuttedValue = '';
+
+    for(let i = 0; i < cuttedValues.length; i++){
+        if(~link.lastIndexOf(cuttedValues[i])){
+            cuttedValue = cuttedValues[i];
+            break;
+        }
+    }
+    return link.slice(cuttedValue.length);
 }
 
 export function decodeHalfPunycodeLink(link){
