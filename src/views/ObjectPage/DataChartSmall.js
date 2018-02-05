@@ -5,7 +5,7 @@ import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
 import {customLabel3} from "./customtooltip3";
-import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
+import {formatNumericValueWithMnl, getStepName, getStepSize, getStepSizeSmall, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
 
 
@@ -46,7 +46,13 @@ const DataChartSmall = (props) => {
                                       enabled:false,
                                       callbacks:{
                                           label: (tooltipItem, data ) => {
-                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
+                                              let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                              if (step === 1){
+                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
+                                              } else {
+                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}. ` +
+                                                      moment(tooltipItem.xLabel).format(' D MMM')
+                                              }
                                           }
                                       }
                                   },
@@ -60,7 +66,7 @@ const DataChartSmall = (props) => {
                                               type: 'time',
                                               time: {
                                                   unit: getStepTick(props.timeSegment),
-                                                  unitStepSize: getStepSize(newChart.labels.length, props.timeSegment),
+                                                  unitStepSize: getStepSizeSmall(newChart.labels.length, props.timeSegment),
                                                   displayFormats: {
                                                       day: getStepName(props.timeSegment),
                                                   }
@@ -78,7 +84,7 @@ const DataChartSmall = (props) => {
                                                       }
 
                                                       let side = ( (index === 0) || (index === (values.length -1)) );
-                                                      let step = getStepSize(newChart.labels.length, props.timeSegment);
+                                                      let step = getStepSizeSmall(newChart.labels.length, props.timeSegment);
                                                       let len = Math.ceil(newChart.labels.length / step);
                                                       // if end
                                                       if(index === 0){
@@ -110,7 +116,7 @@ const DataChartSmall = (props) => {
                                               type: "time",
                                               time: {
                                                   unit: getStepTick(props.timeSegment),
-                                                  unitStepSize: getStepSize(newChart.labels.length, props.timeSegment),
+                                                  unitStepSize: getStepSizeSmall(newChart.labels.length, props.timeSegment),
                                                   displayFormats: {
                                                       day: "YYYY"
                                                   }
@@ -126,8 +132,8 @@ const DataChartSmall = (props) => {
                                                   fontFamily: 'ProximaNova',
                                                   callback: (value, index, values) => {
                                                       let side = ( (index === 0) || (index === (values.length -1)) );
-                                                      let step = getStepSize(newChart.labels.length, props.timeSegment);
-                                                      let len = Math.ceil(newChart.labels.length / step);
+                                                      let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                                      let len = Math.ceil(props.data.labels.length / step);
 
                                                       // if end
                                                       if(index === 0){
