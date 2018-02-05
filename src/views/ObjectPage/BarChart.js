@@ -287,69 +287,6 @@ export default class BarChart extends Component {
                                                                  },
                                                                  ticks:{
                                                                      beginAtZero: false
-                                                                 },
-                                                                 beforeFit: function (scale) {
-                                                                     if(scale.chart.chartArea){
-                                                                         var dataset = scale.chart.config.data.datasets[0];
-                                                                         var offset = 20;
-
-                                                                         // For every data in the dataset ...
-                                                                         for (var i = 0; i < dataset._meta[0].data.length; i++) {
-                                                                             // We get the model linked to this data
-                                                                             var model = dataset._meta[0].data[0]._model;
-
-                                                                             // And add the offset to the `x` property
-                                                                             model.x += offset;
-                                                                             model.y += offset;
-
-                                                                             // .. and also to these two properties
-                                                                             // to make the bezier curve fits the new graph
-                                                                             model.controlPointNextX += offset;
-                                                                             model.controlPointPreviousX += offset;
-                                                                         }
-                                                                     }
-                                                                 },
-                                                                 afterFit: function (scale) {
-                                                                     if(scale.chart.chartArea){
-                                                                         var dataset = scale.chart.config.data.datasets[0];
-                                                                         var offset = 20;
-
-                                                                         // For every data in the dataset ...
-                                                                         for (var i = 0; i < dataset._meta[0].data.length; i++) {
-                                                                             // We get the model linked to this data
-                                                                             var model = dataset._meta[0].data[0]._model;
-
-                                                                             // And add the offset to the `x` property
-                                                                             model.x += offset;
-                                                                             model.y += offset;
-
-                                                                             // .. and also to these two properties
-                                                                             // to make the bezier curve fits the new graph
-                                                                             model.controlPointNextX += offset;
-                                                                             model.controlPointPreviousX += offset;
-                                                                         }
-                                                                     }
-                                                                 },
-                                                                 afterUpdate: function(scale){
-                                                                     if(scale.chart.chartArea){
-                                                                         var dataset = scale.chart.config.data.datasets[0];
-                                                                         var offset = 20;
-
-                                                                         // For every data in the dataset ...
-                                                                         for (var i = 0; i < dataset._meta[0].data.length; i++) {
-                                                                             // We get the model linked to this data
-                                                                             var model = dataset._meta[0].data[0]._model;
-
-                                                                             // And add the offset to the `x` property
-                                                                             model.x += offset;
-                                                                             model.y += offset;
-
-                                                                             // .. and also to these two properties
-                                                                             // to make the bezier curve fits the new graph
-                                                                             model.controlPointNextX += offset;
-                                                                             model.controlPointPreviousX += offset;
-                                                                         }
-                                                                     }
                                                                  }
                                                              }],
                                                              yAxes: [{

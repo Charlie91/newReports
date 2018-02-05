@@ -1,63 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
-import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
 import {customLabel2} from "./customtooltip2";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
 
-export default class DataChart extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            chart :{
-                labels: [],
-                datasets: [{
-                    data: []
-                }]
-            },
-            startDate: null,
-            endDate: null,
-            currency: null,
-            timeSegment: null,
-            emptyData: null
-
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.data)
-            this.setState({chart: nextProps.data});
-
-        if (nextProps.startDate)
-            this.setState({startDate: nextProps.startDate});
-
-        if (nextProps.endDate)
-            this.setState({endDate: nextProps.endDate});
-
-        if (nextProps.currency)
-            this.setState({currency: nextProps.currency});
-
-        if (nextProps.timeSegment)
-            this.setState({timeSegment: nextProps.timeSegment});
-
-        if (nextProps.emptyData)
-            this.setState({emptyData: nextProps.emptyData});
-
-    }
-
-    render(){
-        return (
-            <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
-        {this.state.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
-        <div style={this.state.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
-            {(!this.state.chart.datasets[0].data.length) ?
+const DataChart = (props) => (
+    <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
+        {props.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
+        <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
+            {(!props.data.datasets[0].data.length) ?
                 <Loading/>
                 :
                 <div className="linechart_area_wrapper">
-                    <Line data={this.state.chart}
+                    <Line data={props.data}
                           options={{
                               maintainAspectRatio: false,
                               animation: {
@@ -71,11 +29,11 @@ export default class DataChart extends Component {
                                   enabled:false,
                                   callbacks:{
                                       label: (tooltipItem, data ) => {
-                                          let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
+                                          let step = getStepSize(props.data.labels.length, props.timeSegment);
                                           if (step === 1){
-                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}.`
+                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
                                           } else {
-                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${this.state.currency.substring(0,3)}. ` +
+                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}. ` +
                                                   moment(tooltipItem.xLabel).format(' D MMM')
                                           }
                                       }
@@ -90,10 +48,10 @@ export default class DataChart extends Component {
                                           },
                                           type: 'time',
                                           time: {
-                                              unit: getStepTick(this.state.timeSegment),
-                                              unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                              unit: getStepTick(props.timeSegment),
+                                              unitStepSize: getStepSize(props.data.labels.length, props.timeSegment),
                                               displayFormats: {
-                                                  day: getStepName(this.state.timeSegment),
+                                                  day: getStepName(props.timeSegment),
                                               }
                                           },
                                           display: true,
@@ -109,20 +67,20 @@ export default class DataChart extends Component {
                                                   }
 
                                                   let side = ( (index === 0) || (index === (values.length -1)) );
-                                                  let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                  let len = Math.ceil(this.state.chart.labels.length / step);
+                                                  let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                                  let len = Math.ceil(props.data.labels.length / step);
                                                   // if end
                                                   if(index === 0){
                                                       return ( side && (len - values.length) < 1 ) ? '' :
-                                                          moment(value).format( getStepName(this.state.timeSegment) );
+                                                          moment(value).format( getStepName(props.timeSegment) );
                                                   }
                                                   // if end
                                                   if(index === (values.length -1)){
                                                       return ( side && (len - values.length) < 2 ) ? '' :
-                                                          moment(value).format( getStepName(this.state.timeSegment) );
+                                                          moment(value).format( getStepName(props.timeSegment) );
                                                   }
 
-                                                  return moment(value).format( getStepName(this.state.timeSegment) );
+                                                  return moment(value).format( getStepName(props.timeSegment) );
                                               }
                                           },
                                           gridLines: {
@@ -143,14 +101,14 @@ export default class DataChart extends Component {
                                           },
                                           type: "time",
                                           time: {
-                                              unit: getStepTick(this.state.timeSegment),
-                                              unitStepSize: getStepSize(this.state.chart.labels.length, this.state.timeSegment),
+                                              unit: getStepTick(props.timeSegment),
+                                              unitStepSize: getStepSize(props.data.labels.length, props.timeSegment),
                                               displayFormats: {
                                                   day: "YYYY"
                                               }
                                           },
-                                          display: ( (this.state.startDate.format('YYYY') !== this.state.endDate.format('YYYY')) &&
-                                              ((this.state.timeSegment === 'D') || (this.state.timeSegment === 'M'))
+                                          display: ( (props.startDate.format('YYYY') !== props.endDate.format('YYYY')) &&
+                                              ((props.timeSegment === 'D') || (props.timeSegment === 'M'))
                                           ),
                                           ticks: {
                                               beginAtZero:false,
@@ -160,8 +118,8 @@ export default class DataChart extends Component {
                                               fontFamily: 'ProximaNova',
                                               callback: (value, index, values) => {
                                                   let side = ( (index === 0) || (index === (values.length -1)) );
-                                                  let step = getStepSize(this.state.chart.labels.length, this.state.timeSegment);
-                                                  let len = Math.ceil(this.state.chart.labels.length / step);
+                                                  let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                                  let len = Math.ceil(props.data.labels.length / step);
 
                                                   // if end
                                                   if(index === 0){
@@ -208,8 +166,7 @@ export default class DataChart extends Component {
                 </div>
             }
         </div>
-        </Col>
-        )
-    }
+    </Col>
+);
 
-}
+export default DataChart;
