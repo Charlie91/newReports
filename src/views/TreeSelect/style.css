@@ -12,7 +12,11 @@ body {
   font-family: ProximaNova,sans-serif;
   list-style: none;
   white-space: nowrap;
-  padding: 4px; }
+  padding: 4px;
+  line-height: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px; }
 
 .searchModeOn li.node {
   padding-left: 0 !important; }
@@ -222,13 +226,24 @@ li.node.leaf.clear-all span, li.node.leaf.select-all span {
 li.node.leaf.select-all.checkedField span, li.node.leaf.clear-all.checkedField span {
   background: none; }
 
+li.node.bold, li.node.tree {
+  margin-top: 19px; }
+
+li.node:first-of-type {
+  margin-top: 13px; }
+
+li.node:last-child {
+  margin-bottom: 30px; }
+
 a.dropdown-button {
   text-decoration: underline;
   width: 50%;
   display: inline-block;
   text-align: left;
   padding: 3px 10px;
-  color: #6aa9c8; }
+  color: #6aa9c8;
+  font-size: 14px;
+  padding-top: 5px; }
 
 .dropdown-content .toggle {
   display: none; }
