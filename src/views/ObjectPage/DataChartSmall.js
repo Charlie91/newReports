@@ -46,12 +46,12 @@ const DataChartSmall = (props) => {
                                       enabled:false,
                                       callbacks:{
                                           label: (tooltipItem, data ) => {
-                                              let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                              let step = getStepSizeSmall(props.data.labels.length, props.timeSegment);
+                                              let label = `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`;
                                               if (step === 1){
-                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
+                                                  return label;
                                               } else {
-                                                  return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}. ` +
-                                                      moment(tooltipItem.xLabel).format(' D MMM')
+                                                  return label + '<br>' + moment(tooltipItem.xLabel).format(' D MMM');
                                               }
                                           }
                                       }
