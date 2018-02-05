@@ -230,11 +230,8 @@ export function getStepSizeSmall(number, timeSegment){
         value = parseInt(number<21 ? 1: number/15);
     if(timeSegment === 'M')
         value = parseInt(number<21 ? 1: number/15);
-    if(timeSegment === 'D'){
+    if(timeSegment === 'D')
         value = parseInt(number<17 ? 1: number/8);
-        console.log(number);
-        console.log(value);
-    }
     if(timeSegment === 'H')
         value = 1;
     return value;
