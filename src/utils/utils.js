@@ -227,9 +227,9 @@ export function getStepSize(number, timeSegment){
 export function getStepSizeSmall(number, timeSegment){
     let value = 1;
     if(timeSegment === 'Y')
-        value = parseInt(number<21 ? 1: number/15);
+        value = parseInt(number<17 ? 1: number/8);
     if(timeSegment === 'M')
-        value = parseInt(number<21 ? 1: number/15);
+        value = parseInt(number<17 ? 1: number/8);
     if(timeSegment === 'D')
         value = parseInt(number<17 ? 1: number/8);
     if(timeSegment === 'H')

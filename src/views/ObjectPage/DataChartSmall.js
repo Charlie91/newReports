@@ -46,7 +46,7 @@ const DataChartSmall = (props) => {
                                       enabled:false,
                                       callbacks:{
                                           title: (tooltipItem, data ) => {
-                                              let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                              let step = getStepSizeSmall(props.data.labels.length, props.timeSegment);
                                               let title = '';
 
                                               if (step !== 1){
