@@ -52,6 +52,7 @@ const DataChart = (props) => (
                                               unitStepSize: getStepSize(props.data.labels.length, props.timeSegment),
                                               displayFormats: {
                                                   day: getStepName(props.timeSegment),
+                                                  month: getStepName(props.timeSegment)
                                               }
                                           },
                                           display: true,
@@ -62,25 +63,28 @@ const DataChart = (props) => (
                                               fontSize: 14,
                                               fontFamily: 'ProximaNova',
                                               callback: (value, index, values) => {
-                                                  if (!moment(value).isValid()){
-                                                      return '';
+
+
+                                                  let month_en = value.replace(/[^a-z]/gi, '');
+                                                  if(month_en.length > 2){
+                                                      let month_ru =  moment().locale('en').month(month_en).locale('ru').format('MMM');
+                                                      value = value.replace(month_en, month_ru).replace(/^(\S+) (\d+)(.*)$/, '$2 $1$3');
                                                   }
+
 
                                                   let side = ( (index === 0) || (index === (values.length -1)) );
                                                   let step = getStepSize(props.data.labels.length, props.timeSegment);
                                                   let len = Math.ceil(props.data.labels.length / step);
-                                                  // if end
-                                                  if(index === 0){
-                                                      return ( side && (len - values.length) < 1 ) ? '' :
-                                                          moment(value).format( getStepName(props.timeSegment) );
-                                                  }
-                                                  // if end
-                                                  if(index === (values.length -1)){
-                                                      return ( side && (len - values.length) < 2 ) ? '' :
-                                                          moment(value).format( getStepName(props.timeSegment) );
-                                                  }
 
-                                                  return moment(value).format( getStepName(props.timeSegment) );
+
+                                                  // first
+                                                  if(index === 0)
+                                                      return ( side && (len - values.length) < 1 ) ? '' : value;
+                                                  // last
+                                                  if(index === (values.length -1))
+                                                      return ( side && (len - values.length) < 2 ) ? '' : value;
+
+                                                  return value;
                                               }
                                           },
                                           gridLines: {
@@ -117,22 +121,23 @@ const DataChart = (props) => (
                                               fontSize: 14,
                                               fontFamily: 'ProximaNova',
                                               callback: (value, index, values) => {
+
                                                   let side = ( (index === 0) || (index === (values.length -1)) );
                                                   let step = getStepSize(props.data.labels.length, props.timeSegment);
                                                   let len = Math.ceil(props.data.labels.length / step);
 
-                                                  // if end
+                                                  value = value.replace(/[^0-9]/gi, '');
+
+
                                                   if(index === 0){
-                                                      return ( side && (len - values.length) < 1 ) ? '' :
-                                                          moment(value).format('YYYY');
-                                                  }
-                                                  // if end
-                                                  if(index === (values.length -1)){
-                                                      return ( side && (len - values.length) < 2 ) ? '' :
-                                                          moment(value).format('YYYY');
+                                                      return ( side && (len - values.length) < 1 ) ? '' : value;
                                                   }
 
-                                                  return moment(value).format('YYYY');
+                                                  if(index === (values.length -1)){
+                                                      return ( side && (len - values.length) < 2 ) ? '' : value;
+                                                  }
+
+                                                  return value;
                                               }
                                           }
                                       }

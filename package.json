@@ -40,7 +40,7 @@
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-bootstrap-table": "^4.1.0",
-    "react-chartjs-2": "2.5.6",
+    "react-chartjs-2": "2.7.1",
     "react-datepicker": "^0.56.0",
     "react-dom": "^15.6.1",
     "react-dropdown-tree-select": "^1.0.2",
