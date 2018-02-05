@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
-import {customLabel} from './customtooltip';
+import {customLabelDataChartSmall} from './customLabelDataChartSmall';
 import {formatNumberBySpaces} from './../../utils/utils';
-import {customLabel3} from "./customtooltip3";
+import {customLabel3} from "./customLabelDataChartSmall";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepSizeSmall, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
 
@@ -42,17 +42,29 @@ const DataChartSmall = (props) => {
                                       display: false
                                   },
                                   tooltips: {
-                                      custom: customLabel3,
+                                      custom: customLabelDataChartSmall,
                                       enabled:false,
                                       callbacks:{
-                                          label: (tooltipItem, data ) => {
-                                              let step = getStepSizeSmall(props.data.labels.length, props.timeSegment);
-                                              let label = `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`;
-                                              if (step === 1){
-                                                  return label;
-                                              } else {
-                                                  return label + '<br>' + moment(tooltipItem.xLabel).format(' D MMM');
+                                          title: (tooltipItem, data ) => {
+                                              let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                              let title = '';
+
+                                              if (step !== 1){
+                                                  if (props.timeSegment === 'M')
+                                                      title = moment(tooltipItem[0].xLabel).format('MMM')
+                                                  if (props.timeSegment === 'D')
+                                                      title = moment(tooltipItem[0].xLabel).format('DD MMM')
+                                                  if (props.timeSegment === 'Y')
+                                                      title = moment(tooltipItem[0].xLabel).format('YYYY')
                                               }
+
+                                              if (props.timeSegment === 'H')
+                                                  title = moment(tooltipItem[0].xLabel).format("HH:mm, DD MMM")
+
+                                              return title;
+                                          },
+                                          label: (tooltipItem, data ) => {
+                                              return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
                                           }
                                       }
                                   },

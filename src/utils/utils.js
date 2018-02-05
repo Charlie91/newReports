@@ -247,9 +247,6 @@ export function getStepName(timeSegment){
         value = 'MMM DD';
     if(timeSegment === 'H')
         value = 'MMM DD';
-
-    console.log(timeSegment);
-    console.log(value);
     return value;
 }
 

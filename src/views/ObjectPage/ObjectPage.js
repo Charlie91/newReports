@@ -13,7 +13,7 @@ import HorizontalBarChart from './HorizontalBarChart';
 import DataChart from './DataChart';
 import DataChartSmall from './DataChartSmall';
 import Loading from './../Loading/Small';
-import {customLabel2} from "./customtooltip2";
+import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
         formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import parser from 'ua-parser-js';
