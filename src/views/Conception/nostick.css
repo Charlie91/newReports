@@ -110,7 +110,7 @@
         line-height: 15px !important;
         height: 15px !important; }
   #no-stick .conceptions-table .holidays_column {
-    background-color: rgba(142, 214, 250, 0.15); }
+    background-color: rgba(142, 214, 250, 0.15) !important; }
     #no-stick .conceptions-table .holidays_column > span > div {
       background-color: transparent !important; }
       #no-stick .conceptions-table .holidays_column > span > div:hover {

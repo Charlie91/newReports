@@ -262,14 +262,15 @@ export default class ObjectPage extends Component {
         const mapState = { center: [this.state.object.lattitude, this.state.object.longitude], zoom: 16, controls: [], behaviors:[], options:[] };
         return (
             <div>
-                <YMaps>
-                    <Map state={mapState}
-                         width={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
-                         height={(this.state.viewportWidth < 1199) ? '100px' : '420px'}
-                    >
-                    </Map>
-                </YMaps>
-
+                <a href={`https://yandex.ru/maps/213/moscow/?ll=${this.state.object.longitude}%2C${this.state.object.lattitude}&z=16&mode=poi&poi%5Bpoint%5D=${this.state.object.longitude}%2C${this.state.object.lattitude}`} target="blank" >
+                    <YMaps>
+                        <Map state={mapState}
+                             width={(this.state.viewportWidth < 1199) ? '100px' : '360px'}
+                             height={(this.state.viewportWidth < 1199) ? '100px' : '420px'}
+                        >
+                        </Map>
+                    </YMaps>
+                </a>
             </div>
         );
     };
@@ -460,7 +461,7 @@ export default class ObjectPage extends Component {
                                             <h4>{state.object.obj_name}</h4>
                                         </Col>
                                         <Col md="0" xs="3">
-                                            <a className="link_mobile" href={state.object.website}>cайт</a>
+                                            <a className="link_mobile" target="_blank" href={state.object.website}>cайт</a>
                                         </Col>
                                     </Row>
                                     <a className="link_desktop" href={this.state.object.website} target="_blank">{decodeHalfPunycodeLink(state.object.website) || ''}</a>
