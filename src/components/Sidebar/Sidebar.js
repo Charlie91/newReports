@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import nav from './_nav';
 import LogOut from './../../views/Authorization/LogOut';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest} from './../../utils/utils';
+import {ajaxRequest, getCoords} from './../../utils/utils';
 import {
     NavbarToggler,
     NavbarBrand,
@@ -21,6 +21,31 @@ class Sidebar extends Component {
     handleClick(e) {
         e.preventDefault();
         e.target.parentElement.classList.toggle('open');
+        this.scrollTopToElement(e.target.parentElement);
+    }
+
+    scrollTopToElement(elem){   //скролл к раскрывшемуся элементу для удобства пользования
+        let nav = document.querySelector('nav.sidebar-nav');
+
+        if(elem.classList.contains('open')) //обертка с анимацией
+            setTimeout(() => {
+                let start = Date.now(); // сохранить время начала
+
+                if(elem.offsetTop > nav.scrollTop){
+                    let timer = setInterval(() => {
+                        nav.scrollTop += 20;
+                        if(nav.scrollTop >= elem.offsetTop)clearTimeout(timer);
+                        else if(Date.now() - start > 500)clearTimeout(timer)//после 500мс останавливаем анимацию
+                    },10)
+                }
+                else{
+                    let timer = setInterval(() => {
+                        nav.scrollTop -= 20;
+                        if(nav.scrollTop <= elem.offsetTop)clearTimeout(timer);
+                        else if(Date.now() - start > 500)clearTimeout(timer)//после 500мс останавливаем анимацию
+                    },10)
+                }
+            },10);
     }
 
     activeRoute(routeName, props) {
