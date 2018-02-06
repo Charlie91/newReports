@@ -1,8 +1,7 @@
 import moment from "moment/moment";
 
 
-export const customLabel2 = function(tooltipModel) {
-
+export const customLabelDataChart = function(tooltipModel) {
 
     // Tooltip Element
     var tip = document.getElementById('chartjs-tooltip');
@@ -43,15 +42,12 @@ export const customLabel2 = function(tooltipModel) {
         var bodyLines = tooltipModel.body.map(getBody);
 
         let innerHtmlTitle = '';
+        tooltipEl.id = 'chartjs-tooltip2';
         titleLines.forEach(function(title) {
-            if ( title.length < 11 ){
-                tooltipEl.id = 'chartjs-tooltip2';
-            } else {
-                innerHtmlTitle += '<div class="tooltip_title">';
-                tooltipEl.id = 'chartjs-tooltip';
-                innerHtmlTitle += '<span>' +  moment(title).format("HH:mm, DD MMM") + '</span>';
-                innerHtmlTitle += '</div>';
-            }
+            innerHtmlTitle += '<div class="tooltip_title">';
+            tooltipEl.id = 'chartjs-tooltip';
+            innerHtmlTitle += '<span>' +  title + '</span>';
+            innerHtmlTitle += '</div>';
         });
 
         let innerHtmlBody = '<div class="tooltip_body">';
