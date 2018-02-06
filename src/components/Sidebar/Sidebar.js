@@ -26,7 +26,6 @@ class Sidebar extends Component {
 
     scrollTopToElement(elem){   //скролл к раскрывшемуся элементу для удобства пользования
         let nav = document.querySelector('nav.sidebar-nav');
-
         if(elem.classList.contains('open')) //обертка с анимацией
             setTimeout(() => {
                 let start = Date.now(); // сохранить время начала
@@ -67,6 +66,7 @@ class Sidebar extends Component {
     // secondLevelActive(routeName) {
     //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
     // }
+    
 
     render() {
         const props = this.props;
