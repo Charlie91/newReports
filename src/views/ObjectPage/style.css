@@ -437,6 +437,12 @@
   .all_data .datepicker_wrp input.datepicker {
     width: auto;
     font-size: 12px; }
+    .all_data .datepicker_wrp input.datepicker::-webkit-clear-button {
+      display: none; }
+    .all_data .datepicker_wrp input.datepicker::-webkit-inner-spin-button {
+      display: none; }
+    .all_data .datepicker_wrp input.datepicker::-webkit-calendar-picker-indicator {
+      display: none; }
   .all_data .line-chart-wrapper {
     width: 100%;
     overflow-x: scroll;
