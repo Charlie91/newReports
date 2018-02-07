@@ -66,7 +66,7 @@ class Sidebar extends Component {
     // secondLevelActive(routeName) {
     //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
     // }
-    
+
 
     render() {
         const props = this.props;

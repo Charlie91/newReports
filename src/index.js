@@ -4,6 +4,7 @@ import {BrowserRouter,HashRouter, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import 'bootstrap/dist/css/bootstrap.css';
 import Promise from 'promise-polyfill';
+import 'whatwg-fetch';
 
 // Styles
 // Import Font Awesome Icons Set

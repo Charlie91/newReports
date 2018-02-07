@@ -43,7 +43,7 @@ class Conception extends Component {
         object.currentMonth = (object.currentMonth) ?   formatNumericValueWithSpaces(object.currentMonth) : '-';
 
         days.forEach( (item,i) => {                         //выводим данные по дням наверх и пригодными для вывода таблицей
-            if(!i)return;
+            //if(!i)return;
             object['day' + (days.length - i)] =  (item.v) ? formatNumericValueWithSpaces(item.v) : '-';
         });
 

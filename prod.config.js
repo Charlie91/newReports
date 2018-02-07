@@ -14,9 +14,7 @@ console.log('BUILD_DIR', BUILD_DIR);
 console.log('SRC_DIR', SRC_DIR);
 
 module.exports = {
-    entry: {
-        index: [SRC_DIR + '/index.js']
-    },
+    entry: ['whatwg-fetch', SRC_DIR + '/index.js'],
     output: {
         path: BUILD_DIR,
         filename: '[name].bundle.js'
