@@ -435,6 +435,7 @@
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
+    width: auto;
     font-size: 12px; }
   .all_data .line-chart-wrapper {
     width: 100%;
