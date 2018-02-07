@@ -628,8 +628,17 @@ padding-bottom: 30px;
     }
     .datepicker_wrp{
       input.datepicker{
-        width: 73px;
+        width: auto;
         font-size: 12px;
+        &::-webkit-clear-button {
+          display: none;
+        }
+        &::-webkit-inner-spin-button {
+          display:none;
+        }
+        &::-webkit-calendar-picker-indicator {
+          display:none;
+        }
       }
     }
     .line-chart-wrapper {

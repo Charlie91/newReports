@@ -109,14 +109,6 @@
         margin-top: 6px;
         line-height: 15px !important;
         height: 15px !important; }
-  #no-stick .conceptions-table .holidays_column {
-    background-color: rgba(142, 214, 250, 0.15) !important; }
-    #no-stick .conceptions-table .holidays_column > span > div {
-      background-color: transparent !important; }
-      #no-stick .conceptions-table .holidays_column > span > div:hover {
-        background-color: transparent !important; }
-    #no-stick .conceptions-table .holidays_column:hover {
-      background-color: rgba(142, 214, 250, 0.15) !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
@@ -125,7 +117,9 @@
       width: 139px; }
     #no-stick .fix-column > .tbody {
       overflow: hidden;
-      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8); }
+      box-shadow: 1px 3px 8px 0px rgba(255, 255, 255, 0);
+      position: relative;
+      top: -0.5px; }
       #no-stick .fix-column > .tbody > .trow {
         text-align: right;
         display: block;
@@ -173,6 +167,14 @@
   #no-stick .link-to-object {
     white-space: normal;
     color: #354052; }
+  #no-stick .conceptions-table .holidays_column {
+    background-color: rgba(142, 214, 250, 0.15) !important; }
+    #no-stick .conceptions-table .holidays_column > span > div {
+      background-color: transparent !important; }
+      #no-stick .conceptions-table .holidays_column > span > div:hover {
+        background-color: transparent !important; }
+    #no-stick .conceptions-table .holidays_column:hover {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
 
 @media screen and (max-width: 991px) {
   #no-stick {
@@ -228,6 +230,14 @@
           height: 20px;
           padding-right: 10px;
           line-height: 20px; }
+    #no-stick .fix-column > .tbody > .holidays_column {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
+      #no-stick .fix-column > .tbody > .holidays_column > span > div {
+        background-color: transparent !important; }
+        #no-stick .fix-column > .tbody > .holidays_column > span > div:hover {
+          background-color: transparent !important; }
+      #no-stick .fix-column > .tbody > .holidays_column:hover {
+        background-color: rgba(142, 214, 250, 0.15) !important; }
     #no-stick .rest-columns > .tbody > .trow {
       background-color: #fff !important; }
       #no-stick .rest-columns > .tbody > .trow > span {
@@ -237,6 +247,14 @@
           height: 20px;
           padding-right: 6px;
           line-height: 20px; }
+    #no-stick .rest-columns > .tbody > .holidays_column {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
+      #no-stick .rest-columns > .tbody > .holidays_column > span > div {
+        background-color: transparent !important; }
+        #no-stick .rest-columns > .tbody > .holidays_column > span > div:hover {
+          background-color: transparent !important; }
+      #no-stick .rest-columns > .tbody > .holidays_column:hover {
+        background-color: rgba(142, 214, 250, 0.15) !important; }
     #no-stick .average_column, #no-stick .average_month {
       background-color: inherit !important; }
       #no-stick .average_column span, #no-stick .average_month span {
