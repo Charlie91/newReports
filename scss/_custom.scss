@@ -113,7 +113,7 @@ body{
     }
   }
   .sidebar-header + .sidebar-nav {
-    height: calc(100vh - #{$sidebar-header-height}) !important;
+    height: calc(100vh - #{$sidebar-header-height} - 90px) !important;
   }
 }
 
