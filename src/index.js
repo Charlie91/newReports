@@ -26,6 +26,7 @@ if (!window.Promise) {  //полифилл для промисов
     window.Promise = Promise;
 }
 
+
 ReactDOM.render((
     <HashRouter history={history}>
         <Switch>
