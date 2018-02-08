@@ -51,8 +51,8 @@
 
 .floor_btn-wrp .btn.active {
   border-radius: 4px;
-  background-color: #886ce6;
-  color: #fff; }
+  background-color: #886ce6 !important;
+  color: #fff !important; }
   .floor_btn-wrp .btn.active:focus {
     box-shadow: none; }
 
@@ -579,7 +579,18 @@
     .object_cont .totalSum .data {
       margin-top: 15px; }
     .object_cont .floor_btn-wrp {
-      margin-top: 15px; }
+      margin-top: 15px;
+      white-space: nowrap;
+      overflow: scroll; }
+      .object_cont .floor_btn-wrp .btn {
+        background-color: #f6f7f7;
+        border: solid 1px #f6f7f7;
+        color: #886ce6;
+        border-radius: 4px;
+        margin: 0px 15px;
+        padding: 10px; }
+        .object_cont .floor_btn-wrp .btn:first-of-type {
+          margin-left: 0; }
     .object_cont .divider {
       margin-right: -1.5rem;
       margin-left: -1.5rem;

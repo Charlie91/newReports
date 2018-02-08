@@ -484,4 +484,12 @@ main.main{
   }
 }
 
+@media screen and (max-width:320px){
+  .dashboard {
+    strong.h4.indicator {
+      font-size: 12px;
+    }
+  }
+}
+
 

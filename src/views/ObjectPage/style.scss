@@ -70,8 +70,8 @@ $crdbody-padding : 1.3rem;
   }
   .btn.active{
     border-radius: 4px;
-    background-color: #886ce6;
-    color:#fff;
+    background-color: #886ce6!important;
+    color:#fff!important;
     &:focus{
       box-shadow:none;
     }
@@ -665,7 +665,6 @@ padding-bottom: 30px;
 }
 
 @media screen and (max-width:767px){
-
   ::-webkit-scrollbar {
     width: 0px;
     height: 0px;
@@ -835,7 +834,20 @@ padding-bottom: 30px;
       }
     }
     .floor_btn-wrp{
-      margin-top:15px
+      margin-top:15px;
+      white-space: nowrap;
+      overflow: scroll;
+      .btn{
+        background-color: #f6f7f7;
+        border: solid 1px #f6f7f7;
+        color: #886ce6;
+        border-radius: 4px;
+        margin: 0px 15px;
+        padding: 10px;
+        &:first-of-type{
+          margin-left:0;
+        }
+      }
     }
     .divider{
       margin-right: -1.5rem;
@@ -935,6 +947,4 @@ padding-bottom: 30px;
       }
     }
   }
-
-
 }

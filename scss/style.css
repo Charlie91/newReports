@@ -14145,6 +14145,10 @@ main.main {
   .app-body__reduce-margin {
     margin-top: 55px; } }
 
+@media screen and (max-width: 320px) {
+  .dashboard strong.h4.indicator {
+    font-size: 12px; } }
+
 #chartjs-tooltip, #chartjs-tooltip2 {
   width: initial;
   height: initial; }
