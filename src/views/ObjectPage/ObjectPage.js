@@ -17,7 +17,6 @@ import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
         formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import parser from 'ua-parser-js';
-import punycode from 'punycode';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -630,31 +629,75 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        <Row>
-                            {(this.state.viewportWidth > 720) ?
-                                <DataChart
-                                    render={!(this.state.type === 'Выручка')}
-                                    data={this.state.chart}
-                                    startDate={this.state.startDate}
-                                    endDate={this.state.endDate}
-                                    currency={this.state.currency}
-                                    timeSegment={this.state.timeSegment}
-                                    emptyData={this.state.emptyData}
-                                />
+                        {
+                            (parser().os.name !== 'Android') ?
+                                <Row>
+                                    {(this.state.viewportWidth > 720) ?
+                                        <DataChart
+                                            render={!(this.state.type === 'Выручка')}
+                                            data={this.state.chart}
+                                            startDate={this.state.startDate}
+                                            endDate={this.state.endDate}
+                                            currency={this.state.currency}
+                                            timeSegment={this.state.timeSegment}
+                                            emptyData={this.state.emptyData}
+                                        />
+                                        :
+                                        <DataChartSmall
+                                            render={!(this.state.type === 'Выручка')}
+                                            data={this.state.chart}
+                                            startDate={this.state.startDate}
+                                            endDate={this.state.endDate}
+                                            currency={this.state.currency}
+                                            timeSegment={this.state.timeSegment}
+                                            emptyData={this.state.emptyData}
+                                        />
+                                    }
+                                    {this.renderSegmentationButtons()}
+                                </Row>
                                 :
-                                <DataChartSmall
-                                    render={!(this.state.type === 'Выручка')}
-                                    data={this.state.chart}
-                                    startDate={this.state.startDate}
-                                    endDate={this.state.endDate}
-                                    currency={this.state.currency}
-                                    timeSegment={this.state.timeSegment}
-                                    emptyData={this.state.emptyData}
-                                />
-                            }
-                            {this.renderSegmentationButtons()}
-                        </Row>
+                                <div>
+                                    {(this.state.viewportWidth > 720) ?
+                                        <div>
+                                            <Row>
+                                                <DataChart
+                                                    render={!(this.state.type === 'Выручка')}
+                                                    data={this.state.chart}
+                                                    startDate={this.state.startDate}
+                                                    endDate={this.state.endDate}
+                                                    currency={this.state.currency}
+                                                    timeSegment={this.state.timeSegment}
+                                                    emptyData={this.state.emptyData}
+                                                />
+                                            </Row>
+                                            <Row>
+                                                {this.renderSegmentationButtons()}
+                                            </Row>
+                                        </div>
+
+                                        :
+                                        <div>
+                                            <Row>
+                                                {this.renderSegmentationButtons()}
+                                            </Row>
+                                            <Row>
+                                                <DataChartSmall
+                                                    render={!(this.state.type === 'Выручка')}
+                                                    data={this.state.chart}
+                                                    startDate={this.state.startDate}
+                                                    endDate={this.state.endDate}
+                                                    currency={this.state.currency}
+                                                    timeSegment={this.state.timeSegment}
+                                                    emptyData={this.state.emptyData}
+                                                />
+                                            </Row>
+                                        </div>
+                                    }
+                                </div>
+                        }
                     </CardBody>
+                    {console.log(parser())}
+
                 </Card>
             </div>
         )
