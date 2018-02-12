@@ -34,7 +34,6 @@ class Conception extends Component {
 
         object.currentMonth = days.reduce((sum, current) => sum + current.v, 0);
 
-
         object.currentYear = months.reduce((sum, current) => {
             if(current.y !== 2018)return sum + 0;
             else return sum + current.v

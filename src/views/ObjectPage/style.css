@@ -38,7 +38,7 @@
   background-color: #f6aa25; }
 
 .revenue .floor_btn-wrp .btn.active {
-  background-color: #f6aa25; }
+  background-color: #f6aa25 !important; }
 
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }

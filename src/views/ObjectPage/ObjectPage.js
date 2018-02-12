@@ -26,13 +26,30 @@ export default class ObjectPage extends Component {
     constructor(props) {
         super(props);
 
-        moment.locale('ru'); // локализуем библиотеку
         moment.updateLocale('ru', {
             monthsShort : [
                 "янв", "фев", "мар", "апр", "май", "июн", "июл",
                 "авг", "сен", "окт", "ноя", "дек"
             ]
         });
+        moment.defineLocale('ru-new', { //фикс бага с невосприятием дейтпикером ручного ввода
+            parentLocale: 'en',
+            monthsShort : [
+                "янв", "фев", "мар", "апр", "май", "июн", "июл",
+                "авг", "сен", "окт", "ноя", "дек"
+            ],
+            months : [
+                "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
+                "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+            ],
+            weekdaysMin : [
+                "вс", "пн", "вт", "ср", "чт", "пт", "сб"
+            ],
+            week : {
+                dow : 1, // Начало недели - с понедельника
+            }
+        });
+
 
         this.state = {
             viewportWidth:window.innerWidth,
@@ -346,6 +363,7 @@ export default class ObjectPage extends Component {
     }
 
     handleChangeEnd(date) {
+        console.log('change');
         if(date - this.state.startDate < 0)return false;
         if(date > moment())return false;
         this.requestIsStarted();
@@ -629,7 +647,6 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        {console.log(parser())}
                         <Row>
                             {(this.state.viewportWidth > 720) ?
                                 <DataChart

@@ -14112,6 +14112,9 @@ main.main {
   padding: 17px 0 !important;
   padding-right: 250px !important; }
 
+.navbar-toggler:focus {
+  outline: none; }
+
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }

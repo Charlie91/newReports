@@ -431,6 +431,12 @@ main.main{
   padding-right:250px!important;
 }
 
+.navbar-toggler{
+  &:focus{
+    outline: none;
+  }
+}
+
 
 
 

@@ -69,31 +69,67 @@ class Full extends Component {
             .catch(error => console.log(error));
     }
 
+    // receiveConceptionLists(){   //получаем список концепций для заполнения меню
+    //     let options = {
+    //         method:'GET',
+    //         credentials:'include',
+    //         mode: 'cors'
+    //     };
+    //     ajaxRequest(API.nav,options)
+    //         .then( data => {
+    //             let arr = this.state.conceptions;
+    //             if(Array.isArray(data)){
+    //                 data.forEach( item => {
+    //                     item.url = '/conceptions/' + item.id;
+    //                     item.icon = 'icon-chart';
+    //                     if(item.children){
+    //                         item.children.forEach( child => {
+    //                             child.url = item.url + '/' + child.id;
+    //                         })
+    //                     }
+    //                     arr.push(item)
+    //                 });
+    //                 this.setState({conceptions:arr},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
+    //                                                                                                 // находимся ли мы на одной из его ссылок и устанавливаем заголовок
+    //             }
+    //         })
+    //         .catch( error => console.log(error))
+    // }
+
     receiveConceptionLists(){   //получаем список концепций для заполнения меню
         let options = {
             method:'GET',
             credentials:'include',
             mode: 'cors'
         };
+
+        function editConceptionObject(item, parent){
+            if(!parent){
+                item.url = '/conceptions/' + item.id;
+                item.icon = 'icon-chart';
+            }
+            else{
+                item.url = parent.url + '/' + item.id;
+            }
+
+            if(item.children)
+                item.children.forEach( child => {
+                    editConceptionObject(child,item)
+                })
+        }
+
         ajaxRequest(API.nav,options)
-            .then( data => {
+            .then(data => {
                 let arr = this.state.conceptions;
-                if(Array.isArray(data)){
-                    data.forEach( item => {
-                        item.url = '/conceptions/' + item.id;
-                        item.icon = 'icon-chart';
-                        if(item.children){
-                            item.children.forEach( child => {
-                                child.url = item.url + '/' + child.id;
-                            })
-                        }
-                        arr.push(item)
-                    });
-                    this.setState({conceptions:arr},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
-                                                                                                    // находимся ли мы на одной из его ссылок и устанавливаем заголовок
-                }
+                if(!Array.isArray(data))return;
+                data.forEach( item => {
+                    editConceptionObject(item)
+                });
+                console.log(arr.concat(data));
+                this.setState({conceptions:arr.concat(data)},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
+                                                                                                            // находимся ли мы на одной из его ссылок и устанавливаем заголовок
             })
-            .catch( error => console.log(error))
+            .catch(err => console.log(err))
     }
 
 

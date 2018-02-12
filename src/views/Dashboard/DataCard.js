@@ -18,7 +18,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
          months = obj.data.month;
      let currentMonth = days.reduce((sum, current) => sum + current.v, 0);
      let currentYear = months.reduce((sum, current) => {
-         if(current.y !== 2017)return sum + 0;
+         if(current.y !== new Date().getFullYear())return sum + 0;
          else return sum + current.v
      }, currentMonth);
    return formatNumericValue(currentYear,'чел.')
@@ -69,7 +69,7 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                      </Col>
                      <Col xs="4" sm="4" md="4" lg="4" xl="4">
                          <div className="block_title">
-                             <small className="text-muted">2017</small>
+                             <small className="text-muted">{new Date().getFullYear()}</small>
                          </div>
                          <div>
                             <strong className="h4 indicator">{(props.obj.data) ? toCountLastYear(props.obj) : '' }</strong>

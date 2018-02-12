@@ -3,7 +3,6 @@ import moment from "moment/moment";
 
 export const customLabelDataChartSmall = function(tooltipModel) {
 
-
     // Tooltip Element
     var tip = document.getElementById('chartjs-tooltip_small');
     if(tip) tip.remove();
@@ -75,4 +74,5 @@ export const customLabelDataChartSmall = function(tooltipModel) {
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 8 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
+    tooltipEl.querySelector('div').style.border = '1px solid' +  tooltipModel.labelColors[0].borderColor;
 };
