@@ -25,7 +25,7 @@ function addAdditionalStylesToChart(chart) {
 const DataChartSmall = (props) => {
     let newChart = addAdditionalStylesToChart(props.data);
     return (
-        <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
+        <Col  md='12' style={{padding:'0px',minWidth:'100%'}} className="order-12 order-md-1">
             {props.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
             <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper line-chart-wrapper_small">
                 {(!newChart.datasets[0].data.length) ?

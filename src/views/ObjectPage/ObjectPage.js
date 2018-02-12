@@ -15,7 +15,7 @@ import DataChartSmall from './DataChartSmall';
 import Loading from './../Loading/Small';
 import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
-        formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
+    formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import parser from 'ua-parser-js';
 
 function formatMonths(index){
@@ -301,7 +301,7 @@ export default class ObjectPage extends Component {
             {val:'H',text:'По часам',render:( moment(this.state.startDate).diff(moment(this.state.endDate), 'days') > -14 )},
         ];
         return (
-            <Col md='12' className='segmentation_btn-wrp order-1 order-md-12'>
+            <Col md='12' style={{minWidth:'100%'}} className='segmentation_btn-wrp order-1 order-md-12'>
                 <div className="btn-group" role="group">
                     {arr.map( (item,i) =>
                         (item.render) ?
@@ -373,16 +373,16 @@ export default class ObjectPage extends Component {
     }
 
     /*handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
-        let chart = document.querySelector('.line-chart-wrapper'),
-            Yaxis = document.getElementById('scrollYAxis');
-        chart.onscroll = () => {
-            if(chart.scrollLeft)
-                Yaxis.style.cssText = 'border-right-color:rgba(208, 208, 208, 0.5);';
-            else
-                Yaxis.style.cssText = '';
-        }
-    }
-    */
+     let chart = document.querySelector('.line-chart-wrapper'),
+     Yaxis = document.getElementById('scrollYAxis');
+     chart.onscroll = () => {
+     if(chart.scrollLeft)
+     Yaxis.style.cssText = 'border-right-color:rgba(208, 208, 208, 0.5);';
+     else
+     Yaxis.style.cssText = '';
+     }
+     }
+     */
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
         document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
@@ -614,90 +614,47 @@ export default class ObjectPage extends Component {
                                               __html:
                                                   (this.state.totalSum !== undefined) ?
                                                       (formatNumberBySpaces(this.state.totalSum) +
-                                                      ' ' +
+                                                          ' ' +
                                                           (( (digitCount(this.state.totalSum) > 6) || ( this.state.viewportWidth > 768 && this.state.viewportWidth < 1525)) ?
-                                                          this.state.currency.substring(0,3) + '.'
-                                                          :
-                                                          this.state.currency
+                                                                  this.state.currency.substring(0,3) + '.'
+                                                                  :
+                                                                  this.state.currency
                                                           )
                                                       )
-                                              :
-                                              ''
+                                                      :
+                                                      ''
                                           }}
                                 >
                                 </span>
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
-                        {
-                            (parser().os.name !== 'Android') ?
-                                <Row>
-                                    {(this.state.viewportWidth > 720) ?
-                                        <DataChart
-                                            render={!(this.state.type === 'Выручка')}
-                                            data={this.state.chart}
-                                            startDate={this.state.startDate}
-                                            endDate={this.state.endDate}
-                                            currency={this.state.currency}
-                                            timeSegment={this.state.timeSegment}
-                                            emptyData={this.state.emptyData}
-                                        />
-                                        :
-                                        <DataChartSmall
-                                            render={!(this.state.type === 'Выручка')}
-                                            data={this.state.chart}
-                                            startDate={this.state.startDate}
-                                            endDate={this.state.endDate}
-                                            currency={this.state.currency}
-                                            timeSegment={this.state.timeSegment}
-                                            emptyData={this.state.emptyData}
-                                        />
-                                    }
-                                    {this.renderSegmentationButtons()}
-                                </Row>
+                        {console.log(parser())}
+                        <Row>
+                            {(this.state.viewportWidth > 720) ?
+                                <DataChart
+                                    render={!(this.state.type === 'Выручка')}
+                                    data={this.state.chart}
+                                    startDate={this.state.startDate}
+                                    endDate={this.state.endDate}
+                                    currency={this.state.currency}
+                                    timeSegment={this.state.timeSegment}
+                                    emptyData={this.state.emptyData}
+                                />
                                 :
-                                <div>
-                                    {(this.state.viewportWidth > 720) ?
-                                        <div>
-                                            <Row>
-                                                <DataChart
-                                                    render={!(this.state.type === 'Выручка')}
-                                                    data={this.state.chart}
-                                                    startDate={this.state.startDate}
-                                                    endDate={this.state.endDate}
-                                                    currency={this.state.currency}
-                                                    timeSegment={this.state.timeSegment}
-                                                    emptyData={this.state.emptyData}
-                                                />
-                                            </Row>
-                                            <Row>
-                                                {this.renderSegmentationButtons()}
-                                            </Row>
-                                        </div>
-
-                                        :
-                                        <div>
-                                            <Row>
-                                                {this.renderSegmentationButtons()}
-                                            </Row>
-                                            <Row>
-                                                <DataChartSmall
-                                                    render={!(this.state.type === 'Выручка')}
-                                                    data={this.state.chart}
-                                                    startDate={this.state.startDate}
-                                                    endDate={this.state.endDate}
-                                                    currency={this.state.currency}
-                                                    timeSegment={this.state.timeSegment}
-                                                    emptyData={this.state.emptyData}
-                                                />
-                                            </Row>
-                                        </div>
-                                    }
-                                </div>
-                        }
+                                <DataChartSmall
+                                    render={!(this.state.type === 'Выручка')}
+                                    data={this.state.chart}
+                                    startDate={this.state.startDate}
+                                    endDate={this.state.endDate}
+                                    currency={this.state.currency}
+                                    timeSegment={this.state.timeSegment}
+                                    emptyData={this.state.emptyData}
+                                />
+                            }
+                            {this.renderSegmentationButtons()}
+                        </Row>
                     </CardBody>
-                    {console.log(parser())}
-
                 </Card>
             </div>
         )
