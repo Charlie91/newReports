@@ -124,7 +124,10 @@ export default class Authorization extends Component {
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута
-        ajaxRequest(API.auth,options)
+        fetch(API.auth,options)
+            .then(function (response) {
+                return response.json();
+            })
             .then(data => {
                 if(data.error) {
                     if (data.error.message === 'Неверный логин или пароль') {

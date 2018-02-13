@@ -47,7 +47,11 @@ const DataChart = (props) => (
                                           return title;
                                       },
                                       label: (tooltipItem, data ) => {
-                                          return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
+                                          return `
+                                              ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
+                                              ${(props.currency.length > 4) ?
+                                              (props.currency.substring(0,3) + '.') : props.currency}
+                                          `
                                       }
                                   }
                               },

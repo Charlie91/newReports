@@ -14112,6 +14112,9 @@ main.main {
   padding: 17px 0 !important;
   padding-right: 250px !important; }
 
+.navbar-toggler:focus {
+  outline: none; }
+
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }
@@ -15164,7 +15167,7 @@ button.btn.back-btn {
   background-color: #f6aa25; }
 
 .revenue .floor_btn-wrp .btn.active {
-  background-color: #f6aa25; }
+  background-color: #f6aa25 !important; }
 
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
@@ -15687,6 +15690,9 @@ button.btn.back-btn {
           font-weight: 400;
           line-height: 22px;
           margin-bottom: 0; }
+        .object_cont .all_data .card-body .datepicker_wrp:last-of-type:before {
+          font-size: 12px;
+          top: 2px; }
         .object_cont .all_data .card-body .line-chart-wrapper {
           padding: 10px 0px; }
           .object_cont .all_data .card-body .line-chart-wrapper #scrollYAxis {

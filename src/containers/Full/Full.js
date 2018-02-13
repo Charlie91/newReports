@@ -104,7 +104,7 @@ class Full extends Component {
         };
 
         function editConceptionObject(item, parent){
-            if(!parent){
+            if(!parent){    //если нет родителя - даем иконку и базу для урла
                 item.url = '/conceptions/' + item.id;
                 item.icon = 'icon-chart';
             }
@@ -201,6 +201,11 @@ class Full extends Component {
                             <Switch>
                                 <Route path="/dashboard" name="Dashboard" render={(props) =>
                                     <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>}
+                                />
+                                <Route exact path="/conceptions/:id"  name="Conception"
+                                       render={(props) =>
+                                           <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
+                                       }
                                 />
                                 <Route exact path="/conceptions/(.*)/:id"  name="Conception"
                                        render={(props) =>
