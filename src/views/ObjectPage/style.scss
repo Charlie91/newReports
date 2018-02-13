@@ -804,6 +804,12 @@ padding-bottom: 30px;
           line-height:22px;
           margin-bottom: 0;
         }
+        .datepicker_wrp{
+          &:last-of-type:before{
+            font-size: 12px;
+            top: 2px;
+          }
+        }
         .line-chart-wrapper {
           padding: 10px 0px;
           #scrollYAxis{

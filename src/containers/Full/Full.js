@@ -202,12 +202,12 @@ class Full extends Component {
                                 <Route path="/dashboard" name="Dashboard" render={(props) =>
                                     <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>}
                                 />
-                                <Route exact path="/conceptions/:id"  name="Conception"
+                                <Route exact path="/conceptions/(.*)/:id"  name="Conception"
                                        render={(props) =>
                                            <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
                                        }
                                 />
-                                <Route exact path="/conceptions/:id/:child"  name="Conception"
+                                <Route exact path="/conceptions/(.*)/:id/:child"  name="Conception"
                                        render={(props) =>
                                            <Conception cities={this.state.availableCities}  upState={this.upState.bind(this)} {...props} />
                                        }
@@ -215,7 +215,8 @@ class Full extends Component {
                                 <Route path="/concept:concept/city:city/object:id" name="object"
                                        render={(props) =>
                                            <ObjectPage upState={this.upState.bind(this)} {...props} />
-                                       }/>
+                                       }
+                                />
                                 <Redirect from="/" to="/dashboard"/>
                             </Switch>
                         </Container>

@@ -58,6 +58,7 @@ export default class ObjectPage extends Component {
             images:[],
             type:'',
             currency:'',
+            totalSum:0,
             startDate: moment().add(-7,'days'),
             endDate: moment(),
             timeSegment: 'D',
@@ -339,6 +340,18 @@ export default class ObjectPage extends Component {
                 </div>
             </Col>
         )
+    }
+
+    renderCurrency(){
+        let state = this.state;
+
+        if(state.currency.length <= 4)
+            return state.currency;
+        else if((digitCount(state.totalSum) > 6) || ( state.viewportWidth > 768 && state.viewportWidth < 1525))
+            return state.currency.substring(0,3) + '.';
+        else
+            return state.currency;
+
     }
 
     trackActualSegments(startDate, endDate){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
@@ -629,18 +642,7 @@ export default class ObjectPage extends Component {
                                 <span className="data"
                                       dangerouslySetInnerHTML=
                                           {{
-                                              __html:
-                                                  (this.state.totalSum !== undefined) ?
-                                                      (formatNumberBySpaces(this.state.totalSum) +
-                                                          ' ' +
-                                                          (( (digitCount(this.state.totalSum) > 6) || ( this.state.viewportWidth > 768 && this.state.viewportWidth < 1525)) ?
-                                                                  this.state.currency.substring(0,3) + '.'
-                                                                  :
-                                                                  this.state.currency
-                                                          )
-                                                      )
-                                                      :
-                                                      ''
+                                              __html:`${formatNumberBySpaces(state.totalSum)} ${this.renderCurrency()}`
                                           }}
                                 >
                                 </span>
