@@ -13852,7 +13852,9 @@ body {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 215px - 90px) !important; }
+  height: calc(100vh - 215px - 130px) !important; }
+  .sidebar .sidebar-header + .sidebar-nav > .nav {
+    padding-bottom: 50px; }
 
 .digit_space {
   display: inline;

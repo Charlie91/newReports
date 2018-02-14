@@ -85,6 +85,15 @@
   margin-bottom: 30px; }
   .data_per_month .header {
     padding: 25px 40px; }
+    .data_per_month .header .data {
+      color: #354052;
+      font-size: 2.3em;
+      display: block;
+      line-height: 37px;
+      margin-top: 2px;
+      margin-left: 30px; }
+    .data_per_month .header .data + .muted {
+      margin-left: 30px; }
     .data_per_month .header h4 {
       color: #354052;
       font-size: 30px;

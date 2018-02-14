@@ -551,10 +551,21 @@ export default class ObjectPage extends Component {
 
 
                 <Card className="data_per_month">
-                    <div className="header">
-                        <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
-                        <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
-                    </div>
+                    <Row className="header">
+                        <Col md="6">
+                            <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
+                            <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
+                        </Col>
+                        <Col className={(state.viewportWidth < 768) ? 'none' : 'none'} md={{size:3,offset:3}}>
+                               <span className="data"
+                                     dangerouslySetInnerHTML=
+                                         {{
+                                             __html:`${formatNumberBySpaces(formatNumericValue(state.totalSum))} ${this.renderCurrency()}`
+                                         }}
+                               ></span>
+                            <div className="muted">Средняя {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
+                        </Col>
+                    </Row>
                     <CardBody>
                         {
                             (this.state.monthlyData) ?

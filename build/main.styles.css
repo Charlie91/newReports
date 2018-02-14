@@ -13852,7 +13852,9 @@ body {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 215px - 90px) !important; }
+  height: calc(100vh - 215px - 130px) !important; }
+  .sidebar .sidebar-header + .sidebar-nav > .nav {
+    padding-bottom: 50px; }
 
 .digit_space {
   display: inline;
@@ -15214,6 +15216,15 @@ button.btn.back-btn {
   margin-bottom: 30px; }
   .data_per_month .header {
     padding: 25px 40px; }
+    .data_per_month .header .data {
+      color: #354052;
+      font-size: 2.3em;
+      display: block;
+      line-height: 37px;
+      margin-top: 2px;
+      margin-left: 30px; }
+    .data_per_month .header .data + .muted {
+      margin-left: 30px; }
     .data_per_month .header h4 {
       color: #354052;
       font-size: 30px;

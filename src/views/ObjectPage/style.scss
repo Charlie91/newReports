@@ -114,6 +114,17 @@ $crdbody-padding : 1.3rem;
   margin-bottom: 30px;
   .header{
     padding: 25px 40px;
+    .data{
+      color: #354052;
+      font-size: 2.3em;
+      display:block;
+      line-height: 37px;
+      margin-top: 2px;
+      margin-left:30px
+    }
+    .data + .muted{
+      margin-left:30px
+    }
     h4{
       color: #354052;
       font-size: 30px;

@@ -113,7 +113,10 @@ body{
     }
   }
   .sidebar-header + .sidebar-nav {
-    height: calc(100vh - #{$sidebar-header-height} - 90px) !important;
+    height: calc(100vh - #{$sidebar-header-height} - 130px) !important;
+    & > .nav{
+      padding-bottom: 50px;
+    }
   }
 }
 
