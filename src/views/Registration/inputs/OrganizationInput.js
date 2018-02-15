@@ -44,7 +44,7 @@ export default class OrganizationInput extends ParentInput { //Внимание!
             this.props.fieldIsValid('organization',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{1,250}$');
+        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.\\s]{1,250}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('organization',false);

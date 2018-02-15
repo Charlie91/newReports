@@ -120,10 +120,12 @@ $crdbody-padding : 1.3rem;
       display:block;
       line-height: 37px;
       margin-top: 2px;
-      margin-left:30px
+      margin-left:30px;
+      white-space: nowrap;
     }
     .data + .muted{
-      margin-left:30px
+      margin-left:30px;
+      white-space: nowrap;
     }
     h4{
       color: #354052;
@@ -131,6 +133,7 @@ $crdbody-padding : 1.3rem;
       line-height: 37px;
       padding-bottom: 0;
       margin-bottom: 2px;
+      white-space: nowrap;
     }
     .muted{
       font-size: 14px;
@@ -629,6 +632,11 @@ padding-bottom: 30px;
   .data_per_month{
     border: 0px;
     border-radius: 0px;
+    .header{
+      .data, .data + .muted{
+        margin-left:0
+      }
+    }
   }
 
   .all_data {
@@ -784,6 +792,13 @@ padding-bottom: 30px;
          ul{
            min-width:500px;
            li{
+             &.average{
+               width: 95px;
+               margin-right: 16px;
+               background-color: #f6f7f7;
+               border-radius: 4px;
+               padding: 0 8px;
+             }
              margin-right: 10%;
              div{
                strong{

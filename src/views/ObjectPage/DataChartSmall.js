@@ -10,20 +10,27 @@ import moment from "moment/moment";
 
 
 
-function addAdditionalStylesToChart(chart) {
+function addAdditionalStylesToChart(chart) {//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     if(chart.datasets.length > 1){
-        chart.datasets[1].pointBorderWidth = 2.3;
-        chart.datasets[1].pointHoverRadius = 3;
-        chart.datasets[1].pointRadius = 2;
-        chart.datasets[0].borderWidth = 2;
-        chart.datasets[1].borderWidth = 2;
+        if(chart.datasets[0].data.length > 200){
+            chart.datasets[1].pointBorderWidth = 1;
+            chart.datasets[1].pointHoverRadius = 3;
+            chart.datasets[1].pointRadius = 1;
+        }
+        else{
+            chart.datasets[1].pointBorderWidth = 2.3;
+            chart.datasets[1].pointHoverRadius = 3;
+            chart.datasets[1].pointRadius = 2;
+            chart.datasets[0].borderWidth = 2;
+            chart.datasets[1].borderWidth = 2;
+        }
     }
     return chart;
 }
 
 
 const DataChartSmall = (props) => {
-    let newChart = addAdditionalStylesToChart(props.data);
+    let newChart = addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
         <Col  md='12' style={{padding:'0px',minWidth:'100%'}} className="order-12 order-md-1">
             {props.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}

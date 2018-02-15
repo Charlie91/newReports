@@ -35,16 +35,13 @@ class PositionInput extends ParentInput { //Внимание! Наследует
         if(typeof e !== 'undefined' && e.relatedTarget){
             if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
         }
-        // if(e && e.relatedTarget){ //фикс бага
-        //     if(e.relatedTarget.classList.contains("clear-field"))return; //если фокус ушел на кнопку очистки поля - не валидировать
-        // }
         let value = this.state.value;//e.target.value;
         this.hideHint(); //прячем окно с подсказкой
         if(value === ''){
             this.props.fieldIsValid('position',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.]{3,20}$');
+        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.\\s]{3,40}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('position',false);
@@ -58,6 +55,7 @@ class PositionInput extends ParentInput { //Внимание! Наследует
     render() {
         return (
             <div className="form-group">
+
                 <label>
                     {animateDynamicLabel(this.state.value, 'Должность')}
                     <input onFocus={this.setHint.bind(this)}

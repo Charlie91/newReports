@@ -354,6 +354,18 @@ export default class ObjectPage extends Component {
 
     }
 
+    countAverageOfMoths(){
+        let arr = this.state.monthlyData;
+        if(!arr)return 0;
+
+        let sum = arr.reduce((sum, current, index) => {
+            if(!index)return 0; //текущий месяц не участвует в расчете средних значений
+            return sum + current.value
+        },0);
+
+        return Math.round(sum/11);
+    }
+
     trackActualSegments(startDate, endDate){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
         let value = this.state.timeSegment;    //  начальное значение
         if(startDate.format('YYYY') === endDate.format('YYYY'))
@@ -552,15 +564,21 @@ export default class ObjectPage extends Component {
 
                 <Card className="data_per_month">
                     <Row className="header">
-                        <Col md="6">
+                        <Col md='6' xl="6" lg="7">
                             <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
                             <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                         </Col>
-                        <Col className={(state.viewportWidth < 768) ? 'none' : 'none'} md={{size:3,offset:3}}>
+
+                        <Col className={(state.viewportWidth < 768) ? 'none' : ''}
+                             lg={{size:5,offset:0}}
+                             xl={{size:3,offset:3}}
+                             md={{size:3,offset:3}}
+                        >
+
                                <span className="data"
                                      dangerouslySetInnerHTML=
                                          {{
-                                             __html:`${formatNumberBySpaces(formatNumericValue(state.totalSum))} ${this.renderCurrency()}`
+                                             __html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${this.renderCurrency()}`
                                          }}
                                ></span>
                             <div className="muted">Средняя {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
@@ -570,20 +588,33 @@ export default class ObjectPage extends Component {
                         {
                             (this.state.monthlyData) ?
                                 <ul>
-                                    { this.state.monthlyData.map( (item,i) => {
-                                        return(
-                                            <li key={i}>
-                                                <div>
-                                                    <strong>{formatNumericValue(item.value) +
-                                                    ((this.state.type === 'Выручка') ? '' : 'чел.') }
-                                                    </strong>
-                                                </div>
-                                                <div className="muted">
-                                                    {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
-                                                </div>
-                                            </li>
-                                        )
-                                    })
+                                    <li className={(state.viewportWidth > 768) ? 'none average' : 'average'}>
+                                        <div>
+                                            <strong
+                                                dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                            >
+                                            </strong>
+                                        </div>
+                                        <div className="muted">
+                                            средняя в мес.
+                                        </div>
+                                    </li>
+                                    {
+                                        this.state.monthlyData.map( (item,i) => {
+                                            return(
+                                                <li key={i}>
+                                                    <div>
+                                                        <strong
+                                                            dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(item.value))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                                        >
+                                                        </strong>
+                                                    </div>
+                                                    <div className="muted">
+                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
+                                                    </div>
+                                                </li>
+                                            )
+                                        })
                                     }
                                 </ul>
                                 :
