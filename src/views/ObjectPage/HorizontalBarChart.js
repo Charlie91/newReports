@@ -222,8 +222,8 @@ export default class HorizontalBarChart extends Component {
             return (
                 <Card className="average_hours horizontal-bars">
                     <div className="header">
-                        <h4>Средняя посещаемость по дням недели</h4>
-                        <p className="muted">Указано кол-во человек проходящее с 0 до 24 часов</p>
+                        <h4>Средняя посещаемость по часам</h4>
+                        <p className="muted">Указано кол-во человек проходящее с 9 до 24 часов</p>
                     </div>
                     <CardBody>
                         <Loading/>
@@ -234,8 +234,8 @@ export default class HorizontalBarChart extends Component {
         else return (
             <Card className="average_hours horizontal-bars">
                 <div className="header">
-                    <h4>Средняя посещаемость по дням недели</h4>
-                    <p className="muted">Указано кол-во человек проходящее с 0 до 24 часов</p>
+                    <h4>Средняя посещаемость по часам</h4>
+                    <p className="muted">Указано кол-во человек проходящее с 9 до 24 часов</p>
                 </div>
                 <CardBody>
                     <ul className="ranges">

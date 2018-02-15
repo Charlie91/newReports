@@ -529,9 +529,9 @@ export default class ObjectPage extends Component {
                                             <span className="muted">  12 января 2008 г.</span>
                                         </div>
 
-                                        <div className="floor_plans">
+                                        {/*<div className="floor_plans">
                                             <strong>Поэтажные планы</strong>
-                                        </div>
+                                        </div>*/}
 
                                     </Col>
                                     <Col md="5" className="geolocation">
@@ -625,10 +625,10 @@ export default class ObjectPage extends Component {
 
                 <Card className="all_data">
                     <CardBody className="card-body">
-                        <h5 className="measure">{this.state.type}</h5>
+                        <h5 className="measure">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за период</h5>
                         <Row>
                             <Col className="datepickers" xs="12" md="5" lg="5" xl="4">
-                                <span className="muted">{(this.state.type === 'Выручка') ? 'Кол-во выручки' : 'Кол-во людей'} с </span>
+                                <span className="muted">Период с </span>
                                 <div className="datepicker_wrp">
                                     {
                                         (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
