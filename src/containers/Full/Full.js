@@ -24,7 +24,7 @@ class Full extends Component {
                     name: 'Главная',
                     full_name:'ТРЦ Трафик',
                     url: '/dashboard',
-                    icon: 'icon-home',
+                    icon: 'custom-icon-home',
                     badge: {
                         variant: 'info'
                     }
@@ -69,33 +69,6 @@ class Full extends Component {
             .catch(error => console.log(error));
     }
 
-    // receiveConceptionLists(){   //получаем список концепций для заполнения меню
-    //     let options = {
-    //         method:'GET',
-    //         credentials:'include',
-    //         mode: 'cors'
-    //     };
-    //     ajaxRequest(API.nav,options)
-    //         .then( data => {
-    //             let arr = this.state.conceptions;
-    //             if(Array.isArray(data)){
-    //                 data.forEach( item => {
-    //                     item.url = '/conceptions/' + item.id;
-    //                     item.icon = 'icon-chart';
-    //                     if(item.children){
-    //                         item.children.forEach( child => {
-    //                             child.url = item.url + '/' + child.id;
-    //                         })
-    //                     }
-    //                     arr.push(item)
-    //                 });
-    //                 this.setState({conceptions:arr},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
-    //                                                                                                 // находимся ли мы на одной из его ссылок и устанавливаем заголовок
-    //             }
-    //         })
-    //         .catch( error => console.log(error))
-    // }
-
     receiveConceptionLists(){   //получаем список концепций для заполнения меню
         let options = {
             method:'GET',
@@ -103,10 +76,16 @@ class Full extends Component {
             mode: 'cors'
         };
 
+        function addIcon(item){
+            if(item.id === 1)item.icon = 'custom-icon-traffic';
+            if(item.id === 20000002)item.icon = 'custom-icon-internal_revenue';
+            if(item.id === 20000001)item.icon = 'custom-icon-external_revenue';
+        }
+
         function editConceptionObject(item, parent){
+            addIcon(item);//добавление иконки
             if(!parent){    //если нет родителя - даем иконку и базу для урла
                 item.url = '/conceptions/' + item.id;
-                item.icon = 'icon-chart';
             }
             else{
                 item.url = parent.url + '/' + item.id;
@@ -120,6 +99,7 @@ class Full extends Component {
 
         ajaxRequest(API.nav,options)
             .then(data => {
+                console.log(data);
                 let arr = this.state.conceptions;
                 if(!Array.isArray(data))return;
                 data.forEach( item => {

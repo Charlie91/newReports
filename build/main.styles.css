@@ -15222,15 +15222,18 @@ button.btn.back-btn {
       display: block;
       line-height: 37px;
       margin-top: 2px;
-      margin-left: 30px; }
+      margin-left: 30px;
+      white-space: nowrap; }
     .data_per_month .header .data + .muted {
-      margin-left: 30px; }
+      margin-left: 30px;
+      white-space: nowrap; }
     .data_per_month .header h4 {
       color: #354052;
       font-size: 30px;
       line-height: 37px;
       padding-bottom: 0;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      white-space: nowrap; }
     .data_per_month .header .muted {
       font-size: 14px;
       line-height: 17px; }
@@ -15576,6 +15579,8 @@ button.btn.back-btn {
   .data_per_month {
     border: 0px;
     border-radius: 0px; }
+    .data_per_month .header .data, .data_per_month .header .data + .muted {
+      margin-left: 0; }
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
   .all_data .datepicker_wrp input.datepicker {
@@ -15683,6 +15688,12 @@ button.btn.back-btn {
           min-width: 500px; }
           .object_cont .data_per_month > div.card-body ul li {
             margin-right: 10%; }
+            .object_cont .data_per_month > div.card-body ul li.average {
+              width: 95px;
+              margin-right: 16px;
+              background-color: #f6f7f7;
+              border-radius: 4px;
+              padding: 0 8px; }
             .object_cont .data_per_month > div.card-body ul li div strong {
               font-size: 12px; }
             .object_cont .data_per_month > div.card-body ul li .muted {

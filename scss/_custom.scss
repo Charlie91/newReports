@@ -231,7 +231,17 @@ body{
 }
 
 .nav-link{
-  background:#1f2127!important
+  background:#1f2127!important;
+  font-size: 14px;
+  i{
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 22px !important;
+    top: 7px;
+  }
 }
 .nav-dropdown-items .nav-link{
   background:#141519!important
@@ -439,6 +449,23 @@ main.main{
     outline: none;
   }
 }
+
+.custom-icon-home{
+  background:url('../img/icons/home.png');
+}
+
+.custom-icon-traffic{
+  background:url('../img/icons/trafik.png');
+}
+
+.custom-icon-internal_revenue{
+  background:url('../img/icons/vir_vnutr.png');
+}
+
+.custom-icon-external_revenue{
+  background:url('../img/icons/vir_vneshn.png');
+}
+
 
 
 
