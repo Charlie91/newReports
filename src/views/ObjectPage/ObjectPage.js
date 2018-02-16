@@ -157,6 +157,7 @@ export default class ObjectPage extends Component {
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         ajaxRequest(url,options)
             .then(data => {
+                console.log(data);
                 let chartObj = this.state.chart;
                 let [values,dates] = [ [], [] ] ;
                 data.floorData.forEach(item => {

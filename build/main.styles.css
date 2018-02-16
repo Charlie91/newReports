@@ -15579,9 +15579,6 @@ button.btn.back-btn {
     height: auto; }
   .card {
     border: 1px solid #dfe2e5; }
-    .card .card-body {
-      padding: 1.5rem;
-      padding-bottom: 38px; }
   .object_cont {
     margin-right: auto;
     margin-left: auto; }

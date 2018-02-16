@@ -157,7 +157,7 @@ class TableVerticalNoStick extends Component {
         if(stick.offsetWidth > 767)
             sum+=7;
         if(stick.offsetWidth > sum)
-            wrapper.style.width = (sum) + 'px';
+            wrapper.style.width = (sum + 5 ) + 'px';
         else
             wrapper.style.width = 'auto';
     }
@@ -183,7 +183,13 @@ class TableVerticalNoStick extends Component {
         else
             column.style.height = '';
     }
-
+// <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
+// {this.props.data.map((item,i) =>
+//     <span key={i} className={'empty_col'}></span>
+// )}
+// <span className={'empty_row_col_last'} style={{backgroundColor: '#eff3f6'}} ></span>
+// </div>
+//
 
     render() {
         return (
@@ -326,13 +332,6 @@ class TableVerticalNoStick extends Component {
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
-
-                            <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
-                                {this.props.data.map((item,i) =>
-                                    <span key={i} className={'empty_col'}></span>
-                                )}
-                                <span className={'empty_row_col_last'} style={{backgroundColor: '#eff3f6'}} ></span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -343,3 +342,4 @@ class TableVerticalNoStick extends Component {
 }
 
 export default TableVerticalNoStick;
+
