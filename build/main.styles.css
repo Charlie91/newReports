@@ -13936,7 +13936,18 @@ body {
   height: auto !important; }
 
 .nav-link, .navbar .dropdown-toggle {
-  background: #1f2127 !important; }
+  background: #1f2127 !important;
+  font-size: 14px; }
+  .nav-link i, .navbar .dropdown-toggle i {
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 22px !important;
+    top: 7px; }
+  .nav-link.nav-dropdown-toggle::before, .navbar .nav-dropdown-toggle.dropdown-toggle::before {
+    top: 1.65rem !important; }
 
 .nav-dropdown-items .nav-link, .nav-dropdown-items .navbar .dropdown-toggle, .navbar .nav-dropdown-items .dropdown-toggle {
   background: #141519 !important; }
@@ -14116,6 +14127,18 @@ main.main {
 
 .navbar-toggler:focus {
   outline: none; }
+
+.custom-icon-home {
+  background: url(./img/home.d328eb5652d852b77c05ae5e1a2fc2a0.png); }
+
+.custom-icon-traffic {
+  background: url(./img/trafik.57ffeeb4cfaaae150d2e85ef8ec2e74a.png); }
+
+.custom-icon-internal_revenue {
+  background: url(./img/vir_vnutr.04d356a077cb581988e0bbf24b631b07.png); }
+
+.custom-icon-external_revenue {
+  background: url(./img/vir_vneshn.568c01ffcb595a82756970dfb5a66306.png); }
 
 @media screen and (max-width: 1486px) {
   .bigCities {
@@ -15238,7 +15261,7 @@ button.btn.back-btn {
       font-size: 14px;
       line-height: 17px; }
   .data_per_month > div.card-body {
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     padding-top: 8px;
     padding-left: 40px;

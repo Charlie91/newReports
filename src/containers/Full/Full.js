@@ -78,8 +78,8 @@ class Full extends Component {
 
         function addIcon(item){
             if(item.id === 1)item.icon = 'custom-icon-traffic';
-            if(item.id === 20000002)item.icon = 'custom-icon-internal_revenue';
-            if(item.id === 20000001)item.icon = 'custom-icon-external_revenue';
+            if(item.name === 'Выручка внутренняя')item.icon = 'custom-icon-internal_revenue';
+            if(item.name === 'Выручка внешняя')item.icon = 'custom-icon-external_revenue';
         }
 
         function editConceptionObject(item, parent){

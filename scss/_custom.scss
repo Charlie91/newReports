@@ -242,7 +242,13 @@ body{
     width: 22px !important;
     top: 7px;
   }
+  &.nav-dropdown-toggle{
+    &::before{
+      top:1.65rem!important
+    }
+  }
 }
+
 .nav-dropdown-items .nav-link{
   background:#141519!important
 }

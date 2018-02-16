@@ -15,7 +15,7 @@ export function ajaxRequest(url,options){   //функция-шаблон для
     return  fetch(url, options)
         .then(function (response) {
             if(response.status === 401 && (parser().browser.name !== 'IE'))
-                window.location = window.location.origin + '/#/authorization';//перезагружаем страницу и редиректим если незалогинен
+                window.location = window.location.origin + window.location.pathname + '#/authorization';//перезагружаем страницу и редиректим если незалогинен
             if (!response.ok) {
                 return Promise.reject(new Error(
                     'Response failed: ' + response.status + ' (' + response.statusText + ')'
