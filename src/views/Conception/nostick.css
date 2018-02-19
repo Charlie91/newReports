@@ -183,7 +183,6 @@
       height: calc(100vh - 190px) !important;
       height: -moz-calc(100vh - 190px) !important;
       height: -webkit-calc(100vh - 190px) !important; } }
-
 @media screen and (max-width: 767px) {
   #no-stick {
     font-size: 0.688em;
@@ -272,7 +271,6 @@
       background-color: #eff3f6 !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
-
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px; }
@@ -285,7 +283,7 @@
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #e1e4e6; }
+  background: #7f8fa4; }
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #e1e4e6; }
