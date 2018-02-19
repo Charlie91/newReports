@@ -7639,7 +7639,7 @@ base-chart.chart {
       .sidebar .nav .nav-item.nav-dropdown.open {
         background: #141519; }
         .sidebar .nav .nav-item.nav-dropdown.open > ul, .sidebar .nav .nav-item.nav-dropdown.open > ol {
-          max-height: 1000px; }
+          max-height: none; }
         .sidebar .nav .nav-item.nav-dropdown.open .nav-link, .sidebar .nav .nav-item.nav-dropdown.open .navbar .dropdown-toggle, .navbar .sidebar .nav .nav-item.nav-dropdown.open .dropdown-toggle {
           color: #fff;
           border-left: 0 !important; }
