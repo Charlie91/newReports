@@ -145,23 +145,25 @@ class Sidebar extends Component {
                         <NavbarToggler  className="d-md-down-none mr-auto" onClick={this.sidebarMinimize}></NavbarToggler>
                     </Col>
                 </Row>
-                <div className="sidebar-header">
-                    <img src={(props.userData && props.userData.photo) ? `https://re-ports.ru${props.userData.photo}` : 'img/avatars/default.png'} className="img-avatar" alt="Avatar"/>
-                    <div className="full-name">
-                        <strong>{(props.userData) ? `${props.userData.first_name} ${props.userData.last_name}` : ''}</strong>
+                <div className="scrollWrapper">
+                    <div className="sidebar-header">
+                        <img src={(props.userData && props.userData.photo) ? `https://re-ports.ru${props.userData.photo}` : 'img/avatars/default.png'} className="img-avatar" alt="Avatar"/>
+                        <div className="full-name">
+                            <strong>{(props.userData) ? `${props.userData.first_name} ${props.userData.last_name}` : ''}</strong>
+                        </div>
+                        <div className="text-muted">
+                            <small>{(props.userData) ? props.userData.job_position : ''}</small>
+                        </div>
+                        <div>
+                            <LogOut isLoggedIn={this.props.isLoggedIn}/>
+                        </div>
                     </div>
-                    <div className="text-muted">
-                        <small>{(props.userData) ? props.userData.job_position : ''}</small>
-                    </div>
-                    <div>
-                        <LogOut isLoggedIn={this.props.isLoggedIn}/>
-                    </div>
+                    <nav className="sidebar-nav">
+                        <Nav>
+                            { (this.props.conceptions.length ) ? navList(this.props.conceptions) : '' }
+                        </Nav>
+                    </nav>
                 </div>
-                <nav className="sidebar-nav">
-                    <Nav>
-                        { (this.props.conceptions.length ) ? navList(this.props.conceptions) : '' }
-                    </Nav>
-                </nav>
             </div>
         )
     }

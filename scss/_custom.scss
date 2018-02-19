@@ -113,7 +113,9 @@ body{
     }
   }
   .sidebar-header + .sidebar-nav {
-    height: calc(100vh - #{$sidebar-header-height} - 130px) !important;
+    //height: calc(100vh - #{$sidebar-header-height} - 130px) !important;
+    height:auto!important;
+    overflow:auto;
     & > .nav{
       padding-bottom: 50px;
     }
@@ -472,66 +474,92 @@ main.main{
   background:url('../img/icons/vir_vneshn.png');
 }
 
+.scrollWrapper{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 75px) !important;
+}
 
-
-
-
-@media screen and (max-width:1486px){
-  .bigCities{
-    display:none;
+.sidebar .scrollWrapper {
+  &::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: black;
+    background-clip: content-box;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #1f2127;
+    border-right: 1px solid #09090b;
+    border-left: 1px solid #09090b;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #1f2127;
+    border-right: 1px solid #09090b;
+    border-left: 1px solid #09090b;
   }
 }
 
-@media screen and (max-width:991px){
-  .main {
-    padding-top: 0px!important;
-    .container-fluid {
-      padding: 0 0px;
+
+
+  @media screen and (max-width:1486px){
+    .bigCities{
+      display:none;
     }
   }
-  .app-header .page-title{
-    text-align:center;
-    padding-left:0;
-  }
-  .navbar-brand{
-    display:none!important
-  }
-  .navbar .tree_select{
-    text-align:center!important
+
+  @media screen and (max-width:991px){
+    .main {
+      padding-top: 0px!important;
+      .container-fluid {
+        padding: 0 0px;
+      }
+    }
+    .app-header .page-title{
+      text-align:center;
+      padding-left:0;
+    }
+    .navbar-brand{
+      display:none!important
+    }
+    .navbar .tree_select{
+      text-align:center!important
+    }
+
+    .app-header.navbar{
+      min-height: 50px;
+      text-align:center;
+      padding-top:9px;
+      padding-bottom: 1px;
+      margin-left: 250px;
+      padding-right: 0!important;
+      height:auto!important;
+    }
+
+    .app-body__reduce-margin{
+      margin-top: 70px;
+    }
+
+    .dateBlock{
+      display: none;
+    }
+
   }
 
-  .app-header.navbar{
-    min-height: 50px;
-    text-align:center;
-    padding-top:9px;
-    padding-bottom: 1px;
-    margin-left: 250px;
-    padding-right: 0!important;
-    height:auto!important;
-  }
-
-  .app-body__reduce-margin{
-    margin-top: 70px;
-  }
-
-  .dateBlock{
-    display: none;
-  }
-
-}
-
-@media screen and (max-width:767px){
-  .app-body__reduce-margin{
-    margin-top: 55px;
-  }
-}
-
-@media screen and (max-width:320px){
-  .dashboard {
-    strong.h4.indicator {
-      font-size: 12px;
+  @media screen and (max-width:767px){
+    .app-body__reduce-margin{
+      margin-top: 55px;
     }
   }
-}
+
+  @media screen and (max-width:320px){
+    .dashboard {
+      strong.h4.indicator {
+        font-size: 12px;
+      }
+    }
+  }
+
 
 
