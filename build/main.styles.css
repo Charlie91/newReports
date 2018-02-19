@@ -14129,16 +14129,16 @@ main.main {
   outline: none; }
 
 .custom-icon-home {
-  background: url(./img/home.d328eb5652d852b77c05ae5e1a2fc2a0.png); }
+  background: url(./img/home.a7ad28b0eba72941f520118c543cc39e.png); }
 
 .custom-icon-traffic {
-  background: url(./img/trafik.57ffeeb4cfaaae150d2e85ef8ec2e74a.png); }
+  background: url(./img/trafik.bf79b7591a7423a72cd3ed6a399deb54.png); }
 
 .custom-icon-internal_revenue {
-  background: url(./img/vir_vnutr.04d356a077cb581988e0bbf24b631b07.png); }
+  background: url(./img/vir_vnutr.830dc65e0ea468386d1366c4b42b99ec.png); }
 
 .custom-icon-external_revenue {
-  background: url(./img/vir_vneshn.568c01ffcb595a82756970dfb5a66306.png); }
+  background: url(./img/vir_vneshn.190ff521cb6e9ec01652bd4c90c05781.png); }
 
 @media screen and (max-width: 1486px) {
   .bigCities {
@@ -15013,7 +15013,7 @@ button.btn.back-btn {
         margin-right: 50px;
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
-        box-shadow: 0px 6px 6px -4px rgba(200, 200, 200, 0.8); }
+        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8); }
         #no-stick .rest-columns > .thead.h_shadow span {
           border-bottom: 1px solid rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
@@ -15243,7 +15243,7 @@ button.btn.back-btn {
       color: #354052;
       font-size: 2.3em;
       display: block;
-      line-height: 37px;
+      line-height: 44px;
       margin-top: 2px;
       margin-left: 30px;
       white-space: nowrap; }
@@ -15530,7 +15530,9 @@ button.btn.back-btn {
 
 @media screen and (min-width: 1320px) {
   .muted {
-    font-size: 14px; } }
+    font-size: 14px; }
+  .totalSum .data {
+    margin-top: -25px; } }
 
 @media screen and (min-width: 1444px) {
   .announce.row > div:first-of-type .card {

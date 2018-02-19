@@ -47,9 +47,12 @@ class Sidebar extends Component {
             },10);
     }
 
+
     activeRoute(routeName, props) {
-        // return this.props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
-        return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
+        //return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
+        let endIndex = props.location.pathname.lastIndexOf('/');
+        let url = props.location.pathname.slice(0,endIndex);
+        return url.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
     }
 
     sidebarMinimize(e) {
