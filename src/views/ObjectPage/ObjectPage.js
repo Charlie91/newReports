@@ -58,6 +58,7 @@ export default class ObjectPage extends Component {
             images:[],
             type:'',
             currency:'',
+            shortestUnit:'D',
             totalSum:0,
             startDate: moment().add(-7,'days'),
             endDate: moment(),
@@ -132,7 +133,6 @@ export default class ObjectPage extends Component {
         let url = API.floors + id;
         ajaxRequest(url, options)
             .then(data => {
-                console.log(data);
                 this.setState({floors:data, floorIndex:0}, () => {
                     this.getFloorsData();
                     this.getMonthlyDataPerYear();
@@ -183,7 +183,14 @@ export default class ObjectPage extends Component {
                     values2.unshift(NaN);
                     chartObj.labels = dates;
                     chartObj.datasets[1].data = values2;
-                    this.setState({data:data,chart:chartObj,totalSum:data.totalSum,emptyData:false});
+
+                    this.setState({
+                        data:data,
+                        chart:chartObj,
+                        totalSum:data.totalSum,
+                        emptyData:false,
+                        shortestUnit:data.shortestUnit
+                    });
                 }
             })
             .catch(err => console.log(err))
@@ -313,11 +320,12 @@ export default class ObjectPage extends Component {
     }
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
+        let state = this.state;
         let arr = [
-            {val:'Y',text:'По годам',render:(this.state.startDate.year() !== this.state.endDate.year())},
-            {val:'M',text:'По месяцам',render:(this.state.startDate.format('YYYY-MM') !== this.state.endDate.format('YYYY-MM'))},
-            {val:'D',text:'По дням',render:(this.state.startDate.format('YYYY-MM-DD') !== this.state.endDate.format('YYYY-MM-DD'))},
-            {val:'H',text:'По часам',render:( moment(this.state.startDate).diff(moment(this.state.endDate), 'days') > -14 )},
+            {val:'Y',text:'По годам',render:(state.startDate.year() !== state.endDate.year())},
+            {val:'M',text:'По месяцам',render:(state.startDate.format('YYYY-MM') !== state.endDate.format('YYYY-MM'))},
+            {val:'D',text:'По дням',render:(state.startDate.format('YYYY-MM-DD') !== state.endDate.format('YYYY-MM-DD'))},
+            {val:'H',text:'По часам',render:( (moment(state.startDate).diff(moment(state.endDate), 'days') > -14) && state.shortestUnit === 'H' )},
         ];
         return (
             <Col md='12' style={{minWidth:'100%'}} className='segmentation_btn-wrp order-1 order-md-12'>

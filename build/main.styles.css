@@ -13852,7 +13852,8 @@ body {
       text-decoration: none; }
 
 .sidebar .sidebar-header + .sidebar-nav {
-  height: calc(100vh - 215px - 130px) !important; }
+  height: auto !important;
+  overflow: auto; }
   .sidebar .sidebar-header + .sidebar-nav > .nav {
     padding-bottom: 50px; }
 
@@ -14139,6 +14140,29 @@ main.main {
 
 .custom-icon-external_revenue {
   background: url(./img/vir_vneshn.190ff521cb6e9ec01652bd4c90c05781.png); }
+
+.scrollWrapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 135px) !important; }
+
+.sidebar .scrollWrapper::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: black;
+  background-clip: content-box;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px 2px; }
+
+.sidebar .scrollWrapper::-webkit-scrollbar-track {
+  background-color: #1f2127;
+  border-right: 1px solid #09090b;
+  border-left: 1px solid #09090b; }
+
+.sidebar .scrollWrapper::-webkit-scrollbar-track {
+  background-color: #1f2127;
+  border-right: 1px solid #09090b;
+  border-left: 1px solid #09090b; }
 
 @media screen and (max-width: 1486px) {
   .bigCities {
@@ -15148,7 +15172,7 @@ button.btn.back-btn {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #e1e4e6; }
+  background: #7f8fa4; }
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #e1e4e6; }
@@ -15266,6 +15290,8 @@ button.btn.back-btn {
     padding-top: 8px;
     padding-left: 40px;
     padding-bottom: 15px; }
+    .data_per_month > div.card-body::-webkit-scrollbar-thumb {
+      background: #e1e4e6; }
     .data_per_month > div.card-body ul {
       line-height: default;
       min-width: 1274px;
@@ -15451,6 +15477,8 @@ button.btn.back-btn {
       overflow-y: hidden;
       padding-top: 0;
       padding-bottom: 30px; }
+      .average_hours.horizontal-bars .card-body::-webkit-scrollbar-thumb {
+        background: #e1e4e6; }
       .average_hours.horizontal-bars .card-body ul.ranges {
         display: inline-block;
         position: absolute;
@@ -15754,6 +15782,8 @@ button.btn.back-btn {
           padding: 3px 0px; }
     .object_cont .totalSum .data {
       margin-top: 45px; }
+    .object_cont.revenue .floor_btn-wrp .btn {
+      color: #f6aa26; }
     .object_cont .floor_btn-wrp {
       margin-top: 22px;
       white-space: nowrap;

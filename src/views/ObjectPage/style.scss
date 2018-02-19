@@ -877,6 +877,13 @@ $crdbody-padding : 1.3rem;
         margin-top: 45px;
       }
     }
+    &.revenue{
+      .floor_btn-wrp{
+        .btn{
+          color: #f6aa26;
+        }
+      }
+    }
     .floor_btn-wrp{
       margin-top:22px;
       white-space: nowrap;

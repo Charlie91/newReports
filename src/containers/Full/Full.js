@@ -99,13 +99,11 @@ class Full extends Component {
 
         ajaxRequest(API.nav,options)
             .then(data => {
-                console.log(data);
                 let arr = this.state.conceptions;
                 if(!Array.isArray(data))return;
                 data.forEach( item => {
                     editConceptionObject(item)
                 });
-                console.log(arr.concat(data));
                 this.setState({conceptions:arr.concat(data)},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
                                                                                                             // находимся ли мы на одной из его ссылок и устанавливаем заголовок
             })

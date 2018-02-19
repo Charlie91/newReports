@@ -156,6 +156,8 @@ export default class Authorization extends Component {
                 <div className="hintMessage alert alert-danger">Соединение потеряно</div>
             )
     }
+//                                    autoComplete="new-password"                                     size="5"
+
 
     showForm(){
             return(
@@ -165,21 +167,21 @@ export default class Authorization extends Component {
                             <label>
                                 {animateDynamicLabel(this.state.login, 'Логин')}
                                 <input
-                                    onChange={this.setLogin.bind(this)}
-                                    className="form-control"
+                                    type="text"
                                     value={this.state.login}
-                                    autoComplete="new-password"
+                                    onChange={this.setLogin.bind(this)}
+                                    autoComplete="on"
+                                    className="form-control"
                                     placeholder="Логин"
-                                    size="5"
                                 />
                             </label>
                             <label>
                                 {animateDynamicLabel(this.state.password, 'Пароль')}
                                 <input
                                     type="password"
-                                    autoComplete="new-password"
                                     value={this.state.password}
                                     onChange={this.setPassword.bind(this)}
+                                    autoComplete="on"
                                     className="form-control"
                                     placeholder="Пароль"
                                 />
