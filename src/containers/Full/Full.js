@@ -22,7 +22,7 @@ class Full extends Component {
             conceptions : [
                 {
                     name: 'Главная',
-                    full_name:'ТРЦ Трафик',
+                    full_name:'Главная',
                     url: '/dashboard',
                     icon: 'custom-icon-home',
                     badge: {
@@ -132,19 +132,27 @@ class Full extends Component {
     }
 
     setTitle(arr){  //установка заголовка страницы
+        console.log(arr);
         let url = window.location.href;
         let idPosition = url.lastIndexOf('#');
         let conceptionURL = url.slice(idPosition+1);
-        arr.forEach( item => {
-            if(item.url === conceptionURL)this.setState({title:item.full_name}); //если адрес текущей ссылки в браузере совпадает с любой ссылкой из концепций -
-            else{                                                               // устанавливаем концепцию как заголовок
-                if(item.children){
-                    item.children.forEach( child => {
-                        if(child.url === conceptionURL)this.setState({title:child.full_name})//если нет совпадений смотрим в дочерних концепциях
-                    })
+
+
+        let title = this.state.title;
+        function findTitle(arr){
+             arr.forEach( item => {
+                if(item.url === conceptionURL)title = item.full_name; //если адрес текущей ссылки в браузере совпадает с любой ссылкой из концепций -
+                else{                                                               // устанавливаем концепцию как заголовок
+                    if(item.children){
+                        findTitle(item.children)
+                    }
                 }
-            }
-        })
+            })
+        }
+
+        findTitle(arr);
+
+        this.setState({title:title});
     }
 
     componentWillReceiveProps(nextProps){

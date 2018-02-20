@@ -303,18 +303,20 @@ export default class ObjectPage extends Component {
     renderFloorObjectsButtons(){//функция рендера срезов
         if(!this.state.floors || this.state.floors.length < 2)return null;
         return(
-            <div className="floor_btn-wrp">
-                {this.state.floors.map((item,i) =>
-                    <button type="button"
-                            key={i}
-                            data-id={i}
-                            disabled={this.state.requestIsInProcess}
-                            className={'btn ' + ((this.state.floorIndex === i) ? 'active' : '')}
-                            onClick={this.changeFloor.bind(this)}
-                    >
-                        {item.name}
-                    </button>
-                )}
+            <div style={{overflow:'hidden',marginTop:'-10px'}}>
+                <div className="floor_btn-wrp">
+                    {this.state.floors.map((item,i) =>
+                        <button type="button"
+                                key={i}
+                                data-id={i}
+                                disabled={this.state.requestIsInProcess}
+                                className={'btn ' + ((this.state.floorIndex === i) ? 'active' : '')}
+                                onClick={this.changeFloor.bind(this)}
+                        >
+                            {item.name}
+                        </button>
+                    )}
+                </div>
             </div>
         )
     }
@@ -593,6 +595,7 @@ export default class ObjectPage extends Component {
                             <div className="muted">Средняя {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                         </Col>
                     </Row>
+                    <div className="scrollHider">
                     <CardBody>
                         {
                             (this.state.monthlyData) ?
@@ -630,6 +633,7 @@ export default class ObjectPage extends Component {
                                 <Loading/>
                         }
                     </CardBody>
+                    </div>
                 </Card>
 
                 <Card className="all_data">
@@ -700,6 +704,7 @@ export default class ObjectPage extends Component {
                                 <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
+                        <div className="scrollHider">
                         <Row>
                             {(this.state.viewportWidth > 720) ?
                                 <DataChart
@@ -724,6 +729,8 @@ export default class ObjectPage extends Component {
                             }
                             {this.renderSegmentationButtons()}
                         </Row>
+                        </div>
+
                     </CardBody>
                 </Card>
             </div>

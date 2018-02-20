@@ -140,7 +140,7 @@ $crdbody-padding : 1.3rem;
       line-height: 17px;
     }
   }
-  >div.card-body{
+  div.card-body{
     overflow-x:auto;
     overflow-y: hidden;
     padding-top: 8px;
@@ -699,6 +699,7 @@ $crdbody-padding : 1.3rem;
   ::-webkit-scrollbar {
     width: 0px;
     height: 0px;
+    display:none;
   }
 
   .object_cont{
@@ -707,6 +708,10 @@ $crdbody-padding : 1.3rem;
     margin-top: 0;
     padding: 0 15px;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display:none;
+    }
     .announce{
       padding:0 15px;
       margin-bottom: 20px;
@@ -759,7 +764,7 @@ $crdbody-padding : 1.3rem;
       }
     }
     .average_hours{
-      padding-bottom: 0px;
+      -webkit-overflow-scrolling: auto;
     }
     .features{
       >div{
@@ -797,10 +802,17 @@ $crdbody-padding : 1.3rem;
             font-size: 12px;
           }
         }
-       > div.card-body{
-         padding-left: 35px;
-         padding-top:0;
-         padding-bottom: 11px;
+      .scrollHider{
+        overflow-y:hidden;
+        margin-top:-10px;
+        margin-bottom: 20px;
+      }
+        div.card-body{
+          padding-left: 35px;
+          padding-top:0px;
+          padding-bottom: 11px;
+          top:10px;
+          position:relative;
          ul{
            min-width:500px;
            li{
@@ -823,7 +835,6 @@ $crdbody-padding : 1.3rem;
              }
            }
          }
-
        }
     }
     .average_hours{
@@ -846,6 +857,15 @@ $crdbody-padding : 1.3rem;
           &:last-of-type:before{
             font-size: 12px;
             top: 2px;
+          }
+        }
+        .scrollHider{
+          overflow-y:hidden;
+          margin-top:-10px;
+          margin-bottom: 20px;
+          .row{
+            top:10px;
+            position: relative;
           }
         }
         .line-chart-wrapper {
@@ -874,7 +894,7 @@ $crdbody-padding : 1.3rem;
     }
     .totalSum {
       .data {
-        margin-top: 45px;
+        margin-top: 35px;
       }
     }
     &.revenue{
@@ -888,6 +908,13 @@ $crdbody-padding : 1.3rem;
       margin-top:22px;
       white-space: nowrap;
       overflow: scroll;
+      padding-bottom: 10px;
+      position: relative;
+      top: 10px;
+      &::-webkit-scrollbar {
+        display:none;
+        width: 0 !important;
+      }
       .btn{
         background-color: #f6f7f7;
         border: solid 1px #f6f7f7;

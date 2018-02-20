@@ -481,6 +481,7 @@ main.main{
 }
 
 .sidebar .scrollWrapper {
+  -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar-thumb {
     height: 50px;
     background-color: black;
@@ -499,6 +500,7 @@ main.main{
     border-right: 1px solid #09090b;
     border-left: 1px solid #09090b;
   }
+
 }
 
 

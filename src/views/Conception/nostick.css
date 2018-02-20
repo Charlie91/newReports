@@ -2,7 +2,8 @@
   padding-top: 34px;
   overflow: hidden;
   font-size: 0.875em;
-  margin-right: -20px; }
+  margin-right: -20px;
+  -webkit-overflow-scrolling: touch; }
   #no-stick .tbody > .trow + .empty_row {
     padding-bottom: 2px;
     background-color: #eff3f6 !important;

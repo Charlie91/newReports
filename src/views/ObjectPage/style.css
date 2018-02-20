@@ -106,38 +106,38 @@
     .data_per_month .header .muted {
       font-size: 14px;
       line-height: 17px; }
-  .data_per_month > div.card-body {
+  .data_per_month div.card-body {
     overflow-x: auto;
     overflow-y: hidden;
     padding-top: 8px;
     padding-left: 40px;
     padding-bottom: 15px; }
-    .data_per_month > div.card-body::-webkit-scrollbar-thumb {
+    .data_per_month div.card-body::-webkit-scrollbar-thumb {
       background: #e1e4e6; }
-    .data_per_month > div.card-body ul {
+    .data_per_month div.card-body ul {
       line-height: default;
       min-width: 1274px;
       height: 38px;
       margin: 0px;
       white-space: nowrap;
       padding: 0; }
-      .data_per_month > div.card-body ul li {
+      .data_per_month div.card-body ul li {
         display: inline-block;
         width: 6.7%;
         min-width: 46px;
         margin-right: 1.8%; }
-        .data_per_month > div.card-body ul li:last-of-type {
+        .data_per_month div.card-body ul li:last-of-type {
           margin-right: 5px;
           width: 60px; }
-        .data_per_month > div.card-body ul li div {
+        .data_per_month div.card-body ul li div {
           height: 18px;
           line-height: 18px; }
-          .data_per_month > div.card-body ul li div strong {
+          .data_per_month div.card-body ul li div strong {
             height: 18px;
             font-size: 14px;
             font-weight: 600;
             min-width: 99px; }
-        .data_per_month > div.card-body ul li .muted {
+        .data_per_month div.card-body ul li .muted {
           height: 18px;
           font-size: 14px;
           line-height: 18px;
@@ -482,13 +482,17 @@
 @media screen and (max-width: 767px) {
   ::-webkit-scrollbar {
     width: 0px;
-    height: 0px; }
+    height: 0px;
+    display: none; }
   .object_cont {
     width: 100%;
     margin: auto;
     margin-top: 0;
     padding: 0 15px;
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; }
+    .object_cont::-webkit-scrollbar {
+      display: none; }
     .object_cont .announce {
       padding: 0 15px;
       margin-bottom: 20px;
@@ -526,7 +530,7 @@
       .object_cont .announce .obj_title a.link_desktop {
         display: none; }
     .object_cont .average_hours {
-      padding-bottom: 0px; }
+      -webkit-overflow-scrolling: auto; }
     .object_cont .features > div > strong {
       font-size: 16px;
       padding-right: 6px; }
@@ -552,23 +556,29 @@
           line-height: normal; }
         .object_cont .data_per_month .header .muted {
           font-size: 12px; }
-      .object_cont .data_per_month > div.card-body {
+      .object_cont .data_per_month .scrollHider {
+        overflow-y: hidden;
+        margin-top: -10px;
+        margin-bottom: 20px; }
+      .object_cont .data_per_month div.card-body {
         padding-left: 35px;
-        padding-top: 0;
-        padding-bottom: 11px; }
-        .object_cont .data_per_month > div.card-body ul {
+        padding-top: 0px;
+        padding-bottom: 11px;
+        top: 10px;
+        position: relative; }
+        .object_cont .data_per_month div.card-body ul {
           min-width: 500px; }
-          .object_cont .data_per_month > div.card-body ul li {
+          .object_cont .data_per_month div.card-body ul li {
             margin-right: 10%; }
-            .object_cont .data_per_month > div.card-body ul li.average {
+            .object_cont .data_per_month div.card-body ul li.average {
               width: 95px;
               margin-right: 16px;
               background-color: #f6f7f7;
               border-radius: 4px;
               padding: 0 8px; }
-            .object_cont .data_per_month > div.card-body ul li div strong {
+            .object_cont .data_per_month div.card-body ul li div strong {
               font-size: 12px; }
-            .object_cont .data_per_month > div.card-body ul li .muted {
+            .object_cont .data_per_month div.card-body ul li .muted {
               font-size: 12px;
               line-height: 15px; }
     .object_cont .average_hours {
@@ -587,6 +597,13 @@
         .object_cont .all_data .card-body .datepicker_wrp:last-of-type:before {
           font-size: 12px;
           top: 2px; }
+        .object_cont .all_data .card-body .scrollHider {
+          overflow-y: hidden;
+          margin-top: -10px;
+          margin-bottom: 20px; }
+          .object_cont .all_data .card-body .scrollHider .row {
+            top: 10px;
+            position: relative; }
         .object_cont .all_data .card-body .line-chart-wrapper {
           padding: 10px 0px; }
           .object_cont .all_data .card-body .line-chart-wrapper #scrollYAxis {
@@ -603,13 +620,19 @@
           font-size: 14px;
           padding: 3px 0px; }
     .object_cont .totalSum .data {
-      margin-top: 45px; }
+      margin-top: 35px; }
     .object_cont.revenue .floor_btn-wrp .btn {
       color: #f6aa26; }
     .object_cont .floor_btn-wrp {
       margin-top: 22px;
       white-space: nowrap;
-      overflow: scroll; }
+      overflow: scroll;
+      padding-bottom: 10px;
+      position: relative;
+      top: 10px; }
+      .object_cont .floor_btn-wrp::-webkit-scrollbar {
+        display: none;
+        width: 0 !important; }
       .object_cont .floor_btn-wrp .btn {
         background-color: #f6f7f7;
         border: solid 1px #f6f7f7;

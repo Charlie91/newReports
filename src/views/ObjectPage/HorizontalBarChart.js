@@ -344,89 +344,89 @@ export default class HorizontalBarChart extends Component {
                                     return(
                                         <div key={i} className="chart-wrapper">
                                             <div style={{height:'80%'}}>
-                                            <HorizontalBar data={item}
-                                                 ref={(chart) => { this.chart = chart; }}
-                                                 options={{
-                                                     layout: {
-                                                         padding: {
-                                                             left: 12,
-                                                             right:30,
-                                                             top:10
-                                                         }
-                                                     },
-                                                     hover: {animationDuration: 0},
-                                                     animation: {
-                                                         duration: 0,
-                                                         onComplete: function () {
-                                                             // render the value of the chart above the bar
-                                                             let ctx = this.chart.ctx;
-                                                             let chartWidth = this.chart.width;
-                                                             ctx.font = Chart.helpers.fontString(
-                                                                 Chart.defaults.global.defaultFontSize - 3,
-                                                                 'normal',
-                                                                 "'ProximaNova','Segoe UI',sans-serif"
-                                                             );
-                                                             ctx.fillStyle = this.chart.config.options.defaultFontColor;
-                                                             ctx.fillStyle = '#7f8fa4';
-                                                             ctx.textAlign = 'center';
-                                                             ctx.textBaseline = 'bottom';
-                                                             this.data.datasets.forEach(function (dataset) {
-                                                                 for (var i = 0; i < dataset.data.length; i++) {
-                                                                     var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-                                                                     ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 5);
-                                                                 }
-                                                             });
-                                                         }},
-                                                     maintainAspectRatio: false,
-                                                     legend:{
-                                                         display:false,
-                                                     },
-                                                     title:{
-                                                         display:false,
-                                                         text:'Понедельник',
-                                                         position:'bottom'
-                                                     },
-                                                     tooltips: {
-                                                         enabled:false,
-                                                         backgroundColor:'#eff3f6',
-                                                         bodyFontColor:'#354052',
-                                                         titleFontColor:'#354052',
-                                                         titleFontStyle:'normal',
-                                                         displayColors:false,
-                                                         callbacks:{
-                                                             label:function(tooltipItem, data){
-                                                                 return `${tooltipItem.xLabel} чел.`
-                                                             }
-                                                         }
-                                                     },
-                                                     scales: {
-                                                         display:false,
-                                                         yAxes: [{
-                                                             barPercentage: 0.72,
-                                                             categoryPercentage:0.72,
-                                                             display:false,
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0)",
-                                                                 display:false,
-                                                             }
-                                                         }],
-                                                         xAxes: [{
-                                                             display:false,
-                                                             ticks: {
-                                                                 max: this.state.maxVal,
-                                                                 display: false,
-                                                                 beginAtZero: true,
-                                                                 steps: 10,
-                                                                 stepValue: 5,
-                                                             },
-                                                             gridLines: {
-                                                                 color: "rgba(0, 0, 0, 0.05)",
-                                                                 drawBorder: false
-                                                             },
-                                                         }]
-                                                     }
-                                                 }}
-                                            />
+                                                <HorizontalBar data={item}
+                                                               ref={(chart) => { this.chart = chart; }}
+                                                               options={{
+                                                                   layout: {
+                                                                       padding: {
+                                                                           left: 12,
+                                                                           right:30,
+                                                                           top:10
+                                                                       }
+                                                                   },
+                                                                   hover: {animationDuration: 0},
+                                                                   animation: {
+                                                                       duration: 0,
+                                                                       onComplete: function () {
+                                                                           // render the value of the chart above the bar
+                                                                           let ctx = this.chart.ctx;
+                                                                           let chartWidth = this.chart.width;
+                                                                           ctx.font = Chart.helpers.fontString(
+                                                                               Chart.defaults.global.defaultFontSize - 3,
+                                                                               'normal',
+                                                                               "'ProximaNova','Segoe UI',sans-serif"
+                                                                           );
+                                                                           ctx.fillStyle = this.chart.config.options.defaultFontColor;
+                                                                           ctx.fillStyle = '#7f8fa4';
+                                                                           ctx.textAlign = 'center';
+                                                                           ctx.textBaseline = 'bottom';
+                                                                           this.data.datasets.forEach(function (dataset) {
+                                                                               for (var i = 0; i < dataset.data.length; i++) {
+                                                                                   var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                                                                                   ctx.fillText(dataset.data[i], chartWidth - 20, model.y + 5);
+                                                                               }
+                                                                           });
+                                                                       }},
+                                                                   maintainAspectRatio: false,
+                                                                   legend:{
+                                                                       display:false,
+                                                                   },
+                                                                   title:{
+                                                                       display:false,
+                                                                       text:'Понедельник',
+                                                                       position:'bottom'
+                                                                   },
+                                                                   tooltips: {
+                                                                       enabled:false,
+                                                                       backgroundColor:'#eff3f6',
+                                                                       bodyFontColor:'#354052',
+                                                                       titleFontColor:'#354052',
+                                                                       titleFontStyle:'normal',
+                                                                       displayColors:false,
+                                                                       callbacks:{
+                                                                           label:function(tooltipItem, data){
+                                                                               return `${tooltipItem.xLabel} чел.`
+                                                                           }
+                                                                       }
+                                                                   },
+                                                                   scales: {
+                                                                       display:false,
+                                                                       yAxes: [{
+                                                                           barPercentage: 0.72,
+                                                                           categoryPercentage:0.72,
+                                                                           display:false,
+                                                                           gridLines: {
+                                                                               color: "rgba(0, 0, 0, 0)",
+                                                                               display:false,
+                                                                           }
+                                                                       }],
+                                                                       xAxes: [{
+                                                                           display:false,
+                                                                           ticks: {
+                                                                               max: this.state.maxVal,
+                                                                               display: false,
+                                                                               beginAtZero: true,
+                                                                               steps: 10,
+                                                                               stepValue: 5,
+                                                                           },
+                                                                           gridLines: {
+                                                                               color: "rgba(0, 0, 0, 0.05)",
+                                                                               drawBorder: false
+                                                                           },
+                                                                       }]
+                                                                   }
+                                                               }}
+                                                />
                                             </div>
                                             <div className="title">{['Понедельник','Вторник',"Среда","Четверг","Пятница","Суббота","Воскресенье"][i]}</div>
                                         </div>
