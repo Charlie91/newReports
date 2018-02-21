@@ -239,7 +239,7 @@ export default class BarChart extends Component {
                                 if(i === 0)
                                     return (
                                         <div key={i} className="chart-wrapper" style={{paddingTop: 30}} >
-                                            <div style={{height:'88%',marginLeft: '-30px'}}>
+                                            <div style={{height:'88%',marginLeft: '-32px'}}>
                                                 <Bar data={item}
                                                      ref={(chart) => { this.chart = chart; }}
                                                      options={{
@@ -249,7 +249,7 @@ export default class BarChart extends Component {
                                                          },
                                                          layout: {
                                                              padding: {
-                                                                 right:32,
+                                                                 right:33,
                                                                  left:4
                                                              }
                                                          },
@@ -294,7 +294,7 @@ export default class BarChart extends Component {
                                                                      scale.width = 56;
                                                                  },
                                                                  ticks: {
-                                                                     padding: 26,
+                                                                     padding: 24,
                                                                      max: this.state.maxVal,
                                                                      beginAtZero: false,
                                                                      stepSize: this.state.step,
@@ -309,7 +309,6 @@ export default class BarChart extends Component {
                                                                          } else {
                                                                              return value;
                                                                          }
-
                                                                      }
                                                                  },
                                                                  gridLines: {

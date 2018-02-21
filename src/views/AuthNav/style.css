@@ -97,16 +97,14 @@ button.btn.back-btn {
     border-radius: 10px; }
     .auth-window label, .auth-window .nextStep {
       width: 90% !important; }
-
   .auth-nav a {
     font-size: 1.5em; }
-
   .dropdown__content.dropdown-content {
     height: auto;
     max-height: 70vh; }
-
   .empty-tmpl-app .container-fluid {
     padding: 24px; } }
+
 @media screen and (max-width: 670px) {
   .auth-window {
     padding: 0px 0px 35px 0px; }
@@ -118,10 +116,8 @@ button.btn.back-btn {
       margin-bottom: 0px; }
     .auth-window .auth_links {
       padding: 0px; }
-
   .empty-tmpl-app .container-fluid {
     padding: 25px; }
-
   .auth-nav {
     margin-bottom: 27px;
     padding: 19px; }
@@ -129,24 +125,21 @@ button.btn.back-btn {
       width: 141px;
       font-size: 1.125em !important;
       padding: 0 3px 0 3px; }
-
   .nextStep .auth-btn {
     width: 154px; }
-
   .auth-btn {
     font-size: 1.25em !important;
     width: 154px;
     margin-top: -9px;
     margin-bottom: 0px; }
-
   .label-hint {
     font-size: 0.875em;
     top: -10px; }
-
   button .auth-btn {
     font-size: 1.125em !important; }
   button .btn.back-btn {
     font-size: 1.125em !important; } }
+
 @media screen and (max-width: 325px) {
   .empty-tmpl-app .container-fluid {
     padding: 5px; } }

@@ -335,6 +335,7 @@ class TableVerticalNoStick extends Component {
                         </div>
                     </div>
                 </div>
+                <span>test</span>
             </div>
 
         );
