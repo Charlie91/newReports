@@ -120,9 +120,8 @@ class Registration extends Component {
         return (
             <div className="text-white bg-success text-center card">
                 <div className="card-body card-block">
-                    Поздравляем с успешной регистрацией, <strong>{this.state.firstName}</strong>!
-                    Чтобы <Link to={'/authorization'} className="registr-link">Войти в аккаунт</Link>, предварительно
-                    нужно попросить у офис-менеджера произвести активацию.
+                    Регистрация почти завершена.
+                    Для активации аккаунта позвоните по телефону +7 (985) 444-00-25 или напишите письмо в свободной форме на info@re-ports.ru
                 </div>
             </div>
         )
