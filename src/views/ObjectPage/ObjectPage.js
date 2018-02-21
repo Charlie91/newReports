@@ -30,6 +30,10 @@ export default class ObjectPage extends Component {
             monthsShort : [
                 "янв", "фев", "мар", "апр", "май", "июн", "июл",
                 "авг", "сен", "окт", "ноя", "дек"
+            ],
+            months : [
+                "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+                "августа", "сентября", "октября", "ноября", "декабря"
             ]
         });
         moment.defineLocale('ru-new', { //фикс бага с невосприятием дейтпикером ручного ввода
@@ -525,19 +529,20 @@ export default class ObjectPage extends Component {
                                     <Col md="7" className="features">
                                         <div>
                                             <strong>Этажей:</strong>
-                                            <span className="muted"> 4</span>
+                                            <span className="muted">{this.state.object.floors_count || 4}</span>
                                         </div>
 
                                         <div>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.area) + " м<sup>2</sup>"}} />
-                                            { (this.state.object.gl_area === -1) ? '' : <span className="muted">, GLA <b>{this.state.object.gl_area} м<sup>2</sup></b></span>}
+                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gb_area) + " м<sup>2</sup>"}} />
+                                            <span className="muted">, GLA </span>
+                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gl_area) + " м<sup>2</sup>"}} />
                                         </div>
 
                                         <div>
                                             <strong>Дата открытия:</strong>
-                                            <span className="muted">  12 января 2008 г.</span>
+                                            <span className="muted">  {moment(state.object.since).locale('ru').format('DD MMMM YYYY') || ''} </span>
                                         </div>
 
                                         {/*<div className="floor_plans">
