@@ -546,8 +546,8 @@ export default class ObjectPage extends Component {
                                         </div>
 
                                         {/*<div className="floor_plans">
-                                            <strong>Поэтажные планы</strong>
-                                        </div>*/}
+                                         <strong>Поэтажные планы</strong>
+                                         </div>*/}
 
                                     </Col>
                                     <Col md="5" className="geolocation">
@@ -594,50 +594,50 @@ export default class ObjectPage extends Component {
                                <span className="data"
                                      dangerouslySetInnerHTML=
                                          {{
-                                             __html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${this.renderCurrency()}`
+                                             __html:`${formatNumberBySpaces(this.countAverageOfMoths())} ${this.renderCurrency()}`
                                          }}
                                ></span>
                             <div className="muted">Средняя {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                         </Col>
                     </Row>
                     <div className="scrollHider">
-                    <CardBody>
-                        {
-                            (this.state.monthlyData) ?
-                                <ul>
-                                    <li className={(state.viewportWidth > 768) ? 'none average' : 'average'}>
-                                        <div>
-                                            <strong
-                                                dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
-                                            >
-                                            </strong>
-                                        </div>
-                                        <div className="muted">
-                                            средняя в мес.
-                                        </div>
-                                    </li>
-                                    {
-                                        this.state.monthlyData.map( (item,i) => {
-                                            return(
-                                                <li key={i}>
-                                                    <div>
-                                                        <strong
-                                                            dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(item.value))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
-                                                        >
-                                                        </strong>
-                                                    </div>
-                                                    <div className="muted">
-                                                        {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
-                                                    </div>
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
-                                :
-                                <Loading/>
-                        }
-                    </CardBody>
+                        <CardBody>
+                            {
+                                (this.state.monthlyData) ?
+                                    <ul>
+                                        <li className={(state.viewportWidth > 768) ? 'none average' : 'average'}>
+                                            <div>
+                                                <strong
+                                                    dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                                >
+                                                </strong>
+                                            </div>
+                                            <div className="muted">
+                                                средняя в мес.
+                                            </div>
+                                        </li>
+                                        {
+                                            this.state.monthlyData.map( (item,i) => {
+                                                return(
+                                                    <li key={i}>
+                                                        <div>
+                                                            <strong
+                                                                dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(item.value))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                                            >
+                                                            </strong>
+                                                        </div>
+                                                        <div className="muted">
+                                                            {`${formatMonths(item.month)} ${ ((item.year === (new Date()).getFullYear()) ? '' : ''/*item.year*/) }` }
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                    :
+                                    <Loading/>
+                            }
+                        </CardBody>
                     </div>
                 </Card>
 
@@ -702,7 +702,7 @@ export default class ObjectPage extends Component {
                                 <span className="data"
                                       dangerouslySetInnerHTML=
                                           {{
-                                              __html:`${formatNumberBySpaces(state.totalSum)} ${this.renderCurrency()}`
+                                              __html:`${formatNumberBySpaces(Math.round(state.totalSum))} ${this.renderCurrency()}`
                                           }}
                                 >
                                 </span>
@@ -710,30 +710,30 @@ export default class ObjectPage extends Component {
                             </Col>
                         </Row>
                         <div className="scrollHider">
-                        <Row>
-                            {(this.state.viewportWidth > 720) ?
-                                <DataChart
-                                    render={!(this.state.type === 'Выручка')}
-                                    data={this.state.chart}
-                                    startDate={this.state.startDate}
-                                    endDate={this.state.endDate}
-                                    currency={this.state.currency}
-                                    timeSegment={this.state.timeSegment}
-                                    emptyData={this.state.emptyData}
-                                />
-                                :
-                                <DataChartSmall
-                                    render={!(this.state.type === 'Выручка')}
-                                    data={this.state.chart}
-                                    startDate={this.state.startDate}
-                                    endDate={this.state.endDate}
-                                    currency={this.state.currency}
-                                    timeSegment={this.state.timeSegment}
-                                    emptyData={this.state.emptyData}
-                                />
-                            }
-                            {this.renderSegmentationButtons()}
-                        </Row>
+                            <Row>
+                                {(this.state.viewportWidth > 720) ?
+                                    <DataChart
+                                        render={!(this.state.type === 'Выручка')}
+                                        data={this.state.chart}
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        currency={this.state.currency}
+                                        timeSegment={this.state.timeSegment}
+                                        emptyData={this.state.emptyData}
+                                    />
+                                    :
+                                    <DataChartSmall
+                                        render={!(this.state.type === 'Выручка')}
+                                        data={this.state.chart}
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        currency={this.state.currency}
+                                        timeSegment={this.state.timeSegment}
+                                        emptyData={this.state.emptyData}
+                                    />
+                                }
+                                {this.renderSegmentationButtons()}
+                            </Row>
                         </div>
 
                     </CardBody>

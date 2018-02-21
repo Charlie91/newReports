@@ -140,6 +140,11 @@ export default class TreeSelect extends Component{
     }
 
     render(){
+        if(this.state.availableCities.length === 1 && !this.state.availableCities[0].children ){
+            return (
+                <div className="tree_select"></div>
+            )
+        }
         return (
             <div className="tree_select">
                 <DropdownTreeSelect
