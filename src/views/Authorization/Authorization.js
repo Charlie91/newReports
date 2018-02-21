@@ -174,9 +174,9 @@ export default class Authorization extends Component {
     showForm(){
             return(
                 <div>
+                    <div>{(("standalone" in window.navigator) && !window.navigator.standalone) ? 'standalone' : 'nope' }</div>
                     <form action="#" autoComplete="off" method="POST">
                         <div className="form-group">
-                            <div>{(("standalone" in window.navigator) && !window.navigator.standalone) ? 'standalone' : 'nope' }</div>
                             <label>
                                 {animateDynamicLabel(this.state.login, 'Логин')}
                                 <input
