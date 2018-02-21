@@ -6,6 +6,7 @@ import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest, deleteRegistrationCookies} from './../../utils/utils';
 
+
 import {
     Row, Col
 } from "reactstrap";
@@ -31,6 +32,8 @@ export function animateDynamicLabel(nameProperty, text){
 }
 
 export default class Authorization extends Component {
+
+
     constructor(props){
         super(props);
         this.state={
@@ -83,19 +86,28 @@ export default class Authorization extends Component {
         };
         ajaxRequest(API.auth ,options)
             .then(data => {
-                if(data.authorized === true){
-                    this.setState({isLoggedIn:true});
-                    //this.getUserData();
+                if (data.authorized === true) {
+                    this.setState({isLoggedIn: true});
+                    if (("standalone" in window.navigator) && window.navigator.standalone) {
+                        if (this.state.login) localStorage.setItem('login', this.state.login);
+                        if (this.state.password) localStorage.setItem('password', this.state.password);
+                    }
                 }
-                else
-                    this.setState({isLoggedIn:false,password:''});
+                else {
+                    this.setState({isLoggedIn: false, password: ''});
+                    if (("standalone" in window.navigator) && window.navigator.standalone) {
+                        if (localStorage.getItem('login')) this.setState({login: localStorage.getItem('login')});
+                        if (localStorage.getItem('password')) this.setState({password: localStorage.getItem('password')});
+                    }
+
+                }
             })
             .catch(error => console.log(error));
     }
 
 
     logIn(e) {      // запрос на вход\авторизацию пользователя
-        e.preventDefault();
+        if(typeof(e) != "undefined") e.preventDefault();
         if (!this.validation())return;
             let obj = {
                 pwd: this.state.password,
