@@ -88,14 +88,14 @@ export default class Authorization extends Component {
             .then(data => {
                 if (data.authorized === true) {
                     this.setState({isLoggedIn: true});
-                    if (("standalone" in window.navigator) && !window.navigator.standalone) {
+                    if (("standalone" in window.navigator) && window.navigator.standalone) {
                         if (this.state.login) localStorage.setItem('login', this.state.login);
                         if (this.state.password) localStorage.setItem('password', this.state.password);
                     }
                 }
                 else {
                     this.setState({isLoggedIn: false, password: ''});
-                    if (("standalone" in window.navigator) && !window.navigator.standalone) {
+                    if (("standalone" in window.navigator) && window.navigator.standalone) {
                         if (localStorage.getItem('login')) this.setState({login: localStorage.getItem('login')});
                         if (localStorage.getItem('password')) this.setState({password: localStorage.getItem('password')});
                     }
@@ -174,7 +174,6 @@ export default class Authorization extends Component {
     showForm(){
             return(
                 <div>
-                    <div>{(("standalone" in window.navigator) && !window.navigator.standalone) ? 'standalone' : 'nope' }</div>
                     <form action="#" autoComplete="off" method="POST">
                         <div className="form-group">
                             <label>
