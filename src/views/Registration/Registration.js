@@ -120,11 +120,7 @@ class Registration extends Component {
         return (
             <div className="text-white bg-success text-center card">
                 <div className="card-body card-block">
-<<<<<<< HEAD
-                    Регистрация почти завершена, <strong>{this.state.firstName}</strong>.
-=======
                     Регистрация почти завершена.
->>>>>>> 31cfdcb018fe656ef5d0e2039b0e439e2235282c
                     Для активации аккаунта позвоните по телефону +7 (985) 444-00-25 или напишите письмо в свободной форме на info@re-ports.ru
                 </div>
             </div>

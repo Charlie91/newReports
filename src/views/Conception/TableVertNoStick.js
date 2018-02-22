@@ -129,7 +129,7 @@ class TableVerticalNoStick extends Component {
                 rcHead.scrollLeft = this.scrollLeft;
             }, { passive: true });
 
-        this.setWrapperWidth();
+        //this.setWrapperWidth();
         this.equalizeTableHeaderHeight();
         window.onresize = () => this.setWrapperWidth();
         this.setState({scrollTop: false});
@@ -142,7 +142,7 @@ class TableVerticalNoStick extends Component {
     }
 
     componentDidUpdate(){
-        this.setWrapperWidth();
+        //this.setWrapperWidth();
         this.equalizeTableColumnHeight()// фикс бага с высотой таблицы
     }
 

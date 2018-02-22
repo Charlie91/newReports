@@ -31,8 +31,10 @@
     background-color: #eff3f6 !important;
     line-height: 1px !important; }
   #no-stick .thead > .last_span_head {
-    width: 0px;
-    background-color: #eff3f6; }
+    width: 100%;
+    background-color: #eff3f6;
+    position: fixed;
+    height: 200px; }
   #no-stick .thead {
     background-color: #eff3f6;
     white-space: nowrap;
@@ -151,7 +153,8 @@
         margin-right: 50px;
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
-        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8); }
+        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8);
+        overflow-y: visible; }
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
       display: table;
@@ -182,6 +185,7 @@
       height: calc(100vh - 190px) !important;
       height: -moz-calc(100vh - 190px) !important;
       height: -webkit-calc(100vh - 190px) !important; } }
+
 @media screen and (max-width: 767px) {
   #no-stick {
     font-size: 0.688em;
@@ -270,6 +274,7 @@
       background-color: #eff3f6 !important; }
     #no-stick ::-webkit-scrollbar {
       display: none; } }
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px; }
