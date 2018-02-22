@@ -14164,6 +14164,11 @@ main.main {
     border-right: 1px solid #09090b;
     border-left: 1px solid #09090b; }
 
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: beige !important;
+  background-image: none;
+  color: black; }
+
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }
@@ -14682,7 +14687,7 @@ button.btn.back-btn {
   .auth-window input:-webkit-autofill, .auth-window input:-webkit-autofill:focus {
     -webkit-text-fill-color: #3e515b !important;
     color: #3e515b !important;
-    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset; }
+    -webkit-box-shadow: 0 0 0px 1000px #fafbfc inset; }
   .auth-window input {
     color: #363636;
     background: none;
@@ -14886,7 +14891,7 @@ button.btn.back-btn {
 .app, #root, body, html {
   /*height:100% */ }
 #no-stick {
-  padding-top: 34px;
+  padding-top: 26px;
   overflow: hidden;
   font-size: 0.875em;
   margin-right: -20px;
@@ -14918,8 +14923,11 @@ button.btn.back-btn {
     background-color: #eff3f6 !important;
     line-height: 1px !important; }
   #no-stick .thead > .last_span_head {
-    width: 0px;
-    background-color: #eff3f6; }
+    width: 100%;
+    background-color: #eff3f6;
+    position: fixed;
+    height: 300px;
+    top: 0; }
   #no-stick .thead {
     background-color: #eff3f6;
     white-space: nowrap;
@@ -14927,7 +14935,7 @@ button.btn.back-btn {
     font-weight: bold;
     line-height: 0px; }
   #no-stick .thead > span {
-    height: 64px;
+    height: 72px;
     background-color: #fff;
     display: inline-block;
     width: 101px;
@@ -15038,9 +15046,8 @@ button.btn.back-btn {
         margin-right: 50px;
         margin-left: -50px; }
       #no-stick .rest-columns > .thead.h_shadow {
-        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8); }
-        #no-stick .rest-columns > .thead.h_shadow span {
-          border-bottom: 1px solid rgba(200, 200, 200, 0.8); }
+        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8);
+        overflow-y: visible; }
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
       display: table;
@@ -15079,9 +15086,9 @@ button.btn.back-btn {
     padding-right: 0px;
     padding-left: 0px; }
     #no-stick .thead {
-      height: 44px; }
+      height: 56px; }
       #no-stick .thead > span {
-        height: 44px;
+        height: 62px;
         margin-top: 0px;
         margin-bottom: 0px;
         width: 70px;
@@ -15095,9 +15102,9 @@ button.btn.back-btn {
           margin-right: 5px;
           width: 60px; }
     #no-stick .tbody {
-      height: calc(100vh - 110px) !important;
-      height: -moz-calc(100vh - 110px) !important;
-      height: -webkit-calc(100vh - 110px) !important; }
+      height: calc(100vh - 122px) !important;
+      height: -moz-calc(100vh - 122px) !important;
+      height: -webkit-calc(100vh - 122px) !important; }
       #no-stick .tbody .trow span {
         line-height: 34px;
         height: 34px; }
