@@ -396,7 +396,9 @@ export default class ObjectPage extends Component {
 
     trackActualSegments(startDate, endDate){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
         let value = this.state.timeSegment;    //  начальное значение
-        if(startDate.format('YYYY') === endDate.format('YYYY'))
+        if(startDate.format('YYYY') !== endDate.format('YYYY') && value === 'H')
+            value = 'M';
+        else if(startDate.format('YYYY') === endDate.format('YYYY'))
             value = 'M';
         if(startDate.format('YYYY-MM') === endDate.format('YYYY-MM'))
             value = 'D';
