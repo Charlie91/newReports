@@ -556,7 +556,7 @@ export default class ObjectPage extends Component {
                                             <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gl_area) + " м<sup>2</sup>"}} />
                                         </div>
 
-                                        <div>
+                                        <div className="opening_day">
                                             <strong>Дата открытия:</strong>
                                             <span className="muted">  {moment(state.object.since).locale('ru').format('DD MMMM YYYY') || ''} </span>
                                         </div>
@@ -564,6 +564,12 @@ export default class ObjectPage extends Component {
                                         {/*<div className="floor_plans">
                                          <strong>Поэтажные планы</strong>
                                          </div>*/}
+
+                                         <div className="social_links">
+                                             <a href={state.object.vkontakte} target="blank" className={state.object.vkontakte ? 'vk' : 'vk none'}></a>
+                                             <a href={state.object.facebook}  target="blank" className={state.object.facebook ? 'fb' : 'fb none'}></a>
+                                             <a href={state.object.instagram}  target="blank" className={state.object.instagram ? 'ig' : 'ig none'}></a>
+                                         </div>
 
                                     </Col>
                                     <Col md="5" className="geolocation">

@@ -333,9 +333,25 @@ $crdbody-padding : 1.3rem;
   }
   .features{
     margin-top:25px;
+    display: flex;
+    flex-direction: column;
     >div{
       line-height: 24px;
       margin-bottom: 4px;
+      &.opening_day{
+        flex: 1 0 auto;
+      }
+      &.social_links{
+        margin-bottom:-5px!important;
+        a{
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          margin-right: 20px;
+        }
+      }
       >strong{
         font-size: 20px;
         line-height: 24px;
@@ -786,7 +802,22 @@ $crdbody-padding : 1.3rem;
       -webkit-overflow-scrolling: auto;
     }
     .features{
+      padding-right: 0;
       >div{
+        &.social_links{
+          text-align:right;
+          margin-top: 8px;
+          margin-bottom: -10px !important;
+          a{
+            width: 23px;
+            height: 23px;
+            margin-right: 15px;
+            background-size: contain;
+            &:last-child{
+              margin-right: 8px;
+            }
+          }
+        }
         >strong{
           font-size: 16px;
           padding-right: 6px;

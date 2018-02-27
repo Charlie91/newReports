@@ -252,10 +252,23 @@
     margin-top: 13px;
     font-weight: 400; }
   .announce .features {
-    margin-top: 25px; }
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column; }
     .announce .features > div {
       line-height: 24px;
       margin-bottom: 4px; }
+      .announce .features > div.opening_day {
+        flex: 1 0 auto; }
+      .announce .features > div.social_links {
+        margin-bottom: -5px !important; }
+        .announce .features > div.social_links a {
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          margin-right: 20px; }
       .announce .features > div > strong {
         font-size: 20px;
         line-height: 24px;
@@ -544,15 +557,28 @@
         display: none; }
     .object_cont .average_hours {
       -webkit-overflow-scrolling: auto; }
-    .object_cont .features > div > strong {
-      font-size: 16px;
-      padding-right: 6px; }
-    .object_cont .features > div > .muted-bold {
-      font-size: 12px; }
-    .object_cont .features > div > .muted {
-      font-size: 14px; }
-    .object_cont .features .floor_plans {
-      margin-top: 10px; }
+    .object_cont .features {
+      padding-right: 0; }
+      .object_cont .features > div.social_links {
+        text-align: right;
+        margin-top: 8px;
+        margin-bottom: -10px !important; }
+        .object_cont .features > div.social_links a {
+          width: 23px;
+          height: 23px;
+          margin-right: 15px;
+          background-size: contain; }
+          .object_cont .features > div.social_links a:last-child {
+            margin-right: 8px; }
+      .object_cont .features > div > strong {
+        font-size: 16px;
+        padding-right: 6px; }
+      .object_cont .features > div > .muted-bold {
+        font-size: 12px; }
+      .object_cont .features > div > .muted {
+        font-size: 14px; }
+      .object_cont .features .floor_plans {
+        margin-top: 10px; }
     .object_cont .data_per_month {
       margin-right: -15px;
       margin-left: -15px;
