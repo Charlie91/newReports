@@ -431,16 +431,18 @@ export default class ObjectPage extends Component {
 
     handleMobileChangeStart(e){
         this.requestIsStarted();
+        let newSegment = this.trackActualSegments(moment(e.target.value),this.state.endDate);
         this.setState(
-            {startDate: moment(e.target.value)},
+            {startDate: moment(e.target.value),timeSegment:newSegment},
             () => this.getFloorsData())
         ;
     }
 
     handleMobileChangeEnd(e){
         this.requestIsStarted();
+        let newSegment = this.trackActualSegments(this.state.startDate,moment(e.target.value));
         this.setState(
-            {endDate: moment(e.target.value)},
+            {endDate: moment(e.target.value),timeSegment:newSegment},
             () => this.getFloorsData()
         );
     }
