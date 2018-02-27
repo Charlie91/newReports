@@ -174,7 +174,7 @@ export default class Authorization extends Component {
     showForm(){
             return(
                 <div>
-                    <form action="#" autoComplete="off" method="POST">
+                    <form action="#" autoComplete="on" method="POST">
                         <div className="form-group">
                             <label>
                                 {animateDynamicLabel(this.state.login, 'Логин')}
@@ -221,7 +221,9 @@ export default class Authorization extends Component {
         this.checkEitherLoggedInOrNot();//при заходе на стр сразу проверяем авторизован ли юзер
     }
 
+
     render() {
+
         return (
             <div className="auth-window animated fadeIn">
                 <AuthNav/>

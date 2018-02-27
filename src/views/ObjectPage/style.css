@@ -22,6 +22,15 @@
     .segmentation_btn-wrp .btn.active:focus {
       box-shadow: none; }
 
+.excellLink {
+  font-size: 14px;
+  text-align: left;
+  color: #7f8fa4 !important;
+  position: relative;
+  cursor: pointer;
+  font-weight: 400;
+  border-bottom: 1px #7f8fa4 dashed; }
+
 .half-opacity {
   opacity: 0.5; }
 
@@ -425,6 +434,10 @@
 @media screen and (min-width: 992px) and (max-width: 1060px) {
   .totalSum .muted {
     font-size: 11px; } }
+
+@media screen and (max-width: 1200px) {
+  .excellLink {
+    display: none; } }
 
 @media screen and (max-width: 991px) {
   .announce .img_wrapper img.fullIMG {

@@ -14107,6 +14107,19 @@ main.main {
 .dropdown--active .tag-item:last-child::after {
   content: url("../img/dropup.png"); }
 
+.excellLinkWrapper {
+  background: url("../img/icons/excell.png");
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  width: 155px;
+  margin: auto;
+  margin-right: 32px; }
+
+.excellLink::after {
+  position: absolute;
+  right: -28px;
+  top: -3px; }
+
 .dateBlock {
   text-align: center;
   line-height: 0.9;

@@ -17,6 +17,8 @@ import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
     formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import parser from 'ua-parser-js';
+import Table from './Table';
+import xlsExport from './xls-export';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -67,6 +69,7 @@ export default class ObjectPage extends Component {
             startDate: moment().add(-7,'days'),
             endDate: moment(),
             timeSegment: 'D',
+            tableData:[],
             chart :{
                 labels: [],
                 datasets: [
@@ -327,6 +330,7 @@ export default class ObjectPage extends Component {
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
         let state = this.state;
+        const xls = state.data && new xlsExport((state.data.floorData), 'Reports');//данные для выгрузки в таблицу
         let arr = [
             {val:'Y',text:'По годам',render:(state.startDate.year() !== state.endDate.year())},
             {val:'M',text:'По месяцам',render:(state.startDate.format('YYYY-MM') !== state.endDate.format('YYYY-MM'))},
@@ -335,24 +339,33 @@ export default class ObjectPage extends Component {
         ];
         return (
             <Col md='12' style={{minWidth:'100%'}} className='segmentation_btn-wrp order-1 order-md-12'>
-                <div className="btn-group" role="group">
-                    {arr.map( (item,i) =>
-                        (item.render) ?
-                            <button type="button"
-                                    key={i}
-                                    data-val={item.val}
-                                    disabled={this.state.requestIsInProcess}
-                                    className={'btn ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
-                                    onClick={this.changeTimeSegment.bind(this)}
-                            >
-                                {item.text}
-                            </button>
+                <Row>
+                    <Col md='12' xl={{size:6,offset:3}}>
+                        <div className="btn-group" role="group">
+                            {arr.map( (item,i) =>
+                                (item.render) ?
+                                    <button type="button"
+                                            key={i}
+                                            data-val={item.val}
+                                            disabled={this.state.requestIsInProcess}
+                                            className={'btn ' + ((this.state.timeSegment === item.val) ? 'active' : '')}
+                                            onClick={this.changeTimeSegment.bind(this)}
+                                    >
+                                        {item.text}
+                                    </button>
 
-                            :
+                                    :
 
-                            ''
-                    )}
-                </div>
+                                    ''
+                            )}
+                        </div>
+                    </Col>
+                    <Col md="0" xl={{size:3,offset:0}}>
+                        <div className="excellLinkWrapper">
+                            <a className="excellLink" onClick={xls ? () => {xls.exportToCSV('export.csv')} : ''}>Скачать в Excell</a>
+                        </div>
+                    </Col>
+                </Row>
             </Col>
         )
     }
@@ -506,6 +519,7 @@ export default class ObjectPage extends Component {
     render(){
         let state = this.state,
             pixelRatio = window.devicePixelRatio;//ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device
+
         return (
             <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
@@ -735,7 +749,6 @@ export default class ObjectPage extends Component {
                                 {this.renderSegmentationButtons()}
                             </Row>
                         </div>
-
                     </CardBody>
                 </Card>
             </div>
