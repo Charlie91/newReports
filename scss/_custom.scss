@@ -30,6 +30,7 @@ body{
   &.sidebar-mobile-show, &.dropdown-select-show {
     overflow: hidden;
     position:fixed;
+    width: 100%;
   }
 }
 

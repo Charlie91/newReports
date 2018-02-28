@@ -13785,7 +13785,8 @@ body {
   font-size: 16px; }
   body.sidebar-mobile-show, body.dropdown-select-show {
     overflow: hidden;
-    position: fixed; }
+    position: fixed;
+    width: 100%; }
 
 .app-footer {
   position: absolute;
