@@ -545,12 +545,12 @@ export default class ObjectPage extends Component {
                                 <hr className="divider"/>
                                 <Row>
                                     <Col md="7" className="features">
-                                        <div>
+                                        <div className={state.object.floors_count ? '' : 'none'}>
                                             <strong>Этажей:</strong>
-                                            <span className="muted">{this.state.object.floors_count || 4}</span>
+                                            <span className="muted">{state.object.floors_count || '?'}</span>
                                         </div>
 
-                                        <div>
+                                        <div className={(state.object.gb_area && state.object.gl_area) ? '' : 'none'}>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
                                             <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gb_area) + " м<sup>2</sup>"}} />
@@ -558,7 +558,7 @@ export default class ObjectPage extends Component {
                                             <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gl_area) + " м<sup>2</sup>"}} />
                                         </div>
 
-                                        <div className="opening_day">
+                                        <div className={state.object.since ? 'opening_day' : 'none'}>
                                             <strong>Дата открытия:</strong>
                                             <span className="muted">  {moment(state.object.since).locale('ru').format('DD MMMM YYYY') || ''} </span>
                                         </div>

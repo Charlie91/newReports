@@ -134,7 +134,6 @@ class TableVerticalNoStick extends Component {
         window.onresize = () => this.setWrapperWidth();
         this.setState({scrollTop: false});
         this.setState({scrollLeft: false});
-
     }
 
     componentWillUnmount(){

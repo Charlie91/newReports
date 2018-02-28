@@ -45,10 +45,11 @@ $font_size_mobile: 0.688em;
   .thead > .last_span_head{
     width: 0px;
     background-color: #eff3f6;
-    //width: 100%;
-    //background-color: #eff3f6;
-    //position: fixed;
-    //height: 100px;
+    width: 100%;
+    background-color: #eff3f6;
+    position: fixed;
+    height: 100px;
+    z-index: 999;
   }
 
 

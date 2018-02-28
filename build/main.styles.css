@@ -14947,7 +14947,12 @@ button.btn.back-btn {
     line-height: 1px !important; }
   #no-stick .thead > .last_span_head {
     width: 0px;
-    background-color: #eff3f6; }
+    background-color: #eff3f6;
+    width: 100%;
+    background-color: #eff3f6;
+    position: fixed;
+    height: 100px;
+    z-index: 999; }
   #no-stick .thead {
     background-color: #eff3f6;
     white-space: nowrap;
