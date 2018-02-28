@@ -542,7 +542,10 @@ export default class ObjectPage extends Component {
                                     <a className="link_desktop" href={this.state.object.website} target="_blank">{decodeHalfPunycodeLink(state.object.website) || ''}</a>
                                     <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: this.state.object.address}} />
                                 </div>
-                                <hr className="divider"/>
+                                <hr className={(state.object.floors_count &&
+                                                state.object.gb_area &&
+                                                state.object.gl_area &&
+                                                state.object.since ) ? 'divider' : 'none'}/>
                                 <Row>
                                     <Col md="7" className="features">
                                         <div className={state.object.floors_count ? '' : 'none'}>
