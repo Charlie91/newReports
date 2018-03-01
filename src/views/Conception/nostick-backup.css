@@ -1,0 +1,295 @@
+#no-stick {
+  padding-top: 26px;
+  overflow: hidden;
+  font-size: 0.875em;
+  margin-right: -20px;
+  -webkit-overflow-scrolling: touch; }
+  #no-stick .tbody > .trow + .empty_row {
+    padding-bottom: 2px;
+    background-color: #eff3f6 !important;
+    height: 10px !important;
+    line-height: 1px !important; }
+  #no-stick .empty_col {
+    min-width: 70px;
+    background-color: #eff3f6 !important;
+    height: 10px !important;
+    line-height: 1px !important; }
+  #no-stick .empty_col_last {
+    padding-right: 0px;
+    width: 0px !important;
+    background-color: #eff3f6 !important; }
+    #no-stick .empty_col_last > div {
+      padding-right: 0px !important;
+      background-color: #eff3f6 !important;
+      width: 0px !important;
+      margin-right: 0px;
+      margin-left: 0px; }
+  #no-stick .empty_row_col_last {
+    padding-right: 0px;
+    width: 10px !important;
+    height: 100% !important;
+    background-color: #eff3f6 !important;
+    line-height: 1px !important; }
+  #no-stick .thead > .last_span_head {
+    width: 0px;
+    background-color: #eff3f6;
+    width: 100%;
+    background-color: #eff3f6;
+    position: fixed;
+    height: 100px;
+    z-index: 999; }
+  #no-stick .thead {
+    background-color: #eff3f6;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 0px; }
+  #no-stick .thead > span {
+    height: 72px;
+    background-color: #fff;
+    display: inline-block;
+    width: 101px;
+    text-align: left;
+    line-height: 0px;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+    #no-stick .thead > span a {
+      position: absolute;
+      bottom: 0px;
+      margin-left: 10px;
+      margin-right: 18px;
+      margin-top: 28px;
+      margin-bottom: 8px;
+      width: 73px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 14px;
+      height: auto; }
+  #no-stick .trow {
+    white-space: nowrap; }
+    #no-stick .trow > span {
+      display: inline-block;
+      width: 101px;
+      line-height: 43px;
+      height: 43px;
+      text-align: right;
+      color: #354052;
+      cursor: pointer; }
+  #no-stick .trow_hover_d > span > div {
+    background-color: #e7e7e7; }
+  #no-stick .tbody {
+    height: calc(100vh - 225px);
+    height: -moz-calc(100vh - 225px);
+    height: -webkit-calc(100vh - 225px);
+    overflow: auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  #no-stick .average_column {
+    background-color: #fffddd !important;
+    color: #354052;
+    font-weight: normal;
+    font-style: italic; }
+    #no-stick .average_column span {
+      height: 15px;
+      line-height: 15px;
+      margin-top: 1px;
+      margin-bottom: 2px; }
+      #no-stick .average_column span > div {
+        margin-top: 0px !important;
+        margin-top: 0px !important;
+        line-height: 15px !important;
+        height: 15px !important; }
+  #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
+    font-weight: bold; }
+  #no-stick .average_month {
+    background-color: #fffddd !important;
+    color: #2d2d2d;
+    font-style: italic; }
+    #no-stick .average_month span {
+      height: 15px;
+      line-height: 15px;
+      margin-top: 1px;
+      margin-bottom: 2px; }
+      #no-stick .average_month span > div {
+        margin-top: 6px;
+        line-height: 15px !important;
+        height: 15px !important; }
+  #no-stick .fix-column {
+    float: left;
+    text-align: center;
+    font-weight: 400; }
+    #no-stick .fix-column .thead > span {
+      width: 139px; }
+    #no-stick .fix-column > .tbody {
+      overflow: hidden;
+      box-shadow: 1px 3px 8px 0px rgba(255, 255, 255, 0);
+      position: relative;
+      top: -0.5px; }
+      #no-stick .fix-column > .tbody > .trow {
+        text-align: right;
+        display: block;
+        background: #fff; }
+        #no-stick .fix-column > .tbody > .trow span {
+          padding-right: 0px;
+          width: 139px; }
+          #no-stick .fix-column > .tbody > .trow span > div {
+            width: 139px;
+            height: 31px;
+            padding-right: 21px;
+            line-height: 31px;
+            margin-top: 6px; }
+      #no-stick .fix-column > .tbody.v_shadow {
+        box-shadow: 1px 3px 8px 0px rgba(200, 200, 200, 0.8);
+        position: relative; }
+  #no-stick .fix-column > .tbody > .trow:first-child {
+    margin-top: 0px; }
+  #no-stick .fix-column > .tbody > .trow:last-child {
+    padding-bottom: 26px; }
+  #no-stick .rest-columns {
+    width: auto; }
+    #no-stick .rest-columns > .thead {
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0px 0px 0px 0px rgba(200, 200, 200, 0.8); }
+      #no-stick .rest-columns > .thead > span {
+        margin-right: 50px;
+        margin-left: -50px; }
+      #no-stick .rest-columns > .thead.h_shadow {
+        box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8); }
+    #no-stick .rest-columns .tbody .trow {
+      font-family: HelveticaNeue;
+      display: table;
+      background-color: #fff; }
+      #no-stick .rest-columns .tbody .trow > span > div {
+        height: 31px;
+        padding-right: 15px;
+        line-height: 31px;
+        margin-top: 6px; }
+  #no-stick .rest-columns > .thead > :first-child {
+    margin-left: 0px; }
+  #no-stick .link-to-object {
+    white-space: normal;
+    color: #354052; }
+  #no-stick .conceptions-table .holidays_column {
+    background-color: rgba(142, 214, 250, 0.15) !important; }
+    #no-stick .conceptions-table .holidays_column > span > div {
+      background-color: transparent !important; }
+      #no-stick .conceptions-table .holidays_column > span > div:hover {
+        background-color: transparent !important; }
+    #no-stick .conceptions-table .holidays_column:hover {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
+
+@media screen and (max-width: 991px) {
+  #no-stick {
+    margin-right: 0px; }
+    #no-stick .tbody {
+      height: calc(100vh - 190px) !important;
+      height: -moz-calc(100vh - 190px) !important;
+      height: -webkit-calc(100vh - 190px) !important; } }
+
+@media screen and (max-width: 767px) {
+  #no-stick {
+    font-size: 0.688em;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px; }
+    #no-stick .thead {
+      height: 56px; }
+      #no-stick .thead > span {
+        height: 62px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 70px;
+        position: relative; }
+        #no-stick .thead > span > a {
+          position: absolute;
+          bottom: 0px;
+          line-height: 12px;
+          height: auto;
+          margin-left: 8px;
+          margin-right: 5px;
+          width: 60px; }
+    #no-stick .tbody {
+      height: calc(100vh - 122px) !important;
+      height: -moz-calc(100vh - 122px) !important;
+      height: -webkit-calc(100vh - 122px) !important; }
+      #no-stick .tbody .trow span {
+        line-height: 34px;
+        height: 34px; }
+        #no-stick .tbody .trow span > div {
+          line-height: 20px !important;
+          margin-top: 7px !important;
+          margin-bottom: 7px !important; }
+    #no-stick .fix-column > .thead > span {
+      width: 80px; }
+    #no-stick .fix-column > .tbody > .trow {
+      background-color: #fff !important; }
+      #no-stick .fix-column > .tbody > .trow.days {
+        font-weight: bold; }
+      #no-stick .fix-column > .tbody > .trow > span {
+        width: 80px; }
+        #no-stick .fix-column > .tbody > .trow > span > div {
+          width: 80px;
+          height: 20px;
+          padding-right: 10px;
+          line-height: 20px; }
+    #no-stick .fix-column > .tbody > .holidays_column {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
+      #no-stick .fix-column > .tbody > .holidays_column > span > div {
+        background-color: transparent !important; }
+        #no-stick .fix-column > .tbody > .holidays_column > span > div:hover {
+          background-color: transparent !important; }
+      #no-stick .fix-column > .tbody > .holidays_column:hover {
+        background-color: rgba(142, 214, 250, 0.15) !important; }
+    #no-stick .rest-columns > .tbody > .trow {
+      background-color: #fff !important; }
+      #no-stick .rest-columns > .tbody > .trow > span {
+        width: 70px; }
+        #no-stick .rest-columns > .tbody > .trow > span > div {
+          width: 70px;
+          height: 20px;
+          padding-right: 6px;
+          line-height: 20px; }
+    #no-stick .rest-columns > .tbody > .holidays_column {
+      background-color: rgba(142, 214, 250, 0.15) !important; }
+      #no-stick .rest-columns > .tbody > .holidays_column > span > div {
+        background-color: transparent !important; }
+        #no-stick .rest-columns > .tbody > .holidays_column > span > div:hover {
+          background-color: transparent !important; }
+      #no-stick .rest-columns > .tbody > .holidays_column:hover {
+        background-color: rgba(142, 214, 250, 0.15) !important; }
+    #no-stick .average_column, #no-stick .average_month {
+      background-color: inherit !important; }
+      #no-stick .average_column span, #no-stick .average_month span {
+        background-color: inherit !important;
+        margin-top: 0px;
+        margin-bottom: 0px; }
+        #no-stick .average_column span > div, #no-stick .average_month span > div {
+          background-color: rgba(255, 238, 28, 0.15) !important;
+          margin-top: 7px !important;
+          margin-bottom: 7px !important;
+          height: 20px !important;
+          padding-right: 6px;
+          line-height: 20px !important; }
+    #no-stick .tbody > .trow + .empty_row {
+      background-color: #eff3f6 !important; }
+    #no-stick ::-webkit-scrollbar {
+      display: none; } }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; }
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #eff3f6; }
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #7f8fa4; }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #e1e4e6; }

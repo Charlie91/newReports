@@ -7,7 +7,7 @@ $font_size_mobile: 0.688em;
   overflow: hidden;
   font-size: $font_size;
   margin-right: -20px;
-  -webkit-overflow-scrolling: touch;
+  //-webkit-overflow-scrolling: touch; //прокрутка с инерцией на моб-х, вызывает баг с тенями на моб-х устройствах, использовать по осторожности
 
 
   .tbody > .trow + .empty_row{
@@ -86,7 +86,6 @@ $font_size_mobile: 0.688em;
     }
   }
   .trow {
-    //background-color: #fff;
     white-space: nowrap;
     > span {
       display: inline-block;
@@ -185,6 +184,7 @@ $font_size_mobile: 0.688em;
       &.v_shadow{
         box-shadow: 1px 3px 8px 0px rgba(200,200,200,0.8);
         position: relative;
+        z-index: 900;
       }
     }
   }
@@ -208,7 +208,6 @@ $font_size_mobile: 0.688em;
       &.h_shadow{
         //box-shadow: 0px 6px 6px -4px rgba(200,200,200,0.8);
         box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8);
-        //overflow-y:visible;
         span{
           //border-bottom:1px solid rgba(200,200,200,0.8);
         }
@@ -218,7 +217,7 @@ $font_size_mobile: 0.688em;
       .trow{
         font-family: HelveticaNeue;
         display: table;
-        background-color: #fff;
+        background: #fff;
         >span>div {
           height: 31px;
           padding-right: 15px;
@@ -359,7 +358,6 @@ $font_size_mobile: 0.688em;
             line-height: 20px;
           }
         }
-        background-color: #fff !important;
       }
       .holidays_column {
         background-color: rgba(142, 214, 250, 0.15)!important;
@@ -378,7 +376,7 @@ $font_size_mobile: 0.688em;
     .average_column, .average_month {
       background-color:inherit!important;
       span {
-        background-color:inherit!important;
+        background-color:#fff!important;
         margin-top: 0px;
         margin-bottom: 0px;
         >div{

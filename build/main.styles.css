@@ -14917,8 +14917,7 @@ button.btn.back-btn {
   padding-top: 26px;
   overflow: hidden;
   font-size: 0.875em;
-  margin-right: -20px;
-  -webkit-overflow-scrolling: touch; }
+  margin-right: -20px; }
   #no-stick .tbody > .trow + .empty_row {
     padding-bottom: 2px;
     background-color: #eff3f6 !important;
@@ -15056,7 +15055,8 @@ button.btn.back-btn {
             margin-top: 6px; }
       #no-stick .fix-column > .tbody.v_shadow {
         box-shadow: 1px 3px 8px 0px rgba(200, 200, 200, 0.8);
-        position: relative; }
+        position: relative;
+        z-index: 900; }
   #no-stick .fix-column > .tbody > .trow:first-child {
     margin-top: 0px; }
   #no-stick .fix-column > .tbody > .trow:last-child {
@@ -15075,7 +15075,7 @@ button.btn.back-btn {
     #no-stick .rest-columns .tbody .trow {
       font-family: HelveticaNeue;
       display: table;
-      background-color: #fff; }
+      background: #fff; }
       #no-stick .rest-columns .tbody .trow > span > div {
         height: 31px;
         padding-right: 15px;
@@ -15157,15 +15157,13 @@ button.btn.back-btn {
           background-color: transparent !important; }
       #no-stick .fix-column > .tbody > .holidays_column:hover {
         background-color: rgba(142, 214, 250, 0.15) !important; }
-    #no-stick .rest-columns > .tbody > .trow {
-      background-color: #fff !important; }
-      #no-stick .rest-columns > .tbody > .trow > span {
-        width: 70px; }
-        #no-stick .rest-columns > .tbody > .trow > span > div {
-          width: 70px;
-          height: 20px;
-          padding-right: 6px;
-          line-height: 20px; }
+    #no-stick .rest-columns > .tbody > .trow > span {
+      width: 70px; }
+      #no-stick .rest-columns > .tbody > .trow > span > div {
+        width: 70px;
+        height: 20px;
+        padding-right: 6px;
+        line-height: 20px; }
     #no-stick .rest-columns > .tbody > .holidays_column {
       background-color: rgba(142, 214, 250, 0.15) !important; }
       #no-stick .rest-columns > .tbody > .holidays_column > span > div {
@@ -15177,7 +15175,7 @@ button.btn.back-btn {
     #no-stick .average_column, #no-stick .average_month {
       background-color: inherit !important; }
       #no-stick .average_column span, #no-stick .average_month span {
-        background-color: inherit !important;
+        background-color: #fff !important;
         margin-top: 0px;
         margin-bottom: 0px; }
         #no-stick .average_column span > div, #no-stick .average_month span > div {
