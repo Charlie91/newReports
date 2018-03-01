@@ -110,15 +110,26 @@ class Sidebar extends Component {
 
         // nav dropdown
         const navDropdown = (item, key) => {
+            // return (
+            //     <li key={key} className={activeRoute(item.url, props)}>
+            //         <a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick.bind(this)}><i className={item.icon}></i> {item.name}</a>
+            //         <ul className="nav-dropdown-items">
+            //             {navList(item.children)}
+            //         </ul>
+            //     </li>
+            // )
             return (
                 <li key={key} className={activeRoute(item.url, props)}>
-                    <a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick.bind(this)}><i className={item.icon}></i> {item.name}</a>
+                    <NavLink className="nav-link nav-dropdown-toggle" to={' '} onClick={handleClick.bind(this)}>
+                        <i className={item.icon}></i>{item.name}
+                    </NavLink>
                     <ul className="nav-dropdown-items">
                         {navList(item.children)}
                     </ul>
                 </li>
             )
         };
+
 
         // nav link
         const navLink = (item, idx) =>
