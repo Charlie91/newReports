@@ -556,7 +556,14 @@
       .object_cont .announce .obj_title a.link_desktop {
         display: none; }
     .object_cont .average_hours {
-      -webkit-overflow-scrolling: auto; }
+      -webkit-overflow-scrolling: touch; }
+      .object_cont .average_hours .scrollHider {
+        overflow-y: hidden;
+        margin-top: -10px;
+        margin-bottom: 20px; }
+        .object_cont .average_hours .scrollHider div.card-body {
+          margin-bottom: -12px;
+          margin-top: 10px; }
     .object_cont .features {
       padding-right: 0; }
       .object_cont .features > div.social_links {

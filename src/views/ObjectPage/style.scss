@@ -799,7 +799,16 @@ $crdbody-padding : 1.3rem;
       }
     }
     .average_hours{
-      -webkit-overflow-scrolling: auto;
+      -webkit-overflow-scrolling: touch;
+      .scrollHider{
+        overflow-y:hidden;
+        margin-top:-10px;
+        margin-bottom: 20px;
+        div.card-body{
+          margin-bottom: -12px;
+          margin-top: 10px;
+        }
+      }
     }
     .features{
       padding-right: 0;
