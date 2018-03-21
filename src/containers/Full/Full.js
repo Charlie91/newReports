@@ -89,7 +89,12 @@ class Full extends Component {
             }
             else{
                 item.url = parent.url + '/' + item.id;
+                if(parent.parent_id){
+                    item.full_name = parent.full_name + ' / ' + item.full_name
+                }
             }
+
+
 
             if(item.children)
                 item.children.forEach( child => {
