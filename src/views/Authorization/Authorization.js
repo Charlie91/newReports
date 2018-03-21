@@ -168,16 +168,28 @@ export default class Authorization extends Component {
                 <div className="hintMessage alert alert-danger">Соединение потеряно</div>
             )
     }
-//                                    autoComplete="new-password"                                     size="5"
+
+    checkIfChromeAutofilled(){  //Обработка автозаполнения полей в хроме
+
+        let inputs = document.querySelectorAll('.auth-form div input');
+
+        for(let i = 0; i < inputs.length;i++){
+            if(getComputedStyle(inputs[i]).boxShadow !== "rgb(250, 251, 252) 0px 0px 0px 1000px inset")
+                return false;
+        }
+
+        return true;
+
+    }
 
 
     showForm(){
             return(
                 <div>
-                    <form action="#" autoComplete="on" method="POST">
+                    <form action="#" className="auth-form" autoComplete="on" method="POST">
                         <div className="form-group">
                             <label>
-                                {animateDynamicLabel(this.state.login, 'Логин')}
+                                {animateDynamicLabel(this.state.login || this.state.chromeAutofill, 'Логин')}
                                 <input
                                     type="text"
                                     value={this.state.login}
@@ -188,13 +200,13 @@ export default class Authorization extends Component {
                                 />
                             </label>
                             <label>
-                                {animateDynamicLabel(this.state.password, 'Пароль')}
+                                {animateDynamicLabel(this.state.password || this.state.chromeAutofill, 'Пароль')}
                                 <input
                                     type="password"
                                     value={this.state.password}
                                     onChange={this.setPassword.bind(this)}
                                     autoComplete="on"
-                                    className="form-control"
+                                    className="form-control pass"
                                     placeholder="Пароль"
                                 />
                             </label>
@@ -206,7 +218,7 @@ export default class Authorization extends Component {
                                     type="submit"
                                     className="btn auth-btn"
                                     onClick={this.logIn.bind(this)}
-                                    disabled={!(this.state.login && this.state.password)}
+                                    disabled={!(this.state.login && this.state.password) && !this.state.chromeAutofill}
                                 >
                                     Войти
                                 </button>
@@ -219,8 +231,21 @@ export default class Authorization extends Component {
 
     componentDidMount(){
         this.checkEitherLoggedInOrNot();//при заходе на стр сразу проверяем авторизован ли юзер
+
+        setTimeout(() => {
+            if(this.checkIfChromeAutofilled()) //если хром автозаполнил поля - обрабатываем их как заполненные пользователем
+                this.setState({chromeAutofill:true});
+            else
+                this.setState({chromeAutofill:false});
+        },500)
     }
 
+    componentDidUpdate(prevProps,prevState){
+        setTimeout(() => {
+            if(!this.checkIfChromeAutofilled() && prevState.chromeAutofill) //если хром автозаполнил поля - обрабатываем их как заполненные пользователем
+                this.setState({chromeAutofill:false});
+        },500)
+    }
 
     render() {
 

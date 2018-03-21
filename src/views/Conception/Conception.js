@@ -186,6 +186,8 @@ class Conception extends Component {
 
 
     renderObjects(){    // рендер таблицы объектов
+        console.log(this.state.objects);
+
         if(!this.state.objects.length)return(
             <Loading/>
         );

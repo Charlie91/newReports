@@ -26,6 +26,14 @@ export default class LogOut extends Authorization { // Внимание! Это�
                 this.setState({isLoggedIn:nextProps.isLoggedIn})
     }
 
+    componentDidMount(){
+        //метод необходим, чтобы не применялся метод родителя
+    }
+
+    componentDidUpdate(){
+        //метод необходим, чтобы не применялся метод родителя
+    }
+
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута
         ajaxRequest(API.auth,options)
             .then(data => {

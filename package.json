@@ -59,7 +59,8 @@
     "dev": "webpack -d --progress --watch",
     "start": "webpack-dev-server --env.dev --open --hot --progress --colors --inline --host devhost",
     "build": "webpack -p --progress",
-    "clean": "rimraf ./build"
+    "clean": "rimraf ./build",
+    "production": "webpack --config prod.config.js"
   },
   "engines": {
     "node": ">= 6.0.0",
