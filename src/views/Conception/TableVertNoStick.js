@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-//import './react-bootstrap-table.css';
+//import './react-bootstrap-tables.css';
 import './nostick.scss';
 import {
     Table,

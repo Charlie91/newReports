@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {API} from './../../utils/api_paths';
 import moment from 'moment';
 import {ajaxRequest} from './../../utils/utils';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
-import {Line} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import { YMaps, Map, Placemark, Circle } from 'react-yandex-maps';
 import BarChart from './BarChart';
@@ -16,9 +14,8 @@ import Loading from './../Loading/Small';
 import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
     formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
-import parser from 'ua-parser-js';
-import Table from './Table';
 import xlsExport from './xls-export';
+import Datepickers from './Datepickers';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -176,19 +173,15 @@ export default class ObjectPage extends Component {
                 }
                 else{
                     let diff = moment(dates[0]).diff(moment(dates[1]));
-                    let first_date = moment(moment(dates[0]) + diff).format();
-                    let last_date = moment(moment(dates[dates.length - 1]) - diff).format();
-                    let avg = parseInt(average(values));
-                    values.unshift(avg);
-                    dates.unshift(first_date);
-                    values.push(avg);
-                    dates.push(last_date);
-                    chartObj.datasets[0].data = values;
-                    let values2 = values.slice(1, values.length-1 );
-                    values2.push(NaN);
-                    values2.unshift(NaN);
-                    chartObj.labels = dates;
-                    chartObj.datasets[1].data = values2;
+                    let first_date = moment(moment(dates[0]) + diff).format(),
+                        last_date = moment(moment(dates[dates.length - 1]) - diff).format(),
+                        avg = parseInt(average(values));
+
+                    values = [avg, ...values, avg];
+                    dates = [first_date, ...dates, last_date];
+
+                    let values2 = [NaN,...values.slice(1, values.length-1 ),NaN];
+                    [ chartObj.datasets[0].data, chartObj.datasets[1].data, chartObj.labels ] = [values,values2,dates];
 
                     this.setState({
                         data:data,
@@ -229,6 +222,23 @@ export default class ObjectPage extends Component {
                 this.setState({monthlyData:newArr})
             })
             .catch(err => console.log(err))
+    }
+
+    getInnerObjects(){  //получаем список внутренних объектов(кафе и магазинов) в ТРЦ
+        let url = `${API.innerObjects}${this.props.match.params.id}`;
+        let options = {
+                method: 'GET',
+                credentials: 'include',
+                mode: 'cors'
+        };
+
+        ajaxRequest(url,options)
+            .then(data => {
+                console.log(data);
+               // let n
+            })
+            .catch(err => console.log(err))
+
     }
 
     getNewStyleForChart(typeArr){
@@ -377,8 +387,7 @@ export default class ObjectPage extends Component {
         else if((digitCount(state.totalSum) > 6) || ( state.viewportWidth > 768 && state.viewportWidth < 1525))
             return state.currency.substring(0,3) + '.';
         else
-            return state.currency;
-
+            return state.currency
     }
 
     countAverageOfMoths(){
@@ -417,7 +426,6 @@ export default class ObjectPage extends Component {
     }
 
     handleChangeEnd(date) {
-        console.log('change');
         if(date - this.state.startDate < 0)return false;
         if(date > moment())return false;
         this.requestIsStarted();
@@ -445,18 +453,6 @@ export default class ObjectPage extends Component {
             () => this.getFloorsData()
         );
     }
-
-    /*handleChartScrolling(){ //декорируем Y ось графика во время горизонтального скролла
-     let chart = document.querySelector('.line-chart-wrapper'),
-     Yaxis = document.getElementById('scrollYAxis');
-     chart.onscroll = () => {
-     if(chart.scrollLeft)
-     Yaxis.style.cssText = 'border-right-color:rgba(208, 208, 208, 0.5);';
-     else
-     Yaxis.style.cssText = '';
-     }
-     }
-     */
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
         document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
@@ -509,7 +505,7 @@ export default class ObjectPage extends Component {
 
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         this.addSpecificStyles();
-        //this.handleChartScrolling();//декорируем Y ось графика во время горизонтального скролла
+        this.getInnerObjects()
     }
 
     componentWillUnmount(){
@@ -524,7 +520,7 @@ export default class ObjectPage extends Component {
             pixelRatio = window.devicePixelRatio;//ratio of the resolution in physical pixels to the resolution in CSS pixels for the current display device
 
         return (
-            <div className={((this.state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
+            <div className={((state.type === 'Выручка') ? "revenue" : "trafic") + ' object_cont'}>
                 <Row className="announce">
                     <Col className="data_wrapper order-12 order-md-1" md="6" xs="12">
                         <Card>
@@ -538,8 +534,8 @@ export default class ObjectPage extends Component {
                                             <a className="link_mobile" target="_blank" href={state.object.website}>cайт</a>
                                         </Col>
                                     </Row>
-                                    <a className="link_desktop" href={this.state.object.website} target="_blank">{decodeHalfPunycodeLink(state.object.website) || ''}</a>
-                                    <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: this.state.object.address}} />
+                                    <a className="link_desktop" href={state.object.website} target="_blank">{decodeHalfPunycodeLink(state.object.website) || ''}</a>
+                                    <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: state.object.address}} />
                                 </div>
                                 <hr className={(state.object.floors_count &&
                                                 state.object.gb_area &&
@@ -555,9 +551,9 @@ export default class ObjectPage extends Component {
                                         <div className={(state.object.gb_area && state.object.gl_area) ? '' : 'none'}>
                                             <strong>Площадь:</strong>
                                             <span className="muted">  GBA</span>
-                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gb_area) + " м<sup>2</sup>"}} />
+                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(state.object.gb_area) + " м<sup>2</sup>"}} />
                                             <span className="muted">, GLA </span>
-                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(this.state.object.gl_area) + " м<sup>2</sup>"}} />
+                                            <span className="muted-bold" dangerouslySetInnerHTML={{__html: formatNumberBySimpleSpaces(state.object.gl_area) + " м<sup>2</sup>"}} />
                                         </div>
 
                                         <div className={state.object.since ? 'opening_day' : 'none'}>
@@ -580,7 +576,7 @@ export default class ObjectPage extends Component {
                                         <div className="map_wrapper">
                                             {this.renderMap()}
                                         </div>
-                                        <div className="address" dangerouslySetInnerHTML={{__html: this.state.object.city_name + ',<br/>' + String(this.state.object.address).replace(this.state.object.city_name + ',', '' ) }} />
+                                        <div className="address" dangerouslySetInnerHTML={{__html: state.object.city_name + ',<br/>' + String(state.object.address).replace(state.object.city_name + ',', '' ) }} />
                                     </Col>
                                 </Row>
                             </CardBody>
@@ -591,15 +587,15 @@ export default class ObjectPage extends Component {
                     </Col>
                 </Row>
 
-                {(this.state.viewportWidth > 1467) ?
+                {(state.viewportWidth > 1467) ?
                     <BarChart
-                        render={!(this.state.type === 'Выручка')}
-                        data={this.state.data}
+                        render={!(state.type === 'Выручка')}
+                        data={state.data}
                     />
                     :
                     <HorizontalBarChart
-                        render={!(this.state.type === 'Выручка')}
-                        data={this.state.data}
+                        render={!(state.type === 'Выручка')}
+                        data={state.data}
                     />
                 }
 
@@ -607,8 +603,8 @@ export default class ObjectPage extends Component {
                 <Card className="data_per_month">
                     <Row className="header">
                         <Col md='6' xl="6" lg="7">
-                            <h4>{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
-                            <div className="muted">Указана суммарная {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
+                            <h4>{(state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} по месяцам</h4>
+                            <div className="muted">Указана суммарная {(state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                         </Col>
 
                         <Col className={(state.viewportWidth < 768) ? 'none' : ''}
@@ -623,18 +619,18 @@ export default class ObjectPage extends Component {
                                              __html:`${formatNumberBySpaces(this.countAverageOfMoths())} ${this.renderCurrency()}`
                                          }}
                                ></span>
-                            <div className="muted">Средняя {(this.state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
+                            <div className="muted">Средняя {(state.type === 'Выручка') ? 'выручка' : 'посещаемость'} в месяц</div>
                         </Col>
                     </Row>
                     <div className="scrollHider">
                         <CardBody>
                             {
-                                (this.state.monthlyData) ?
+                                (state.monthlyData) ?
                                     <ul>
                                         <li className={(state.viewportWidth > 768) ? 'none average' : 'average'}>
                                             <div>
                                                 <strong
-                                                    dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                                    dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(this.countAverageOfMoths()))} ${((state.type === 'Выручка') ? '' : 'чел.')}`}}
                                                 >
                                                 </strong>
                                             </div>
@@ -643,12 +639,12 @@ export default class ObjectPage extends Component {
                                             </div>
                                         </li>
                                         {
-                                            this.state.monthlyData.map( (item,i) => {
+                                            state.monthlyData.map( (item,i) => {
                                                 return(
                                                     <li key={i}>
                                                         <div>
                                                             <strong
-                                                                dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(item.value))} ${((this.state.type === 'Выручка') ? '' : 'чел.')}`}}
+                                                                dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(formatNumericValue(item.value))} ${((state.type === 'Выручка') ? '' : 'чел.')}`}}
                                                             >
                                                             </strong>
                                                         </div>
@@ -669,58 +665,17 @@ export default class ObjectPage extends Component {
 
                 <Card className="all_data">
                     <CardBody className="card-body">
-                        <h5 className="measure">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за период</h5>
+                        <h5 className="measure">{(state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за период</h5>
                         <Row>
-                            <Col className="datepickers" xs="12" md="5" lg="5" xl="4">
-                                <span className="muted">Период с </span>
-                                <div className="datepicker_wrp">
-                                    {
-                                        (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
-                                            <DatePicker
-                                                className="datepicker"
-                                                selected={this.state.startDate}
-                                                disabled={this.state.requestIsInProcess}
-                                                selectsStart
-                                                startDate={this.state.startDate}
-                                                endDate={this.state.endDate}
-                                                maxDate={moment()}
-                                                dateFormat="DD MMM YYYY"
-                                                onChange={this.handleChangeStart.bind(this)}
-                                            />
-                                            :
-                                            <input className="datepicker"
-                                                   required
-                                                   value={this.state.startDate.format('YYYY-MM-DD')}
-                                                   onChange = {this.handleMobileChangeStart.bind(this)}
-                                                   type="date"
-                                            />
-                                    }
-                                </div>
-                                <div className="datepicker_wrp">
-                                    {
-                                        (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
-                                            <DatePicker
-                                                className="datepicker"
-                                                selected={this.state.endDate}
-                                                disabled={this.state.requestIsInProcess}
-                                                selectsEnd
-                                                startDate={this.state.startDate}
-                                                endDate={this.state.endDate}
-                                                maxDate={moment()}
-                                                dateFormat="DD MMM YYYY"
-                                                onChange={this.handleChangeEnd.bind(this)}
-                                            />
-                                            :
-                                            <input
-                                                className="datepicker"
-                                                required
-                                                value={this.state.endDate.format('YYYY-MM-DD')}
-                                                onChange = {this.handleMobileChangeEnd.bind(this)}
-                                                type="date"
-                                            />
-                                    }
-                                </div>
-                            </Col>
+                            <Datepickers
+                                startDate={state.startDate}
+                                endDate={state.endDate}
+                                requestIsInProcess={state.requestIsInProcess}
+                                handleChangeStart={this.handleChangeStart.bind(this)}
+                                handleChangeEnd={this.handleChangeEnd.bind(this)}
+                                handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}
+                                handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}
+                            />
                             <Col xs="12" md="4" lg="4" xl="5">
                                 {this.renderFloorObjectsButtons()}
                             </Col>
@@ -732,30 +687,30 @@ export default class ObjectPage extends Component {
                                           }}
                                 >
                                 </span>
-                                <span className="muted">{(this.state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                                <span className="muted">{(state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
                             </Col>
                         </Row>
                         <div className="scrollHider">
                             <Row>
-                                {(this.state.viewportWidth > 720) ?
+                                {(state.viewportWidth > 720) ?
                                     <DataChart
-                                        render={!(this.state.type === 'Выручка')}
-                                        data={this.state.chart}
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        currency={this.state.currency}
-                                        timeSegment={this.state.timeSegment}
-                                        emptyData={this.state.emptyData}
+                                        render={!(state.type === 'Выручка')}
+                                        data={state.chart}
+                                        startDate={state.startDate}
+                                        endDate={state.endDate}
+                                        currency={state.currency}
+                                        timeSegment={state.timeSegment}
+                                        emptyData={state.emptyData}
                                     />
                                     :
                                     <DataChartSmall
-                                        render={!(this.state.type === 'Выручка')}
-                                        data={this.state.chart}
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        currency={this.state.currency}
-                                        timeSegment={this.state.timeSegment}
-                                        emptyData={this.state.emptyData}
+                                        render={!(state.type === 'Выручка')}
+                                        data={state.chart}
+                                        startDate={state.startDate}
+                                        endDate={state.endDate}
+                                        currency={state.currency}
+                                        timeSegment={state.timeSegment}
+                                        emptyData={state.emptyData}
                                     />
                                 }
                                 {this.renderSegmentationButtons()}
@@ -763,6 +718,13 @@ export default class ObjectPage extends Component {
                         </div>
                     </CardBody>
                 </Card>
+                <Card className="inner_objects">
+                    <CardBody>
+                        <h5>Магазины в ТЦ</h5>
+                        <span className="muted">Список магазинов по категориям</span>
+                    </CardBody>
+                </Card>
+
             </div>
         )
     }

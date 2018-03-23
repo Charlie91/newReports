@@ -1,5 +1,21 @@
 $crdbody-padding : 1.3rem;
 
+
+.object_cont{
+  padding-bottom: 30px;
+  h5{
+    font-size: 30px;
+    color:#354052
+  }
+  .card{
+    margin-bottom:30px;
+    .card-body {
+      //padding: 25px 0px 25px 40px;
+    }
+  }
+
+}
+
 .app-body_new_margin{
   margin-top:55px
 }
@@ -198,7 +214,6 @@ $crdbody-padding : 1.3rem;
 }
 
 .all_data {
-  margin-bottom: 50px;
   .datepickers{
     white-space: nowrap;
     .muted{

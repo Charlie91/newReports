@@ -1,34 +1,18 @@
-// main build
-export let API = {};
-if(PRODUCTION){
-    API = {
-        main:'https://repo.re-ports.ru/app/UserData',
-        auth:'https://repo.re-ports.ru/app/Auth',
-        register:'https://repo.re-ports.ru/app/Register',
-        nav:'https://repo.re-ports.ru/app/Conceptions',
-        cities:'https://repo.re-ports.ru/app/Cities?conceptId=',
-        objects: 'https://repo.re-ports.ru/app/Objects',
-        objectsData:'https://repo.re-ports.ru/app/ObjectCache',
-        floors:'https://repo.re-ports.ru/app/ObjectFloors?objId=',
-        floorsData:'https://repo.re-ports.ru/app/FloorData',
-        userData:'https://repo.re-ports.ru/app/UserData',
-        imgPath:'https://re-ports.ru/app/img/malls/resize',
-        thumbPath:'https://re-ports.ru/app/img/malls/thumb/'
-    };
-}
-else {
-    API = {
-        main: 'https://repo.re-ports.ru/app_test/UserData',
-        auth: 'https://repo.re-ports.ru/app_test/Auth',
-        register: 'https://repo.re-ports.ru/app_test/Register',
-        nav: 'https://repo.re-ports.ru/app_test/Conceptions',
-        cities: 'https://repo.re-ports.ru/app_test/Cities?conceptId=',
-        objects: 'https://repo.re-ports.ru/app_test/Objects',
-        objectsData: 'https://repo.re-ports.ru/app_test/ObjectCache',
-        floors:'https://repo.re-ports.ru/app_test/ObjectFloors?objId=',
-        floorsData:'https://repo.re-ports.ru/app_test/FloorData',
-        userData:'https://repo.re-ports.ru/app_test/UserData',
-        imgPath:'https://re-ports.ru/app/img/malls/resize',
-        thumbPath:'https://re-ports.ru/app/img/malls/thumb/'
-    }
+
+let postfix = PRODUCTION ? '' : '_test'; //пути различаются в девелопменте и продакшене
+
+export let API = {
+    main: `https://repo.re-ports.ru/app${postfix}/UserData`,
+    auth: `https://repo.re-ports.ru/app${postfix}/Auth`,
+    register: `https://repo.re-ports.ru/app${postfix}/Register`,
+    nav: `https://repo.re-ports.ru/app${postfix}/Conceptions`,
+    cities: `https://repo.re-ports.ru/app${postfix}/Cities?conceptId=`,
+    objects: `https://repo.re-ports.ru/app${postfix}/Objects`,
+    objectsData: `https://repo.re-ports.ru/app${postfix}/ObjectCache`,
+    floors:`https://repo.re-ports.ru/app${postfix}/ObjectFloors?objId=`,
+    floorsData:`https://repo.re-ports.ru/app${postfix}/FloorData`,
+    innerObjects:`https://repo.re-ports.ru/trc_api${postfix}/shopData?trcId=`,
+    userData:`https://repo.re-ports.ru/app${postfix}/UserData`,
+    imgPath:`https://re-ports.ru/app/img/malls/resize`,
+    thumbPath:`https://re-ports.ru/app/img/malls/thumb/`
 }

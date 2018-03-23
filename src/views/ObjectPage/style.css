@@ -1,4 +1,12 @@
 @charset "UTF-8";
+.object_cont {
+  padding-bottom: 30px; }
+  .object_cont h5 {
+    font-size: 30px;
+    color: #354052; }
+  .object_cont .card {
+    margin-bottom: 30px; }
+
 .app-body_new_margin {
   margin-top: 55px; }
 
@@ -152,12 +160,10 @@
           line-height: 18px;
           font-size: 14px; }
 
-.all_data {
-  margin-bottom: 50px; }
-  .all_data .datepickers {
-    white-space: nowrap; }
-    .all_data .datepickers .muted {
-      margin-right: 2px; }
+.all_data .datepickers {
+  white-space: nowrap; }
+  .all_data .datepickers .muted {
+    margin-right: 2px; }
 
 .object-table td, .object-table th {
   text-align: center; }
