@@ -16,6 +16,7 @@ import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
     formatNumberBySpaces,average,decodeHalfPunycodeLink} from './../../utils/utils';
 import xlsExport from './xls-export';
 import Datepickers from './Datepickers';
+import ShopList from './ShopList';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -67,6 +68,7 @@ export default class ObjectPage extends Component {
             endDate: moment(),
             timeSegment: 'D',
             tableData:[],
+            shops:[],
             chart :{
                 labels: [],
                 datasets: [
@@ -235,7 +237,25 @@ export default class ObjectPage extends Component {
         ajaxRequest(url,options)
             .then(data => {
                 console.log(data);
-               // let n
+                let titles = [];
+                for(let i = 0; i < data.inners.length;i++){
+                    if(!(~titles.indexOf(data.inners[i].type))){
+                        titles.push(data.inners[i].type);
+                    }
+                }
+                let hierarchiedObjects = titles.map(item => {
+                    return {
+                        title : item,
+                        objects:[]
+                    }
+                });
+                data.inners.forEach(item => {
+                    hierarchiedObjects.forEach(object => {
+                        if(item.type === object.title)
+                            object.objects.push(item)
+                    })
+                });
+                this.setState({shops:hierarchiedObjects});
             })
             .catch(err => console.log(err))
 
@@ -722,11 +742,13 @@ export default class ObjectPage extends Component {
                     <CardBody>
                         <h5>Магазины в ТЦ</h5>
                         <span className="muted">Список магазинов по категориям</span>
+                        <ShopList
+                            shops={this.state.shops}
+                        />
                     </CardBody>
                 </Card>
 
             </div>
         )
     }
-}
-
+};

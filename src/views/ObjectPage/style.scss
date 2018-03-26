@@ -13,6 +13,40 @@ $crdbody-padding : 1.3rem;
       //padding: 25px 0px 25px 40px;
     }
   }
+  .inner_objects{
+    .card-body{
+      padding: 25px 0px 25px 40px;
+    }
+    .list_wrapper{
+      -webkit-column-count: 4; /* Chrome, Safari, Opera */
+      -moz-column-count: 4; /* Firefox */
+      column-count: 4;
+
+      li{
+        list-style: none;
+
+        &.title{
+          font-weight:500;
+          font-size: 18px;
+          line-height:22px;
+          margin-bottom:5px;
+          &:not(:first-of-type){
+            margin-top:20px;
+          }
+        }
+        &.list-item{
+          margin-bottom:10px;
+          font-weight: 400;
+          font-size: 14px;
+          color: #7f8fa4;
+          text-decoration: underline;
+          cursor:pointer;
+          line-height:17px
+        }
+      }
+    }
+
+  }
 
 }
 

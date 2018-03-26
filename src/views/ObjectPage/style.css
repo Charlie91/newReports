@@ -6,6 +6,31 @@
     color: #354052; }
   .object_cont .card {
     margin-bottom: 30px; }
+  .object_cont .inner_objects .card-body {
+    padding: 25px 0px 25px 40px; }
+  .object_cont .inner_objects .list_wrapper {
+    -webkit-column-count: 4;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 4;
+    /* Firefox */
+    column-count: 4; }
+    .object_cont .inner_objects .list_wrapper li {
+      list-style: none; }
+      .object_cont .inner_objects .list_wrapper li.title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 5px; }
+        .object_cont .inner_objects .list_wrapper li.title:not(:first-of-type) {
+          margin-top: 20px; }
+      .object_cont .inner_objects .list_wrapper li.list-item {
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #7f8fa4;
+        text-decoration: underline;
+        cursor: pointer;
+        line-height: 17px; }
 
 .app-body_new_margin {
   margin-top: 55px; }

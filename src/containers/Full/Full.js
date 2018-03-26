@@ -137,7 +137,6 @@ class Full extends Component {
     }
 
     setTitle(arr){  //установка заголовка страницы
-        console.log(arr);
         let url = window.location.href;
         let idPosition = url.lastIndexOf('#');
         let conceptionURL = url.slice(idPosition+1);
