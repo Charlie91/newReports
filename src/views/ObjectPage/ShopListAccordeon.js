@@ -22,7 +22,7 @@ const ShopListAccordeon = (props) => {
                 <span className="muted">Список магазинов по категориям</span>
                 <ul className={`list_wrapper singleColumn`}>
                     {props.shops.map((item,i) => {
-                        return ([
+                        return (
                             <li key={i}
                                 className="accordeon"
                                 onClick={handleClick.bind(null,i)}
@@ -37,10 +37,8 @@ const ShopListAccordeon = (props) => {
                                         )
                                     })}
                                 </Collapse>
-                            </li>,
-                            <br/>
-
-                         ])
+                            </li>
+                         )
                     })}
                 </ul>
             </CardBody>

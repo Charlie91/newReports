@@ -53,6 +53,8 @@
         margin-bottom: 5px; }
         .object_cont .inner_objects .list_wrapper li.title:not(:first-of-type) {
           margin-top: 20px; }
+      .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) {
+        margin-bottom: 20px; }
       .object_cont .inner_objects .list_wrapper li.accordeon .title {
         text-decoration: underline;
         text-decoration-style: dashed;

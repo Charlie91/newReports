@@ -30,7 +30,7 @@ const ShopList = (props) => {
                 <span className="muted">Список магазинов по категориям</span>
                 <ul className={`list_wrapper ${columnsCountClass}`}>
                     {props.shops.map((item,i) => {
-                        let arr = item.objects.map((object,n) => {
+                        let children = item.objects.map((object,n) => {
                             return (
                                 <li className="list-item">
                                     {object.obj_name}
@@ -39,7 +39,7 @@ const ShopList = (props) => {
                         });
                         return ([
                             <li className="title">{item.title}</li>,
-                            arr
+                            children
                         ])
                     })}
                 </ul>

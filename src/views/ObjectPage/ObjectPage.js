@@ -227,39 +227,32 @@ export default class ObjectPage extends Component {
             .catch(err => console.log(err))
     }
 
-    getInnerObjects(){  //получаем список внутренних объектов(кафе и магазинов) в ТРЦ
+    getInnerObjects(){  //получаем список внутренних объектов(кафе и магазинов) в ТРЦ и преобразуем в нужную структуру
         let url = `${API.innerObjects}${this.props.match.params.id}`;
         let options = {
                 method: 'GET',
                 credentials: 'include',
                 mode: 'cors'
         };
-
         ajaxRequest(url,options)
             .then(data => {
-                console.log(data);
-                let titles = [];
-                for(let i = 0; i < data.inners.length;i++){
-                    if(!(~titles.indexOf(data.inners[i].type))){
-                        titles.push(data.inners[i].type);
-                    }
-                }
-                let hierarchiedObjects = titles.map(item => {
-                    return {
-                        title : item,
-                        objects:[]
-                    }
-                });
-                data.inners.forEach(item => {
-                    hierarchiedObjects.forEach(object => {
-                        if(item.type === object.title)
-                            object.objects.push(item)
-                    })
-                });
+                let hierarchiedObjects = data.inners.reduce( (result,item) => { //преобразование получаемых данных в нужную нам структуру
+                    let check = result.some(obj => {
+                        if(obj.title === item.type)
+                            return obj.objects.push(item); // читай как "return true" с побочным присвоением
+                        else
+                            return false
+                    });
+                    if(!check)
+                        result.push({
+                            title:item.type,
+                            objects:[item]
+                        });
+                    return result;
+                },[]);
                 this.setState({shops:hierarchiedObjects});
             })
             .catch(err => console.log(err))
-
     }
 
     getNewStyleForChart(typeArr){

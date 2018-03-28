@@ -60,14 +60,15 @@ $crdbody-padding : 1.3rem;
           }
         }
         &.accordeon{
+          &:not(:last-child){
+            margin-bottom: 20px;
+          }
           .title{
             text-decoration: underline;
             text-decoration-style: dashed;
             -webkit-text-decoration-style: dashed;
             text-decoration-color: #7f8fa4;
             -webkit-text-decoration-color: #7f8fa4;
-            //text-decoration-skip-ink: none;
-            //text-underline-position: under;
           }
           .collapse{
             padding-top: 15px;
