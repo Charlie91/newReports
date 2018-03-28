@@ -17,6 +17,7 @@ import {digitCount, formatNumericValue,formatNumberBySimpleSpaces,
 import xlsExport from './xls-export';
 import Datepickers from './Datepickers';
 import ShopList from './ShopList';
+import ShopListAccordeon from './ShopListAccordeon';
 
 function formatMonths(index){
     return ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"][index];
@@ -738,15 +739,12 @@ export default class ObjectPage extends Component {
                         </div>
                     </CardBody>
                 </Card>
-                <Card className="inner_objects">
-                    <CardBody>
-                        <h5>Магазины в ТЦ</h5>
-                        <span className="muted">Список магазинов по категориям</span>
-                        <ShopList
-                            shops={this.state.shops}
-                        />
-                    </CardBody>
-                </Card>
+                {(state.viewportWidth > 500) ?
+                    <ShopList shops={this.state.shops}/>
+                    :
+                    <ShopListAccordeon shops={this.state.shops}/>
+                }
+
 
             </div>
         )
