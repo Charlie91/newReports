@@ -855,6 +855,9 @@
     padding: 0 15px;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    .card{
+        margin-bottom: 20px;
+    }
     &::-webkit-scrollbar {
       display:none;
     }
@@ -869,6 +872,7 @@
       .data_wrapper{
         .card{
           border-radius: 0px 0px 4px 4px;
+          margin-bottom: 5px;
           .card-body{
             padding-top:16px;
             padding-bottom: 13px;

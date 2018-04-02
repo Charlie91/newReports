@@ -14050,6 +14050,9 @@ main.main {
 .sidebar-minimized .settings-btn {
   display: none; }
 
+.sidebar-minimized .sidebar .sidebar-nav {
+  display: none; }
+
 .sidebar-minimized .sidebar-header {
   height: 140px; }
   .sidebar-minimized .sidebar-header .full-name, .sidebar-minimized .sidebar-header .text-muted {

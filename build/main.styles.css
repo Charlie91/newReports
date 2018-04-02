@@ -14050,6 +14050,9 @@ main.main {
 .sidebar-minimized .settings-btn {
   display: none; }
 
+.sidebar-minimized .sidebar .sidebar-nav {
+  display: none; }
+
 .sidebar-minimized .sidebar-header {
   height: 140px; }
   .sidebar-minimized .sidebar-header .full-name, .sidebar-minimized .sidebar-header .text-muted {
@@ -15267,25 +15270,25 @@ button.btn.back-btn {
           margin-top: 20px; }
       .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) {
         margin-bottom: 20px; }
-        .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) .title {
-          text-decoration: underline;
-          text-decoration-style: dashed;
-          -webkit-text-decoration-style: dashed;
-          text-decoration-color: #7f8fa4;
-          -webkit-text-decoration-color: #7f8fa4; }
-        .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) .collapse {
-          padding-top: 15px;
-          padding-left: 15px; }
-        .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) span.list-item {
-          display: block;
-          margin-bottom: 10px;
-          font-weight: 400;
-          font-size: 14px;
-          color: #7f8fa4;
-          text-decoration: none;
-          text-decoration: underline;
-          cursor: pointer;
-          line-height: 17px; }
+      .object_cont .inner_objects .list_wrapper li.accordeon .title {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        -webkit-text-decoration-style: dashed;
+        text-decoration-color: #7f8fa4;
+        -webkit-text-decoration-color: #7f8fa4; }
+      .object_cont .inner_objects .list_wrapper li.accordeon .collapse {
+        padding-top: 15px;
+        padding-left: 15px; }
+      .object_cont .inner_objects .list_wrapper li.accordeon span.list-item {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #7f8fa4;
+        text-decoration: none;
+        text-decoration: underline;
+        cursor: pointer;
+        line-height: 17px; }
       .object_cont .inner_objects .list_wrapper li.list-item {
         margin-bottom: 10px;
         font-weight: 400;
@@ -15820,6 +15823,8 @@ button.btn.back-btn {
     padding: 0 15px;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch; }
+    .object_cont .card {
+      margin-bottom: 20px; }
     .object_cont::-webkit-scrollbar {
       display: none; }
     .object_cont .announce {
@@ -15830,7 +15835,8 @@ button.btn.back-btn {
         padding-right: 0;
         padding-left: 0; }
       .object_cont .announce .data_wrapper .card {
-        border-radius: 0px 0px 4px 4px; }
+        border-radius: 0px 0px 4px 4px;
+        margin-bottom: 5px; }
         .object_cont .announce .data_wrapper .card .card-body {
           padding-top: 16px;
           padding-bottom: 13px; }

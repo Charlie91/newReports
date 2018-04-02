@@ -608,6 +608,8 @@
     padding: 0 15px;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch; }
+    .object_cont .card {
+      margin-bottom: 20px; }
     .object_cont::-webkit-scrollbar {
       display: none; }
     .object_cont .announce {
@@ -618,7 +620,8 @@
         padding-right: 0;
         padding-left: 0; }
       .object_cont .announce .data_wrapper .card {
-        border-radius: 0px 0px 4px 4px; }
+        border-radius: 0px 0px 4px 4px;
+        margin-bottom: 5px; }
         .object_cont .announce .data_wrapper .card .card-body {
           padding-top: 16px;
           padding-bottom: 13px; }

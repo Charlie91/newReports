@@ -24,7 +24,7 @@ class Full extends Component {
                     name: 'Главная',
                     full_name:'Главная',
                     url: '/dashboard',
-                    icon: 'custom-icon-home',
+                    icon: 'icon-film',//'custom-icon-home',
                     badge: {
                         variant: 'info'
                     }
