@@ -4,9 +4,7 @@ import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import TableVertical from './TableVertical.js';
 import TableHorizontal from './TableHorizontal.js';
 import TableVertNoStick from './TableVertNoStick.js';
-import {formatNumericValue} from './../../utils/utils';
 import {formatNumericValueWithSpaces} from './../../utils/utils';
-//import Loading from './../Loading/Loading';
 import Loading from './../Loading/Small';
 
 

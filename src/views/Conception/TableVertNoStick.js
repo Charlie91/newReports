@@ -274,7 +274,7 @@ class TableVerticalNoStick extends Component {
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'd')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] }}></div></span>
+                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] || '-' }}></div></span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
