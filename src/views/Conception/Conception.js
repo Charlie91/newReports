@@ -4,6 +4,7 @@ import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import TableVertical from './TableVertical.js';
 import TableHorizontal from './TableHorizontal.js';
 import TableVertNoStick from './TableVertNoStick.js';
+import TableVertNoStickNew from './TableVertNoStickNew.js';
 import {formatNumericValueWithSpaces} from './../../utils/utils';
 import Loading from './../Loading/Small';
 
@@ -198,11 +199,30 @@ class Conception extends Component {
                 if(city.ID === cityId && city.checked)return true;
             })
         });
+        let formattedObjects = objectsForRender.reduce( (result, item) => { //трансформация массива объектов в массив иерархированных объектов
+            let check = result.some(obj => {
+                if(obj.title === item.group_name)
+                    return obj.objects.push(item); // читай как "return true" с побочным присвоением
+                else
+                    return false
+            });
+            if(!check && item.group_name)
+                result.push({
+                    title:item.group_name,
+                    group:item.group,
+                    objects:[item]
+                });
+            else if(!check && item.group_name === null)
+                result.push(item);
+
+            return result;
+        },[]);
+        console.log(formattedObjects);
         return(
             <div>
                 {
                     (objectsForRender.length) ?
-                        <TableVertNoStick data={objectsForRender}/>
+                        <TableVertNoStickNew data={formattedObjects}/>
                         :
                         <h4 className="no-data-message">....</h4>
                 }

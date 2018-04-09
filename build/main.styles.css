@@ -14957,14 +14957,17 @@ button.btn.back-btn {
     width: 100%;
     background-color: #eff3f6;
     position: fixed;
-    height: 100px;
-    z-index: 999; }
+    height: 180px;
+    z-index: 999;
+    top: 110px !important; }
   #no-stick .thead {
     background-color: #eff3f6;
     white-space: nowrap;
     cursor: pointer;
     font-weight: bold;
-    line-height: 0px; }
+    line-height: 0px;
+    padding-top: 8px;
+    background: #fff; }
   #no-stick .thead > span {
     height: 72px;
     background-color: #fff;
@@ -14977,16 +14980,14 @@ button.btn.back-btn {
     margin-bottom: 0px; }
     #no-stick .thead > span a {
       position: absolute;
-      bottom: 0px;
       margin-left: 10px;
       margin-right: 18px;
-      margin-top: 28px;
-      margin-bottom: 8px;
       width: 73px;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 14px;
-      height: auto; }
+      height: auto;
+      text-align: right; }
   #no-stick .trow {
     white-space: nowrap; }
     #no-stick .trow > span {
@@ -15012,15 +15013,13 @@ button.btn.back-btn {
     font-weight: normal;
     font-style: italic; }
     #no-stick .average_column span {
-      height: 15px;
-      line-height: 15px;
-      margin-top: 1px;
-      margin-bottom: 2px; }
+      height: 21px;
+      line-height: 21px; }
       #no-stick .average_column span > div {
         margin-top: 0px !important;
         margin-top: 0px !important;
-        line-height: 15px !important;
-        height: 15px !important; }
+        line-height: 21px !important;
+        height: 21px !important; }
   #no-stick .today_trow, #no-stick .current_year, #no-stick .current_month, #no-stick .forecast_month {
     font-weight: bold; }
   #no-stick .average_month {
@@ -15028,14 +15027,12 @@ button.btn.back-btn {
     color: #2d2d2d;
     font-style: italic; }
     #no-stick .average_month span {
-      height: 15px;
-      line-height: 15px;
-      margin-top: 1px;
-      margin-bottom: 2px; }
+      height: 21px;
+      line-height: 21px; }
       #no-stick .average_month span > div {
-        margin-top: 6px;
-        line-height: 15px !important;
-        height: 15px !important; }
+        margin-top: 0px !important;
+        line-height: 21px !important;
+        height: 21px !important; }
   #no-stick .fix-column {
     float: left;
     text-align: center;
@@ -15117,7 +15114,7 @@ button.btn.back-btn {
     padding-right: 0px;
     padding-left: 0px; }
     #no-stick .thead {
-      height: 56px; }
+      height: 90px; }
       #no-stick .thead > span {
         height: 62px;
         margin-top: 0px;
@@ -15126,7 +15123,7 @@ button.btn.back-btn {
         position: relative; }
         #no-stick .thead > span > a {
           position: absolute;
-          bottom: 0px;
+          bottom: 45%;
           line-height: 12px;
           height: auto;
           margin-left: 8px;
@@ -15187,7 +15184,7 @@ button.btn.back-btn {
         margin-bottom: 0px; }
         #no-stick .average_column span > div, #no-stick .average_month span > div {
           background-color: rgba(255, 238, 28, 0.15) !important;
-          margin-top: 7px !important;
+          margin-top: 0px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
           padding-right: 6px;
@@ -15213,6 +15210,55 @@ button.btn.back-btn {
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #e1e4e6; }
+
+span.group {
+  width: auto !important; }
+  span.group p.title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    background-color: #c6ebff;
+    z-index: 999999;
+    min-height: 31px;
+    line-height: normal;
+    padding: 0 10px;
+    padding-top: 7px;
+    white-space: normal;
+    margin: auto;
+    overflow: hidden; }
+  span.group > span {
+    width: 101px;
+    display: inline-block; }
+
+#no-stick .rest-columns .thead span.group {
+  margin-right: 96px;
+  border-right: 2px solid #c6ebff;
+  border-left: 2px solid #c6ebff;
+  height: 105px; }
+  #no-stick .rest-columns .thead span.group > span {
+    top: 52px;
+    position: relative; }
+
+.tbody span.group {
+  margin-right: 46px;
+  border-left: 2px solid #c6ebff;
+  border-right: 2px solid #c6ebff; }
+
+#no-stick .rest-columns > .thead > span:not(.group) {
+  vertical-align: bottom;
+  top: 18px; }
+
+#no-stick .trow_hover_d span.group > span > div {
+  background: #e7e7e7; }
+
+#no-stick span.group > span > div {
+  height: 31px;
+  padding-right: 15px;
+  line-height: 31px;
+  margin-top: 6px; }
+
+#no-stick .trow_hover_d.holidays_column span.group > span > div {
+  background: none !important; }
 @charset "UTF-8";
 .object_cont {
   padding-bottom: 30px; }

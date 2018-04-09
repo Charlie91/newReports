@@ -48,8 +48,9 @@ $font_size_mobile: 0.688em;
     width: 100%;
     background-color: #eff3f6;
     position: fixed;
-    height: 100px;
+    height: 180px;
     z-index: 999;
+    top: 110px !important;
   }
 
 
@@ -60,6 +61,8 @@ $font_size_mobile: 0.688em;
     cursor: pointer;
     font-weight: bold;
     line-height: 0px;
+    padding-top: 8px;
+    background: #fff;
   }
   .thead > span {
     height: 72px;
@@ -73,16 +76,14 @@ $font_size_mobile: 0.688em;
     margin-bottom: 0px;
     a {
       position: absolute;
-      bottom: 0px;
       margin-left: 10px;
       margin-right: 18px;
-      margin-top: 28px;
-      margin-bottom: 8px;
       width: 73px;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 14px;
       height: auto;
+      text-align: right;
     }
   }
   .trow {
@@ -116,15 +117,13 @@ $font_size_mobile: 0.688em;
     font-weight: normal;
     font-style: italic;
     span {
-      height: 15px;
-      line-height: 15px;
-      margin-top: 1px;
-      margin-bottom: 2px;
+      height: 21px;
+      line-height: 21px;
       >div{
         margin-top: 0px !important;
         margin-top: 0px !important;
-        line-height: 15px !important;
-        height: 15px !important;
+        line-height: 21px !important;
+        height: 21px !important;
       }
     }
     &:hover{
@@ -140,14 +139,12 @@ $font_size_mobile: 0.688em;
     color: #2d2d2d;
     font-style: italic;
     span {
-      height: 15px;
-      line-height: 15px;
-      margin-top: 1px;
-      margin-bottom: 2px;
+      height: 21px;
+      line-height: 21px;
       >div{
-        margin-top: 6px;
-        line-height: 15px !important;
-        height: 15px !important;
+        margin-top: 0px!important;
+        line-height: 21px !important;
+        height: 21px !important;
       }
     }
   }
@@ -272,7 +269,7 @@ $font_size_mobile: 0.688em;
     padding-right: 0px;
     padding-left: 0px;
     .thead {
-      height: 56px;
+      height: 90px;//56
       > span {
         height: 62px;
         margin-top: 0px;
@@ -281,7 +278,7 @@ $font_size_mobile: 0.688em;
         position: relative;
         > a {
           position: absolute;
-          bottom: 0px;
+          bottom: 45%;
           line-height: 12px;
           height: auto;
           margin-left: 8px;
@@ -381,7 +378,7 @@ $font_size_mobile: 0.688em;
         margin-bottom: 0px;
         >div{
           background-color: rgba(255, 238, 28, 0.15)!important;
-          margin-top: 7px !important;
+          margin-top: 0px !important;
           margin-bottom: 7px !important;
           height: 20px !important;
           padding-right: 6px;
@@ -422,4 +419,69 @@ $font_size_mobile: 0.688em;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #e1e4e6;
+}
+
+
+//test
+
+
+
+span.group {
+  width: auto!important;
+  p.title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    background-color: #c6ebff;
+    z-index: 999999;
+    min-height: 31px;
+    line-height: normal;
+    padding: 0 10px;
+    padding-top: 7px;
+    white-space: normal;
+    margin: auto;
+    overflow: hidden;
+  }
+  > span {
+    width: 101px;
+    //height: 72px;
+    display: inline-block;
+  }
+}
+
+#no-stick .rest-columns .thead span.group {
+  margin-right: 96px;
+  border-right: 2px solid #c6ebff;
+  border-left: 2px solid #c6ebff;
+  height: 105px;
+  >span{
+    top:52px;
+    position:relative;
+  }
+}
+
+.tbody span.group {
+  margin-right: 46px;
+  border-left: 2px solid #c6ebff;
+  border-right: 2px solid #c6ebff;
+}
+
+#no-stick .rest-columns > .thead > span:not(.group) {
+  vertical-align: bottom;
+  top: 18px;
+}
+
+#no-stick .trow_hover_d span.group > span >div {
+  background: #e7e7e7;
+}
+
+#no-stick span.group > span >div {
+  height: 31px;
+  padding-right: 15px;
+  line-height: 31px;
+  margin-top: 6px;
+}
+
+#no-stick .trow_hover_d.holidays_column span.group > span > div{
+  background:none !important;
 }

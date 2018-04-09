@@ -100,7 +100,7 @@ class TableVerticalNoStick extends Component {
         this.setState({rowHover: index });
     }
 
-    /*
+
     fixingFirstColumn(e){//фиксируем первую колонку
         let cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type'),
             sidebarWidth = document.getElementsByClassName('sidebar')[0].offsetWidth,
@@ -113,7 +113,7 @@ class TableVerticalNoStick extends Component {
                 cell.style.left = '-10px';
         });
     }
-    */
+
 
     componentWillMount(){
         let [dates,months,years] = [ fillDates(),fillMonths(), fillYears() ];
@@ -198,26 +198,42 @@ class TableVerticalNoStick extends Component {
                         <div className="thead">
                             <span> </span>
                         </div>
+
                         <div className={"tbody " + ( (this.state.scrollLeft) ? 'v_shadow' : '') }>
                             <div className="trow average_column">
-                                <span><div>Ср. в день</div></span>
+                                <span>
+                                    <div>Ср. в день</div>
+                                </span>
                             </div>
+
                             <div className={"trow today_trow" + (('today_trow' === this.state.rowHover) ? ' trow_hover_d' : '')}>
-                                <span><div>Сегодня</div></span>
+                                <span>
+                                    <div>Сегодня</div>
+                                </span>
                             </div>
+
                             {this.state.dates.map((item,i) =>
                                 <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
                                     ( (i + 'd' === this.state.rowHover) ? ' trow_hover_d' : '')
                                 } key={i}>
-                                    <span><div>{item}</div></span>
+                                    <span>
+                                        <div>{item}</div>
+                                    </span>
                                 </div>
                             )}
+
                             <div className={"trow current_month" + (('current_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
-                                <span><div>{getMonthName((new Date()).getMonth())}</div></span>
+                                <span>
+                                    <div>{getMonthName((new Date()).getMonth())}</div>
+                                </span>
                             </div>
+
                             <div className="trow average_month">
-                                <span><div>Ср. в месяц</div></span>
+                                <span>
+                                    <div>Ср. в месяц</div>
+                                </span>
                             </div>
+
                             <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}>
                                 <span><div>Прог. на {getMonthName((new Date()).getMonth()).substring(0,3)}</div></span>
                             </div>
@@ -227,46 +243,61 @@ class TableVerticalNoStick extends Component {
                                     <span><div>{item}</div></span>
                                 </div>
                             )}
+
                             <div className={"trow current_year" + (('current_year' === this.state.rowHover) ? ' trow_hover_d' : '')}>
                                 <span><div>{(new Date()).getFullYear()}</div></span>
                             </div>
+
                             {this.state.years.map((item,i) =>
                                 <div className={'trow' + ( (i + 'y' === this.state.rowHover) ? ' trow_hover_d' : '')} key={i}>
                                     <span><div>{item}</div></span>
                                 </div>
                             )}
+
                             <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
                                 <span className={'empty_col'} style={{backgroundColor: '#eff3f6'}}></span>
                             </div>
+
                         </div>
+
                     </div>
                     <div className="rest-columns">
                         <div className={"thead " + ( (this.state.scrollTop) ? 'h_shadow' : '')}>
                             {this.props.data.map((item,i) =>
-                                <span key={i}><Link
-                                    to={{ pathname: `/concept${item.conception}/city${item.city_id}/object${item.id}`, params:{obj:item} }}
-                                    className="link-to-object "
-                                >
-                                    {item.obj_name}
-                                </Link></span>
+                                <span key={i}>
+                                    <Link
+                                        to={{ pathname: `/concept${item.conception}/city${item.city_id}/object${item.id}`, params:{obj:item} }}
+                                        className="link-to-object "
+                                    >
+                                        {item.obj_name}
+                                    </Link>
+                                </span>
                             )}
                             <span className={'last_span_head'}><div></div></span>
                         </div>
+
                         <div className="tbody" onScroll={this.changeShadow.bind(this)}>
+
                             <div className="trow average_column">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i}  ><div dangerouslySetInnerHTML={{__html: item.averageOfDays }} ></div></span>
+                                    <span key={i}>
+                                        <div dangerouslySetInnerHTML={{__html: item.averageOfDays }} ></div>
+                                    </span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
+
                             <div className={"trow today_trow" + (('today_trow' === this.state.rowHover) ? ' trow_hover_d' : '')}
                                  onMouseEnter={this.changeRowHover.bind(this,'today_trow')}
                             >
                                 {this.props.data.map((item,i) =>
                                     <span key={i} ><div dangerouslySetInnerHTML={{__html: item.todayResults }}></div></span>
                                 )}
-                                <span className={"empty_col_last"}><div>&nbsp;</div></span>
+                                <span className={"empty_col_last"}>
+                                    <div>&nbsp;</div>
+                                </span>
                             </div>
+
                             {this.state.dates.map((item,i) =>
                                 <div className={((~item.indexOf('вс') || ~item.indexOf('сб')) ? 'holidays_column days trow' : 'days trow') +
                                 ( (i + 'd' === this.state.rowHover) ? ' trow_hover_d' : '') }
@@ -274,33 +305,45 @@ class TableVerticalNoStick extends Component {
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'd')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] || '-' }}></div></span>
+                                        <span key={key}>
+                                            <div dangerouslySetInnerHTML={{__html: item['day' + (this.state.dates.length - i)] || '-' }}></div>
+                                        </span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+
                             <div className={"trow current_month"  + (('current_month' === this.state.rowHover) ? ' trow_hover_d' : '')}
                                  onMouseEnter={this.changeRowHover.bind(this,'current_month')}
                             >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentMonth }}></div></span>
+                                    <span key={i}>
+                                        <div dangerouslySetInnerHTML={{__html: item.currentMonth }}></div>
+                                    </span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
+
                             <div className="trow average_month">
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.averageOfMonths }}></div></span>
+                                    <span key={i}>
+                                        <div dangerouslySetInnerHTML={{__html: item.averageOfMonths }}></div>
+                                    </span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
+
                             <div className={"trow forecast_month" + (('forecast_month' === this.state.rowHover) ? ' trow_hover_d' : '')}
                                  onMouseEnter={this.changeRowHover.bind(this,'forecast_month')}
                             >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.predictionOfMonths }}></div></span>
+                                    <span key={i}>
+                                        <div dangerouslySetInnerHTML={{__html: item.predictionOfMonths }}></div>
+                                    </span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
+
                             {this.state.months.map((item,i) =>
                                 <div className={"trow" + ( (i + 'm' === this.state.rowHover) ? ' trow_hover_d' : '') }
                                      key={i}
@@ -312,25 +355,32 @@ class TableVerticalNoStick extends Component {
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+
                             <div className={"trow current_year" + (('current_year' === this.state.rowHover) ? ' trow_hover_d' : '')}
                                  onMouseEnter={this.changeRowHover.bind(this,'current_year')}
                             >
                                 {this.props.data.map((item,i) =>
-                                    <span key={i} ><div dangerouslySetInnerHTML={{__html: item.currentYear ? item.currentYear : '-' }}></div></span>
+                                    <span key={i}>
+                                        <div dangerouslySetInnerHTML={{__html: item.currentYear ? item.currentYear : '-' }}></div>
+                                    </span>
                                 )}
                                 <span className={"empty_col_last"}><div>&nbsp;</div></span>
                             </div>
+
                             {this.state.years.map((item,i) =>
                                 <div className={"trow" + ( (i + 'y' === this.state.rowHover) ? ' trow_hover_d' : '') }
                                      key={i}
                                      onMouseEnter={this.changeRowHover.bind(this,i + 'y')}
                                 >
                                     {this.props.data.map((item,key) =>
-                                        <span key={key} ><div dangerouslySetInnerHTML={{__html: item['year' + i] ? item['year' + i] : '-' }}></div></span>
+                                        <span key={key}>
+                                            <div dangerouslySetInnerHTML={{__html: item['year' + i] ? item['year' + i] : '-' }}></div>
+                                        </span>
                                     )}
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+
                         </div>
                     </div>
                 </div>
