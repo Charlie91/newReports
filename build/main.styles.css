@@ -13783,7 +13783,7 @@ select {
 
 body {
   font-size: 16px; }
-  body.sidebar-mobile-show, body.dropdown-select-show {
+  body.sidebar-mobile-show, body.dropdown-select-show, body.table-show {
     overflow: hidden;
     position: fixed;
     width: 100%; }
@@ -15001,9 +15001,9 @@ button.btn.back-btn {
   #no-stick .trow_hover_d > span > div {
     background-color: #e7e7e7; }
   #no-stick .tbody {
-    height: calc(100vh - 225px);
-    height: -moz-calc(100vh - 225px);
-    height: -webkit-calc(100vh - 225px);
+    height: calc(100vh - 270px);
+    height: -moz-calc(100vh - 270px);
+    height: -webkit-calc(100vh - 270px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
@@ -15130,9 +15130,10 @@ button.btn.back-btn {
           margin-right: 5px;
           width: 60px; }
     #no-stick .tbody {
-      height: calc(100vh - 122px) !important;
-      height: -moz-calc(100vh - 122px) !important;
-      height: -webkit-calc(100vh - 122px) !important; }
+      height: calc(100vh - 220px) !important;
+      height: -moz-calc(100vh - 220px) !important;
+      height: -webkit-calc(100vh - 220px) !important;
+      height: 60vh !important; }
       #no-stick .tbody .trow span {
         line-height: 34px;
         height: 34px; }

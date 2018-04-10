@@ -27,7 +27,7 @@ $sidebar-header-height: 215px;
 
 body{
   font-size:16px;
-  &.sidebar-mobile-show, &.dropdown-select-show {
+  &.sidebar-mobile-show, &.dropdown-select-show, &.table-show {
     overflow: hidden;
     position:fixed;
     width: 100%;

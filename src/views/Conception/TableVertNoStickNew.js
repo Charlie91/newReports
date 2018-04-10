@@ -134,10 +134,12 @@ class TableVerticalNoStick extends Component {
         window.onresize = () => this.setWrapperWidth();
         this.setState({scrollTop: false});
         this.setState({scrollLeft: false});
+        document.body.classList.add('table-show');
     }
 
     componentWillUnmount(){
         window.onresize = () => {};
+        document.body.classList.remove('table-show');
     }
 
     componentDidUpdate(){

@@ -13783,7 +13783,7 @@ select {
 
 body {
   font-size: 16px; }
-  body.sidebar-mobile-show, body.dropdown-select-show {
+  body.sidebar-mobile-show, body.dropdown-select-show, body.table-show {
     overflow: hidden;
     position: fixed;
     width: 100%; }

@@ -103,9 +103,9 @@ $font_size_mobile: 0.688em;
   }
   .tbody {
     //background-color: #eff3f6;
-    height: calc(100vh - 225px);
-    height: -moz-calc(100vh - 225px);
-    height: -webkit-calc(100vh - 225px);
+    height: calc(100vh - 270px);
+    height: -moz-calc(100vh - 270px);
+    height: -webkit-calc(100vh - 270px);
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -289,9 +289,10 @@ $font_size_mobile: 0.688em;
     }
 
     .tbody {
-      height: calc(100vh - 122px) !important;
-      height: -moz-calc(100vh - 122px) !important;
-      height: -webkit-calc(100vh - 122px) !important;
+      height: calc(100vh - 220px) !important;
+      height: -moz-calc(100vh - 220px) !important;
+      height: -webkit-calc(100vh - 220px) !important;
+      height: 60vh!important;
       .trow span {
         line-height: 34px;
         height: 34px;
