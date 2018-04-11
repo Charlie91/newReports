@@ -2,13 +2,33 @@ import React, { Component, PureComponent } from 'react';
 import {API} from './../../utils/api_paths';
 import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
 import TableVertical from './TableVertical.js';
-import TableHorizontal from './TableHorizontal.js';
-import TableVertNoStick from './TableVertNoStick.js';
+import TableVertNoStick from './TableVertNoStick(without groups).js';
 import TableVertNoStickNew from './TableVertNoStickNew.js';
-import {formatNumericValueWithSpaces} from './../../utils/utils';
 import Loading from './../Loading/Small';
 
-
+ function formatNumericValueWithSpaces(number,object) {
+    if(!object)object = '';
+    if(typeof number === 'number'){
+            let str_number = String(number);
+            if(str_number.length > 9){
+                let millions = str_number.substr(-9,3);
+                let billions = str_number.slice(0,str_number.length - 9);
+                return billions + ',' +  millions  + ' млрд.' + ' ' + object
+            }
+            else if(str_number.length <= 3){
+                let hundreds = str_number.substr(0,1);
+                return '0,' + hundreds + 'т' + object;
+            }
+            else{
+                let units = str_number.substr(-3,1);
+                let thousands = str_number.slice(0,str_number.length - 3);
+                return thousands.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1<div class="digit_space"></div>') + ',' + units + '<div class="digit_space"></div>т.' + '<div class="digit_space"></div>' + object
+            }
+    }
+    else{
+        console.log('Тип передаваемого аргумента - не число')
+    }
+}
 
 class Conception extends Component {
 

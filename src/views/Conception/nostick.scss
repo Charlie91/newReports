@@ -115,7 +115,6 @@ $font_size_mobile: 0.688em;
     background-color: #fffddd !important;
     color: #354052;
     font-weight: normal;
-    font-style: italic;
     span {
       height: 21px;
       line-height: 21px;
@@ -137,7 +136,6 @@ $font_size_mobile: 0.688em;
   .average_month{
     background-color: #fffddd !important;
     color: #2d2d2d;
-    font-style: italic;
     span {
       height: 21px;
       line-height: 21px;
@@ -289,9 +287,9 @@ $font_size_mobile: 0.688em;
     }
 
     .tbody {
-      height: calc(100vh - 220px) !important;
-      height: -moz-calc(100vh - 220px) !important;
-      height: -webkit-calc(100vh - 220px) !important;
+      //height: calc(100vh - 220px) !important;
+      //height: -moz-calc(100vh - 220px) !important;
+      //height: -webkit-calc(100vh - 220px) !important;
       height: 60vh!important;
       .trow span {
         line-height: 34px;

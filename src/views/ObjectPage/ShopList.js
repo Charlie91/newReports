@@ -31,14 +31,21 @@ const ShopList = (props) => {
                 <ul className={`list_wrapper ${columnsCountClass}`}>
                     {props.shops.map((item,i) => {
                         let children = item.objects.map((object,n) => {
+                            if(!n)return null;                      {/*первый объект в списке привязываем к заголовку =*/}
                             return (
-                                <li className="list-item">
-                                    {object.obj_name}
+                                <li className={item.objects.length === (n + 1) ? 'last-item list-item' : 'list-item' }>
+                                    <span>{object.obj_name}</span>
                                 </li>
                             )
                         });
                         return ([
-                            <li className="title">{item.title}</li>,
+                            <li className="title">
+                                {item.title}
+                                <br/>
+                                <span className={item.objects.length === 1 ? 'last-item' : '' }>        {/*первый объект в списке привязываем к заголовку =*/}
+                                    {item.objects[0].obj_name}
+                                </span>
+                            </li>,
                             children
                         ])
                     })}

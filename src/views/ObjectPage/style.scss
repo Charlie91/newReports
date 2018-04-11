@@ -46,6 +46,9 @@
         -moz-column-count: 4; /* Firefox */
         column-count: 4;
       }
+      .last-item {
+        margin-bottom: 20px!important;
+      }
       li{
         list-style: none;
         line-height:22px;
@@ -53,9 +56,22 @@
         font-weight:500;
         color: #354052;
         &.title{
-          margin-bottom:5px;
+          //margin-bottom:5px;
+          display: block;
           &:not(:first-of-type){
-            margin-top:20px;
+            //margin-top:20px;
+          }
+          >span{
+            display:inline-block;
+            margin-bottom:10px;
+            margin-top: 5px;
+            font-weight: 400;
+            font-size: 14px;
+            color: #7f8fa4;
+            text-decoration: none;
+            text-decoration: underline;
+            cursor:pointer;
+            line-height:17px
           }
         }
         &.accordeon{
@@ -63,11 +79,7 @@
             margin-bottom: 20px;
           }
           .title{
-            text-decoration: underline;
-            text-decoration-style: dashed;
-            -webkit-text-decoration-style: dashed;
-            text-decoration-color: #7f8fa4;
-            -webkit-text-decoration-color: #7f8fa4;
+            border-bottom: 2px dashed rgba(127, 143, 164, 0.6);
           }
           .collapse{
             padding-top: 15px;
@@ -90,9 +102,14 @@
           font-weight: 400;
           font-size: 14px;
           color: #7f8fa4;
-          text-decoration: underline;
           cursor:pointer;
-          line-height:17px
+          line-height:17px;
+          span{
+            border-bottom: 1px solid #7f8fa4;
+            line-height: 10px;
+            display: inline-block;
+            white-space: nowrap;
+          }
         }
       }
     }

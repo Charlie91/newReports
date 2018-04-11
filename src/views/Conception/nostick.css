@@ -88,8 +88,7 @@
   #no-stick .average_column {
     background-color: #fffddd !important;
     color: #354052;
-    font-weight: normal;
-    font-style: italic; }
+    font-weight: normal; }
     #no-stick .average_column span {
       height: 21px;
       line-height: 21px; }
@@ -102,8 +101,7 @@
     font-weight: bold; }
   #no-stick .average_month {
     background-color: #fffddd !important;
-    color: #2d2d2d;
-    font-style: italic; }
+    color: #2d2d2d; }
     #no-stick .average_month span {
       height: 21px;
       line-height: 21px; }
@@ -208,9 +206,6 @@
           margin-right: 5px;
           width: 60px; }
     #no-stick .tbody {
-      height: calc(100vh - 220px) !important;
-      height: -moz-calc(100vh - 220px) !important;
-      height: -webkit-calc(100vh - 220px) !important;
       height: 60vh !important; }
       #no-stick .tbody .trow span {
         line-height: 34px;
