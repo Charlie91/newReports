@@ -679,7 +679,7 @@ export default class ObjectPage extends Component {
 
                 <Card className="all_data">
                     <CardBody className="card-body">
-                        <h5 className="measure">{(state.type === 'Выручка') ? 'Выручка' : 'Посещаемость'} за период</h5>
+                        <h5 className="measure">{(state.type === 'Выручка') ? 'Выручка' : 'Трафик'}</h5>
                         <Row>
                             <Datepickers
                                 startDate={state.startDate}

@@ -14957,9 +14957,9 @@ button.btn.back-btn {
     width: 100%;
     background-color: #eff3f6;
     position: fixed;
-    height: 180px;
+    height: 210px;
     z-index: 999;
-    top: 110px !important; }
+    top: 65px !important; }
   #no-stick .thead {
     background-color: #eff3f6;
     white-space: nowrap;
@@ -15000,6 +15000,10 @@ button.btn.back-btn {
       cursor: pointer; }
   #no-stick .trow_hover_d > span > div {
     background-color: #e7e7e7; }
+  #no-stick .trow_hover_d span.group > span > div {
+    background: #e7e7e7; }
+  #no-stick .trow_hover_d.holidays_column span.group > span > div {
+    background: none !important; }
   #no-stick .tbody {
     height: calc(100vh - 270px);
     height: -moz-calc(100vh - 270px);
@@ -15007,11 +15011,14 @@ button.btn.back-btn {
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
+    #no-stick .tbody span.group {
+      margin-right: 46px;
+      border-left: 2px solid #c6ebff;
+      border-right: 2px solid #c6ebff; }
   #no-stick .average_column {
     background-color: #fffddd !important;
     color: #354052;
-    font-weight: normal;
-    font-style: italic; }
+    font-weight: normal; }
     #no-stick .average_column span {
       height: 21px;
       line-height: 21px; }
@@ -15024,8 +15031,7 @@ button.btn.back-btn {
     font-weight: bold; }
   #no-stick .average_month {
     background-color: #fffddd !important;
-    color: #2d2d2d;
-    font-style: italic; }
+    color: #2d2d2d; }
     #no-stick .average_month span {
       height: 21px;
       line-height: 21px; }
@@ -15074,6 +15080,17 @@ button.btn.back-btn {
       #no-stick .rest-columns > .thead > span {
         margin-right: 50px;
         margin-left: -50px; }
+      #no-stick .rest-columns > .thead > span:not(.group) {
+        vertical-align: bottom;
+        top: 18px; }
+      #no-stick .rest-columns > .thead span.group {
+        margin-right: 96px;
+        border-right: 2px solid #c6ebff;
+        border-left: 2px solid #c6ebff;
+        height: 105px; }
+        #no-stick .rest-columns > .thead span.group > span {
+          top: 52px;
+          position: relative; }
       #no-stick .rest-columns > .thead.h_shadow {
         box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8); }
     #no-stick .rest-columns .tbody .trow {
@@ -15098,6 +15115,30 @@ button.btn.back-btn {
         background-color: transparent !important; }
     #no-stick .conceptions-table .holidays_column:hover {
       background-color: rgba(142, 214, 250, 0.15) !important; }
+  #no-stick span.group {
+    width: auto !important; }
+    #no-stick span.group p.title {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      background-color: #c6ebff;
+      z-index: 999;
+      min-height: 31px;
+      line-height: normal;
+      padding: 0 10px;
+      padding-top: 7px;
+      white-space: normal;
+      margin: auto;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    #no-stick span.group > span {
+      width: 101px;
+      display: inline-block; }
+      #no-stick span.group > span > div {
+        height: 31px;
+        padding-right: 15px;
+        line-height: 31px;
+        margin-top: 6px; }
 
 @media screen and (max-width: 991px) {
   #no-stick {
@@ -15105,7 +15146,9 @@ button.btn.back-btn {
     #no-stick .tbody {
       height: calc(100vh - 190px) !important;
       height: -moz-calc(100vh - 190px) !important;
-      height: -webkit-calc(100vh - 190px) !important; } }
+      height: -webkit-calc(100vh - 190px) !important; }
+    #no-stick .footer {
+      height: 150px; } }
 
 @media screen and (max-width: 767px) {
   #no-stick {
@@ -15113,34 +15156,35 @@ button.btn.back-btn {
     padding-top: 0px;
     padding-right: 0px;
     padding-left: 0px; }
-    #no-stick .thead {
-      height: 90px; }
-      #no-stick .thead > span {
-        height: 62px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        width: 70px;
-        position: relative; }
-        #no-stick .thead > span > a {
-          position: absolute;
-          bottom: 45%;
-          line-height: 12px;
-          height: auto;
-          margin-left: 8px;
-          margin-right: 5px;
-          width: 60px; }
+    #no-stick .thead > span {
+      height: 62px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      width: 70px;
+      position: relative; }
+      #no-stick .thead > span > a {
+        position: absolute;
+        bottom: 45%;
+        line-height: 14px;
+        height: auto;
+        margin-left: 8px;
+        margin-right: 5px;
+        width: 60px; }
     #no-stick .tbody {
-      height: calc(100vh - 220px) !important;
-      height: -moz-calc(100vh - 220px) !important;
-      height: -webkit-calc(100vh - 220px) !important;
-      height: 60vh !important; }
+      height: calc(100vh - 170px) !important;
+      height: -moz-calc(100vh - 170px) !important;
+      height: -webkit-calc(100vh - 170px) !important; }
       #no-stick .tbody .trow span {
         line-height: 34px;
         height: 34px; }
         #no-stick .tbody .trow span > div {
-          line-height: 20px !important;
-          margin-top: 7px !important;
-          margin-bottom: 7px !important; }
+          line-height: 34px !important; }
+      #no-stick .tbody .trow.average_column span, #no-stick .tbody .trow.average_month span {
+        height: 20px;
+        line-height: 20px; }
+        #no-stick .tbody .trow.average_column span div, #no-stick .tbody .trow.average_month span div {
+          height: 20px !important;
+          line-height: 20px !important; }
     #no-stick .fix-column > .thead > span {
       width: 80px; }
     #no-stick .fix-column > .tbody > .trow {
@@ -15162,38 +15206,39 @@ button.btn.back-btn {
           background-color: transparent !important; }
       #no-stick .fix-column > .tbody > .holidays_column:hover {
         background-color: rgba(142, 214, 250, 0.15) !important; }
-    #no-stick .rest-columns > .tbody > .trow > span {
+    #no-stick .rest-columns > .thead > span:not(.group) {
+      vertical-align: bottom;
+      top: 4px; }
+    #no-stick .rest-columns > .tbody .trow > span {
       width: 70px; }
-      #no-stick .rest-columns > .tbody > .trow > span > div {
+      #no-stick .rest-columns > .tbody .trow > span > div {
         width: 70px;
         height: 20px;
         padding-right: 6px;
         line-height: 20px; }
-    #no-stick .rest-columns > .tbody > .holidays_column {
+    #no-stick .rest-columns > .tbody .holidays_column {
       background-color: rgba(142, 214, 250, 0.15) !important; }
-      #no-stick .rest-columns > .tbody > .holidays_column > span > div {
+      #no-stick .rest-columns > .tbody .holidays_column > span > div {
         background-color: transparent !important; }
-        #no-stick .rest-columns > .tbody > .holidays_column > span > div:hover {
+        #no-stick .rest-columns > .tbody .holidays_column > span > div:hover {
           background-color: transparent !important; }
-      #no-stick .rest-columns > .tbody > .holidays_column:hover {
+      #no-stick .rest-columns > .tbody .holidays_column:hover {
         background-color: rgba(142, 214, 250, 0.15) !important; }
-    #no-stick .average_column, #no-stick .average_month {
-      background-color: inherit !important; }
-      #no-stick .average_column span, #no-stick .average_month span {
-        background-color: #fff !important;
+    #no-stick .fix-column .tbody .trow.average_column, #no-stick .fix-column .tbody .trow.average_month {
+      background-color: #fffce1 !important; }
+      #no-stick .fix-column .tbody .trow.average_column span, #no-stick .fix-column .tbody .trow.average_month span {
         margin-top: 0px;
         margin-bottom: 0px; }
-        #no-stick .average_column span > div, #no-stick .average_month span > div {
-          background-color: rgba(255, 238, 28, 0.15) !important;
-          margin-top: 0px !important;
+        #no-stick .fix-column .tbody .trow.average_column span > div, #no-stick .fix-column .tbody .trow.average_month span > div {
           margin-bottom: 7px !important;
-          height: 20px !important;
           padding-right: 6px;
           line-height: 20px !important; }
     #no-stick .tbody > .trow + .empty_row {
       background-color: #eff3f6 !important; }
     #no-stick ::-webkit-scrollbar {
-      display: none; } }
+      display: none; }
+    #no-stick .footer {
+      height: 100px; } }
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -15211,55 +15256,6 @@ button.btn.back-btn {
 
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #e1e4e6; }
-
-span.group {
-  width: auto !important; }
-  span.group p.title {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    background-color: #c6ebff;
-    z-index: 999999;
-    min-height: 31px;
-    line-height: normal;
-    padding: 0 10px;
-    padding-top: 7px;
-    white-space: normal;
-    margin: auto;
-    overflow: hidden; }
-  span.group > span {
-    width: 101px;
-    display: inline-block; }
-
-#no-stick .rest-columns .thead span.group {
-  margin-right: 96px;
-  border-right: 2px solid #c6ebff;
-  border-left: 2px solid #c6ebff;
-  height: 105px; }
-  #no-stick .rest-columns .thead span.group > span {
-    top: 52px;
-    position: relative; }
-
-.tbody span.group {
-  margin-right: 46px;
-  border-left: 2px solid #c6ebff;
-  border-right: 2px solid #c6ebff; }
-
-#no-stick .rest-columns > .thead > span:not(.group) {
-  vertical-align: bottom;
-  top: 18px; }
-
-#no-stick .trow_hover_d span.group > span > div {
-  background: #e7e7e7; }
-
-#no-stick span.group > span > div {
-  height: 31px;
-  padding-right: 15px;
-  line-height: 31px;
-  margin-top: 6px; }
-
-#no-stick .trow_hover_d.holidays_column span.group > span > div {
-  background: none !important; }
 @charset "UTF-8";
 .object_cont {
   padding-bottom: 30px; }
@@ -15305,6 +15301,8 @@ span.group {
       -moz-column-count: 4;
       /* Firefox */
       column-count: 4; }
+    .object_cont .inner_objects .list_wrapper .last-item {
+      margin-bottom: 20px !important; }
     .object_cont .inner_objects .list_wrapper li {
       list-style: none;
       line-height: 22px;
@@ -15312,17 +15310,22 @@ span.group {
       font-weight: 500;
       color: #354052; }
       .object_cont .inner_objects .list_wrapper li.title {
-        margin-bottom: 5px; }
-        .object_cont .inner_objects .list_wrapper li.title:not(:first-of-type) {
-          margin-top: 20px; }
+        display: block; }
+        .object_cont .inner_objects .list_wrapper li.title > span {
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-top: 5px;
+          font-weight: 400;
+          font-size: 14px;
+          color: #7f8fa4;
+          text-decoration: none;
+          text-decoration: underline;
+          cursor: pointer;
+          line-height: 17px; }
       .object_cont .inner_objects .list_wrapper li.accordeon:not(:last-child) {
         margin-bottom: 20px; }
       .object_cont .inner_objects .list_wrapper li.accordeon .title {
-        text-decoration: underline;
-        text-decoration-style: dashed;
-        -webkit-text-decoration-style: dashed;
-        text-decoration-color: #7f8fa4;
-        -webkit-text-decoration-color: #7f8fa4; }
+        border-bottom: 2px dashed rgba(127, 143, 164, 0.6); }
       .object_cont .inner_objects .list_wrapper li.accordeon .collapse {
         padding-top: 15px;
         padding-left: 15px; }
@@ -15341,9 +15344,13 @@ span.group {
         font-weight: 400;
         font-size: 14px;
         color: #7f8fa4;
-        text-decoration: underline;
         cursor: pointer;
         line-height: 17px; }
+        .object_cont .inner_objects .list_wrapper li.list-item span {
+          border-bottom: 1px solid #7f8fa4;
+          line-height: 10px;
+          display: inline-block;
+          white-space: nowrap; }
 
 .app-body_new_margin {
   margin-top: 55px; }

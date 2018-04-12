@@ -48,9 +48,9 @@ $font_size_mobile: 0.688em;
     width: 100%;
     background-color: #eff3f6;
     position: fixed;
-    height: 180px;
+    height: 210px;
     z-index: 999;
-    top: 110px !important;
+    top: 65px !important;
   }
 
 
@@ -98,8 +98,16 @@ $font_size_mobile: 0.688em;
       cursor: pointer;
     }
   }
-  .trow_hover_d>span>div{
-    background-color: #e7e7e7;
+  .trow_hover_d{
+    >span>div{
+      background-color: #e7e7e7;
+    }
+    span.group > span >div {
+      background: #e7e7e7;
+    }
+    &.holidays_column span.group > span > div{
+      background:none !important;
+    }
   }
   .tbody {
     //background-color: #eff3f6;
@@ -109,6 +117,11 @@ $font_size_mobile: 0.688em;
     overflow: auto;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    span.group {
+      margin-right: 46px;
+      border-left: 2px solid #c6ebff;
+      border-right: 2px solid #c6ebff;
+    }
   }
 
   .average_column {
@@ -200,6 +213,20 @@ $font_size_mobile: 0.688em;
         margin-right: 50px;
         margin-left: -50px;
       }
+      > span:not(.group) {
+        vertical-align: bottom;
+        top: 18px;
+      }
+      span.group {
+        margin-right: 96px;
+        border-right: 2px solid #c6ebff;
+        border-left: 2px solid #c6ebff;
+        height: 105px;
+        >span{
+          top:52px;
+          position:relative;
+        }
+      }
       &.h_shadow{
         //box-shadow: 0px 6px 6px -4px rgba(200,200,200,0.8);
         box-shadow: 0px 13px 9px -10px rgba(200, 200, 200, 0.8);
@@ -243,6 +270,36 @@ $font_size_mobile: 0.688em;
     }
   }
 
+  span.group {
+    width: auto!important;
+    p.title {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      background-color: #c6ebff;
+      z-index: 999;
+      min-height: 31px;
+      line-height: normal;
+      padding: 0 10px;
+      padding-top: 7px;
+      white-space: normal;
+      margin: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    > span {
+      width: 101px;
+      //height: 72px;
+      display: inline-block;
+      >div{
+        height: 31px;
+        padding-right: 15px;
+        line-height: 31px;
+        margin-top: 6px;
+      }
+    }
+  }
+
 }
 
 
@@ -256,6 +313,9 @@ $font_size_mobile: 0.688em;
       height: -moz-calc(100vh - 190px) !important;
       height: -webkit-calc(100vh - 190px) !important;
     }
+    .footer{
+      height:150px;
+    }
   }
 }
 
@@ -267,7 +327,7 @@ $font_size_mobile: 0.688em;
     padding-right: 0px;
     padding-left: 0px;
     .thead {
-      height: 90px;//56
+      //height: 90px;//56
       > span {
         height: 62px;
         margin-top: 0px;
@@ -277,7 +337,7 @@ $font_size_mobile: 0.688em;
         > a {
           position: absolute;
           bottom: 45%;
-          line-height: 12px;
+          line-height: 14px;
           height: auto;
           margin-left: 8px;
           margin-right: 5px;
@@ -287,17 +347,29 @@ $font_size_mobile: 0.688em;
     }
 
     .tbody {
-      //height: calc(100vh - 220px) !important;
-      //height: -moz-calc(100vh - 220px) !important;
-      //height: -webkit-calc(100vh - 220px) !important;
-      height: 60vh!important;
+      height: calc(100vh - 170px) !important;
+      height: -moz-calc(100vh - 170px) !important;
+      height: -webkit-calc(100vh - 170px) !important;
+
+
       .trow span {
         line-height: 34px;
         height: 34px;
         > div {
-          line-height: 20px !important;
-          margin-top: 7px !important;
-          margin-bottom: 7px !important;
+          line-height: 34px !important;
+          //line-height: 20px !important;
+          //margin-top: 7px !important;
+          //margin-bottom: 7px !important;
+        }
+      }
+      .trow.average_column, .trow.average_month{
+        span{
+          height: 20px;
+          line-height: 20px;
+          div{
+            height: 20px!important;
+            line-height: 20px!important;
+          }
         }
       }
     }
@@ -343,43 +415,44 @@ $font_size_mobile: 0.688em;
       }
     }
 
-    .rest-columns > .tbody > {
-      .trow {
-        > span {
-          width: 70px;
-          > div {
-            width: 70px;
-            height: 20px;
-            padding-right: 6px;
-            line-height: 20px;
-          }
-        }
+    .rest-columns {
+      > .thead > span:not(.group) {
+        vertical-align: bottom;
+        top: 4px;
       }
-      .holidays_column {
-        background-color: rgba(142, 214, 250, 0.15)!important;
-        >span>div{
-          background-color: transparent !important;
-          &:hover{
-            background-color: transparent !important;
+      > .tbody {
+        .trow {
+          > span {
+            width: 70px;
+            > div {
+              width: 70px;
+              height: 20px;
+              padding-right: 6px;
+              line-height: 20px;
+            }
           }
         }
-        &:hover{
-          background-color: rgba(142, 214, 250, 0.15) !important;
+        .holidays_column {
+          background-color: rgba(142, 214, 250, 0.15)!important;
+          >span>div{
+            background-color: transparent !important;
+            &:hover{
+              background-color: transparent !important;
+            }
+          }
+          &:hover{
+            background-color: rgba(142, 214, 250, 0.15) !important;
+          }
         }
       }
     }
-
-    .average_column, .average_month {
-      background-color:inherit!important;
+    .fix-column .tbody .trow.average_column,.fix-column .tbody .trow.average_month{
+      background-color:#fffce1 !important;
       span {
-        background-color:#fff!important;
         margin-top: 0px;
         margin-bottom: 0px;
         >div{
-          background-color: rgba(255, 238, 28, 0.15)!important;
-          margin-top: 0px !important;
           margin-bottom: 7px !important;
-          height: 20px !important;
           padding-right: 6px;
           line-height: 20px !important;
         }
@@ -390,15 +463,15 @@ $font_size_mobile: 0.688em;
       background-color: #eff3f6 !important;
     }
 
-
-
     ::-webkit-scrollbar {
       display: none;
     }
 
+    .footer{
+      height:100px;
+    }
 
   }
-
 }
 
 
@@ -424,63 +497,3 @@ $font_size_mobile: 0.688em;
 //test
 
 
-
-span.group {
-  width: auto!important;
-  p.title {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    background-color: #c6ebff;
-    z-index: 999999;
-    min-height: 31px;
-    line-height: normal;
-    padding: 0 10px;
-    padding-top: 7px;
-    white-space: normal;
-    margin: auto;
-    overflow: hidden;
-  }
-  > span {
-    width: 101px;
-    //height: 72px;
-    display: inline-block;
-  }
-}
-
-#no-stick .rest-columns .thead span.group {
-  margin-right: 96px;
-  border-right: 2px solid #c6ebff;
-  border-left: 2px solid #c6ebff;
-  height: 105px;
-  >span{
-    top:52px;
-    position:relative;
-  }
-}
-
-.tbody span.group {
-  margin-right: 46px;
-  border-left: 2px solid #c6ebff;
-  border-right: 2px solid #c6ebff;
-}
-
-#no-stick .rest-columns > .thead > span:not(.group) {
-  vertical-align: bottom;
-  top: 18px;
-}
-
-#no-stick .trow_hover_d span.group > span >div {
-  background: #e7e7e7;
-}
-
-#no-stick span.group > span >div {
-  height: 31px;
-  padding-right: 15px;
-  line-height: 31px;
-  margin-top: 6px;
-}
-
-#no-stick .trow_hover_d.holidays_column span.group > span > div{
-  background:none !important;
-}

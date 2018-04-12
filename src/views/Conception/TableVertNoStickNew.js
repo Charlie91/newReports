@@ -260,6 +260,8 @@ class TableVerticalNoStick extends Component {
                             <div className="trow empty_row" style={{backgroundColor: '#eff3f6'}}>
                                 <span className={'empty_col'} style={{backgroundColor: '#eff3f6'}}></span>
                             </div>
+                            <div className="footer"></div>
+
 
                         </div>
 
@@ -561,6 +563,8 @@ class TableVerticalNoStick extends Component {
                                     <span className={"empty_col_last"}><div>&nbsp;</div></span>
                                 </div>
                             )}
+
+                            <div className="footer"></div>
 
                         </div>
                     </div>
