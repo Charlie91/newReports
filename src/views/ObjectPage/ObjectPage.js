@@ -306,7 +306,8 @@ export default class ObjectPage extends Component {
             return moment(arr[arr.length - 1].THEDATE).month() === lastMonth.month()
         }
         else if(timeSegment === 'D'){
-            return moment(arr[arr.length - 1].THEDATE).dayOfYear() === lastMonth.dayOfYear()
+            //console.log(moment(arr[arr.length - 1].THEDATE).format('DD MM'),lastMonth.format('DD MM'));
+            return moment(arr[arr.length - 1].THEDATE).format('DD MM') === lastMonth.format('DD MM')
         }
 
     }

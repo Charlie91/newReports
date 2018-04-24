@@ -15945,6 +15945,8 @@ button.btn.back-btn {
       margin-left: 0; }
   .all_data .row:first-of-type > div:first-of-type {
     white-space: nowrap; }
+  .all_data .comparison_mode-wrp {
+    display: none; }
   .all_data .datepicker_wrp input.datepicker {
     width: auto;
     font-size: 12px; }
@@ -15954,6 +15956,8 @@ button.btn.back-btn {
       display: none; }
     .all_data .datepicker_wrp input.datepicker::-webkit-calendar-picker-indicator {
       display: none; }
+  .all_data .floor_btn-wrp {
+    display: block; }
   .all_data .line-chart-wrapper {
     width: 100%;
     overflow-x: scroll;
@@ -16142,7 +16146,8 @@ button.btn.back-btn {
       overflow: scroll;
       padding-bottom: 10px;
       position: relative;
-      top: 10px; }
+      top: 10px;
+      background: #fff; }
       .object_cont .floor_btn-wrp::-webkit-scrollbar {
         display: none;
         width: 0 !important; }
