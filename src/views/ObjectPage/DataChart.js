@@ -4,6 +4,7 @@ import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {formatNumberBySpaces} from './../../utils/utils';
 import {customLabelDataChart} from "./customLabelDataChart";
+import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
 
@@ -16,22 +17,46 @@ function addAdditionalStylesToChart(chart) { //изменение стилей �
             chart.datasets[1].pointRadius = 1;
         }
         else{
-            chart.datasets[1].pointBorderWidth = 6;
-            chart.datasets[1].pointHoverRadius = 6;
-            chart.datasets[1].pointRadius = 2.4;
+            for(let i = 0; i < chart.datasets.length; i++){
+                if(i === 1 || i === 3 ){
+                    chart.datasets[i].pointBorderWidth = 6;
+                    chart.datasets[i].pointHoverRadius = 6;
+                    chart.datasets[i].pointRadius = 2.4;
+                }
+            }
         }
     }
     return chart;
 }
 
+function comparisonLabel(tooltipItem,data){
+    let index = tooltipItem.index;
+
+    let values = data.datasets.reduce( (result, current, i) => {
+        //if(index === current.data.length - 1) return result; //убираем "средние" костыльные значения
+        let className = 'checked y' + current.year;// имя класса
+        let square = '<div class="' + className + '"></div>'; //строка HTML-тега
+        let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(current.data[index]) + '</div>';
+
+        let ifThereTheSameValue = result.some( item => {    // если есть уже подобное значение в результатах - не добавляем
+           return item === newValue;
+        });
+
+        if(!ifThereTheSameValue && current.data[index])
+            result.push(newValue);   //если значение не задвоено и не NaN, undefined и т.д. - добавляем
+
+        return result;
+    },[]);
+    return values.join('')
+}
 
 const DataChart = (props) => {
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
         <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
-            {props.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
+            {(props.emptyData) ? <p className="error-message">Отсутствуют данные</p> : ''}
             <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
-                {(!props.data.datasets[0].data.length) ?
+                {(!props.data.datasets.length || (!props.data.datasets[0].data.length && props.data.datasets).length < 3) ?
                     <Loading/>
                     :
                     <div className="linechart_area_wrapper">
@@ -45,7 +70,7 @@ const DataChart = (props) => {
                                       display: false
                                   },
                                   tooltips: {
-                                      custom: customLabelDataChart,
+                                      custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
                                       enabled:false,
                                       callbacks:{
                                           title: (tooltipItem, data ) => {
@@ -67,11 +92,17 @@ const DataChart = (props) => {
                                               return title;
                                           },
                                           label: (tooltipItem, data ) => {
-                                              return `
-                                              ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
-                                              ${(props.currency.length > 4) ?
-                                                  (props.currency.substring(0,3) + '.') : props.currency}
-                                          `
+                                              if(props.comparison_mode){
+                                                  return comparisonLabel(tooltipItem,data)
+                                              }
+                                              else{
+                                                  return `
+                                                      ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
+                                                      ${(props.currency.length > 4) ?
+                                                          (props.currency.substring(0,3) + '.') : props.currency}
+                                                  `
+                                              }
+
                                           }
                                       }
                                   },
@@ -99,8 +130,6 @@ const DataChart = (props) => {
                                                   fontSize: 14,
                                                   fontFamily: 'ProximaNova',
                                                   callback: (value, index, values) => {
-
-
                                                       let month_en = value.replace(/[^a-z]/gi, '');
                                                       if(month_en.length > 2){
                                                           let month_ru =  moment().locale('en').month(month_en).locale('ru').format('MMM');
@@ -209,6 +238,6 @@ const DataChart = (props) => {
             </div>
         </Col>
     );
-}
+};
 
 export default DataChart;

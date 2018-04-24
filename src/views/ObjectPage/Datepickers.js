@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const Datepickers = (props) => {
     return (
-        <Col className="datepickers" xs="12" md="5" lg="5" xl="4">
+        <div>
             <span className="muted">Период с </span>
             <div className="datepicker_wrp">
                 {
@@ -15,11 +15,13 @@ const Datepickers = (props) => {
                             className="datepicker"
                             selected={props.startDate}
                             disabled={props.requestIsInProcess}
+                            dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                             selectsStart
                             startDate={props.startDate}
                             endDate={props.endDate}
-                            maxDate={moment()}
-                            dateFormat="DD MMM YYYY"
+                            minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : ''}
+                            maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
+                            dateFormat={ props.comparison_mode ? "DD MMM" : "DD MMM YYYY" }
                             onChange={props.handleChangeStart}
                         />
                         :
@@ -38,11 +40,13 @@ const Datepickers = (props) => {
                             className="datepicker"
                             selected={props.endDate}
                             disabled={props.requestIsInProcess}
+                            dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                             selectsEnd
                             startDate={props.startDate}
                             endDate={props.endDate}
-                            maxDate={moment()}
-                            dateFormat="DD MMM YYYY"
+                            minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : ''}
+                            maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
+                            dateFormat={ props.comparison_mode ? "DD MMM" : "DD MMM YYYY" }
                             onChange={props.handleChangeEnd}
                         />
                         :
@@ -55,7 +59,7 @@ const Datepickers = (props) => {
                         />
                 }
             </div>
-        </Col>
+        </div>
     )
 };
 
