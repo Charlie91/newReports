@@ -2,16 +2,17 @@ import {API} from './api_paths';
 import punycode from 'punycode';
 import parser from 'ua-parser-js';
 
+
 export function checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
-    let options = {
-        method:'GET',
-        credentials:'include',
-        mode: 'cors'
-    };
-    return ajaxRequest(API.auth,options)
+    return ajaxRequest(API.auth)
 }
 
 export function ajaxRequest(url,options){   //функция-шаблон для ajax-запросов
+    if(!options)options = {     //дефолтные опцции всех запросов
+        method: 'GET',
+        credentials: 'include',
+        mode: 'cors'
+    };
     return  fetch(url, options)
         .then(function (response) {
             if(response.status === 401 && (parser().browser.name !== 'IE'))

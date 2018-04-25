@@ -213,7 +213,9 @@
 }
 
 
-
+.floor_btn-layer {
+  margin-top: -30px;
+}
 .floor_btn-wrp{
   background-color: rgba(247, 245, 252, 0.7);
   display: inline-block;
@@ -1239,10 +1241,14 @@
         }
       }
     }
+    .floor_btn-layer {
+      margin-top: 0px;
+    }
     .floor_btn-wrp{
-      margin-top:22px;
+      margin-top:12px;
       white-space: nowrap;
       overflow: scroll;
+      padding: 0;
       padding-bottom: 10px;
       position: relative;
       top: 10px;

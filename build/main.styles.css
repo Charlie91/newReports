@@ -15421,6 +15421,9 @@ button.btn.back-btn {
 .revenue .datepicker_wrp input.datepicker {
   border: solid 1px #f6aa25; }
 
+.floor_btn-layer {
+  margin-top: -30px; }
+
 .floor_btn-wrp {
   background-color: rgba(247, 245, 252, 0.7);
   display: inline-block;
@@ -16140,10 +16143,13 @@ button.btn.back-btn {
       margin-top: 35px; }
     .object_cont.revenue .floor_btn-wrp .btn {
       color: #f6aa26; }
+    .object_cont .floor_btn-layer {
+      margin-top: 0px; }
     .object_cont .floor_btn-wrp {
-      margin-top: 22px;
+      margin-top: 12px;
       white-space: nowrap;
       overflow: scroll;
+      padding: 0;
       padding-bottom: 10px;
       position: relative;
       top: 10px;
