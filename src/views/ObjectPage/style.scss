@@ -61,7 +61,7 @@
           &:not(:first-of-type){
             //margin-top:20px;
           }
-          >span{
+          >a{
             display:inline-block;
             margin-bottom:10px;
             margin-top: 5px;
@@ -85,7 +85,7 @@
             padding-top: 15px;
             padding-left: 15px;
           }
-          span.list-item{
+          a.list-item{
             display:block;
             margin-bottom:10px;
             font-weight: 400;
@@ -104,11 +104,12 @@
           color: #7f8fa4;
           cursor:pointer;
           line-height:17px;
-          span{
+          a{
             border-bottom: 1px solid #7f8fa4;
             line-height: 10px;
             display: inline-block;
             white-space: nowrap;
+            color: #7f8fa4;
           }
         }
       }

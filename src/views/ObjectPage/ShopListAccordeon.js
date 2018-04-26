@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, CardBody, Collapse} from "reactstrap";
+import {Link} from 'react-router-dom';
 
 
 const ShopListAccordeon = (props) => {
@@ -31,9 +32,9 @@ const ShopListAccordeon = (props) => {
                                 <Collapse isOpen={false}>
                                     {item.objects.map((object,n) => {
                                         return (
-                                            <span key={n} onClick={stopPropagation} className="list-item">
-                                                {object.obj_name}
-                                             </span>
+                                            <Link to={'/authorization'} key={n} className="list-item">
+                                                {object.name}
+                                             </Link>
                                         )
                                     })}
                                 </Collapse>
@@ -48,3 +49,6 @@ const ShopListAccordeon = (props) => {
 
 
 export default ShopListAccordeon;
+
+
+// onClick={stopPropagation}

@@ -53,7 +53,7 @@
       color: #354052; }
       .object_cont .inner_objects .list_wrapper li.title {
         display: block; }
-        .object_cont .inner_objects .list_wrapper li.title > span {
+        .object_cont .inner_objects .list_wrapper li.title > a {
           display: inline-block;
           margin-bottom: 10px;
           margin-top: 5px;
@@ -71,7 +71,7 @@
       .object_cont .inner_objects .list_wrapper li.accordeon .collapse {
         padding-top: 15px;
         padding-left: 15px; }
-      .object_cont .inner_objects .list_wrapper li.accordeon span.list-item {
+      .object_cont .inner_objects .list_wrapper li.accordeon a.list-item {
         display: block;
         margin-bottom: 10px;
         font-weight: 400;
@@ -88,11 +88,12 @@
         color: #7f8fa4;
         cursor: pointer;
         line-height: 17px; }
-        .object_cont .inner_objects .list_wrapper li.list-item span {
+        .object_cont .inner_objects .list_wrapper li.list-item a {
           border-bottom: 1px solid #7f8fa4;
           line-height: 10px;
           display: inline-block;
-          white-space: nowrap; }
+          white-space: nowrap;
+          color: #7f8fa4; }
 
 .checked {
   height: 9px;

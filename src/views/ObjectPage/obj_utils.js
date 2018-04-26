@@ -2,6 +2,8 @@
 /*
 Вспомогательные функции ObjectPage компонента
 */
+
+
 import moment from 'moment';
 
 
@@ -99,4 +101,34 @@ export function removeSpecificStyles(){
     document.querySelector('.navbar').classList.remove('changeHeaderPadding');
     document.querySelector('.navbar >div:first-of-type').classList.remove('additional_position');
     document.querySelector('.navbar-toggler').classList.remove('new_position_for_ham');
+}
+
+export function localizeMoment(){
+    moment.updateLocale('ru', {
+        monthsShort : [
+            "янв", "фев", "мар", "апр", "май", "июн", "июл",
+            "авг", "сен", "окт", "ноя", "дек"
+        ],
+        months : [
+            "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+            "августа", "сентября", "октября", "ноября", "декабря"
+        ]
+    });
+    moment.defineLocale('ru-new', { //фикс бага с невосприятием дейтпикером ручного ввода
+        parentLocale: 'en',
+        monthsShort : [
+            "янв", "фев", "мар", "апр", "май", "июн", "июл",
+            "авг", "сен", "окт", "ноя", "дек"
+        ],
+        months : [
+            "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
+            "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+        ],
+        weekdaysMin : [
+            "вс", "пн", "вт", "ср", "чт", "пт", "сб"
+        ],
+        week : {
+            dow : 1, // Начало недели - с понедельника
+        }
+    });
 }
