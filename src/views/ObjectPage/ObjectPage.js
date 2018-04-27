@@ -41,7 +41,6 @@ export default class ObjectPage extends Component {
             ]
         };
 
-
         this.state = {
             viewportWidth:window.innerWidth,
             requestIsInProcess:false,
@@ -58,6 +57,8 @@ export default class ObjectPage extends Component {
             shops:[],
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика
         };
+        this.initialState = Object.assign({},this.state);//для удобного сброса стейта;
+
     }
 
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
@@ -157,56 +158,8 @@ export default class ObjectPage extends Component {
             .catch(err => console.log(err))
     }
 
-    // getPlurableFloorsData(){
-    //     if(!this.state.floors)return null;
-    //     let [unit, chart,labelsLength,floorID] = [this.state.timeSegment, this.state.chart, 0, this.returnFloorID()];
-    //     chart.datasets.forEach( (item,i) => {
-    //         if( i % 2 )return; //делаем запросы только по четным индексам, так как на один график у нас 2 элемента в массиве
-    //         let year = item.year;
-    //         let [startDate, endDate] = [year + this.state.startDate.format("MMDD"),year +  this.state.endDate.format("MMDD")];
-    //         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
-    //         ajaxRequest(url)
-    //             .then(data => {
-    //                 data = checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-    //                 let [values,dates, styleValues] = [ [], [], [] ] ;
-    //                 data.floorData.forEach(item => {
-    //                     values.push(item.VALUE);
-    //                     dates.push(item.THEDATE);
-    //                 });
-    //
-    //                 if(!dates.length){
-    //                     [ chart.datasets[i].data, chart.datasets[i + 1].data ] = [[],[]];
-    //                     return chart;
-    //                 }
-    //                 let avg = parseInt(average(values));
-    //                 dates = formatDatesForChart(dates);
-    //                 values = (this.checkForTail(data)) ? [avg, ...values, avg] : [avg, ...values];
-    //                 styleValues= (this.checkForTail(data)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
-    //                                                                 :
-    //                                                          [NaN,...values.slice(1)];
-    //
-    //                 [ chart.datasets[i].data, chart.datasets[i + 1].data ] = [values,styleValues];
-    //
-    //                 if(dates.length >= labelsLength){
-    //                     labelsLength = dates.length;
-    //                     chart.labels = dates;
-    //                 }
-    //                 return chart;
-    //             })
-    //             .then(chart => {
-    //                 this.setState({
-    //                     chart:chart,
-    //                     emptyData:false,
-    //                     requestIsInProcess:false
-    //                 }, () => {
-    //                     this.requestIsEnded();
-    //                 });
-    //             })
-    //             .catch(err => console.log(err))
-    //     });
-    // }
 
-    getPlurableFloorsData(){
+    getPlurableFloorsData(){    //ajax запрос на данные в режиме сравнения
         if(!this.state.floors)return null;
         let [unit, chart,labelsLength,floorID] = [this.state.timeSegment, this.state.chart, 0, this.returnFloorID()];
 
@@ -218,10 +171,10 @@ export default class ObjectPage extends Component {
             return ajaxRequest(url)
                 .then( data => data)
                 .catch( err => console.log(err))
-        }));
-        newData.then(arr => arr.filter(item => item !== null))//фильтруем массив от null значений
+        }))
+            .then(arr => arr.filter(item => item !== null))//фильтруем массив от null значений
             .then(data => {
-                data.forEach( (item,i) => {
+                let newChart = data.reduce( (chart,item,i) => {
                     let formattedData = checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
                     let [values,dates, styleValues] = [ [], [], [] ] ;
 
@@ -237,18 +190,21 @@ export default class ObjectPage extends Component {
                     let avg = parseInt(average(values));
                     dates = formatDatesForChart(dates);
                     values = (this.checkForTail(formattedData)) ? [avg, ...values, avg] : [avg, ...values];
-                    styleValues= (this.checkForTail(formattedData)) ? [NaN,...values.slice(1, values.length-1 ),NaN] : [NaN,...values.slice(1)];
+                    styleValues= (this.checkForTail(formattedData)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
+                        :
+                        [NaN,...values.slice(1)];
+
                     [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [values,styleValues];
+
                     if(dates.length >= labelsLength){
                         labelsLength = dates.length;
                         chart.labels = dates;
                     }
-                });
-                return chart;
-            })
-            .then(chart => {
+                    return chart;
+                },chart);
+
                 this.setState({
-                    chart:chart,
+                    chart:newChart,
                     emptyData:false,
                     requestIsInProcess:false
                 }, () => {
@@ -279,7 +235,7 @@ export default class ObjectPage extends Component {
             this.dropAllGraphs();
     }
 
-    addComparisonGraph(year){
+    addComparisonGraph(year){   //добавление нового графика в диаграмму
         if(!this.state.floors)return null;
         let [startDate, endDate] = [year + this.state.startDate.format("MMDD"),year +  this.state.endDate.format("MMDD")],
             unit = this.state.timeSegment,
@@ -315,7 +271,7 @@ export default class ObjectPage extends Component {
     }
 
 
-    removeComparisonGraph(year){
+    removeComparisonGraph(year){ //удаление графика из диаграммы
         let chart = this.state.chart;
         let graphArr = chart.datasets;
 
@@ -339,9 +295,10 @@ export default class ObjectPage extends Component {
             this.setState({chart:chart});
     }
 
-    dropAllGraphs(){
+    dropAllGraphs(){    //выход из режима сравнения
         let initialChart = Object.assign({},this.initialChart);
         let obj = this.state.object;
+        if(!obj)return;
         initialChart = this.getNewStyleForChart( obj.data_type.split(', '), initialChart);
         this.setState({
             chart:initialChart,
@@ -352,7 +309,7 @@ export default class ObjectPage extends Component {
         )
     }
 
-    changeStyleOfFirstGraph(){
+    changeStyleOfFirstGraph(){  ////смена стиля первого графика при входе в режим сравнения
         let chart = this.state.chart;
         let [firstGraphData, secondGraphData] = [ [...chart.datasets[0].data],  [...chart.datasets[1].data] ];//сохранение данных текущего графика
         let newDataset = createNewDataset(2018);//создание массива новых стилизованных графиков
@@ -382,7 +339,10 @@ export default class ObjectPage extends Component {
     }
 
     formatInnerObjects(objects){  //получаем список внутренних объектов(кафе и магазинов) в ТРЦ и преобразуем в нужную структуру
-        if(!objects)return;
+        if(!objects){
+            this.setState({shops:[]});
+            return;
+        }
         let hierarchiedObjects = objects.reduce( (result,item) => { //преобразование получаемых данных в нужную нам структуру
             let check = result.some(obj => {
                 if(obj.title === item.obj_type)
@@ -609,11 +569,15 @@ export default class ObjectPage extends Component {
         this.setState({requestIsInProcess:false})
     }
 
+    dropComponent(){  //вызывается когда компонент вызывается с новым объектом
+        window.scrollTo(0,0);
+        this.setState(this.initialState);
+        this.getNewObjectsData();
+    }
+
     componentDidUpdate(prevProps, prevState){
-        if(prevProps.match.url !== this.props.match.url){
-            this.getNewObjectsData();
-            window.scrollTo(0,0);
-        }
+        if(prevProps.match.url !== this.props.match.url)//вызывается когда компонент вызывается с новым объектом
+            this.dropComponent();
 
         if(prevState.data !== this.state.data)
             this.requestIsEnded();

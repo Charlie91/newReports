@@ -33,7 +33,7 @@ export function formatDatesForChart(dates){
     return [first_date, ...dates, last_date];
 }
 
-export function createNewDataset(year,label, backgroundColor, color){
+export function createNewDataset(year,label, backgroundColor, color){   //создание нового экземпляра данных для графика
     return [
         {
             label:label || String(year),

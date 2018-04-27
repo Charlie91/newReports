@@ -32,7 +32,7 @@ const ShopListAccordeon = (props) => {
                                 <Collapse isOpen={false}>
                                     {item.objects.map((object,n) => {
                                         return (
-                                            <Link to={'/authorization'} key={n} className="list-item">
+                                            <Link to={`/concept${object.conception}/city${props.city}/object${object.id}`} key={n} className="list-item">
                                                 {object.name}
                                              </Link>
                                         )
