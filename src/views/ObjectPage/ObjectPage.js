@@ -23,7 +23,12 @@ import ShopListAccordeon from './ShopListAccordeon';
 import YearSelector from './YearSelector';
 
 
-
+function formatDataForExcelInCMode(data){
+    return data.reduce( (arr,item) => {
+        arr.push(item.floorData);
+        return arr;
+    },[] );
+}
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -129,7 +134,7 @@ export default class ObjectPage extends Component {
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         ajaxRequest(url)
             .then(data => {
-                let [chartObj,values,dates] = [ this.state.chart, [], [] ] ;
+                let [chartObj,values,dates] = [ Object.assign({},this.state.chart), [], [] ] ;
                 data.floorData.forEach(item => {
                     values.push(item.VALUE);
                     dates.push(item.THEDATE);
@@ -147,7 +152,8 @@ export default class ObjectPage extends Component {
                 [ chartObj.datasets[0].data, chartObj.datasets[1].data, chartObj.labels ] = [values,styleValues,dates];
 
                 this.setState({
-                    data:data,
+                    averageHoursData:data,
+                    excelData:data.floorData,
                     chart:chartObj,
                     totalSum:data.totalSum,
                     emptyData:false,
@@ -206,7 +212,7 @@ export default class ObjectPage extends Component {
                 this.setState({
                     chart:newChart,
                     emptyData:false,
-                    requestIsInProcess:false
+                    excelData:formatDataForExcelInCMode(data)
                 }, () => {
                     this.requestIsEnded();
                 });
@@ -262,9 +268,24 @@ export default class ObjectPage extends Component {
 
                 chartObj.datasets.push(...newDataset);
 
+                let newArr;
+                if(Array.isArray(this.state.excelData[0])){
+                    newArr = this.state.excelData;
+                    newArr.push(data.floorData);
+                }
+                else{
+                    newArr = [];
+                    let firstExcellChild = this.state.excelData.reduce( (arr,item) => {
+                        arr.push(item);
+                        return arr;
+                    },[]);
+                    newArr.push(firstExcellChild, data.floorData);
+                }
+
                 this.setState({
                     chart:chartObj,
                     emptyData:false,
+                    excelData: newArr
                 });
             })
             .catch(err => console.log(err))
@@ -272,7 +293,8 @@ export default class ObjectPage extends Component {
 
 
     removeComparisonGraph(year){ //удаление графика из диаграммы
-        let chart = this.state.chart;
+        let chart = this.state.chart,
+            excel = this.state.excelData;
         let graphArr = chart.datasets;
 
         let removalIndexes = graphArr.reduce( (filteredIndexes, currentItem, index) => {
@@ -289,10 +311,16 @@ export default class ObjectPage extends Component {
             return true;
         });
 
+        excel = excel.filter(item => {
+          return moment(item[0].THEDATE).year() !== year
+        });
+
+
+
         if(!chart.datasets.length)
             this.setState({emptyData:true});
         else
-            this.setState({chart:chart});
+            this.setState({chart:chart, excelData:excel});
     }
 
     dropAllGraphs(){    //выход из режима сравнения
@@ -427,7 +455,7 @@ export default class ObjectPage extends Component {
 
     renderSegmentationButtons(){//функция рендера фильтров временной сегментации
         let state = this.state;
-        const xls = state.data && new xlsExport((state.data.floorData), 'Reports');//данные для выгрузки в таблицу
+        const xls = state.excelData && new xlsExport((state.excelData), 'Reports');//данные для выгрузки в таблицу
         let arr = [
             {val:'Y',text:'По годам',render:(state.startDate.year() !== state.endDate.year())},
             {val:'M',text:'По месяцам',render:(state.startDate.format('YYYY-MM') !== state.endDate.format('YYYY-MM'))},
@@ -579,7 +607,7 @@ export default class ObjectPage extends Component {
         if(prevProps.match.url !== this.props.match.url)//вызывается когда компонент вызывается с новым объектом
             this.dropComponent();
 
-        if(prevState.data !== this.state.data)
+        if(prevState.chart !== this.state.chart)
             this.requestIsEnded();
 
         if(prevState.comparison_mode !== this.state.comparison_mode)
@@ -617,12 +645,12 @@ export default class ObjectPage extends Component {
                 {(state.viewportWidth > 1467) ?
                     <BarChart
                         render={!(state.type === 'Выручка')}
-                        data={state.data}
+                        data={state.averageHoursData}
                     />
                     :
                     <HorizontalBarChart
                         render={!(state.type === 'Выручка')}
-                        data={state.data}
+                        data={state.averageHoursData}
                     />
                 }
                 <DataPerMonth

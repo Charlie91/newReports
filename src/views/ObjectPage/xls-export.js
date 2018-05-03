@@ -59,7 +59,10 @@ class XlsExport {
     if (typeof fileName !== 'string' || Object.prototype.toString.call(fileName) !== '[object String]') { throw new Error('Invalid input type: exportToCSV(String)'); }
 
     const MIME_CSV = 'data:attachament/csv;charset=utf-8,%EF%BB%BF';
-    this.downloadFile(MIME_CSV + encodeURIComponent(this.objectToSemicolons()), fileName);
+      if(Array.isArray(this._data[0]))
+          this.downloadFile(MIME_CSV + encodeURIComponent(this.arrayToSemicolons()), fileName);
+      else
+          this.downloadFile(MIME_CSV + encodeURIComponent(this.objectToSemicolons()), fileName);
   }
 
   downloadFile(output, fileName) {
@@ -97,6 +100,26 @@ class XlsExport {
 
     return `${header}\n${colsHead}\n${colsData}`;
   }
+
+  arrayToSemicolons(){
+      const header = `Reports;;;  ${moment().format('DD-MM-YYYY')}\n\n`;
+      const colsHead = Object.keys(this._data[0][0]).map(key => [key]).join(';').replace('THEDATE','Дата').replace('VALUE','Посещаемость/Выручка') + ';;;';
+      const maxLength = Math.max.apply(null, this._data.map(item => item.length) ); //вычисление максимальной возможной длины дочерних элементов
+      let colsData = '';
+
+      for(let index = 0; index < maxLength - 1; index++){
+
+          this._data.forEach(item => {
+              colsData += item[index].THEDATE + ';' + item[index].VALUE + ';;;';
+          });
+          colsData += '\n';
+
+      }
+
+      return `${header}\n${colsHead.repeat(this._data.length)}\n${colsData}`;
+
+  }
+
 }
 
 export default XlsExport; // comment this line to babelize
