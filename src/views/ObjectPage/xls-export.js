@@ -103,9 +103,17 @@ class XlsExport {
 
   arrayToSemicolons(){
       const header = `Reports;;;  ${moment().format('DD-MM-YYYY')}\n\n`;
-      const colsHead = Object.keys(this._data[0][0]).map(key => [key]).join(';').replace('THEDATE','Дата').replace('VALUE','Посещаемость/Выручка') + ';;;';
       const maxLength = Math.max.apply(null, this._data.map(item => item.length) ); //вычисление максимальной возможной длины дочерних элементов
-      let colsData = '';
+      let colsData = '',
+          colsHead = '';
+
+      for(let i = 0; i < this._data.length;i++){    //заполнение заголовков
+          if(!this._data[i].length){
+              colsHead += ';;;;';
+              continue;
+          }
+          colsHead += Object.keys(this._data[i][0]).map(key => [key]).join(';').replace('THEDATE','Дата').replace('VALUE','Посещаемость/Выручка') + ';;;';
+      }
 
       for(let index = 0; index < maxLength; index++){
 
@@ -119,7 +127,7 @@ class XlsExport {
           colsData += '\n';
       }
 
-      return `${header}\n${colsHead.repeat(this._data.length)}\n${colsData}`;
+      return `${header}\n${colsHead}\n${colsData}`;
 
   }
 
