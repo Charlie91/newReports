@@ -3,7 +3,7 @@ import {Col, Row, Card, CardBody} from "reactstrap";
 import { decodeHalfPunycodeLink, formatNumberBySimpleSpaces } from './../../utils/utils';
 import moment from 'moment';
 import {API} from './../../utils/api_paths';
-
+import YaMap from './ya_map';
 
 
 
@@ -26,9 +26,10 @@ const Announce = (props) => {
                             <p className="muted address_mobile" dangerouslySetInnerHTML={{__html: props.object.address}} />
                         </div>
                         <hr className={(props.object.floors_count &&
-                        props.object.gb_area &&
-                        props.object.gl_area &&
-                        props.object.since ) ? 'divider' : 'none'}/>
+                                        props.object.gb_area &&
+                                        props.object.gl_area &&
+                                        props.object.since ) ? 'divider' : 'none'}
+                        />
                         <Row>
                             <Col md="7" className="features">
                                 <div className={props.object.floors_count ? '' : 'none'}>
@@ -62,7 +63,8 @@ const Announce = (props) => {
                             </Col>
                             <Col md="5" className="geolocation">
                                 <div className="map_wrapper">
-                                    {props.renderMap()}
+                                    {/*props.renderMap()*/}
+                                    <YaMap state={props.state}/>
                                 </div>
                                 <div className="address" dangerouslySetInnerHTML={{__html: props.object.city_name + ',<br/>' + String(props.object.address).replace(props.object.city_name + ',', '' ) }} />
                             </Col>
