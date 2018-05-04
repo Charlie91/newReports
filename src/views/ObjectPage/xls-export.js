@@ -107,13 +107,16 @@ class XlsExport {
       const maxLength = Math.max.apply(null, this._data.map(item => item.length) ); //вычисление максимальной возможной длины дочерних элементов
       let colsData = '';
 
-      for(let index = 0; index < maxLength - 1; index++){
+      for(let index = 0; index < maxLength; index++){
 
           this._data.forEach(item => {
+              if(!item[index]){
+                  colsData += ';;;;';    //если нет данных добавляем только пропуск ячеек
+                  return;
+              }
               colsData += item[index].THEDATE + ';' + item[index].VALUE + ';;;';
           });
           colsData += '\n';
-
       }
 
       return `${header}\n${colsHead.repeat(this._data.length)}\n${colsData}`;

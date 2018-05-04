@@ -14,7 +14,8 @@ import DataChartSmall from './DataChartSmall';
 import {customLabel2} from "./customLabelDataChart";
 import {digitCount, formatNumberBySpaces,average} from './../../utils/utils';
 import {checkLeapYear,formatDatesForChart,createNewDataset,addOpacityToChart,
-        removeOpacityFromChart,addSpecificStyles,removeSpecificStyles, localizeMoment } from './obj_utils';
+        removeOpacityFromChart,addSpecificStyles,removeSpecificStyles, localizeMoment,
+        changeExcelData, formatDataForExcelInCMode } from './obj_utils';
 import xlsExport from './xls-export';
 import Datepickers from './Datepickers';
 import DataPerMonth from './DataPerMonth';
@@ -22,13 +23,6 @@ import ShopList from './ShopList';
 import ShopListAccordeon from './ShopListAccordeon';
 import YearSelector from './YearSelector';
 
-
-function formatDataForExcelInCMode(data){
-    return data.reduce( (arr,item) => {
-        arr.push(item.floorData);
-        return arr;
-    },[] );
-}
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -63,7 +57,6 @@ export default class ObjectPage extends Component {
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика
         };
         this.initialState = Object.assign({},this.state);//для удобного сброса стейта;
-
     }
 
     fillInitialObjectData(obj){ //записываем данные с пропсов, если они есть и парсим с сервера срезы
@@ -245,7 +238,9 @@ export default class ObjectPage extends Component {
         if(!this.state.floors)return null;
         let [startDate, endDate] = [year + this.state.startDate.format("MMDD"),year +  this.state.endDate.format("MMDD")],
             unit = this.state.timeSegment,
-            floorID = this.returnFloorID();
+            floorID = this.returnFloorID(),
+            newExcel;
+
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         ajaxRequest(url)
             .then(data => {
@@ -268,24 +263,12 @@ export default class ObjectPage extends Component {
 
                 chartObj.datasets.push(...newDataset);
 
-                let newArr;
-                if(Array.isArray(this.state.excelData[0])){
-                    newArr = this.state.excelData;
-                    newArr.push(data.floorData);
-                }
-                else{
-                    newArr = [];
-                    let firstExcellChild = this.state.excelData.reduce( (arr,item) => {
-                        arr.push(item);
-                        return arr;
-                    },[]);
-                    newArr.push(firstExcellChild, data.floorData);
-                }
+                newExcel = changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
 
                 this.setState({
                     chart:chartObj,
                     emptyData:false,
-                    excelData: newArr
+                    excelData: newExcel
                 });
             })
             .catch(err => console.log(err))
@@ -311,14 +294,10 @@ export default class ObjectPage extends Component {
             return true;
         });
 
-        excel = excel.filter(item => {
-          return moment(item[0].THEDATE).year() !== year
-        });
-
-
+        excel = excel.filter(item => moment(item[0].THEDATE).year() !== year);
 
         if(!chart.datasets.length)
-            this.setState({emptyData:true});
+            this.setState({emptyData:true,excelData:[]});
         else
             this.setState({chart:chart, excelData:excel});
     }
@@ -570,8 +549,8 @@ export default class ObjectPage extends Component {
         let newSegment = this.trackActualSegments(moment(e.target.value),this.state.endDate);
         this.setState(
             {startDate: moment(e.target.value),timeSegment:newSegment},
-            () => this.getFloorsData())
-        ;
+            () => this.getFloorsData()
+        );
     }
 
     handleMobileChangeEnd(e){

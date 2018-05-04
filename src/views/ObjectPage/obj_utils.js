@@ -132,3 +132,28 @@ export function localizeMoment(){
         }
     });
 }
+export function formatDataForExcelInCMode(data){
+    return data.reduce( (arr,item) => {
+        arr.push(item.floorData);
+        return arr;
+    },[] );
+}
+
+export function changeExcelData(excelData,data){
+    let newExcel;
+
+    if(Array.isArray(excelData[0]) || !excelData.length){ //если массив уже видоизменен под режим сравнения или пустой - просто добавляем данные
+        newExcel = excelData;
+        newExcel.push(data.floorData);
+    }
+    else{
+        newExcel = [];
+        let firstExcellChild = excelData.reduce( (arr,item) => { // иначе преобразуем имеющиеся данные в необходимый вид и тоже добавляем
+            arr.push(item);
+            return arr;
+        },[]);
+        newExcel.push(firstExcellChild, data.floorData);
+    }
+
+    return newExcel
+}
