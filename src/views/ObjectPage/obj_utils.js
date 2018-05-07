@@ -3,7 +3,7 @@
 Вспомогательные функции ObjectPage компонента
 */
 import moment from 'moment';
-import {digitCount} from './../../utils/utils';
+import {digitCount, average} from './../../utils/utils';
 
 
 
@@ -95,12 +95,55 @@ const obj_utils = {
         return data;
     },
 
+    checkForTail(data,state){//проверка нужен ли "хвостик"
+        let [timeSegment,arr,lastMonth] = [state.timeSegment,data.floorData,state.endDate];
+
+        if(timeSegment === 'M'){
+            return moment(arr[arr.length - 1].THEDATE).month() === lastMonth.month()
+        }
+        else if(timeSegment === 'D'){
+            return moment(arr[arr.length - 1].THEDATE).format('DD MM') === lastMonth.format('DD MM')
+        }
+    },
+
     formatDatesForChart(dates){
         let diff = moment(dates[0]).diff(moment(dates[1]));
         let first_date = moment(moment(dates[0]) + diff).format(),
             last_date = moment(moment(dates[dates.length - 1]) - diff).format();
 
         return [first_date, ...dates, last_date];
+    },
+
+    returnFormattedChart(data,state){
+       let labelsLength = 0;
+       return data.reduce( (chart,item,i) => {
+            let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
+            let [values,dates, styleValues] = [ [], [], [] ] ;
+
+            formattedData.floorData.forEach(item => {
+                values.push(item.VALUE);
+                dates.push(item.THEDATE);
+            });
+
+            if(!dates.length){
+                [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [[],[]];
+                return chart;
+            }
+            let avg = parseInt(average(values));
+            dates = this.formatDatesForChart(dates);
+            values = (this.checkForTail(formattedData,state)) ? [avg, ...values, avg] : [avg, ...values];
+            styleValues= (this.checkForTail(formattedData,state)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
+                :
+                [NaN,...values.slice(1)];
+
+            [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [values,styleValues];
+
+            if(dates.length >= labelsLength){// если пришедшие данные имеют больший диапозон дат - используем их в основной Y-шкале
+                labelsLength = dates.length;
+                chart.labels = dates;
+            }
+            return chart;
+        },state.chart);
     },
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {API} from './../../utils/api_paths';
 import moment from 'moment';
-import {ajaxRequest} from './../../utils/utils';
+import {ajaxRequest,formatNumberBySpaces,average} from './../../utils/utils';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
 import {Row,Col, Card, CardBody} from "reactstrap";
@@ -10,8 +10,6 @@ import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
 import DataChart from './DataChart';
 import DataChartSmall from './DataChartSmall';
-import {customLabel2} from "./customLabelDataChart";
-import {formatNumberBySpaces,average} from './../../utils/utils';
 import utils from './obj_utils';
 import Datepickers from './Datepickers';
 import DataPerMonth from './DataPerMonth';
@@ -78,9 +76,7 @@ export default class ObjectPage extends Component {
         let url = API.objects + '?conceptId=' + concept + '&cityId=' + city;
         ajaxRequest(url)
             .then(data => {
-                let obj = data.find( object => {
-                    return +id === object.id
-                });
+                let obj = data.find( object => +id === object.id);  //поиск объекта по id
                 let typeArr = obj.data_type.split(', ');//разбиваем строку с типом данных на массив
                 utils.getNewStyleForChart(typeArr,this.state.chart);
                 this.setState({
@@ -156,9 +152,9 @@ export default class ObjectPage extends Component {
 
     getPlurableFloorsData(){    //ajax запрос на данные в режиме сравнения
         if(!this.state.floors)return null;
-        let [unit, chart,labelsLength,floorID] = [this.state.timeSegment, this.state.chart, 0, utils.returnFloorID(this.state)];
+        let [unit,chart,floorID] = [this.state.timeSegment, this.state.chart, utils.returnFloorID(this.state)];
 
-        let newData = Promise.all(chart.datasets.map( (item,i) => {
+        Promise.all(chart.datasets.map( (item,i) => {
             if( i % 2 )return null; //делаем запросы только по четным индексам, так как на один график у нас 2 элемента в массиве
             let year = item.year;
             let [startDate, endDate] = [year + this.state.startDate.format("MMDD"), year + this.state.endDate.format("MMDD")];
@@ -169,34 +165,7 @@ export default class ObjectPage extends Component {
         }))
             .then(arr => arr.filter(item => item !== null))//фильтруем массив от null значений
             .then(data => {
-                let newChart = data.reduce( (chart,item,i) => {
-                    let formattedData = utils.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-                    let [values,dates, styleValues] = [ [], [], [] ] ;
-
-                    formattedData.floorData.forEach(item => {
-                        values.push(item.VALUE);
-                        dates.push(item.THEDATE);
-                    });
-
-                    if(!dates.length){
-                        [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [[],[]];
-                        return chart;
-                    }
-                    let avg = parseInt(average(values));
-                    dates = utils.formatDatesForChart(dates);
-                    values = (this.checkForTail(formattedData)) ? [avg, ...values, avg] : [avg, ...values];
-                    styleValues= (this.checkForTail(formattedData)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
-                        :
-                        [NaN,...values.slice(1)];
-
-                    [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [values,styleValues];
-
-                    if(dates.length >= labelsLength){
-                        labelsLength = dates.length;
-                        chart.labels = dates;
-                    }
-                    return chart;
-                },chart);
+                let newChart = utils.returnFormattedChart(data,this.state);
 
                 this.setState({
                     chart:newChart,
@@ -208,17 +177,6 @@ export default class ObjectPage extends Component {
             })
     }
 
-    checkForTail(data){//проверка нужен ли "хвостик"
-        let [timeSegment,arr,lastMonth] = [this.state.timeSegment,data.floorData,this.state.endDate];
-
-        if(timeSegment === 'M'){
-            return moment(arr[arr.length - 1].THEDATE).month() === lastMonth.month()
-        }
-        else if(timeSegment === 'D'){
-            return moment(arr[arr.length - 1].THEDATE).format('DD MM') === lastMonth.format('DD MM')
-        }
-
-    }
 
     comparisonGraphHandler(){
         if(this.state.comparison_mode){
@@ -241,15 +199,13 @@ export default class ObjectPage extends Component {
             .then(data => {
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
                 let chartObj = Object.assign({},this.state.chart),
-                    values = data.floorData.map(item => {
-                        return item.VALUE;
-                    });
+                    values = data.floorData.map(item => item.VALUE);
                 if(!values.length)return;//если данных нет - ничего не делаем
 
 
                 let avg = parseInt(average(values));
-                values = (this.checkForTail(data)) ? [avg, ...values, avg] : [avg, ...values];
-                let styleValues= (this.checkForTail(data)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
+                values = (utils.checkForTail(data,this.state)) ? [avg, ...values, avg] : [avg, ...values];
+                let styleValues= (utils.checkForTail(data,this.state)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
                                                                         :
                                                              [NaN,...values.slice(1)];
 
@@ -510,7 +466,7 @@ export default class ObjectPage extends Component {
                         <Row>
                             <Col md="3">
                                 <h5 className="measure">{(state.type === 'Выручка') ? 'Выручка' : 'Трафик'}</h5>
-                                <div className={"comparison_mode-wrp " + (this.state.comparison_mode ? 'active' : '' )  }>
+                                <div className={"comparison_mode-wrp " + (state.comparison_mode ? 'active' : '' )  }>
                                     <div className="outer_circle">
                                         <div className="inner_circle"></div>
                                     </div>
@@ -543,7 +499,7 @@ export default class ObjectPage extends Component {
                                     {...state}
                                 />
                             </Col>
-                            <Col xs="12" md="3" className={"totalSum " + (this.state.comparison_mode ? 'none' : '')}>
+                            <Col xs="12" md="3" className={"totalSum " + (state.comparison_mode ? 'none' : '')}>
                                 <span className="data"
                                       dangerouslySetInnerHTML=
                                           {{
@@ -589,13 +545,13 @@ export default class ObjectPage extends Component {
                 </Card>
                 {(state.viewportWidth > 500) ?
                     <ShopList
-                        shops={this.state.shops}
-                        city={this.state.object.city_id}
+                        shops={state.shops}
+                        city={state.object.city_id}
                     />
                     :
                     <ShopListAccordeon
-                        shops={this.state.shops}
-                        city={this.state.object.city_id}
+                        shops={state.shops}
+                        city={state.object.city_id}
                     />
                 }
             </div>
