@@ -129,12 +129,9 @@ const obj_utils = {
                 [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [[],[]];
                 return chart;
             }
-            let avg = parseInt(average(values));
             dates = this.formatDatesForChart(dates);
-            values = (this.checkForTail(formattedData,state)) ? [avg, ...values, avg] : [avg, ...values];
-            styleValues= (this.checkForTail(formattedData,state)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
-                :
-                [NaN,...values.slice(1)];
+            values = this.returnValuesWithAverageInCMode(values,formattedData,state);
+            styleValues= this.returnStyleValuesInCMode(values,formattedData,state);
 
             [ chart.datasets[i * 2].data, chart.datasets[i * 2 + 1].data ] = [values,styleValues];
 
@@ -144,6 +141,23 @@ const obj_utils = {
             }
             return chart;
         },state.chart);
+    },
+
+    returnValuesWithAverageInCMode(values,data,state){
+        let avg = parseInt(average(values));
+        return this.checkForTail(data,state) ? [avg, ...values, avg] : [avg, ...values];
+    },
+
+    returnStyleValuesInCMode(values,data,state){
+        return this.checkForTail(data,state) ? [NaN,...values.slice(1, values.length-1 ),NaN] : [NaN,...values.slice(1)];
+    },
+
+    findRemovalIndexes(chart,year){
+        return chart.datasets.reduce( (filteredIndexes, currentItem, index) => {
+            if(~currentItem.label.indexOf(String(year)))    //Если в названии лейбла содержит номер года, подлежащего удалению - поставить в очередь на удаление
+                filteredIndexes.push(index);
+            return filteredIndexes;
+        },[]);
     },
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний

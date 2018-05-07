@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import {API} from './../../utils/api_paths';
 import moment from 'moment';
-import {ajaxRequest,formatNumberBySpaces,average} from './../../utils/utils';
+import {ajaxRequest,average} from './../../utils/utils';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
-import {Row,Col, Card, CardBody} from "reactstrap";
 import Announce from './Announce';
 import BarChart from './BarChart';
 import HorizontalBarChart from './HorizontalBarChart';
-import DataChart from './DataChart';
-import DataChartSmall from './DataChartSmall';
 import utils from './obj_utils';
-import Datepickers from './Datepickers';
 import DataPerMonth from './DataPerMonth';
 import ShopList from './ShopList';
 import ShopListAccordeon from './ShopListAccordeon';
-import YearSelector from './YearSelector';
-import FloorButtons from './floor_buttons';
-import SegmentationButtons from './segmentation_buttons';
+import MainData from './MainData';
+
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -117,6 +112,7 @@ export default class ObjectPage extends Component {
              unit = this.state.timeSegment,
              floorID = utils.returnFloorID(this.state);
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
+        this.requestIsStarted();
         ajaxRequest(url)
             .then(data => {
                 let [chartObj,values,dates] = [ Object.assign({},this.state.chart), [], [] ] ;
@@ -129,8 +125,7 @@ export default class ObjectPage extends Component {
                     this.requestIsEnded();
                     return;
                 }
-                let avg = parseInt(average(values));
-                values = [avg, ...values, avg];
+                values = [parseInt(average(values)) , ...values, parseInt(average(values))];
                 dates = utils.formatDatesForChart(dates);
                 let styleValues = [NaN,...values.slice(1, values.length-1 ),NaN];
 
@@ -199,19 +194,16 @@ export default class ObjectPage extends Component {
             .then(data => {
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
                 let chartObj = Object.assign({},this.state.chart),
-                    values = data.floorData.map(item => item.VALUE);
-                if(!values.length)return;//если данных нет - ничего не делаем
+                    values = data.floorData.map(item => item.VALUE),
+                    styleValues = [];
 
-
-                let avg = parseInt(average(values));
-                values = (utils.checkForTail(data,this.state)) ? [avg, ...values, avg] : [avg, ...values];
-                let styleValues= (utils.checkForTail(data,this.state)) ? [NaN,...values.slice(1, values.length-1 ),NaN]
-                                                                        :
-                                                             [NaN,...values.slice(1)];
+                if(values.length){
+                    values = utils.returnValuesWithAverageInCMode(values,data,this.state);
+                    styleValues= utils.returnStyleValuesInCMode(values,data,this.state)
+                }
 
                 let newDataset = utils.createNewDataset(year);    //создание нового графика
                 [newDataset[0].data, newDataset[1].data] = [values,styleValues];//присвоение данных новому графику
-
                 chartObj.datasets.push(...newDataset);
 
                 newExcel = utils.changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
@@ -221,6 +213,7 @@ export default class ObjectPage extends Component {
                     emptyData:false,
                     excelData: newExcel
                 });
+
             })
             .catch(err => console.log(err))
     }
@@ -229,23 +222,10 @@ export default class ObjectPage extends Component {
     removeComparisonGraph(year){ //удаление графика из диаграммы
         let chart = this.state.chart,
             excel = this.state.excelData;
-        let graphArr = chart.datasets;
 
-        let removalIndexes = graphArr.reduce( (filteredIndexes, currentItem, index) => {
-            if(~currentItem.label.indexOf(String(year)))    //Если в названии лейбла содержит номер года, подлежащего удалению - поставить в очередь на удаление
-                filteredIndexes.push(index);
-            return filteredIndexes;
-        },[]);
-
-        chart.datasets = graphArr.filter((item,index) => {      //фильтруем массив
-            for(let i = 0; i < removalIndexes.length; i ++){
-                if(index === removalIndexes[i])
-                    return false;
-            }
-            return true;
-        });
-
-        excel = excel.filter(item => moment(item[0].THEDATE).year() !== year);
+        let removalIndexes = utils.findRemovalIndexes(chart,year);//присвоение индексов на удаление
+        chart.datasets = chart.datasets.filter((item,index) => !removalIndexes.some(i => index === i));//фильтрация массива по индексам
+        excel = excel.filter(item => item[0] && moment(item[0].THEDATE).year() !== year);//также фильтруем данные выгрузки Excel
 
         if(!chart.datasets.length)
             this.setState({emptyData:true,excelData:[]});
@@ -290,7 +270,8 @@ export default class ObjectPage extends Component {
                     obj.value = Math.round(item.VALUE);
                     [obj.month, obj.year] = [moment(item.THEDATE).month(), moment(item.THEDATE).year()];
                     return obj
-                }).reverse();
+                })
+                    .reverse();
                 this.setState({monthlyData:newArr})
             })
             .catch(err => console.log(err))
@@ -343,10 +324,8 @@ export default class ObjectPage extends Component {
         }
     }
 
-
     handleChangeStart(date) { //функции-обработчики смены дат в datepickers
         if(this.state.endDate - date < 0)return false;
-        this.requestIsStarted();
         let newSegment = utils.trackActualSegments(date,this.state.endDate,this.state.timeSegment);
         this.setState(
             {startDate: date,timeSegment:newSegment},
@@ -357,7 +336,6 @@ export default class ObjectPage extends Component {
     handleChangeEnd(date) {
         if(date - this.state.startDate < 0)return false;
         if(!this.state.comparison_mode && (date > moment()) )return false;
-        this.requestIsStarted();
         let newSegment = utils.trackActualSegments(this.state.startDate,date,this.state.timeSegment);
         this.setState(
             {endDate: date,timeSegment:newSegment},
@@ -366,7 +344,6 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeStart(e){
-        this.requestIsStarted();
         let newSegment = utils.trackActualSegments(moment(e.target.value),this.state.endDate,this.state.timeSegment);
         this.setState(
             {startDate: moment(e.target.value),timeSegment:newSegment},
@@ -375,7 +352,6 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeEnd(e){
-        this.requestIsStarted();
         let newSegment = utils.trackActualSegments(this.state.startDate,moment(e.target.value),this.state.timeSegment);
         this.setState(
             {endDate: moment(e.target.value),timeSegment:newSegment},
@@ -461,88 +437,18 @@ export default class ObjectPage extends Component {
                     renderCurrency={utils.renderCurrency.bind(null,state)}
                 />
 
-                <Card className="all_data">
-                    <CardBody className="card-body">
-                        <Row>
-                            <Col md="3">
-                                <h5 className="measure">{(state.type === 'Выручка') ? 'Выручка' : 'Трафик'}</h5>
-                                <div className={"comparison_mode-wrp " + (state.comparison_mode ? 'active' : '' )  }>
-                                    <div className="outer_circle">
-                                        <div className="inner_circle"></div>
-                                    </div>
-                                    <button className="btn" onClick={this.changeComparisonMode.bind(this)}>
-                                        { (this.state.comparison_mode ? 'Выключить' : 'Включить') + ' режим сравнения' }
-                                    </button>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className="datepickers" xs="12" md="5" lg="5" xl="4">
-                                <Datepickers
-                                    startDate={state.startDate}
-                                    endDate={state.endDate}
-                                    requestIsInProcess={state.requestIsInProcess}
-                                    handleChangeStart={this.handleChangeStart.bind(this)}
-                                    handleChangeEnd={this.handleChangeEnd.bind(this)}
-                                    handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}
-                                    handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}
-                                    comparison_mode={state.comparison_mode}
-                                />
-                                <YearSelector
-                                    comparison_mode={state.comparison_mode}
-                                    checkYear={this.checkYear.bind(this)}
-                                />
-                            </Col>
-                            <Col xs="12" md="4" lg="4" xl="5">
-                                <FloorButtons
-                                    changeFloor={this.changeFloor.bind(this)}
-                                    {...state}
-                                />
-                            </Col>
-                            <Col xs="12" md="3" className={"totalSum " + (state.comparison_mode ? 'none' : '')}>
-                                <span className="data"
-                                      dangerouslySetInnerHTML=
-                                          {{
-                                              __html:`${formatNumberBySpaces(Math.round(state.totalSum))} ${utils.renderCurrency(state)}`
-                                          }}
-                                >
-                                </span>
-                                <span className="muted">{(state.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
-                            </Col>
-                        </Row>
-                        <div className="scrollHider">
-                            <Row>
-                                {(state.viewportWidth > 720) ?
-                                    <DataChart
-                                        render={!(state.type === 'Выручка')}
-                                        comparison_mode={state.comparison_mode}
-                                        data={state.chart}
-                                        startDate={state.startDate}
-                                        endDate={state.endDate}
-                                        currency={state.currency}
-                                        timeSegment={state.timeSegment}
-                                        emptyData={state.emptyData}
-                                    />
-                                    :
-                                    <DataChartSmall
-                                        render={!(state.type === 'Выручка')}
-                                        comparison_mode={state.comparison_mode}
-                                        data={state.chart}
-                                        startDate={state.startDate}
-                                        endDate={state.endDate}
-                                        currency={state.currency}
-                                        timeSegment={state.timeSegment}
-                                        emptyData={state.emptyData}
-                                    />
-                                }
-                                <SegmentationButtons
-                                    changeTimeSegment={this.changeTimeSegment.bind(this)}
-                                    {...state}
-                                />
-                            </Row>
-                        </div>
-                    </CardBody>
-                </Card>
+                <MainData
+                    changeComparisonMode={this.changeComparisonMode.bind(this)}
+                    handleChangeStart={this.handleChangeStart.bind(this)}
+                    handleChangeEnd={this.handleChangeEnd.bind(this)}
+                    handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}
+                    handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}
+                    checkYear={this.checkYear.bind(this)}
+                    changeFloor={this.changeFloor.bind(this)}
+                    changeTimeSegment={this.changeTimeSegment.bind(this)}
+                    {...state}
+                />
+
                 {(state.viewportWidth > 500) ?
                     <ShopList
                         shops={state.shops}
