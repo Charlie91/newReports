@@ -14,7 +14,7 @@ const SegmentationButtons = (props) => {
     return (
         <Col md='12' style={{minWidth:'100%'}} className='segmentation_btn-wrp order-1 order-md-12'>
             <Row>
-                <Col md='12' xl={{size:6,offset:3}}>
+                <Col xs='12' md='12' xl={{size:6,offset:3}}>
                     <div className="btn-group" role="group">
                         {arr.map( (item,i) =>
                             (item.render) ?
@@ -34,7 +34,7 @@ const SegmentationButtons = (props) => {
                         )}
                     </div>
                 </Col>
-                <Col md="0" xl={{size:3,offset:0}}>
+                <Col xs='0' md="0" xl={{size:3,offset:0}}>
                     <div className="excellLinkWrapper">
                         <a className="excellLink" onClick={xls ? () => {xls.exportToCSV('export.csv')} : ''}>Скачать в Excel</a>
                     </div>

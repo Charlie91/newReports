@@ -3,7 +3,7 @@
 Вспомогательные функции ObjectPage компонента
 */
 import moment from 'moment';
-import {digitCount, average} from './../../utils/utils';
+import {digitCount, average,formatNumberBySpaces} from './../../utils/utils';
 
 
 
@@ -74,8 +74,8 @@ const obj_utils = {
                 borderWidth: 0,
                 pointBorderColor:  color || this.chartStylingByYear(year),
                 pointBackgroundColor: color || this.chartStylingByYear(year),
-                pointBorderWidth: 6,
-                pointHoverRadius: 6,
+                pointBorderWidth: window.innerWidth > 767 ? 6 : 2.3,
+                pointHoverRadius: window.innerWidth > 767 ? 6 : 3,
                 pointHoverBackgroundColor: color || this.chartStylingByYear(year),
                 pointHoverBorderColor: color || this.chartStylingByYear(year),
                 pointHoverBorderWidth: 2,
@@ -264,6 +264,26 @@ const obj_utils = {
         document.querySelector('.navbar').classList.remove('changeHeaderPadding');
         document.querySelector('.navbar >div:first-of-type').classList.remove('additional_position');
         document.querySelector('.navbar-toggler').classList.remove('new_position_for_ham');
+    },
+
+    comparisonLabel(tooltipItem,data){
+        let index = tooltipItem.index;
+
+        let values = data.datasets.reduce( (result, current, i) => {
+            let className = 'checked y' + current.year;// имя класса
+            let square = '<div class="' + className + '"></div>'; //строка HTML-тега
+            let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(current.data[index]) + '</div>';
+
+            let ifThereTheSameValue = result.some( item => {    // если есть уже подобное значение в результатах - не добавляем
+                return item === newValue;
+            });
+
+            if(!ifThereTheSameValue && current.data[index])
+                result.push(newValue);   //если значение не задвоено и не NaN, undefined и т.д. - добавляем
+
+            return result;
+        },[]);
+        return values.join('')
     }
 
 

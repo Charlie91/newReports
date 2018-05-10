@@ -3,14 +3,16 @@ import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabelDataChartSmall} from './customLabelDataChartSmall';
+import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumberBySpaces} from './../../utils/utils';
 import {customLabel3} from "./customLabelDataChartSmall";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepSizeSmall, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
+import utils from './obj_utils';
 
 
 
-function addAdditionalStylesToChart(chart) {//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
+function addAdditionalStylesToChart(chart) { //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     if(chart.datasets.length > 1){
         if(chart.datasets[0].data.length > 200){
             chart.datasets[1].pointBorderWidth = 1;
@@ -18,15 +20,20 @@ function addAdditionalStylesToChart(chart) {//изменение стилей в
             chart.datasets[1].pointRadius = 1;
         }
         else{
-            chart.datasets[1].pointBorderWidth = 2.3;
-            chart.datasets[1].pointHoverRadius = 3;
-            chart.datasets[1].pointRadius = 2;
-            chart.datasets[0].borderWidth = 2;
-            chart.datasets[1].borderWidth = 2;
+            for(let i = 0; i < chart.datasets.length; i++){
+                if(i === 1 || i === 3 ){
+                    chart.datasets[i].pointBorderWidth = 2.3;
+                    chart.datasets[i].pointHoverRadius = 3;
+                    chart.datasets[i].pointRadius = 2;
+                    chart.datasets[i].borderWidth = 2;
+
+                }
+            }
         }
     }
     return chart;
 }
+
 
 
 const DataChartSmall = (props) => {
@@ -49,7 +56,7 @@ const DataChartSmall = (props) => {
                                       display: false
                                   },
                                   tooltips: {
-                                      custom: customLabelDataChartSmall,
+                                      custom: props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChartSmall,
                                       enabled:false,
                                       callbacks:{
                                           title: (tooltipItem, data ) => {
@@ -71,6 +78,9 @@ const DataChartSmall = (props) => {
                                               return title;
                                           },
                                           label: (tooltipItem, data ) => {
+                                              if(props.comparison_mode){
+                                                  return utils.comparisonLabel(tooltipItem,data)
+                                              }
                                               return `${formatNumberBySpaces(Math.round(tooltipItem.yLabel))} ${props.currency.substring(0,3)}.`
                                           }
                                       }

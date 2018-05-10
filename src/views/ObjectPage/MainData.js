@@ -15,7 +15,7 @@ const MainData = (props) => {
         <Card className="all_data">
             <CardBody className="card-body">
                 <Row>
-                    <Col md="3">
+                    <Col md="5" style={{whiteSpace:'nowrap'}}>
                         <h5 className="measure">{(props.type === 'Выручка') ? 'Выручка' : 'Трафик'}</h5>
                         <div className={"comparison_mode-wrp " + (props.comparison_mode ? 'active' : '' )  }>
                             <div className="outer_circle">
@@ -39,10 +39,14 @@ const MainData = (props) => {
                             handleMobileChangeEnd={props.handleMobileChangeEnd}
                             comparison_mode={props.comparison_mode}
                         />
+                        {(props.viewportWidth > 767) &&
                         <YearSelector
                             comparison_mode={props.comparison_mode}
                             checkYear={props.checkYear}
+                            {...props}
                         />
+                        }
+
                     </Col>
                     <Col xs="12" md="4" lg="4" xl="5">
                         <FloorButtons
@@ -63,7 +67,7 @@ const MainData = (props) => {
                 </Row>
                 <div className="scrollHider">
                     <Row>
-                        {(props.viewportWidth > 720) ?
+                        {(props.viewportWidth > 767) ?
                             <DataChart
                                 render={!(props.type === 'Выручка')}
                                 comparison_mode={props.comparison_mode}
@@ -92,6 +96,13 @@ const MainData = (props) => {
                         />
                     </Row>
                 </div>
+                {(props.viewportWidth <= 767) &&
+                <YearSelector
+                    comparison_mode={props.comparison_mode}
+                    checkYear={props.checkYear}
+                    {...props}
+                />
+                }
             </CardBody>
         </Card>
     )

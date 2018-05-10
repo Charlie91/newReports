@@ -12,7 +12,7 @@ const YearSelector = (props) => {
     if(!props.comparison_mode)return null;
     return (
         <div className={"year_selector"}>
-            <span className="muted">Выберите годы: </span>
+            <span className="muted">{props.viewportWidth > 767 ? 'Выберите годы:' : 'Годы:'}</span>
             <div className="year_selector_list">
                 <div className="year" onClick={props.checkYear.bind(null,2018)}>
                     <div className="checkbox checked y2018"></div>
@@ -46,6 +46,7 @@ const YearSelector = (props) => {
         </div>
     )
 };
+
 
 
 export default YearSelector;

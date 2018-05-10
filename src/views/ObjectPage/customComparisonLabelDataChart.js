@@ -1,4 +1,3 @@
-import moment from "moment/moment";
 
 
  const customComparisonLabelDataChart = function(tooltipModel) {
@@ -62,11 +61,26 @@ import moment from "moment/moment";
 
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - (tooltipEl.offsetWidth/2) ) + 'px';
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+        tool_left = position.left + scrollLeft + tooltipModel.caretX + tooltipEl.offsetWidth + 2,
+        window_width = window.innerWidth;
+
+
+    if(window_width < 767){
+        if(tool_left < window_width){
+            tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX + 2) + 'px';
+        } else {
+            tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - 2 - tooltipEl.offsetWidth) + 'px';
+        }
+    }
+    else
+        tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - (tooltipEl.offsetWidth/2) ) + 'px';
+
+
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 14 + 'px';
     tooltipEl.style.display = 'block';
     tooltipEl.style.opacity = 1;
+    tooltipEl.style.zIndex = 2;
 };
 
  export default customComparisonLabelDataChart;

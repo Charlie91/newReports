@@ -1,12 +1,13 @@
 import React from 'react';
-import {Bar, Line,Chart} from "react-chartjs-2";
-import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
+import {Line} from "react-chartjs-2";
+import {Col} from "reactstrap";
 import Loading from './../Loading/Small';
 import {formatNumberBySpaces} from './../../utils/utils';
 import {customLabelDataChart} from "./customLabelDataChart";
 import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
 import moment from "moment/moment";
+import utils from './obj_utils';
 
 
 function addAdditionalStylesToChart(chart) { //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
@@ -29,26 +30,6 @@ function addAdditionalStylesToChart(chart) { //изменение стилей �
     return chart;
 }
 
-function comparisonLabel(tooltipItem,data){
-    let index = tooltipItem.index;
-
-    let values = data.datasets.reduce( (result, current, i) => {
-        //if(index === current.data.length - 1) return result; //убираем "средние" костыльные значения
-        let className = 'checked y' + current.year;// имя класса
-        let square = '<div class="' + className + '"></div>'; //строка HTML-тега
-        let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(current.data[index]) + '</div>';
-
-        let ifThereTheSameValue = result.some( item => {    // если есть уже подобное значение в результатах - не добавляем
-           return item === newValue;
-        });
-
-        if(!ifThereTheSameValue && current.data[index])
-            result.push(newValue);   //если значение не задвоено и не NaN, undefined и т.д. - добавляем
-
-        return result;
-    },[]);
-    return values.join('')
-}
 
 const DataChart = (props) => {
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
@@ -93,7 +74,7 @@ const DataChart = (props) => {
                                           },
                                           label: (tooltipItem, data ) => {
                                               if(props.comparison_mode){
-                                                  return comparisonLabel(tooltipItem,data)
+                                                  return utils.comparisonLabel(tooltipItem,data)
                                               }
                                               else{
                                                   return `

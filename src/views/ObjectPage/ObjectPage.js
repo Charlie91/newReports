@@ -204,7 +204,7 @@ export default class ObjectPage extends Component {
 
                 let newDataset = utils.createNewDataset(year);    //создание нового графика
                 [newDataset[0].data, newDataset[1].data] = [values,styleValues];//присвоение данных новому графику
-                chartObj.datasets.push(...newDataset);
+                chartObj.datasets.push(...newDataset);//добавление графика
 
                 newExcel = utils.changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
 

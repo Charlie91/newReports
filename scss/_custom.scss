@@ -425,6 +425,13 @@ main.main{
   content:url('../img/dropdown.png');
 }
 
+.year_selector .dropdown-toggle::after{
+  content:url('../img/dropdown.png');
+  border:none;
+  margin-top: -1px;
+  position: absolute;
+}
+
 .tag-item:last-child:hover::after{
   content:url('../img/dropup.png');
 }
