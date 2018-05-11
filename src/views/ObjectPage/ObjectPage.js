@@ -402,6 +402,7 @@ export default class ObjectPage extends Component {
 
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         utils.addSpecificStyles();
+        utils.editDrawFunction();//добавляем в Chart.js возможность использования эллипса как формы
     }
 
     componentWillUnmount(){

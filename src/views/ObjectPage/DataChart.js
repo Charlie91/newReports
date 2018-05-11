@@ -20,15 +20,17 @@ function addAdditionalStylesToChart(chart) { //изменение стилей �
         else{
             for(let i = 0; i < chart.datasets.length; i++){
                 if(i === 1 || i === 3 ){
-                    chart.datasets[i].pointBorderWidth = 6;
-                    chart.datasets[i].pointHoverRadius = 6;
-                    chart.datasets[i].pointRadius = 2.4;
+                    chart.datasets[i].pointBorderWidth = 6;//6
+                    chart.datasets[i].pointHoverRadius = 6;//6
+                    chart.datasets[i].pointRadius = 3;//2.4
                 }
             }
         }
     }
     return chart;
 }
+
+
 
 
 const DataChart = (props) => {

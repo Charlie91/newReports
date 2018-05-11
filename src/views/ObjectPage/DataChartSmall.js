@@ -23,10 +23,9 @@ function addAdditionalStylesToChart(chart) { //изменение стилей �
             for(let i = 0; i < chart.datasets.length; i++){
                 if(i === 1 || i === 3 ){
                     chart.datasets[i].pointBorderWidth = 2.3;
-                    chart.datasets[i].pointHoverRadius = 3;
-                    chart.datasets[i].pointRadius = 2;
+                    chart.datasets[i].pointHoverRadius = 4;
+                    chart.datasets[i].pointRadius = 3;
                     chart.datasets[i].borderWidth = 2;
-
                 }
             }
         }

@@ -10,7 +10,7 @@ const Datepickers = (props) => {
             <span className="muted">Период с </span>
             <div className="datepicker_wrp">
                 {
-                    (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
+                    ( (parser().device.type !== 'mobile' && parser().device.type !== 'tablet') || props.comparison_mode ) ?
                         <DatePicker
                             className="datepicker"
                             selected={props.startDate}
@@ -35,7 +35,7 @@ const Datepickers = (props) => {
             </div>
             <div className="datepicker_wrp">
                 {
-                    (parser().device.type !== 'mobile' && parser().device.type !== 'tablet' ) ?
+                    ( (parser().device.type !== 'mobile' && parser().device.type !== 'tablet') || props.comparison_mode ) ?
                         <DatePicker
                             className="datepicker"
                             selected={props.endDate}
