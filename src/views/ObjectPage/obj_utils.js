@@ -45,7 +45,7 @@ const obj_utils = {
         return [
             {
                 label:label || String(year),
-                year:String(year) || '',
+                year:year,
                 fill: !year, //если с режима сравнения(имеет аргумент year) то false,иначе - true
                 lineTension: 0,
                 backgroundColor: backgroundColor || this.chartStylingByYear(year),
@@ -69,7 +69,7 @@ const obj_utils = {
             },
             {
                 label:String(year) + '_2',
-                year:String(year) || '',
+                year:year,
                 fill: false,
                 lineTension: 0,
                 borderDash: [],
@@ -77,11 +77,11 @@ const obj_utils = {
                 pointBorderColor:  color || this.chartStylingByYear(year),
                 pointBackgroundColor: color || this.chartStylingByYear(year),
                 pointBorderWidth: window.innerWidth > 767 ? 6 : 2.3,
-                pointHoverRadius: window.innerWidth > 767 ? 6 : 3,
+                pointHoverRadius: window.innerWidth > 767 ? 6 : 4,
                 pointHoverBackgroundColor: color || this.chartStylingByYear(year),
                 pointHoverBorderColor: color || this.chartStylingByYear(year),
                 pointHoverBorderWidth: 2,
-                pointRadius: 2.4,
+                pointRadius: 3,
                 pointHitRadius: 10,
                 pointStyle:'ellipse',
                 data: []
@@ -315,7 +315,7 @@ const obj_utils = {
                     break;
                 case 'ellipse':
                     ctx.beginPath();
-                    ctx.ellipse(x, y, radius, radius - 1.5, 0, 0, 2 * Math.PI);
+                    ctx.ellipse(x, y, radius, (radius >= 2 ? radius - 1.5 : 1) , 0, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
                     break;

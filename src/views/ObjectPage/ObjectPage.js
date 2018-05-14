@@ -151,9 +151,11 @@ export default class ObjectPage extends Component {
 
         Promise.all(chart.datasets.map( (item,i) => {
             if( i % 2 )return null; //делаем запросы только по четным индексам, так как на один график у нас 2 элемента в массиве
-            let year = item.year;
+            let year = item.year || 2018;
+
             let [startDate, endDate] = [year + this.state.startDate.format("MMDD"), year + this.state.endDate.format("MMDD")];
             let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
+
             return ajaxRequest(url)
                 .then( data => data)
                 .catch( err => console.log(err))
@@ -175,13 +177,26 @@ export default class ObjectPage extends Component {
 
     comparisonGraphHandler(){
         if(this.state.comparison_mode){
-            this.changeStyleOfFirstGraph();
-            this.addComparisonGraph(2017);
+            if( this.state.startDate.year() === moment().year() ){
+                this.changeStyleOfFirstGraph();
+                this.addComparisonGraph(2017);
+            }
+            else{
+                console.log(this.state.startDate,this.state.startDate.format('DD MMM'));
+                this.setState({
+                    startDate: moment().add(-7,'days'),
+                    endDate: moment()
+                }, () => {
+                    this.getFloorsData();
+                    this.changeStyleOfFirstGraph();
+                    this.addComparisonGraph(2017);
+                })
+            }
         }
         else
             this.dropAllGraphs();
     }
-
+    
     addComparisonGraph(year){   //добавление нового графика в диаграмму
         if(!this.state.floors)return null;
         let [startDate, endDate] = [year + this.state.startDate.format("MMDD"),year +  this.state.endDate.format("MMDD")],

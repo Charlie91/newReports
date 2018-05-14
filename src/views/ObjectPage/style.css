@@ -183,7 +183,7 @@
       display: block;
       margin-bottom: 12px; }
       .floor_btn-wrp .btn:first-child:after {
-        content: ' или выберите конкретный вход:';
+        content: ' или выберите конкретный срез:';
         color: #8696a9;
         position: absolute;
         margin-left: 15px; }

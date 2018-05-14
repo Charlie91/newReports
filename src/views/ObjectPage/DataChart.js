@@ -31,8 +31,6 @@ function addAdditionalStylesToChart(chart) { //изменение стилей �
 }
 
 
-
-
 const DataChart = (props) => {
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
