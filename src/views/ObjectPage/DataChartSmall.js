@@ -12,16 +12,21 @@ import utils from './obj_utils';
 
 
 
-function addAdditionalStylesToChart(chart) { //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
+function addAdditionalStylesToChart(chart){ //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
+    let maxLength = Math.max.apply(null,chart.datasets.map(item => item.data.length));
     if(chart.datasets.length > 1){
-        if(chart.datasets[0].data.length > 200){
-            chart.datasets[1].pointBorderWidth = 1;
-            chart.datasets[1].pointHoverRadius = 3;
-            chart.datasets[1].pointRadius = 1;
+        if(maxLength > 200){
+            for(let i = 0; i < chart.datasets.length; i++){
+                if( i % 2 !== 0 ){
+                    chart.datasets[i].pointBorderWidth = 1;
+                    chart.datasets[i].pointHoverRadius = 3;
+                    chart.datasets[i].pointRadius = 1;
+                }
+            }
         }
         else{
             for(let i = 0; i < chart.datasets.length; i++){
-                if(i === 1 || i === 3 ){
+                if( i % 2 !== 0 ){
                     chart.datasets[i].pointBorderWidth = 2.3;
                     chart.datasets[i].pointHoverRadius = 4;
                     chart.datasets[i].pointRadius = 3;

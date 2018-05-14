@@ -177,24 +177,21 @@ export default class ObjectPage extends Component {
 
     comparisonGraphHandler(){
         if(this.state.comparison_mode){
-            if( this.state.startDate.year() === moment().year() ){
-                this.changeStyleOfFirstGraph();
-                this.addComparisonGraph(2017);
+            if( this.state.startDate.year() === moment().year() ){  //если диапозон дат в пределах текущего года
+                this.enableComparisonMode()
             }
             else{
-                console.log(this.state.startDate,this.state.startDate.format('DD MMM'));
-                this.setState({
+                this.setState({ //если нет, возвращаем диапозон в дефолтное значение и потом включаем режим сравнения
                     startDate: moment().add(-7,'days'),
                     endDate: moment()
                 }, () => {
                     this.getFloorsData();
-                    this.changeStyleOfFirstGraph();
-                    this.addComparisonGraph(2017);
+                    this.enableComparisonMode();
                 })
             }
         }
         else
-            this.dropAllGraphs();
+            this.disableComparisonMode();
     }
     
     addComparisonGraph(year){   //добавление нового графика в диаграмму
@@ -248,7 +245,12 @@ export default class ObjectPage extends Component {
             this.setState({chart:chart, excelData:excel});
     }
 
-    dropAllGraphs(){    //выход из режима сравнения
+    enableComparisonMode(){
+        this.changeStyleOfFirstGraph();
+        this.addComparisonGraph(2017);
+    }
+
+    disableComparisonMode(){    //выход из режима сравнения
         let initialChart = Object.assign({},this.initialChart);
         let obj = this.state.object;
         if(!obj)return;
