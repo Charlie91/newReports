@@ -38,6 +38,7 @@ const MainData = (props) => {
                             handleMobileChangeStart={props.handleMobileChangeStart}
                             handleMobileChangeEnd={props.handleMobileChangeEnd}
                             comparison_mode={props.comparison_mode}
+                            {...props}
                         />
                         {(props.viewportWidth > 767) &&
                         <YearSelector

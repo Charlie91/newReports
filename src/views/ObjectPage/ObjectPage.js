@@ -149,6 +149,7 @@ export default class ObjectPage extends Component {
         if(!this.state.floors)return null;
         let [unit,chart,floorID] = [this.state.timeSegment, this.state.chart, utils.returnFloorID(this.state)];
 
+        this.requestIsStarted();
         Promise.all(chart.datasets.map( (item,i) => {
             if( i % 2 )return null; //делаем запросы только по четным индексам, так как на один график у нас 2 элемента в массиве
             let year = item.year || 2018;
@@ -204,6 +205,7 @@ export default class ObjectPage extends Component {
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         ajaxRequest(url)
             .then(data => {
+                if(!this.state.comparison_mode)return null;//если данные придут в момент когда РС уже выключен
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
                 let chartObj = Object.assign({},this.state.chart),
                     values = data.floorData.map(item => item.VALUE),

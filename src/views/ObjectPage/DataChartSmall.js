@@ -46,7 +46,7 @@ const DataChartSmall = (props) => {
         <Col  md='12' style={{padding:'0px',minWidth:'100%'}} className="order-12 order-md-1">
             {props.emptyData ? <p className="error-message">Отсутствуют данные</p> : ''}
             <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper line-chart-wrapper_small">
-                {(!newChart.datasets[0].data.length) ?
+                {( !props.data.datasets.length || !newChart.datasets[0].data.length) ?
                     <Loading/>
                     :
                     <div className="linechart_area_wrapper_small">

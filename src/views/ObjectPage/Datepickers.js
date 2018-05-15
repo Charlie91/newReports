@@ -1,10 +1,27 @@
 import React from 'react';
 import parser from 'ua-parser-js';
 import DatePicker from 'react-datepicker';
-import {Col} from "reactstrap";
 import moment from 'moment';
 
+
+//disabled={props.requestIsInProcess}
+
+
+function handleTextInputOnDatepickers(boolean){//отключение ввода текста в инпут на дейтпикерах в режиме совместимости на моб=х
+    let datepickers = document.querySelectorAll('input.datepicker');
+    for(let i = 0; i < datepickers.length; i++){
+        datepickers[i].disabled = boolean;
+    }
+}
+
+
 const Datepickers = (props) => {
+
+    if( (props.viewportWidth < 768 && props.comparison_mode) || props.requestIsInProcess)
+        handleTextInputOnDatepickers(true);
+    else
+        handleTextInputOnDatepickers(false);
+
     return (
         <div>
             <span className="muted">Период с </span>
@@ -14,7 +31,6 @@ const Datepickers = (props) => {
                         <DatePicker
                             className="datepicker"
                             selected={props.startDate}
-                            disabled={props.requestIsInProcess}
                             dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                             selectsStart
                             startDate={props.startDate}
@@ -23,6 +39,7 @@ const Datepickers = (props) => {
                             maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
                             dateFormat={ props.comparison_mode ? "DD MMM" : "DD MMM YYYY" }
                             onChange={props.handleChangeStart}
+                            readOnly={props.viewportWidth < 768}
                         />
                         :
                         <input className="datepicker"
@@ -39,7 +56,6 @@ const Datepickers = (props) => {
                         <DatePicker
                             className="datepicker"
                             selected={props.endDate}
-                            disabled={props.requestIsInProcess}
                             dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                             selectsEnd
                             startDate={props.startDate}
@@ -48,6 +64,7 @@ const Datepickers = (props) => {
                             maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
                             dateFormat={ props.comparison_mode ? "DD MMM" : "DD MMM YYYY" }
                             onChange={props.handleChangeEnd}
+                            readOnly={props.viewportWidth < 768}
                         />
                         :
                         <input
@@ -64,3 +81,4 @@ const Datepickers = (props) => {
 };
 
 export default Datepickers;
+

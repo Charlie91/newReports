@@ -24,7 +24,7 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
         }
         else{
             for(let i = 0; i < chart.datasets.length; i++){
-                if( i % 2 !== 0 ){
+                if(i % 2 !== 0){
                     chart.datasets[i].pointBorderWidth = 6;
                     chart.datasets[i].pointHoverRadius = 6;
                     chart.datasets[i].pointRadius = 3;
@@ -37,13 +37,12 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
 
 
 const DataChart = (props) => {
-    console.log(props.data);
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
         <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
             {(props.emptyData) ? <p className="error-message">Отсутствуют данные</p> : ''}
             <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
-                {(!props.data.datasets.length || (!props.data.datasets[0].data.length && props.data.datasets).length < 3) ?
+                {(!props.data.datasets.length || (!props.data.datasets[0].data.length && props.data.datasets.length < 3) ) ?
                     <Loading/>
                     :
                     <div className="linechart_area_wrapper">

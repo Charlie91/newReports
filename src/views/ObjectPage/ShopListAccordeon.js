@@ -49,6 +49,3 @@ const ShopListAccordeon = (props) => {
 
 
 export default ShopListAccordeon;
-
-
-// onClick={stopPropagation}

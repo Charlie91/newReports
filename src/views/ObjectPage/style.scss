@@ -277,7 +277,9 @@
     font-size: 14px;
     color: #7f8fa4;
     white-space: nowrap;
-
+    &:disabled{
+      background: none;
+    }
   }
 }
 
@@ -1422,6 +1424,21 @@
     .datepicker_wrp{
       input.datepicker {
         font-size: 12px;
+        &:disabled{
+          background: none!important;
+          opacity:1!important;
+          -webkit-text-fill-color:#7f8fa4!important; /* Override iOS / Android font color change */
+          -webkit-opacity:1!important;; /* Override iOS opacity change affecting text & background color */
+          color:#7f8fa4!important; /* Override IE font color change */
+        }
+      }
+      .react-datepicker-popper {
+        transform: none !important;
+        left: calc(50% - 123px)!important;
+        top: 20px!important;
+        .react-datepicker__triangle{
+          display: none;
+        }
       }
     }
     .inner_objects{
