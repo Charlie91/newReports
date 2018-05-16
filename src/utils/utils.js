@@ -13,7 +13,7 @@ export function ajaxRequest(url,options){   //функция-шаблон для
         credentials: 'include',
         mode: 'cors'
     };
-    return  fetch(url, options)
+    return fetch(url, options)
         .then(function (response) {
             if(response.status === 401 && (parser().browser.name !== 'IE'))
                 window.location = window.location.origin + window.location.pathname + '#/authorization';//перезагружаем страницу и редиректим если незалогинен

@@ -16267,9 +16267,10 @@ button.btn.back-btn {
     font-size: 12px; }
   .object_cont .segmentation_btn-wrp .btn-group .btn {
     font-size: 12px; }
-  .object_cont .datepicker_wrp input.datepicker {
-    font-size: 12px; }
-    .object_cont .datepicker_wrp input.datepicker:disabled {
+  .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker {
+    font-size: 12px;
+    width: 73px; }
+    .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker:disabled {
       background: none !important;
       opacity: 1 !important;
       -webkit-text-fill-color: #7f8fa4 !important;

@@ -82,7 +82,6 @@
           }
           .collapse{
             padding-top: 15px;
-            padding-left: 15px;
           }
           a.list-item{
             display:block;
@@ -228,6 +227,7 @@
     border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
     padding: 2px;
     margin-right: 20px;
+    border-radius: 0;
     &:first-child{
       display:block;
       margin-bottom:12px;
@@ -243,6 +243,7 @@
     border-radius: 4px;
     background-color: #886ce6!important;
     color:#fff!important;
+    border-bottom: 1.5px solid transparent;
     &:focus{
       box-shadow:none;
     }
@@ -387,12 +388,15 @@
           margin-right: 5px;
           &.checked.y2018{
             background-color: #74c2e8;
+            border: solid 1px #74c2e8;
           }
           &.checked.y2017{
             background-color: #9fd473;
+            border: solid 1px #9fd473;
           }
           &.checked.y2016{
             background-color: #8570CE;
+            border: solid 1px #8570CE;
           }
         }
       }
@@ -426,9 +430,11 @@
             margin: 10px auto;
             .y2015.checked{
               background-color: #ed8455;
+              border: solid 1px #ed8455;
             }
             .y2014.checked{
               background-color: #e06c89;
+              border: solid 1px #e06c89;
             }
           }
         }
@@ -1422,8 +1428,9 @@
       }
     }
     .datepicker_wrp{
-      input.datepicker {
+      .react-datepicker__input-container input.datepicker {
         font-size: 12px;
+        width:73px;
         &:disabled{
           background: none!important;
           opacity:1!important;

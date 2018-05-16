@@ -68,46 +68,6 @@ class Dashboard extends PureComponent {
             .catch( error => console.log(error))
     }
 
-    // getObjects() {  //получаем список объектов из списка городов
-    //     let options = {
-    //         method: 'GET',
-    //         credentials: 'include',
-    //         mode: 'cors'
-    //     };
-    //     let conceptID = 1;
-    //     if (!this.state.cities.length || this.state.objects.length)return;
-    //     let [cities,arr] = [[], [] ];
-    //
-    //
-    //     this.state.cities.forEach(item => {
-    //         if(item.children){
-    //             item.children.forEach(child => cities.push(child))
-    //         }
-    //         else cities.push(item)
-    //     });
-    //
-    //     let objects = Promise.all(cities.map(item => {
-    //         return ajaxRequest(API.objects + '?conceptId=' + conceptID + '&cityId=' + item.ID, options)
-    //             .then(data => data)
-    //             .catch(err => console.log(err))
-    //     }));
-    //     objects = objects.then(data => {        //трансформируем массив массивов значений в массив значений
-    //         data.forEach(item => arr = arr.concat(item));
-    //         return arr
-    //     });
-    //     objects = objects.then(objects => {
-    //        return Promise.all(objects.map(object => {
-    //             return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
-    //                 .then(payData => {
-    //                     object.data = payData;
-    //                     return object
-    //                 })
-    //                 .catch(error => console.log(error))
-    //         }))
-    //     });
-    //     objects.then(data => this.setState({objects:data}))
-    // }
-
     getObjects() {  //получаем список объектов из списка городов
         let options = {
             method: 'GET',

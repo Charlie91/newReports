@@ -69,8 +69,7 @@
       .object_cont .inner_objects .list_wrapper li.accordeon .title {
         border-bottom: 2px dashed rgba(127, 143, 164, 0.6); }
       .object_cont .inner_objects .list_wrapper li.accordeon .collapse {
-        padding-top: 15px;
-        padding-left: 15px; }
+        padding-top: 15px; }
       .object_cont .inner_objects .list_wrapper li.accordeon a.list-item {
         display: block;
         margin-bottom: 10px;
@@ -178,7 +177,8 @@
     background: transparent;
     border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
     padding: 2px;
-    margin-right: 20px; }
+    margin-right: 20px;
+    border-radius: 0; }
     .floor_btn-wrp .btn:first-child {
       display: block;
       margin-bottom: 12px; }
@@ -190,7 +190,8 @@
   .floor_btn-wrp .btn.active {
     border-radius: 4px;
     background-color: #886ce6 !important;
-    color: #fff !important; }
+    color: #fff !important;
+    border-bottom: 1.5px solid transparent; }
     .floor_btn-wrp .btn.active:focus {
       box-shadow: none; }
 
@@ -305,11 +306,14 @@
       top: 1px;
       margin-right: 5px; }
       .all_data .year_selector .year_selector_list .year .checkbox.checked.y2018 {
-        background-color: #74c2e8; }
+        background-color: #74c2e8;
+        border: solid 1px #74c2e8; }
       .all_data .year_selector .year_selector_list .year .checkbox.checked.y2017 {
-        background-color: #9fd473; }
+        background-color: #9fd473;
+        border: solid 1px #9fd473; }
       .all_data .year_selector .year_selector_list .year .checkbox.checked.y2016 {
-        background-color: #8570CE; }
+        background-color: #8570CE;
+        border: solid 1px #8570CE; }
   .all_data .year_selector .year_selector_list .dropdown {
     width: 65px !important;
     border-radius: 4px;
@@ -337,9 +341,11 @@
         border: none;
         margin: 10px auto; }
         .all_data .year_selector .year_selector_list .dropdown .dropdown-menu .year .y2015.checked {
-          background-color: #ed8455; }
+          background-color: #ed8455;
+          border: solid 1px #ed8455; }
         .all_data .year_selector .year_selector_list .dropdown .dropdown-menu .year .y2014.checked {
-          background-color: #e06c89; }
+          background-color: #e06c89;
+          border: solid 1px #e06c89; }
 
 .all_data .datepickers {
   white-space: nowrap; }
@@ -1003,9 +1009,10 @@
     font-size: 12px; }
   .object_cont .segmentation_btn-wrp .btn-group .btn {
     font-size: 12px; }
-  .object_cont .datepicker_wrp input.datepicker {
-    font-size: 12px; }
-    .object_cont .datepicker_wrp input.datepicker:disabled {
+  .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker {
+    font-size: 12px;
+    width: 73px; }
+    .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker:disabled {
       background: none !important;
       opacity: 1 !important;
       -webkit-text-fill-color: #7f8fa4 !important;
