@@ -388,7 +388,8 @@
     border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
     padding: 2px 0;
     margin-right: 20px;
-    margin-left: 3px; }
+    margin-left: 3px;
+    border-radius: 0; }
     .all_data .comparison_mode-wrp .btn:focus {
       box-shadow: none; }
 
@@ -1011,7 +1012,7 @@
     font-size: 12px; }
   .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker {
     font-size: 12px;
-    width: 73px; }
+    width: 79px; }
     .object_cont .datepicker_wrp .react-datepicker__input-container input.datepicker:disabled {
       background: none !important;
       opacity: 1 !important;

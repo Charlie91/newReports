@@ -490,6 +490,7 @@
       padding: 2px 0;
       margin-right: 20px;
       margin-left: 3px;
+      border-radius: 0;
       &:focus{
         box-shadow: none;
       }
@@ -1430,7 +1431,7 @@
     .datepicker_wrp{
       .react-datepicker__input-container input.datepicker {
         font-size: 12px;
-        width:73px;
+        width: 79px;
         &:disabled{
           background: none!important;
           opacity:1!important;
