@@ -29,7 +29,7 @@ const YearSelector = (props) => {
                 )}
 
 
-                <div className="dropdown">
+                <div className={"dropdown" + (dropdownData.length ? '' : ' none')}>
                     <button className="btn dropdown-toggle" onClick={toggleDropDown} >
                         ранее
                     </button>

@@ -109,6 +109,44 @@ const obj_utils = {
         }
     },
 
+    checkPositionOnGraph(data,state){//фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
+
+        let arr = data.floorData,
+            labels = state.chart.labels;
+        if(!arr.length)return data;
+
+        let [firstLable, lastLable, firstValue,lastValue] = [labels[1],labels[labels.length - 2], arr[0].THEDATE, arr[arr.length - 1].THEDATE];
+
+        if(state.timeSegment === 'M'){
+            //console.log(moment(firstLable).month(), moment(firstValue).month());
+
+            if(moment(firstLable).month() !== moment(firstValue).month()){
+                let diff = moment(firstValue).month() - moment(firstLable).month();
+
+                for(let i = 0; i < diff; i++){
+                    arr.unshift({VALUE:null, THEDATE:null})
+                }
+            }
+        }
+        else if(state.timeSegment === 'D'){
+            //console.log(moment(firstLable).format('MM DD'), moment(firstValue).format('MM DD'));
+
+            if(moment(firstLable).format('MM DD') !== moment(firstValue).format('MM DD')){
+                labels.forEach( (item,index) => {
+                    if(moment(item).format('MM DD') === moment(firstValue).format('MM DD')){
+                        //console.log(index);
+                        for(let i = 0; i < index - 1; i++){
+                            arr.unshift({VALUE:null, THEDATE:null})
+                        }
+                    }
+                })
+            }
+        }
+
+        return data;
+
+    },
+
     formatDatesForChart(dates){
         let diff = moment(dates[0]).diff(moment(dates[1]));
         let first_date = moment(moment(dates[0]) + diff).format(),
@@ -121,7 +159,9 @@ const obj_utils = {
        let labelsLength = 0;
        return data.reduce( (chart,item,i) => {
             let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-            let [values,dates, styleValues] = [ [], [], [] ] ;
+            //formattedData = this.checkPositionOnGraph(formattedData,state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
+
+           let [values,dates, styleValues] = [ [], [], [] ] ;
 
             formattedData.floorData.forEach(item => {
                 values.push(item.VALUE);

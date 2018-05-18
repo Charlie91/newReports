@@ -207,6 +207,7 @@ export default class ObjectPage extends Component {
             .then(data => {
                 if(!this.state.comparison_mode)return null;//если данные придут в момент когда РС уже выключен
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
+                data = utils.checkPositionOnGraph(data,this.state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
                 let chartObj = Object.assign({},this.state.chart),
                     values = data.floorData.map(item => item.VALUE),
                     styleValues = [];
