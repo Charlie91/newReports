@@ -49,7 +49,7 @@ const DataChartSmall = (props) => {
                 {( !props.data.datasets.length || !newChart.datasets[0].data.length ) ?
                     <Loading/>
                     :
-                    <div className="linechart_area_wrapper">
+                    <div className="linechart_area_wrapper_small">
                         <Line data={newChart}
                               options={{
                                   maintainAspectRatio: false,
