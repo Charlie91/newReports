@@ -42,7 +42,7 @@ const DataChart = (props) => {
         <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">
             {(props.emptyData) ? <p className="error-message">Отсутствуют данные</p> : ''}
             <div style={props.emptyData ? {display:'none'} : {}} className="line-chart-wrapper">
-                {(!props.data.datasets.length || (!props.data.datasets[0].data.length && props.data.datasets.length < 3) ) ?
+                { (!props.data.datasets.length || (!props.data.datasets[0].data.length && props.data.datasets.length < 3) ) ?
                     <Loading/>
                     :
                     <div className="linechart_area_wrapper">

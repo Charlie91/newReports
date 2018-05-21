@@ -49,13 +49,13 @@ const obj_utils = {
                 fill: !year, //если с режима сравнения(имеет аргумент year) то false,иначе - true
                 lineTension: 0,
                 backgroundColor: backgroundColor || this.chartStylingByYear(year),
-                borderColor: color || this.chartStylingByYear(year) ,// #886ce6
+                borderColor: color || this.chartStylingByYear(year),
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffsent: 0.0,
                 borderJoinStyle: 'miter',
                 borderWidth: 0,
-                pointBorderColor: color || this.chartStylingByYear(year) ,// #886ce6
+                pointBorderColor: color || this.chartStylingByYear(year),
                 pointBackgroundColor: color || this.chartStylingByYear(year),
                 pointBorderWidth: 0,
                 pointHoverRadius: 0,
@@ -109,8 +109,7 @@ const obj_utils = {
         }
     },
 
-    checkPositionOnGraph(data,state){//фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
-
+    checkPositionOnGraph(data,state){//фиксируем значения шкалы на нужные лейблы если это необходимо
         let arr = data.floorData,
             labels = state.chart.labels;
         if(!arr.length)return data;
@@ -204,11 +203,11 @@ const obj_utils = {
     },
 
     addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
-        document.querySelector('.line-chart-wrapper').classList.add('half-opacity');
+        document.querySelector('.line-chart-wrapper').classList.add('child-half-opacity');
     },
 
     removeOpacityFromChart(){
-        document.querySelector('.line-chart-wrapper').classList.remove('half-opacity');//удаляем прозрачность с графика
+        document.querySelector('.line-chart-wrapper').classList.remove('child-half-opacity');//удаляем прозрачность с графика
     },
 
     localizeMoment(){

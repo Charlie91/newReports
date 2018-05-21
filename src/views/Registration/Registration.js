@@ -38,7 +38,6 @@ class Registration extends Component {
 
     fieldIsValid(field,boolean){
         this.setState({[field]:boolean})
-        //console.log({[field]:boolean});
     }
 
     firstValidation(){  //валидация на первом шаге

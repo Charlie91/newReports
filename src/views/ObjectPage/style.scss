@@ -177,8 +177,10 @@
   border-bottom: 1px #7f8fa4 dashed;
 }
 
-.half-opacity{
-  opacity:0.5;
+.child-half-opacity{
+  .linechart_area_wrapper{
+    opacity:0.5;
+  }
 }
 
 .underline{
