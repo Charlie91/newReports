@@ -12,7 +12,7 @@ import DataPerMonth from './DataPerMonth';
 import ShopList from './ShopList';
 import ShopListAccordeon from './ShopListAccordeon';
 import MainData from './MainData';
-
+import CameraViewer from './CameraViewer';
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -39,8 +39,8 @@ export default class ObjectPage extends Component {
             currency:'',
             shortestUnit:'D',
             totalSum:0,
-            startDate: moment().add(-7,'days'),
-            endDate: moment(),
+            startDate: moment().add(-20,'days'),
+            endDate: moment().add(-13,'days'),
             timeSegment: 'D',
             shops:[],
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика
@@ -163,6 +163,7 @@ export default class ObjectPage extends Component {
         }))
             .then(arr => arr.filter(item => item !== null))//фильтруем массив от null значений
             .then(data => {
+
                 let newChart = utils.returnFormattedChart(data,this.state);
 
                 this.setState({
@@ -206,8 +207,16 @@ export default class ObjectPage extends Component {
         ajaxRequest(url)
             .then(data => {
                 if(!this.state.comparison_mode)return null;//если данные придут в момент когда РС уже выключен
+
+                if(this.state.timeSegment === 'D')
+                    data = utils.replaceOmissionsWithNulls(data,this.state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+                if(this.state.timeSegment === 'M')
+                    data = utils.replaceMonthOmissionsWithNulls(data,this.state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+
+
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-                data = utils.checkPositionOnGraph(data,this.state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
+                //data = utils.checkPositionOnGraph(data,this.state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
+
                 let chartObj = Object.assign({},this.state.chart),
                     values = data.floorData.map(item => item.VALUE),
                     styleValues = [];

@@ -33,12 +33,14 @@ const obj_utils = {
     },
 
     chartStylingByYear(year){   //стилизация графиков сравнения
-        return (year === 2018) ? '#74c2e8' :
-            (year === 2017) ? '#9fd473' :
-                (year === 2016) ? '#8570CE' :
-                    (year === 2015) ? '#ed8455' :
-                        (year === 2014) ? '#e06c89' :
-                            '#f6aa25';
+        return (
+            year === 2018 ? '#74c2e8' :
+                year === 2017 ? '#9fd473' :
+                    year === 2016 ? '#8570CE' :
+                        year === 2015 ? '#ed8455' :
+                            year === 2014 ? '#e06c89' :
+                                '#f6aa25'
+        )
     },
 
     createNewDataset(year,label, backgroundColor, color){   //создание нового экземпляра данных для графика
@@ -117,8 +119,6 @@ const obj_utils = {
         let [firstLable, lastLable, firstValue,lastValue] = [labels[1],labels[labels.length - 2], arr[0].THEDATE, arr[arr.length - 1].THEDATE];
 
         if(state.timeSegment === 'M'){
-            //console.log(moment(firstLable).month(), moment(firstValue).month());
-
             if(moment(firstLable).month() !== moment(firstValue).month()){
                 let diff = moment(firstValue).month() - moment(firstLable).month();
 
@@ -128,12 +128,9 @@ const obj_utils = {
             }
         }
         else if(state.timeSegment === 'D'){
-            //console.log(moment(firstLable).format('MM DD'), moment(firstValue).format('MM DD'));
-
             if(moment(firstLable).format('MM DD') !== moment(firstValue).format('MM DD')){
                 labels.forEach( (item,index) => {
                     if(moment(item).format('MM DD') === moment(firstValue).format('MM DD')){
-                        //console.log(index);
                         for(let i = 0; i < index - 1; i++){
                             arr.unshift({VALUE:null, THEDATE:null})
                         }
@@ -143,7 +140,101 @@ const obj_utils = {
         }
 
         return data;
+    },
 
+    replaceMonthOmissionsWithNulls(data, state, year){
+        let dataArr = data.floorData,
+            startDate = year + state.startDate.format('-MM'),
+            endDate = year + state.endDate.format('-MM');
+
+        data.floorData = dataArr.reduce( (newDates,item,index) => {
+            if(index === 0 && moment(startDate).format('MM') !== moment(item.THEDATE).format('MM')){
+                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,startDate);
+                for(let i = 0; i < amountOfOmissions; i++){
+                    let newDate = moment(startDate).add(i,'months').format('YYYY-MM');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            if(index !== 0 && moment(item.THEDATE).format('MM') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'months').format('MM')){
+                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
+                for(let i = 0; i < amountOfOmissions - 1; i++){
+                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'months').format('YYYY-MM');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            newDates.push(item);
+
+            if(index === dataArr.length - 1){
+                let amountOfOmissions = this.defineAmountOfMonthOmissions(endDate,item.THEDATE);
+                for(let i = 1; i <= amountOfOmissions; i++){
+                    let newDate = moment(item.THEDATE).add(i,'months').format('YYYY-MM');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            return newDates;
+
+        },[]);
+
+        return data
+
+
+    },
+
+    replaceOmissionsWithNulls(data, state, year){
+        let dataArr = data.floorData,
+            startDate = year + state.startDate.format('-MM-DD'),
+            endDate = year + state.endDate.format('-MM-DD');
+
+        data.floorData = dataArr.reduce( (newDates,item,index) => {
+            if(index === 0 && moment(startDate).format('MM-DD') !== moment(item.THEDATE).format('MM-DD')){
+                let amountOfOmissions = this.defineAmountOfDayOmissions(item.THEDATE,startDate);
+                for(let i = 0; i < amountOfOmissions; i++){
+                    let newDate = moment(startDate).add(i,'days').format('YYYY-MM-DD');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            if(index !== 0 && moment(item.THEDATE).format('MM-DD') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'days').format('MM-DD')){
+                let amountOfOmissions = this.defineAmountOfDayOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
+                for(let i = 0; i < amountOfOmissions - 1; i++){
+                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'days').format('YYYY-MM-DD');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            newDates.push(item);
+
+            if(index === dataArr.length - 1){
+                let amountOfOmissions = this.defineAmountOfDayOmissions(endDate,item.THEDATE);
+                for(let i = 1; i <= amountOfOmissions; i++){
+                    let newDate = moment(item.THEDATE).add(i,'days').format('YYYY-MM-DD');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            return newDates;
+
+        },[]);
+
+        return data
+    },
+
+    defineAmountOfDayOmissions(reduced, subtracted){
+        return moment(reduced).dayOfYear() - moment(subtracted).dayOfYear();
+    },
+
+    defineAmountOfMonthOmissions(reduced, subtracted){
+        return moment(reduced).month() - moment(subtracted).month();
+    },
+
+    pushEmptyValueToOmission(array,newDate){
+        array.push({
+            THEDATE: newDate,
+            VALUE:null
+        });
     },
 
     formatDatesForChart(dates){
@@ -157,7 +248,15 @@ const obj_utils = {
     returnFormattedChart(data,state){
        let labelsLength = 0;
        return data.reduce( (chart,item,i) => {
-            let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
+           if(state.timeSegment === 'D')
+               data = this.replaceOmissionsWithNulls(item,state, state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+           if(state.timeSegment === 'M')
+               data = this.replaceMonthOmissionsWithNulls(item,state, state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+
+
+
+
+           let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
             //formattedData = this.checkPositionOnGraph(formattedData,state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
 
            let [values,dates, styleValues] = [ [], [], [] ] ;
@@ -443,8 +542,25 @@ const obj_utils = {
             ctx.stroke();
         }
 
-    }
+    },
 
+    checkIfFlashEnabled() {
+        var isFlashEnabled = false;
+        // Проверка для всех браузеров, кроме IE
+        if (typeof(navigator.plugins)!="undefined"
+            && typeof(navigator.plugins["Shockwave Flash"])=="object"
+        ) {
+            isFlashEnabled = true;
+        } else if (typeof  window.ActiveXObject !=  "undefined") {
+            // Проверка для IE
+            try {
+                if (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) {
+                    isFlashEnabled = true;
+                }
+            } catch(e) {};
+        };
+        return isFlashEnabled;
+    }
 
 };
 

@@ -15406,7 +15406,7 @@ button.btn.back-btn {
   font-weight: 400;
   border-bottom: 1px #7f8fa4 dashed; }
 
-.half-opacity {
+.child-half-opacity .linechart_area_wrapper, .child-half-opacity .linechart_area_wrapper_small {
   opacity: 0.5; }
 
 .underline {
