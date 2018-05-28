@@ -141,6 +141,62 @@ const obj_utils = {
 
         return data;
     },
+//        console.log(moment(state.endDate).add(-18,'hours').format('YYYY-MM-DDTHH'));
+
+    replaceOmissionsWithNulls(data, state, year){
+        if(state.timeSegment === 'M')
+            data = this.replaceMonthOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+        else if(state.timeSegment === 'D')
+            data = this.replaceDayOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+        else if(state.timeSegment === 'H')
+            data = this.replaceHourOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+
+
+        return data
+    },
+
+    replaceHourOmissionsWithNulls(data, state, year){
+        let dataArr = data.floorData,
+            startDate = year + state.startDate.hours(0).format('-MM-DDTHH'),
+            endDate = year + state.endDate.hours(23).format('-MM-DDTHH');
+
+        console.log(moment(state.startDate).format('YYYY-MM-DDTHH'),moment(state.startDate).format('YYYY-MM-DDTHH'));
+
+        data.floorData = dataArr.reduce( (newDates,item,index) => {
+
+            if(index === 0 && moment(startDate).format('-MM-DDTHH') !== moment(item.THEDATE).format('-MM-DDTHH')){
+                let amountOfOmissions = this.defineAmountOfHourOmissions(item.THEDATE,startDate);
+                console.log(amountOfOmissions);
+                for(let i = 0; i < amountOfOmissions; i++){
+                    let newDate = moment(startDate).add(i,'hours').format('YYYY-MM-DDTHH');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            if(index !== 0 && moment(item.THEDATE).format('-MM-DDTHH') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'hours').format('-MM-DDTHH')){
+                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
+                for(let i = 0; i < amountOfOmissions - 1; i++){
+                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'hours').format('YYYY-MM-DDTHH');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            newDates.push(item);
+
+            if(index === dataArr.length - 1){
+                let amountOfOmissions = this.defineAmountOfMonthOmissions(endDate,item.THEDATE);
+                for(let i = 1; i <= amountOfOmissions; i++){
+                    let newDate = moment(item.THEDATE).add(i,'hours').format('YYYY-MM-DDTHH');
+                    this.pushEmptyValueToOmission(newDates,newDate);
+                }
+            }
+
+            return newDates
+
+        },[]);
+
+        return data
+    },
 
     replaceMonthOmissionsWithNulls(data, state, year){
         let dataArr = data.floorData,
@@ -179,11 +235,9 @@ const obj_utils = {
         },[]);
 
         return data
-
-
     },
 
-    replaceOmissionsWithNulls(data, state, year){
+    replaceDayOmissionsWithNulls(data, state, year){
         let dataArr = data.floorData,
             startDate = year + state.startDate.format('-MM-DD'),
             endDate = year + state.endDate.format('-MM-DD');
@@ -230,6 +284,10 @@ const obj_utils = {
         return moment(reduced).month() - moment(subtracted).month();
     },
 
+    defineAmountOfHourOmissions(reduced, subtracted){
+        return ( moment(reduced) - moment(subtracted) ) / 1000 / 60 / 60;//миллисекунды в часы
+    },
+
     pushEmptyValueToOmission(array,newDate){
         array.push({
             THEDATE: newDate,
@@ -248,16 +306,9 @@ const obj_utils = {
     returnFormattedChart(data,state){
        let labelsLength = 0;
        return data.reduce( (chart,item,i) => {
-           if(state.timeSegment === 'D')
-               data = this.replaceOmissionsWithNulls(item,state, state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-           if(state.timeSegment === 'M')
-               data = this.replaceMonthOmissionsWithNulls(item,state, state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-
-
-
+           data = this.replaceOmissionsWithNulls(item,state,state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
 
            let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-            //formattedData = this.checkPositionOnGraph(formattedData,state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
 
            let [values,dates, styleValues] = [ [], [], [] ] ;
 

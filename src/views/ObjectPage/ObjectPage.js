@@ -207,15 +207,8 @@ export default class ObjectPage extends Component {
         ajaxRequest(url)
             .then(data => {
                 if(!this.state.comparison_mode)return null;//если данные придут в момент когда РС уже выключен
-
-                if(this.state.timeSegment === 'D')
-                    data = utils.replaceOmissionsWithNulls(data,this.state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-                if(this.state.timeSegment === 'M')
-                    data = utils.replaceMonthOmissionsWithNulls(data,this.state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-
-
+                data = utils.replaceOmissionsWithNulls(data,this.state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
                 data = utils.checkLeapYear(data); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
-                //data = utils.checkPositionOnGraph(data,this.state); //фиксируем значения Y шкалы на нужные лейблы X шкалы если это необходимо
 
                 let chartObj = Object.assign({},this.state.chart),
                     values = data.floorData.map(item => item.VALUE),
