@@ -405,7 +405,7 @@ const obj_utils = {
         let values = data.datasets.reduce( (result, current, i) => {
             let className = 'checked y' + current.year;// имя класса
             let square = '<div class="' + className + '"></div>'; //строка HTML-тега
-            let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(current.data[index]) + '</div>';
+            let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(Math.round(current.data[index])) + '</div>';
 
             let ifThereTheSameValue = result.some( item => {    // если есть уже подобное значение в результатах - не добавляем
                 return item === newValue;

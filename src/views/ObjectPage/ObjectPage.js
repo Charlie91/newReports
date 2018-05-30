@@ -332,6 +332,7 @@ export default class ObjectPage extends Component {
     }
 
     checkYear(year,e){
+        if(this.state.requestIsInProcess)return;
         let checkboxes = document.querySelectorAll('.year_selector_list .year > .checkbox');
 
         for(let i = 0; i < checkboxes.length; i++){
