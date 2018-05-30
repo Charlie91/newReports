@@ -212,12 +212,16 @@ export default class ObjectPage extends Component {
 
                 let chartObj = Object.assign({},this.state.chart),
                     values = data.floorData.map(item => item.VALUE),
+                    dates = data.floorData.map(item => item.THEDATE),
                     styleValues = [];
 
                 if(values.length){
+                    dates = utils.formatDatesForChart(dates);
                     values = utils.returnValuesWithAverageInCMode(values,data,this.state);
                     styleValues= utils.returnStyleValuesInCMode(values,data,this.state)
                 }
+
+                if(!this.state.chart.datasets.length)chartObj.labels = dates;// если график пуст - обновить шкалу с датами
 
                 let newDataset = utils.createNewDataset(year);    //создание нового графика
                 [newDataset[0].data, newDataset[1].data] = [values,styleValues];//присвоение данных новому графику
@@ -230,7 +234,6 @@ export default class ObjectPage extends Component {
                     emptyData:false,
                     excelData: newExcel
                 });
-
             })
             .catch(err => console.log(err))
     }
