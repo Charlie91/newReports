@@ -1,7 +1,7 @@
 
 /*
-Вспомогательные функции ObjectPage компонента
-*/
+ Вспомогательные функции ObjectPage компонента
+ */
 import moment from 'moment';
 import {digitCount, average,formatNumberBySpaces} from './../../utils/utils';
 import {Chart} from "react-chartjs-2";
@@ -141,42 +141,45 @@ const obj_utils = {
 
         return data;
     },
-//        console.log(moment(state.endDate).add(-18,'hours').format('YYYY-MM-DDTHH'));
 
-    replaceOmissionsWithNulls(data, state, year){
-        if(state.timeSegment === 'M')
-            data = this.replaceMonthOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-        else if(state.timeSegment === 'D')
-            data = this.replaceDayOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-        else if(state.timeSegment === 'H')
-            data = this.replaceHourOmissionsWithNulls(data,state,year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
-
-
-        return data
-    },
-
-    replaceHourOmissionsWithNulls(data, state, year){
+    replaceOmissionsWithNulls(data,state,year){
         let dataArr = data.floorData,
-            startDate = year + state.startDate.hours(0).format('-MM-DDTHH'),
-            endDate = year + state.endDate.hours(23).format('-MM-DDTHH');
+            dateFormat,type;
 
-        console.log(moment(state.startDate).format('YYYY-MM-DDTHH'),moment(state.startDate).format('YYYY-MM-DDTHH'));
+        switch (state.timeSegment){
+            case 'M':
+                dateFormat = 'YYYY-MM';
+                type = 'months';
+                break;
+            case 'D':
+                dateFormat = 'YYYY-MM-DD';
+                type = 'days';
+                break;
+            case 'H':
+                dateFormat = 'YYYY-MM-DDTHH';
+                type = 'hours';
+                break;
+            default:
+                console.log("неверное значение state.tomeSegment")
+        }
+
+        let startDate = year + state.startDate.hours(0).format(dateFormat.slice(4)),
+            endDate = year + state.endDate.hours(23).format(dateFormat.slice(4)),
+            dateWithoutYear = dateFormat.slice(5);
 
         data.floorData = dataArr.reduce( (newDates,item,index) => {
-
-            if(index === 0 && moment(startDate).format('-MM-DDTHH') !== moment(item.THEDATE).format('-MM-DDTHH')){
-                let amountOfOmissions = this.defineAmountOfHourOmissions(item.THEDATE,startDate);
-                console.log(amountOfOmissions);
+            if(index === 0 && moment(startDate).format(dateWithoutYear) !== moment(item.THEDATE).format(dateWithoutYear)){
+                let amountOfOmissions = this.defineAmountOfOmissions(type)(item.THEDATE,startDate);
                 for(let i = 0; i < amountOfOmissions; i++){
-                    let newDate = moment(startDate).add(i,'hours').format('YYYY-MM-DDTHH');
+                    let newDate = moment(startDate).add(i,type).format(dateFormat);
                     this.pushEmptyValueToOmission(newDates,newDate);
                 }
             }
 
-            if(index !== 0 && moment(item.THEDATE).format('-MM-DDTHH') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'hours').format('-MM-DDTHH')){
-                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
+            if(index !== 0 && moment(item.THEDATE).format(dateWithoutYear) !== moment(newDates[newDates.length - 1].THEDATE).add(1,type).format(dateWithoutYear)){
+                let amountOfOmissions = this.defineAmountOfOmissions(type)(item.THEDATE,newDates[newDates.length - 1].THEDATE);
                 for(let i = 0; i < amountOfOmissions - 1; i++){
-                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'hours').format('YYYY-MM-DDTHH');
+                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,type).format(dateFormat);
                     this.pushEmptyValueToOmission(newDates,newDate);
                 }
             }
@@ -184,9 +187,9 @@ const obj_utils = {
             newDates.push(item);
 
             if(index === dataArr.length - 1){
-                let amountOfOmissions = this.defineAmountOfMonthOmissions(endDate,item.THEDATE);
+                let amountOfOmissions = this.defineAmountOfOmissions(type)(endDate,item.THEDATE);
                 for(let i = 1; i <= amountOfOmissions; i++){
-                    let newDate = moment(item.THEDATE).add(i,'hours').format('YYYY-MM-DDTHH');
+                    let newDate = moment(item.THEDATE).add(i,type).format(dateFormat);
                     this.pushEmptyValueToOmission(newDates,newDate);
                 }
             }
@@ -198,82 +201,20 @@ const obj_utils = {
         return data
     },
 
-    replaceMonthOmissionsWithNulls(data, state, year){
-        let dataArr = data.floorData,
-            startDate = year + state.startDate.format('-MM'),
-            endDate = year + state.endDate.format('-MM');
-
-        data.floorData = dataArr.reduce( (newDates,item,index) => {
-            if(index === 0 && moment(startDate).format('MM') !== moment(item.THEDATE).format('MM')){
-                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,startDate);
-                for(let i = 0; i < amountOfOmissions; i++){
-                    let newDate = moment(startDate).add(i,'months').format('YYYY-MM');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            if(index !== 0 && moment(item.THEDATE).format('MM') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'months').format('MM')){
-                let amountOfOmissions = this.defineAmountOfMonthOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
-                for(let i = 0; i < amountOfOmissions - 1; i++){
-                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'months').format('YYYY-MM');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            newDates.push(item);
-
-            if(index === dataArr.length - 1){
-                let amountOfOmissions = this.defineAmountOfMonthOmissions(endDate,item.THEDATE);
-                for(let i = 1; i <= amountOfOmissions; i++){
-                    let newDate = moment(item.THEDATE).add(i,'months').format('YYYY-MM');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            return newDates;
-
-        },[]);
-
-        return data
-    },
-
-    replaceDayOmissionsWithNulls(data, state, year){
-        let dataArr = data.floorData,
-            startDate = year + state.startDate.format('-MM-DD'),
-            endDate = year + state.endDate.format('-MM-DD');
-
-        data.floorData = dataArr.reduce( (newDates,item,index) => {
-            if(index === 0 && moment(startDate).format('MM-DD') !== moment(item.THEDATE).format('MM-DD')){
-                let amountOfOmissions = this.defineAmountOfDayOmissions(item.THEDATE,startDate);
-                for(let i = 0; i < amountOfOmissions; i++){
-                    let newDate = moment(startDate).add(i,'days').format('YYYY-MM-DD');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            if(index !== 0 && moment(item.THEDATE).format('MM-DD') !== moment(newDates[newDates.length - 1].THEDATE).add(1,'days').format('MM-DD')){
-                let amountOfOmissions = this.defineAmountOfDayOmissions(item.THEDATE,newDates[newDates.length - 1].THEDATE);
-                for(let i = 0; i < amountOfOmissions - 1; i++){
-                    let newDate = moment(newDates[newDates.length - 1].THEDATE).add(1,'days').format('YYYY-MM-DD');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            newDates.push(item);
-
-            if(index === dataArr.length - 1){
-                let amountOfOmissions = this.defineAmountOfDayOmissions(endDate,item.THEDATE);
-                for(let i = 1; i <= amountOfOmissions; i++){
-                    let newDate = moment(item.THEDATE).add(i,'days').format('YYYY-MM-DD');
-                    this.pushEmptyValueToOmission(newDates,newDate);
-                }
-            }
-
-            return newDates;
-
-        },[]);
-
-        return data
+    defineAmountOfOmissions(type){
+        switch(type){
+            case 'hours':
+                return this.defineAmountOfHourOmissions;
+                break;
+            case 'days':
+                return this.defineAmountOfDayOmissions;
+                break;
+            case 'months':
+                return this.defineAmountOfMonthOmissions;
+                break;
+            default:
+                console.log('неверно передан аргумент type')
+        }
     },
 
     defineAmountOfDayOmissions(reduced, subtracted){
@@ -304,13 +245,13 @@ const obj_utils = {
     },
 
     returnFormattedChart(data,state){
-       let labelsLength = 0;
-       return data.reduce( (chart,item,i) => {
-           data = this.replaceOmissionsWithNulls(item,state,state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
+        let labelsLength = 0;
+        return data.reduce( (chart,item,i) => {
+            data = this.replaceOmissionsWithNulls(item,state,state.chart.datasets[i * 2].year);//заменяем пропуски данных нулями чтобы не разрушать структуру графика
 
-           let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
+            let formattedData = this.checkLeapYear(item); //если високосный год - удаляем 29 февраля из выдачи, чтобы не мешать сравнению
 
-           let [values,dates, styleValues] = [ [], [], [] ] ;
+            let [values,dates, styleValues] = [ [], [], [] ] ;
 
             formattedData.floorData.forEach(item => {
                 values.push(item.VALUE);

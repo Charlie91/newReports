@@ -1,26 +1,41 @@
 import React from 'react';
 import utils from './obj_utils';
 import ReactSWF from 'react-swf';
+import {Collapse} from "reactstrap";
+
 
 const CameraViewer = (props) => {
     if(!props.object || !props.object.camera_floors)return null;
-    let flashURLs = props.object.camera_floors[0].cameras.map(item => item.url);
+    let flashes = props.object.camera_floors[0].cameras;
+
+    function handleClick(i) {
+        document.querySelectorAll('.video-box li.accordeon')[i].querySelector('.collapse').classList.toggle('show');
+    }
+
 
     if(utils.checkIfFlashEnabled())
                     return (
                         <div id="video-box-main" className="box-video-position video-box">
                             {
-                                flashURLs.map( (url,i) =>
-                                    <ReactSWF
-                                        src="https://re-ports.ru/app/video-control.swf"
-                                        id="block-video"
-                                        width="300"
-                                        height="200"
-                                        allowFullScreen={true}
-                                        wmode="window"
-                                        flashVars={url}
-                                        key={i}
-                                    />
+                                flashes.map( (item,i) =>
+                                    <li key={i}
+                                        className="accordeon"
+                                        onClick={handleClick.bind(null,i)}
+                                    >
+                                        <span className="title">{item.name} <br/><button>Вкл/выкл</button></span>
+                                        <Collapse isOpen={false}>
+                                            <ReactSWF
+                                                src="https://re-ports.ru/app/video-control.swf"
+                                                id="block-video"
+                                                width="300"
+                                                height="200"
+                                                allowFullScreen={true}
+                                                wmode="window"
+                                                flashVars={item.url}
+                                                key={i}
+                                            />
+                                        </Collapse>
+                                    </li>
                                 )
                             }
                         </div>

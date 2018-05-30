@@ -1487,3 +1487,25 @@
     }
   }
 }
+
+
+/*Тестовый/временный цсс*/
+
+.video-box li.accordeon {
+  display: inline-block;
+  width: 300px;
+  cursor:pointer;
+  height: 250px;
+  background: #141519;
+  margin: 2px;
+  color: #FFF;
+  font-weight: 500;
+  position:relative;
+  .collapse.show {
+    position: absolute;
+    top: 50px;
+  }
+  span.title {
+    margin-left: 15px;
+  }
+}

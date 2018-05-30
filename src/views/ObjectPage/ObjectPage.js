@@ -39,8 +39,8 @@ export default class ObjectPage extends Component {
             currency:'',
             shortestUnit:'D',
             totalSum:0,
-            startDate: moment().add(-20,'days'),
-            endDate: moment().add(-13,'days'),
+            startDate: moment().add(-7,'days'),
+            endDate: moment(),
             timeSegment: 'D',
             shops:[],
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика
@@ -483,6 +483,7 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
+                <CameraViewer {...state}/>
             </div>
         )
     }

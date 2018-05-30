@@ -16312,6 +16312,23 @@ button.btn.back-btn {
       margin-top: 1.75%; }
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; } }
+
+/*Тестовый/временный цсс*/
+.video-box li.accordeon {
+  display: inline-block;
+  width: 300px;
+  cursor: pointer;
+  height: 250px;
+  background: #141519;
+  margin: 2px;
+  color: #FFF;
+  font-weight: 500;
+  position: relative; }
+  .video-box li.accordeon .collapse.show {
+    position: absolute;
+    top: 50px; }
+  .video-box li.accordeon span.title {
+    margin-left: 15px; }
 .registration-form {
   border-radius: 10px;
   margin: auto; }
