@@ -84,8 +84,8 @@ class Conception extends Component {
                 return ajaxRequest(API.objectsArrayData + '?objIds=' + ids.join(','))
                     .then(data => {
                         objects.forEach(item => {
-                            item.data = data[item.id];
                             item = this.formatObjectToShowInTable(item, data[item.id]);
+                            item.data = data[item.id];
                         });
                         return objects;
                     })
