@@ -9,6 +9,7 @@ export let API = {
     cities: `https://repo.re-ports.ru/app${postfix}/Cities?conceptId=`,
     objects: `https://repo.re-ports.ru/app${postfix}/Objects`,
     objectsData: `https://repo.re-ports.ru/app${postfix}/ObjectCache`,
+    objectsArrayData: `https://repo.re-ports.ru/app${postfix}/ObjCacheArrays`,
     floors:`https://repo.re-ports.ru/app${postfix}/ObjectFloors?objId=`,
     floorsData:`https://repo.re-ports.ru/app${postfix}/FloorData`,
     innerObjects:`https://repo.re-ports.ru/trc_api${postfix}/shopData?trcId=`,

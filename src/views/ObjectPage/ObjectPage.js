@@ -487,7 +487,6 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
-                <CameraViewer {...state}/>
             </div>
         )
     }
