@@ -52,7 +52,8 @@
       font-weight: 500;
       color: #354052; }
       .object_cont .inner_objects .list_wrapper li.title {
-        display: block; }
+        display: block;
+        cursor: pointer; }
         .object_cont .inner_objects .list_wrapper li.title > a {
           display: inline-block;
           margin-bottom: 10px;

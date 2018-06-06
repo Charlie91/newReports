@@ -68,23 +68,47 @@ class Dashboard extends PureComponent {
             .catch( error => console.log(error))
     }
 
+    // getObjects() {  //получаем список объектов из списка городов
+    //     let conceptID = 1;
+    //     let arr = [];
+    //     if (this.state.objects.length)return;
+    //     ajaxRequest(API.objects + '?conceptId=' + conceptID)
+    //         .then(objects => {
+    //             let ids = objects.map(item => item.id);
+    //             return ajaxRequest(API.objectsArrayData + '?objIds=' + ids.join(','))
+    //                 .then(data => {
+    //                     objects.forEach(item => {
+    //                         item.data = data[item.id];
+    //                     });
+    //                     return objects;
+    //                 })
+    //         })
+    //         .then(data => this.setState({objects:data}));
+    // }
+
     getObjects() {  //получаем список объектов из списка городов
+        let options = {
+            method: 'GET',
+            credentials: 'include',
+            mode: 'cors'
+        };
         let conceptID = 1;
         let arr = [];
         if (this.state.objects.length)return;
-        ajaxRequest(API.objects + '?conceptId=' + conceptID)
-            .then(objects => {
-                let ids = objects.map(item => item.id);
-                return ajaxRequest(API.objectsArrayData + '?objIds=' + ids.join(','))
-                    .then(data => {
-                        objects.forEach(item => {
-                            item.data = data[item.id];
-                        });
-                        return objects;
-                    })
+        ajaxRequest(API.objects + '?conceptId=' + conceptID, options)
+            .then(data => {
+                return Promise.all(data.map(object => {
+                    return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                        .then(payData => {
+                            object.data = payData;
+                            return object
+                        })
+                        .catch(error => console.log(error))
+                }))
             })
             .then(data => this.setState({objects:data}));
     }
+
 
     renderObjects(){    // рендер карточек объектов
         if(this.state.objects.length){
