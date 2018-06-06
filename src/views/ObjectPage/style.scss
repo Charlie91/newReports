@@ -371,11 +371,12 @@
       display: inline-block;
     }
     .year_selector_list{
+      margin-left: 3px;
       .year{
         cursor: pointer;
         border-radius: 4px;
         border: solid 1px #e3e3e3;
-        margin-right: 15px;
+        margin-right: 10px;
         padding: 0px 3px;
         line-height: normal;
         >span{
@@ -407,7 +408,7 @@
         width: 65px!important;
         border-radius: 4px;
         border: solid 1px #e3e3e3;
-        padding: 0px 3px;
+        padding: 0px 6px;
         line-height: normal;
         z-index: 1;
         background:#fff;
@@ -427,10 +428,13 @@
           border-radius: 0px 0px 4px 4px;
           width: 65px;
           margin-left: -1px;
+          padding: 0 7px;
           .year{
             display: block;
             border: none;
             margin: 10px auto;
+            padding:0;
+            white-space: nowrap;
             .y2015.checked{
               background-color: #ed8455;
               border: solid 1px #ed8455;
@@ -438,6 +442,9 @@
             .y2014.checked{
               background-color: #e06c89;
               border: solid 1px #e06c89;
+            }
+            span{
+              margin-left: 3px;
             }
           }
         }
@@ -632,6 +639,7 @@
     >div{
       line-height: 24px;
       margin-bottom: 4px;
+      white-space: nowrap;
       &.opening_day{
         flex: 1 0 auto;
       }
@@ -1270,9 +1278,18 @@
           .muted{
             font-size: 14px;
           }
-          .year_selector_list .year{
-            margin-right:10px
+          .year_selector_list{
+            margin-left:5px;
+            .dropdown{
+              .year{
+                margin-right:auto;
+              }
+            }
+            .year{
+              margin-right:10px
+            }
           }
+
         }
         .line-chart-wrapper {
           padding: 10px 0px;
@@ -1485,6 +1502,10 @@
       .segmentation_btn-wrp .btn-group .btn{
         font-size:11px;
       }
+    }
+
+    .all_data .card-body .year_selector .year_selector_list {
+      margin-left: 0px;
     }
   }
 }
