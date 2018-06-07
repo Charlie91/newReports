@@ -14039,7 +14039,8 @@ main.main {
   margin: auto; }
 
 .sidebar-minimized .app-header.navbar {
-  margin-left: 50px; }
+  margin-left: 50px;
+  padding-right: 60px !important; }
 
 .sidebar-minimized .hamburger {
   width: 100%;
