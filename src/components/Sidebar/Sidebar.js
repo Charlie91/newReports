@@ -4,14 +4,7 @@ import {Badge, Nav, NavItem} from 'reactstrap';
 import classNames from 'classnames';
 import nav from './_nav';
 import LogOut from './../../views/Authorization/LogOut';
-import {API} from './../../utils/api_paths';
-import {ajaxRequest, getCoords} from './../../utils/utils';
-import {
-    NavbarToggler,
-    NavbarBrand,
-    Row,
-    Col
-} from 'reactstrap';
+import {NavbarToggler, Row, Col} from 'reactstrap';
 
 class Sidebar extends Component {
     constructor(props){
@@ -110,14 +103,6 @@ class Sidebar extends Component {
 
         // nav dropdown
         const navDropdown = (item, key) => {
-            // return (
-            //     <li key={key} className={activeRoute(item.url, props)}>
-            //         <a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick.bind(this)}><i className={item.icon}></i> {item.name}</a>
-            //         <ul className="nav-dropdown-items">
-            //             {navList(item.children)}
-            //         </ul>
-            //     </li>
-            // )
             return (
                 <li key={key} className={activeRoute(item.url, props)}>
                     <NavLink className="nav-link nav-dropdown-toggle" to={' '} onClick={handleClick.bind(this)}>
@@ -143,7 +128,6 @@ class Sidebar extends Component {
         const navList = (items) => {
             return items.map( (item, index) => navLink(item, index) );
         };
-        //    &#9776;
 
         return (
             <div className="sidebar">

@@ -12,7 +12,7 @@ import './registration.scss';
 import {ajaxRequest,checkEitherLoggedInOrNot, getCookie, deleteRegistrationCookies} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import { Link, Redirect} from 'react-router-dom';
-import frozenGlass from './../../containers/Empty/main';
+import frozenGlass from '../../containers/Empty/frozenGlass';
 import {
     Row, Col
 } from "reactstrap";

@@ -18,6 +18,14 @@
   }
 }
 
+.clear-field {
+  background-image:url('/img/clear.png');
+  background-size:16px;
+  background-position: right;
+  background-color: transparent !important;
+  background-repeat: no-repeat;
+}
+
 .nextStep .auth-btn{
   width:185px
 }

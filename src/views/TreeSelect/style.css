@@ -76,41 +76,41 @@ body {
 .tag-item {
   display: inline-block;
   margin: 4px; }
-
-.tag-item:last-child {
-  margin-right: 4px;
-  padding: 1px 7px;
-  color: #20a8d8;
-  border: solid 1px #8ed6fa;
-  background-color: transparent;
-  background-image: none;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.1s ease-in;
-  border-radius: 4px; }
-
-.tag-item:not(:last-child) {
-  display: none; }
-
-.tag-item:last-child input {
-  width: 130px;
-  background: transparent;
-  color: #20a8d8;
-  cursor: pointer; }
-
-.tag-item:last-child input::placeholder {
-  color: #354052;
-  font-weight: 300; }
-
-.tag-item:last-child:hover {
-  background-color: #20a8d8;
-  border-color: #20a8d8; }
-
-.tag-item:last-child:hover::after {
-  color: #fff; }
-
-.tag-item:last-child:hover input::placeholder {
-  color: #fff; }
+  .tag-item:last-child {
+    margin-right: 4px;
+    padding: 1px 7px;
+    color: #20a8d8;
+    border: solid 1px #8ed6fa;
+    background-color: transparent;
+    background-image: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    border-radius: 4px; }
+    .tag-item:last-child:hover {
+      background-color: #20a8d8;
+      border-color: #20a8d8; }
+      .tag-item:last-child:hover input::placeholder {
+        color: #fff; }
+      .tag-item:last-child:hover::after {
+        color: #fff; }
+    .tag-item:last-child::after {
+      cursor: pointer;
+      color: #354052;
+      margin-left: -14px;
+      content: url("/img/dropdown.png"); }
+    .tag-item:last-child:hover::after {
+      content: url("/img/dropup.png"); }
+    .tag-item:last-child input {
+      width: 130px;
+      background: transparent;
+      color: #20a8d8;
+      cursor: pointer; }
+      .tag-item:last-child input::placeholder {
+        color: #354052;
+        font-weight: 300; }
+  .tag-item:not(:last-child) {
+    display: none; }
 
 /* component styles */
 .hide {
@@ -125,6 +125,9 @@ body {
 
 .dropdown--active .dropdown-content {
   display: block; }
+
+.dropdown--active .tag-item:last-child::after {
+  content: url("/img/dropup.png"); }
 
 .dropdown-content {
   padding: 10px;
@@ -142,15 +145,6 @@ body {
   max-height: 200px;
   overflow: auto; }
 
-/*.dropdown-trigger > span:after {
-  content: '\25BC';
-  cursor: pointer;
-  margin: 0 0 0 -10px;
-}
-
-.dropdown--active .dropdown-trigger > span:after {
-  content: '\25B2';
-}*/
 .dropdown-trigger input {
   border: none;
   outline: none;
@@ -194,11 +188,6 @@ li.node.leaf {
 
 li.node:hover {
   background: #ececec; }
-
-.tag-item:last-child::after {
-  cursor: pointer;
-  color: #354052;
-  margin-left: -14px; }
 
 .tree_select {
   margin-left: 34px;
@@ -275,6 +264,17 @@ a.dropdown__trigger.dropdown-trigger {
 
 .navbar img {
   width: 25px; }
+
+.armenia span.node-label::before {
+  background-image: url("/img/flags/Armenia-new.png");
+  width: 12px;
+  background-size: 12px;
+  height: 12px;
+  display: inline-block;
+  content: '';
+  position: absolute;
+  margin-left: -18px;
+  margin-top: 4px; }
 
 @media screen and (max-width: 1070px) {
   .tag-item:not(:last-child) {

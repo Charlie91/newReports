@@ -5,14 +5,14 @@ import Registration from '../../views/Registration/Registration.js';
 import Authorization from '../../views/Authorization/Authorization.js';
 import './style.scss';
 import './style-blur.css';
-import frozenGlass from './main';
+import frozenGlass from './frozenGlass';
 
 class Empty extends Component {
     componentDidMount(){
         document.body.classList.remove('sidebar-fixed'); //убираем класс с body чтобы выровнять контентный блок
         document.addEventListener("touchstart", function(){}, true);    //обработчик корректного отображения ontap подсветок на моб-х устройствах
         frozenGlass(); //эмулируем blur
-        window.onresize = () => frozenGlass(); //эмулируем blur
+        window.onresize = () => frozenGlass(); //эмулируем blur на каждом ресайзе окна
     }
     componentDidUpdate(){
         frozenGlass(); //эмулируем blur
@@ -21,11 +21,11 @@ class Empty extends Component {
     deleteFrozenGlass(){
         let frame = document.getElementById('blurredContentFrame');
         document.body.removeChild(frame);
+        window.onresize = () => {}; //снимаем эмуляцию blur'a
     }
 
     componentWillUnmount(){
         this.deleteFrozenGlass();//удаляем эмуляцию блюра при переходе на др. стр
-        window.onresize = () => {}; //снимаем эмуляцию blur'a
     }
 
     render() {

@@ -14188,15 +14188,6 @@ main.main {
     border-right: 1px solid #09090b;
     border-left: 1px solid #09090b; }
 
-.announce .social_links a.vk {
-  background: url(./img/vk.359e80096739802eae150e79f65716dc.png); }
-
-.announce .social_links a.fb {
-  background: url(./img/fb.b90881e888c809a2cb9a65659c09ce8b.png); }
-
-.announce .social_links a.ig {
-  background: url(./img/ig.6d9b4613a7782d1c6b8b8cfe3e7c45b7.png); }
-
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: beige !important;
   background-image: none;
@@ -15417,6 +15408,11 @@ button.btn.back-btn {
 .divider {
   display: none; }
 
+.filter_btn {
+  color: #7f8fa4;
+  background: transparent;
+  border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5); }
+
 .revenue .segmentation_btn-wrp .btn {
   border: 1px solid #f6aa25; }
 
@@ -15439,9 +15435,6 @@ button.btn.back-btn {
   padding: 15px;
   width: 100%; }
   .floor_btn-wrp .btn {
-    color: #7f8fa4;
-    background: transparent;
-    border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
     padding: 2px;
     margin-right: 20px;
     border-radius: 0; }
@@ -15777,6 +15770,12 @@ button.btn.back-btn {
           background-repeat: no-repeat;
           cursor: pointer;
           margin-right: 20px; }
+          .announce .features > div.social_links a.vk {
+            background: url(./img/vk.359e80096739802eae150e79f65716dc.png); }
+          .announce .features > div.social_links a.fb {
+            background: url(./img/fb.b90881e888c809a2cb9a65659c09ce8b.png); }
+          .announce .features > div.social_links a.ig {
+            background: url(./img/ig.6d9b4613a7782d1c6b8b8cfe3e7c45b7.png); }
       .announce .features > div > strong {
         font-size: 20px;
         line-height: 24px;

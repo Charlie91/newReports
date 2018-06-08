@@ -1,5 +1,5 @@
-import React, {Component, PureComponent} from 'react';
-import {Link, Switch, Route, Redirect} from 'react-router-dom';
+import React, {Component} from 'react';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import {Container} from 'reactstrap';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
@@ -34,23 +34,17 @@ class Full extends Component {
     }
 
     mobileSidebarToggle(e){
-        //e.preventDefault();
         if(document.body.classList.contains('sidebar-mobile-show'))
             document.body.classList.remove('sidebar-mobile-show');
     }
 
     checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-        ajaxRequest(API.auth,options)
+        ajaxRequest(API.auth)
             .then(data => {
                 if(data.authorized)
-                    this.setState({isLoggedIn:true})
+                    this.setState({isLoggedIn:true});
                 else
-                    this.setState({isLoggedIn:false})
+                    this.setState({isLoggedIn:false});
             })
             .catch(error => {
                 console.log(error);
@@ -59,34 +53,22 @@ class Full extends Component {
     }
 
     getUserData(){//парсинг пользовательских данных
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-        ajaxRequest(API.userData,options)
+        ajaxRequest(API.userData)
             .then(data => this.setState({userData:data}))
             .catch(error => console.log(error));
     }
 
     receiveConceptionLists(){   //получаем список концепций для заполнения меню
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-
         function addIcon(item){
             if(item.id === 1)item.icon = 'custom-icon-traffic';
-            if(item.name === 'Выручка внутренняя')item.icon = 'custom-icon-internal_revenue';
-            if(item.name === 'Выручка внешняя')item.icon = 'custom-icon-external_revenue';
+            else if(item.name === 'Выручка внутренняя')item.icon = 'custom-icon-internal_revenue';
+            else if(item.name === 'Выручка внешняя')item.icon = 'custom-icon-external_revenue';
         }
 
         function editConceptionObject(item, parent){
             addIcon(item);//добавление иконки
-            if(!parent){    //если нет родителя - даем иконку и базу для урла
+            if(!parent)   //если нет родителя - даем иконку и базу для урла
                 item.url = '/conceptions/' + item.id;
-            }
             else{
                 item.url = parent.url + '/' + item.id;
                 if(parent.parent_id){
@@ -94,28 +76,24 @@ class Full extends Component {
                 }
             }
 
-
-
             if(item.children)
                 item.children.forEach( child => {
                     editConceptionObject(child,item)
-                })
+                });
         }
 
-        ajaxRequest(API.nav,options)
+        ajaxRequest(API.nav)
             .then(data => {
                 let arr = this.state.conceptions;
                 if(!Array.isArray(data))return;
                 data.forEach( item => {
                     editConceptionObject(item)
                 });
-                this.setState({conceptions:arr.concat(data)},() => this.setTitle(this.state.conceptions) )   //после заполнения меню проверяем
-                                                                                                            // находимся ли мы на одной из его ссылок и устанавливаем заголовок
+                this.setState({conceptions:arr.concat(data)},    //после заполнения меню проверяем
+                    () => this.setTitle(this.state.conceptions))    // находимся ли мы на одной из его ссылок и устанавливаем заголовок
             })
             .catch(err => console.log(err))
     }
-
-
 
     upState(name,value){
         this.setState({[name]:value})//обновляем стейт данными из дочерних компонентов
@@ -128,10 +106,6 @@ class Full extends Component {
         document.body.classList.add('sidebar-fixed'); //добавляем класс к body чтобы выровнять контентный блок
     }
 
-    componentDidUpdate(){
-        //this.checkEitherLoggedInOrNot();//проверка авторизации
-    }
-
     componentWillUnmount(){
         document.body.classList.remove('sidebar-mobile-show'); //фикс бага с уходом контентной части вправо после логаута.
     }
@@ -139,12 +113,11 @@ class Full extends Component {
     setTitle(arr){  //установка заголовка страницы
         let url = window.location.href;
         let idPosition = url.lastIndexOf('#');
-        let conceptionURL = url.slice(idPosition+1);
+        let conceptionURL = url.slice(idPosition+1),
+            title = this.state.title;
 
-
-        let title = this.state.title;
         function findTitle(arr){
-             arr.forEach( item => {
+            arr.forEach( item => {
                 if(item.url === conceptionURL)title = item.full_name; //если адрес текущей ссылки в браузере совпадает с любой ссылкой из концепций -
                 else{                                                               // устанавливаем концепцию как заголовок
                     if(item.children){
@@ -164,9 +137,6 @@ class Full extends Component {
             this.setTitle(this.state.conceptions)
         }
     }
-
-
-
 
     render() {
         return (

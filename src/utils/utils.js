@@ -8,7 +8,7 @@ export function checkEitherLoggedInOrNot(){ //проверка залогине�
 }
 
 export function ajaxRequest(url,options){   //функция-шаблон для ajax-запросов
-    if(!options)options = {     //дефолтные опцции всех запросов
+    if(!options)options = {     //дефолтные опции всех запросов
         method: 'GET',
         credentials: 'include',
         mode: 'cors'

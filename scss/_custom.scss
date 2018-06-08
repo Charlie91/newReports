@@ -137,9 +137,6 @@ body{
   text-align:left;
 }
 
-@include media-breakpoint-up(md) {
-}
-
 @include media-breakpoint-up(sm) {
   .sidebar-compact {
     .sidebar {
@@ -217,7 +214,7 @@ body{
   color: #fff;
   text-align: right;
   width: 100%;
-  background-image: url('../img/menu.png');
+  background-image: url('/img/menu.png');
   background-repeat: no-repeat;
   background-size: 25px 20px;
   background-position: 50%;
@@ -257,7 +254,7 @@ body{
 }
 
 .navbar.app-header button.d-lg-none.navbar-toggler {
-  background-image: url('../img/blackham.png');
+  background-image: url('/img/blackham.png');
   text-align: left;
   color: #0f0f0f;
   width: 25px;
@@ -336,7 +333,7 @@ main.main{
   border: 1px solid #fff;
   line-height: 20px;
   padding-left: 8px;
-  background-image: url('../img/logout.png');
+  background-image: url('/img/logout.png');
   background-repeat: no-repeat;
   background-size: 1em;
   background-position: 88%;
@@ -390,17 +387,6 @@ main.main{
   }
 }
 
-.armenia span.node-label::before {
-  background-image: url('../img/flags/Armenia-new.png');
-  width: 12px;
-  background-size: 12px;
-  height: 12px;
-  display: inline-block;
-  content: '';
-  position: absolute;
-  margin-left: -18px;
-  margin-top: 4px;
-}
 
 .layout{
   display: block;
@@ -411,50 +397,6 @@ main.main{
   position: fixed;
   margin-left: -15%;
   left:0
-}
-
-.clear-field {
-  background-image:url('../img/clear.png');
-  background-size:16px;
-  background-position: right;
-  background-color: transparent !important;
-  background-repeat: no-repeat;
-}
-
-
-.tag-item:last-child::after{
-  content:url('../img/dropdown.png');
-}
-
-.year_selector .dropdown-toggle::after{
-  content:url('../img/dropdown.png');
-  border:none;
-  margin-top: -1px;
-  position: absolute;
-}
-
-.tag-item:last-child:hover::after{
-  content:url('../img/dropup.png');
-}
-
-.dropdown--active .tag-item:last-child::after {
-  content:url('../img/dropup.png');
-}
-
-.excellLinkWrapper{
-  background: url('../img/icons/excell.png');
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
-  width: 155px;
-  margin: auto;
-  margin-right: 32px;
-}
-
-.excellLink::after{
-  //content:url('../img/icons/excell.png');
-  position: absolute;
-  right: -28px;
-  top: -3px;
 }
 
 .dateBlock{
@@ -487,19 +429,19 @@ main.main{
 }
 
 .custom-icon-home{
-  background:url('../img/icons/home.png');
+  background:url('/img/icons/home.png');
 }
 
 .custom-icon-traffic{
-  background:url('../img/icons/trafik.png');
+  background:url('/img/icons/trafik.png');
 }
 
 .custom-icon-internal_revenue{
-  background:url('../img/icons/vir_vnutr.png');
+  background:url('/img/icons/vir_vnutr.png');
 }
 
 .custom-icon-external_revenue{
-  background:url('../img/icons/vir_vneshn.png');
+  background:url('/img/icons/vir_vneshn.png');
 }
 
 .scrollWrapper{
@@ -530,19 +472,6 @@ main.main{
   }
 }
 
-.announce .social_links{
-  a{
-    &.vk{
-      background:url('../img/icons/vk.png');
-    }
-    &.fb{
-      background:url('../img/icons/fb.png');
-    }
-    &.ig{
-      background:url('../img/icons/ig.png');
-    }
-  }
-}
 
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: beige!important;
