@@ -13,6 +13,7 @@ import ShopList from './ShopList';
 import ShopListAccordeon from './ShopListAccordeon';
 import MainData from './MainData';
 import CameraViewer from './CameraViewer';
+import SalesAnalysis from './SalesAnalysis';
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -487,6 +488,9 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
+
+                {/*<SalesAnalysis/>*/}
+
             </div>
         )
     }

@@ -11,7 +11,7 @@ const FloorButtons = (props) => {
                             key={i}
                             data-id={i}
                             disabled={props.requestIsInProcess}
-                            className={'btn ' + ((props.floorIndex === i) ? 'active' : '')}
+                            className={'btn filter_btn ' + ((props.floorIndex === i) ? 'active' : '')}
                             onClick={props.changeFloor}
                     >
                         {item.name}

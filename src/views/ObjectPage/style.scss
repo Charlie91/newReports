@@ -192,6 +192,11 @@
   display:none
 }
 
+.filter_btn{
+  color: #7f8fa4;
+  background: transparent;
+  border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
+}
 
 .revenue{
   .segmentation_btn-wrp{
@@ -225,9 +230,6 @@
   padding: 15px;
   width: 100%;
   .btn{
-    color: #7f8fa4;
-    background: transparent;
-    border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
     padding: 2px;
     margin-right: 20px;
     border-radius: 0;
