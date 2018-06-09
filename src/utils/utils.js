@@ -280,3 +280,13 @@ export function decodeHalfPunycodeLink(link){
     let [punycodePart,okPart] = [link.slice(0,okPartIndex),link.slice(okPartIndex)];
     return punycode.toUnicode(punycodePart) + okPart
 }
+
+export function deleteObjectProperties(obj, props) {
+
+    for(let i = 0; i < props.length; i++) {
+        if(obj.hasOwnProperty(props[i])) {
+            delete obj[props[i]];
+        }
+    }
+
+};

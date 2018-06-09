@@ -23,7 +23,7 @@ export default class LogOut extends Authorization { // Внимание! Это�
     }
 
     componentWillReceiveProps(nextProps){
-                this.setState({isLoggedIn:nextProps.isLoggedIn})
+        this.setState({isLoggedIn:nextProps.isLoggedIn})
     }
 
     componentDidMount(){
@@ -43,6 +43,7 @@ export default class LogOut extends Authorization { // Внимание! Это�
             })
             .catch(error => console.log(error));
     }
+
     render(){
         return (
             <div>
@@ -52,5 +53,4 @@ export default class LogOut extends Authorization { // Внимание! Это�
             </div>
         )
     }
-
 }

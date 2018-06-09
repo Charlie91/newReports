@@ -1,8 +1,6 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest, mobileSidebarHidden} from './../../utils/utils';
-import TableVertical from './TableVertical.js';
-import TableVertNoStick from './TableVertNoStick(without groups).js';
+import {ajaxRequest, mobileSidebarHidden,deleteObjectProperties} from './../../utils/utils';
 import TableVertNoStickNew from './TableVertNoStickNew.js';
 import Loading from './../Loading/Small';
 
@@ -95,16 +93,11 @@ class Conception extends Component {
     // }
 
     getObjects() {  //получаем список объектов из списка городов
-        let options = {
-            method: 'GET',
-            credentials: 'include',
-            mode: 'cors'
-        };
         let conceptID = this.props.match.params.child || this.props.match.params.id;
-        ajaxRequest(API.objects + '?conceptId=' + conceptID, options)
+        ajaxRequest(API.objects + '?conceptId=' + conceptID)
             .then(arr => {
                 let newData = Promise.all(arr.map(object => {
-                    return ajaxRequest(API.objectsData + '?objId=' + object.id, options)
+                    return ajaxRequest(API.objectsData + '?objId=' + object.id)
                         .then(data => {
                             object = this.formatObjectToShowInTable(object, data);
                             return object
@@ -120,21 +113,14 @@ class Conception extends Component {
 
     getAvailableCities(){    //получаем города в которых доступны объекты
         let id = this.props.match.params.child || this.props.match.params.id;
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-        return ajaxRequest(API.cities+id,options)
+        return ajaxRequest(API.cities+id)
             .then( data => {
                 let formattedCities = data.cities.map( item => {
                     item.checked = true;
                     item.value = item.label = item.city_name;
                     item.ID = item.id;
                     item.className = 'bold';
-                    delete item.city_name;      //сделать что-нибудь с множественными delete
-                    delete item.id;
-                    delete item.priority;
+                    deleteObjectProperties(item,['city_name','id','priority']);//удаление ненужных свойств объекта
                     return item
                 });
                 let formattedAreas = data.areas.map( item => {
@@ -148,20 +134,13 @@ class Conception extends Component {
                             city.checked = true;
                             city.value = city.label = city.city_name;
                             city.ID = city.id;
-                            delete city.city_name;
-                            delete city.id;
-                            delete city.priority;
+                            deleteObjectProperties(city,['city_name','id','priority']);//удаление ненужных свойств объекта
                             return city
                         });
-                    delete item.cities;
-                    delete item.city_name;
-                    delete item.id;
-                    delete item.name;
-                    delete item.priority;
+                    deleteObjectProperties(item,['cities','city_name','id','name','priority']);//удаление ненужных свойств объекта
                     return item
                 });
                 let formattedData = formattedCities.concat(formattedAreas);
-
                 this.props.upState('availableCities',formattedData) //передаем данные в родительский компонент
             })
             .catch( error => console.log(error))
@@ -187,12 +166,10 @@ class Conception extends Component {
         mobileSidebarHidden();  //скрыть меню на моб. версии при переходе по ссылке в меню
     }
 
-
     componentDidMount(){
-        mobileSidebarHidden();
+        mobileSidebarHidden();//скрыть меню на моб. версии при переходе по ссылке в меню
         this.getAvailableCities();
     }
-
 
     renderObjects(){    // рендер таблицы объектов
         if(!this.state.objects.length)return(

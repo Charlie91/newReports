@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-//import './react-bootstrap-tables.css';
 import './nostick.scss';
-import {
-    Table,
-} from "reactstrap";
-import {getCookie, getCoords} from "../../utils/utils";
+import {getCoords} from "../../utils/utils";
 
 
 
@@ -19,7 +15,6 @@ function getDateAgo(date, days) {
     dateCopy.setDate(date.getDate() - days);
     return dateCopy;
 }
-
 
 function fillDates(){ //создание массива с предыдущими днями текущего месяца
     const dates = [];
@@ -52,7 +47,7 @@ function fillYears(){//заполняем года
     const years = [];
     let today = new Date();
     let currentYear = today.getFullYear();
-    for(let i = currentYear - 1; i >= 2012 ; i--){
+    for(let i = currentYear - 1; i >= 2012; i--){
         years.push(i);
     }
     return years
@@ -100,21 +95,6 @@ class TableVerticalNoStick extends Component {
         this.setState({rowHover: index });
     }
 
-
-    fixingFirstColumn(e){//фиксируем первую колонку
-        let cells = document.querySelectorAll('table tr td:first-of-type,table tr th:first-of-type'),
-            sidebarWidth = document.getElementsByClassName('sidebar')[0].offsetWidth,
-            sidebarMarginLeft = getComputedStyle(document.getElementsByClassName('sidebar')[0]).marginLeft;
-        cells.forEach( cell => {
-            cell.classList.add('fixed-td');
-            if(sidebarMarginLeft === '0px')
-                cell.style.left = sidebarWidth + 'px';
-            else
-                cell.style.left = '-10px';
-        });
-    }
-
-
     componentWillMount(){
         let [dates,months,years] = [ fillDates(),fillMonths(), fillYears() ];
         this.setState({dates:dates,months:months,years:years});
@@ -144,7 +124,7 @@ class TableVerticalNoStick extends Component {
 
     componentDidUpdate(){
         this.setWrapperWidth();
-        this.equalizeTableColumnHeight()// фикс бага с высотой таблицы
+        this.equalizeTableColumnHeight();// фикс бага с высотой таблицы
         this.equalizeTableHeaderHeight();
     }
 

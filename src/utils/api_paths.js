@@ -16,4 +16,4 @@ export let API = {
     userData:`https://repo.re-ports.ru/app${postfix}/UserData`,
     imgPath:`https://re-ports.ru/app/img/malls/resize`,
     thumbPath:`https://re-ports.ru/app/img/malls/thumb/`
-}
+};

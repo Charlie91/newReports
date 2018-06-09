@@ -4,12 +4,8 @@ import AuthNav from './../AuthNav/AuthNav';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest, deleteRegistrationCookies} from './../../utils/utils';
-
-
-import {
-    Row, Col
-} from "reactstrap";
+import {ajaxRequest} from './../../utils/utils';
+import {Row, Col} from "reactstrap";
 
 export function showDynamicLabel(nameProperty,text){    //динамический показ лейбла у форм
     if(nameProperty){
@@ -32,8 +28,6 @@ export function animateDynamicLabel(nameProperty, text){
 }
 
 export default class Authorization extends Component {
-
-
     constructor(props){
         super(props);
         this.state={
@@ -62,29 +56,8 @@ export default class Authorization extends Component {
         }
     }
 
-    getUserData(){  // парсинг данных пользователя после авторизации
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-        ajaxRequest(API.main,options)
-            .then(data => {
-                this.setState({
-                    userName:data.login
-                })
-            })
-            .catch(error => console.log(error));
-    }
-
-
     checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
-        let options = {
-            method:'GET',
-            credentials:'include',
-            mode: 'cors'
-        };
-        ajaxRequest(API.auth ,options)
+        ajaxRequest(API.auth)
             .then(data => {
                 if (data.authorized === true) {
                     this.setState({isLoggedIn: true});
@@ -99,7 +72,6 @@ export default class Authorization extends Component {
                         if (localStorage.getItem('login')) this.setState({login: localStorage.getItem('login')});
                         if (localStorage.getItem('password')) this.setState({password: localStorage.getItem('password')});
                     }
-
                 }
             })
             .catch(error => console.log(error));
@@ -107,7 +79,7 @@ export default class Authorization extends Component {
 
 
     logIn(e) {      // запрос на вход\авторизацию пользователя
-        if(typeof(e) != "undefined") e.preventDefault();
+        if(typeof(e) !== undefined) e.preventDefault();
         if (!this.validation())return;
             let obj = {
                 pwd: this.state.password,
@@ -154,7 +126,7 @@ export default class Authorization extends Component {
     }
 
 
-    showError(){        //показ ошибок
+    showError(){    //показ ошибок
         if(this.state.hasErrors)
             return(
                 <div className="hintMessage alert alert-danger">введите логин и пароль</div>
@@ -170,18 +142,14 @@ export default class Authorization extends Component {
     }
 
     checkIfChromeAutofilled(){  //Обработка автозаполнения полей в хроме
-
         let inputs = document.querySelectorAll('.auth-form div input');
 
         for(let i = 0; i < inputs.length;i++){
             if(getComputedStyle(inputs[i]).boxShadow !== "rgb(250, 251, 252) 0px 0px 0px 1000px inset")
                 return false;
         }
-
         return true;
-
     }
-
 
     showForm(){
             return(
