@@ -36,11 +36,8 @@ const months = ["Январь", "Февраль", "Март", "Апрель", "�
                  <Row>
                      <Col md="6">
                          <div className="card-name">
-
-
-                                <h5>{props.obj.obj_name}</h5>
-
-                            <p className="contacts" dangerouslySetInnerHTML={{__html: props.obj.address}} />
+                             <h5>{props.obj.obj_name}</h5>
+                             <p className="contacts" dangerouslySetInnerHTML={{__html: props.obj.address}} />
                          </div>
                      </Col>
                      <Col md="6">

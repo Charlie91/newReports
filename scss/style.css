@@ -13923,7 +13923,7 @@ body {
   color: #fff;
   text-align: right;
   width: 100%;
-  background-image: url("/img/menu.png");
+  background-image: url("../img/menu.png");
   background-repeat: no-repeat;
   background-size: 25px 20px;
   background-position: 50%;
@@ -13955,7 +13955,7 @@ body {
   background: #141519 !important; }
 
 .navbar.app-header button.d-lg-none.navbar-toggler {
-  background-image: url("/img/blackham.png");
+  background-image: url("../img/blackham.png");
   text-align: left;
   color: #0f0f0f;
   width: 25px;
@@ -14027,7 +14027,7 @@ main.main {
   border: 1px solid #fff;
   line-height: 20px;
   padding-left: 8px;
-  background-image: url("/img/logout.png");
+  background-image: url("../img/logout.png");
   background-repeat: no-repeat;
   background-size: 1em;
   background-position: 88%;
@@ -14108,16 +14108,16 @@ main.main {
   outline: none; }
 
 .custom-icon-home {
-  background: url("/img/icons/home.png"); }
+  background: url("../img/icons/home.png"); }
 
 .custom-icon-traffic {
-  background: url("/img/icons/trafik.png"); }
+  background: url("../img/icons/trafik.png"); }
 
 .custom-icon-internal_revenue {
-  background: url("/img/icons/vir_vnutr.png"); }
+  background: url("../img/icons/vir_vnutr.png"); }
 
 .custom-icon-external_revenue {
-  background: url("/img/icons/vir_vneshn.png"); }
+  background: url("../img/icons/vir_vneshn.png"); }
 
 .scrollWrapper {
   overflow-y: scroll;

@@ -23,7 +23,6 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: BUILD_DIR,
-        //   port: 9001,
         compress: true,
         hot: true,
         open: true
@@ -52,10 +51,18 @@ module.exports = {
                     use: [
                         {
                             loader: 'css-loader',
-                            options: { alias: { '../img': '../public/img' } }
+                            options: {
+                                alias: {
+                                    '../img': '../public/img'
+                                },
+                                root: path.resolve(__dirname, 'public')
+                            }
                         },
                         {
-                            loader: 'sass-loader'
+                            loader: 'sass-loader',
+                            options: { alias: {
+                                '../img': '../public/img'
+                            } }
                         }
                     ]
                 }))
@@ -71,10 +78,10 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|ico)$/,
                 use: [
                     {
-                        // loader: 'url-loader'
                         loader: 'file-loader',
                         options: {
-                            name: './img/[name].[hash].[ext]'
+                            name: './img/[name].[hash].[ext]',
+                            //publicPath: 'app/'
                         }
                     }
                 ]
