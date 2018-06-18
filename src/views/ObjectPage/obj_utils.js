@@ -3,7 +3,7 @@
  Вспомогательные функции ObjectPage компонента
  */
 import moment from 'moment';
-import {digitCount, average,formatNumberBySpaces} from './../../utils/utils';
+import { digitCount, average,formatNumberBySpaces } from 'Src/utils/utils';
 import {Chart} from "react-chartjs-2";
 
 

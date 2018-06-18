@@ -31,6 +31,11 @@ module.exports = {
         hot: true,
         open: true
     },
+    resolve: {
+        alias: {
+            Src: path.resolve(__dirname, 'src/')
+        }
+    },
     module: {
         rules: [
             {

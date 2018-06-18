@@ -1,8 +1,8 @@
 import React from 'react';
 import {Col, Row, Card, CardBody} from "reactstrap";
-import { decodeHalfPunycodeLink, formatNumberBySimpleSpaces } from './../../utils/utils';
+import { decodeHalfPunycodeLink, formatNumberBySimpleSpaces } from 'Src/utils/utils';
 import moment from 'moment';
-import {API} from './../../utils/api_paths';
+import {API} from 'Src/utils/api_paths';
 import YaMap from './ya_map';
 
 

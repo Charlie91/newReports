@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {API} from './../../utils/api_paths';
+import {API} from 'Src/utils/api_paths';
 import moment from 'moment';
-import {ajaxRequest,average} from './../../utils/utils';
+import {ajaxRequest,average} from 'Src/utils/utils';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
 import Announce from './Announce';
