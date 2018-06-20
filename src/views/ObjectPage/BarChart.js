@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import {Bar, Line,Chart} from "react-chartjs-2";
-import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
+import {Bar,Chart} from "react-chartjs-2";
+import { Card, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
-import moment from "moment/moment";
-import {getStepSize} from "../../utils/utils";
 
 
 function addBorderRadiuses(){     //добавляем border-radius'ы в график

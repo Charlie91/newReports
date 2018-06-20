@@ -15228,6 +15228,8 @@ button.btn.back-btn {
           display: inline-block;
           white-space: nowrap;
           color: #7f8fa4; }
+  .object_cont .abcAnalysis .abcAnalysis_chart_wrapper {
+    height: 521px; }
 
 .checked {
   height: 9px;

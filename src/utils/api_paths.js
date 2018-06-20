@@ -14,6 +14,7 @@ export let API = {
     floorsData:`https://repo.re-ports.ru/app${postfix}/FloorData`,
     innerObjects:`https://repo.re-ports.ru/trc_api${postfix}/shopData?trcId=`,
     userData:`https://repo.re-ports.ru/app${postfix}/UserData`,
+    abcAnalysis:`https://repo.re-ports.ru/trc_api${postfix}/abc_xyz`,
     imgPath:`https://re-ports.ru/app/img/malls/resize`,
     thumbPath:`https://re-ports.ru/app/img/malls/thumb/`
 };

@@ -63,7 +63,6 @@ const Announce = (props) => {
                             </Col>
                             <Col md="5" className="geolocation">
                                 <div className="map_wrapper">
-                                    {/*props.renderMap()*/}
                                     <YaMap state={props.state}/>
                                 </div>
                                 <div className="address" dangerouslySetInnerHTML={{__html: props.object.city_name + ',<br/>' + String(props.object.address).replace(props.object.city_name + ',', '' ) }} />

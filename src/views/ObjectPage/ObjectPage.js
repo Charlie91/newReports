@@ -239,7 +239,6 @@ export default class ObjectPage extends Component {
             .catch(err => console.log(err))
     }
 
-
     removeComparisonGraph(year){ //удаление графика из диаграммы
         let chart = this.state.chart,
             excel = this.state.excelData;
@@ -300,6 +299,15 @@ export default class ObjectPage extends Component {
                     .reverse();
                 this.setState({monthlyData:newArr})
             })
+            .catch(err => console.log(err))
+    }
+
+    getDataForABCAnalysis(){
+        let [startDate, endDate] = [ this.state.startDate.format("YYYYMMDD"), this.state.endDate.format("YYYYMMDD") ];
+        let url = `${API.abcAnalysis}?trcId=${this.props.match.params.id}&sDate=${startDate}&eDate=${endDate}`;
+        console.log(url);
+        ajaxRequest(url)
+            .then(data => this.setState({analyseData:data}))
             .catch(err => console.log(err))
     }
 
@@ -489,7 +497,9 @@ export default class ObjectPage extends Component {
                     />
                 }
 
-                {/*<SalesAnalysis/>*/}
+                {/*<SalesAnalysis*/}
+                    {/*data={state.analyseData}*/}
+                {/*/>*/}
 
             </div>
         )
