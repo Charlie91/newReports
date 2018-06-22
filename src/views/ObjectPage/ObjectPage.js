@@ -14,6 +14,8 @@ import ShopListAccordeon from './ShopListAccordeon';
 import MainData from './MainData';
 import CameraViewer from './CameraViewer';
 import SalesAnalysis from './SalesAnalysis';
+import SalesAnalysis_alpha from './SalesAnalysis_alpha';
+
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -438,6 +440,7 @@ export default class ObjectPage extends Component {
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         utils.addSpecificStyles();
         utils.editDrawFunction();//добавляем в Chart.js возможность использования эллипса как формы
+        this.getDataForABCAnalysis();
     }
 
     componentWillUnmount(){
@@ -485,6 +488,10 @@ export default class ObjectPage extends Component {
                     {...state}
                 />
 
+                <SalesAnalysis
+                    data={state.analyseData}
+                />
+
                 {(state.viewportWidth > 500) ?
                     <ShopList
                         shops={state.shops}
@@ -496,10 +503,6 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
-
-                {/*<SalesAnalysis*/}
-                    {/*data={state.analyseData}*/}
-                {/*/>*/}
 
             </div>
         )

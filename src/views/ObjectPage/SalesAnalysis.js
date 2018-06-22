@@ -1,24 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import utils from './obj_utils';
 import {Scatter,Chart} from "react-chartjs-2";
 import {Card, CardBody, Row, Col} from "reactstrap";
 import {customLabelDataChart} from './customLabelDataChart';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-let pointBackgroundColors = [];
 
-const data = {
-    labels: ['Scatter'],
-    datasets: [
-        {
-            label: 'My First dataset',
-            fill: true,
-            pointBackgroundColor: [],  //['#e07c94','#f6aa26',"#9fd572"],
-            pointRadius: 6,
-            pointHoverRadius: 6,
-            data: []
-        }
-    ]
-};
+
 
 function replaceOnXY(data){
     data.forEach(item => {
@@ -35,14 +23,23 @@ function getMaxValueOfScale(data,scale){
     return Math.max.apply(null,data.datasets[0].data.map(item => item[scale]))
 }
 
-function getMinValueOfScale(data,scale){
-    return Math.min.apply(null,data.datasets[0].data.map(item => item[scale]))
+function getMinValueOfScale(data,scale) {
+    return Math.min.apply(null, data.datasets[0].data.map(item => item[scale]))
+}
+
+function getSegment(data,scale){
+    let [max, min] = [getMaxValueOfScale(data,scale),getMinValueOfScale(data,scale)];
+    let range = max - min;
+    let segment = range / 3;
+    return segment
 }
 
 function getStepSizeOnScale(data,scale){
-    let [max,min] = [ getMaxValueOfScale(data,scale), getMinValueOfScale(data,scale) ];
-    let range = max - min;
-    return range/3;
+    let segment = getSegment(data,scale),
+        max = getMaxValueOfScale(data,scale),
+        min = getMinValueOfScale(data,scale);
+    let range = (max + segment) - (min - segment);
+    return range / 5;
 }
 
 function fillColorsArray(data){
@@ -76,90 +73,148 @@ function fillColorsArray(data){
                 break;
         }
         data.datasets[0].pointBackgroundColor.push(color);
-
-
-
     })
 }
-//                            <button className="filter_btn">Магазины</button>
 
-const SalesAnalysis = (props) => {
-    if(!props.data || props.data.length < 2)return null;
-    data.datasets[0].data = replaceOnXY(props.data);
-    fillColorsArray(data);  //определение цветов точек графика
-    //console.log(data.datasets[0].pointBackgroundColor);
-    return (
-        <div className="abcAnalysis">
-            <Card>
-                <CardBody>
-                    <h5>ABC-XYZ анализ продаж</h5>
-                    <span className="muted">помогает определить надежных и ненадежных арендаторов</span>
-                    <Row>
-                        <Col md="3">
-                        </Col>
-                    </Row>
-                    <div className="abcAnalysis_chart_wrapper">
-                        <Scatter
-                            data={data}
-                            options={{
-                                maintainAspectRatio: false,
-                                legend: {
-                                    display: false
-                                },
-                                tooltips: {
-                                    custom:  customLabelDataChart,//
-                                    enabled:false,
-                                    callbacks:{
-                                        label: (tooltipItem, data ) => {
-                                            let index = tooltipItem.index;
-                                            return data.datasets[0].data[index].name;
+
+class SalesAnalysis extends Component {
+    constructor(props){
+        super(props);
+        this.toggle = this.toggle.bind(this);
+
+        this.state = {
+            dropdownOpen: false,
+            data : {
+                labels: ['Scatter'],
+                datasets: [
+                    {
+                        label: 'My First dataset',
+                        fill: true,
+                        pointBackgroundColor: [],
+                        pointRadius: 6,
+                        pointHoverRadius: 6,
+                        data: []
+                    }
+                ]
+            }
+        }
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
+
+
+    render(){
+        let props = this.props,
+            data = this.state.data;
+
+        if(!props.data || props.data.length < 2)return null;
+
+        data.datasets[0].data = replaceOnXY(props.data);
+        fillColorsArray(data);
+        return (
+            <div className="abcAnalysis">
+                <Card>
+                    <CardBody>
+                        <h5>ABC-XYZ анализ продаж</h5>
+                        <span className="muted">помогает определить надежных и ненадежных арендаторов</span>
+                        <Row>
+                            <Col md="3">
+                                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                    <DropdownToggle caret>
+                                        Категории
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem header>Header</DropdownItem>
+                                        <DropdownItem disabled>Action</DropdownItem>
+                                        <DropdownItem>Another Action</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>Another Action</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </Col>
+                        </Row>
+                        <div className="abcAnalysis_chart_wrapper">
+                            <div className="notation top left">
+                                <div className="header">AB</div>
+                                <div className="bold">Надежные арендаторы:</div>
+                                <div>высокий уровень дохода</div>
+                            </div>
+                            <div className="notation top right">
+                                <div className="header">BC</div>
+                            </div>
+                            <div className="notation bottom left">
+                                <div className="header">XY</div>
+                            </div>
+                            <div className="notation bottom right">
+                                <div className="header">YZ</div>
+                                <div className="bold">Ненадежные арендаторы:</div>
+                                <div>маленькие продажи и высокая волатильность</div>
+
+                                <div className="bold" style={{marginTop:'13px'}}>Риски:</div>
+                                <div>могут в будущем стать неплательщиками</div>
+                                <div>или съехать из ТЦ</div>
+                            </div>
+
+                            <Scatter
+                                data={data}
+                                options={{
+                                    maintainAspectRatio: false,
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltips: {
+                                        custom:  customLabelDataChart,//
+                                        enabled:false,
+                                        callbacks:{
+                                            label: (tooltipItem, data ) => {
+                                                let index = tooltipItem.index;
+                                                return data.datasets[0].data[index].name;
+                                            }
                                         }
-                                    }
-                                },
-                                scales: {
-                                    xAxes: [{
-                                        position:'bottom',
-                                        ticks:{
-                                            beginAtZero:false,
-                                            display:false,
-                                            min: getMinValueOfScale(data,'x'),
-                                            max: getMaxValueOfScale(data,'x'),
-                                            stepSize:getStepSizeOnScale(data,'x')
-                                        },
-                                        gridLines: {
-                                            color: "rgba(0, 0, 0, 0.1)",
-                                            borderDash: [4, 4],
-                                            zeroLineColor:'#dfe2e5',
-                                            drawBorder: true,
-                                            drawOnChartArea: true,
-                                        },
-                                    }],
-                                    yAxes: [{
-                                        ticks:{
-                                            beginAtZero:false,
-                                            display:false,
-                                            min: getMinValueOfScale(data,'y'),
-                                            max: getMaxValueOfScale(data,'y'),
-                                            stepSize:getStepSizeOnScale(data,'y')
-                                        },
-                                        gridLines: {
-                                            color: "rgba(0, 0, 0, 0.1)",
-                                            borderDash: [4, 4],
-                                            zeroLineColor:'#dfe2e5',
-                                            drawBorder: true,
-                                            drawOnChartArea: true,
-                                        },
-                                    }],
-                                }
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            ticks:{
+                                                beginAtZero:false,
+                                                display:false,
+                                                min: getMinValueOfScale(data,'x') - getSegment(data,'x'),
+                                                max: getMaxValueOfScale(data,'x') + getSegment(data,'x'),
+                                                stepSize:getStepSizeOnScale(data,'x')
+                                            },
+                                            gridLines: {
+                                                color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
+                                                borderDash: [4, 4],
+                                            }
+                                        }],
+                                        yAxes: [{
+                                            ticks:{
+                                                beginAtZero:false,
+                                                display:false,
+                                                min: getMinValueOfScale(data,'y') - getSegment(data,'y'),
+                                                max: getMaxValueOfScale(data,'y') + getSegment(data,'y'),
+                                                stepSize:getStepSizeOnScale(data,'y')
+                                            },
+                                            gridLines: {
+                                                color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
+                                                borderDash: [4, 4],
+                                            },
 
-                            }}
-                        />
-                    </div>
-                </CardBody>
-            </Card>
-        </div>
-    );
-};
+                                        }],
+                                    }
+                                }}
+                            />
+                        </div>
+                    </CardBody>
+                </Card>
+            </div>
+        );
+    }
+}
+
 
 
 export default SalesAnalysis;

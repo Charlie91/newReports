@@ -116,7 +116,37 @@
   }
   .abcAnalysis{
     .abcAnalysis_chart_wrapper{
-      height: 521px;
+      position: relative;
+      height: 421px;
+      border: solid 1px #f2f2f2;
+      .notation{
+        position:absolute;
+        color:#7e8ea4;
+        div{
+          font-size:14px;
+          font-weight: 400;
+          &.bold{
+            font-weight:500;
+          }
+          &.header{
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+      }
+      .right{
+        right: 0.7%;
+        text-align:right;
+      }
+      .left {
+        left: 0.7%;
+      }
+      .top{
+        top:1%
+      }
+      .bottom{
+        top: 61%;
+      }
     }
   }
 

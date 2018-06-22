@@ -95,7 +95,29 @@
           white-space: nowrap;
           color: #7f8fa4; }
   .object_cont .abcAnalysis .abcAnalysis_chart_wrapper {
-    height: 521px; }
+    position: relative;
+    height: 421px;
+    border: solid 1px #f2f2f2; }
+    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation {
+      position: absolute;
+      color: #7e8ea4; }
+      .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div {
+        font-size: 14px;
+        font-weight: 400; }
+        .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div.bold {
+          font-weight: 500; }
+        .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div.header {
+          font-size: 20px;
+          font-weight: 500; }
+    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .right {
+      right: 0.7%;
+      text-align: right; }
+    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .left {
+      left: 0.7%; }
+    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .top {
+      top: 1%; }
+    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .bottom {
+      top: 61%; }
 
 .checked {
   height: 9px;
