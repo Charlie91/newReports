@@ -14,7 +14,6 @@ import ShopListAccordeon from './ShopListAccordeon';
 import MainData from './MainData';
 import CameraViewer from './CameraViewer';
 import SalesAnalysis from './SalesAnalysis';
-import SalesAnalysis_alpha from './SalesAnalysis_alpha';
 
 
 export default class ObjectPage extends Component {
@@ -307,7 +306,6 @@ export default class ObjectPage extends Component {
     getDataForABCAnalysis(){
         let [startDate, endDate] = [ this.state.startDate.format("YYYYMMDD"), this.state.endDate.format("YYYYMMDD") ];
         let url = `${API.abcAnalysis}?trcId=${this.props.match.params.id}&sDate=${startDate}&eDate=${endDate}`;
-        console.log(url);
         ajaxRequest(url)
             .then(data => this.setState({analyseData:data}))
             .catch(err => console.log(err))
@@ -488,9 +486,11 @@ export default class ObjectPage extends Component {
                     {...state}
                 />
 
-                <SalesAnalysis
-                    data={state.analyseData}
-                />
+                {(state.viewportWidth >= 1200) &&
+                    <SalesAnalysis
+                        data={state.analyseData}
+                    />
+                }
 
                 {(state.viewportWidth > 500) ?
                     <ShopList

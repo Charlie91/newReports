@@ -115,39 +115,114 @@
     }
   }
   .abcAnalysis{
-    .abcAnalysis_chart_wrapper{
-      position: relative;
-      height: 421px;
-      border: solid 1px #f2f2f2;
-      .notation{
-        position:absolute;
-        color:#7e8ea4;
-        div{
-          font-size:14px;
-          font-weight: 400;
-          &.bold{
-            font-weight:500;
-          }
-          &.header{
-            font-size: 20px;
-            font-weight: 500;
+    .card-body{
+      padding: 25px 40px 17px;
+      .abcAnalysis_chart_wrapper{
+        position: relative;
+        height: 421px;
+        border: solid 1px #f2f2f2;
+        margin-top: 15px;
+        .notation{
+          position:absolute;
+          color:#7f8fa4;;
+          div{
+            font-size:14px;
+            font-weight: 400;
+            line-height: normal;
+            &.bold{
+              font-weight:500;
+            }
+            &.header{
+              font-size: 20px;
+              font-weight: 500;
+              margin-bottom: 5px;
+              line-height: 24px;
+            }
           }
         }
+        .right{
+          right: 0.7%;
+          text-align:right;
+        }
+        .left {
+          left: 0.7%;
+        }
+        .top{
+          top: 1.8%;
+        }
+        .bottom{
+          top: 61%;
+        }
+        .middleX{
+          left: 41%;
+        }
+        .middleY{
+          top:42%
+        }
       }
-      .right{
-        right: 0.7%;
-        text-align:right;
-      }
-      .left {
-        left: 0.7%;
-      }
-      .top{
-        top:1%
-      }
-      .bottom{
-        top: 61%;
+      .Select {
+        width: 165px;
+        font-size: 13px;
+        border: solid 1px #886ce6;
+        border-radius: 3px;
+        padding:2px;
+        margin-top: 20px;
+        .Select-control {
+          border: none;
+          height: 20px;
+          .Select-input{
+            height:20px;
+          }
+          .Select-arrow{
+            border: none;
+            background-image: url('/img/dropdown.png');
+            width: 9px;
+            height: 6px;
+            top: 2px;
+          }
+          .Select-placeholder {
+            cursor: pointer;
+            color: #354052;
+            font-weight: 400;
+            line-height: 25px;
+          }
+          .Select-value{
+            display:none;
+          }
+          span.Select-clear-zone {
+            display: none;
+          }
+        }
+        .Select-menu-outer {
+          border: 1px solid #886be6;
+          top: 25px;
+          .Select-option{
+            padding-left:6px
+          }
+        }
+        &.is-open{
+          border-bottom: none;
+          border-radius: 3px 3px 0 0;
+          .Select-arrow{
+            background-image: url('/img/dropup.png');
+          }
+          .Select-menu-outer {
+            border-top: none;
+            width:165px;
+            margin-left:-1px;
+          }
+        }
+        &.is-focused{
+          .Select-control {
+            box-shadow:none
+          }
+        }
+
       }
     }
+
+
+
   }
 
 }

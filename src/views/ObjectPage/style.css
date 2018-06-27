@@ -94,30 +94,83 @@
           display: inline-block;
           white-space: nowrap;
           color: #7f8fa4; }
-  .object_cont .abcAnalysis .abcAnalysis_chart_wrapper {
-    position: relative;
-    height: 421px;
-    border: solid 1px #f2f2f2; }
-    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation {
-      position: absolute;
-      color: #7e8ea4; }
-      .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div {
-        font-size: 14px;
-        font-weight: 400; }
-        .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div.bold {
-          font-weight: 500; }
-        .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .notation div.header {
-          font-size: 20px;
-          font-weight: 500; }
-    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .right {
-      right: 0.7%;
-      text-align: right; }
-    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .left {
-      left: 0.7%; }
-    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .top {
-      top: 1%; }
-    .object_cont .abcAnalysis .abcAnalysis_chart_wrapper .bottom {
-      top: 61%; }
+  .object_cont .abcAnalysis .card-body {
+    padding: 25px 40px 17px; }
+    .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper {
+      position: relative;
+      height: 421px;
+      border: solid 1px #f2f2f2;
+      margin-top: 15px; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .notation {
+        position: absolute;
+        color: #7f8fa4; }
+        .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .notation div {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: normal; }
+          .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .notation div.bold {
+            font-weight: 500; }
+          .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .notation div.header {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            line-height: 24px; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .right {
+        right: 0.7%;
+        text-align: right; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .left {
+        left: 0.7%; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .top {
+        top: 1.8%; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .bottom {
+        top: 61%; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .middleX {
+        left: 41%; }
+      .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper .middleY {
+        top: 42%; }
+    .object_cont .abcAnalysis .card-body .Select {
+      width: 165px;
+      font-size: 13px;
+      border: solid 1px #886ce6;
+      border-radius: 3px;
+      padding: 2px;
+      margin-top: 20px; }
+      .object_cont .abcAnalysis .card-body .Select .Select-control {
+        border: none;
+        height: 20px; }
+        .object_cont .abcAnalysis .card-body .Select .Select-control .Select-input {
+          height: 20px; }
+        .object_cont .abcAnalysis .card-body .Select .Select-control .Select-arrow {
+          border: none;
+          background-image: url("/img/dropdown.png");
+          width: 9px;
+          height: 6px;
+          top: 2px; }
+        .object_cont .abcAnalysis .card-body .Select .Select-control .Select-placeholder {
+          cursor: pointer;
+          color: #354052;
+          font-weight: 400;
+          line-height: 25px; }
+        .object_cont .abcAnalysis .card-body .Select .Select-control .Select-value {
+          display: none; }
+        .object_cont .abcAnalysis .card-body .Select .Select-control span.Select-clear-zone {
+          display: none; }
+      .object_cont .abcAnalysis .card-body .Select .Select-menu-outer {
+        border: 1px solid #886be6;
+        top: 25px; }
+        .object_cont .abcAnalysis .card-body .Select .Select-menu-outer .Select-option {
+          padding-left: 6px; }
+      .object_cont .abcAnalysis .card-body .Select.is-open {
+        border-bottom: none;
+        border-radius: 3px 3px 0 0; }
+        .object_cont .abcAnalysis .card-body .Select.is-open .Select-arrow {
+          background-image: url("/img/dropup.png"); }
+        .object_cont .abcAnalysis .card-body .Select.is-open .Select-menu-outer {
+          border-top: none;
+          width: 165px;
+          margin-left: -1px; }
+      .object_cont .abcAnalysis .card-body .Select.is-focused .Select-control {
+        box-shadow: none; }
 
 .checked {
   height: 9px;
