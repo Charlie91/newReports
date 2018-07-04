@@ -4,7 +4,7 @@ import './loading.scss';
 const Loading = (props) => {
     //if(!props.render)return null;
     return (
-        <div>
+        <div style={props.style}>
             <div className="sk-wave">
                 <div className="sk-rect sk-rect1"></div>&nbsp;
                 <div className="sk-rect sk-rect2"></div>&nbsp;

@@ -96,6 +96,8 @@
           color: #7f8fa4; }
   .object_cont .abcAnalysis .card-body {
     padding: 25px 40px 17px; }
+    .object_cont .abcAnalysis .card-body .interface {
+      margin-top: 20px; }
     .object_cont .abcAnalysis .card-body .abcAnalysis_chart_wrapper {
       position: relative;
       height: 421px;
@@ -134,7 +136,8 @@
       border: solid 1px #886ce6;
       border-radius: 3px;
       padding: 2px;
-      margin-top: 20px; }
+      display: inline-block;
+      position: absolute; }
       .object_cont .abcAnalysis .card-body .Select .Select-control {
         border: none;
         height: 20px; }
@@ -170,6 +173,17 @@
           width: 165px;
           margin-left: -1px; }
       .object_cont .abcAnalysis .card-body .Select.is-focused .Select-control {
+        box-shadow: none; }
+    .object_cont .abcAnalysis .card-body .buttons .btn {
+      padding: 2px 3px;
+      margin-right: 20px;
+      border-radius: 0; }
+    .object_cont .abcAnalysis .card-body .buttons .active {
+      border-radius: 4px;
+      background-color: #886ce6 !important;
+      color: #fff !important;
+      border-bottom: 1.5px solid transparent; }
+      .object_cont .abcAnalysis .card-body .buttons .active:focus {
         box-shadow: none; }
 
 .checked {

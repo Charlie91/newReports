@@ -32,6 +32,7 @@ export default class ObjectPage extends Component {
         };
 
         this.state = {
+            abcType:'shops',
             viewportWidth:window.innerWidth,
             requestIsInProcess:false,
             comparison_mode:false,
@@ -300,15 +301,16 @@ export default class ObjectPage extends Component {
                     .reverse();
                 this.setState({monthlyData:newArr})
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
 
-    getDataForABCAnalysis(){
+    getDataForABCAnalysis(type){
         let [startDate, endDate] = [ this.state.startDate.format("YYYYMMDD"), this.state.endDate.format("YYYYMMDD") ];
-        let url = `${API.abcAnalysis}?trcId=${this.props.match.params.id}&sDate=${startDate}&eDate=${endDate}`;
+        let apiPath = type === 'categories' ? API.abcAnalysis_categories : API.abcAnalysis_shops;
+        let url = `${apiPath}?trcId=${this.props.match.params.id}&sDate=${startDate}&eDate=${endDate}`;
         ajaxRequest(url)
-            .then(data => this.setState({analyseData:data}))
-            .catch(err => console.log(err))
+            .then(data => this.setState({analyseData:data, abcType:type}))
+            .catch(err => console.error(err))
     }
 
     formatInnerObjects(objects){  //получаем список внутренних объектов(кафе и магазинов) в ТРЦ и преобразуем в нужную структуру
@@ -438,7 +440,7 @@ export default class ObjectPage extends Component {
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         utils.addSpecificStyles();
         utils.editDrawFunction();//добавляем в Chart.js возможность использования эллипса как формы
-        this.getDataForABCAnalysis();
+        this.getDataForABCAnalysis('shops');
     }
 
     componentWillUnmount(){
@@ -488,7 +490,9 @@ export default class ObjectPage extends Component {
 
                 {(state.viewportWidth >= 1200) &&
                     <SalesAnalysis
+                        getNewData={this.getDataForABCAnalysis.bind(this)}
                         data={state.analyseData}
+                        type={state.abcType}
                     />
                 }
 
@@ -503,7 +507,6 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
-
             </div>
         )
     }

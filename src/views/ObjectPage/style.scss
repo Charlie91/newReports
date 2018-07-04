@@ -115,8 +115,12 @@
     }
   }
   .abcAnalysis{
+
     .card-body{
       padding: 25px 40px 17px;
+      .interface{
+        margin-top: 20px;
+      }
       .abcAnalysis_chart_wrapper{
         position: relative;
         height: 421px;
@@ -166,7 +170,8 @@
         border: solid 1px #886ce6;
         border-radius: 3px;
         padding:2px;
-        margin-top: 20px;
+        display: inline-block;
+        position:absolute;
         .Select-control {
           border: none;
           height: 20px;
@@ -218,6 +223,22 @@
           }
         }
 
+      }
+      .buttons{
+        .btn{
+          padding: 2px 3px;
+          margin-right: 20px;
+          border-radius: 0;
+        }
+        .active{
+          border-radius: 4px;
+          background-color: #886ce6!important;
+          color:#fff!important;
+          border-bottom: 1.5px solid transparent;
+          &:focus{
+            box-shadow:none;
+          }
+        }
       }
     }
 

@@ -5,6 +5,7 @@ import {Card, CardBody, Row, Col} from "reactstrap";
 import {customLabelDataChart} from './customLabelDataChart';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import Loading from './../Loading/Small';
 
 function getMaxValueOfScale(data,scale){
     return Math.max.apply(null,data.datasets[0].data.map(item => item[scale]))
@@ -53,7 +54,8 @@ class SalesAnalysis extends Component {
         super(props);
 
         this.state = {
-            checkedTypes: '',
+            checkedMode:props.type,
+            checkedCategories: '',
             categories: [],
             chart : {
                 labels: ['Scatter'],
@@ -71,17 +73,20 @@ class SalesAnalysis extends Component {
         }
     }
 
-    handleSelectChange (checkedTypes){
-        if(checkedTypes)
+    handleSelectChange (checkedCategories){
+        if(checkedCategories)
             addFalsePlaceholder(document.querySelector('.Select-multi-value-wrapper'));
         else
             deleteFalsePlaceholder(document.querySelector('.Select-multi-value-wrapper'));
-        this.setState({ checkedTypes });
+        this.setState({ checkedCategories });
     }
 
-    replaceOnXY(data){
+    replaceOnXY(data,type){
         let chart = this.state.chart;
         data.forEach(item => {
+            if(type === 'categories')
+                item.name = item.type;
+
             if(!item.k && !item.share)
                 item.x = 0.01;//фикс нулевых значений, которые не отображаются на графике
             else item.x = item.k;
@@ -142,45 +147,61 @@ class SalesAnalysis extends Component {
                 label:item
             }
         });
-        let checkedTypes = types.join(',');
+        let checkedCategories = types.join(',');
         this.setState(
             {
                 categories:formattedTypes,
-                checkedTypes //по умолчанию выбраны все опции
+                checkedCategories //по умолчанию выбраны все опции
             },
-            () => this.handleSelectChange(checkedTypes)//сразу показать плейсхолдер
+            () => this.handleSelectChange(checkedCategories)//сразу показать плейсхолдер
         );
     }
 
     filterChartData(){
-        let checkedTypesInArray = this.state.checkedTypes.split(','),
+        let checkedCategoriesInArray = this.state.checkedCategories.split(','),
             chart = this.state.chart,
             chartData = this.state.data;
 
-        let newData = chartData.filter(item => checkedTypesInArray.includes(item.type));
+        let newData = chartData.filter(item => checkedCategoriesInArray.includes(item.type));
         chart.datasets[0].data = newData;
-        chart.datasets[0].pointBackgroundColor = this.getSavedColors();
+        chart.datasets[0].pointBackgroundColor = this.getSavedColors();//заново вычислить предыдущий цвет точек
 
         this.setState({chart}, /*() => this.fillColorsArray()*/) //переопределение цвета точек после изменения,
     }                                                             //разкомментить чтобы заработало
 
     getSavedColors(){//возвращает новый массив цветов чтобы сохранить цвета у точек при фильтрации
-        let checkedTypesInArray = this.state.checkedTypes.split(','),
+        let checkedCategoriesInArray = this.state.checkedCategories.split(','),
             chartData = this.state.data,
             colors = this.state.colors;//изначальный список цветов
-        return colors.filter( (item,i) => checkedTypesInArray.includes(chartData[i].type));
+        return colors.filter( (item,i) => checkedCategoriesInArray.includes(chartData[i].type));
+    }
+
+    changeMode(type){
+        this.setState({checkedMode:type});
+        this.requestIsStarted();//сигнализируем что запрос ушел
+        this.props.getNewData(type);
+    }
+
+    requestIsStarted(){
+        this.setState({requestIsInProcess:true})
+    }
+
+    requestIsEnded(){
+        this.setState({requestIsInProcess:false})
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.data && nextProps.data.length > 1){
-            this.replaceOnXY(nextProps.data);
+            this.replaceOnXY(nextProps.data, nextProps.type);
             this.fillColorsArray();
             this.parseTypes(nextProps.data);
         }
+        if(nextProps.data !== this.props.data)
+            this.requestIsEnded();
     }
 
     componentDidUpdate(prevProps, prevState){
-        if(prevState.checkedTypes !== this.state.checkedTypes)
+        if(prevState.checkedCategories !== this.state.checkedCategories)
             this.filterChartData();
     }
 
@@ -194,8 +215,20 @@ class SalesAnalysis extends Component {
                     <CardBody>
                         <h5>ABC-XYZ анализ продаж</h5>
                         <span className="muted">помогает определить надежных и ненадежных арендаторов</span>
-                        <Row>
-                            <Col md="3">
+                        <Row className="interface">
+                            <Col className="buttons">
+                                <button type="button"
+                                        onClick={this.changeMode.bind(this,'categories')}
+                                        className={ 'btn filter_btn ' + (this.state.checkedMode === 'categories' ? 'active' : '')}
+                                >
+                                    Категории
+                                </button>
+                                <button type="button"
+                                        onClick={this.changeMode.bind(this,'shops')}
+                                        className={'btn filter_btn ' + (this.state.checkedMode === 'shops' ? 'active' : '')}
+                                >
+                                    Магазины
+                                </button>
                                 <Select
                                     closeOnSelect={false}
                                     removeSelected={false}
@@ -204,7 +237,7 @@ class SalesAnalysis extends Component {
                                     options={this.state.categories}
                                     placeholder="Выберите категории"
                                     simpleValue
-                                    value={this.state.checkedTypes}
+                                    value={this.state.checkedCategories}
                                     inputProps={{readOnly:true}}
                                 />
                             </Col>
@@ -238,59 +271,69 @@ class SalesAnalysis extends Component {
                                 <div>или съехать из ТЦ</div>
                             </div>
 
-                            <Scatter
-                                data={chart}
-                                options={{
-                                    animation: {
-                                        duration: 0
-                                    },
-                                    maintainAspectRatio: false,
-                                    legend: {
-                                        display: false
-                                    },
-                                    tooltips: {
-                                        custom:  customLabelDataChart,//
-                                        enabled:false,
-                                        callbacks:{
-                                            label: (tooltipItem, data ) => {
-                                                let index = tooltipItem.index;
-                                                return data.datasets[0].data[index].name;
-                                            }
-                                        }
-                                    },
-                                    scales: {
-                                        xAxes: [{
-                                            ticks:{
-                                                beginAtZero:false,
-                                                display:false,
-                                                min: getMinValueOfScale(chart,'x') - getSegment(chart,'x'),
-                                                max: getMaxValueOfScale(chart,'x') + getSegment(chart,'x'),
-                                                stepSize:getStepSizeOnScale(chart,'x')
-                                            },
-                                            gridLines: {
-                                                color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
-                                                borderDash: [4, 4],
-                                                zeroLineColor: 'rgba(0, 0, 0, 0)'
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            ticks:{
-                                                beginAtZero:false,
-                                                display:false,
-                                                min: getMinValueOfScale(chart,'y') - getSegment(chart,'y'),
-                                                max: getMaxValueOfScale(chart,'y') + getSegment(chart,'y'),
-                                                stepSize:getStepSizeOnScale(chart,'y')
-                                            },
-                                            gridLines: {
-                                                color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
-                                                borderDash: [4, 4],
-                                                zeroLineColor: 'rgba(0, 0, 0, 0)'
-                                            },
+                            {
+                                (this.state.requestIsInProcess || !this.props.data) ?
 
-                                        }],
-                                    }
-                                }}
-                            />
+                                <Loading
+                                    style={{top: '32%',position: 'relative'}}
+                                />
+                                :
+                                <Scatter
+                                    data={chart}
+                                    options={{
+                                        animation: {
+                                            duration: 0
+                                        },
+                                        maintainAspectRatio: false,
+                                        legend: {
+                                            display: false
+                                        },
+                                        tooltips: {
+                                            custom:  customLabelDataChart,//
+                                            enabled:false,
+                                            callbacks:{
+                                                label: (tooltipItem, data ) => {
+                                                    let index = tooltipItem.index;
+                                                    return data.datasets[0].data[index].name;
+                                                }
+                                            }
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                ticks:{
+                                                    beginAtZero:false,
+                                                    display:false,
+                                                    min: getMinValueOfScale(chart,'x') - getSegment(chart,'x'),
+                                                    max: getMaxValueOfScale(chart,'x') + getSegment(chart,'x'),
+                                                    stepSize:getStepSizeOnScale(chart,'x')
+                                                },
+                                                gridLines: {
+                                                    color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
+                                                    borderDash: [4, 4],
+                                                    zeroLineColor: 'rgba(0, 0, 0, 0)'
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                ticks:{
+                                                    beginAtZero:false,
+                                                    display:false,
+                                                    min: getMinValueOfScale(chart,'y') - getSegment(chart,'y'),
+                                                    max: getMaxValueOfScale(chart,'y') + getSegment(chart,'y'),
+                                                    stepSize:getStepSizeOnScale(chart,'y')
+                                                },
+                                                gridLines: {
+                                                    color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
+                                                    borderDash: [4, 4],
+                                                    zeroLineColor: 'rgba(0, 0, 0, 0)'
+                                                },
+
+                                            }],
+                                        }
+                                    }}
+                                />
+                            }
+
+
                         </div>
                     </CardBody>
                 </Card>
