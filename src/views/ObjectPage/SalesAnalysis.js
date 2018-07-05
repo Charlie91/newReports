@@ -31,8 +31,10 @@ function getStepSizeOnScale(data,scale){
 }
 
 function addFalsePlaceholder(parent){
+    if(!parent)return;
     let id = 'false-placeholder';
     if(document.getElementById('false-placeholder'))return;//если элемент уже есть - ничего не делать
+
 
     let div = document.createElement('div');
     div.id = id;

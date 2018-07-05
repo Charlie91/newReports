@@ -32,6 +32,7 @@ export default class ObjectPage extends Component {
         };
 
         this.state = {
+            analyseData:[],
             abcType:'shops',
             viewportWidth:window.innerWidth,
             requestIsInProcess:false,
@@ -64,6 +65,7 @@ export default class ObjectPage extends Component {
                 this.getFloors();
                 this.props.upState('title','Карточка объекта');
                 this.props.upState('address',this.state.object.address);
+                this.getDataForABCAnalysis('shops');//парсинг данных для ABCXYZ графика
                 this.formatInnerObjects(obj.inners);
             });
     }
@@ -85,6 +87,7 @@ export default class ObjectPage extends Component {
                 }, () => {
                     this.props.upState('title','Карточка объекта');
                     this.props.upState('address',this.state.object.address);
+                    this.getDataForABCAnalysis('shops');//парсинг данных для ABCXYZ графика
                     this.formatInnerObjects(obj.inners);
                 })
             })
@@ -305,6 +308,10 @@ export default class ObjectPage extends Component {
     }
 
     getDataForABCAnalysis(type){
+        if(!this.state.object.inners){
+            this.setState({analyseData:[]});
+            return;
+        };
         let [startDate, endDate] = [ this.state.startDate.format("YYYYMMDD"), this.state.endDate.format("YYYYMMDD") ];
         let apiPath = type === 'categories' ? API.abcAnalysis_categories : API.abcAnalysis_shops;
         let url = `${apiPath}?trcId=${this.props.match.params.id}&sDate=${startDate}&eDate=${endDate}`;
@@ -427,7 +434,6 @@ export default class ObjectPage extends Component {
             this.comparisonGraphHandler();
     }
 
-
     componentDidMount(){
         if(this.props.location.params && this.props.location.params.obj){ //если начальные данные переданы с пропсов - идем 1м путем
             let obj = this.props.location.params.obj;
@@ -440,7 +446,6 @@ export default class ObjectPage extends Component {
         window.onresize = () => this.setState({viewportWidth:window.innerWidth});//при изменении размера экрана - перезаписываем ширину вьюпорта в стейт
         utils.addSpecificStyles();
         utils.editDrawFunction();//добавляем в Chart.js возможность использования эллипса как формы
-        this.getDataForABCAnalysis('shops');
     }
 
     componentWillUnmount(){

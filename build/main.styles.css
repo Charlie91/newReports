@@ -15277,6 +15277,8 @@ button.btn.back-btn {
         height: 20px; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-input {
           height: 20px; }
+          .object_cont .abcAnalysis .card-body .Select .Select-control .Select-input > input {
+            padding: 0; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-arrow {
           border: none;
           background-image: url(./img/dropdown.cb9e4c39dad26295057e51a87313b0c2.png);

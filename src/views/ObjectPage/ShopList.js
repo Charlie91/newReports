@@ -64,4 +64,3 @@ const ShopList = (props) => {
 
 
 export default ShopList;
-//
