@@ -208,7 +208,7 @@ class SalesAnalysis extends Component {
     render(){
         let props = this.props,
             chart = this.state.chart;
-        if(!props.data || props.data.length < 2)return null;
+        if(props.data && props.data.length < 2)return null;
         return (
             <div className="abcAnalysis">
                 <Card>

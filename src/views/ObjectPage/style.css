@@ -143,6 +143,8 @@
         height: 20px; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-input {
           height: 20px; }
+          .object_cont .abcAnalysis .card-body .Select .Select-control .Select-input > input {
+            padding: 0; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-arrow {
           border: none;
           background-image: url("/img/dropdown.png");

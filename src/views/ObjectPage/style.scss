@@ -177,6 +177,9 @@
           height: 20px;
           .Select-input{
             height:20px;
+            >input{
+              padding:0;
+            }
           }
           .Select-arrow{
             border: none;
