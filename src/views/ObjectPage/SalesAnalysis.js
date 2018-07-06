@@ -6,7 +6,11 @@ import {customLabelDataChart} from './customLabelDataChart';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import Loading from './../Loading/Small';
+import xlsExport from './xls-export';
+import {deleteObjectProperties} from './../../utils/utils';
 
+//share/у - выручка
+//k/х - волатильность
 function getMaxValueOfScale(data,scale){
     return Math.max.apply(null,data.datasets[0].data.map(item => item[scale]))
 }
@@ -35,7 +39,6 @@ function addFalsePlaceholder(parent){
     let id = 'false-placeholder';
     if(document.getElementById('false-placeholder'))return;//если элемент уже есть - ничего не делать
 
-
     let div = document.createElement('div');
     div.id = id;
     div.classList.add('Select-placeholder');
@@ -49,6 +52,17 @@ function deleteFalsePlaceholder(parent){
     if(!elem)return; //если элемента нет ничего не делать
 
     parent.removeChild(elem);
+}
+
+function editDataForExcelExport(data){
+    let formattedData = data.map( item => {
+        let newObj = {};
+        newObj['Название'] = item.name || item.type;//в категориях item.name отсутствует
+        newObj['Коэфициент выручки'] = item.y;
+        newObj['Коэфициент волатильности'] = item.x;
+        return newObj
+    });
+    return formattedData;
 }
 
 class SalesAnalysis extends Component {
@@ -211,12 +225,23 @@ class SalesAnalysis extends Component {
         let props = this.props,
             chart = this.state.chart;
         if(props.data && props.data.length < 2)return null;
+
+        const xls = this.state.data && new xlsExport((editDataForExcelExport(this.state.data)), 'Reports');//данные для выгрузки в таблицу
         return (
             <div className="abcAnalysis">
                 <Card>
                     <CardBody>
-                        <h5>ABC-XYZ анализ продаж</h5>
-                        <span className="muted">помогает определить надежных и ненадежных арендаторов</span>
+                        <Row>
+                            <Col md="6">
+                                <h5>ABC-XYZ анализ продаж</h5>
+                                <span className="muted">помогает определить надежных и ненадежных арендаторов</span>
+                            </Col>
+                            <Col md={{size:'3',offset:'3'}}>
+                                <div className="excellLinkWrapper">
+                                    <a className="excellLink" onClick={xls ? () => {xls.exportToCSV('export.csv')} : ''}>Скачать список</a>
+                                </div>
+                            </Col>
+                        </Row>
                         <Row className="interface">
                             <Col className="buttons">
                                 <button type="button"
@@ -305,10 +330,10 @@ class SalesAnalysis extends Component {
                                                 ticks:{
                                                     beginAtZero:false,
                                                     display:false,
-                                                    min: getMinValueOfScale(chart,'x') - getSegment(chart,'x'),
-                                                    max: getMaxValueOfScale(chart,'x') + getSegment(chart,'x'),
-                                                    stepSize:getStepSizeOnScale(chart,'x')
-                                                },
+                                                    min: getMinValueOfScale(chart,'x') - getSegment(chart,'x'),//мин и макс значения равны
+                                                    max: getMaxValueOfScale(chart,'x') + getSegment(chart,'x'),// мин.значению данных - отступ
+                                                    stepSize:getStepSizeOnScale(chart,'x')                     // макс.значению данных + отступ
+                                                },                                                             //соответственно
                                                 gridLines: {
                                                     color: ["rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0.1)","rgba(0, 0, 0, 0)","rgba(0, 0, 0, 0)"],
                                                     borderDash: [4, 4],

@@ -55,6 +55,7 @@ class XlsExport {
     this.downloadFile(MIME_XLS + this.toBase64(computeOutput), fileName);
   }
 
+
   exportToCSV(fileName = 'export.csv') {
     if (typeof fileName !== 'string' || Object.prototype.toString.call(fileName) !== '[object String]') { throw new Error('Invalid input type: exportToCSV(String)'); }
 

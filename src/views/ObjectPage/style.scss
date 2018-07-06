@@ -115,11 +115,16 @@
     }
   }
   .abcAnalysis{
-
     .card-body{
       padding: 25px 40px 17px;
       .interface{
         margin-top: 20px;
+      }
+      .excellLinkWrapper{
+        text-align: center;
+        background-position: 100%;
+        margin-right: 0;
+        margin-top: 10px;
       }
       .abcAnalysis_chart_wrapper{
         position: relative;
