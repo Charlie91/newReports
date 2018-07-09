@@ -259,8 +259,13 @@ export default class ObjectPage extends Component {
     }
 
     enableComparisonMode(){
-        this.changeStyleOfFirstGraph();
-        this.addComparisonGraph(2017);
+        //this.changeStyleOfFirstGraph();
+        let chart = this.state.chart;
+        chart.datasets = [];
+        this.setState({chart},() => {
+            this.addComparisonGraph(2018);
+            this.addComparisonGraph(2017);
+        })
     }
 
     disableComparisonMode(){    //выход из режима сравнения
@@ -278,7 +283,7 @@ export default class ObjectPage extends Component {
     }
 
     changeStyleOfFirstGraph(){  ////смена стиля первого графика при входе в режим сравнения
-        let chart = this.state.chart;
+        let chart = this.state.chart;               //(upd: можно удалить, тк алгоритм расчета в Режиме Сравнения изменился)
         let [firstGraphData, secondGraphData] = [ [...chart.datasets[0].data],  [...chart.datasets[1].data] ];//сохранение данных текущего графика
         let newDataset = utils.createNewDataset(2018);//создание массива новых стилизованных графиков
 
