@@ -72,25 +72,6 @@ class Dashboard extends PureComponent {
             .then(data => this.setState({objects:data}));
     }
 
-    // getObjects() {  //получаем список объектов из списка городов
-    //     let conceptID = 1;
-    //     let arr = [];
-    //     if(this.state.objects.length)return;
-    //     ajaxRequest(API.objects + '?conceptId=' + conceptID)
-    //         .then(data => {
-    //             return Promise.all(data.map(object => {
-    //                 return ajaxRequest(API.objectsData + '?objId=' + object.id)
-    //                     .then(payData => {
-    //                         object.data = payData;
-    //                         return object
-    //                     })
-    //                     .catch(error => console.log(error))
-    //             }))
-    //         })
-    //         .then(data => this.setState({objects:data}));
-    // }
-
-
     renderObjects(){    // рендер карточек объектов
         if(this.state.objects.length){
             let objectsForRender = this.state.objects.filter( object => {

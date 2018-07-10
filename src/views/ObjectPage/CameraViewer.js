@@ -27,8 +27,8 @@ const CameraViewer = (props) => {
                                             <ReactSWF
                                                 src="https://re-ports.ru/app/video-control.swf"
                                                 id="block-video"
-                                                width="300"
-                                                height="200"
+                                                width="400"
+                                                height="300"
                                                 allowFullScreen={true}
                                                 wmode="window"
                                                 flashVars={item.url}

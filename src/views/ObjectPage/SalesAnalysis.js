@@ -82,6 +82,7 @@ class SalesAnalysis extends Component {
                         pointBackgroundColor: [],
                         pointRadius: 7,
                         pointHoverRadius: 7,
+                        pointBorderColor:'transparent',
                         data: []
                     }
                 ]
@@ -245,16 +246,16 @@ class SalesAnalysis extends Component {
                         <Row className="interface">
                             <Col className="buttons">
                                 <button type="button"
-                                        onClick={this.changeMode.bind(this,'categories')}
-                                        className={ 'btn filter_btn ' + (this.state.checkedMode === 'categories' ? 'active' : '')}
-                                >
-                                    Категории
-                                </button>
-                                <button type="button"
                                         onClick={this.changeMode.bind(this,'shops')}
                                         className={'btn filter_btn ' + (this.state.checkedMode === 'shops' ? 'active' : '')}
                                 >
                                     Магазины
+                                </button>
+                                <button type="button"
+                                        onClick={this.changeMode.bind(this,'categories')}
+                                        className={ 'btn filter_btn ' + (this.state.checkedMode === 'categories' ? 'active' : '')}
+                                >
+                                    Категории
                                 </button>
                                 <Select
                                     closeOnSelect={false}

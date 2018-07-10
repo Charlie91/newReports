@@ -238,7 +238,7 @@
   background-position: 100% 50%;
   width: 155px;
   margin: auto;
-  margin-right: 32px; }
+  margin-right: 40px; }
   .excellLinkWrapper .excellLink {
     font-size: 14px;
     text-align: left;
@@ -1189,9 +1189,9 @@
 /*Тестовый/временный цсс*/
 .video-box li.accordeon {
   display: inline-block;
-  width: 300px;
+  width: 400px;
   cursor: pointer;
-  height: 250px;
+  height: 300px;
   background: #141519;
   margin: 2px;
   color: #FFF;

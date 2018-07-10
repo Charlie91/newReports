@@ -115,8 +115,8 @@ export default class ObjectPage extends Component {
             return;
         }
         let [startDate, endDate] = [this.state.startDate.format("YYYYMMDD"),this.state.endDate.format("YYYYMMDD")],
-             unit = this.state.timeSegment,
-             floorID = utils.returnFloorID(this.state);
+            unit = this.state.timeSegment,
+            floorID = utils.returnFloorID(this.state);
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         this.requestIsStarted();
         ajaxRequest(url)
@@ -201,7 +201,7 @@ export default class ObjectPage extends Component {
         else
             this.disableComparisonMode();
     }
-    
+
     addComparisonGraph(year){   //добавление нового графика в диаграмму
         if(!this.state.floors)return null;
         let [startDate, endDate] = [year + this.state.startDate.format("MMDD"),year +  this.state.endDate.format("MMDD")],
@@ -274,10 +274,10 @@ export default class ObjectPage extends Component {
         if(!obj)return;
         initialChart = utils.getNewStyleForChart( obj.data_type.split(', '), initialChart);
         this.setState({
-            chart:initialChart,
-            startDate:moment().add(-7,'days'),
-            endDate:moment(),
-            timeSegment: 'D'},
+                chart:initialChart,
+                startDate:moment().add(-7,'days'),
+                endDate:moment(),
+                timeSegment: 'D'},
             () => this.getFloorsData()
         )
     }
@@ -517,6 +517,7 @@ export default class ObjectPage extends Component {
                         city={state.object.city_id}
                     />
                 }
+
             </div>
         )
     }

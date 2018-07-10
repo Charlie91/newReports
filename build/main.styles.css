@@ -16323,9 +16323,9 @@ button.btn.back-btn {
 /*Тестовый/временный цсс*/
 .video-box li.accordeon {
   display: inline-block;
-  width: 300px;
+  width: 400px;
   cursor: pointer;
-  height: 250px;
+  height: 300px;
   background: #141519;
   margin: 2px;
   color: #FFF;
