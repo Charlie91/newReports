@@ -407,7 +407,7 @@ const obj_utils = {
     comparisonLabel(tooltipItem,data){
         let index = tooltipItem.index;
 
-        let sortedArr = data.datasets.sort( (a,b) => b.year - a.year);
+        let sortedArr = data.datasets.map(item => item).sort( (a,b) => b.year - a.year);//созд-е массива с сортировкой по годам - убыванию
 
         let values = sortedArr.reduce( (result, current, i) => {
             let className = 'checked y' + current.year;// имя класса
