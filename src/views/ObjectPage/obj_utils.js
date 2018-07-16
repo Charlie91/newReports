@@ -371,21 +371,21 @@ const obj_utils = {
             return state.currency
     },
 
-    trackActualSegments(startDate, endDate, value, cMode){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
-        if(startDate.format('YYYY') !== endDate.format('YYYY') && value === 'H')
-            value = 'M';
+    trackActualSegments(startDate, endDate){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
+        let [cMode,timeSegment] = [this.state.comparison_mode, this.state.timeSegment];
+        if(startDate.format('YYYY') !== endDate.format('YYYY') && timeSegment === 'H')
+            timeSegment = 'M';
         else if(startDate.format('YYYY') === endDate.format('YYYY'))
-            value = 'M';
+            timeSegment = 'M';
         if(startDate.format('YYYY-MM') === endDate.format('YYYY-MM'))
-            value = 'D';
+            timeSegment = 'D';
         if(startDate.format('YYYY-MM-DD') === endDate.format('YYYY-MM-DD'))
-            value = 'H';
-
+            timeSegment = 'H';
 
         if(cMode && (startDate.month() === endDate.month() && startDate.date() === 1 && endDate.date() === endDate.daysInMonth() ))
-            value = 'M';
+            timeSegment = 'M';
 
-        return value
+        return timeSegment
     },
 
     addSpecificStyles(){
