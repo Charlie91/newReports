@@ -5,9 +5,15 @@ import {Row,Col} from "reactstrap";
 
 const SegmentationButtons = (props) => {
     const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
-    let arr = [
+    let bossDemands = props.comparison_mode &&
+        (
+            props.startDate.month() === props.endDate.month() &&
+            props.startDate.date() === 1 &&                                     //мудное пожелание начальства
+            props.endDate.date() === props.endDate.daysInMonth()
+        );
+    let buttons = [
         {val:'Y',text:'По годам',render:(props.startDate.year() !== props.endDate.year())},
-        {val:'M',text:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM'))},
+        {val:'M',text:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM') || bossDemands)},
         {val:'D',text:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD'))},
         {val:'H',text:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
     ];
@@ -16,7 +22,7 @@ const SegmentationButtons = (props) => {
             <Row>
                 <Col xs='12' md='12' xl={{size:6,offset:3}}>
                     <div className="btn-group" role="group">
-                        {arr.map( (item,i) =>
+                        {buttons.map( (item,i) =>
                             (item.render) ?
                                 <button type="button"
                                         key={i}

@@ -154,13 +154,12 @@
           border: none;
           background-image: url("/img/dropdown.png");
           width: 9px;
-          height: 6px;
-          top: 2px; }
+          height: 6px; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-placeholder {
           cursor: pointer;
           color: #354052;
           font-weight: 400;
-          line-height: 25px; }
+          line-height: 20px; }
         .object_cont .abcAnalysis .card-body .Select .Select-control .Select-value {
           display: none; }
         .object_cont .abcAnalysis .card-body .Select .Select-control span.Select-clear-zone {

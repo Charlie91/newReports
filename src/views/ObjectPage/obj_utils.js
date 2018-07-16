@@ -371,7 +371,7 @@ const obj_utils = {
             return state.currency
     },
 
-    trackActualSegments(startDate, endDate, value){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
+    trackActualSegments(startDate, endDate, value, cMode){    // меняем значения сегментации(по часам,дням,месяцам) если текущий - неактуален
         if(startDate.format('YYYY') !== endDate.format('YYYY') && value === 'H')
             value = 'M';
         else if(startDate.format('YYYY') === endDate.format('YYYY'))
@@ -380,6 +380,11 @@ const obj_utils = {
             value = 'D';
         if(startDate.format('YYYY-MM-DD') === endDate.format('YYYY-MM-DD'))
             value = 'H';
+
+
+        if(cMode && (startDate.month() === endDate.month() && startDate.date() === 1 && endDate.date() === endDate.daysInMonth() ))
+            value = 'M';
+
         return value
     },
 

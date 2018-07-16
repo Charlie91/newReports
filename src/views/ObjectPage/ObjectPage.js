@@ -375,7 +375,7 @@ export default class ObjectPage extends Component {
 
     handleChangeStart(date) { //функции-обработчики смены дат в datepickers
         if(this.state.endDate - date < 0)return false;
-        let newSegment = utils.trackActualSegments(date,this.state.endDate,this.state.timeSegment);
+        let newSegment = utils.trackActualSegments(date,this.state.endDate,this.state.timeSegment,this.state.comparison_mode);
         this.setState(
             {startDate: date,timeSegment:newSegment},
             () => this.getFloorsData()
@@ -385,7 +385,7 @@ export default class ObjectPage extends Component {
     handleChangeEnd(date) {
         if(date - this.state.startDate < 0)return false;
         if(!this.state.comparison_mode && (date > moment()) )return false;
-        let newSegment = utils.trackActualSegments(this.state.startDate,date,this.state.timeSegment);
+        let newSegment = utils.trackActualSegments(this.state.startDate,date,this.state.timeSegment,this.state.comparison_mode);
         this.setState(
             {endDate: date,timeSegment:newSegment},
             () => this.getFloorsData()
@@ -393,7 +393,7 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeStart(e){
-        let newSegment = utils.trackActualSegments(moment(e.target.value),this.state.endDate,this.state.timeSegment);
+        let newSegment = utils.trackActualSegments(moment(e.target.value),this.state.endDate,this.state.timeSegment,this.state.comparison_mode);
         this.setState(
             {startDate: moment(e.target.value),timeSegment:newSegment},
             () => this.getFloorsData()
@@ -401,7 +401,7 @@ export default class ObjectPage extends Component {
     }
 
     handleMobileChangeEnd(e){
-        let newSegment = utils.trackActualSegments(this.state.startDate,moment(e.target.value),this.state.timeSegment);
+        let newSegment = utils.trackActualSegments(this.state.startDate,moment(e.target.value),this.state.timeSegment,this.state.comparison_mode);
         this.setState(
             {endDate: moment(e.target.value),timeSegment:newSegment},
             () => this.getFloorsData()
