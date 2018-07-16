@@ -55,6 +55,7 @@
         });
         innerHtmlBody += '</div>';
 
+
         var tableRoot = tooltipEl.querySelector('div:first-of-type');
         tableRoot.innerHTML = innerHtmlTitle + innerHtmlBody;
     }

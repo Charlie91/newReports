@@ -407,7 +407,9 @@ const obj_utils = {
     comparisonLabel(tooltipItem,data){
         let index = tooltipItem.index;
 
-        let values = data.datasets.reduce( (result, current, i) => {
+        let sortedArr = data.datasets.sort( (a,b) => b.year - a.year);
+
+        let values = sortedArr.reduce( (result, current, i) => {
             let className = 'checked y' + current.year;// имя класса
             let square = '<div class="' + className + '"></div>'; //строка HTML-тега
             let newValue = '<div>' + square + current.year + ' — ' + formatNumberBySpaces(Math.round(current.data[index])) + '</div>';
