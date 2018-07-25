@@ -41,7 +41,7 @@ class PositionInput extends ParentInput { //Внимание! Наследует
             this.props.fieldIsValid('position',null);
             return;
         }
-        let regExp = new RegExp('^[a-zA-Zа-яА-Я-_\.\\s]{3,40}$');
+        let regExp = new RegExp('^[а-яА-Я-_\.\\s]{3,40}$');
         if(!regExp.test(value)){   //проверка на соответствие регэкспу
             this.setState({isValid:false});
             this.props.fieldIsValid('position',false);
@@ -69,7 +69,13 @@ class PositionInput extends ParentInput { //Внимание! Наследует
                            placeholder="Должность"
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
-                    <div className="permanentMessage">чтобы настроить уровни доступа</div>
+
+                    { this.state.isValid === false ?
+                        <div className="errorMessage">Латиница и цифры запрещены</div>
+                        :
+                        <div className="permanentMessage">чтобы настроить уровни доступа</div>
+                    }
+
                 </label>
             </div>
         )

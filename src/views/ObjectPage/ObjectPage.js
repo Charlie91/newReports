@@ -383,7 +383,6 @@ export default class ObjectPage extends Component {
     }
 
     handleChangeEnd(date) {
-        console.log(date - this.state.startDate);
         if(date - this.state.startDate < 0)return false;
         if(!this.state.comparison_mode && (date > moment()) )return false;
         let newSegment = utils.trackActualSegments.bind(this,this.state.startDate,date)();
@@ -506,6 +505,8 @@ export default class ObjectPage extends Component {
                         type={state.abcType}
                     />
                 }
+
+                <CameraViewer object={this.state.object} />
 
                 {(state.viewportWidth > 500) ?
                     <ShopList

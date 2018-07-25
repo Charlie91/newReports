@@ -60,7 +60,7 @@
   },
   "scripts": {
     "dev": "webpack -d --progress --watch",
-    "start": "webpack-dev-server --env.dev --open --hot --progress --colors --inline --host devhost",
+    "start": "webpack-dev-server --env.dev --open --hot --progress --colors --inline",
     "build": "webpack -p --progress",
     "clean": "rimraf ./build",
     "production": "webpack --config prod.config.js",

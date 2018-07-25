@@ -7,6 +7,9 @@ import {API} from './../../utils/api_paths';
 import {ajaxRequest} from './../../utils/utils';
 import {Row, Col} from "reactstrap";
 
+
+
+
 export function showDynamicLabel(nameProperty,text){    //динамический показ лейбла у форм
     if(nameProperty){
         return (
@@ -26,6 +29,11 @@ export function animateDynamicLabel(nameProperty, text){
         </ReactCSSTransitionGroup>
     )
 }
+
+function test(){
+    console.log('test passed')
+}
+
 
 export default class Authorization extends Component {
     constructor(props){
@@ -59,7 +67,7 @@ export default class Authorization extends Component {
     checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
         ajaxRequest(API.auth)
             .then(data => {
-                if (data.authorized === true) {
+                if (data.authorized === true){
                     this.setState({isLoggedIn: true});
                     if (("standalone" in window.navigator) && window.navigator.standalone) {
                         if (this.state.login) localStorage.setItem('login', this.state.login);
@@ -76,7 +84,6 @@ export default class Authorization extends Component {
             })
             .catch(error => console.log(error));
     }
-
 
     logIn(e) {      // запрос на вход\авторизацию пользователя
         if(typeof(e) !== undefined) e.preventDefault();
@@ -105,6 +112,46 @@ export default class Authorization extends Component {
             mode: 'cors'
         };
         this.sendDataForLogInAndOut(options);
+    }
+
+    checkFB(){
+        window.FB.getLoginStatus(resp => {
+            console.dir(resp);
+            if (resp.status === 'connected') {
+                const fbUid = resp.authResponse.userID;
+                fetch('https://repo.re-ports.ru/app_test/FbLogin?fbUserId=' + fbUid,{
+                    credentials: 'include',
+                    method: 'POST'
+                }).then(resp => resp.json()).then(resp => {
+                    console.log(JSON.stringify(resp));
+                    if(resp.success)
+                        this.checkEitherLoggedInOrNot();
+                    else{
+                        FB.api('/me', {
+                            locale: 'ru_RU',
+                            fields: 'name, email'
+                        }, resp => {
+                            fetch('https://repo.re-ports.ru/app_test/FbRegisterByEmail?fbUserId=' + fbUid + '&email=' + resp.email, {
+                                credentials: 'include',
+                                method: 'POST'
+                            }).then(resp => resp.json()).then(resp => {
+                                console.log('привязка');
+                                console.log(resp);
+                                this.checkEitherLoggedInOrNot();
+                            });
+                        });
+                    }
+
+                });
+            } else {
+                console.log('не авторизован')
+            }
+        });
+    };
+
+    handleClickOnFacebookLink(e) {
+        e.preventDefault();
+        FB.login(this.checkFB.bind(this));
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута
@@ -152,6 +199,7 @@ export default class Authorization extends Component {
     }
 
     showForm(){
+        const checkFB = this.checkFB;
             return(
                 <div>
                     <form action="#" className="auth-form" autoComplete="on" method="POST">
@@ -190,6 +238,7 @@ export default class Authorization extends Component {
                                 >
                                     Войти
                                 </button>
+                                <a href="#" onClick={this.handleClickOnFacebookLink.bind(this)}>Login with Facebook</a>
                             </Col>
                         </Row>
                     </form>
@@ -205,7 +254,32 @@ export default class Authorization extends Component {
                 this.setState({chromeAutofill:true});
             else
                 this.setState({chromeAutofill:false});
-        },500)
+        },500);
+
+
+        const self = this;//сохранение контекста
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '1701579333271892',
+                cookie: true,
+                xfbml: true,
+                version: 'v3.0'
+            });
+            FB.AppEvents.logPageView();
+            self.checkFB();
+            console.log('Готов к работе');
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/ru_RU/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'facebook-jssdk');
     }
 
     componentDidUpdate(prevProps,prevState){
