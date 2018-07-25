@@ -238,7 +238,7 @@ export default class Authorization extends Component {
                                 >
                                     Войти
                                 </button>
-                                <a href="#" onClick={this.handleClickOnFacebookLink.bind(this)}>Login with Facebook</a>
+                                {/*<a href="#" onClick={this.handleClickOnFacebookLink.bind(this)}>Login with Facebook</a>*/}
                             </Col>
                         </Row>
                     </form>
@@ -257,29 +257,29 @@ export default class Authorization extends Component {
         },500);
 
 
-        const self = this;//сохранение контекста
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: '1701579333271892',
-                cookie: true,
-                xfbml: true,
-                version: 'v3.0'
-            });
-            FB.AppEvents.logPageView();
-            self.checkFB();
-            console.log('Готов к работе');
-        };
-
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/ru_RU/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, 'script', 'facebook-jssdk');
+        // const self = this;//сохранение контекста
+        // window.fbAsyncInit = function() {
+        //     FB.init({
+        //         appId: '1701579333271892',
+        //         cookie: true,
+        //         xfbml: true,
+        //         version: 'v3.0'
+        //     });
+        //     FB.AppEvents.logPageView();
+        //     self.checkFB();
+        //     console.log('Готов к работе');
+        // };
+        //
+        // (function(d, s, id) {
+        //     var js, fjs = d.getElementsByTagName(s)[0];
+        //     if (d.getElementById(id)) {
+        //         return;
+        //     }
+        //     js = d.createElement(s);
+        //     js.id = id;
+        //     js.src = "https://connect.facebook.net/ru_RU/sdk.js";
+        //     fjs.parentNode.insertBefore(js, fjs);
+        // })(document, 'script', 'facebook-jssdk');
     }
 
     componentDidUpdate(prevProps,prevState){

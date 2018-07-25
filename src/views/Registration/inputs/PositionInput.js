@@ -70,7 +70,9 @@ class PositionInput extends ParentInput { //Внимание! Наследует
                     />
                     <ClearField render={this.state.value && this.state.focus} clearField={this.clearField.bind(this)}/>
 
-                    { this.state.isValid === false ?
+                    {
+                        this.state.isValid === false ?
+
                         <div className="errorMessage">Латиница и цифры запрещены</div>
                         :
                         <div className="permanentMessage">чтобы настроить уровни доступа</div>

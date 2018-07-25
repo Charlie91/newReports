@@ -149,8 +149,8 @@ class Dashboard extends PureComponent {
     render() {
         return (
             <div style={{marginTop:'15px'}} className="animated dashboard fadeIn">
-                <button onClick={this.handleFacebook.bind(this, 'on')}>Привязать Facebook аккаунт</button>
-                <button onClick={this.handleFacebook.bind(this,'off')}>Отвязать Facebook аккаунт</button>
+                {/*<button onClick={this.handleFacebook.bind(this, 'on')}>Привязать Facebook аккаунт</button>*/}
+                {/*<button onClick={this.handleFacebook.bind(this,'off')}>Отвязать Facebook аккаунт</button>*/}
                 {this.renderObjects()}
             </div>
         )
