@@ -290,3 +290,15 @@ export function deleteObjectProperties(obj, props) {
     }
 
 };
+
+export function filterArrayOnUniqueElems(arr) {
+    let obj = {};
+
+    for (let i = 0; i < arr.length; i++) {
+        let str = arr[i];
+        obj[str] = true; // запомнить строку в виде свойства объекта
+    }
+
+    return Object.keys(obj); // или собрать ключи перебором для IE8-
+}
+

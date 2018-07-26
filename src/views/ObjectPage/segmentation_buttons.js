@@ -42,7 +42,7 @@ const SegmentationButtons = (props) => {
                 </Col>
                 <Col xs='0' md="0" xl={{size:3,offset:0}}>
                     <div className="excellLinkWrapper">
-                        <a className="excellLink" onClick={xls ? () => {xls.exportToCSV('export.csv')} : ''}>Скачать в Excel</a>
+                        <a className="excellLink" onClick={xls ? () => {xls.exportToCSV('export.csv',props)} : ''}>Скачать в Excel</a>
                     </div>
                 </Col>
             </Row>

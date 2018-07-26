@@ -341,17 +341,13 @@ const obj_utils = {
     changeExcelData(excelData,data){
         let newExcel;
 
-        if(Array.isArray(excelData[0]) || !excelData.length){ //если массив уже видоизменен под режим сравнения или пустой - просто добавляем данные
+       if(Array.isArray(excelData[0]) || !excelData.length){ //если массив уже видоизменен под режим сравнения или пустой - просто добавляем данные
             newExcel = excelData;
             newExcel.push(data.floorData);
-        }
-        else{
+       }
+        else{   //иначе обнуляем массив под новую структуру
             newExcel = [];
-            let firstExcellChild = excelData.reduce( (arr,item) => { // иначе преобразуем имеющиеся данные в необходимый вид и тоже добавляем
-                arr.push(item);
-                return arr;
-            },[]);
-            newExcel.push(firstExcellChild, data.floorData);
+            newExcel.push(data.floorData);
         }
 
         return newExcel
