@@ -139,28 +139,34 @@ class XlsExport {
         const format = this.getFormat(props.timeSegment);
         console.log(props);
 
+        this._data.sort( (a,b) => moment(b[0].THEDATE).year() - moment(a[0].THEDATE).year());//сортируем по годам
+
         let dates = this._data.reduce( (results,yearData) => {
             let arr = yearData.map( item => moment(item.THEDATE).format(format));
             results = [...results, ...arr];
             return results;
         }, [] );
 
-        let stringUniqueDates = ';;' + filterArrayOnUniqueElems(dates).join(';');  //оставляем только уникальные значения дат и преобразуем в строку
-
-
+        let stringUniqueDates = `;;${filterArrayOnUniqueElems(dates).join(';')};Итого`;  //оставляем только уникальные значения дат
+                                                                                            //и преобразуем в строку
         let values = '';
         for(let i = 0; i < this._data.length; i++){
+            let sum = this._data[i].reduce((result,item) => {   //вычисление поля "ИТОГО"
+                result += item.VALUE;
+                return result;
+            },0);
             values += this._data[i].map( (item,index) => {
                 if(!index)
-                    return moment(item.THEDATE).year() + ';;' + item.VALUE;
-                return item.VALUE;
+                    return moment(item.THEDATE).year() + ';;' + (item.VALUE || '');
+                if(index === this._data[i].length - 1)//к последнему элементу массива добавляем ИТОГО
+                    return (item.VALUE || '') + ';' + String(sum);
+
+                return item.VALUE || '';
             }).join(';');
             values += '\n';
         }
 
-
         return  `${header}\n${stringUniqueDates}\n${values}`
-
     }
 
     getFormat(timeSegment){
