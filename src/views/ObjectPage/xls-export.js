@@ -179,7 +179,7 @@ class XlsExport {
                 format = 'DD MMMM';
                 break;
             case 'H':
-                format = 'DD-MM THH';
+                format = 'HH:mm T DD.MM.YYYY';
         }
         return format
     }

@@ -506,7 +506,7 @@ export default class ObjectPage extends Component {
                     />
                 }
 
-                <CameraViewer object={this.state.object} />
+                {/*<CameraViewer object={this.state.object} />*/}
 
                 {(state.viewportWidth > 500) ?
                     <ShopList
