@@ -10,7 +10,7 @@ function toggleDropDown(){
 
 
 const YearSelector = (props) => {
-    if(!props.comparison_mode)return null;
+    if(!props.render)return null;
 
     let yearOfOpening = moment(props.object.since).year();//год открытия
     let years = [2018,2017,2016,2015,2014].filter(year => year >= yearOfOpening);   //фильтруем года на доступные данному объекту
@@ -19,12 +19,12 @@ const YearSelector = (props) => {
 
     return (
         <div className={"year_selector"}>
-            <span className="muted">{props.viewportWidth > 767 ? 'Выберите годы:' : 'Годы:'}</span>
+            <span className="muted">{props.title || ''}</span>
             <div className="year_selector_list">
                 {years && listData.map( (item,i) =>
                     <div className="year" key={i} onClick={props.checkYear.bind(null,item)}>
-                        <div className={"checkbox y" + item + (i === 0 || i == 1 ? ' checked' : '')}></div>
-                        <span>{item}</span>
+                        <div className={"checkbox y" + item + (i === 0 || (i == 1 && props.comparison_mode) ? ' checked' : '')}></div>
+                        <span>{`${item} ${props.additional || ''}`}</span>
                     </div>
                 )}
 
@@ -37,7 +37,7 @@ const YearSelector = (props) => {
                         {years && dropdownData.map( (item,i) =>
                             <div className="year" key={i} onClick={props.checkYear.bind(null,item)}>
                                 <div className={"checkbox y" + item}></div>
-                                <span>{item}</span>
+                                <span>{`${item} ${props.additional || ''}`}</span>
                             </div>
                         )}
                     </div>

@@ -293,11 +293,13 @@ const obj_utils = {
         },[]);
     },
 
-    addOpacityToChart(){    //задаем прозрачность графику во время смены состояний
-        document.querySelector('.line-chart-wrapper').classList.add('child-half-opacity');
+    addOpacityToChart(){
+        document.querySelector('.line-chart-wrapper') &&    //если DOM элемент отрендерился
+        document.querySelector('.line-chart-wrapper').classList.add('child-half-opacity'); //задаем прозрачность графику во время смены состояний
     },
 
     removeOpacityFromChart(){
+        document.querySelector('.line-chart-wrapper') &&    //если DOM элемент отрендерился
         document.querySelector('.line-chart-wrapper').classList.remove('child-half-opacity');//удаляем прозрачность с графика
     },
 

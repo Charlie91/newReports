@@ -34,7 +34,7 @@ class XlsExport {
         return this._data;
     }
 
-    exportToXLS(fileName = 'export.xls') {
+    exportToXLS(fileName = 'export.xls',props) {
         if (typeof fileName !== 'string' || Object.prototype.toString.call(fileName) !== '[object String]') { throw new Error('Invalid input type: exportToCSV(String)'); }
 
         const TEMPLATE_XLS = `
@@ -45,12 +45,14 @@ class XlsExport {
         <![endif]--></head>
         <body>
         <h1>Reports</h1>
-        <h5>Данные за ${moment().format('DD-MM-YYYY')}</h5>
+        <p>${props.type}</p>
+        <p>Объект ${props.object.obj_name}</p>
+        <p>Дата отчета ${moment().format('DD-MM-YYYY')}</p>
         {table}
         </body></html>`;
         const MIME_XLS = 'data:application/vnd.ms-excel;base64,';
 
-        const parameters = { title: this._title, table: this.objectToTable() };
+        const parameters = { title: this._title, table: (props.comparison_mode ? this.arrayToTable(props) : this.objectToTable(props)) };
         const computeOutput = TEMPLATE_XLS.replace(/{(\w+)}/g, (x, y) => parameters[y]);
 
         this.downloadFile(MIME_XLS + this.toBase64(computeOutput), fileName);
@@ -80,9 +82,9 @@ class XlsExport {
         return window.btoa(unescape(encodeURIComponent(string)));
     }
 
-    objectToTable() {
+    objectToTable(props) {
         // extract keys from the first object, will be the title for each column
-        const colsHead = `<tr>${Object.keys(this._data[0]).map(key => `<td>${key}</td>`).join('')}</tr>`;
+        const colsHead = `<tr>${Object.keys(this._data[0]).map(key => `<td>${key.replace('THEDATE','Дата').replace('VALUE',props.type)}</td>`).join('')}</tr>`;
 
         const colsData = this._data.map(obj => [`<tr>
                 ${Object.keys(obj).map(col => `<td>${obj[col] ? obj[col] : ''}</td>`).join('')}
@@ -90,6 +92,37 @@ class XlsExport {
             .join('');
 
         return `<table>${colsHead}${colsData}</table>`.trim(); // remove spaces...
+    }
+
+    arrayToTable(props){                                //преобразование в XLS в режиме сравнения
+        let dates = this._data.reduce( (results,yearData) => {
+            let arr = yearData.map( item => moment(item.THEDATE).format(this.getFormat(props.timeSegment)));
+            results = [...results, ...arr];
+            return results;
+        }, [] );
+
+        this._data.sort( (a,b) => moment(b[0].THEDATE).year() - moment(a[0].THEDATE).year());//сортируем по годам
+
+
+        const header = `<tr><td></td>${filterArrayOnUniqueElems(dates)
+            .map(item => `<td>${item}</td>`).join('')}<td>Итого</td></tr>`;//фильтрация на уникальность и добавление тегов
+
+        let values = '';
+        for(let i = 0; i < this._data.length; i++){
+            let sum = this._data[i].reduce((result,item) => {   //вычисление поля "ИТОГО"
+                result += item.VALUE;
+                return result;
+            },0);
+            values += this._data[i].map( (item,index) => {
+                if(!index)
+                    return `<tr><td>${moment(item.THEDATE).year()}</td><td>${item.VALUE || ''}</td>`;
+                if(index === this._data[i].length - 1)//к последнему элементу массива добавляем ИТОГО
+                    return `<td>${item.VALUE || ''}</td><td>${String(sum)}</td></tr>`;
+
+                return `<td>${item.VALUE || ''}</td>`;
+            }).join('');
+        }
+        return `<table>${header}${values}</table>`;
     }
 
     objectToSemicolons() {
@@ -104,40 +137,10 @@ class XlsExport {
         return `${header}\n${colsHead}\n${colsData}`;
     }
 
-    // arrayToSemicolons(){
-    //     const header = `Reports\n Дата отчета:;; ${moment().format('DD-MM-YYYY')}\n\n`;
-    //     const maxLength = Math.max.apply(null, this._data.map(item => item.length) ); //вычисление максимальной возможной длины дочерних элементов
-    //     let colsData = '',
-    //         colsHead = '';
-    //
-    //     for(let i = 0; i < this._data.length;i++){    //заполнение заголовков
-    //         if(!this._data[i].length){
-    //             colsHead += ';;;;';
-    //             continue;
-    //         }
-    //         colsHead += Object.keys(this._data[i][0]).map(key => [key]).join(';').replace('THEDATE','Дата').replace('VALUE','Посещаемость/Выручка') + ';;;';
-    //     }
-    //
-    //     for(let index = 0; index < maxLength; index++){
-    //
-    //         this._data.forEach(item => {
-    //             if(!item[index]){
-    //                 colsData += ';;;;';    //если нет данных добавляем только пропуск ячеек
-    //                 return;
-    //             }
-    //             colsData += item[index].THEDATE + ';' + item[index].VALUE + ';;;';
-    //         });
-    //         colsData += '\n';
-    //     }
-    //
-    //     return `${header}\n${colsHead}\n${colsData}`;
-    // }
-
     arrayToSemicolons(props){
         const header = `Reports\n\n${props.type}\n ${props.object.obj_name}\n Дата отчета:;; ${moment().format('DD-MM-YYYY')}\n\n`;
         const maxLength = Math.max.apply(null, this._data.map(item => item.length) ); //вычисление максимальной возможной длины дочерних элементов
         const format = this.getFormat(props.timeSegment);
-        console.log(props);
 
         this._data.sort( (a,b) => moment(b[0].THEDATE).year() - moment(a[0].THEDATE).year());//сортируем по годам
 
@@ -148,7 +151,7 @@ class XlsExport {
         }, [] );
 
         let stringUniqueDates = `;;${filterArrayOnUniqueElems(dates).join(';')};Итого`;  //оставляем только уникальные значения дат
-                                                                                            //и преобразуем в строку
+                                                                                         //и преобразуем в строку
         let values = '';
         for(let i = 0; i < this._data.length; i++){
             let sum = this._data[i].reduce((result,item) => {   //вычисление поля "ИТОГО"

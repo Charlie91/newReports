@@ -92,9 +92,9 @@ class SalesAnalysis extends Component {
 
     handleSelectChange (checkedCategories){
         if(checkedCategories)
-            addFalsePlaceholder(document.querySelector('.Select-multi-value-wrapper'));
+            addFalsePlaceholder(document.querySelector('.abcAnalysis .Select-multi-value-wrapper'));
         else
-            deleteFalsePlaceholder(document.querySelector('.Select-multi-value-wrapper'));
+            deleteFalsePlaceholder(document.querySelector('.abcAnalysis .Select-multi-value-wrapper'));
         this.setState({ checkedCategories });
     }
 

@@ -42,8 +42,10 @@ const MainData = (props) => {
                         />
                         {(props.viewportWidth > 767) &&
                         <YearSelector
+                            render={props.comparison_mode}
                             comparison_mode={props.comparison_mode}
                             checkYear={props.checkYear}
+                            title="Выберите годы:"
                             {...props}
                         />
                         }
@@ -98,11 +100,13 @@ const MainData = (props) => {
                     </Row>
                 </div>
                 {(props.viewportWidth <= 767) &&
-                <YearSelector
-                    comparison_mode={props.comparison_mode}
-                    checkYear={props.checkYear}
-                    {...props}
-                />
+                    <YearSelector
+                        render={props.comparison_mode}
+                        comparison_mode={props.comparison_mode}
+                        checkYear={props.checkYear}
+                        title="Годы:"
+                        {...props}
+                    />
                 }
             </CardBody>
         </Card>

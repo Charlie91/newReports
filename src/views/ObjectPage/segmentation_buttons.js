@@ -8,8 +8,8 @@ const SegmentationButtons = (props) => {
     let bossDemands = props.comparison_mode &&
         (
             props.startDate.month() === props.endDate.month() &&
-            props.startDate.date() === 1 &&                                     //мудное пожелание начальства
-            props.endDate.date() === props.endDate.daysInMonth()
+            props.startDate.date() === 1 &&                                     //мудное пожелание начальства:
+            props.endDate.date() === props.endDate.daysInMonth()                //если режим сравнения и охвачен месяц полностью
         );
     let buttons = [
         {val:'Y',text:'По годам',render:(props.startDate.year() !== props.endDate.year())},
@@ -44,7 +44,7 @@ const SegmentationButtons = (props) => {
                     <div className="excellLinkWrapper">
                         <a className="excellLink"
                            onClick={xls ? () => {
-                               xls.exportToCSV(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.csv`,props)
+                               xls.exportToXLS(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.xls`,props)
                            } : ''}
                         >
                             Скачать в Excel
@@ -58,4 +58,3 @@ const SegmentationButtons = (props) => {
 
 
 export default SegmentationButtons;
-

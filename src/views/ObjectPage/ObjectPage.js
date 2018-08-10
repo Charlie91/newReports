@@ -14,7 +14,7 @@ import ShopListAccordeon from './ShopListAccordeon';
 import MainData from './MainData';
 import CameraViewer from './CameraViewer';
 import SalesAnalysis from './SalesAnalysis';
-
+import DataBarChart from './DataBarChart';
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -234,6 +234,7 @@ export default class ObjectPage extends Component {
                 chartObj.datasets.push(...newDataset);//добавление графика
 
                 newExcel = utils.changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
+                console.log(1,year);
 
                 this.setState({
                     chart:chartObj,
@@ -347,19 +348,27 @@ export default class ObjectPage extends Component {
         this.setState({shops:hierarchiedObjects});
     }
 
-    changeFloor(e){
+    changeFloor(value,e){
+        if(value === 0)
+            value = 0;
+        else
+            value = value || +e.target.dataset.id;
         this.requestIsStarted();
-        this.setState({floorIndex:+e.target.dataset.id},() => this.getFloorsData())
+        this.setState({floorIndex:value},() => this.getFloorsData())
     }
 
-    changeTimeSegment(e){
+    changeTimeSegment(value,e){
+        value = value || e.target.dataset.val;
         this.requestIsStarted();
-        this.setState({timeSegment:e.target.dataset.val},() => this.getFloorsData())
+        this.setState({timeSegment:value},() => this.getFloorsData())
     }
 
     checkYear(year,e){
         if(this.state.requestIsInProcess)return;
         let checkboxes = document.querySelectorAll('.year_selector_list .year > .checkbox');
+
+        if(!this.state.comparison_mode)
+            this.setState({comparison_mode:true}); //   //*
 
         for(let i = 0; i < checkboxes.length; i++){
             if(~checkboxes[i].classList.value.indexOf(String(year))){
@@ -458,6 +467,14 @@ export default class ObjectPage extends Component {
         window.onresize = () => {};
     }
 
+    datepickerTestChange(date,counter){
+        console.log(date,counter);
+        if(counter % 2 !== 0)
+            this.setState({startDate:date});
+        else
+            this.setState({endDate:date});
+    }
+
     render(){
         let state = this.state;
         return (
@@ -486,15 +503,24 @@ export default class ObjectPage extends Component {
                     renderCurrency={utils.renderCurrency.bind(null,state)}
                 />
 
-                <MainData
-                    changeComparisonMode={this.changeComparisonMode.bind(this)}
-                    handleChangeStart={this.handleChangeStart.bind(this)}
-                    handleChangeEnd={this.handleChangeEnd.bind(this)}
-                    handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}
-                    handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}
+                {/*<MainData*/}
+                    {/*changeComparisonMode={this.changeComparisonMode.bind(this)}*/}
+                    {/*handleChangeStart={this.handleChangeStart.bind(this)}*/}
+                    {/*handleChangeEnd={this.handleChangeEnd.bind(this)}*/}
+                    {/*handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}*/}
+                    {/*handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}*/}
+                    {/*checkYear={this.checkYear.bind(this)}*/}
+                    {/*changeFloor={this.changeFloor.bind(this,null)}*/}
+                    {/*changeTimeSegment={this.changeTimeSegment.bind(this,null)}*/}
+                    {/*{...state}*/}
+                {/*/>*/}
+
+                <DataBarChart
+                    data={state.chart}
+                    change={this.datepickerTestChange.bind(this)}
                     checkYear={this.checkYear.bind(this)}
-                    changeFloor={this.changeFloor.bind(this)}
                     changeTimeSegment={this.changeTimeSegment.bind(this)}
+                    changeFloor={this.changeFloor.bind(this)}
                     {...state}
                 />
 
