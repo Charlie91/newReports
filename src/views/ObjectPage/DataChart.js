@@ -20,20 +20,29 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
                     chart.datasets[i].pointHoverRadius = 3;
                     chart.datasets[i].pointRadius = 1;
                 }
+                if(chart.datasets[i].label === '2018'){
+                    chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
+                    chart.datasets[i].fill = true;
+                }
             }
         }
         else{
             for(let i = 0; i < chart.datasets.length; i++){
                 if(i % 2 !== 0){
-                    chart.datasets[i].pointBorderWidth = 6;
-                    chart.datasets[i].pointHoverRadius = 6;
-                    chart.datasets[i].pointRadius = 3;
+                    chart.datasets[i].pointBorderWidth = 1;//6
+                    chart.datasets[i].pointHoverRadius = 3;//6
+                    chart.datasets[i].pointRadius = 1;//3
+                }
+                if(chart.datasets[i].label === '2018'){
+                    chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
+                    chart.datasets[i].fill = true;
                 }
             }
         }
     }
     return chart;
 }
+
 
 
 const DataChart = (props) => {

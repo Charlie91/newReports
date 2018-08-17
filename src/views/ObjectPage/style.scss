@@ -1702,23 +1702,42 @@
 
 
 .new-chart{
+  &.comparisonOn{
+    .datepickers{
+      .wrapper{
+        width: 243px;
+        >div{
+          input{
+            width: 120px;
+          }
+        }
+      }
+    }
+  }
   .card-body{
     padding: 25px 40px 17px;
   }
   h5{
-    margin-bottom:20px;
+    margin-bottom:24px;
   }
   .totalSum .data{
     margin-top:0
   }
   .Select {
-    width: 165px;
+    width: 173px;
     font-size: 13px;
     border: solid 1px #886ce6;
     border-radius: 3px;
     padding:2px;
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 76px;
+    #react-select-2--value-item:before {
+      content: 'Детализация: ';
+    }
+    #react-select-3--value-item:before{
+      content: 'Вход: ';
+    }
     .Select-control {
       border: none;
       height: 20px;
@@ -1728,11 +1747,15 @@
           padding:0;
         }
       }
-      .Select-arrow{
-        border: none;
-        background-image: url('/img/dropdown.png');
-        width: 9px;
-        height: 6px;
+      .Select-arrow-zone{
+        padding-right:0;
+        .Select-arrow{
+          border: none;
+          background-image: url('/img/dropdown.png');
+          width: 9px;
+          height: 6px;
+          margin-right: -6px;
+        }
       }
       .Select-placeholder {
         cursor: pointer;
@@ -1742,6 +1765,14 @@
       }
       .Select-value{
         line-height: 20px;
+        color: #354052;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: -0.1px;
+        padding-right:15px!important;
+        .Select-value-label{
+          margin-left: -5px;
+        }
       }
       span.Select-clear-zone {
         display: none;
@@ -1758,11 +1789,11 @@
       border-bottom: none;
       border-radius: 3px 3px 0 0;
       .Select-arrow{
-        background-image: url('/img/dropup.png');
+        background-image: url('/img/dropup.png')!important;
       }
       .Select-menu-outer {
         border-top: none;
-        width:165px;
+        width:173px;
         margin-left:-1px;
       }
     }
@@ -1839,7 +1870,7 @@
           position: absolute;
         }
         .dropdown-menu{
-          min-width: 60px;
+          min-width: 73px;
           margin-top: -2px;
           border-top: none;
           border-radius: 0px 0px 4px 4px;
@@ -1872,23 +1903,146 @@
   .data-bar-chart_wrapper{
     height:400px;
     max-height:400px;
-    position:relative
+    max-width: 1140px;
+    position:relative;
+    margin: auto;
+    table{
+      margin: auto;
+      margin-top: 34px;
+      margin-bottom: 71px;
+      tr{
+        td.total, td.forecast{
+          font-weight: 800!important;
+          font-style: normal!important;
+        }
+        &:first-child{
+          td{
+            font-size: 14px;
+            font-style: normal;
+            color: #636b79;
+            font-weight: 500;
+          }
+        }
+        &:not(:first-child){
+          td {
+            width: 90px;
+            font-size: 14px;
+            &:not(:first-child){
+              color: #636b79;
+              font-size: 13px;
+              font-weight: 300;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
   }
 
   .datepickers{
     .wrapper{
-      width: 143px;
+      width: auto;//12;
       border: solid 1px #886ce6;
       border-radius: 4px;
       display: inline-block;
+      height: 30px;
+      line-height: 25px;
+      .icon{
+        background-image: url(/img/calendar.png);
+        width: 15px;
+        height: 11px;
+        background-size: 100%;
+        position: absolute;
+        margin: 8px;
+      }
       >div{
         display: inline-block;
+        &:nth-child(2){
+          input{
+            text-align:right;
+          }
+        }
         input{
           background: transparent;
           border: none;
-          width: 70px;
+          width: 75px;
+          font-size: 14px;
+          color: #354052;
           &:focus{
             outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .likeForLike{
+    display: inline-block;
+    cursor: pointer;
+    margin-left:20px;
+    border: solid 1px #886ce6;
+    border-radius: 4px;
+    div{
+      display: inline-block;
+    }
+    .text{
+      font-size: 14px;
+      letter-spacing: -0.1px;
+      color: #354052;
+      width: 94px;
+      text-align: center;
+      position: relative;
+      left: 3px;
+    }
+    .checkbox{
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      border: 1px solid #d3d9df;
+      top: 3px;
+      position: relative;
+      left: 10px;
+      &.checked{
+        background:#9fd573;
+        margin-right: 0;
+      }
+    }
+    .question_icon {
+      position: absolute;
+      margin-left: 5px;
+      background-color: #e6e6e6;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      font-size: 11px;
+      text-align: center;
+      color: #886ce6;
+      font-weight: 400;
+      margin-top: 5px;
+      .tip{
+        display:none;
+        position:absolute;
+        width:159px;
+        height:40px;
+        color: #354052;
+        background-color: #eff3f6;
+        left: 20px;
+        top: -11px;
+        text-align: left;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      &:hover{
+        .tip{
+          display: block;
+          &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            left: -15px;
+            top: 9px;
+            border: 10px solid;
+            border-color: transparent #eff3f6 transparent transparent;
           }
         }
       }

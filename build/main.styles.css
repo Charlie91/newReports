@@ -16335,6 +16335,202 @@ button.btn.back-btn {
     top: 50px; }
   .video-box li.accordeon span.title {
     margin-left: 15px; }
+
+.new-chart.comparisonOn .datepickers .wrapper {
+  width: 243px; }
+  .new-chart.comparisonOn .datepickers .wrapper > div input {
+    width: 120px; }
+
+.new-chart .card-body {
+  padding: 25px 40px 17px; }
+
+.new-chart h5 {
+  margin-bottom: 20px; }
+
+.new-chart .totalSum .data {
+  margin-top: 0; }
+
+.new-chart .Select {
+  width: 165px;
+  font-size: 13px;
+  border: solid 1px #886ce6;
+  border-radius: 3px;
+  padding: 2px;
+  display: inline-block;
+  margin-right: 10px; }
+  .new-chart .Select .Select-control {
+    border: none;
+    height: 20px; }
+    .new-chart .Select .Select-control .Select-input {
+      height: 20px; }
+      .new-chart .Select .Select-control .Select-input > input {
+        padding: 0; }
+    .new-chart .Select .Select-control .Select-arrow {
+      border: none;
+      background-image: url(./img/dropdown.cb9e4c39dad26295057e51a87313b0c2.png);
+      width: 9px;
+      height: 6px; }
+    .new-chart .Select .Select-control .Select-placeholder {
+      cursor: pointer;
+      color: #354052;
+      font-weight: 400;
+      line-height: 20px; }
+    .new-chart .Select .Select-control .Select-value {
+      line-height: 20px; }
+    .new-chart .Select .Select-control span.Select-clear-zone {
+      display: none; }
+  .new-chart .Select .Select-menu-outer {
+    border: 1px solid #886be6;
+    top: 25px; }
+    .new-chart .Select .Select-menu-outer .Select-option {
+      padding-left: 6px; }
+  .new-chart .Select.is-open {
+    border-bottom: none;
+    border-radius: 3px 3px 0 0; }
+    .new-chart .Select.is-open .Select-arrow {
+      background-image: url(./img/dropup.5c7419640a9295a87cecdd24a1100875.png); }
+    .new-chart .Select.is-open .Select-menu-outer {
+      border-top: none;
+      width: 165px;
+      margin-left: -1px; }
+  .new-chart .Select.is-focused .Select-control {
+    box-shadow: none; }
+
+.new-chart .year_selector {
+  display: inline-block;
+  margin-left: 20px; }
+  .new-chart .year_selector div {
+    display: inline-block; }
+  .new-chart .year_selector .year_selector_list .year {
+    cursor: pointer;
+    border-radius: 4px;
+    border: solid 1px #e3e3e3;
+    margin-right: 10px;
+    padding: 4px 13px;
+    line-height: normal;
+    width: 88px;
+    height: 30px; }
+    .new-chart .year_selector .year_selector_list .year > span {
+      font-size: 14px;
+      color: #7f8fa4; }
+    .new-chart .year_selector .year_selector_list .year .checkbox {
+      width: 12px;
+      height: 12px;
+      border: solid 1px #e3e3e3;
+      position: relative;
+      top: 1px;
+      margin-right: 5px; }
+      .new-chart .year_selector .year_selector_list .year .checkbox.checked.y2018 {
+        background-color: #74c2e8;
+        border: solid 1px #74c2e8; }
+      .new-chart .year_selector .year_selector_list .year .checkbox.checked.y2017 {
+        background-color: #9fd473;
+        border: solid 1px #9fd473; }
+      .new-chart .year_selector .year_selector_list .year .checkbox.checked.y2016 {
+        background-color: #8570CE;
+        border: solid 1px #8570CE; }
+  .new-chart .year_selector .year_selector_list .dropdown {
+    width: 73px !important;
+    border-radius: 4px;
+    border: solid 1px #e3e3e3;
+    padding: 0px 6px;
+    line-height: normal;
+    z-index: 1;
+    background: #fff; }
+    .new-chart .year_selector .year_selector_list .dropdown .btn {
+      padding: 0;
+      color: #7f8fa4;
+      line-height: 1;
+      background: none;
+      height: 30px; }
+      .new-chart .year_selector .year_selector_list .dropdown .btn:focus {
+        box-shadow: none; }
+    .new-chart .year_selector .year_selector_list .dropdown .dropdown-toggle::after {
+      content: url(./img/dropdown.cb9e4c39dad26295057e51a87313b0c2.png);
+      border: none;
+      margin-top: -1px;
+      position: absolute; }
+    .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu {
+      min-width: 60px;
+      margin-top: -2px;
+      border-top: none;
+      border-radius: 0px 0px 4px 4px;
+      width: 65px;
+      margin-left: -1px;
+      padding: 0 7px; }
+      .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu .year {
+        display: block;
+        border: none;
+        margin: 10px auto;
+        padding: 0;
+        white-space: nowrap; }
+        .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu .year .y2015.checked {
+          background-color: #ed8455;
+          border: solid 1px #ed8455; }
+        .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu .year .y2014.checked {
+          background-color: #e06c89;
+          border: solid 1px #e06c89; }
+        .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu .year span {
+          margin-left: 3px; }
+
+.new-chart .data-bar-chart_wrapper {
+  height: 400px;
+  max-height: 400px;
+  position: relative; }
+  .new-chart .data-bar-chart_wrapper table {
+    margin: auto;
+    margin-top: 34px;
+    margin-bottom: 71px; }
+    .new-chart .data-bar-chart_wrapper table tr td.total, .new-chart .data-bar-chart_wrapper table tr td.forecast {
+      font-weight: 800 !important;
+      font-style: normal !important; }
+    .new-chart .data-bar-chart_wrapper table tr:first-child td {
+      font-size: 14px;
+      font-style: normal;
+      color: #636b79;
+      font-weight: 500; }
+    .new-chart .data-bar-chart_wrapper table tr:not(:first-child) td {
+      width: 90px;
+      font-size: 14px; }
+      .new-chart .data-bar-chart_wrapper table tr:not(:first-child) td:not(:first-child) {
+        color: #636b79;
+        font-size: 13px;
+        font-weight: 300;
+        font-style: italic; }
+
+.new-chart .datepickers .wrapper {
+  width: 112px;
+  border: solid 1px #886ce6;
+  border-radius: 4px;
+  display: inline-block; }
+  .new-chart .datepickers .wrapper > div {
+    display: inline-block; }
+    .new-chart .datepickers .wrapper > div:first-child input {
+      text-align: right; }
+    .new-chart .datepickers .wrapper > div input {
+      background: transparent;
+      border: none;
+      width: 55px;
+      font-size: 14px;
+      color: #354052; }
+      .new-chart .datepickers .wrapper > div input:focus {
+        outline: none; }
+
+.new-chart .likeForLike {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 20px;
+  border: solid 1px #886ce6;
+  border-radius: 4px; }
+  .new-chart .likeForLike div {
+    display: inline-block; }
+  .new-chart .likeForLike .checkbox {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid #d3d9df; }
+    .new-chart .likeForLike .checkbox.checked {
+      background: black; }
 .registration-form {
   border-radius: 10px;
   margin: auto; }

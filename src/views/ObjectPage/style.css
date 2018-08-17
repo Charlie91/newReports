@@ -1202,23 +1202,33 @@
   .video-box li.accordeon span.title {
     margin-left: 15px; }
 
+.new-chart.comparisonOn .datepickers .wrapper {
+  width: 243px; }
+  .new-chart.comparisonOn .datepickers .wrapper > div input {
+    width: 120px; }
+
 .new-chart .card-body {
   padding: 25px 40px 17px; }
 
 .new-chart h5 {
-  margin-bottom: 20px; }
+  margin-bottom: 24px; }
 
 .new-chart .totalSum .data {
   margin-top: 0; }
 
 .new-chart .Select {
-  width: 165px;
+  width: 173px;
   font-size: 13px;
   border: solid 1px #886ce6;
   border-radius: 3px;
   padding: 2px;
   display: inline-block;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-bottom: 76px; }
+  .new-chart .Select #react-select-2--value-item:before {
+    content: 'Детализация: '; }
+  .new-chart .Select #react-select-3--value-item:before {
+    content: 'Вход: '; }
   .new-chart .Select .Select-control {
     border: none;
     height: 20px; }
@@ -1226,18 +1236,28 @@
       height: 20px; }
       .new-chart .Select .Select-control .Select-input > input {
         padding: 0; }
-    .new-chart .Select .Select-control .Select-arrow {
-      border: none;
-      background-image: url("/img/dropdown.png");
-      width: 9px;
-      height: 6px; }
+    .new-chart .Select .Select-control .Select-arrow-zone {
+      padding-right: 0; }
+      .new-chart .Select .Select-control .Select-arrow-zone .Select-arrow {
+        border: none;
+        background-image: url("/img/dropdown.png");
+        width: 9px;
+        height: 6px;
+        margin-right: -6px; }
     .new-chart .Select .Select-control .Select-placeholder {
       cursor: pointer;
       color: #354052;
       font-weight: 400;
       line-height: 20px; }
     .new-chart .Select .Select-control .Select-value {
-      line-height: 20px; }
+      line-height: 20px;
+      color: #354052;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      padding-right: 15px !important; }
+      .new-chart .Select .Select-control .Select-value .Select-value-label {
+        margin-left: -5px; }
     .new-chart .Select .Select-control span.Select-clear-zone {
       display: none; }
   .new-chart .Select .Select-menu-outer {
@@ -1249,10 +1269,10 @@
     border-bottom: none;
     border-radius: 3px 3px 0 0; }
     .new-chart .Select.is-open .Select-arrow {
-      background-image: url("/img/dropup.png"); }
+      background-image: url("/img/dropup.png") !important; }
     .new-chart .Select.is-open .Select-menu-outer {
       border-top: none;
-      width: 165px;
+      width: 173px;
       margin-left: -1px; }
   .new-chart .Select.is-focused .Select-control {
     box-shadow: none; }
@@ -1312,7 +1332,7 @@
       margin-top: -1px;
       position: absolute; }
     .new-chart .year_selector .year_selector_list .dropdown .dropdown-menu {
-      min-width: 60px;
+      min-width: 73px;
       margin-top: -2px;
       border-top: none;
       border-radius: 0px 0px 4px 4px;
@@ -1337,18 +1357,115 @@
 .new-chart .data-bar-chart_wrapper {
   height: 400px;
   max-height: 400px;
-  position: relative; }
+  max-width: 1140px;
+  position: relative;
+  margin: auto; }
+  .new-chart .data-bar-chart_wrapper table {
+    margin: auto;
+    margin-top: 34px;
+    margin-bottom: 71px; }
+    .new-chart .data-bar-chart_wrapper table tr td.total, .new-chart .data-bar-chart_wrapper table tr td.forecast {
+      font-weight: 800 !important;
+      font-style: normal !important; }
+    .new-chart .data-bar-chart_wrapper table tr:first-child td {
+      font-size: 14px;
+      font-style: normal;
+      color: #636b79;
+      font-weight: 500; }
+    .new-chart .data-bar-chart_wrapper table tr:not(:first-child) td {
+      width: 90px;
+      font-size: 14px; }
+      .new-chart .data-bar-chart_wrapper table tr:not(:first-child) td:not(:first-child) {
+        color: #636b79;
+        font-size: 13px;
+        font-weight: 300;
+        font-style: italic; }
 
 .new-chart .datepickers .wrapper {
-  width: 143px;
+  width: auto;
   border: solid 1px #886ce6;
   border-radius: 4px;
-  display: inline-block; }
+  display: inline-block;
+  height: 30px;
+  line-height: 25px; }
+  .new-chart .datepickers .wrapper .icon {
+    background-image: url(/img/calendar.png);
+    width: 15px;
+    height: 11px;
+    background-size: 100%;
+    position: absolute;
+    margin: 8px; }
   .new-chart .datepickers .wrapper > div {
     display: inline-block; }
+    .new-chart .datepickers .wrapper > div:nth-child(2) input {
+      text-align: right; }
     .new-chart .datepickers .wrapper > div input {
       background: transparent;
       border: none;
-      width: 70px; }
+      width: 75px;
+      font-size: 14px;
+      color: #354052; }
       .new-chart .datepickers .wrapper > div input:focus {
         outline: none; }
+
+.new-chart .likeForLike {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 20px;
+  border: solid 1px #886ce6;
+  border-radius: 4px; }
+  .new-chart .likeForLike div {
+    display: inline-block; }
+  .new-chart .likeForLike .text {
+    font-size: 14px;
+    letter-spacing: -0.1px;
+    color: #354052;
+    width: 94px;
+    text-align: center;
+    position: relative;
+    left: 3px; }
+  .new-chart .likeForLike .checkbox {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid #d3d9df;
+    top: 3px;
+    position: relative;
+    left: 10px; }
+    .new-chart .likeForLike .checkbox.checked {
+      background: #9fd573;
+      margin-right: 0; }
+  .new-chart .likeForLike .question_icon {
+    position: absolute;
+    margin-left: 5px;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 11px;
+    text-align: center;
+    color: #886ce6;
+    font-weight: 400;
+    margin-top: 5px; }
+    .new-chart .likeForLike .question_icon .tip {
+      display: none;
+      position: absolute;
+      width: 159px;
+      height: 40px;
+      color: #354052;
+      background-color: #eff3f6;
+      left: 20px;
+      top: -11px;
+      text-align: left;
+      padding: 5px 10px;
+      border-radius: 5px; }
+    .new-chart .likeForLike .question_icon:hover .tip {
+      display: block; }
+      .new-chart .likeForLike .question_icon:hover .tip:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -15px;
+        top: 9px;
+        border: 10px solid;
+        border-color: transparent #eff3f6 transparent transparent; }
