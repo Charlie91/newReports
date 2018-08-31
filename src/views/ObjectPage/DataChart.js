@@ -44,6 +44,16 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
 }
 
 
+function getCustomLabel(props){
+    if(props.comparison_mode)
+        return customComparisonLabelDataChart;
+    else if(props.likeForLike){
+        return customComparisonLabelDataChart;
+    }
+    else return customLabelDataChart;
+}
+
+
 
 const DataChart = (props) => {
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
@@ -65,7 +75,7 @@ const DataChart = (props) => {
                                       display: false
                                   },
                                   tooltips: {
-                                      custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
+                                      custom:  getCustomLabel(props),
                                       enabled:false,
                                       callbacks:{
                                           title: (tooltipItem, data ) => {
@@ -90,6 +100,9 @@ const DataChart = (props) => {
                                               if(props.comparison_mode){
                                                   return utils.comparisonLabel(tooltipItem,data)
                                               }
+                                              else if(props.likeForLike){
+                                                  return utils.likeForLikeLabel(tooltipItem,data)
+                                              }
                                               else{
                                                   return `
                                                       ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
@@ -106,7 +119,7 @@ const DataChart = (props) => {
                                           {
                                               id: 'main-x-axis',
                                               afterFit: function (scale) {
-                                                  scale.height = 29;
+                                                  scale.width = 29;
                                               },
                                               type: 'time',
                                               time: {
@@ -115,7 +128,8 @@ const DataChart = (props) => {
                                                   displayFormats: {
                                                       day: getStepName(props.timeSegment),
                                                       month: getStepName(props.timeSegment)
-                                                  }
+                                                  },
+                                                  stepSize:getStepSize(props.data.labels.length, props.timeSegment),
                                               },
                                               display: true,
                                               ticks: {

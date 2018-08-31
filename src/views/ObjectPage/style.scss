@@ -121,7 +121,6 @@
         margin-top: 20px;
       }
       .excellLinkWrapper{
-        text-align: center;
         background-position: 100%;
         margin-right: 0;
         margin-top: 10px;
@@ -311,7 +310,8 @@
   background-position: 100% 50%;
   width: 155px;
   margin: auto;
-  margin-right: 40px;
+  margin-right: 0px;
+  text-align: center;
   .excellLink{
     font-size: 14px;
     text-align: left;
@@ -1099,7 +1099,10 @@
 @media screen and (min-width:992px) and (max-width: 1060px) {
   .totalSum{
     .muted{
-      font-size:11px
+      font-size:10px
+    }
+    .data{
+      font-size:27px;
     }
   }
 }
@@ -1119,10 +1122,10 @@
     }
     .totalSum{
       .data {
-        font-size: 28px;
+        //font-size: 28px;
       }
       .muted{
-        white-space: normal;
+        //white-space: normal;
       }
     }
     .floor_btn-wrp .btn:first-child {
@@ -1548,6 +1551,128 @@
       margin-right: -15px;
     }
 
+
+    .new-chart{
+      .card-body{
+        padding: 23px 0 0 17px;
+      }
+      .datepickers{
+        margin-bottom: 22px;
+        height:auto!important;
+        .likeForLike{
+          margin-left:0;
+          height: 22px;
+          line-height: 20px;
+          .question_icon{
+            display:none;
+          }
+        }
+        .react-datepicker__portal{
+          padding:100px;
+          .react-datepicker {
+            font-size: 1em;
+          }
+          .react-datepicker__header {
+            padding-top: 0.8em;
+          }
+          .react-datepicker__month {
+            margin: 0.4em 1em;
+          }
+          .react-datepicker__day-name, .react-datepicker__day {
+            width: 24px;
+            line-height: 20px;
+            margin: 3px;
+            font-size: 12px;
+            font-weight: 400;
+          }
+          .react-datepicker__current-month {
+            font-size: 15px;
+          }
+          .react-datepicker__navigation {
+            top: 5px;
+            line-height: 1.7em;
+            border: 16px solid transparent;
+          }
+          .react-datepicker__navigation--previous {
+            border-right-color: #ccc;
+            left: 0;
+          }
+          .react-datepicker__navigation--next {
+            border-left-color: #ccc;
+            right: 0;
+          }
+        }
+        .wrapper{
+          width:140px;
+          height: 22px;
+          line-height: 20px;
+          .icon{
+            margin: 5px;
+          }
+          div input{
+            width: 67px;
+          }
+        }
+      }
+      &.comparisonOn .datepickers{
+        .wrapper{
+          width:205px;
+          div input{
+            width: 100px;
+          }
+        }
+      }
+      .year_selector{
+        margin-left: 0;
+        .year_selector_list{
+          .year{
+            width:58px;
+            height: 22px;
+            font-size: 14px;
+            padding: 2px 4px;
+            margin-left: 10px;
+          }
+          .dropdown{
+            width: 65px!important;
+            height: 22px;
+            .dropdown-menu {
+              min-width: 65px;
+            }
+            .btn{
+              height: 18px;
+            }
+          }
+        }
+      }
+
+      .Select{
+        width: 125px;
+        margin-bottom:20px;
+        #react-select-2--value-item:before, #react-select-3--value-item:before{
+          content:''!important;
+        }
+        .Select-input input{
+          color: transparent;
+          border: none;
+          text-shadow: 0 0 0 gray;
+          text-align: center;
+          cursor: none!important;
+          &:focus {
+            outline: none;
+          }
+        }
+        &.is-open{
+          .Select-menu-outer{
+            width: 125px;
+          }
+        }
+      }
+      .totalSum{
+        .data, .muted{
+          margin-left:0;
+        }
+      }
+    }
   }
 
   #chartjs-tooltip2{
@@ -1678,7 +1803,27 @@
 }
 
 
-/*Тестовый/временный цсс*/
+/*Тестовый/временный цсс
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
 
 .video-box li.accordeon {
   display: inline-block;
@@ -1702,6 +1847,7 @@
 
 
 .new-chart{
+  overflow: hidden;
   &.comparisonOn{
     .datepickers{
       .wrapper{
@@ -1718,10 +1864,17 @@
     padding: 25px 40px 17px;
   }
   h5{
-    margin-bottom:24px;
+    margin-bottom:18px;
+    line-height: 37px;
   }
-  .totalSum .data{
-    margin-top:0
+  .totalSum{
+    .data{
+      margin-top:0;
+      margin-left:30px;
+    }
+    .muted{
+      margin-left:30px;
+    }
   }
   .Select {
     width: 173px;
@@ -1731,7 +1884,7 @@
     padding:2px;
     display: inline-block;
     margin-right: 10px;
-    margin-bottom: 76px;
+    height:30px;
     #react-select-2--value-item:before {
       content: 'Детализация: ';
     }
@@ -1741,6 +1894,10 @@
     .Select-control {
       border: none;
       height: 20px;
+      cursor:pointer;
+      &:hover{
+        box-shadow:none;
+      }
       .Select-input{
         height:20px;
         >input{
@@ -1764,7 +1921,7 @@
         line-height: 20px;
       }
       .Select-value{
-        line-height: 20px;
+        line-height: 23px;
         color: #354052;
         font-size: 14px;
         font-weight: 400;
@@ -1853,6 +2010,7 @@
         line-height: normal;
         z-index: 1;
         background:#fff;
+        height: 30px;
         .btn{
           padding: 0;
           color: #7f8fa4;
@@ -1900,15 +2058,33 @@
     }
   }
 
+  .scroll_wrapper{
+    overflow-x:scroll;
+    top: 10px;//чтобы скрыть нижнюю строку скролла
+  }
+
   .data-bar-chart_wrapper{
-    height:400px;
-    max-height:400px;
-    max-width: 1140px;
-    position:relative;
+    width: 1140px;
     margin: auto;
+  }
+
+
+  .data-line-chart_wrapper,.data-bar-chart_wrapper{
+    height:285px;
+    max-height:400px;
+    position:relative;
+    margin-top: 65px;
+    min-width: 1140px;
+    table+div .line-chart-wrapper .linechart_area_wrapper{
+      min-height:0px;//с таблицей
+      height: 135px;
+    }
+    .line-chart-wrapper .linechart_area_wrapper{
+      min-height:285px;
+    }
     table{
       margin: auto;
-      margin-top: 34px;
+      margin-top: -44px;
       margin-bottom: 71px;
       tr{
         td.total, td.forecast{
@@ -1935,20 +2111,31 @@
             }
           }
         }
+        span.positive,span.negative{
+          font-size: 90%;
+        }
+        span.positive{
+          color:#75b67b
+        }
+        span.negative{
+          color:#c63a5b
+        }
+
       }
     }
   }
 
   .datepickers{
+    height: 53px;
     .wrapper{
       width: auto;//12;
       border: solid 1px #886ce6;
       border-radius: 4px;
       display: inline-block;
       height: 30px;
-      line-height: 25px;
+      line-height: 27px;
       .icon{
-        background-image: url(/img/calendar.png);
+        background-image: url('/img/calendar.png');
         width: 15px;
         height: 11px;
         background-size: 100%;

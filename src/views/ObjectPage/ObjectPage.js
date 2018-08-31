@@ -32,6 +32,7 @@ export default class ObjectPage extends Component {
             ]
         };
 
+
         this.state = {
             analyseData:[],
             abcType:'shops',
@@ -44,8 +45,8 @@ export default class ObjectPage extends Component {
             currency:'',
             shortestUnit:'D',
             totalSum:0,
-            startDate: moment().add(-7,'days'),
-            endDate: moment(),
+            startDate:moment('2018-01-01'),//.add(-7,'days'),
+            endDate: moment('2018-12-31'),
             timeSegment: 'D',
             shops:[],
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика
@@ -115,6 +116,11 @@ export default class ObjectPage extends Component {
             this.getPlurableFloorsData();
             return;
         }
+        if(this.state.likeForLike){     //если режим likeForLike включен
+            this.getLikeForLikeData();
+            return;
+        }
+
         let [startDate, endDate] = [this.state.startDate.format("YYYYMMDD"),this.state.endDate.format("YYYYMMDD")],
             unit = this.state.timeSegment,
             floorID = utils.returnFloorID(this.state);
@@ -183,11 +189,52 @@ export default class ObjectPage extends Component {
             })
     }
 
+    getLikeForLikeData(){
+        if(!this.state.floors)return null;
+        let [unit,chart,floorID] = [this.state.timeSegment, this.state.chart, utils.returnFloorID(this.state)];
+        console.log('likeForLike');
+
+        this.requestIsStarted();
+        Promise.all(chart.datasets.map( (item,i) => {
+            if( i % 2 )return null; //делаем запросы только по четным индексам, так как на один график у нас 2 элемента в массиве
+            let [startYear,endYear] = [this.state.startDate.year(), this.state.endDate.year()];
+            let startDate, endDate;
+
+            if(!i){
+                [startDate, endDate] = [this.state.startDate.format("YYYYMMDD"), this.state.endDate.format("YYYYMMDD")];
+            }
+            else{
+                [startDate, endDate] = [startYear - 1 + this.state.startDate.format("MMDD"), endYear - 1 + this.state.endDate.format("MMDD")];
+            }
+            let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
+
+            return ajaxRequest(url)
+                .then( data => data)
+                .catch( err => console.log(err))
+        }))
+            .then(arr => arr.filter(item => item !== null))//фильтруем массив от null значений
+            .then(data => {
+
+                let newChart = utils.returnFormattedChart(data,this.state);
+
+                this.setState({
+                    chart:newChart,
+                    emptyData:false,
+                    excelData:utils.formatDataForExcelInCMode(data)
+                }, () => {
+                    this.requestIsEnded();
+                });
+            })
+
+
+
+    }
+
 
     comparisonGraphHandler(){
-        if(this.state.comparison_mode){
+        if(this.state.comparison_mode){//если режим сравнения был включен
             if( this.state.startDate.year() === moment().year() ){  //если диапозон дат в пределах текущего года
-                this.enableComparisonMode()
+                //this.enableComparisonMode()
             }
             else{
                 this.setState({ //если нет, возвращаем диапозон в дефолтное значение и потом включаем режим сравнения
@@ -195,7 +242,7 @@ export default class ObjectPage extends Component {
                     endDate: moment()
                 }, () => {
                     this.getFloorsData();
-                    this.enableComparisonMode();
+                    //this.enableComparisonMode();
                 })
             }
         }
@@ -228,7 +275,8 @@ export default class ObjectPage extends Component {
                     styleValues= utils.returnStyleValuesInCMode(values,data,this.state)
                 }
 
-                if(!this.state.chart.datasets.length)chartObj.labels = dates;// если график пуст - обновить шкалу с датами
+                if(!this.state.chart.datasets.length || dates.length > chartObj.labels.length)
+                    chartObj.labels = dates;// если график пуст - обновить шкалу с датами
 
                 let newDataset = utils.createNewDataset(year);    //создание нового графика
                 [newDataset[0].data, newDataset[1].data] = [values,styleValues];//присвоение данных новому графику
@@ -270,7 +318,6 @@ export default class ObjectPage extends Component {
         let url = `${API.floorsData}?floorId=${floorID}&startDate=${startDate}&endDate=${endDate}&unit=${unit}`;
         ajaxRequest(url)
             .then(data => {
-                console.log(data);
                 if(!this.state.likeForLike)return null;//если данные придут в момент когда lfl уже выключен
 
                 let chartObj = Object.assign({},this.state.chart),
@@ -284,21 +331,29 @@ export default class ObjectPage extends Component {
                     styleValues= utils.returnStyleValuesInCMode(values,data,this.state)
                 }
 
-                // if(!this.state.chart.datasets.length)chartObj.labels = dates;// если график пуст - обновить шкалу с датами
+                if(!this.state.chart.datasets.length)chartObj.labels = dates;// если график пуст - обновить шкалу с датами
 
                 let newDataset = utils.createNewDataset(2017);    //создание нового графика
                 [newDataset[0].data, newDataset[1].data] = [values,styleValues];//присвоение данных новому графику
                 chartObj.datasets.push(...newDataset);//добавление графика
                 //
-                // newExcel = utils.changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
+                newExcel = utils.changeExcelData(this.state.excelData, data);//форматируем данные для выгрузки в Excel
                 //
                 this.setState({
                     chart:chartObj,
                     emptyData:false,
-//                    excelData: newExcel
+                    excelData: newExcel
                 });
             })
             .catch(err => console.log(err))
+    }
+
+    removeLikeForLikeAdditionalGraph(){
+        let chart  = this.state.chart;
+        console.log(1);
+
+        chart.datasets.splice(2,2);
+        this.setState({chart:chart})
     }
 
     addAnnualData(year){
@@ -309,7 +364,6 @@ export default class ObjectPage extends Component {
         ajaxRequest(url)
             .then(data => console.log(data))
             .catch(err => console.log(err))
-
     }
 
     trackStatusOfComparisonMode(){  //отслеживает выключать ли режим сравнения
@@ -328,7 +382,6 @@ export default class ObjectPage extends Component {
         chart.datasets = [];
         this.setState({chart},() => {
             this.addComparisonGraph(2018);
-           // this.addComparisonGraph(2017);
         })
     }
 
@@ -412,6 +465,7 @@ export default class ObjectPage extends Component {
     }
 
     changeFloor(value,e){
+        if(this.state.requestIsInProcess)return;
         if(value === 0)
             value = 0;
         else
@@ -421,6 +475,7 @@ export default class ObjectPage extends Component {
     }
 
     changeTimeSegment(value,e){
+        if(this.state.requestIsInProcess)return;
         value = value || e.target.dataset.val;
         this.requestIsStarted();
         this.setState({timeSegment:value},() => this.getFloorsData());
@@ -428,6 +483,8 @@ export default class ObjectPage extends Component {
 
     checkYear(year,e){  //обработчик селекторов по годам
         if(this.state.requestIsInProcess)return;
+        if(year === moment().year()) return;//селектор с текущим годом всегда включен
+
         let checkboxes = document.querySelectorAll('.year_selector_list .year > .checkbox');
 
         if(!this.state.comparison_mode)
@@ -438,8 +495,8 @@ export default class ObjectPage extends Component {
                 if(checkboxes[i].classList.contains('checked'))
                     this.removeComparisonGraph(year);
                 else{
+                    this.requestIsStarted();
                     this.addComparisonGraph(year);
-                    //this.addAnnualData(year);
                 }
 
                 checkboxes[i].classList.toggle('checked');
@@ -448,8 +505,14 @@ export default class ObjectPage extends Component {
     }
 
     checkLike(){
-        this.setState({likeForLike:!this.state.likeForLike},
-            this.addLikeForLikeAdditionalGraph());
+        if(this.state.likeForLike){
+            this.setState({likeForLike:false},
+                this.removeLikeForLikeAdditionalGraph());
+        }
+        else{
+            this.setState({likeForLike:true},
+                this.addLikeForLikeAdditionalGraph());
+        }
     }
 
     handleChangeStart(date) { //функции-обработчики смены дат в datepickers
@@ -507,6 +570,28 @@ export default class ObjectPage extends Component {
         this.getNewObjectsData();
     }
 
+    datepickerTestChange(date,counter){
+        if(counter % 2 !== 0){
+            this.checkIfLikeForLikeModeStillActual(date,this.state.endDate);
+            this.setState({startDate:date},() => this.getFloorsData());
+        }
+        else{
+            if(date < this.state.startDate){
+                this.checkIfLikeForLikeModeStillActual(date,this.state.endDate);
+                this.setState({startDate:date,endDate:this.state.startDate},() => this.getFloorsData());
+            }
+            else{
+                this.checkIfLikeForLikeModeStillActual(this.state.startDate,date);
+                this.setState({endDate:date},() => this.getFloorsData());
+            }
+        }
+    }
+
+    checkIfLikeForLikeModeStillActual(startDate,endDate){
+        if(this.state.likeForLike && startDate.year() === endDate.year())
+            this.checkLike();
+    }
+
     componentDidUpdate(prevProps, prevState){
         if(prevProps.match.url !== this.props.match.url)//вызывается когда компонент вызывается с новым объектом
             this.dropComponent();
@@ -543,19 +628,6 @@ export default class ObjectPage extends Component {
     componentWillUnmount(){
         utils.removeSpecificStyles();
         window.onresize = () => {};
-    }
-
-    datepickerTestChange(date,counter){
-        if(counter % 2 !== 0){
-            this.setState({startDate:date},() => this.getFloorsData());
-        }
-        else{
-            if(date < this.state.startDate){
-                this.setState({startDate:date,endDate:this.state.startDate},() => this.getFloorsData());
-            }
-            else
-                this.setState({endDate:date},() => this.getFloorsData());
-        }
     }
 
     render(){

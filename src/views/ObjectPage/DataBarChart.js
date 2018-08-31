@@ -10,6 +10,11 @@ import YearSelector from './YearSelector';
 import utils from './obj_utils';
 import DataChart from './DataChart';
 import moment from 'moment';
+import {customLabelDataChart} from "./customLabelDataChart";
+import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
+import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick,formatNumericValue} from "../../utils/utils";
+import YearTable from './YearTable';
+import xlsExport from './xls-export';
 
 function getFormat(timeSegment){
     let format;
@@ -27,6 +32,16 @@ function getFormat(timeSegment){
             format = 'HH:mm T DD.MM.YYYY';
     }
     return format
+}
+
+function getNumberOfYears(width){
+    let number;
+
+    if(width < 1200 && width > 767)number = 2;
+    else if(width < 768) number = 1;
+    else number = 3;
+
+    return number
 }
 
 function addEmptyBars(data, timeSegment) {
@@ -63,8 +78,33 @@ function addEmptyBars(data, timeSegment) {
     }
 }
 
+function getBarsColors(dataLength,labels,timeSegment){
+    const defaultColorArray = [...'#74c2e8,'.repeat(dataLength).split(',').slice(0,-1)];
+    let weekendIndexes = labels.reduce((indexes,item,index) => {
+        if(moment(item).day() === 0 || moment(item).day() === 6){
+            indexes.push(index)
+        }
+        return indexes
+    },[]);
+
+    if(timeSegment === 'D')
+        defaultColorArray.forEach( (color,colorIndex) => {
+            weekendIndexes.forEach( index => {
+                if(colorIndex === index){
+                    defaultColorArray[colorIndex] = '#9fd473'
+                }
+            })
+        });
+
+    return [...defaultColorArray,...'transparent,'.repeat(31 - dataLength).split(',').slice(0,-1)];
+}
+
 let counter = 0;//счетчик выборов дат, нечетное - выбор начала даты, четное - конец
+
+
 const DataBarChart = (props) => {
+    const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
+
     if(props.floors){
         var arr = props.floors.map((item,i) => {
             return {
@@ -74,22 +114,21 @@ const DataBarChart = (props) => {
         })
     }
     let filteredData, max;
+    filteredData = {
+        datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
+            let length = item.data.length - 2;
+            if(length < 0 || length > 31) length = 0;
+            return {
+                data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
+                label:item.label,
+                backgroundColor:getBarsColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
+                borderColor:'#74c2e8',
+                borderWidth: 1,
+            }
+        }),
+        labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
+    };
     if(!props.comparison_mode){
-        filteredData = {
-            datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
-                let length = item.data.length - 2;
-                if(length < 0 || length > 31) length = 0;
-                    return {
-                    data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
-                    label:item.label,
-                    backgroundColor:[...'#74c2e8,'.repeat(length).split(',').slice(0,-1),...'transparent,'.repeat(31 - length).split(',').slice(0,-1)],
-                    borderColor:'#74c2e8',
-                    borderWidth: 1,
-                }
-            }),
-            labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
-        };
-
         max = filteredData.datasets[0].data.reduce( (max,item) => {
             if(item > max)max = item;
             return max;
@@ -99,7 +138,7 @@ const DataBarChart = (props) => {
     }
 
     return (
-        <Card className={"new-chart" + (props.comparison_mode ? ' comparisonOn' : '')}>
+        <Card className={"new-chart" + (props.likeForLikeDisplay ? ' comparisonOn' : '')}>
             <CardBody>
                 <div>
                     <h5>Трафик</h5>
@@ -115,12 +154,17 @@ const DataBarChart = (props) => {
                                     shouldCloseOnSelect={false}
                                     selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
                                     dateFormat={
-                                        props.comparison_mode ? "DD MMM YYYY" :
-                                             (props.startDate.month() === props.endDate.month()) ?
-                                                 'DD —' : "DD MMM"
+                                        props.likeForLikeDisplay ? "DD MMM YYYY" :
+                                            (props.startDate.month() === props.endDate.month()) ?
+                                                'DD —' : "DD MMM"
                                     }
+                                    dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                                     onChange={(date) => {props.change(date,++counter)}}
                                     monthsShown={2}
+                                    withPortal={props.viewportWidth < 992}
+                                    readOnly={props.viewportWidth < 992}
+                                    minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
+                                    maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
                                 />
                                 <DatePicker
                                     className="datepicker"
@@ -129,11 +173,16 @@ const DataBarChart = (props) => {
                                     endDate={props.endDate}
                                     shouldCloseOnSelect={false}
                                     selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
-                                    dateFormat={ props.comparison_mode ? "— DD MMM YYYY" :
+                                    dateFormat={ props.likeForLikeDisplay ? "— DD MMM YYYY" :
                                         (props.startDate.month() === props.endDate.month()) ?
                                             "DD MMM" : "— DD MMM" }
+                                    dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
                                     onChange={(date) => {props.change(date,++counter)}}
                                     monthsShown={2}
+                                    withPortal={props.viewportWidth < 992}
+                                    readOnly={props.viewportWidth < 992}
+                                    minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
+                                    maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
                                 />
                             </div>
                             {props.likeForLikeDisplay ?
@@ -151,24 +200,28 @@ const DataBarChart = (props) => {
                                 <YearSelector
                                     render={true}
                                     checkYear={props.checkYear}
-                                    additional="г."
+                                    numberOfYearsAtList={getNumberOfYears(props.viewportWidth)}
                                     {...props}
                                 />
                             }
                         </Col>
-                        <Col className="totalSum">
-                            <span className="data"
-                                  dangerouslySetInnerHTML=
-                                      {{
-                                          __html:`${formatNumberBySpaces(Math.round(props.totalSum))} ${utils.renderCurrency(props)}`
-                                      }}
-                            >
-                            </span>
-                            <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
-                        </Col>
+                        {(props.viewportWidth > 767 && !props.comparison_mode && !props.likeForLike) ?
+                            <Col md="3" className="totalSum">
+                                <span className="data"
+                                      dangerouslySetInnerHTML=
+                                          {{
+                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
+                                          }}
+                                >
+                                </span>
+                                <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                            </Col>
+                            :
+                            ''
+                        }
                     </Row>
                     <Row>
-                        <Col md="4">
+                        <Col md="12">
                             <Select
                                 closeOnSelect={false}
                                 removeSelected={false}
@@ -195,110 +248,154 @@ const DataBarChart = (props) => {
                                 inputProps={{readOnly:true}}
                             />
                         </Col>
-                    </Row>
-                    <div className="data-bar-chart_wrapper">
-                        {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
-                            <div>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>янв</td>
-                                        <td>фев</td>
-                                        <td>март</td>
-                                        <td>апр</td>
-                                        <td>май</td>
-                                        <td>июнь</td>
-                                        <td>июль</td>
-                                        <td>авг</td>
-                                        <td>сент</td>
-                                        <td>окт</td>
-                                        <td>ноя</td>
-                                        <td>дек</td>
-                                        <td className="total">Итого</td>
-                                        <td className="forecast">Прогноз</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2017</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td className="total">149 932</td>
-                                        <td className="forecast">149 932</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2018</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td>149 932</td>
-                                        <td className="total">149 932</td>
-                                        <td className="forecast">149 932</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <DataChart
-                                    render={!(props.type === 'Выручка')}
-                                    comparison_mode={props.comparison_mode}
-                                    data={props.chart}
-                                    startDate={props.startDate}
-                                    endDate={props.endDate}
-                                    currency={props.currency}
-                                    timeSegment={props.timeSegment}
-                                    emptyData={props.emptyData}
-                                />
-                            </div>
+                        {props.viewportWidth < 768 ?
+                            <Col xs="12" className="totalSum">
+                                <span className="data"
+                                      dangerouslySetInnerHTML=
+                                          {{
+                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
+                                          }}
+                                >
+                                </span>
+                                <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                            </Col>
                             :
-                            <Bar
-                                data={filteredData}
-                                options= {{
-                                    maintainAspectRatio: false,
-                                    legend: { display: false },
-                                    scales: {
-                                        xAxes: [{
-                                            barThickness : 20,
-                                            gridLines: {
-                                                color: "rgba(0, 0, 0, 0)",
-                                                borderDash: [4, 4],
-                                                zeroLineColor: 'rgba(0, 0, 0, 0)'
-                                            },
-
-                                        }],
-                                        yAxes: [{
-                                            ticks:{
-                                                min:0,
-                                                stepSize:max/2
-                                            },
-                                            gridLines: {
-                                                color: "rgba(0, 0, 0, 0)",
-                                                zeroLineColor: 'rgba(0, 0, 0, 0)',
-                                                borderDash: [4, 4]
-                                            },
-                                        }],
-                                    }
-
-                                }}
-                            />
+                            ''
                         }
+                    </Row>
+                    <Row style={{overflow:'hidden'}}>
+                        <Col className="scroll_wrapper">
+                            {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
+                                <div className="data-line-chart_wrapper">
+                                    <YearTable
+                                        filteredData={filteredData}
+                                        {...props}
+                                    />
+                                    <DataChart
+                                        render={!(props.type === 'Выручка')}
+                                        comparison_mode={props.comparison_mode}
+                                        data={props.chart}
+                                        startDate={props.startDate}
+                                        endDate={props.endDate}
+                                        currency={props.currency}
+                                        timeSegment={props.timeSegment}
+                                        emptyData={props.emptyData}
+                                        {...props}
+                                    />
+                                </div>
+                                :
+                                <div className="data-bar-chart_wrapper">
+                                    <Bar
+                                        data={filteredData}
+                                        options= {{
+                                            maintainAspectRatio: false,
+                                            legend: { display: false },
+                                            tooltips: {
+                                                custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
+                                                enabled:false,
+                                                callbacks:{
+                                                    title: (tooltipItem, data ) => {
+                                                        let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                                        let title = '';
 
-                    </div>
+                                                        if (step !== 1){
+                                                            if (props.timeSegment === 'M')
+                                                                title = moment(tooltipItem[0].xLabel).format('MMM')
+                                                            if (props.timeSegment === 'D')
+                                                                title = moment(tooltipItem[0].xLabel).format('DD MMM')
+                                                            if (props.timeSegment === 'Y')
+                                                                title = moment(tooltipItem[0].xLabel).format('YYYY')
+                                                        }
+
+                                                        if (props.timeSegment === 'H')
+                                                            title = moment(tooltipItem[0].xLabel).format("HH:mm, DD MMM")
+
+                                                        return title;
+                                                    },
+                                                    label: (tooltipItem, data ) => {
+                                                        if(data.datasets[0].backgroundColor[tooltipItem.index] === 'transparent'){
+                                                            return null;
+                                                        };
+
+                                                        if(props.comparison_mode){
+                                                            return utils.comparisonLabel(tooltipItem,data)
+                                                        }
+                                                        else{
+                                                            return `
+                                                      ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
+                                                      ${(props.currency.length > 4) ?
+                                                                (props.currency.substring(0,3) + '.') : props.currency}
+                                                  `
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            scales: {
+                                                xAxes: [{
+                                                    barThickness : 20,
+                                                    gridLines: {
+                                                        color: "rgba(0, 0, 0, 0)",
+                                                        borderDash: [4, 4],
+                                                        zeroLineColor: 'rgba(0, 0, 0, 0)'
+                                                    },
+                                                    ticks: {
+                                                        fontColor:'#7f8fa4',
+                                                        fontSize: 14,
+                                                        fontFamily: 'ProximaNova',
+                                                        stepSize:123123,
+                                                        maxRotation: 0,
+                                                        callback: (value, index, values) => {
+                                                            let format = '';
+                                                            switch(props.timeSegment){
+                                                                case 'Y':
+                                                                    format = 'YYYY';
+                                                                    break;
+                                                                case 'M':
+                                                                    format = 'MMM';
+                                                                    break;
+                                                                case 'D':
+                                                                    format = 'DD MMM';
+                                                                    break;
+                                                                case 'H':
+                                                                    format = 'DD.MM T HH:mm';
+                                                            }
+                                                            if(index % 2 === 0)
+                                                                return moment(value).format(format);
+                                                        },
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    ticks:{
+                                                        min:0,
+                                                        stepSize:max/2
+                                                    },
+                                                    gridLines: {
+                                                        color: "rgba(0, 0, 0, 0)",
+                                                        zeroLineColor: 'rgba(0, 0, 0, 0)',
+                                                        borderDash: [4, 4]
+                                                    },
+                                                }],
+                                            }
+
+                                        }}
+                                    />
+                                </div>
+                            }
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs='0' md="0" xl={{size:3,offset:9}}>
+                            <div className="excellLinkWrapper">
+                                <a className="excellLink"
+                                   onClick={xls ? () => {
+                                       xls.exportToXLS(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.xls`,props)
+                                   } : ''}
+                                >
+                                    Скачать в Excel
+                                </a>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
             </CardBody>
         </Card>

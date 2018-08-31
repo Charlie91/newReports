@@ -3,6 +3,19 @@ import {Col, Row, Card, CardBody} from "reactstrap";
 import moment from 'moment';
 
 
+function getDifferenceWithLastYear(datasets,index){
+    let [currentYear, previousYear] = [datasets.find(el => el.label === String(moment().year())),datasets.find(el => el.label === String(moment().year() - 1))];
+    let [currentValue, previousYearValue] = [currentYear.data[index], previousYear.data[index]];
+
+    let diff = ( currentValue - previousYearValue ) / ( ( currentValue + previousYearValue ) / 2 ) * 100;
+
+    return (
+        <span className={diff > 0 ? 'positive' : 'negative'}>
+            {Math.round(diff) > 0 ? ` +${Math.round(diff)}%` : ` ${Math.round(diff)}%`}
+        </span>
+    );
+}
+
 const YearTable = (props) => {
     if(!props.filteredData.datasets.length || props.requestIsInProcess)return null;
     let lastDayInYear = (props.endDate.year() % 4 === 0) ? 366 : 365;
@@ -11,7 +24,7 @@ const YearTable = (props) => {
     console.log(props.filteredData);
     var arr = [];
 
-    if(props.timeSegment === 'M' && props.startDate.dayOfYear() === 1 && props.endDate.dayOfYear() === lastDayInYear){/*&& props.endDate.dayOfYear() !== lastDayInYear*/    //&& props.startDate.dayOfYear() !== 1
+    if(props.timeSegment === 'M' && props.startDate.dayOfYear() === 1 && props.endDate.dayOfYear() === lastDayInYear){
         return (
             <table>
                 <tbody>
@@ -42,7 +55,20 @@ const YearTable = (props) => {
                             {datasets.data.concat(Array(12).fill(null)).map((data, i) => {
                                     if(i < 12)
                                         return (
-                                            <td key={i}>{(data <p>1</p>) || '--'}</td>
+                                            <td key={i}>
+                                                {
+                                                    data ?
+                                                        <span>
+                                                            {data}
+                                                            {
+                                                                datasets.label === String(moment().year()) &&
+                                                                getDifferenceWithLastYear(props.filteredData.datasets,i)
+                                                            }
+                                                        </span>
+                                                        :
+                                                        '--'
+                                                }
+                                            </td>
                                         );
                                     else return null;
                                 }
@@ -69,6 +95,8 @@ const YearTable = (props) => {
     else
         return null;
 };
+
+
 export default YearTable;
 
 

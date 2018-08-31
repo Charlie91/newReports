@@ -28,7 +28,8 @@ const obj_utils = {
             backgroundColor = (typeArr[0] === 'Выручка') ? 'rgba(246, 170, 37, 0.1)' : 'rgba(163, 136, 227, 0.1)',
             label = (typeArr[0] === 'Выручка') ? 'Выручка' : 'Количество чел-к';
 
-        chart.datasets = this.createNewDataset(null, label, backgroundColor, color);
+        //chart.datasets = this.createNewDataset(null, label, backgroundColor, color);
+        chart.datasets = this.createNewDataset(2018);
         return chart;
     },
 
@@ -348,9 +349,15 @@ const obj_utils = {
             newExcel.push(data.floorData);
        }
         else{   //иначе обнуляем массив под новую структуру
-            newExcel = [];
-            newExcel.push(data.floorData);
-        }
+            // newExcel = [];
+            // newExcel.push(data.floorData);
+           newExcel = [];
+           let firstExcellChild = excelData.reduce( (arr,item) => { // иначе преобразуем имеющиеся данные в необходимый вид и тоже добавляем
+               arr.push(item);
+               return arr;
+           },[]);
+           newExcel.push(firstExcellChild, data.floorData);
+       }
 
         return newExcel
     },
@@ -422,6 +429,34 @@ const obj_utils = {
             return result;
         },[]);
         return values.join('')
+    },
+
+    likeForLikeLabel(tooltipItem,data){
+        let index = tooltipItem.index;
+
+        let sortedArr = data.datasets;
+
+        let values = sortedArr.reduce( (result, current, i) => {
+            let [startDate, endDate] = [];
+            let className = 'checked y' + ( current.year || 2018 );// имя класса
+            let square = '<div class="' + className + '"></div>'; //строка HTML-тега
+            let newValue = '<div>' + square + (moment(String((current.year || 2018) - 1)).format('YY') + '-'
+                + moment(String(current.year || 2018)).format('YY')) +
+                ' — ' + formatNumberBySpaces(Math.round(current.data[index])) + '</div>';
+
+            let ifThereTheSameValue = result.some( item => {    // если есть уже подобное значение в результатах - не добавляем
+                return item === newValue;
+            });
+
+            if(!ifThereTheSameValue && current.data[index])
+                result.push(newValue);   //если значение не задвоено и не NaN, undefined и т.д. - добавляем
+
+            return result;
+        },[]);
+        return values.join('')
+
+
+
     },
 
     editDrawFunction(){ //добавляем в Chart.js возможность использования эллипса как формы

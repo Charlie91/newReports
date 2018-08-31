@@ -35,6 +35,7 @@ class XlsExport {
     }
 
     exportToXLS(fileName = 'export.xls',props) {
+
         if (typeof fileName !== 'string' || Object.prototype.toString.call(fileName) !== '[object String]') { throw new Error('Invalid input type: exportToCSV(String)'); }
 
         const TEMPLATE_XLS = `
@@ -52,7 +53,7 @@ class XlsExport {
         </body></html>`;
         const MIME_XLS = 'data:application/vnd.ms-excel;base64,';
 
-        const parameters = { title: this._title, table: (props.comparison_mode ? this.arrayToTable(props) : this.objectToTable(props)) };
+        const parameters = { title: this._title, table: (props.comparison_mode || props.likeForLike ? this.arrayToTable(props) : this.objectToTable(props)) };
         const computeOutput = TEMPLATE_XLS.replace(/{(\w+)}/g, (x, y) => parameters[y]);
 
         this.downloadFile(MIME_XLS + this.toBase64(computeOutput), fileName);

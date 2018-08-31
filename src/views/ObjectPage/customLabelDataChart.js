@@ -60,11 +60,17 @@ export const customLabelDataChart = function(tooltipModel) {
         tableRoot.innerHTML = innerHtmlTitle + innerHtmlBody;
     }
 
+    if(tooltipModel.body[0].lines.length){//если всплывашка пустая, то не показываем ее
+        tooltipEl.style.opacity = 1;
+    }
+    else{
+        tooltipEl.style.opacity = 0;
+    }
+
     var position = this._chart.canvas.getBoundingClientRect();
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltipEl.style.left = (position.left + scrollLeft + tooltipModel.caretX - (tooltipEl.offsetWidth/2) ) + 'px';
     tooltipEl.style.top = (position.top + scrollTop + tooltipModel.caretY - tooltipEl.clientHeight) - 14 + 'px';
     tooltipEl.style.display = 'block';
-    tooltipEl.style.opacity = 1;
 };
