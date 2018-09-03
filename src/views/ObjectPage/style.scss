@@ -1556,6 +1556,9 @@
       .card-body{
         padding: 23px 0 0 17px;
       }
+      .scroll_wrapper{
+        top:0;
+      }
       .datepickers{
         margin-bottom: 22px;
         height:auto!important;
@@ -1798,6 +1801,21 @@
 
     .all_data .card-body .year_selector .year_selector_list {
       margin-left: 0px;
+    }
+    .new-chart{
+      .datepickers .wrapper {
+        width: 123px;
+        height: 22px;
+        line-height: 20px;
+        .icon{
+          width: 11px;
+          height: 9px;
+          background-repeat: no-repeat;
+        }
+        div input{
+          width: 59px;
+        }
+      }
     }
   }
 }

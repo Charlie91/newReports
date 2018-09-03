@@ -45,8 +45,8 @@ export default class ObjectPage extends Component {
             currency:'',
             shortestUnit:'D',
             totalSum:0,
-            startDate:moment('2018-01-01'),//.add(-7,'days'),
-            endDate: moment('2018-12-31'),
+            startDate:moment().add(-7,'days'),
+            endDate: moment(),
             timeSegment: 'D',
             shops:[],
             chart : Object.assign({},this.initialChart)  //клонируем объект изначального состояния графика

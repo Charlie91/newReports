@@ -4,6 +4,7 @@ import moment from 'moment';
 
 
 function getDifferenceWithLastYear(datasets,index){
+    if(datasets.length < 2)return;
     let [currentYear, previousYear] = [datasets.find(el => el.label === String(moment().year())),datasets.find(el => el.label === String(moment().year() - 1))];
     let [currentValue, previousYearValue] = [currentYear.data[index], previousYear.data[index]];
 

@@ -16628,6 +16628,12 @@ button.btn.back-btn {
           font-size: 13px;
           font-weight: 300;
           font-style: italic; }
+      .new-chart .data-line-chart_wrapper table tr span.positive, .new-chart .data-line-chart_wrapper table tr span.negative, .new-chart .data-bar-chart_wrapper table tr span.positive, .new-chart .data-bar-chart_wrapper table tr span.negative {
+        font-size: 90%; }
+      .new-chart .data-line-chart_wrapper table tr span.positive, .new-chart .data-bar-chart_wrapper table tr span.positive {
+        color: #75b67b; }
+      .new-chart .data-line-chart_wrapper table tr span.negative, .new-chart .data-bar-chart_wrapper table tr span.negative {
+        color: #c63a5b; }
   .new-chart .datepickers {
     height: 53px; }
     .new-chart .datepickers .wrapper {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Bar,Chart} from "react-chartjs-2";
+import ChartComponent from 'react-chartjs-2';
 import { Row, Col, Card, CardBody} from "reactstrap";
 import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
@@ -15,6 +16,8 @@ import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick,formatNumericValue} from "../../utils/utils";
 import YearTable from './YearTable';
 import xlsExport from './xls-export';
+import Script from './addCustomTypeWithBorderRadiuses';
+
 
 function getFormat(timeSegment){
     let format;
@@ -103,6 +106,7 @@ let counter = 0;//счетчик выборов дат, нечетное - вы�
 
 
 const DataBarChart = (props) => {
+    Script();
     const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
 
     if(props.floors){
@@ -285,11 +289,13 @@ const DataBarChart = (props) => {
                                 </div>
                                 :
                                 <div className="data-bar-chart_wrapper">
-                                    <Bar
+                                    <ChartComponent
                                         data={filteredData}
+                                        type='roundedBar'
                                         options= {{
                                             maintainAspectRatio: false,
                                             legend: { display: false },
+                                            barRoundness: 0.8,
                                             tooltips: {
                                                 custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
                                                 enabled:false,
