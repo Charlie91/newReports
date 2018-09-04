@@ -43,12 +43,27 @@ class XlsExport {
         <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"/>
         <head><!--[if gte mso 9]><xml>
         <x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{title}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml>
-        <![endif]--></head>
+        <![endif]-->
+        <style>
+            table{
+                font-size:15px;
+                border-collapse: collapse;
+            }
+            td{
+                border:1px solid #d3d3d3;
+                padding:5px;
+            }
+            p{
+                margin:0
+            }
+        </style>
+        </head>
         <body>
         <h1>Reports</h1>
-        <p>${props.type}</p>
-        <p>Объект ${props.object.obj_name}</p>
-        <p>Дата отчета ${moment().format('DD-MM-YYYY')}</p>
+        <p style="font-size:18px">Объект ${props.object.obj_name}</p>
+        <p style="font-size:16px">${props.type}</p>
+        <p style="font-size:14px">Дата отчета ${moment().format('DD-MM-YYYY')}</p>
+        <br/>
         {table}
         </body></html>`;
         const MIME_XLS = 'data:application/vnd.ms-excel;base64,';
@@ -105,8 +120,8 @@ class XlsExport {
         this._data.sort( (a,b) => moment(b[0].THEDATE).year() - moment(a[0].THEDATE).year());//сортируем по годам
 
 
-        const header = `<tr><td></td>${filterArrayOnUniqueElems(dates)
-            .map(item => `<td>${item}</td>`).join('')}<td>Итого</td></tr>`;//фильтрация на уникальность и добавление тегов
+        const header = `<tr><td style="background-color:#ebf2de"></td>${filterArrayOnUniqueElems(dates)
+            .map(item => `<td style="background-color:#dce6f2">${item}</td>`).join('')}<td style="background-color:#dce6f2">Итого</td></tr>`;//фильтрация на уникальность и добавление тегов
 
         let values = '';
         for(let i = 0; i < this._data.length; i++){
@@ -116,7 +131,7 @@ class XlsExport {
             },0);
             values += this._data[i].map( (item,index) => {
                 if(!index)
-                    return `<tr><td>${moment(item.THEDATE).year()}</td><td>${item.VALUE || ''}</td>`;
+                    return `<tr><td style="background-color:#ebf2de">${moment(item.THEDATE).year()}</td><td>${item.VALUE || ''}</td>`;
                 if(index === this._data[i].length - 1)//к последнему элементу массива добавляем ИТОГО
                     return `<td>${item.VALUE || ''}</td><td>${String(sum)}</td></tr>`;
 

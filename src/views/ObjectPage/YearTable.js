@@ -22,9 +22,6 @@ const YearTable = (props) => {
     let lastDayInYear = (props.endDate.year() % 4 === 0) ? 366 : 365;
     props.filteredData.datasets.sort((a,b) => a.label - b.label);
 
-    console.log(props.filteredData);
-    var arr = [];
-
     if(props.timeSegment === 'M' && props.startDate.dayOfYear() === 1 && props.endDate.dayOfYear() === lastDayInYear){
         return (
             <table>

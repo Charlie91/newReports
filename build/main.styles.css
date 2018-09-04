@@ -16244,6 +16244,8 @@ button.btn.back-btn {
       margin-right: -15px; }
     .object_cont .new-chart .card-body {
       padding: 23px 0 0 17px; }
+    .object_cont .new-chart .scroll_wrapper {
+      top: 0; }
     .object_cont .new-chart .datepickers {
       margin-bottom: 22px;
       height: auto !important; }
@@ -16396,7 +16398,17 @@ button.btn.back-btn {
   .object_cont .datepicker_wrp .segmentation_btn-wrp .btn-group .btn {
     font-size: 11px; }
   .object_cont .all_data .card-body .year_selector .year_selector_list {
-    margin-left: 0px; } }
+    margin-left: 0px; }
+  .object_cont .new-chart .datepickers .wrapper {
+    width: 123px;
+    height: 22px;
+    line-height: 20px; }
+    .object_cont .new-chart .datepickers .wrapper .icon {
+      width: 11px;
+      height: 9px;
+      background-repeat: no-repeat; }
+    .object_cont .new-chart .datepickers .wrapper div input {
+      width: 59px; } }
 
 /*Тестовый/временный цсс
 *
