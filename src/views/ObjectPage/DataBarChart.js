@@ -16,7 +16,7 @@ import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick,formatNumericValue} from "../../utils/utils";
 import YearTable from './YearTable';
 import xlsExport from './xls-export';
-import Script from './addCustomTypeWithBorderRadiuses';
+import addCustomTypeWithBorderRadiuses from './addCustomTypeWithBorderRadiuses';
 
 
 function getFormat(timeSegment){
@@ -106,8 +106,15 @@ let counter = 0;//счетчик выборов дат, нечетное - вы�
 
 
 const DataBarChart = (props) => {
-    Script();
+    addCustomTypeWithBorderRadiuses();
     const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
+
+    const times = [
+        { value:'H',label:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
+        { value:'D',label:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD')) },
+        { value:'M',label:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM')) },
+        { value:'Y',label:'По годам',render:(props.startDate.year() !== props.endDate.year()) }
+    ].filter(item => item.render);
 
     if(props.floors){
         var arr = props.floors.map((item,i) => {
@@ -231,12 +238,7 @@ const DataBarChart = (props) => {
                                 closeOnSelect={false}
                                 removeSelected={false}
                                 onChange={props.changeTimeSegment}
-                                options={[
-                                    { value:'H',label:'По часам' },
-                                    { value:'D',label:'По дням' },
-                                    { value:'M',label:'По месяцам' },
-                                    { value:'Y',label:'По годам' }
-                                ]}
+                                options={times}
                                 placeholder="Выберите категории"
                                 simpleValue
                                 value={props.timeSegment}

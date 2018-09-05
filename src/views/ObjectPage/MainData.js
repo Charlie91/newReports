@@ -49,7 +49,6 @@ const MainData = (props) => {
                             {...props}
                         />
                         }
-
                     </Col>
                     <Col xs="12" md="4" lg="4" xl="5">
                         <FloorButtons
