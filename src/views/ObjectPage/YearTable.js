@@ -1,12 +1,20 @@
 import React from 'react';
-import {Col, Row, Card, CardBody} from "reactstrap";
 import moment from 'moment';
+import {formatNumberBySpaces} from './../../utils/utils';
+
+
+function getPreviousYearData(datasets,year){
+    let lastYear = datasets.find(el => el.label === String(year - 1));
+    if(!lastYear && year < 2005)return;//если уж совсем непонятный пздц(чтоб браузер не вис)
+    if(!lastYear)return getPreviousYearData(datasets,year - 1);//если предыдущего года в данных нету - ищем с пред-предыдущем и т.д.
+    return lastYear;
+}
 
 
 function getDifferenceWithLastYear(datasets,index){
     if(datasets.length < 2)return;
-    let [currentYear, previousYear] = [datasets.find(el => el.label === String(moment().year())),datasets.find(el => el.label === String(moment().year() - 1))];
-    let [currentValue, previousYearValue] = [currentYear.data[index], previousYear.data[index]];
+    let [currentYearData, previousYearData] = [datasets.find(el => el.label === String(moment().year())),getPreviousYearData(datasets,moment().year())];
+    let [currentValue, previousYearValue] = [currentYearData.data[index], previousYearData.data[index]];
 
     let diff = ( currentValue - previousYearValue ) / ( ( currentValue + previousYearValue ) / 2 ) * 100;
 
@@ -18,7 +26,7 @@ function getDifferenceWithLastYear(datasets,index){
 }
 
 const YearTable = (props) => {
-    if(!props.filteredData.datasets.length || props.requestIsInProcess)return null;
+    if(props.filteredData.datasets.length < 2 || props.requestIsInProcess)return null;
     let lastDayInYear = (props.endDate.year() % 4 === 0) ? 366 : 365;
     props.filteredData.datasets.sort((a,b) => a.label - b.label);
 
@@ -43,46 +51,63 @@ const YearTable = (props) => {
                     <td className="total">Итого</td>
                     <td className="forecast">Прогноз</td>
                 </tr>
-                {props.filteredData.datasets.map(datasets => {
-                    let total = datasets.data.reduce((sum,item) => {
-                        return sum + item
-                    },0);
-                    return (
-                        <tr key={datasets.label}>
-                            <td>{datasets.label}</td>
-                            {datasets.data.concat(Array(12).fill(null)).map((data, i) => {
-                                    if(i < 12)
-                                        return (
-                                            <td key={i}>
-                                                {
-                                                    data ?
-                                                        <span>
-                                                            {data}
-                                                            {
-                                                                datasets.label === String(moment().year()) &&
-                                                                getDifferenceWithLastYear(props.filteredData.datasets,i)
-                                                            }
-                                                        </span>
-                                                        :
-                                                        '--'
-                                                }
-                                            </td>
-                                        );
-                                    else return null;
-                                }
-                            )}
-                            <td className="total">{total}</td>
-                            <td className="forecast">
-                                {
-                                    (moment().year() == datasets.label) ?
-                                        parseInt(total / moment().month() * 12)
-                                        :
-                                        '--'
-                                }
-                            </td>
-                        </tr>
-                    )
-                }
+                {props.filteredData.datasets.map((datasets,i) => {
+                        let total = datasets.data.reduce((sum,item) => {
+                            return sum + item
+                        },0);
+
+
+                        let previousTotal;
+                        if(datasets.label === String(moment().year())){
+                            previousTotal = getPreviousYearData(props.filteredData.datasets,moment().year()).data.reduce((sum,item) => {
+                                return sum + item
+                            },0);
+                        }
+
+                        return (
+                            <tr key={datasets.label}>
+                                <td>{datasets.label}</td>
+                                {datasets.data.concat(Array(12).fill(null)).map((data, i) => {
+                                        if(i < 12)
+                                            return (
+                                                <td key={i}>
+                                                    {
+                                                        data ?
+                                                            <span>
+                                                               <span dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(data)}`}}></span>
+                                                                {
+                                                                    datasets.label === String(moment().year()) &&
+                                                                    getDifferenceWithLastYear(props.filteredData.datasets,i)
+                                                                }
+                                                            </span>
+                                                            :
+                                                            '--'
+                                                    }
+                                                </td>
+                                            );
+                                        else return null;
+                                    }
+                                )}
+                                <td className="total">
+                                    <span dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(total)}`}}></span>
+                                    <span style={{fontSize:'12px'}}>
+                                    {
+                                        datasets.label === String(moment().year()) &&
+                                        ` ${Math.round(( total - previousTotal ) / ( ( total + previousTotal) / 2 ) * 100)}%`
+                                    }
+                                </span>
+                                </td>
+                                <td className="forecast">
+                                    {
+                                        (moment().year() == datasets.label) ?
+                                            <span dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(parseInt(total / moment().month() * 12))}`}}></span>
+                                            :
+                                            '--'
+                                    }
+                                </td>
+                            </tr>
+                        )
+                    }
 
                 )}
 

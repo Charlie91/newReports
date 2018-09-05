@@ -126,8 +126,9 @@ const DataBarChart = (props) => {
                 data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
                 label:item.label,
                 backgroundColor:getBarsColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
-                borderColor:'#74c2e8',
+                borderColor:'#74c2e8',//'#979797',
                 borderWidth: 1,
+                borderDash:[3,2]
             }
         }),
         labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
@@ -268,126 +269,137 @@ const DataBarChart = (props) => {
                         }
                     </Row>
                     <Row style={{overflow:'hidden'}}>
-                        <Col className="scroll_wrapper">
-                            {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
-                                <div className="data-line-chart_wrapper">
-                                    <YearTable
-                                        filteredData={filteredData}
-                                        {...props}
-                                    />
-                                    <DataChart
-                                        render={!(props.type === 'Выручка')}
-                                        comparison_mode={props.comparison_mode}
-                                        data={props.chart}
-                                        startDate={props.startDate}
-                                        endDate={props.endDate}
-                                        currency={props.currency}
-                                        timeSegment={props.timeSegment}
-                                        emptyData={props.emptyData}
-                                        {...props}
-                                    />
-                                </div>
-                                :
-                                <div className="data-bar-chart_wrapper">
-                                    <ChartComponent
-                                        data={filteredData}
-                                        type='roundedBar'
-                                        options= {{
-                                            maintainAspectRatio: false,
-                                            legend: { display: false },
-                                            barRoundness: 0.8,
-                                            tooltips: {
-                                                custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
-                                                enabled:false,
-                                                callbacks:{
-                                                    title: (tooltipItem, data ) => {
-                                                        let step = getStepSize(props.data.labels.length, props.timeSegment);
-                                                        let title = '';
+                            <Col className="scroll_wrapper">
+                                {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
+                                    <div className="data-line-chart_wrapper">
+                                        {
+                                            props.requestIsInProcess ?
+                                                <Loading/>
+                                                :
+                                                <div>
+                                                    <YearTable
+                                                        filteredData={filteredData}
+                                                        {...props}
+                                                    />
+                                                    <DataChart
+                                                        render={!(props.type === 'Выручка')}
+                                                        comparison_mode={props.comparison_mode}
+                                                        data={props.chart}
+                                                        startDate={props.startDate}
+                                                        endDate={props.endDate}
+                                                        currency={props.currency}
+                                                        timeSegment={props.timeSegment}
+                                                        emptyData={props.emptyData}
+                                                        {...props}
+                                                    />
+                                                </div>
+                                        }
+                                    </div>
+                                    :
+                                    <div className="data-bar-chart_wrapper">
+                                        {props.requestIsInProcess ?
+                                            <Loading/>
+                                            :
+                                            <ChartComponent
+                                                data={filteredData}
+                                                type='roundedBar'
+                                                options= {{
+                                                    maintainAspectRatio: false,
+                                                    legend: { display: false },
+                                                    barRoundness: 0.8,
+                                                    tooltips: {
+                                                        custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
+                                                        enabled:false,
+                                                        callbacks:{
+                                                            title: (tooltipItem, data ) => {
+                                                                let step = getStepSize(props.data.labels.length, props.timeSegment);
+                                                                let title = '';
 
-                                                        if (step !== 1){
-                                                            if (props.timeSegment === 'M')
-                                                                title = moment(tooltipItem[0].xLabel).format('MMM')
-                                                            if (props.timeSegment === 'D')
-                                                                title = moment(tooltipItem[0].xLabel).format('DD MMM')
-                                                            if (props.timeSegment === 'Y')
-                                                                title = moment(tooltipItem[0].xLabel).format('YYYY')
-                                                        }
+                                                                if (step !== 1){
+                                                                    if (props.timeSegment === 'M')
+                                                                        title = moment(tooltipItem[0].xLabel).format('MMM')
+                                                                    if (props.timeSegment === 'D')
+                                                                        title = moment(tooltipItem[0].xLabel).format('DD MMM')
+                                                                    if (props.timeSegment === 'Y')
+                                                                        title = moment(tooltipItem[0].xLabel).format('YYYY')
+                                                                }
 
-                                                        if (props.timeSegment === 'H')
-                                                            title = moment(tooltipItem[0].xLabel).format("HH:mm, DD MMM")
+                                                                if (props.timeSegment === 'H')
+                                                                    title = moment(tooltipItem[0].xLabel).format("HH:mm, DD MMM")
 
-                                                        return title;
-                                                    },
-                                                    label: (tooltipItem, data ) => {
-                                                        if(data.datasets[0].backgroundColor[tooltipItem.index] === 'transparent'){
-                                                            return null;
-                                                        };
+                                                                return title;
+                                                            },
+                                                            label: (tooltipItem, data ) => {
+                                                                if(data.datasets[0].backgroundColor[tooltipItem.index] === 'transparent'){
+                                                                    return null;
+                                                                };
 
-                                                        if(props.comparison_mode){
-                                                            return utils.comparisonLabel(tooltipItem,data)
-                                                        }
-                                                        else{
-                                                            return `
+                                                                if(props.comparison_mode){
+                                                                    return utils.comparisonLabel(tooltipItem,data)
+                                                                }
+                                                                else{
+                                                                    return `
                                                       ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
                                                       ${(props.currency.length > 4) ?
-                                                                (props.currency.substring(0,3) + '.') : props.currency}
+                                                                        (props.currency.substring(0,3) + '.') : props.currency}
                                                   `
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            scales: {
-                                                xAxes: [{
-                                                    barThickness : 20,
-                                                    gridLines: {
-                                                        color: "rgba(0, 0, 0, 0)",
-                                                        borderDash: [4, 4],
-                                                        zeroLineColor: 'rgba(0, 0, 0, 0)'
-                                                    },
-                                                    ticks: {
-                                                        fontColor:'#7f8fa4',
-                                                        fontSize: 14,
-                                                        fontFamily: 'ProximaNova',
-                                                        stepSize:123123,
-                                                        maxRotation: 0,
-                                                        callback: (value, index, values) => {
-                                                            let format = '';
-                                                            switch(props.timeSegment){
-                                                                case 'Y':
-                                                                    format = 'YYYY';
-                                                                    break;
-                                                                case 'M':
-                                                                    format = 'MMM';
-                                                                    break;
-                                                                case 'D':
-                                                                    format = 'DD MMM';
-                                                                    break;
-                                                                case 'H':
-                                                                    format = 'DD.MM T HH:mm';
+                                                                }
                                                             }
-                                                            if(index % 2 === 0)
-                                                                return moment(value).format(format);
-                                                        },
+                                                        }
+                                                    },
+                                                    scales: {
+                                                        xAxes: [{
+                                                            barThickness : 20,
+                                                            gridLines: {
+                                                                color: "rgba(0, 0, 0, 0)",
+                                                                borderDash: [4, 4],
+                                                                zeroLineColor: 'rgba(0, 0, 0, 0)'
+                                                            },
+                                                            ticks: {
+                                                                fontColor:'#7f8fa4',
+                                                                fontSize: 14,
+                                                                fontFamily: 'ProximaNova',
+                                                                stepSize:123123,
+                                                                maxRotation: 0,
+                                                                callback: (value, index, values) => {
+                                                                    let format = '';
+                                                                    switch(props.timeSegment){
+                                                                        case 'Y':
+                                                                            format = 'YYYY';
+                                                                            break;
+                                                                        case 'M':
+                                                                            format = 'MMM';
+                                                                            break;
+                                                                        case 'D':
+                                                                            format = 'DD MMM';
+                                                                            break;
+                                                                        case 'H':
+                                                                            format = 'DD.MM T HH:mm';
+                                                                    }
+                                                                    if(index % 2 === 0)
+                                                                        return moment(value).format(format);
+                                                                },
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            ticks:{
+                                                                min:0,
+                                                                stepSize:max/2
+                                                            },
+                                                            gridLines: {
+                                                                color: "rgba(0, 0, 0, 0)",
+                                                                zeroLineColor: 'rgba(0, 0, 0, 0)',
+                                                                borderDash: [4, 4]
+                                                            },
+                                                        }],
                                                     }
-                                                }],
-                                                yAxes: [{
-                                                    ticks:{
-                                                        min:0,
-                                                        stepSize:max/2
-                                                    },
-                                                    gridLines: {
-                                                        color: "rgba(0, 0, 0, 0)",
-                                                        zeroLineColor: 'rgba(0, 0, 0, 0)',
-                                                        borderDash: [4, 4]
-                                                    },
-                                                }],
-                                            }
 
-                                        }}
-                                    />
-                                </div>
-                            }
-                        </Col>
+                                                }}
+                                            />
+                                        }
+                                    </div>
+                                }
+                            </Col>
                     </Row>
                     <Row>
                         <Col xs='0' md="0" xl={{size:3,offset:9}}>
