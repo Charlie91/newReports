@@ -19,10 +19,13 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
                     chart.datasets[i].pointBorderWidth = 1;
                     chart.datasets[i].pointHoverRadius = 3;
                     chart.datasets[i].pointRadius = 1;
+                    chart.datasets[i].lineWidth = 100;
                 }
-                if(chart.datasets[i].label === '2018'){
+                if(chart.datasets[i].label === String(moment().year())){
                     chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
                     chart.datasets[i].fill = true;
+                    chart.datasets[i].lineWidth = 100;
+
                 }
             }
         }
@@ -32,10 +35,14 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
                     chart.datasets[i].pointBorderWidth = 1;//6
                     chart.datasets[i].pointHoverRadius = 3;//6
                     chart.datasets[i].pointRadius = 1;//3
+                    chart.datasets[i].lineWidth = 100;
+
                 }
-                if(chart.datasets[i].label === '2018'){
+                if(chart.datasets[i].label === String(moment().year())){
                     chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
                     chart.datasets[i].fill = true;
+                    chart.datasets[i].lineWidth = 100;
+
                 }
             }
         }

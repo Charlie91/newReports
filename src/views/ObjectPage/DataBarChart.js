@@ -102,123 +102,205 @@ function getBarsColors(dataLength,labels,timeSegment){
     return [...defaultColorArray,...'transparent,'.repeat(31 - dataLength).split(',').slice(0,-1)];
 }
 
+function getBordersColors(dataLength,labels,timeSegment){
+    const defaultColorArray = [...'transparent,'.repeat(dataLength).split(',').slice(0,-1)];
+    let weekendIndexes = labels.reduce((indexes,item,index) => {
+        if(moment(item).day() === 0 || moment(item).day() === 6){
+            indexes.push(index)
+        }
+        return indexes
+    },[]);
+
+    if(timeSegment === 'D')
+        defaultColorArray.forEach( (color,colorIndex) => {
+            weekendIndexes.forEach( index => {
+                if(colorIndex === index){
+                    defaultColorArray[colorIndex] = 'transparent'
+                }
+            })
+        });
+
+    return [...defaultColorArray,...'#979797,'.repeat(31 - dataLength).split(',').slice(0,-1)];
+}
+
+function addDashesToBorders(chart){
+    if(chart){
+        Chart.helpers.each(chart.chart_instance.getDatasetMeta(0).data, function(rectangle, index) {
+            rectangle.draw = function() {
+                chart.chart_instance.chart.ctx.setLineDash([10, 10]);
+                Chart.elements.Rectangle.prototype.draw.apply(this, arguments);
+            }
+        }, null);
+
+    }
+}
+
 let counter = 0;//счетчик выборов дат, нечетное - выбор начала даты, четное - конец
 
 
-const DataBarChart = (props) => {
-    addCustomTypeWithBorderRadiuses();
-    const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
-
-    const times = [
-        { value:'H',label:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
-        { value:'D',label:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD')) },
-        { value:'M',label:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM')) },
-        { value:'Y',label:'По годам',render:(props.startDate.year() !== props.endDate.year()) }
-    ].filter(item => item.render);
-
-    if(props.floors){
-        var arr = props.floors.map((item,i) => {
-            return {
-                value:i,
-                label:item.name
-            }
-        })
-    }
-    let filteredData, max;
-    filteredData = {
-        datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
-            let length = item.data.length - 2;
-            if(length < 0 || length > 31) length = 0;
-            return {
-                data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
-                label:item.label,
-                backgroundColor:getBarsColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
-                borderColor:'#74c2e8',//'#979797',
-                borderWidth: 1,
-                borderDash:[3,2]
-            }
-        }),
-        labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
-    };
-    if(!props.comparison_mode){
-        max = filteredData.datasets[0].data.reduce( (max,item) => {
-            if(item > max)max = item;
-            return max;
-        },0);
-
-        addEmptyBars(filteredData, props.timeSegment);//добавляем "пустые" графики
+export default class DataBarChart extends Component{
+    constructor(props){
+        super(props);
+        addCustomTypeWithBorderRadiuses();
     }
 
-    return (
-        <Card className={"new-chart" + (props.likeForLikeDisplay ? ' comparisonOn' : '')}>
-            <CardBody>
-                <div>
-                    <h5>Трафик</h5>
-                    <Row>
-                        <Col md="9" className="datepickers">
-                            <div className="wrapper">
-                                <div className="icon"></div>
-                                <DatePicker
-                                    className="datepicker"
-                                    selected={props.startDate}
-                                    startDate={props.startDate}
-                                    endDate={props.endDate}
-                                    shouldCloseOnSelect={false}
-                                    selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
-                                    dateFormat={
-                                        props.likeForLikeDisplay ? "DD MMM YYYY" :
+    componentDidUpdate(){
+        addDashesToBorders(this.chart);
+    }
+
+
+    render(){
+        const props = this.props;
+        const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
+
+        const times = [
+            { value:'H',label:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
+            { value:'D',label:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD')) },
+            { value:'M',label:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM')) },
+            { value:'Y',label:'По годам',render:(props.startDate.year() !== props.endDate.year()) }
+        ].filter(item => item.render);
+
+        if(props.floors){
+            var arr = props.floors.map((item,i) => {
+                return {
+                    value:i,
+                    label:item.name
+                }
+            })
+        }
+        let filteredData, max;
+        filteredData = {
+            datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
+                let length = item.data.length - 2;
+                if(length < 0 || length > 31) length = 0;
+                return {
+                    data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
+                    label:item.label,
+                    backgroundColor:getBarsColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
+                    borderColor:getBordersColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
+                    borderWidth: 1,
+                    borderDash:[3,2]
+                }
+            }),
+            labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
+        };
+        if(!props.comparison_mode){
+            max = filteredData.datasets[0].data.reduce( (max,item) => {
+                if(item > max)max = item;
+                return max;
+            },0);
+
+            addEmptyBars(filteredData, props.timeSegment);//добавляем "пустые" графики
+        }
+
+        return (
+            <Card className={"new-chart" + (props.likeForLikeDisplay ? ' comparisonOn' : '')}>
+                <CardBody>
+                    <div>
+                        <h5>Трафик</h5>
+                        <Row>
+                            <Col md="9" className="datepickers">
+                                <div className="wrapper">
+                                    <div className="icon"></div>
+                                    <DatePicker
+                                        className="datepicker"
+                                        selected={props.startDate}
+                                        startDate={props.startDate}
+                                        endDate={props.endDate}
+                                        shouldCloseOnSelect={false}
+                                        selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
+                                        dateFormat={
+                                            props.likeForLikeDisplay ? "DD MMM YYYY" :
+                                                (props.startDate.month() === props.endDate.month()) ?
+                                                    'DD —' : "DD MMM"
+                                        }
+                                        dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
+                                        onChange={(date) => {props.change(date,++counter)}}
+                                        monthsShown={2}
+                                        withPortal={props.viewportWidth < 992}
+                                        readOnly={props.viewportWidth < 992}
+                                        minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
+                                        maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
+                                    />
+                                    <DatePicker
+                                        className="datepicker"
+                                        selected={(counter % 2 === 0) ? props.endDate : ''}
+                                        startDate={props.startDate}
+                                        endDate={props.endDate}
+                                        shouldCloseOnSelect={false}
+                                        selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
+                                        dateFormat={ props.likeForLikeDisplay ? "— DD MMM YYYY" :
                                             (props.startDate.month() === props.endDate.month()) ?
-                                                'DD —' : "DD MMM"
-                                    }
-                                    dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
-                                    onChange={(date) => {props.change(date,++counter)}}
-                                    monthsShown={2}
-                                    withPortal={props.viewportWidth < 992}
-                                    readOnly={props.viewportWidth < 992}
-                                    minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
-                                    maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
-                                />
-                                <DatePicker
-                                    className="datepicker"
-                                    selected={(counter % 2 === 0) ? props.endDate : ''}
-                                    startDate={props.startDate}
-                                    endDate={props.endDate}
-                                    shouldCloseOnSelect={false}
-                                    selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
-                                    dateFormat={ props.likeForLikeDisplay ? "— DD MMM YYYY" :
-                                        (props.startDate.month() === props.endDate.month()) ?
-                                            "DD MMM" : "— DD MMM" }
-                                    dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
-                                    onChange={(date) => {props.change(date,++counter)}}
-                                    monthsShown={2}
-                                    withPortal={props.viewportWidth < 992}
-                                    readOnly={props.viewportWidth < 992}
-                                    minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
-                                    maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
-                                />
-                            </div>
-                            {props.likeForLikeDisplay ?
-                                <div className="likeForLike" onClick={props.checkLike}>
-                                    <div className={'checkbox' + (props.likeForLike ? ' checked' : '')}></div>
-                                    <div className="text">like for like</div>
-                                    <div className="question_icon">
-                                        ?
-                                        <div className="tip">
-                                            Сравнение с аналогичным периодом в прошлом
+                                                "DD MMM" : "— DD MMM" }
+                                        dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
+                                        onChange={(date) => {props.change(date,++counter)}}
+                                        monthsShown={2}
+                                        withPortal={props.viewportWidth < 992}
+                                        readOnly={props.viewportWidth < 992}
+                                        minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
+                                        maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
+                                    />
+                                </div>
+                                {props.likeForLikeDisplay ?
+                                    <div className="likeForLike" onClick={props.checkLike}>
+                                        <div className={'checkbox' + (props.likeForLike ? ' checked' : '')}></div>
+                                        <div className="text">like for like</div>
+                                        <div className="question_icon">
+                                            ?
+                                            <div className="tip">
+                                                Сравнение с аналогичным периодом в прошлом
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    :
+                                    <YearSelector
+                                        render={true}
+                                        checkYear={props.checkYear}
+                                        numberOfYearsAtList={getNumberOfYears(props.viewportWidth)}
+                                        {...props}
+                                    />
+                                }
+                            </Col>
+                            {(props.viewportWidth > 767 && !props.comparison_mode && !props.likeForLike) ?
+                                <Col md="3" className="totalSum">
+                                <span className="data"
+                                      dangerouslySetInnerHTML=
+                                          {{
+                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
+                                          }}
+                                >
+                                </span>
+                                    <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                                </Col>
                                 :
-                                <YearSelector
-                                    render={true}
-                                    checkYear={props.checkYear}
-                                    numberOfYearsAtList={getNumberOfYears(props.viewportWidth)}
-                                    {...props}
-                                />
+                                ''
                             }
-                        </Col>
-                        {(props.viewportWidth > 767 && !props.comparison_mode && !props.likeForLike) ?
-                            <Col md="3" className="totalSum">
+                        </Row>
+                        <Row>
+                            <Col md="12">
+                                <Select
+                                    closeOnSelect={false}
+                                    removeSelected={false}
+                                    onChange={props.changeTimeSegment}
+                                    options={times}
+                                    placeholder="Выберите категории"
+                                    simpleValue
+                                    value={props.timeSegment}
+                                    inputProps={{readOnly:true}}
+                                />
+                                <Select
+                                    closeOnSelect={false}
+                                    removeSelected={false}
+                                    onChange={props.changeFloor}
+                                    options={arr}
+                                    placeholder="Выберите категории"
+                                    simpleValue
+                                    value={props.floorIndex}
+                                    inputProps={{readOnly:true}}
+                                />
+                            </Col>
+                            {props.viewportWidth < 768 ?
+                                <Col xs="12" className="totalSum">
                                 <span className="data"
                                       dangerouslySetInnerHTML=
                                           {{
@@ -226,51 +308,13 @@ const DataBarChart = (props) => {
                                           }}
                                 >
                                 </span>
-                                <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
-                            </Col>
-                            :
-                            ''
-                        }
-                    </Row>
-                    <Row>
-                        <Col md="12">
-                            <Select
-                                closeOnSelect={false}
-                                removeSelected={false}
-                                onChange={props.changeTimeSegment}
-                                options={times}
-                                placeholder="Выберите категории"
-                                simpleValue
-                                value={props.timeSegment}
-                                inputProps={{readOnly:true}}
-                            />
-                            <Select
-                                closeOnSelect={false}
-                                removeSelected={false}
-                                onChange={props.changeFloor}
-                                options={arr}
-                                placeholder="Выберите категории"
-                                simpleValue
-                                value={props.floorIndex}
-                                inputProps={{readOnly:true}}
-                            />
-                        </Col>
-                        {props.viewportWidth < 768 ?
-                            <Col xs="12" className="totalSum">
-                                <span className="data"
-                                      dangerouslySetInnerHTML=
-                                          {{
-                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
-                                          }}
-                                >
-                                </span>
-                                <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
-                            </Col>
-                            :
-                            ''
-                        }
-                    </Row>
-                    <Row style={{overflow:'hidden'}}>
+                                    <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                                </Col>
+                                :
+                                ''
+                            }
+                        </Row>
+                        <Row style={{overflow:'hidden'}}>
                             <Col className="scroll_wrapper">
                                 {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
                                     <div className="data-line-chart_wrapper">
@@ -305,6 +349,7 @@ const DataBarChart = (props) => {
                                             <ChartComponent
                                                 data={filteredData}
                                                 type='roundedBar'
+                                                ref={(chart) => { this.chart = chart; }}
                                                 options= {{
                                                     maintainAspectRatio: false,
                                                     legend: { display: false },
@@ -402,24 +447,23 @@ const DataBarChart = (props) => {
                                     </div>
                                 }
                             </Col>
-                    </Row>
-                    <Row>
-                        <Col xs='0' md="0" xl={{size:3,offset:9}}>
-                            <div className="excellLinkWrapper">
-                                <a className="excellLink"
-                                   onClick={xls ? () => {
-                                       xls.exportToXLS(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.xls`,props)
-                                   } : ''}
-                                >
-                                    Скачать в Excel
-                                </a>
-                            </div>
-                        </Col>
-                    </Row>
-                </div>
-            </CardBody>
-        </Card>
-    )
-};
-
-export default DataBarChart;
+                        </Row>
+                        <Row>
+                            <Col xs='0' md="0" xl={{size:3,offset:9}}>
+                                <div className="excellLinkWrapper">
+                                    <a className="excellLink"
+                                       onClick={xls ? () => {
+                                           xls.exportToXLS(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.xls`,props)
+                                       } : ''}
+                                    >
+                                        Скачать в Excel
+                                    </a>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </CardBody>
+            </Card>
+        )
+    }
+}

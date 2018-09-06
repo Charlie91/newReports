@@ -6,7 +6,7 @@ import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
 
 
-function addBorderRadiuses(){     //добавляем border-radius'ы в график
+function addBorderRadiuses(chart){     //добавляем border-radius'ы в график
     Chart.elements.Rectangle.prototype.draw = function() {
         var ctx = this._chart.ctx;
         var vm = this._view;
@@ -210,7 +210,7 @@ export default class BarChart extends Component {
 
 
     componentDidUpdate(){       //добавляем border-radius'ы в график
-        addBorderRadiuses();
+        addBorderRadiuses(this.chart);
     }
 
 
