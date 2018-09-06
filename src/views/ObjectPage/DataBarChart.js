@@ -120,7 +120,7 @@ function getBordersColors(dataLength,labels,timeSegment){
             })
         });
 
-    return [...defaultColorArray,...'#979797,'.repeat(31 - dataLength).split(',').slice(0,-1)];
+    return [...defaultColorArray,...'#979797ab,'.repeat(31 - dataLength).split(',').slice(0,-1)];
 }
 
 function addDashesToBorders(chart){
