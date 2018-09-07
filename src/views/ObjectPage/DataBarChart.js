@@ -125,13 +125,7 @@ function getBordersColors(dataLength,labels,timeSegment){
 
 function addDashesToBorders(chart){
     if(chart){
-        Chart.helpers.each(chart.chart_instance.getDatasetMeta(0).data, function(rectangle, index) {
-            rectangle.draw = function() {
-                chart.chart_instance.chart.ctx.setLineDash([10, 10]);
-                Chart.elements.Rectangle.prototype.draw.apply(this, arguments);
-            }
-        }, null);
-
+        chart.chart_instance.chart.ctx.setLineDash([10, 10]);
     }
 }
 
@@ -150,6 +144,7 @@ export default class DataBarChart extends Component{
 
 
     render(){
+
         const props = this.props;
         const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
 

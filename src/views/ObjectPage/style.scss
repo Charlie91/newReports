@@ -1085,7 +1085,11 @@
         margin-left: -17px;
       }
     }
+  }
 
+  .new-chart .scroll_wrapper {
+    overflow-x: scroll;
+    top:0!important;
   }
 }
 

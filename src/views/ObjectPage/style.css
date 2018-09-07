@@ -806,7 +806,10 @@
   .datepicker_wrp:last-child {
     margin-left: 20px; }
     .datepicker_wrp:last-child::before {
-      margin-left: -17px; } }
+      margin-left: -17px; }
+  .new-chart .scroll_wrapper {
+    overflow-x: scroll;
+    top: 0 !important; } }
 
 @media screen and (min-width: 992px) and (max-width: 1260px) {
   .all_data .comparison_mode-wrp .btn {

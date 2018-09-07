@@ -574,18 +574,24 @@ export default class ObjectPage extends Component {
         if(counter % 2 !== 0){
             this.checkIfLikeForLikeModeStillActual(date,this.state.endDate);
             let newSegment = utils.trackActualSegments.bind(this,date,this.state.endDate)();
-            this.setState({startDate:date,timeSegment:newSegment},() => this.getFloorsData());
+            this.setState({startDate:date,timeSegment:newSegment},() => {
+                this.getFloorsData();
+            });
         }
         else{
             if(date < this.state.startDate){
                 this.checkIfLikeForLikeModeStillActual(date,this.state.endDate);
                 let newSegment = utils.trackActualSegments.bind(this,date,this.state.startDate)();
-                this.setState({startDate:date,endDate:this.state.startDate,timeSegment:newSegment},() => this.getFloorsData());
+                this.setState({startDate:date,endDate:this.state.startDate,timeSegment:newSegment},() => {
+                    this.getFloorsData();
+                });
             }
             else{
                 this.checkIfLikeForLikeModeStillActual(this.state.startDate,date);
                 let newSegment = utils.trackActualSegments.bind(this,this.state.startDate,date)();
-                this.setState({endDate:date,timeSegment:newSegment},() => this.getFloorsData());
+                this.setState({endDate:date,timeSegment:newSegment},() => {
+                    this.getFloorsData();
+                });
             }
         }
     }

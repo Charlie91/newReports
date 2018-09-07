@@ -90,7 +90,7 @@ const YearTable = (props) => {
                                 )}
                                 <td className="total">
                                     <span dangerouslySetInnerHTML={{__html:`${formatNumberBySpaces(total)}`}}></span>
-                                    <span style={{fontSize:'12px'}}>
+                                    <span className={total - previousTotal > 0 ? 'positive' : 'negative'} style={{fontSize:'12px'}}>
                                     {
                                         datasets.label === String(moment().year()) &&
                                         ` ${Math.round(( total - previousTotal ) / ( ( total + previousTotal) / 2 ) * 100)}%`

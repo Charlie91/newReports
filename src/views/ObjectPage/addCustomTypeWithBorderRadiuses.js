@@ -1,5 +1,16 @@
 import {Chart} from "react-chartjs-2";
 
+function addDashesToBorders(chart){
+    if(chart){
+        Chart.helpers.each(chart.chart_instance.getDatasetMeta(0).data, function(rectangle, index) {
+            rectangle.draw = function() {
+                chart.chart_instance.chart.ctx.setLineDash([10, 10]);
+                Chart.elements.Rectangle.prototype.draw.apply(this, arguments);
+            }
+        }, null);
+
+    }
+}
 
 export default function(){
     Chart.helpers.drawRoundedTopRectangle = function(ctx, x, y, width, height, radius) {
