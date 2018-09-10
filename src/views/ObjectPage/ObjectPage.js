@@ -350,7 +350,6 @@ export default class ObjectPage extends Component {
 
     removeLikeForLikeAdditionalGraph(){
         let chart  = this.state.chart;
-        console.log(1);
 
         chart.datasets.splice(2,2);
         this.setState({chart:chart})

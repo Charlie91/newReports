@@ -1907,6 +1907,21 @@
     display: inline-block;
     margin-right: 10px;
     height:30px;
+    &:first-child{
+      width:auto;
+      .Select-menu-outer{
+        width: 101%!important;
+      }
+      .Select-multi-value-wrapper{
+        position:relative;
+        .Select-value{
+          position: static;
+        }
+        .Select-input{
+          position:absolute
+        }
+      }
+    }
     #react-select-2--value-item:before {
       content: 'Детализация: ';
     }
@@ -1915,7 +1930,7 @@
     }
     .Select-control {
       border: none;
-      height: 20px;
+      height: 24px;
       cursor:pointer;
       &:hover{
         box-shadow:none;
@@ -2191,6 +2206,10 @@
     margin-left:20px;
     border: solid 1px #886ce6;
     border-radius: 4px;
+    height: 30px;
+    line-height: 27px;
+    top: -1px;
+    position: relative;
     div{
       display: inline-block;
     }
@@ -2228,6 +2247,7 @@
       color: #886ce6;
       font-weight: 400;
       margin-top: 5px;
+      line-height:16px;
       .tip{
         display:none;
         position:absolute;
