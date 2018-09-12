@@ -67,6 +67,7 @@ const obj_utils = {
                 pointHoverBorderWidth: 0,
                 pointRadius: 0,
                 pointHitRadius: 0,
+                borderWidth : 1.7,
                 pointStyle:'ellipse',
                 data: []
             },
@@ -86,6 +87,7 @@ const obj_utils = {
                 pointHoverBorderWidth: 2,
                 pointRadius: 3,
                 pointHitRadius: 10,
+                borderWidth : 1.7,
                 pointStyle:'ellipse',
                 data: []
             }
