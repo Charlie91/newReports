@@ -650,6 +650,13 @@
         color: #354052;
         line-height: 24px;
         font-weight: 500; }
+    .announce .features .timeOfVisit_wrapper {
+      margin-bottom: 27px;
+      margin-top: 20px; }
+      .announce .features .timeOfVisit_wrapper .timeOfVisit {
+        font-size: 36px;
+        color: #354052;
+        font-weight: 300; }
     .announce .features .floor_plans {
       text-decoration: underline;
       margin-top: 30px; }
@@ -946,6 +953,8 @@
         text-align: center; }
       .object_cont .announce .obj_title a.link_desktop {
         display: none; }
+      .object_cont .announce .features .timeOfVisit_wrapper .timeOfVisit {
+        font-size: 23px; }
     .object_cont .average_hours {
       -webkit-overflow-scrolling: touch; }
       .object_cont .average_hours .scrollHider {

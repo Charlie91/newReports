@@ -1,7 +1,7 @@
 
 let postfix = PRODUCTION ? '' : '_test'; //пути различаются в девелопменте и продакшене
 
-export let API = {
+export const API = {
     main: `https://repo.re-ports.ru/app${postfix}/UserData`,
     auth: `https://repo.re-ports.ru/app${postfix}/Auth`,
     register: `https://repo.re-ports.ru/app${postfix}/Register`,
@@ -17,5 +17,6 @@ export let API = {
     abcAnalysis_shops:`https://repo.re-ports.ru/trc_api${postfix}/abc_xyz_shops`,
     abcAnalysis_categories:`https://repo.re-ports.ru/trc_api${postfix}/abc_xyz_types`,
     imgPath:`https://re-ports.ru/app/img/malls/resize`,
-    thumbPath:`https://re-ports.ru/app/img/malls/thumb/`
+    thumbPath:`https://re-ports.ru/app/img/malls/thumb/`,
+    averageTimeOfVisit:`https://repo.re-ports.ru/trc_api${postfix}/approx_time`
 };
