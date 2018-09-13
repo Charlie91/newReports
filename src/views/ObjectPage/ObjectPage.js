@@ -570,6 +570,8 @@ export default class ObjectPage extends Component {
         this.getNewObjectsData();
     }
 
+
+    // TODO DELETE
     datepickerTestChange(date,counter){
         if(counter % 2 !== 0){
             this.checkIfLikeForLikeModeStillActual(date,this.state.endDate);
@@ -595,6 +597,16 @@ export default class ObjectPage extends Component {
             }
         }
     }
+
+    // TODO new
+    datepickerChange(startDate, endDate){
+      this.checkIfLikeForLikeModeStillActual(startDate, endDate);
+      let newSegment = utils.trackActualSegments.bind(this, startDate, endDate )();
+      this.setState({startDate: startDate, endDate: endDate, timeSegment:newSegment},() => {
+        this.getFloorsData();
+      });
+    }
+
 
     checkIfLikeForLikeModeStillActual(startDate,endDate){
         if(this.state.likeForLike && startDate.year() === endDate.year())
@@ -682,6 +694,7 @@ export default class ObjectPage extends Component {
                 <DataBarChart
                     data={state.chart}
                     change={this.datepickerTestChange.bind(this)}
+                    change2={this.datepickerChange.bind(this)}
                     checkYear={this.checkYear.bind(this)}
                     changeTimeSegment={this.changeTimeSegment.bind(this)}
                     changeFloor={this.changeFloor.bind(this)}

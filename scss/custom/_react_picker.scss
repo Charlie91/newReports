@@ -1,0 +1,35 @@
+// scss-lint:disable all
+@charset "UTF-8";
+
+
+.react_picker .icon {
+    background-image: url(/img/calendar.png);
+    width: 15px;
+    height: 11px;
+    background-size: 100%;
+}
+.DateRangePickerInput_calendarIcon{
+  padding: 8px;
+  margin: 0 5px 0 0px;
+}
+
+.DateRangePickerInput__withBorder {
+    border-radius: 4px;
+    border: 1px solid #886ce6;
+}
+.DateInput_input__small {
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: .2px;
+  padding: 5px 7px 3px;
+  color: #354052;
+  font-family: ProximaNova, "Segoe UI", Roboto, HelveticaNeue, Arial, sans-serif;
+  border-radius: 0;
+}
+.DateInput {
+  background-color: transparent;
+}
+.DateInput_input__focused {
+    border-bottom: 2px solid #886ce6;
+}

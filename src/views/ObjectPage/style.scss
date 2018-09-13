@@ -2151,37 +2151,7 @@
     height: 53px;
     .wrapper{
       width: auto;//12;
-      border: solid 1px #886ce6;
-      border-radius: 4px;
       display: inline-block;
-      height: 30px;
-      line-height: 27px;
-      .icon{
-        background-image: url('/img/calendar.png');
-        width: 15px;
-        height: 11px;
-        background-size: 100%;
-        position: absolute;
-        margin: 8px;
-      }
-      >div{
-        display: inline-block;
-        &:nth-child(2){
-          input{
-            text-align:right;
-          }
-        }
-        input{
-          background: transparent;
-          border: none;
-          width: 75px;
-          font-size: 14px;
-          color: #354052;
-          &:focus{
-            outline: none;
-          }
-        }
-      }
     }
   }
 
