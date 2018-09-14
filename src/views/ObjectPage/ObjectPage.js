@@ -69,6 +69,7 @@ export default class ObjectPage extends Component {
                 this.props.upState('address',this.state.object.address);
                 this.getDataForABCAnalysis('shops');//парсинг данных для ABCXYZ графика
                 this.formatInnerObjects(obj.inners);
+                this.getAverageTimeOfVisit();
             });
     }
 
@@ -91,6 +92,7 @@ export default class ObjectPage extends Component {
                     this.props.upState('address',this.state.object.address);
                     this.getDataForABCAnalysis('shops');//парсинг данных для ABCXYZ графика
                     this.formatInnerObjects(obj.inners);
+                    this.getAverageTimeOfVisit();
                 })
             })
             .then(() => this.getFloors())
@@ -230,6 +232,15 @@ export default class ObjectPage extends Component {
 
     }
 
+    getAverageTimeOfVisit(){
+        const objId = this.state.object.id;
+
+        const url = `${API.averageTimeOfVisit}?trcId=${objId}`;
+        ajaxRequest(url)
+            .then(data => this.setState({averageTimeOfVisit:data.average_time_spent * 3600}))//среднее время посещения в секундах
+            .catch(err => console.log(err))
+    }
+
 
     comparisonGraphHandler(){
         if(this.state.comparison_mode){//если режим сравнения был включен
@@ -350,7 +361,6 @@ export default class ObjectPage extends Component {
 
     removeLikeForLikeAdditionalGraph(){
         let chart  = this.state.chart;
-        console.log(1);
 
         chart.datasets.splice(2,2);
         this.setState({chart:chart})
@@ -658,7 +668,7 @@ export default class ObjectPage extends Component {
                 <Announce
                     object={state.object}
                     images={state.images}
-                    state={state}
+                    {...state}
                 />
                 {(state.viewportWidth > 1467) ?
                     <BarChart

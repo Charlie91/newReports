@@ -18,13 +18,13 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
                 if( i % 2 !== 0 ){
                     chart.datasets[i].pointBorderWidth = 1;
                     chart.datasets[i].pointHoverRadius = 3;
-                    chart.datasets[i].pointRadius = 1;
-                    chart.datasets[i].borderWidth = 0;
+                    chart.datasets[i].pointRadius = 0.7;
+                    chart.datasets[i].borderWidth = 1.7;
                 }
                 if(chart.datasets[i].label === String(moment().year())){
                     chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
                     chart.datasets[i].fill = true;
-                    chart.datasets[i].borderWidth = 0;
+                    chart.datasets[i].borderWidth = 1.7;
 
                 }
             }
@@ -34,14 +34,14 @@ function addAdditionalStylesToChart(chart){ //изменение стилей в
                 if(i % 2 !== 0){
                     chart.datasets[i].pointBorderWidth = 1;//6
                     chart.datasets[i].pointHoverRadius = 3;//6
-                    chart.datasets[i].pointRadius = 1;//3
-                    chart.datasets[i].borderWidth = 0;
+                    chart.datasets[i].pointRadius = 0.7;//3
+                    chart.datasets[i].borderWidth = 1.7;
 
                 }
                 if(chart.datasets[i].label === String(moment().year())){
                     chart.datasets[i].backgroundColor = 'rgba(116, 194, 232, 0.3)';
                     chart.datasets[i].fill = true;
-                    chart.datasets[i].borderWidth = 0;
+                    chart.datasets[i].borderWidth = 1.7;
 
                 }
             }
