@@ -7,6 +7,7 @@ import './style.scss';
 import './style-blur.css';
 import frozenGlass from './frozenGlass';
 
+
 class Empty extends Component {
     componentDidMount(){
         document.body.classList.remove('sidebar-fixed'); //убираем класс с body чтобы выровнять контентный блок

@@ -6,6 +6,7 @@ import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
 import DatePicker from 'react-datepicker';
+import ReactPicker from './custom_datepickers/ReactPicker';
 import Select from 'react-select';
 import YearSelector from './YearSelector';
 import utils from './obj_utils';
@@ -129,8 +130,6 @@ function addDashesToBorders(chart){
     }
 }
 
-let counter = 0;//счетчик выборов дат, нечетное - выбор начала даты, четное - конец
-
 
 export default class DataBarChart extends Component{
     constructor(props){
@@ -196,45 +195,7 @@ export default class DataBarChart extends Component{
                         <Row>
                             <Col md="9" className="datepickers">
                                 <div className="wrapper">
-                                    <div className="icon"></div>
-                                    <DatePicker
-                                        className="datepicker"
-                                        selected={props.startDate}
-                                        startDate={props.startDate}
-                                        endDate={props.endDate}
-                                        shouldCloseOnSelect={false}
-                                        selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
-                                        dateFormat={
-                                            props.likeForLikeDisplay ? "DD MMM YYYY" :
-                                                (props.startDate.month() === props.endDate.month()) ?
-                                                    'DD —' : "DD MMM"
-                                        }
-                                        dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
-                                        onChange={(date) => {props.change(date,++counter)}}
-                                        monthsShown={2}
-                                        withPortal={props.viewportWidth < 992}
-                                        readOnly={props.viewportWidth < 992}
-                                        minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
-                                        maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
-                                    />
-                                    <DatePicker
-                                        className="datepicker"
-                                        selected={(counter % 2 === 0) ? props.endDate : ''}
-                                        startDate={props.startDate}
-                                        endDate={props.endDate}
-                                        shouldCloseOnSelect={false}
-                                        selectsEnd={counter % 2 !== 0}//закрашивает диапазон только при выборе конечной даты
-                                        dateFormat={ props.likeForLikeDisplay ? "— DD MMM YYYY" :
-                                            (props.startDate.month() === props.endDate.month()) ?
-                                                "DD MMM" : "— DD MMM" }
-                                        dateFormatCalendar={props.comparison_mode ? "MMMM" : "MMMM YYYY"}
-                                        onChange={(date) => {props.change(date,++counter)}}
-                                        monthsShown={2}
-                                        withPortal={props.viewportWidth < 992}
-                                        readOnly={props.viewportWidth < 992}
-                                        minDate={props.comparison_mode ? moment(moment().year() + "-01-01") : moment('1970-01-01')}
-                                        maxDate={props.comparison_mode ? moment(moment().year() + "-12-31") : moment()}
-                                    />
+                                  <ReactPicker {...props} />
                                 </div>
                                 {props.likeForLikeDisplay ?
                                     <div className="likeForLike" onClick={props.checkLike}>

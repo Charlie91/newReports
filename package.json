@@ -45,6 +45,7 @@
     "react-chartjs-2": "2.5.6",
     "react-cookie": "^2.1.2",
     "react-datepicker": "^0.56.0",
+    "react-dates": "^18.0.2",
     "react-dom": "^15.6.1",
     "react-dropdown-tree-select": "^1.0.2",
     "react-input-mask": "^1.0.7",
