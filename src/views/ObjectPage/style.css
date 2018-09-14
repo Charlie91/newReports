@@ -1538,30 +1538,7 @@
     height: 53px; }
     .new-chart .datepickers .wrapper {
       width: auto;
-      border: solid 1px #886ce6;
-      border-radius: 4px;
-      display: inline-block;
-      height: 30px;
-      line-height: 27px; }
-      .new-chart .datepickers .wrapper .icon {
-        background-image: url("/img/calendar.png");
-        width: 15px;
-        height: 11px;
-        background-size: 100%;
-        position: absolute;
-        margin: 8px; }
-      .new-chart .datepickers .wrapper > div {
-        display: inline-block; }
-        .new-chart .datepickers .wrapper > div:nth-child(2) input {
-          text-align: right; }
-        .new-chart .datepickers .wrapper > div input {
-          background: transparent;
-          border: none;
-          width: 75px;
-          font-size: 14px;
-          color: #354052; }
-          .new-chart .datepickers .wrapper > div input:focus {
-            outline: none; }
+      display: inline-block; }
   .new-chart .likeForLike {
     display: inline-block;
     cursor: pointer;

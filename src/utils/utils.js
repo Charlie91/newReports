@@ -2,7 +2,6 @@ import {API} from './api_paths';
 import punycode from 'punycode';
 import parser from 'ua-parser-js';
 
-
 export function checkEitherLoggedInOrNot(){ //проверка залогинен ли юзер
     return ajaxRequest(API.auth)
 }
