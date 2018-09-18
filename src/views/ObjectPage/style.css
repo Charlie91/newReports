@@ -1167,9 +1167,9 @@
           margin: 5px; }
         .object_cont .new-chart .datepickers .wrapper div input {
           width: 67px; }
-    .object_cont .new-chart.comparisonOn .datepickers .wrapper {
+    .object_cont .new-chart.likeforLikeOn .datepickers .wrapper {
       width: 205px; }
-      .object_cont .new-chart.comparisonOn .datepickers .wrapper div input {
+      .object_cont .new-chart.likeforLikeOn .datepickers .wrapper div input {
         width: 100px; }
     .object_cont .new-chart .year_selector {
       margin-left: 0; }
@@ -1212,7 +1212,15 @@
       font-size: 9px; }
       #chartjs-tooltip2 > div .tooltip_body .checked {
         top: 1px;
-        position: relative; } }
+        position: relative; }
+  .DateRangePicker_picker__fullScreenPortal {
+    top: 52px; }
+  .DayPickerNavigation__verticalDefault {
+    bottom: 52px; }
+  .likeforLikeOn .DateInput__small {
+    width: 85px; }
+  .DateInput__small {
+    width: 65px; } }
 
 @media screen and (max-width: 575px) {
   .object_cont .announce .features {
@@ -1327,9 +1335,9 @@
 
 .new-chart {
   overflow: hidden; }
-  .new-chart.comparisonOn .datepickers .wrapper {
+  .new-chart.likeforLikeOn .datepickers .wrapper {
     width: 243px; }
-    .new-chart.comparisonOn .datepickers .wrapper > div input {
+    .new-chart.likeforLikeOn .datepickers .wrapper > div input {
       width: 120px; }
   .new-chart .card-body {
     padding: 25px 40px 17px; }

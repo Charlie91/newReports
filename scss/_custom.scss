@@ -32,6 +32,10 @@ body{
     position:fixed;
     width: 100%;
   }
+  &.mobile-calendar-open{
+    overflow: hidden;
+    position:fixed;
+  }
 }
 
 .app-footer{

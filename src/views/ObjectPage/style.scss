@@ -1262,7 +1262,6 @@
     height: 0px;
     display:none;
   }
-
   .object_cont{
     width:100%;
     margin:auto;
@@ -1634,7 +1633,7 @@
           }
         }
       }
-      &.comparisonOn .datepickers{
+      &.likeforLikeOn .datepickers{
         .wrapper{
           width:205px;
           div input{
@@ -1711,6 +1710,22 @@
       }
     }
   }
+
+  .DateRangePicker_picker__fullScreenPortal {
+    top: 52px;
+  }
+  .DayPickerNavigation__verticalDefault {
+    bottom: 52px;
+  }
+  .likeforLikeOn{
+    .DateInput__small {
+      width: 85px;
+    }
+  }
+  .DateInput__small {
+    width: 65px;
+  }
+
 }
 
 @media screen and (max-width:575px){
@@ -1883,7 +1898,7 @@
 
 .new-chart{
   overflow: hidden;
-  &.comparisonOn{
+  &.likeforLikeOn{
     .datepickers{
       .wrapper{
         width: 243px;

@@ -703,8 +703,7 @@ export default class ObjectPage extends Component {
 
                 <DataBarChart
                     data={state.chart}
-                    change={this.datepickerTestChange.bind(this)}
-                    change2={this.datepickerChange.bind(this)}
+                    change={this.datepickerChange.bind(this)}
                     checkYear={this.checkYear.bind(this)}
                     changeTimeSegment={this.changeTimeSegment.bind(this)}
                     changeFloor={this.changeFloor.bind(this)}
