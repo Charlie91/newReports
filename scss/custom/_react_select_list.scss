@@ -1,0 +1,88 @@
+// scss-lint:disable all
+@charset "UTF-8";
+
+.select_list {
+  width: 173px;
+  font-size: 13px;
+  border: solid 1px #886ce6;
+  border-radius: 3px;
+  padding:2px;
+  display: inline-block;
+  margin-right: 10px;
+  height:30px;
+
+  #react-select-2--value-item:before {
+    content: 'Детализация: ';
+  }
+  #react-select-3--value-item:before{
+    content: 'Вход: ';
+  }
+  .Select-control {
+    border: none;
+    height: 24px;
+    cursor:pointer;
+    &:hover{
+      box-shadow:none;
+    }
+    .Select-input{
+      height:20px;
+      >input{
+        padding:0;
+      }
+    }
+    .Select-arrow-zone{
+      padding-right:0;
+      .Select-arrow{
+        border: none;
+        background-image: url('/img/dropdown.png');
+        width: 9px;
+        height: 6px;
+        margin-right: -6px;
+      }
+    }
+    .Select-placeholder {
+      cursor: pointer;
+      color: #354052;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    .Select-value{
+      line-height: 23px;
+      color: #354052;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      padding-right:15px!important;
+      .Select-value-label{
+        margin-left: -5px;
+      }
+    }
+    span.Select-clear-zone {
+      display: none;
+    }
+  }
+  .Select-menu-outer {
+    border: 1px solid #886be6;
+    top: 25px;
+    .Select-option{
+      padding-left:6px
+    }
+  }
+  &.is-open{
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    .Select-arrow{
+      background-image: url('/img/dropup.png')!important;
+    }
+    .Select-menu-outer {
+      border-top: none;
+      width:173px;
+      margin-left:-1px;
+    }
+  }
+  &.is-focused{
+    .Select-control {
+      box-shadow:none
+    }
+  }
+}

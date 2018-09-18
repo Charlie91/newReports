@@ -1,0 +1,99 @@
+// scss-lint:disable all
+@charset "UTF-8";
+
+.year_selector{
+  display: inline-block;
+  margin-left: 20px;
+  div{
+    display: inline-block;
+  }
+  .year_selector_list{
+    .year{
+      cursor: pointer;
+      border-radius: 4px;
+      border: solid 1px #e3e3e3;
+      margin-right: 10px;
+      padding: 4px 13px;
+      line-height: normal;
+      width: 88px;
+      height: 30px;
+      >span{
+        font-size: 14px;
+        color: #7f8fa4;
+      }
+      .checkbox {
+        width: 12px;
+        height: 12px;
+        border: solid 1px #e3e3e3;
+        position: relative;
+        top: 1px;
+        margin-right: 5px;
+        &.checked.y2018{
+          background-color: #74c2e8;
+          border: solid 1px #74c2e8;
+        }
+        &.checked.y2017{
+          background-color: #9fd473;
+          border: solid 1px #9fd473;
+        }
+        &.checked.y2016{
+          background-color: #8570CE;
+          border: solid 1px #8570CE;
+        }
+      }
+    }
+    .dropdown{
+      width: 73px!important;
+      border-radius: 4px;
+      border: solid 1px #e3e3e3;
+      padding: 0px 6px;
+      line-height: normal;
+      z-index: 1;
+      background:#fff;
+      height: 30px;
+      .btn{
+        padding: 0;
+        color: #7f8fa4;
+        line-height: 1;
+        background: none;
+        height:30px;
+        &:focus{
+          box-shadow:none
+        }
+      }
+      .dropdown-toggle::after{
+        content:url('/img/dropdown.png');
+        border:none;
+        margin-top: -1px;
+        position: absolute;
+      }
+      .dropdown-menu{
+        min-width: 73px;
+        margin-top: -2px;
+        border-top: none;
+        border-radius: 0px 0px 4px 4px;
+        width: 65px;
+        margin-left: -1px;
+        padding: 0 7px;
+        .year{
+          display: block;
+          border: none;
+          margin: 10px auto;
+          padding:0;
+          white-space: nowrap;
+          .y2015.checked{
+            background-color: #ed8455;
+            border: solid 1px #ed8455;
+          }
+          .y2014.checked{
+            background-color: #e06c89;
+            border: solid 1px #e06c89;
+          }
+          span{
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+}

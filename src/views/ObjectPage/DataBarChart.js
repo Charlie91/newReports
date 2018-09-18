@@ -136,6 +136,10 @@ export default class DataBarChart extends Component{
     constructor(props){
         super(props);
         addCustomTypeWithBorderRadiuses();
+
+        this.state = {
+            type_of_data: (props.type === 'Выручка') ? 'Выручка' : 'Трафик'
+        }
     }
 
     componentDidUpdate(){
@@ -192,7 +196,7 @@ export default class DataBarChart extends Component{
             <Card className={"new-chart" + (props.likeForLikeDisplay ? ' comparisonOn' : '')}>
                 <CardBody>
                     <div>
-                        <h5>Трафик</h5>
+                        <h5>{this.state.type_of_data}</h5>
                         <Row>
                             <Col md="9" className="datepickers">
                                 <div className="wrapper">
@@ -223,7 +227,7 @@ export default class DataBarChart extends Component{
                                           }}
                                 >
                                 </span>
-                                    <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                                    <span className="muted">{this.state.type_of_data} за выбранный период</span>
                                 </Col>
                                 :
                                 ''
@@ -232,6 +236,7 @@ export default class DataBarChart extends Component{
                         <Row>
                             <Col md="12">
                                 <Select
+                                    className="select_list"
                                     closeOnSelect={true}
                                     removeSelected={false}
                                     onChange={props.changeTimeSegment}
@@ -242,6 +247,7 @@ export default class DataBarChart extends Component{
                                     inputProps={{readOnly:true}}
                                 />
                                 <Select
+                                    className="select_list"
                                     closeOnSelect={true}
                                     removeSelected={false}
                                     onChange={props.changeFloor}
@@ -261,7 +267,7 @@ export default class DataBarChart extends Component{
                                           }}
                                 >
                                 </span>
-                                    <span className="muted">{(props.type === 'Выручка') ? 'Выручка' : 'Посетители'} за выбранный период</span>
+                                    <span className="muted">{this.state.type_of_data} за выбранный период</span>
                                 </Col>
                                 :
                                 ''
