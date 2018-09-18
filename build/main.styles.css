@@ -13787,6 +13787,9 @@ body {
     overflow: hidden;
     position: fixed;
     width: 100%; }
+  body.mobile-calendar-open {
+    overflow: hidden;
+    position: fixed; }
 
 .app-footer {
   position: absolute;
@@ -14279,6 +14282,36 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   width: auto;
   height: auto;
   padding: 2px; }
+
+.react_picker .icon {
+  background-image: url(./img/calendar.c77aac55b12a708372db8166ce1ed4b0.png);
+  width: 15px;
+  height: 11px;
+  background-size: 100%; }
+
+.DateRangePickerInput_calendarIcon {
+  padding: 8px;
+  margin: 0 5px 0 0px; }
+
+.DateRangePickerInput__withBorder {
+  border-radius: 4px;
+  border: 1px solid #886ce6; }
+
+.DateInput_input__small {
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: .2px;
+  padding: 5px 7px 3px;
+  color: #354052;
+  font-family: ProximaNova, "Segoe UI", Roboto, HelveticaNeue, Arial, sans-serif;
+  border-radius: 0; }
+
+.DateInput {
+  background-color: transparent; }
+
+.DateInput_input__focused {
+  border-bottom: 2px solid #886ce6; }
 @charset "UTF-8";
 body {
   font-family: ProximaNova, "Segoe UI", Roboto, "HelveticaNeue", Arial, sans-serif !important;
@@ -16301,9 +16334,9 @@ button.btn.back-btn {
           margin: 5px; }
         .object_cont .new-chart .datepickers .wrapper div input {
           width: 67px; }
-    .object_cont .new-chart.comparisonOn .datepickers .wrapper {
+    .object_cont .new-chart.likeforLikeOn .datepickers .wrapper {
       width: 205px; }
-      .object_cont .new-chart.comparisonOn .datepickers .wrapper div input {
+      .object_cont .new-chart.likeforLikeOn .datepickers .wrapper div input {
         width: 100px; }
     .object_cont .new-chart .year_selector {
       margin-left: 0; }
@@ -16346,7 +16379,15 @@ button.btn.back-btn {
       font-size: 9px; }
       #chartjs-tooltip2 > div .tooltip_body .checked {
         top: 1px;
-        position: relative; } }
+        position: relative; }
+  .DateRangePicker_picker__fullScreenPortal {
+    top: 52px; }
+  .DayPickerNavigation__verticalDefault {
+    bottom: 52px; }
+  .likeforLikeOn .DateInput__small {
+    width: 85px; }
+  .DateInput__small {
+    width: 65px; } }
 
 @media screen and (max-width: 575px) {
   .object_cont .announce .features {
@@ -16461,9 +16502,9 @@ button.btn.back-btn {
 
 .new-chart {
   overflow: hidden; }
-  .new-chart.comparisonOn .datepickers .wrapper {
+  .new-chart.likeforLikeOn .datepickers .wrapper {
     width: 243px; }
-    .new-chart.comparisonOn .datepickers .wrapper > div input {
+    .new-chart.likeforLikeOn .datepickers .wrapper > div input {
       width: 120px; }
   .new-chart .card-body {
     padding: 25px 40px 17px; }
@@ -16672,30 +16713,7 @@ button.btn.back-btn {
     height: 53px; }
     .new-chart .datepickers .wrapper {
       width: auto;
-      border: solid 1px #886ce6;
-      border-radius: 4px;
-      display: inline-block;
-      height: 30px;
-      line-height: 27px; }
-      .new-chart .datepickers .wrapper .icon {
-        background-image: url(./img/calendar.c77aac55b12a708372db8166ce1ed4b0.png);
-        width: 15px;
-        height: 11px;
-        background-size: 100%;
-        position: absolute;
-        margin: 8px; }
-      .new-chart .datepickers .wrapper > div {
-        display: inline-block; }
-        .new-chart .datepickers .wrapper > div:nth-child(2) input {
-          text-align: right; }
-        .new-chart .datepickers .wrapper > div input {
-          background: transparent;
-          border: none;
-          width: 75px;
-          font-size: 14px;
-          color: #354052; }
-          .new-chart .datepickers .wrapper > div input:focus {
-            outline: none; }
+      display: inline-block; }
   .new-chart .likeForLike {
     display: inline-block;
     cursor: pointer;

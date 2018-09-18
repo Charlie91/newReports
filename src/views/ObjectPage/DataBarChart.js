@@ -193,7 +193,7 @@ export default class DataBarChart extends Component{
         }
 
         return (
-            <Card className={"new-chart" + (props.likeForLikeDisplay ? ' comparisonOn' : '')}>
+            <Card className={"new-chart" + (props.likeForLikeDisplay ? ' likeforLikeOn' : '')}>
                 <CardBody>
                     <div>
                         <h5>{this.state.type_of_data}</h5>
