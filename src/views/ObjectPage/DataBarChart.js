@@ -6,9 +6,10 @@ import Loading from './../Loading/Small';
 import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
 import DatePicker from 'react-datepicker';
-import ReactPicker from './custom_datepickers/ReactPicker';
+import ReactPicker from './custom_elements/ReactPicker';
+import CheckButton from './custom_elements/CheckButton';
+import YearSelector from './custom_elements/YearSelector';
 import Select from 'react-select';
-import YearSelector from './YearSelector';
 import utils from './obj_utils';
 import DataChart from './DataChart';
 import moment from 'moment';
@@ -198,16 +199,12 @@ export default class DataBarChart extends Component{
                                   <ReactPicker {...props} />
                                 </div>
                                 {props.likeForLikeDisplay ?
-                                    <div className="likeForLike" onClick={props.checkLike}>
-                                        <div className={'checkbox' + (props.likeForLike ? ' checked' : '')}></div>
-                                        <div className="text">like for like</div>
-                                        <div className="question_icon">
-                                            ?
-                                            <div className="tip">
-                                                Сравнение с аналогичным периодом в прошлом
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <CheckButton title={"like for like"}
+                                                 onPress={props.checkLike}
+                                                 tooltip_on={true}
+                                                 tooptip_text={'Сравнение с аналогичным периодом в прошлом'}
+                                                 color={'#9fd573'}
+                                    />
                                     :
                                     <YearSelector
                                         render={true}
@@ -235,7 +232,7 @@ export default class DataBarChart extends Component{
                         <Row>
                             <Col md="12">
                                 <Select
-                                    closeOnSelect={false}
+                                    closeOnSelect={true}
                                     removeSelected={false}
                                     onChange={props.changeTimeSegment}
                                     options={times}
@@ -245,7 +242,7 @@ export default class DataBarChart extends Component{
                                     inputProps={{readOnly:true}}
                                 />
                                 <Select
-                                    closeOnSelect={false}
+                                    closeOnSelect={true}
                                     removeSelected={false}
                                     onChange={props.changeFloor}
                                     options={arr}

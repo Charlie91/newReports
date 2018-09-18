@@ -5,7 +5,7 @@ import DataChart from './DataChart';
 import DataChartSmall from './DataChartSmall';
 import utils from './obj_utils';
 import Datepickers from './Datepickers';
-import YearSelector from './YearSelector';
+import YearSelector from './custom_elements/YearSelector';
 import FloorButtons from './floor_buttons';
 import SegmentationButtons from './segmentation_buttons';
 

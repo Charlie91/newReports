@@ -34,7 +34,10 @@ const YearSelector = (props) => {
                     </button>
                     <div className="dropdown-menu none" aria-labelledby="dropdownMenuButton">
                         {years && dropdownData.map( (item,i) =>
-                            <div className="year" key={i} onClick={props.checkYear.bind(null,item)}>
+                            <div className="year" key={i} onClick={ () => {
+                                props.checkYear.bind(null,item)();
+                                toggleDropDown();
+                            }}>
                                 <div className={"checkbox y" + item}></div>
                                 <span>{`${item} ${props.additional || ''}`}</span>
                             </div>

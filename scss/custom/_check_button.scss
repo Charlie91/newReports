@@ -1,0 +1,81 @@
+// scss-lint:disable all
+@charset "UTF-8";
+
+
+.checkButton{
+  display: inline-block;
+  cursor: pointer;
+  margin-left:20px;
+  border: solid 1px #886ce6;
+  border-radius: 4px;
+  height: 30px;
+  line-height: 27px;
+  top: -1px;
+  position: relative;
+  div{
+    display: inline-block;
+  }
+  .text{
+    font-size: 14px;
+    letter-spacing: -0.1px;
+    color: #354052;
+    width: 94px;
+    text-align: center;
+    position: relative;
+    left: 3px;
+  }
+  .checkbox{
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid #d3d9df;
+    top: 3px;
+    position: relative;
+    left: 10px;
+    &.checked{
+      margin-right: 0;
+    }
+  }
+  .question_icon {
+    position: absolute;
+    margin-left: 5px;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 11px;
+    text-align: center;
+    color: #886ce6;
+    font-weight: 400;
+    margin-top: 5px;
+    line-height:16px;
+    .tip{
+      display:none;
+      position:absolute;
+      width:159px;
+      height:40px;
+      color: #354052;
+      background-color: #eff3f6;
+      left: 20px;
+      top: -11px;
+      text-align: left;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    &:hover{
+      .tip{
+        display: block;
+        z-index: 1000;
+        &:before{
+          content: '';
+          display: block;
+          position: absolute;
+          left: -15px;
+          top: 9px;
+          border: 10px solid;
+          border-color: transparent #eff3f6 transparent transparent;
+        }
+      }
+    }
+  }
+}
