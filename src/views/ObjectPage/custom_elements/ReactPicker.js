@@ -14,16 +14,28 @@ class ReactPicker extends React.Component {
             endDate: props.endDate,
             focusedInput: null,
         };
+        this.scrollTop = 0;
+
     }
 
     onFocus(){
         this.setState({isOpen:true})
     }
 
-    componentDidUpdate(){
-        if(this.state.focusedInput && this.props.viewportWidth < 768)//убираем прокрутку на мобильных устр-х
+    preventScrollOnCalendar(nextState){
+        if(nextState.focusedInput){
+            this.scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             document.body.classList.add('mobile-calendar-open');
-        else document.body.classList.remove('mobile-calendar-open');
+        }
+        else if(this.state.focusedInput && !nextState.focusedInput){
+            document.body.classList.remove('mobile-calendar-open');
+            window.scrollTo(0,this.scrollTop)
+        }
+    }
+
+    componentWillUpdate(nextProps,nextState){
+        if(this.props.viewportWidth < 768 && !!nextState.focusedInput !== !!this.state.focusedInput)//если лог-я значения focusedInput не равны
+            this.preventScrollOnCalendar(nextState);//убираем прокрутку на мобильных устр-х
     }
 
     render() {
