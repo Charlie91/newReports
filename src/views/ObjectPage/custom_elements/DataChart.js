@@ -1,13 +1,13 @@
 import React from 'react';
 import {Line} from "react-chartjs-2";
 import {Col} from "reactstrap";
-import Loading from './../Loading/Small';
-import {formatNumberBySpaces} from './../../utils/utils';
-import {customLabelDataChart} from "./customLabelDataChart";
-import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
-import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../utils/utils";
+import Loading from '../../Loading/Small';
+import {formatNumberBySpaces} from '../../../utils/utils';
+import {customLabelDataChart} from "../customLabelDataChart";
+import customComparisonLabelDataChart from "../customComparisonLabelDataChart";
+import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick} from "../../../utils/utils";
 import moment from "moment/moment";
-import utils from './obj_utils';
+import utils from '../obj_utils';
 
 
 function addAdditionalStylesToChart(chart){ //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
@@ -63,6 +63,7 @@ function getCustomLabel(props){
 
 
 const DataChart = (props) => {
+    if (props.loading) return <Loading/>;
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
         <Col  md='12' style={{padding:'0px'}} className="order-12 order-md-1">

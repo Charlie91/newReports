@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import {formatNumberBySpaces} from './../../utils/utils';
+import {formatNumberBySpaces} from '../../../utils/utils';
 
 
 function getPreviousYearData(datasets,year){
@@ -26,6 +26,7 @@ function getDifferenceWithLastYear(datasets,index){
 }
 
 const YearTable = (props) => {
+    if (props.loading) return <div></div>;
     if(props.filteredData.datasets.length < 2 || props.requestIsInProcess)return null;
     let lastDayInYear = (props.endDate.year() % 4 === 0) ? 366 : 365;
     props.filteredData.datasets.sort((a,b) => a.label - b.label);

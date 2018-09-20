@@ -1,43 +1,22 @@
 import React, { Component } from 'react';
-import {Bar,Chart} from "react-chartjs-2";
-import ChartComponent from 'react-chartjs-2';
 import { Row, Col, Card, CardBody} from "reactstrap";
-import Loading from './../Loading/Small';
-import {customLabel} from './customtooltip';
 import {formatNumberBySpaces} from './../../utils/utils';
-import DatePicker from 'react-datepicker';
+
 import ReactPicker from './custom_elements/ReactPicker';
 import CheckButton from './custom_elements/CheckButton';
 import YearSelector from './custom_elements/YearSelector';
+import ChartBar from './custom_elements/ChartBar';
+import DataChart from './custom_elements/DataChart';
+import XlsButton from './custom_elements/XlsButton';
+
 import Select from 'react-select';
 import utils from './obj_utils';
-import DataChart from './DataChart';
 import moment from 'moment';
-import {customLabelDataChart} from "./customLabelDataChart";
-import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
 import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick,formatNumericValue} from "../../utils/utils";
-import YearTable from './YearTable';
-import xlsExport from './xls-export';
+import YearTable from './custom_elements/YearTable';
 import addCustomTypeWithBorderRadiuses from './addCustomTypeWithBorderRadiuses';
 
 
-function getFormat(timeSegment){
-    let format;
-    switch(timeSegment){
-        case 'Y':
-            format = 'YYYY';
-            break;
-        case 'M':
-            format = 'YYYY-MM';
-            break;
-        case 'D':
-            format = 'YYYY-MM-DD';
-            break;
-        case 'H':
-            format = 'HH:mm T DD.MM.YYYY';
-    }
-    return format
-}
 
 function getNumberOfYears(width){
     let number;
@@ -47,40 +26,6 @@ function getNumberOfYears(width){
     else number = 3;
 
     return number
-}
-
-function addEmptyBars(data, timeSegment) {
-    let modificator = '';
-    let values = data.datasets[0].data;
-
-    switch(timeSegment){
-        case 'Y':
-            modificator = 'years';
-            break;
-        case 'M':
-            modificator = 'months';
-            break;
-        case 'D':
-            modificator = 'days';
-            break;
-        case 'H':
-            modificator = 'hours';
-            break;
-        default:
-            console.log('wtf with your timeSegment');
-    }
-
-    let averageValue = values.reduce((sum,current) => {//среднее значение в массиве
-            return sum + current
-        },0) / values.length;
-
-    let limit = 31 - values.length;
-    for(let i = 0; i < limit ; i++){
-        values.push(averageValue);
-        data.labels.push(
-            moment(data.labels[data.labels.length - 1]).add(1,modificator).format(getFormat(timeSegment))
-        )
-    }
 }
 
 function getBarsColors(dataLength,labels,timeSegment){
@@ -126,7 +71,7 @@ function getBordersColors(dataLength,labels,timeSegment){
 }
 
 function addDashesToBorders(chart){
-    if(chart){
+    if(chart && chart.chart_instance){
         chart.chart_instance.chart.ctx.setLineDash([10, 10]);
     }
 }
@@ -138,7 +83,7 @@ export default class DataBarChart extends Component{
         addCustomTypeWithBorderRadiuses();
 
         this.state = {
-            type_of_data: (props.type === 'Выручка') ? 'Выручка' : 'Трафик'
+            name_of_data: (props.type === 'Выручка') ? 'Выручка' : 'Трафик'
         }
     }
 
@@ -150,8 +95,6 @@ export default class DataBarChart extends Component{
     render(){
 
         const props = this.props;
-        const xls = props.excelData && new xlsExport((props.excelData), 'Reports');//данные для выгрузки в таблицу
-
         const times = [
             { value:'H',label:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
             { value:'D',label:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD')) },
@@ -183,20 +126,12 @@ export default class DataBarChart extends Component{
             }),
             labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
         };
-        if(!props.comparison_mode){
-            max = filteredData.datasets[0].data.reduce( (max,item) => {
-                if(item > max)max = item;
-                return max;
-            },0);
-
-            addEmptyBars(filteredData, props.timeSegment);//добавляем "пустые" графики
-        }
 
         return (
             <Card className={"new-chart" + (props.likeForLikeDisplay ? ' likeforLikeOn' : '')}>
                 <CardBody>
                     <div>
-                        <h5>{this.state.type_of_data}</h5>
+                        <h5>{this.state.name_of_data}</h5>
                         <Row>
                             <Col md="9" className="datepickers">
                                 <div className="wrapper">
@@ -227,7 +162,7 @@ export default class DataBarChart extends Component{
                                           }}
                                 >
                                 </span>
-                                    <span className="muted">{this.state.type_of_data} за выбранный период</span>
+                                    <span className="muted">{this.state.name_of_data} за выбранный период</span>
                                 </Col>
                                 :
                                 ''
@@ -267,7 +202,7 @@ export default class DataBarChart extends Component{
                                           }}
                                 >
                                 </span>
-                                    <span className="muted">{this.state.type_of_data} за выбранный период</span>
+                                    <span className="muted">{this.state.name_of_data} за выбранный период</span>
                                 </Col>
                                 :
                                 ''
@@ -277,16 +212,10 @@ export default class DataBarChart extends Component{
                             <Col className="scroll_wrapper">
                                 {(props.comparison_mode || props.likeForLike || filteredData.datasets[0].data.length > 31) ?
                                     <div className="data-line-chart_wrapper">
-                                        {
-                                            props.requestIsInProcess ?
-                                                <Loading/>
-                                                :
-                                                <div>
-                                                    <YearTable
-                                                        filteredData={filteredData}
-                                                        {...props}
-                                                    />
-                                                    <DataChart
+                                       <div>
+                                          <YearTable loading={props.requestIsInProcess}
+                                                     filteredData={filteredData} {...props} />
+                                          <DataChart loading={props.requestIsInProcess}
                                                         render={!(props.type === 'Выручка')}
                                                         comparison_mode={props.comparison_mode}
                                                         data={props.chart}
@@ -296,128 +225,22 @@ export default class DataBarChart extends Component{
                                                         timeSegment={props.timeSegment}
                                                         emptyData={props.emptyData}
                                                         {...props}
-                                                    />
-                                                </div>
-                                        }
+                                          />
+                                       </div>
                                     </div>
                                     :
                                     <div className="data-bar-chart_wrapper">
-                                        {props.requestIsInProcess ?
-                                            <Loading/>
-                                            :
-                                            <ChartComponent
-                                                data={filteredData}
-                                                type='roundedBar'
-                                                ref={(chart) => { this.chart = chart; }}
-                                                options= {{
-                                                    maintainAspectRatio: false,
-                                                    legend: { display: false },
-                                                    barRoundness: 0.8,
-                                                    tooltips: {
-                                                        custom:  props.comparison_mode ? customComparisonLabelDataChart : customLabelDataChart,//
-                                                        enabled:false,
-                                                        callbacks:{
-                                                            title: (tooltipItem, data ) => {
-                                                                let step = getStepSize(props.data.labels.length, props.timeSegment);
-                                                                let title = '';
-
-                                                                if (step !== 1){
-                                                                    if (props.timeSegment === 'M')
-                                                                        title = moment(tooltipItem[0].xLabel).format('MMM')
-                                                                    if (props.timeSegment === 'D')
-                                                                        title = moment(tooltipItem[0].xLabel).format('DD MMM')
-                                                                    if (props.timeSegment === 'Y')
-                                                                        title = moment(tooltipItem[0].xLabel).format('YYYY')
-                                                                }
-
-                                                                if (props.timeSegment === 'H')
-                                                                    title = moment(tooltipItem[0].xLabel).format("HH:mm, DD MMM")
-
-                                                                return title;
-                                                            },
-                                                            label: (tooltipItem, data ) => {
-                                                                if(data.datasets[0].backgroundColor[tooltipItem.index] === 'transparent'){
-                                                                    return null;
-                                                                };
-
-                                                                if(props.comparison_mode){
-                                                                    return utils.comparisonLabel(tooltipItem,data)
-                                                                }
-                                                                else{
-                                                                    return `
-                                                      ${formatNumberBySpaces(Math.round(tooltipItem.yLabel))}
-                                                      ${(props.currency.length > 4) ?
-                                                                        (props.currency.substring(0,3) + '.') : props.currency}
-                                                  `
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    scales: {
-                                                        xAxes: [{
-                                                            barThickness : 20,
-                                                            gridLines: {
-                                                                color: "rgba(0, 0, 0, 0)",
-                                                                borderDash: [4, 4],
-                                                                zeroLineColor: 'rgba(0, 0, 0, 0)'
-                                                            },
-                                                            ticks: {
-                                                                fontColor:'#7f8fa4',
-                                                                fontSize: 14,
-                                                                fontFamily: 'ProximaNova',
-                                                                stepSize:123123,
-                                                                maxRotation: 0,
-                                                                callback: (value, index, values) => {
-                                                                    let format = '';
-                                                                    switch(props.timeSegment){
-                                                                        case 'Y':
-                                                                            format = 'YYYY';
-                                                                            break;
-                                                                        case 'M':
-                                                                            format = 'MMM';
-                                                                            break;
-                                                                        case 'D':
-                                                                            format = 'DD MMM';
-                                                                            break;
-                                                                        case 'H':
-                                                                            format = 'DD.MM T HH:mm';
-                                                                    }
-                                                                    if(index % 2 === 0)
-                                                                        return moment(value).format(format);
-                                                                },
-                                                            }
-                                                        }],
-                                                        yAxes: [{
-                                                            ticks:{
-                                                                min:0,
-                                                                stepSize:max/2
-                                                            },
-                                                            gridLines: {
-                                                                color: "rgba(0, 0, 0, 0)",
-                                                                zeroLineColor: 'rgba(0, 0, 0, 0)',
-                                                                borderDash: [4, 4]
-                                                            },
-                                                        }],
-                                                    }
-
-                                                }}
-                                            />
-                                        }
+                                        <ChartBar loading={props.requestIsInProcess}
+                                                  filteredData={filteredData} max={max}
+                                                  ref={(chart) => { this.chart = chart; }}
+                                                  {...props}  />
                                     </div>
                                 }
                             </Col>
                         </Row>
                         <Row>
                             <Col xs='0' md="0" xl={{size:3,offset:9}}>
-                                <div className="excellLinkWrapper">
-                                    <a className="excellLink"
-                                       onClick={xls ? () => {
-                                           xls.exportToXLS(`Отчет по ${props.object.obj_name}-${moment().format('DD.MM.YY')}.xls`,props)
-                                       } : ''}
-                                    >
-                                        Скачать в Excel
-                                    </a>
-                                </div>
+                                <XlsButton title="Скачать в Excel" filename={props.object.obj_name} {...props} />
                             </Col>
                         </Row>
                     </div>
