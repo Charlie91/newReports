@@ -38,6 +38,17 @@ class ReactPicker extends React.Component {
             this.preventScrollOnCalendar(nextState);//убираем прокрутку на мобильных устр-х
     }
 
+    componentDidMount(){
+        let inputs = document.querySelectorAll('.object_cont .new-chart .datepickers .wrapper div input');
+        for (let input of inputs) {
+            input.onfocus = (e) => {
+                e.preventDefault();
+                input.blur();
+                return false;
+            }
+        }
+    }
+
     render() {
         if(this.props.viewportWidth > 767){
             return (
@@ -81,7 +92,7 @@ class ReactPicker extends React.Component {
                         }
                         }
                         focusedInput={this.state.focusedInput}
-                        onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+                        onFocusChange={(focusedInput) => {this.setState({ focusedInput })}}
                         small={true}
                         withFullScreenPortal
                         readOnly={true}

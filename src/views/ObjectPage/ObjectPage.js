@@ -227,9 +227,6 @@ export default class ObjectPage extends Component {
                     this.requestIsEnded();
                 });
             })
-
-
-
     }
 
     getAverageTimeOfVisit(){
