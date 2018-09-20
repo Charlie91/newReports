@@ -7,11 +7,21 @@ function toggleDropDown(){
     dropdown_menu.classList.toggle('none');
 }
 
+function getNumberOfYears(width){
+    let number;
+
+    if(width < 1200 && width > 767)number = 2;
+    else if(width < 768) number = 1;
+    else number = 3;
+
+    return number
+}
+
 
 const YearSelector = (props) => {
     if(!props.render)return null;
 
-    let numberOfYearsAtList = props.numberOfYearsAtList || 3;  //количество отображаемых годов вне выпадашки
+    let numberOfYearsAtList= getNumberOfYears(props.viewportWidth) || 3;
     let yearOfOpening = moment(props.object.since).year();//год открытия
     let years = [2018,2017,2016,2015,2014].filter(year => year >= yearOfOpening);   //фильтруем года на доступные данному объекту
 
@@ -35,7 +45,7 @@ const YearSelector = (props) => {
                     <div className="dropdown-menu none" aria-labelledby="dropdownMenuButton">
                         {years && dropdownData.map( (item,i) =>
                             <div className="year" key={i} onClick={ () => {
-                                props.checkYear.bind(null,item)();
+                                props.onCheck.bind(null,item)();
                                 toggleDropDown();
                             }}>
                                 <div className={"checkbox y" + item}></div>

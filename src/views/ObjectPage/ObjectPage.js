@@ -15,7 +15,7 @@ import MainData from './MainData';
 import CameraViewer from './CameraViewer';
 import SalesAnalysis from './SalesAnalysis';
 import DataBarChart from './DataBarChart';
-import DataChart from './custom_elements/DataChart';
+import DataChart from './custom_elements/ChartLine';
 
 export default class ObjectPage extends Component {
     constructor(props) {

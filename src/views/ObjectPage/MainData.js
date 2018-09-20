@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row,Col, Card, CardBody} from "reactstrap";
 import {formatNumberBySpaces} from './../../utils/utils';
-import DataChart from './custom_elements/DataChart';
+import DataChart from './custom_elements/ChartLine';
 import DataChartSmall from './DataChartSmall';
 import utils from './obj_utils';
 import Datepickers from './Datepickers';
