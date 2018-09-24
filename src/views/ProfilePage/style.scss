@@ -1,5 +1,38 @@
 .profile_page{
-    .card-body{
-      padding:20px 40px;
+  .card-body{
+    padding:20px 40px;
+    h4.block_title{
+      margin-bottom: 9px;
+      line-height: 37px;
     }
+    .avatar_wrapper{
+      width: 180px;
+      .avatar_picture{
+        width: 100%;
+        height: 180px;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .buttons{
+        padding: 15px 20px;
+        line-height: 14px;
+        >div{
+          display: inline-block;
+          cursor:pointer;
+          width: 50%;
+          font-size: 14px;
+          color: #364151;
+          font-weight: 400;
+          &:first-child{
+            text-align:left;
+          }
+          &:nth-child(2){
+            text-align:right;
+          }
+        }
+      }
+    }
+  }
 }

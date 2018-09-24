@@ -39,6 +39,7 @@ function getBarsColors(dataLength,labels,timeSegment){
 
 function getBordersColors(dataLength,labels,timeSegment){
     const defaultColorArray = [...'transparent,'.repeat(dataLength).split(',').slice(0,-1)];
+
     let weekendIndexes = labels.reduce((indexes,item,index) => {
         if(moment(item).day() === 0 || moment(item).day() === 6){
             indexes.push(index)
@@ -57,7 +58,6 @@ function getBordersColors(dataLength,labels,timeSegment){
 
     return [...defaultColorArray,...'#979797ab,'.repeat(31 - dataLength).split(',').slice(0,-1)];
 }
-
 
 export default class DataBarChart extends Component{
     constructor(props){

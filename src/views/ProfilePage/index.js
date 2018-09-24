@@ -37,7 +37,15 @@ export default class ProfilePage extends Component{
                         </Row>
                         <Row>
                             <Col>
-                                <div className="avatar"></div>
+                                <div className="avatar_wrapper">
+                                    <div className="avatar_picture">
+                                        <img src="/img/avatars/default.png"/>
+                                    </div>
+                                    <div className="buttons">
+                                        <div>изменить</div>
+                                        <div>удалить</div>
+                                    </div>
+                                </div>
                             </Col>
                         </Row>
                     </CardBody>
