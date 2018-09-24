@@ -1,61 +1,25 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody} from "reactstrap";
-import {formatNumberBySpaces} from './../../utils/utils';
 
 import ReactPicker from './custom_elements/ReactPicker';
 import CheckButton from './custom_elements/CheckButton';
 import SelectList from './custom_elements/SelectList';
 import YearSelector from './custom_elements/YearSelector';
+import DataBarChartTotal from './DataBarChartTotal';
 import ChartBar from './custom_elements/ChartBar';
 import ChartLine from './custom_elements/ChartLine';
 import XlsButton from './custom_elements/XlsButton';
 
-import utils from './obj_utils';
 import moment from 'moment';
-import {formatNumericValue} from "../../utils/utils";
 import YearTable from './custom_elements/YearTable';
 import addCustomTypeWithBorderRadiuses from './addCustomTypeWithBorderRadiuses';
 
 function getBarsColors(dataLength,labels,timeSegment){
-    const defaultColorArray = [...'#74c2e8,'.repeat(dataLength).split(',').slice(0,-1)];
-    let weekendIndexes = labels.reduce((indexes,item,index) => {
-        if(moment(item).day() === 0 || moment(item).day() === 6){
-            indexes.push(index)
-        }
-        return indexes
-    },[]);
-
-    if(timeSegment === 'D')
-        defaultColorArray.forEach( (color,colorIndex) => {
-            weekendIndexes.forEach( index => {
-                if(colorIndex === index){
-                    defaultColorArray[colorIndex] = '#9fd473'
-                }
-            })
-        });
-
-    return [...defaultColorArray,...'transparent,'.repeat(31 - dataLength).split(',').slice(0,-1)];
+    return labels.map(item => (( [0,6].includes( moment(item).day() ) ) ? '#9fd473' : '#74c2e8')).concat(Array(31 - dataLength).fill('transparent') );
 }
 
 function getBordersColors(dataLength,labels,timeSegment){
-    const defaultColorArray = [...'transparent,'.repeat(dataLength).split(',').slice(0,-1)];
-    let weekendIndexes = labels.reduce((indexes,item,index) => {
-        if(moment(item).day() === 0 || moment(item).day() === 6){
-            indexes.push(index)
-        }
-        return indexes
-    },[]);
-
-    if(timeSegment === 'D')
-        defaultColorArray.forEach( (color,colorIndex) => {
-            weekendIndexes.forEach( index => {
-                if(colorIndex === index){
-                    defaultColorArray[colorIndex] = 'transparent'
-                }
-            })
-        });
-
-    return [...defaultColorArray,...'#979797ab,'.repeat(31 - dataLength).split(',').slice(0,-1)];
+    return Array(dataLength).fill('transparent').concat(Array(31 - dataLength).fill('#979797ab') );
 }
 
 
@@ -128,14 +92,8 @@ export default class DataBarChart extends Component{
                             </Col>
                             {(props.viewportWidth > 767 && !props.comparison_mode && !props.likeForLike) ?
                                 <Col md="3" className="totalSum">
-                                <span className="data"
-                                      dangerouslySetInnerHTML=
-                                          {{
-                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
-                                          }}
-                                >
-                                </span>
-                                    <span className="muted">{this.state.name_of_data} за выбранный период</span>
+                                    <DataBarChartTotal NameOfData={this.state.name_of_data} TotalSum={props.totalSum}
+                                                       Currency={props.currency} CurrentWidth={props.viewportWidth}/>
                                 </Col>
                                 :
                                 ''
@@ -150,14 +108,8 @@ export default class DataBarChart extends Component{
                             </Col>
                             {props.viewportWidth < 768 ?
                                 <Col xs="12" className="totalSum">
-                                <span className="data"
-                                      dangerouslySetInnerHTML=
-                                          {{
-                                              __html:`${formatNumberBySpaces(formatNumericValue(Math.round(props.totalSum)))} ${utils.renderCurrency(props)}`
-                                          }}
-                                >
-                                </span>
-                                    <span className="muted">{this.state.name_of_data} за выбранный период</span>
+                                    <DataBarChartTotal NameOfData={this.state.name_of_data} TotalSum={props.totalSum}
+                                                       Currency={props.currency} CurrentWidth={props.viewportWidth}/>
                                 </Col>
                                 :
                                 ''
