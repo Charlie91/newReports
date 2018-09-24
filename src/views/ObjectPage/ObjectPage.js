@@ -4,18 +4,16 @@ import moment from 'moment';
 import {ajaxRequest,average} from 'Src/utils/utils';
 import 'react-datepicker/dist/react-datepicker.css';
 import './style.scss';
-import Announce from './Announce';
-import BarChart from './BarChart';
-import HorizontalBarChart from './HorizontalBarChart';
+import Announce from './InfoBlock/Announce';
+import BarChart from './AverageHourlyAttendance/BarChart';
+import HorizontalBarChart from './AverageHourlyAttendance/HorizontalBarChart';
 import utils from './obj_utils';
-import DataPerMonth from './DataPerMonth';
-import ShopList from './ShopList';
-import ShopListAccordeon from './ShopListAccordeon';
-import MainData from './MainData';
-import CameraViewer from './CameraViewer';
-import SalesAnalysis from './SalesAnalysis';
+import DataPerMonth from './DataPerMonth/DataPerMonth';
+import ShopList from './InnerObjects/ShopList';
+import ShopListAccordeon from './InnerObjects/ShopListAccordeon';
+import CameraViewer from './CameraViewer/CameraViewer';
+import SalesAnalysis from './SalesAnalysis/SalesAnalysis';
 import DataBarChart from './DataBarChart';
-import DataChart from './custom_elements/DataChart';
 
 export default class ObjectPage extends Component {
     constructor(props) {
@@ -686,18 +684,6 @@ export default class ObjectPage extends Component {
                     renderCurrency={utils.renderCurrency.bind(null,state)}
                 />
 
-                {/*<MainData*/}
-                    {/*changeComparisonMode={this.changeComparisonMode.bind(this)}*/}
-                    {/*handleChangeStart={this.handleChangeStart.bind(this)}*/}
-                    {/*handleChangeEnd={this.handleChangeEnd.bind(this)}*/}
-                    {/*handleMobileChangeStart={this.handleMobileChangeStart.bind(this)}*/}
-                    {/*handleMobileChangeEnd={this.handleMobileChangeEnd.bind(this)}*/}
-                    {/*checkYear={this.checkYear.bind(this)}*/}
-                    {/*changeFloor={this.changeFloor.bind(this,null)}*/}
-                    {/*changeTimeSegment={this.changeTimeSegment.bind(this,null)}*/}
-                    {/*{...state}*/}
-                {/*/>*/}
-
                 <DataBarChart
                     data={state.chart}
                     change={this.datepickerChange.bind(this)}
@@ -716,7 +702,7 @@ export default class ObjectPage extends Component {
                     />
                 }
 
-                <CameraViewer object={this.state.object} />
+                {/*<CameraViewer object={this.state.object} />*/}
 
                 {(state.viewportWidth > 500) ?
                     <ShopList

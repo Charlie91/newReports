@@ -74,9 +74,7 @@ class ChartBar extends React.Component {
             if(item > max)max = item;
             return max;
         },0);
-        console.log(this.props.filteredData);
         this._addEmptyBars(this.props.filteredData, this.props.timeSegment);//добавляем "пустые" графики
-        console.log(this.props.filteredData);
 
         return <ChartComponent
             data={this.props.filteredData}

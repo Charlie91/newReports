@@ -14150,6 +14150,11 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-image: none;
   color: black; }
 
+h4.block_title {
+  color: #354052;
+  font-size: 30px;
+  line-height: 30px; }
+
 @media screen and (max-width: 1486px) {
   .bigCities {
     display: none; } }

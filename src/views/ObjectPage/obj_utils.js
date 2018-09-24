@@ -57,7 +57,6 @@ const obj_utils = {
                 borderDash: [],
                 borderDashOffsent: 0.0,
                 borderJoinStyle: 'miter',
-                borderWidth: 0,
                 pointBorderColor: color || this.chartStylingByYear(year),
                 pointBackgroundColor: color || this.chartStylingByYear(year),
                 pointBorderWidth: 0,
@@ -77,7 +76,6 @@ const obj_utils = {
                 fill: false,
                 lineTension: 0,
                 borderDash: [],
-                borderWidth: 0,
                 pointBorderColor:  color || this.chartStylingByYear(year),
                 pointBackgroundColor: color || this.chartStylingByYear(year),
                 pointBorderWidth: window.innerWidth > 767 ? 6 : 2.3,
@@ -575,7 +573,6 @@ const obj_utils = {
 
             ctx.stroke();
         }
-
     },
 
     checkIfFlashEnabled() {

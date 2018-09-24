@@ -3,7 +3,7 @@ import {Col, Row, Card, CardBody} from "reactstrap";
 import { decodeHalfPunycodeLink, formatNumberBySimpleSpaces } from 'Src/utils/utils';
 import moment from 'moment';
 import {API} from 'Src/utils/api_paths';
-import YaMap from './ya_map';
+import YaMap from '../custom_elements/ya_map';
 
 function getCorrectDeclensionToHours(hours){//вернуть нужное склонение
     if(hours > 10 && hours < 20)

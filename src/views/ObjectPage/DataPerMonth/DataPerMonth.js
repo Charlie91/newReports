@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row, Card, CardBody} from "reactstrap";
-import { formatNumericValue,formatNumberBySpaces,average} from './../../utils/utils';
-import Loading from './../Loading/Small';
+import { formatNumericValue,formatNumberBySpaces,average} from '../../../utils/utils';
+import Loading from '../../Loading/Small';
 
 
 function formatMonths(index){

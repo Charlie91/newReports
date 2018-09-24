@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import {Bar, Line,Chart} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
-import Loading from './../Loading/Small';
-import {customLabelDataChartSmall} from './customLabelDataChartSmall';
-import customComparisonLabelDataChart from "./customComparisonLabelDataChart";
-import {formatNumberBySpaces} from './../../utils/utils';
-import {customLabel3} from "./customLabelDataChartSmall";
-import {formatNumericValueWithMnl, getStepName, getStepSize, getStepSizeSmall, getStepTick} from "../../utils/utils";
+import Loading from '../../Loading/Small';
+import {customLabelDataChartSmall} from '../customLabelDataChartSmall';
+import customComparisonLabelDataChart from "../customComparisonLabelDataChart";
+import {formatNumberBySpaces} from '../../../utils/utils';
+import {customLabel3} from "../customLabelDataChartSmall";
+import {formatNumericValueWithMnl, getStepName, getStepSize, getStepSizeSmall, getStepTick} from "../../../utils/utils";
 import moment from "moment/moment";
-import utils from './obj_utils';
+import utils from '../obj_utils';
 
-
+//
+//Ранний вариант мобильного
+//  графика
+//
 
 function addAdditionalStylesToChart(chart){ //изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     let maxLength = Math.max.apply(null,chart.datasets.map(item => item.data.length));

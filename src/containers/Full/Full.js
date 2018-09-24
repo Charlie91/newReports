@@ -10,6 +10,7 @@ import {ajaxRequest} from './../../utils/utils';
 import {API} from './../../utils/api_paths';
 import Conception from './../../views/Conception/Conception';
 import ObjectPage from './../../views/ObjectPage/ObjectPage';
+import ProfilePage from './../../views/ProfilePage';
 
 class Full extends Component {
     constructor(props){
@@ -160,7 +161,12 @@ class Full extends Component {
                         <Container fluid>
                             <Switch>
                                 <Route path="/dashboard" name="Dashboard" render={(props) =>
-                                    <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>}
+                                          <Dashboard cities={this.state.availableCities} upState={this.upState.bind(this)} {...props}/>
+                                       }
+                                />
+                                <Route path="/profile" name="Profile" render={(props) =>
+                                          <ProfilePage upState={this.upState.bind(this)} {...props}/>
+                                       }
                                 />
                                 <Route exact path="/conceptions/:id"  name="Conception"
                                        render={(props) =>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import DropdownTreeSelect from './react-dropdown-tree-select.js';//измененный компонент с добавленной функцией поиска.
 import './style.scss';                //Изначальный компонент в node_modules под названием react-dropdown-tree-select
 import Buttons from "./Buttons";

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import utils from './obj_utils';
+import utils from '../obj_utils';
 import {Scatter,Chart} from "react-chartjs-2";
 import {Card, CardBody, Row, Col} from "reactstrap";
-import {customLabelDataChart} from './customLabelDataChart';
+import {customLabelDataChart} from '../customLabelDataChart';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import Loading from './../Loading/Small';
-import xlsExport from './xls-export';
-import {deleteObjectProperties} from './../../utils/utils';
+import Loading from '../../Loading/Small';
+import xlsExport from '../xls-export';
+import {deleteObjectProperties} from '../../../utils/utils';
 
 //share/у - выручка
 //k/х - волатильность

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Bar, Line,Chart, HorizontalBar} from "react-chartjs-2";
 import {Row,Col,CardColumns, Card, CardHeader, CardBody} from "reactstrap";
-import Loading from './../Loading/Small';
-import {customLabel} from './customtooltip';
+import Loading from '../../Loading/Small';
+import {customLabel} from '../customtooltip';
 
 
 

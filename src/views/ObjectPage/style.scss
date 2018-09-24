@@ -55,12 +55,8 @@
         font-weight:500;
         color: #354052;
         &.title{
-          //margin-bottom:5px;
           display: block;
           cursor:pointer;
-          &:not(:first-of-type){
-            //margin-top:20px;
-          }
           >a{
             display:inline-block;
             margin-bottom:10px;
@@ -114,6 +110,113 @@
       }
     }
   }
+  .new-chart{
+    overflow: hidden;
+    &.likeforLikeOn{
+      .datepickers{
+        .wrapper{
+          width: 243px;
+          >div{
+            input{
+              width: 120px;
+            }
+          }
+        }
+      }
+    }
+    .card-body{
+      padding: 25px 40px 17px;
+    }
+    h5{
+      margin-bottom:18px;
+      line-height: 37px;
+    }
+    .totalSum{
+      .data{
+        margin-top:0;
+        margin-left:30px;
+      }
+      .muted{
+        margin-left:30px;
+      }
+    }
+
+    .scroll_wrapper{
+      overflow-x:scroll;
+      top: 10px;//чтобы скрыть нижнюю строку скролла
+    }
+
+    .data-bar-chart_wrapper{
+      width: 1140px;
+      margin: auto;
+    }
+
+
+    .data-line-chart_wrapper,.data-bar-chart_wrapper{
+      height:285px;
+      max-height:400px;
+      position:relative;
+      margin-top: 65px;
+      min-width: 1140px;
+      table+div .line-chart-wrapper .linechart_area_wrapper{
+        min-height:0px;//с таблицей
+        height: 135px;
+      }
+      .line-chart-wrapper .linechart_area_wrapper{
+        min-height:285px;
+      }
+      table{
+        margin: auto;
+        margin-top: -44px;
+        margin-bottom: 71px;
+        tr{
+          td.total, td.forecast{
+            font-weight: 800!important;
+            font-style: normal!important;
+          }
+          &:first-child{
+            td{
+              font-size: 14px;
+              font-style: normal;
+              color: #636b79;
+              font-weight: 500;
+            }
+          }
+          &:not(:first-child){
+            td {
+              width: 90px;
+              font-size: 14px;
+              &:not(:first-child){
+                color: #636b79;
+                font-size: 13px;
+                font-weight: 300;
+                font-style: italic;
+              }
+            }
+          }
+          span.positive,span.negative{
+            font-size: 90%;
+          }
+          span.positive{
+            color:#75b67b
+          }
+          span.negative{
+            color:#c63a5b
+          }
+
+        }
+      }
+    }
+
+    .datepickers{
+      height: 53px;
+      .wrapper{
+        width: auto;//12;
+        display: inline-block;
+      }
+    }
+  }
+
   .abcAnalysis{
     .card-body{
       padding: 25px 40px 17px;
@@ -276,33 +379,11 @@
   }
 }
 
-
-.app-body_new_margin{
-  margin-top:55px
-}
 .new_position_for_ham{
   top: 0!important;
   margin-top: -2px;
 }
-.segmentation_btn-wrp{
-  margin-top:20px;
-  text-align:center;
-  .btn{
-    border:1px solid #886ce6;
-    color: #354052;
-    padding: 2px 5px;
-    width: 106px;
-    background:#fff;
-  }
-  .btn.active{
-    border-radius: 4px;
-    background-color: #886ce6;
-    color:#fff;
-    &:focus{
-      box-shadow:none
-    }
-  }
-}
+
 
 .excellLinkWrapper{
   background: url('/img/icons/excell.png');
@@ -346,97 +427,6 @@
   color: #7f8fa4;
   background: transparent;
   border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
-}
-
-.revenue{
-  .segmentation_btn-wrp{
-    .btn{
-      border:1px solid #f6aa25;
-    }
-    .btn.active{
-      background-color: #f6aa25;
-    }
-  }
-  .floor_btn-wrp{
-    .btn.active{
-      background-color: #f6aa25!important;
-    }
-  }
-  .datepicker_wrp{
-    input.datepicker {
-      border: solid 1px #f6aa25;
-    }
-  }
-}
-
-
-.floor_btn-layer {
-  margin-top: -50px;
-  margin-bottom: 25px;
-}
-.floor_btn-wrp{
-  background-color: rgba(247, 245, 252, 0.7);
-  display: inline-block;
-  padding: 15px;
-  width: 100%;
-  .btn{
-    padding: 2px;
-    margin-right: 20px;
-    border-radius: 0;
-    &:first-child{
-      display:block;
-      margin-bottom:12px;
-      &:after{
-        content: ' или выберите конкретный срез:';
-        color: #8696a9;
-        position: absolute;
-        margin-left: 15px;
-      }
-    }
-  }
-  .btn.active{
-    border-radius: 4px;
-    background-color: #886ce6!important;
-    color:#fff!important;
-    border-bottom: 1.5px solid transparent;
-    &:focus{
-      box-shadow:none;
-    }
-  }
-}
-
-.datepicker_wrp{
-  ::-webkit-inner-spin-button, ::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-  }
-  display:inline-block;
-  &:last-of-type::before{
-    content: 'по';
-    margin-left: -22px;
-    position: absolute;
-    margin-top: 2.7px;
-    font-size: 14px;
-    color: #7f8fa4;
-  }
-  &:last-child{
-    margin-left: 30px;
-
-  }
-  input.datepicker {
-    border-radius: 5px;
-    box-shadow: none;
-    outline: none;
-    border: solid 1px #886ce6;
-    text-align: center;
-    width: 85px;
-    font-size: 14px;
-    color: #7f8fa4;
-    white-space: nowrap;
-    &:disabled{
-      background: none;
-    }
-  }
 }
 
 .data_per_month{
@@ -516,163 +506,6 @@
   }
 }
 
-.all_data {
-  .year_selector{
-    margin-top: 15px;
-    div{
-      display: inline-block;
-    }
-    .year_selector_list{
-      margin-left: 3px;
-      .year{
-        cursor: pointer;
-        border-radius: 4px;
-        border: solid 1px #e3e3e3;
-        margin-right: 10px;
-        padding: 0px 3px;
-        line-height: normal;
-        >span{
-          font-size: 14px;
-          color: #7f8fa4;
-        }
-        .checkbox {
-          width: 12px;
-          height: 12px;
-          border: solid 1px #e3e3e3;
-          position: relative;
-          top: 1px;
-          margin-right: 5px;
-          &.checked.y2018{
-            background-color: #74c2e8;
-            border: solid 1px #74c2e8;
-          }
-          &.checked.y2017{
-            background-color: #9fd473;
-            border: solid 1px #9fd473;
-          }
-          &.checked.y2016{
-            background-color: #8570CE;
-            border: solid 1px #8570CE;
-          }
-        }
-      }
-      .dropdown{
-        width: 65px!important;
-        border-radius: 4px;
-        border: solid 1px #e3e3e3;
-        padding: 0px 6px;
-        line-height: normal;
-        z-index: 1;
-        background:#fff;
-        .btn{
-          padding: 0;
-          color: #7f8fa4;
-          line-height: 1;
-          background: none;
-          &:focus{
-            box-shadow:none
-          }
-        }
-        .dropdown-toggle::after{
-          content:url('/img/dropdown.png');
-          border:none;
-          margin-top: -1px;
-          position: absolute;
-        }
-        .dropdown-menu{
-          min-width: 60px;
-          margin-top: -2px;
-          border-top: none;
-          border-radius: 0px 0px 4px 4px;
-          width: 65px;
-          margin-left: -1px;
-          padding: 0 7px;
-          .year{
-            display: block;
-            border: none;
-            margin: 10px auto;
-            padding:0;
-            white-space: nowrap;
-            .y2015.checked{
-              background-color: #ed8455;
-              border: solid 1px #ed8455;
-            }
-            .y2014.checked{
-              background-color: #e06c89;
-              border: solid 1px #e06c89;
-            }
-            span{
-              margin-left: 3px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .datepickers{
-    white-space: nowrap;
-    .muted{
-      margin-right:2px;
-    }
-  }
-  h5{
-    margin-bottom: 0.5rem;
-    display:inline-block;
-  }
-  .comparison_mode-wrp{
-    display:inline-block;
-    line-height: 33px;
-    margin-left:15px;
-    margin-bottom: 0.5rem;
-    white-space: nowrap;
-    &.active{
-      .outer_circle {
-        border: solid 1px rgba(183, 225, 167, 0.4);
-        .inner_circle {
-          background-color: #b7e1a7;
-        }
-      }
-    }
-    .outer_circle {
-      width: 11px;
-      height: 11px;
-      border: solid 1px #f4f4f4;
-      border-radius: 50%;
-      text-align: center;
-      display: inline-block;
-      top: 2px;
-      position: relative;
-      .inner_circle {
-        width: 7px;
-        height: 7px;
-        background: #d8d8d8;
-        border-radius: 50%;
-        margin: auto;
-        margin-top:1px;
-      }
-    }
-    .btn{
-      color: #7f8fa4;
-      background: transparent;
-      border-bottom: 1.5px dashed rgba(127, 143, 164, 0.5);
-      padding: 2px 0;
-      margin-right: 20px;
-      margin-left: 3px;
-      border-radius: 0;
-      &:focus{
-        box-shadow: none;
-      }
-    }
-  }
-}
-
-.object-table td,.object-table th{
-  text-align:center
-}
-
-.react-datepicker-popper{
-  z-index: 10;
-}
 
 .object_cont{
   margin:auto;
@@ -973,45 +806,6 @@
 }
 
 
-.all_data {
-  .card-body{
-    padding: 25px 0px 25px 40px;
-    overflow: hidden;
-    h5{
-      font-size:30px
-    }
-  }
-  .error-message{
-    text-align: center;
-    font-size: 2em;
-    height: 200px;
-    line-height: 220px;
-  }
-  .line-chart-wrapper{
-    margin-top: 15px;
-    >#scrollYAxis{
-      display: none;
-      position: absolute;
-      top: 0;
-      margin-top: 15px;
-      pointer-events: none;
-    }
-    .scrolled{
-      background: #fff;
-      border-right: 1px solid transparent;
-      padding-bottom: 33px;
-      display: block!important;
-    }
-    .linechart_area_wrapper{
-      min-height: 200px;
-    }
-    .linechart_area_wrapper_small{
-      height: 120px;
-    }
-  }
-}
-
-
 @media screen and (min-width:1444px) {
   .announce{
     &.row > div {
@@ -1088,24 +882,9 @@
     }
   }
 
-  .datepicker_wrp{
-    &:last-child {
-      margin-left: 20px;
-      &::before{
-        margin-left: -17px;
-      }
-    }
-  }
-
   .new-chart .scroll_wrapper {
     overflow-x: scroll;
     top:0!important;
-  }
-}
-
-@media screen and (min-width:992px) and (max-width: 1260px) {
-  .all_data .comparison_mode-wrp .btn {
-    font-size: 12px;
   }
 }
 
@@ -1142,13 +921,7 @@
         //white-space: normal;
       }
     }
-    .floor_btn-wrp .btn:first-child {
-      display: inline-block;
-      margin-bottom: 0;
-      &:after {
-        display: none;
-      }
-    }
+
   }
 
 }
@@ -1204,55 +977,6 @@
     }
   }
 
-  .all_data {
-    .row:first-of-type{
-      >div:first-of-type{
-        white-space: nowrap;
-      }
-    }
-    .comparison_mode-wrp{
-      .btn{
-        font-size: 12px;
-      }
-    }
-    .datepicker_wrp{
-      input.datepicker{
-        width: auto;
-        font-size: 12px;
-        &::-webkit-clear-button {
-          display: none;
-        }
-        &::-webkit-inner-spin-button {
-          display:none;
-        }
-        &::-webkit-calendar-picker-indicator {
-          display:none;
-        }
-      }
-    }
-    .floor_btn-wrp{
-      display:block;
-    }
-    .line-chart-wrapper {
-      width: 100%;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      position: static;
-      >#scrollYAxis{
-        display: none;
-      }
-      .linechart_area_wrapper{
-        width:1244px;
-      }
-      .linechart_area_wrapper_small{
-        width:700px;
-      }
-    }
-    .line-chart-wrapper_small {
-      position: relative;
-      left: -7px;
-    }
-  }
 
 }
 
@@ -1434,117 +1158,15 @@
         font-size: 12px;
       }
     }
-    .all_data{
-      margin-top: 20px;
-      .card-body{
-        padding: 23px 0px 8px 18px;
-        overflow: visible;
-        h5{
-          font-size: 18px;
-          font-weight: 400;
-          line-height:22px;
-          margin-bottom: 5px;
-        }
-        .datepicker_wrp{
-          &:last-of-type:before{
-            font-size: 12px;
-            top: 2px;
-          }
-        }
-        .scrollHider{
-          overflow-y:hidden;
-          margin-top:-10px;
-          margin-bottom: 20px;
-          .row{
-            top:10px;
-            position: relative;
-          }
-        }
-        .year_selector{
-          .muted{
-            font-size: 14px;
-          }
-          .year_selector_list{
-            margin-left:5px;
-            .dropdown{
-              .year{
-                margin-right:auto;
-              }
-            }
-            .year{
-              margin-right:10px
-            }
-          }
 
-        }
-        .line-chart-wrapper {
-          padding: 10px 0px;
-          #scrollYAxis{
-            margin-top: 25px;
-          }
-        }
-      }
-
-    }
     .horizontal-bars{
       margin-right: -15px;
       margin-left: -15px;
-    }
-    .segmentation_btn-wrp{
-      padding: 0 10px;
-      .btn-group{
-        max-width:100%;
-        .btn{
-          max-width: 100px;
-          font-size: 14px;
-          padding: 3px 0px;
-        }
-      }
     }
     .totalSum {
       .data {
         margin-top: 35px;
         font-size: 2.3em;
-      }
-    }
-    &.revenue{
-      .floor_btn-wrp{
-        .btn{
-          color: #f6aa26;
-        }
-      }
-    }
-    .floor_btn-layer {
-      margin-top: 0px;
-      margin-bottom: 0;
-    }
-    .floor_btn-wrp{
-      margin-top:12px;
-      white-space: nowrap;
-      overflow: scroll;
-      padding: 0;
-      padding-bottom: 10px;
-      position: relative;
-      top: 10px;
-      background: #fff;
-      &::-webkit-scrollbar {
-        display:none;
-        width: 0 !important;
-      }
-      .btn{
-        background-color: #f6f7f7;
-        border: solid 1px #f6f7f7;
-        color: #886ce6;
-        border-radius: 4px;
-        margin: 0px 7px;
-        padding: 10px;
-        &:first-of-type{
-          margin-left:0;
-          display: inline-block;
-            &:after{
-              display: none;
-            }
-        }
       }
     }
     .divider{
@@ -1586,41 +1208,7 @@
             display:none;
           }
         }
-        .react-datepicker__portal{
-          padding:100px;
-          .react-datepicker {
-            font-size: 1em;
-          }
-          .react-datepicker__header {
-            padding-top: 0.8em;
-          }
-          .react-datepicker__month {
-            margin: 0.4em 1em;
-          }
-          .react-datepicker__day-name, .react-datepicker__day {
-            width: 24px;
-            line-height: 20px;
-            margin: 3px;
-            font-size: 12px;
-            font-weight: 400;
-          }
-          .react-datepicker__current-month {
-            font-size: 15px;
-          }
-          .react-datepicker__navigation {
-            top: 5px;
-            line-height: 1.7em;
-            border: 16px solid transparent;
-          }
-          .react-datepicker__navigation--previous {
-            border-right-color: #ccc;
-            left: 0;
-          }
-          .react-datepicker__navigation--next {
-            border-left-color: #ccc;
-            right: 0;
-          }
-        }
+
         .wrapper{
           width:140px;
           height: 22px;
@@ -1768,34 +1356,7 @@
         }
       }
     }
-    .segmentation_btn-wrp {
-      .btn-group {
-        .btn {
-          font-size: 12px;
-        }
-      }
-    }
-    .datepicker_wrp{
-      .react-datepicker__input-container input.datepicker {
-        font-size: 12px;
-        width: 79px;
-        &:disabled{
-          background: none!important;
-          opacity:1!important;
-          -webkit-text-fill-color:#7f8fa4!important; /* Override iOS / Android font color change */
-          -webkit-opacity:1!important;; /* Override iOS opacity change affecting text & background color */
-          color:#7f8fa4!important; /* Override IE font color change */
-        }
-      }
-      .react-datepicker-popper {
-        transform: none !important;
-        left: calc(50% - 123px)!important;
-        top: 20px!important;
-        .react-datepicker__triangle{
-          display: none;
-        }
-      }
-    }
+
     .inner_objects{
       .list_wrapper.plurableColumns{
         -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -1809,31 +1370,6 @@
 
 @media screen and (max-width:320px){
   .object_cont{
-    .datepicker_wrp{
-      &:last-of-type{
-        input.datepicker {
-          margin-right: -15px;
-        }
-      }
-      input.datepicker {
-        width: 70px;
-        font-size: 9px;
-      }
-      &:last-of-type{
-        margin-left: 7%;
-        &::before{
-          margin-left: -5.5%;
-          margin-top: 1.75%;
-        }
-      }
-      .segmentation_btn-wrp .btn-group .btn{
-        font-size:11px;
-      }
-    }
-
-    .all_data .card-body .year_selector .year_selector_list {
-      margin-left: 0px;
-    }
     .new-chart{
       .datepickers .wrapper {
         width: 123px;
@@ -1848,157 +1384,6 @@
           width: 59px;
         }
       }
-    }
-  }
-}
-
-
-/*Тестовый/временный цсс
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*/
-
-.video-box li.accordeon {
-  display: inline-block;
-  width: 400px;
-  cursor:pointer;
-  height: 300px;
-  background: #141519;
-  margin: 2px;
-  color: #FFF;
-  font-weight: 500;
-  position:relative;
-  .collapse.show {
-    position: absolute;
-    top: 50px;
-  }
-  span.title {
-    margin-left: 15px;
-  }
-}
-
-
-
-.new-chart{
-  overflow: hidden;
-  &.likeforLikeOn{
-    .datepickers{
-      .wrapper{
-        width: 243px;
-        >div{
-          input{
-            width: 120px;
-          }
-        }
-      }
-    }
-  }
-  .card-body{
-    padding: 25px 40px 17px;
-  }
-  h5{
-    margin-bottom:18px;
-    line-height: 37px;
-  }
-  .totalSum{
-    .data{
-      margin-top:0;
-      margin-left:30px;
-    }
-    .muted{
-      margin-left:30px;
-    }
-  }
-
-  .scroll_wrapper{
-    overflow-x:scroll;
-    top: 10px;//чтобы скрыть нижнюю строку скролла
-  }
-
-  .data-bar-chart_wrapper{
-    width: 1140px;
-    margin: auto;
-  }
-
-
-  .data-line-chart_wrapper,.data-bar-chart_wrapper{
-    height:285px;
-    max-height:400px;
-    position:relative;
-    margin-top: 65px;
-    min-width: 1140px;
-    table+div .line-chart-wrapper .linechart_area_wrapper{
-      min-height:0px;//с таблицей
-      height: 135px;
-    }
-    .line-chart-wrapper .linechart_area_wrapper{
-      min-height:285px;
-    }
-    table{
-      margin: auto;
-      margin-top: -44px;
-      margin-bottom: 71px;
-      tr{
-        td.total, td.forecast{
-          font-weight: 800!important;
-          font-style: normal!important;
-        }
-        &:first-child{
-          td{
-            font-size: 14px;
-            font-style: normal;
-            color: #636b79;
-            font-weight: 500;
-          }
-        }
-        &:not(:first-child){
-          td {
-            width: 90px;
-            font-size: 14px;
-            &:not(:first-child){
-              color: #636b79;
-              font-size: 13px;
-              font-weight: 300;
-              font-style: italic;
-            }
-          }
-        }
-        span.positive,span.negative{
-          font-size: 90%;
-        }
-        span.positive{
-          color:#75b67b
-        }
-        span.negative{
-          color:#c63a5b
-        }
-
-      }
-    }
-  }
-
-  .datepickers{
-    height: 53px;
-    .wrapper{
-      width: auto;//12;
-      display: inline-block;
     }
   }
 }

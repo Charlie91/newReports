@@ -38,13 +38,9 @@ class Header extends Component {
         document.body.classList.toggle('aside-menu-hidden');
     }
 
-
     sendDataUpward(name,value){ //отправка данных из дочернего компонента в родительский
         this.props.upState(name,value)
     }
-
-
-
 
     render() {
         return (
@@ -53,13 +49,13 @@ class Header extends Component {
                     <NavbarToggler style={{fontSize: '3em',zIndex: '100'}} className="d-lg-none" onClick={this.mobileSidebarToggle}>
                     </NavbarToggler>
                     <h5 className="page-title" >{this.props.title}</h5>
-                    {(~this.props.location.pathname.indexOf('object')) ?
-                        ''
-                        :
-                        < TreeSelectComp
+                    {(~this.props.location.pathname.indexOf('dashboard') || ~this.props.location.pathname.indexOf('conceptions') ) ?
+                        <TreeSelectComp
                             upState={this.sendDataUpward.bind(this)}
                             availableCities={this.props.availableCities}
                         />
+                        :
+                        ''
                     }
                 </Col>
                 <Col md="0" lg="1" xl="1" className="dateBlock">

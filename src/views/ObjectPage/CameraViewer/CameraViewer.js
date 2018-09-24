@@ -1,8 +1,8 @@
 import React from 'react';
-import utils from './obj_utils';
+import utils from '../obj_utils';
 import ReactSWF from 'react-swf';
 import {Collapse} from "reactstrap";
-
+import './style.scss';
 
 const CameraViewer = (props) => {
     if(!props.object || !props.object.camera_floors)return null;
