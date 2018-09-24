@@ -14,12 +14,13 @@ import moment from 'moment';
 import YearTable from './custom_elements/YearTable';
 import addCustomTypeWithBorderRadiuses from './addCustomTypeWithBorderRadiuses';
 
-function getBarsColors(dataLength,labels,timeSegment){
-    return labels.map(item => (( [0,6].includes( moment(item).day() ) ) ? '#9fd473' : '#74c2e8')).concat(Array(31 - dataLength).fill('transparent') );
+
+function getBarsColors(labels, type){
+    return labels.map(i => (( [0,6].includes( moment(i).day() ) && (type == 'D') ) ? '#9fd473' : '#74c2e8')).concat(Array(Math.abs(31-labels.length)).fill('transparent') );
 }
 
-function getBordersColors(dataLength,labels,timeSegment){
-    return Array(dataLength).fill('transparent').concat(Array(31 - dataLength).fill('#979797ab') );
+function getBordersColors(dataLength){
+    return Array(dataLength).fill('transparent').concat(Array(Math.abs(31 - dataLength)).fill('#979797ab') );
 }
 
 
@@ -53,20 +54,21 @@ export default class DataBarChart extends Component{
         }
 
         let filteredData, max;
+        let labels = props.data.labels.slice(1, -1);
+        let data_sets = props.data.datasets.filter((items,i) => i % 2 === 0);
         filteredData = {
-            datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
-                let length = item.data.length - 2;
-                if(length < 0 || length > 31) length = 0;
+            datasets: data_sets.map(item => {
+                let  item_data = item.data.slice(1, -1);
                 return {
-                    data:item.data.filter((value,i) => i && i !== item.data.length - 1 ),//удаляем мусорные элементы массива
-                    label:item.label,
-                    backgroundColor:getBarsColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
-                    borderColor:getBordersColors(length,props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1),props.timeSegment),
+                    data: item_data,
+                    label: item.label,
+                    backgroundColor: getBarsColors( labels , props.timeSegment ),
+                    borderColor: getBordersColors( item_data.length ),
                     borderWidth: 1,
                     borderDash:[3,2]
                 }
             }),
-            labels:props.data.labels.filter((item,i) => i && i !== props.data.labels.length - 1 )//удаляем мусорные элементы массива
+            labels: labels
         };
 
         return (
