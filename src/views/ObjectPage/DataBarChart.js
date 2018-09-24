@@ -4,29 +4,17 @@ import {formatNumberBySpaces} from './../../utils/utils';
 
 import ReactPicker from './custom_elements/ReactPicker';
 import CheckButton from './custom_elements/CheckButton';
+import SelectList from './custom_elements/SelectList';
 import YearSelector from './custom_elements/YearSelector';
 import ChartBar from './custom_elements/ChartBar';
-import DataChart from './custom_elements/DataChart';
+import ChartLine from './custom_elements/ChartLine';
 import XlsButton from './custom_elements/XlsButton';
 
-import Select from 'react-select';
 import utils from './obj_utils';
 import moment from 'moment';
-import {formatNumericValueWithMnl, getStepName, getStepSize, getStepTick,formatNumericValue} from "../../utils/utils";
+import {formatNumericValue} from "../../utils/utils";
 import YearTable from './custom_elements/YearTable';
 import addCustomTypeWithBorderRadiuses from './addCustomTypeWithBorderRadiuses';
-
-
-
-function getNumberOfYears(width){
-    let number;
-
-    if(width < 1200 && width > 767)number = 2;
-    else if(width < 768) number = 1;
-    else number = 3;
-
-    return number
-}
 
 function getBarsColors(dataLength,labels,timeSegment){
     const defaultColorArray = [...'#74c2e8,'.repeat(dataLength).split(',').slice(0,-1)];
@@ -70,12 +58,6 @@ function getBordersColors(dataLength,labels,timeSegment){
     return [...defaultColorArray,...'#979797ab,'.repeat(31 - dataLength).split(',').slice(0,-1)];
 }
 
-function addDashesToBorders(chart){
-    if(chart && chart.chart_instance){
-        chart.chart_instance.chart.ctx.setLineDash([10, 10]);
-    }
-}
-
 
 export default class DataBarChart extends Component{
     constructor(props){
@@ -87,15 +69,10 @@ export default class DataBarChart extends Component{
         }
     }
 
-    componentDidUpdate(){
-        addDashesToBorders(this.chart);
-    }
-
-
     render(){
 
         const props = this.props;
-        const times = [
+        const options_times = [
             { value:'H',label:'По часам',render:( (moment(props.startDate).diff(moment(props.endDate), 'days') > -14) && props.shortestUnit === 'H' )},
             { value:'D',label:'По дням',render:(props.startDate.format('YYYY-MM-DD') !== props.endDate.format('YYYY-MM-DD')) },
             { value:'M',label:'По месяцам',render:(props.startDate.format('YYYY-MM') !== props.endDate.format('YYYY-MM')) },
@@ -103,13 +80,14 @@ export default class DataBarChart extends Component{
         ].filter(item => item.render);
 
         if(props.floors){
-            var arr = props.floors.map((item,i) => {
+            var options_floors = props.floors.map((item,i) => {
                 return {
                     value:i,
                     label:item.name
                 }
             })
         }
+
         let filteredData, max;
         filteredData = {
             datasets:props.data.datasets.filter((items,i) => i % 2 === 0).map(item => {
@@ -145,12 +123,7 @@ export default class DataBarChart extends Component{
                                                  color={'#9fd573'}
                                     />
                                     :
-                                    <YearSelector
-                                        render={true}
-                                        checkYear={props.checkYear}
-                                        numberOfYearsAtList={getNumberOfYears(props.viewportWidth)}
-                                        {...props}
-                                    />
+                                    <YearSelector render={true} onCheck={props.checkYear} {...props} />
                                 }
                             </Col>
                             {(props.viewportWidth > 767 && !props.comparison_mode && !props.likeForLike) ?
@@ -170,28 +143,10 @@ export default class DataBarChart extends Component{
                         </Row>
                         <Row>
                             <Col md="12">
-                                <Select
-                                    className="select_list"
-                                    closeOnSelect={true}
-                                    removeSelected={false}
-                                    onChange={props.changeTimeSegment}
-                                    options={times}
-                                    placeholder="Выберите категории"
-                                    simpleValue
-                                    value={props.timeSegment}
-                                    inputProps={{readOnly:true}}
-                                />
-                                <Select
-                                    className="select_list"
-                                    closeOnSelect={true}
-                                    removeSelected={false}
-                                    onChange={props.changeFloor}
-                                    options={arr}
-                                    placeholder="Выберите категории"
-                                    simpleValue
-                                    value={props.floorIndex}
-                                    inputProps={{readOnly:true}}
-                                />
+                                <SelectList onSelect={props.changeTimeSegment} options={options_times}
+                                            default_value={props.timeSegment} />
+                                <SelectList onSelect={props.changeFloor} options={options_floors}
+                                            default_value={props.floorIndex} />
                             </Col>
                             {props.viewportWidth < 768 ?
                                 <Col xs="12" className="totalSum">
@@ -215,16 +170,16 @@ export default class DataBarChart extends Component{
                                        <div>
                                           <YearTable loading={props.requestIsInProcess}
                                                      filteredData={filteredData} {...props} />
-                                          <DataChart loading={props.requestIsInProcess}
-                                                        render={!(props.type === 'Выручка')}
-                                                        comparison_mode={props.comparison_mode}
-                                                        data={props.chart}
-                                                        startDate={props.startDate}
-                                                        endDate={props.endDate}
-                                                        currency={props.currency}
-                                                        timeSegment={props.timeSegment}
-                                                        emptyData={props.emptyData}
-                                                        {...props}
+                                          <ChartLine loading={props.requestIsInProcess}
+                                                     render={!(props.type === 'Выручка')}
+                                                     comparison_mode={props.comparison_mode}
+                                                     data={props.chart}
+                                                     startDate={props.startDate}
+                                                     endDate={props.endDate}
+                                                     currency={props.currency}
+                                                     timeSegment={props.timeSegment}
+                                                     emptyData={props.emptyData}
+                                                     {...props}
                                           />
                                        </div>
                                     </div>
@@ -232,7 +187,6 @@ export default class DataBarChart extends Component{
                                     <div className="data-bar-chart_wrapper">
                                         <ChartBar loading={props.requestIsInProcess}
                                                   filteredData={filteredData} max={max}
-                                                  ref={(chart) => { this.chart = chart; }}
                                                   {...props}  />
                                     </div>
                                 }

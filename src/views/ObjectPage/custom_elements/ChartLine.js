@@ -62,7 +62,7 @@ function getCustomLabel(props){
 
 
 
-const DataChart = (props) => {
+const ChartLine = (props) => {
     if (props.loading) return <Loading/>;
     addAdditionalStylesToChart(props.data);//изменение стилей в зависимости от кол-ва знач-й выводящихся графиком
     return (
@@ -257,4 +257,4 @@ const DataChart = (props) => {
     );
 };
 
-export default DataChart;
+export default ChartLine;

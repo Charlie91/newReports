@@ -13,6 +13,17 @@ class ChartBar extends React.Component {
         super(props);
     }
 
+    _addDashesToBorders(chart){
+        if(chart && chart.chart_instance){
+            chart.chart_instance.chart.ctx.setLineDash([10, 10]);
+        }
+    }
+
+    componentDidUpdate(){
+        this._addDashesToBorders(this.chart);
+    }
+
+
     _getFormat(timeSegment) {
         let format;
         switch(timeSegment){
@@ -77,6 +88,7 @@ class ChartBar extends React.Component {
         this._addEmptyBars(this.props.filteredData, this.props.timeSegment);//добавляем "пустые" графики
 
         return <ChartComponent
+            ref={(chart) => { this.chart = chart; }}
             data={this.props.filteredData}
             type='roundedBar'
             options={{
