@@ -14,10 +14,7 @@ import ShopListAccordeon from './InnerObjects/ShopListAccordeon';
 import CameraViewer from './CameraViewer/CameraViewer';
 import SalesAnalysis from './SalesAnalysis/SalesAnalysis';
 import DataBarChart from './DataBarChart';
-<<<<<<< HEAD
-=======
 import DataChart from './custom_elements/ChartLine';
->>>>>>> d3ddea8d6144d3f8ca4ca6c91d66fb1febcd59d6
 
 export default class ObjectPage extends Component {
     constructor(props) {
