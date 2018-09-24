@@ -55,7 +55,7 @@ export default class DataBarChart extends Component{
 
         let filteredData, max;
         let labels = props.data.labels.slice(1, -1);
-        let data_sets = props.data.datasets.filter((items,i) => i % 2 === 0);
+        let data_sets = props.data.datasets.filter((items,i) => i % 2 === 0); //TODO get even?
         filteredData = {
             datasets: data_sets.map(item => {
                 let  item_data = item.data.slice(1, -1);
