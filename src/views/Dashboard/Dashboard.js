@@ -107,7 +107,6 @@ class Dashboard extends PureComponent {
     }
 
 
-
     componentDidMount(){
         mobileSidebarHidden();
         this.getAvailableCities(); //получение списка городов
@@ -120,37 +119,10 @@ class Dashboard extends PureComponent {
         }
     }
 
-    handleFacebook(status,e){
-        e.preventDefault();
-        if(status === 'off')
-            fetch('https://repo.re-ports.ru/app_test/FbUnregister', {
-                credentials: 'include',
-                method: 'POST'
-            }).then(resp => resp.json()).then(resp => {
-                if (resp.success) {
-                    console.log('Отвязали успешно');
-                } else {
-                    console.log('Не отвязались =((' + JSON.stringify(resp));
-                }
-            });
-        else
-            fetch('https://repo.re-ports.ru/app_test/FbRegisterById?fbUserId=' + "106473306946196", {
-                credentials: 'include',
-                method: 'POST'
-            }).then(resp => resp.json()).then(resp => {
-                if (resp.success) {
-                    console.log('Привязали успешно');
-                } else {
-                    console.log('Не привязались =((' + JSON.stringify(resp));
-                }
-            });
-    }
 
     render() {
         return (
             <div style={{marginTop:'15px'}} className="animated dashboard fadeIn">
-                {/*<button onClick={this.handleFacebook.bind(this, 'on')}>Привязать Facebook аккаунт</button>*/}
-                {/*<button onClick={this.handleFacebook.bind(this,'off')}>Отвязать Facebook аккаунт</button>*/}
                 {this.renderObjects()}
             </div>
         )

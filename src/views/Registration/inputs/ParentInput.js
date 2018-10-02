@@ -25,7 +25,6 @@ class ParentInput extends Component {//Родительский класс дл�
         }
     }
 
-
     componentWillReceiveProps(nextProps){
             this.setState({isValid:nextProps.isValid});
     }

@@ -18,7 +18,7 @@
     width: 1%;
     margin-bottom: 0;
 
-    // Bring the "active" form control to the front
+    // Bring the "active" userDataForm control to the front
     @include hover-focus-active {
       z-index: 3;
     }
@@ -46,7 +46,7 @@
 
 // Sizing options
 //
-// Remix the default form control sizing classes into new ones for easier
+// Remix the default userDataForm control sizing classes into new ones for easier
 // manipulation.
 
 .input-group-lg > .form-control,

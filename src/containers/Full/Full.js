@@ -165,7 +165,7 @@ class Full extends Component {
                                        }
                                 />
                                 <Route path="/profile" name="Profile" render={(props) =>
-                                          <ProfilePage upState={this.upState.bind(this)} {...props}/>
+                                          <ProfilePage userData={this.state.userData} upState={this.upState.bind(this)} {...props}/>
                                        }
                                 />
                                 <Route exact path="/conceptions/:id"  name="Conception"

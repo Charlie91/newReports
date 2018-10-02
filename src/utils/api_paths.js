@@ -18,5 +18,6 @@ export const API = {
     abcAnalysis_categories:`https://repo.re-ports.ru/trc_api${postfix}/abc_xyz_types`,
     imgPath:`https://re-ports.ru/app/img/malls/resize`,
     thumbPath:`https://re-ports.ru/app/img/malls/thumb/`,
-    averageTimeOfVisit:`https://repo.re-ports.ru/trc_api${postfix}/approx_time`
+    averageTimeOfVisit:`https://repo.re-ports.ru/trc_api${postfix}/approx_time`,
+    changePassword:`https://repo.re-ports.ru/app${postfix}/NewPassword`
 };

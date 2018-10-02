@@ -18,3 +18,8 @@ _Система стилей:_
 при помощи webpack -директивы @import, например"
 
 `@import "../../../scss/variables";`
+
+или
+
+`@import "/scss/variables";`
+

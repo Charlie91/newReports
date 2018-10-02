@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="message text-white bg-danger text-center card"
+>
+  <div
+    className="card-body card-block"
+  >
+    Текст ошибки
+  </div>
+</div>
+`;

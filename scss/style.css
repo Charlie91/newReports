@@ -12277,12 +12277,12 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 
 /*! Select2 Bootstrap 3 CSS v1.4.6 | MIT License | github.com/t0m/select2-bootstrap-css */
 /**
-* Reset Bootstrap 3 .form-control styles which - if applied to the
+* Reset Bootstrap 3 .userDataForm-control styles which - if applied to the
 * original <select>-element the Select2-plugin may be run against -
 * are copied to the .select2-container.
 *
 * 1. Overwrite .select2-container's original display:inline-block
-*    with Bootstrap 3's default for .form-control, display:block;
+*    with Bootstrap 3's default for .userDataForm-control, display:block;
 *    courtesy of @juristr (@see https://github.com/fk/select2-bootstrap-css/pull/1)
 */
 .select2-container.form-control, .daterangepicker .select2-container.input-mini, .input-group > .ui-select-bootstrap > input.select2-container.ui-select-search.form-control {
@@ -12294,7 +12294,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
   padding: 0; }
 
 /**
-* Adjust Select2 inputs to fit Bootstrap 3 default .form-control appearance.
+* Adjust Select2 inputs to fit Bootstrap 3 default .userDataForm-control appearance.
 */
 .select2-container .select2-choices .select2-search-field input,
 .select2-container .select2-choice,
@@ -12509,7 +12509,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 
 /**
 * Make Select2's active-styles - applied to .select2-container when the widget receives focus -
-* fit Bootstrap 3's .form-element:focus appearance.
+* fit Bootstrap 3's .userDataForm-element:focus appearance.
 */
 .select2-container-active .select2-choice,
 .select2-container-multi.select2-container-active .select2-choices {

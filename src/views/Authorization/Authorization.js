@@ -116,14 +116,12 @@ export default class Authorization extends Component {
 
     checkFB(){
         window.FB.getLoginStatus(resp => {
-            console.dir(resp);
             if (resp.status === 'connected') {
                 const fbUid = resp.authResponse.userID;
-                fetch('https://repo.re-ports.ru/app_test/FbLogin?fbUserId=' + fbUid,{
+                fetch('https://repo.re-ports.ru/app_test/FacebookLogin?oauthUserId=' + fbUid,{
                     credentials: 'include',
                     method: 'POST'
                 }).then(resp => resp.json()).then(resp => {
-                    console.log(JSON.stringify(resp));
                     if(resp.success)
                         this.checkEitherLoggedInOrNot();
                     else{
@@ -131,7 +129,7 @@ export default class Authorization extends Component {
                             locale: 'ru_RU',
                             fields: 'name, email'
                         }, resp => {
-                            fetch('https://repo.re-ports.ru/app_test/FbRegisterByEmail?fbUserId=' + fbUid + '&email=' + resp.email, {
+                            fetch('https://repo.re-ports.ru/app_test/FacebookRegisterByEmail?oauthUserId=' + fbUid + '&email=' + resp.email, {
                                 credentials: 'include',
                                 method: 'POST'
                             }).then(resp => resp.json()).then(resp => {
@@ -141,7 +139,6 @@ export default class Authorization extends Component {
                             });
                         });
                     }
-
                 });
             } else {
                 console.log('не авторизован')
@@ -151,7 +148,7 @@ export default class Authorization extends Component {
 
     handleClickOnFacebookLink(e) {
         e.preventDefault();
-        FB.login(this.checkFB.bind(this));
+        FB.login(this.checkFB.bind(this),{scope:'email'});
     }
 
     sendDataForLogInAndOut(options){    //обработка ответов на запросы логина\логаута
@@ -189,7 +186,7 @@ export default class Authorization extends Component {
     }
 
     checkIfChromeAutofilled(){  //Обработка автозаполнения полей в хроме
-        let inputs = document.querySelectorAll('.auth-form div input');
+        let inputs = document.querySelectorAll('.auth-userDataForm div input');
 
         for(let i = 0; i < inputs.length;i++){
             if(getComputedStyle(inputs[i]).boxShadow !== "rgb(250, 251, 252) 0px 0px 0px 1000px inset")
@@ -238,7 +235,7 @@ export default class Authorization extends Component {
                                 >
                                     Войти
                                 </button>
-                                {/*<a href="#" onClick={this.handleClickOnFacebookLink.bind(this)}>Login with Facebook</a>*/}
+                                <a href="#" onClick={this.handleClickOnFacebookLink.bind(this)}>Login with Facebook</a>
                             </Col>
                         </Row>
                     </form>
@@ -257,29 +254,29 @@ export default class Authorization extends Component {
         },500);
 
 
-        // const self = this;//сохранение контекста
-        // window.fbAsyncInit = function() {
-        //     FB.init({
-        //         appId: '1701579333271892',
-        //         cookie: true,
-        //         xfbml: true,
-        //         version: 'v3.0'
-        //     });
-        //     FB.AppEvents.logPageView();
-        //     self.checkFB();
-        //     console.log('Готов к работе');
-        // };
-        //
-        // (function(d, s, id) {
-        //     var js, fjs = d.getElementsByTagName(s)[0];
-        //     if (d.getElementById(id)) {
-        //         return;
-        //     }
-        //     js = d.createElement(s);
-        //     js.id = id;
-        //     js.src = "https://connect.facebook.net/ru_RU/sdk.js";
-        //     fjs.parentNode.insertBefore(js, fjs);
-        // })(document, 'script', 'facebook-jssdk');
+        const self = this;//сохранение контекста
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '1701579333271892',//'1701579333271892', '229847101183371'
+                cookie: true,
+                xfbml: true,
+                version: 'v3.0'
+            });
+            FB.AppEvents.logPageView();
+            self.checkFB();
+            console.log('Готов к работе');
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/ru_RU/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'facebook-jssdk');
     }
 
     componentDidUpdate(prevProps,prevState){

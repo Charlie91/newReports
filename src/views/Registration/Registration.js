@@ -184,7 +184,6 @@ class Registration extends Component {
                                     type="submit"
                                     className={
                                         (this.state.email && this.state.password && this.state.passwordsAreConfirm && this.state.phone)
-
                                         ?
                                             "btn auth-btn"
                                             :

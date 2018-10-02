@@ -34,5 +34,72 @@
         }
       }
     }
+    .userdata_form,.password_change_form{
+      .form-group{
+        >label{
+          width: 100%;
+          margin: 0;
+          >span,>input{
+            display: inline-block;
+            padding: 11px 15px 10px;
+            font-size: 14px;
+            height: 40px;
+            line-height: normal;
+            white-space: nowrap;
+            border: 1px solid #e9eef1;
+            color: #364151;
+          }
+          >span {
+            width: 108px;
+            border-radius: 4px 0 0 4px;
+            font-weight: 600;
+            text-align:right;
+          }
+          >input{
+            width: 350px;
+            border-radius: 0 4px 4px 0;
+            border-left:none;
+          }
+          small{
+            display: block;
+            margin-left: 108px;
+            font-size: 12px;
+            font-weight: 300;
+            color: #364151;
+          }
+        }
+        .btn{
+          width: 223px;
+          font-size: 18px;
+          border-radius: 6px;
+          margin-left: 108px;
+        }
+      }
+    }
+    .password_change_form{
+      .form-group{
+        >label{
+          >span{
+            width: 133px;
+            &.repeat-password{
+              white-space: normal;
+              position: relative;
+              padding: 2px 15px;
+              top: 8px;
+            }
+          }
+        }
+        .btn{
+          margin-left: 134px;
+        }
+      }
+    }
+    .message{
+      width:30%;
+      min-width:300px;
+      margin:auto;
+    }
   }
 }
+
+

@@ -19,7 +19,6 @@ import DataChart from './custom_elements/ChartLine';
 export default class ObjectPage extends Component {
     constructor(props) {
         super(props);
-
         utils.localizeMoment();//локализация библиотеки moment
 
         this.initialChart = {  //изначальное состояние графика, для удобного сброса состояния
@@ -519,41 +518,6 @@ export default class ObjectPage extends Component {
             this.setState({likeForLike:true},
                 this.addLikeForLikeAdditionalGraph());
         }
-    }
-
-    handleChangeStart(date) { //функции-обработчики смены дат в datepickers
-        if(this.state.endDate - date < 0)return false;
-        let newSegment = utils.trackActualSegments.bind(this,date,this.state.endDate)();
-        this.setState(
-            {startDate: date,timeSegment:newSegment},
-            () => this.getFloorsData()
-        );
-    }
-
-    handleChangeEnd(date) {
-        if(date - this.state.startDate < 0)return false;
-        if(!this.state.comparison_mode && (date > moment()) )return false;
-        let newSegment = utils.trackActualSegments.bind(this,this.state.startDate,date)();
-        this.setState(
-            {endDate: date,timeSegment:newSegment},
-            () => this.getFloorsData()
-        );
-    }
-
-    handleMobileChangeStart(e){
-        let newSegment = utils.trackActualSegments.bind(this,moment(e.target.value),this.state.endDate)();
-        this.setState(
-            {startDate: moment(e.target.value),timeSegment:newSegment},
-            () => this.getFloorsData()
-        );
-    }
-
-    handleMobileChangeEnd(e){
-        let newSegment = utils.trackActualSegments.bind(this,this.state.startDate,moment(e.target.value))();
-        this.setState(
-            {endDate: moment(e.target.value),timeSegment:newSegment},
-            () => this.getFloorsData()
-        );
     }
 
     changeComparisonMode(){

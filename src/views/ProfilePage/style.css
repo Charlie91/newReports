@@ -25,3 +25,48 @@
           text-align: left; }
         .profile_page .card-body .avatar_wrapper .buttons > div:nth-child(2) {
           text-align: right; }
+  .profile_page .card-body .userdata_form .form-group > label, .profile_page .card-body .password_change_form .form-group > label {
+    width: 100%;
+    margin: 0; }
+    .profile_page .card-body .userdata_form .form-group > label > span, .profile_page .card-body .userdata_form .form-group > label > input, .profile_page .card-body .password_change_form .form-group > label > span, .profile_page .card-body .password_change_form .form-group > label > input {
+      display: inline-block;
+      padding: 11px 15px 10px;
+      font-size: 14px;
+      height: 40px;
+      line-height: normal;
+      white-space: nowrap;
+      border: 1px solid #e9eef1;
+      color: #364151; }
+    .profile_page .card-body .userdata_form .form-group > label > span, .profile_page .card-body .password_change_form .form-group > label > span {
+      width: 108px;
+      border-radius: 4px 0 0 4px;
+      font-weight: 600;
+      text-align: right; }
+    .profile_page .card-body .userdata_form .form-group > label > input, .profile_page .card-body .password_change_form .form-group > label > input {
+      width: 350px;
+      border-radius: 0 4px 4px 0;
+      border-left: none; }
+    .profile_page .card-body .userdata_form .form-group > label small, .profile_page .card-body .password_change_form .form-group > label small {
+      display: block;
+      margin-left: 108px;
+      font-size: 12px;
+      font-weight: 300;
+      color: #364151; }
+  .profile_page .card-body .userdata_form .form-group .btn, .profile_page .card-body .password_change_form .form-group .btn {
+    width: 223px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-left: 108px; }
+  .profile_page .card-body .password_change_form .form-group > label > span {
+    width: 133px; }
+    .profile_page .card-body .password_change_form .form-group > label > span.repeat-password {
+      white-space: normal;
+      position: relative;
+      padding: 2px 15px;
+      top: 8px; }
+  .profile_page .card-body .password_change_form .form-group .btn {
+    margin-left: 134px; }
+  .profile_page .card-body .message {
+    width: 30%;
+    min-width: 300px;
+    margin: auto; }
