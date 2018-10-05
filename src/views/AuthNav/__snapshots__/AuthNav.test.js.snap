@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth navigation works correctly AuthNav component renders correctly 1`] = `
+<div
+  className="auth-nav row"
+>
+  <div
+    className="col-0 col-sm-1 col-md-1"
+  >
+     
+  </div>
+  <div
+    className="auth_links col-6 col-sm-5 col-md-5"
+  >
+    <div>
+      Link
+    </div>
+  </div>
+  <div
+    className="auth_links col-6 col-sm-5 col-md-5"
+  >
+    <div>
+      Link
+    </div>
+  </div>
+  <div
+    className="col-0 col-sm-1 col-md-1"
+  />
+</div>
+`;

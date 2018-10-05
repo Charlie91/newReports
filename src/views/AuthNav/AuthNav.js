@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Row, Col} from "reactstrap";
 

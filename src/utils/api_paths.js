@@ -1,4 +1,3 @@
-
 let postfix = PRODUCTION ? '' : '_test'; //пути различаются в девелопменте и продакшене
 
 export const API = {

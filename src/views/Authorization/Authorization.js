@@ -196,7 +196,6 @@ export default class Authorization extends Component {
     }
 
     showForm(){
-        const checkFB = this.checkFB;
             return(
                 <div>
                     <form action="#" className="auth-form" autoComplete="on" method="POST">
@@ -287,7 +286,6 @@ export default class Authorization extends Component {
     }
 
     render() {
-
         return (
             <div className="auth-window animated fadeIn">
                 <AuthNav/>
