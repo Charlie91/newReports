@@ -4,10 +4,8 @@ import AuthNav from './../AuthNav/AuthNav';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Redirect} from 'react-router-dom';
 import {API} from './../../utils/api_paths';
-import {ajaxRequest} from './../../utils/utils';
+import {ajaxRequest, insertFacebookSDK} from './../../utils/utils';
 import {Row, Col} from "reactstrap";
-
-
 
 
 export function showDynamicLabel(nameProperty,text){    //динамический показ лейбла у форм
@@ -266,16 +264,8 @@ export default class Authorization extends Component {
             console.log('Готов к работе');
         };
 
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/ru_RU/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, 'script', 'facebook-jssdk');
+        insertFacebookSDK(document, 'script', 'facebook-jssdk');
+
     }
 
     componentDidUpdate(prevProps,prevState){

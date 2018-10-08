@@ -4,10 +4,16 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import * as utils from './../../utils/utils';
 
+
 jest.mock('react-router-dom');
 jest.mock('../AuthNav/AuthNav', () => 'AuthNav');
 
-utils.ajaxRequest = jest.fn();
+utils.ajaxRequest = jest.fn(() => new Promise(function(resolve, reject) {
+    resolve('Promise resolved');//мокаем ajax request
+}));
+
+utils.insertFacebookSDK = jest.fn(() => 'facebook sdk inserting');//мокаем скрипт ФБ
+
 
 test('logged in succesfully', () => {   //тестирование авторизации
     let user = {        //данные тестового пользователя
@@ -33,13 +39,12 @@ test('logged in succesfully', () => {   //тестирование автори�
         .catch(err => console.log(err))
 });
 
-//
-// describe('Authorization works correctly', () => {//тестирование класса
-//
-//     it('Auth component renders correctly', () => {
-//         const tree = renderer
-//             .create(<Authorization/>)
-//             .toJSON();
-//         expect(tree).toMatchSnapshot();
-//     });
-// });
+
+describe('Authorization works correctly', () => {//тестирование класса
+    it('Auth component renders correctly', () => {
+        const tree = renderer
+            .create(<Authorization/>)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});

@@ -28,6 +28,18 @@ export function ajaxRequest(url,options){   //функция-шаблон для
         })
 }
 
+export function insertFacebookSDK(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/ru_RU/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}
+
+
 export function getCoords(elem) {                         //кроссбраузерная функция получения координат DOM-элемента
     let box = elem.getBoundingClientRect(),
         body = document.body,

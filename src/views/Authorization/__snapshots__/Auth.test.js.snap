@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authorization works correctly Auth component renders correctly 1`] = `
+<div
+  className="auth-window animated fadeIn"
+>
+  <AuthNav />
+  <div>
+    <form
+      action="#"
+      autoComplete="on"
+      className="auth-form"
+      method="POST"
+    >
+      <div
+        className="form-group"
+      >
+        <label>
+          <span />
+          <input
+            autoComplete="on"
+            className="form-control"
+            onChange={[Function]}
+            placeholder="Логин"
+            type="text"
+            value=""
+          />
+        </label>
+        <label>
+          <span />
+          <input
+            autoComplete="on"
+            className="form-control pass"
+            onChange={[Function]}
+            placeholder="Пароль"
+            type="password"
+            value=""
+          />
+        </label>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-8 offset-2 col-md-4 offset-md-4"
+        >
+          <button
+            className="btn auth-btn"
+            disabled={true}
+            onClick={[Function]}
+            type="submit"
+          >
+            Войти
+          </button>
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Login with Facebook
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    className="blur_layout"
+  >
+     
+  </div>
+</div>
+`;
